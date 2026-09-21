@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "stage": "D12",
+  "stage_gate": "G1",
+  "title": "C0 全任务评测审计检查表",
+  "completed_on": "2026-09-22",
+  "overall_status": "pass",
+  "scope": {
+    "method": "c0_actor_only",
+    "suite": "libero_spatial",
+    "training_seed": 11,
+    "checkpoint": "results/c0/seed11/best.pt",
+    "checkpoint_sha256": "8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4"
+  },
+  "protocol": {
+    "seed_file": "configs/eval_seeds_spatial.json",
+    "episodes_per_task": 20,
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "max_steps": 300,
+    "parallel_envs": 1,
+    "success_api": "env.check_success()"
+  },
+  "result": {
+    "result_file": "results/c0/seed11/summary.json",
+    "complete": true,
+    "episodes": 200,
+    "successes": 17,
+    "macro_success_rate": 0.085,
+    "task_successes": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 6,
+      "5": 0,
+      "6": 7,
+      "7": 0,
+      "8": 4,
+      "9": 0
+    }
+  },
+  "checks": [
+    {
+      "id": "D12-01",
+      "requirement": "10 个官方 libero_spatial 任务都结束评测。",
+      "status": "pass",
+      "evidence": {
+        "completed_task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+        "task_records": 10
+      }
+    },
+    {
+      "id": "D12-02",
+      "requirement": "每个任务均使用 20 个固定 episode，总数为 200。",
+      "status": "pass",
+      "evidence": {
+        "episodes_per_task": 20,
+        "total_episode_records": 200,
+        "unique_task_seed_pairs": 200
+      }
+    },
+    {
+      "id": "D12-03",
+      "requirement": "所有成功和失败均有逐 episode 记录。",
+      "status": "pass",
+      "evidence": {
+        "required_episode_fields": [
+          "episode_index",
+          "seed",
+          "init_state_index",
+          "success",
+          "steps"
+        ],
+        "records_complete": true,
+        "success_records": 17,
+        "failure_records": 183
+      }
+    },
+    {
+      "id": "D12-04",
+      "requirement": "失败回合不是静默截断；达到上限的原因可从步数记录复核。",
+      "status": "pass",
+      "evidence": {
+        "failure_step_counts": {
+          "300": 183
+        },
+        "successful_episode_step_range": [116, 257]
+      }
+    },
+    {
+      "id": "D12-05",
+      "requirement": "评测使用冻结的测试种子、固定官方初始状态和官方 success API。",
+      "status": "pass",
+      "evidence": {
+        "seed_file": "configs/eval_seeds_spatial.json",
+        "init_state_rule": "每个任务的官方初始状态索引 0-19 与 episode_index 配对",
+        "success_api": "env.check_success()",
+        "implementation": "scripts/evaluate_c0_all.py"
+      }
+    },
+    {
+      "id": "D12-06",
+      "requirement": "测试种子未被训练或 checkpoint 选择使用；模型选择仅使用 held-out demonstrations。",
+      "status": "pass",
+      "evidence": {
+        "training_config": "results/c0/seed11/config.yaml",
+        "training_metadata": "results/c0/seed11/run_metadata.json",
+        "train_demo_ids": "0-44 per task",
+        "validation_demo_ids": "45-49 per task",
+        "checkpoint_selection": "minimum held-out validation raw_action_mse",
+        "test_seed_file_is_evaluation_only": true
+      },
+      "audit_scope": "此结论基于已保存的配置、训练代码和结果血缘；未来 C1/C2 必须在运行前继续冻结超参数与验收规则。"
+    },
+    {
+      "id": "D12-07",
+      "requirement": "结果 JSON 可独立解析并复算汇总数值。",
+      "status": "pass",
+      "evidence": {
+        "json_parseable": true,
+        "recomputed_episodes": 200,
+        "recomputed_successes": 17,
+        "recomputed_macro_success_rate": 0.085
+      }
+    },
+    {
+      "id": "D12-08",
+      "requirement": "G1 仅证明 C0 全任务基线可结束并可审计；不得将其作为 C1/C2 或世界模型效果。",
+      "status": "pass",
+      "evidence": {
+        "method": "c0_actor_only",
+        "world_model_used": false,
+        "documented_baseline_macro_success_rate": 0.085
+      }
+    }
+  ],
+  "caveats": [
+    "本轮仅完成训练随机种子 11；训练种子 23、47 属于 D25 的主结果扩展，不是 D11/D12 的门槛。",
+    "8.5% 是当前轻量 C0 的基线，不表示世界模型或闭环重规划已实现。"
+  ],
+  "next_stage": {
+    "stage": "D13",
+    "required_deliverables": [
+      "configs/world_model.yaml",
+      "无 episode 泄漏的时序 train/validation 划分清单"
+    ]
+  }
+}

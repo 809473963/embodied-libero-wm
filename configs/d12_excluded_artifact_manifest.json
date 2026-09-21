@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-22",
+  "purpose": "Content-addressed inventory of non-Git D12 artifacts. Recreate or verify a file with the recorded SHA-256 before using it.",
+  "exclusion_policy": {
+    "gitignored_directories": ["data/", "artifacts/", ".venv/", ".cache/", ".libero/"],
+    "reasons": {
+      "data/": "official downloaded dataset; 6.24 GB",
+      "artifacts/": "derived feature stores, probes, and checkpoints",
+      ".venv/": "machine-local Python environment",
+      ".cache/": "download cache; sources are revision-pinned elsewhere",
+      ".libero/": "machine-local LIBERO runtime state"
+    }
+  },
+  "artifacts": [
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5","bytes":508779600,"sha256":"ff6f26121653c77280eb40a38773a74141c11a8509f3466058cb56dd2cc60ead","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5","bytes":589630943,"sha256":"75ede0cf5fbfc925093671b55032ad80f1b1f1cf35442ec6c663460d37d3e0b3","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5","bytes":748271833,"sha256":"7ff1ee60447875c152d8c7819f499d23dbc0eb4d4bf045225d5d87a2cdad99bd","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5","bytes":632345992,"sha256":"9d0b5435b313a8c0d7336b429b5f0f578be6f2a9f5f8a6dd67459ef388f3c74c","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5","bytes":597677074,"sha256":"3961cb7126eaca47d0f5be29eb297bb62e7591e3c86172c9587c0bf670112f84","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5","bytes":671583385,"sha256":"bf1090dd4826eacb49eb052f17d04798e2a1eb2f74f8d024bc3b9c5d234c25f9","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5","bytes":507189857,"sha256":"0c053db7317e584632549bddb963bee8a237661b4bd29f0581a245f715e8eb72","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5","bytes":581087722,"sha256":"d9b2da7399a88bea39024c8ef97713a20734e9b765e14b3399e2755890c828b7","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5","bytes":711715594,"sha256":"1fcb3990cf9fd6185f56531cc9f6dec0a77a59bfa0c7f39dff95b7e43cf6aeaa","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5","bytes":688768764,"sha256":"4d503d447028f437211880bea4ee1a7f6732113ea8560181fcca163251864794","run":"official_LIBERO_spatial_download","config_path":"configs/source_versions.yaml"},
+    {"path":"artifacts/stage1/features/clip_vit_b32_h8/train.hdf5","bytes":56107011,"sha256":"44f07445c32d61c2fcd66d5c779db9b37d696722530417802bfbc0552dfd60c6","run":"stage1_feature_extraction/clip_vit_b32_h8","config_path":"configs/c0_actor.yaml"},
+    {"path":"artifacts/stage1/features/clip_vit_b32_h8/validation.hdf5","bytes":6601664,"sha256":"fcd06a17cf9ba1ddcaffb0f1657be65aaab4837dc1ebbb01b0a0d0f2583e1f93","run":"stage1_feature_extraction/clip_vit_b32_h8","config_path":"configs/c0_actor.yaml"},
+    {"path":"artifacts/stage1/features/clip_vit_b32_h8_p12/train.hdf5","bytes":55548644,"sha256":"7cbd8c5c10a04d64b07a3f39b2eff5384a4097198f80f9af93fe6fcad7203487","run":"stage1_feature_extraction/clip_vit_b32_h8_p12","config_path":"configs/c0_actor.yaml"},
+    {"path":"artifacts/stage1/features/clip_vit_b32_h8_p12/validation.hdf5","bytes":6538037,"sha256":"cfe1eb6b78508d4299d01f64a65bf761286a4ca667993694ba80f9cc4a4ec38d","run":"stage1_feature_extraction/clip_vit_b32_h8_p12","config_path":"configs/c0_actor.yaml"},
+    {"path":"artifacts/stage1/features/clip_vit_b32_h8_p12_upright/train.hdf5","bytes":55710168,"sha256":"5ac7307278ae2e0a7b692bb0cbe8c00f5a605b8111f0b6a1f1e3d5d3b56849dc","run":"stage1_feature_extraction/clip_vit_b32_h8_p12_upright","config_path":"configs/c0_actor.yaml"},
+    {"path":"artifacts/stage1/features/clip_vit_b32_h8_p12_upright/validation.hdf5","bytes":6460620,"sha256":"931982e293753ce44001dce9fd1dc8b9b3fd93fc3899f55569effd5482265244","run":"stage1_feature_extraction/clip_vit_b32_h8_p12_upright","config_path":"configs/c0_actor.yaml"},
+    {"path":"results/c0/seed11/best.pt","bytes":8906446,"sha256":"8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4","run":"results/c0/seed11","config_path":"results/c0/seed11/config.yaml"},
+    {"path":"results/c0/seed11/last.pt","bytes":8906446,"sha256":"5f2ba5dfba4a8666f1efb31420d63f1da969c8f207ab6ef6ae24dbdb190beb43","run":"results/c0/seed11","config_path":"results/c0/seed11/config.yaml"},
+    {"path":"results/c0/task0_seed11/best.pt","bytes":8906446,"sha256":"4f2c78847c149806f9c24e2a3ab6489ec30a7c49694ae36cb358de4a09856287","run":"results/c0/task0_seed11","config_path":"results/c0/task0_seed11/config.yaml"},
+    {"path":"results/c0/task0_seed11/last.pt","bytes":8906446,"sha256":"4f5d240841de5fe12976783e79fbd7d60900ff94e26a000fdf2b55a611e23591","run":"results/c0/task0_seed11","config_path":"results/c0/task0_seed11/config.yaml"},
+    {"path":"results/c0/task0_seed11_upright/best.pt","bytes":8906446,"sha256":"7d4f4108b3fb185437c8c25cbc3c7c25855b27fe3f7449e53ac74d34403bf067","run":"results/c0/task0_seed11_upright","config_path":"results/c0/task0_seed11_upright/config.yaml"},
+    {"path":"results/c0/task0_seed11_upright/last.pt","bytes":8906446,"sha256":"c5754cbc7bd4e7c4a9845dacb7ca71d2658071aa738156c2f6b59a0bc51c5f9c","run":"results/c0/task0_seed11_upright","config_path":"results/c0/task0_seed11_upright/config.yaml"},
+    {"path":"artifacts/stage1/c0_backward_probe/best.pt","bytes":8911054,"sha256":"6d8e25874f2714f937fdba660b8d38d1c06dc06fe8c3440f4519ec28138eabf6","run":"artifacts/stage1/c0_backward_probe","config_path":"artifacts/stage1/c0_backward_probe/config.yaml"},
+    {"path":"artifacts/stage1/c0_backward_probe/last.pt","bytes":8911054,"sha256":"9b09372e6d749881f883869814aa1762c37d5f90d09a4296e9b89d271de3baba","run":"artifacts/stage1/c0_backward_probe","config_path":"artifacts/stage1/c0_backward_probe/config.yaml"},
+    {"path":"artifacts/stage1/c0_p12_backward_probe/best.pt","bytes":8906446,"sha256":"386585106c5eb5d6123bf3bb3504e1439eddcb3869d39602e9d1da23e8b33b65","run":"artifacts/stage1/c0_p12_backward_probe","config_path":"artifacts/stage1/c0_p12_backward_probe/config.yaml"},
+    {"path":"artifacts/stage1/c0_p12_backward_probe/last.pt","bytes":8906446,"sha256":"371c02fd0c575e9d9be548d943b72a8ca2913d9c0d64b4671172b01f82dcb639","run":"artifacts/stage1/c0_p12_backward_probe","config_path":"artifacts/stage1/c0_p12_backward_probe/config.yaml"},
+    {"path":"artifacts/stage1/c0_task0_filter_probe/best.pt","bytes":8906446,"sha256":"90b87561971409fca999db76774ce894defb7732df37278df218d866334fe885","run":"artifacts/stage1/c0_task0_filter_probe","config_path":"artifacts/stage1/c0_task0_filter_probe/config.yaml"},
+    {"path":"artifacts/stage1/c0_task0_filter_probe/last.pt","bytes":8906446,"sha256":"88b5f2cd5f639e5538e5ad9da1fdf09fd790ea00ebc378f7f271680fa23a0615","run":"artifacts/stage1/c0_task0_filter_probe","config_path":"artifacts/stage1/c0_task0_filter_probe/config.yaml"}
+  ],
+  "tracked_lightweight_evidence": [
+    "configs/source_versions.yaml",
+    "artifacts/stage0/data_manifest.json",
+    "artifacts/stage1/features/clip_vit_b32_h8_p12_upright/feature_manifest.json",
+    "results/c0/seed11/summary.json",
+    "results/c0/task0_seed11_upright/eval_task0_seed11.json"
+  ]
+}

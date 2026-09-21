@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "baseline": {
+    "file": "results/c0/task0_seed11/eval_task0_seed11.json",
+    "successes": 12,
+    "success_rate": 0.6
+  },
+  "candidate": {
+    "file": "results/c0/task0_seed11_upright/eval_task0_seed11.json",
+    "successes": 11,
+    "success_rate": 0.55
+  },
+  "delta_successes": -1,
+  "improved_episode_indices": [
+    3,
+    8
+  ],
+  "regressed_episode_indices": [
+    1,
+    11,
+    16
+  ],
+  "unchanged_episode_indices": [
+    0,
+    2,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12,
+    13,
+    14,
+    15,
+    17,
+    18,
+    19
+  ],
+  "interpretation": "Same task, 20 fixed seeds, fixed init-state indices, max steps, and official success API. This is a preprocessing ablation only."
+}

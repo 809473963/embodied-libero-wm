@@ -1,0 +1,36 @@
+# C0 uses no world model. This is a frozen, intentionally small first baseline
+# for an 8 GiB GPU. Runs must copy this file into their own results/run_id path.
+run:
+  method: c0_actor_only
+  suite: libero_spatial
+  train_seeds: [11, 23, 47]
+  evaluation_seed_file: configs/eval_seeds_spatial.json
+data:
+  dataset_dir: data/LIBERO/datasets/libero_spatial
+  train_demo_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  validation_demo_ids: [45, 46, 47, 48, 49]
+  camera: agentview_rgb
+  image_size: [128, 128]
+  # ee_ori is excluded: the public HDF5's 3-D convention is not directly
+  # equivalent to the live environment's 4-D quaternion.
+  proprioception_fields: [ee_pos, gripper_states, joint_states]
+  proprioception_dim: 12
+  action_dim: 7
+  action_chunk_horizon: 8
+  sample_stride: 1
+model:
+  # Exact official OpenAI CLIP snapshot used by scripts/extract_features.py.
+  # Both visual and text encoders stay frozen; only the small fusion/action
+  # head trains in C0.
+  encoder: openai_clip_vit_base_patch32_frozen
+  encoder_revision: 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268
+  feature_dim: 512
+  fusion_dim: 256
+  action_head: mlp
+optimization:
+  batch_size: 64
+  gradient_accumulation_steps: 1
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  max_epochs: 50
+  precision: fp16

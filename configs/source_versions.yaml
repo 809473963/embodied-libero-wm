@@ -1,0 +1,37 @@
+project:
+  name: embodied-libero-wm
+  prepared_on: "2026-09-20"
+libero:
+  repository: https://github.com/Lifelong-Robot-Learning/LIBERO.git
+  commit: 8f1084e3132a39270c3a13ebe37270a43ece2a01
+  commit_date: "2025-03-15T20:13:56+08:00"
+  local_path: third_party/LIBERO
+dataset:
+  suite: libero_spatial
+  repository: https://huggingface.co/datasets/yifengzhu-hf/LIBERO-datasets
+  revision: f13aa24a3da8c43c7225569f28c562979fa0e35a
+  local_path: data/LIBERO/datasets/libero_spatial
+python:
+  version: "3.10.12"
+  environment: .venv
+runtime:
+  torch: 2.6.0+cu124
+  torchvision: 0.21.0+cu124
+  torchaudio: 2.6.0+cu124
+  mujoco: 2.3.7
+  robosuite: 1.4.0
+  robomimic: 0.2.0
+  numpy: 1.22.4
+  pynput: 1.8.1
+  transformers: 4.21.1
+  huggingface_hub: 0.36.2
+encoders:
+  clip:
+    model: openai/clip-vit-base-patch32
+    revision: 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268
+    source: https://huggingface.co/openai/clip-vit-base-patch32
+gpu:
+  name: NVIDIA GeForce RTX 4070 Laptop GPU
+  driver: "595.79"
+  memory_mib: 8188
+  torch_cuda: "12.4"
