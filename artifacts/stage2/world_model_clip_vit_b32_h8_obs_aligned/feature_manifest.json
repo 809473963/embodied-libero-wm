@@ -1,0 +1,3241 @@
+{
+  "schema_version": 1,
+  "world_model_data_contract": "d13-v1",
+  "libero_commit": "8f1084e3132a39270c3a13ebe37270a43ece2a01",
+  "source_dataset_manifest": "artifacts/stage0/data_manifest.json",
+  "split": {
+    "train_demo_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44
+    ],
+    "validation_demo_ids": [
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "horizon": 8,
+  "clip": {
+    "model_id": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "snapshot": "/home/luo/embodied-libero-wm/.cache/huggingface/hub/models--openai--clip-vit-base-patch32/snapshots/3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "frozen": true,
+    "projection_dim": 512
+  },
+  "image_preprocessing": "uint8 RGB; vertical_flip=false; CLIPProcessor from pinned snapshot",
+  "proprio_fields": [
+    "ee_pos",
+    "gripper_states",
+    "joint_states"
+  ],
+  "forbidden_fields": [
+    "states",
+    "robot_states",
+    "object_pose",
+    "reward",
+    "done",
+    "success",
+    "future_proprio",
+    "evaluation_episode"
+  ],
+  "store": {
+    "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+    "bytes": 68073856,
+    "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"
+  },
+  "tasks": [
+    {
+      "task_id": 0,
+      "task_name": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "ff6f26121653c77280eb40a38773a74141c11a8509f3466058cb56dd2cc60ead",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 98,
+          "world_model_sample_count": 90
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 84,
+          "world_model_sample_count": 76
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 90,
+          "world_model_sample_count": 82
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 105,
+          "world_model_sample_count": 97
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 134,
+          "world_model_sample_count": 126
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 79,
+          "world_model_sample_count": 71
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 89,
+          "world_model_sample_count": 81
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 93,
+          "world_model_sample_count": 85
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 86,
+          "world_model_sample_count": 78
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 88,
+          "world_model_sample_count": 80
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 112,
+          "world_model_sample_count": 104
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 84,
+          "world_model_sample_count": 76
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 89,
+          "world_model_sample_count": 81
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 75,
+          "world_model_sample_count": 67
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 87,
+          "world_model_sample_count": 79
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 121,
+          "world_model_sample_count": 113
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 85,
+          "world_model_sample_count": 77
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 91,
+          "world_model_sample_count": 83
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 105,
+          "world_model_sample_count": 97
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 127,
+          "world_model_sample_count": 119
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 151,
+          "world_model_sample_count": 143
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 93,
+          "world_model_sample_count": 85
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 167,
+          "world_model_sample_count": 159
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 89,
+          "world_model_sample_count": 81
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 102,
+          "world_model_sample_count": 94
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 168,
+          "world_model_sample_count": 160
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 89,
+          "world_model_sample_count": 81
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 108,
+          "world_model_sample_count": 100
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 95,
+          "world_model_sample_count": 87
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 95,
+          "world_model_sample_count": 87
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 88,
+          "world_model_sample_count": 80
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 90,
+          "world_model_sample_count": 82
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 85,
+          "world_model_sample_count": 77
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        }
+      ],
+      "observation_count": 5068,
+      "train_observation_count": 4613,
+      "validation_observation_count": 455,
+      "train_world_model_samples": 4253,
+      "validation_world_model_samples": 415
+    },
+    {
+      "task_id": 1,
+      "task_name": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl next to the ramekin and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "bf1090dd4826eacb49eb052f17d04798e2a1eb2f74f8d024bc3b9c5d234c25f9",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 152,
+          "world_model_sample_count": 144
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 175,
+          "world_model_sample_count": 167
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 155,
+          "world_model_sample_count": 147
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 145,
+          "world_model_sample_count": 137
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 152,
+          "world_model_sample_count": 144
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 127,
+          "world_model_sample_count": 119
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 150,
+          "world_model_sample_count": 142
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 135,
+          "world_model_sample_count": 127
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 112,
+          "world_model_sample_count": 104
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 162,
+          "world_model_sample_count": 154
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 134,
+          "world_model_sample_count": 126
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 132,
+          "world_model_sample_count": 124
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 189,
+          "world_model_sample_count": 181
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 143,
+          "world_model_sample_count": 135
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 145,
+          "world_model_sample_count": 137
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 116,
+          "world_model_sample_count": 108
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 167,
+          "world_model_sample_count": 159
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 154,
+          "world_model_sample_count": 146
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 150,
+          "world_model_sample_count": 142
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 143,
+          "world_model_sample_count": 135
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 126,
+          "world_model_sample_count": 118
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 112,
+          "world_model_sample_count": 104
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 135,
+          "world_model_sample_count": 127
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 126,
+          "world_model_sample_count": 118
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 134,
+          "world_model_sample_count": 126
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 127,
+          "world_model_sample_count": 119
+        }
+      ],
+      "observation_count": 6707,
+      "train_observation_count": 6039,
+      "validation_observation_count": 668,
+      "train_world_model_samples": 5679,
+      "validation_world_model_samples": 628
+    },
+    {
+      "task_id": 2,
+      "task_name": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl from table center and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "75ede0cf5fbfc925093671b55032ad80f1b1f1cf35442ec6c663460d37d3e0b3",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 103,
+          "world_model_sample_count": 95
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 102,
+          "world_model_sample_count": 94
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 101,
+          "world_model_sample_count": 93
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 136,
+          "world_model_sample_count": 128
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 105,
+          "world_model_sample_count": 97
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 164,
+          "world_model_sample_count": 156
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 107,
+          "world_model_sample_count": 99
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 98,
+          "world_model_sample_count": 90
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 108,
+          "world_model_sample_count": 100
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 106,
+          "world_model_sample_count": 98
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 143,
+          "world_model_sample_count": 135
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 115,
+          "world_model_sample_count": 107
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 119,
+          "world_model_sample_count": 111
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 121,
+          "world_model_sample_count": 113
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 121,
+          "world_model_sample_count": 113
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 115,
+          "world_model_sample_count": 107
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 108,
+          "world_model_sample_count": 100
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 106,
+          "world_model_sample_count": 98
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 93,
+          "world_model_sample_count": 85
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 126,
+          "world_model_sample_count": 118
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 135,
+          "world_model_sample_count": 127
+        }
+      ],
+      "observation_count": 5882,
+      "train_observation_count": 5248,
+      "validation_observation_count": 634,
+      "train_world_model_samples": 4888,
+      "validation_world_model_samples": 594
+    },
+    {
+      "task_id": 3,
+      "task_name": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl on the cookie box and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "0c053db7317e584632549bddb963bee8a237661b4bd29f0581a245f715e8eb72",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 101,
+          "world_model_sample_count": 93
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 95,
+          "world_model_sample_count": 87
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 115,
+          "world_model_sample_count": 107
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 103,
+          "world_model_sample_count": 95
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 95,
+          "world_model_sample_count": 87
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 89,
+          "world_model_sample_count": 81
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 93,
+          "world_model_sample_count": 85
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 119,
+          "world_model_sample_count": 111
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 101,
+          "world_model_sample_count": 93
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 94,
+          "world_model_sample_count": 86
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 171,
+          "world_model_sample_count": 163
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 98,
+          "world_model_sample_count": 90
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 101,
+          "world_model_sample_count": 93
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 95,
+          "world_model_sample_count": 87
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 106,
+          "world_model_sample_count": 98
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 86,
+          "world_model_sample_count": 78
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 89,
+          "world_model_sample_count": 81
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 101,
+          "world_model_sample_count": 93
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 92,
+          "world_model_sample_count": 84
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 95,
+          "world_model_sample_count": 87
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 89,
+          "world_model_sample_count": 81
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 102,
+          "world_model_sample_count": 94
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 103,
+          "world_model_sample_count": 95
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 90,
+          "world_model_sample_count": 82
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 90,
+          "world_model_sample_count": 82
+        }
+      ],
+      "observation_count": 5052,
+      "train_observation_count": 4570,
+      "validation_observation_count": 482,
+      "train_world_model_samples": 4210,
+      "validation_world_model_samples": 442
+    },
+    {
+      "task_id": 4,
+      "task_name": "pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "7ff1ee60447875c152d8c7819f499d23dbc0eb4d4bf045225d5d87a2cdad99bd",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 153,
+          "world_model_sample_count": 145
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 158,
+          "world_model_sample_count": 150
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 143,
+          "world_model_sample_count": 135
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 158,
+          "world_model_sample_count": 150
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 167,
+          "world_model_sample_count": 159
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 156,
+          "world_model_sample_count": 148
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 159,
+          "world_model_sample_count": 151
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 132,
+          "world_model_sample_count": 124
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 139,
+          "world_model_sample_count": 131
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 182,
+          "world_model_sample_count": 174
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 145,
+          "world_model_sample_count": 137
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 150,
+          "world_model_sample_count": 142
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 156,
+          "world_model_sample_count": 148
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 148,
+          "world_model_sample_count": 140
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 162,
+          "world_model_sample_count": 154
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 153,
+          "world_model_sample_count": 145
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 163,
+          "world_model_sample_count": 155
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 149,
+          "world_model_sample_count": 141
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 165,
+          "world_model_sample_count": 157
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 151,
+          "world_model_sample_count": 143
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 149,
+          "world_model_sample_count": 141
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 132,
+          "world_model_sample_count": 124
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 139,
+          "world_model_sample_count": 131
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 171,
+          "world_model_sample_count": 163
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 190,
+          "world_model_sample_count": 182
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 156,
+          "world_model_sample_count": 148
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 147,
+          "world_model_sample_count": 139
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 172,
+          "world_model_sample_count": 164
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 163,
+          "world_model_sample_count": 155
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 169,
+          "world_model_sample_count": 161
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 157,
+          "world_model_sample_count": 149
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 134,
+          "world_model_sample_count": 126
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 127,
+          "world_model_sample_count": 119
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 169,
+          "world_model_sample_count": 161
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 147,
+          "world_model_sample_count": 139
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 151,
+          "world_model_sample_count": 143
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 134,
+          "world_model_sample_count": 126
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        }
+      ],
+      "observation_count": 7479,
+      "train_observation_count": 6741,
+      "validation_observation_count": 738,
+      "train_world_model_samples": 6381,
+      "validation_world_model_samples": 698
+    },
+    {
+      "task_id": 5,
+      "task_name": "pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl on the ramekin and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "d9b2da7399a88bea39024c8ef97713a20734e9b765e14b3399e2755890c828b7",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 121,
+          "world_model_sample_count": 113
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 121,
+          "world_model_sample_count": 113
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 119,
+          "world_model_sample_count": 111
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 101,
+          "world_model_sample_count": 93
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 118,
+          "world_model_sample_count": 110
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 154,
+          "world_model_sample_count": 146
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 102,
+          "world_model_sample_count": 94
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 116,
+          "world_model_sample_count": 108
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 98,
+          "world_model_sample_count": 90
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 118,
+          "world_model_sample_count": 110
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 107,
+          "world_model_sample_count": 99
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 98,
+          "world_model_sample_count": 90
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 91,
+          "world_model_sample_count": 83
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 98,
+          "world_model_sample_count": 90
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 147,
+          "world_model_sample_count": 139
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 106,
+          "world_model_sample_count": 98
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 116,
+          "world_model_sample_count": 108
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 119,
+          "world_model_sample_count": 111
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 118,
+          "world_model_sample_count": 110
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 102,
+          "world_model_sample_count": 94
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 98,
+          "world_model_sample_count": 90
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 86,
+          "world_model_sample_count": 78
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 144,
+          "world_model_sample_count": 136
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 112,
+          "world_model_sample_count": 104
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 108,
+          "world_model_sample_count": 100
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 108,
+          "world_model_sample_count": 100
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        }
+      ],
+      "observation_count": 5796,
+      "train_observation_count": 5249,
+      "validation_observation_count": 547,
+      "train_world_model_samples": 4889,
+      "validation_world_model_samples": 507
+    },
+    {
+      "task_id": 6,
+      "task_name": "pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl next to the cookie box and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "9d0b5435b313a8c0d7336b429b5f0f578be6f2a9f5f8a6dd67459ef388f3c74c",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 108,
+          "world_model_sample_count": 100
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 127,
+          "world_model_sample_count": 119
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 106,
+          "world_model_sample_count": 98
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 118,
+          "world_model_sample_count": 110
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 108,
+          "world_model_sample_count": 100
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 146,
+          "world_model_sample_count": 138
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 155,
+          "world_model_sample_count": 147
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 135,
+          "world_model_sample_count": 127
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 115,
+          "world_model_sample_count": 107
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 107,
+          "world_model_sample_count": 99
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 154,
+          "world_model_sample_count": 146
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 119,
+          "world_model_sample_count": 111
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 159,
+          "world_model_sample_count": 151
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 152,
+          "world_model_sample_count": 144
+        }
+      ],
+      "observation_count": 6312,
+      "train_observation_count": 5606,
+      "validation_observation_count": 706,
+      "train_world_model_samples": 5246,
+      "validation_world_model_samples": 666
+    },
+    {
+      "task_id": 7,
+      "task_name": "pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl on the stove and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "1fcb3990cf9fd6185f56531cc9f6dec0a77a59bfa0c7f39dff95b7e43cf6aeaa",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 155,
+          "world_model_sample_count": 147
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 191,
+          "world_model_sample_count": 183
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 136,
+          "world_model_sample_count": 128
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 139,
+          "world_model_sample_count": 131
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 145,
+          "world_model_sample_count": 137
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 164,
+          "world_model_sample_count": 156
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 152,
+          "world_model_sample_count": 144
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 197,
+          "world_model_sample_count": 189
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 126,
+          "world_model_sample_count": 118
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 144,
+          "world_model_sample_count": 136
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 168,
+          "world_model_sample_count": 160
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 132,
+          "world_model_sample_count": 124
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 135,
+          "world_model_sample_count": 127
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 157,
+          "world_model_sample_count": 149
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 167,
+          "world_model_sample_count": 159
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 148,
+          "world_model_sample_count": 140
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 129,
+          "world_model_sample_count": 121
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 176,
+          "world_model_sample_count": 168
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 170,
+          "world_model_sample_count": 162
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 180,
+          "world_model_sample_count": 172
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 136,
+          "world_model_sample_count": 128
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 154,
+          "world_model_sample_count": 146
+        }
+      ],
+      "observation_count": 7111,
+      "train_observation_count": 6375,
+      "validation_observation_count": 736,
+      "train_world_model_samples": 6015,
+      "validation_world_model_samples": 696
+    },
+    {
+      "task_id": 8,
+      "task_name": "pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl next to the plate and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "3961cb7126eaca47d0f5be29eb297bb62e7591e3c86172c9587c0bf670112f84",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 115,
+          "world_model_sample_count": 107
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 107,
+          "world_model_sample_count": 99
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 157,
+          "world_model_sample_count": 149
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 107,
+          "world_model_sample_count": 99
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 104,
+          "world_model_sample_count": 96
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 126,
+          "world_model_sample_count": 118
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 116,
+          "world_model_sample_count": 108
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 106,
+          "world_model_sample_count": 98
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 152,
+          "world_model_sample_count": 144
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 165,
+          "world_model_sample_count": 157
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 104,
+          "world_model_sample_count": 96
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 127,
+          "world_model_sample_count": 119
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 100,
+          "world_model_sample_count": 92
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 116,
+          "world_model_sample_count": 108
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 173,
+          "world_model_sample_count": 165
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 96,
+          "world_model_sample_count": 88
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 116,
+          "world_model_sample_count": 108
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 95,
+          "world_model_sample_count": 87
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 109,
+          "world_model_sample_count": 101
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 111,
+          "world_model_sample_count": 103
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 121,
+          "world_model_sample_count": 113
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 110,
+          "world_model_sample_count": 102
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 105,
+          "world_model_sample_count": 97
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 123,
+          "world_model_sample_count": 115
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 114,
+          "world_model_sample_count": 106
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 120,
+          "world_model_sample_count": 112
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 97,
+          "world_model_sample_count": 89
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 99,
+          "world_model_sample_count": 91
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 113,
+          "world_model_sample_count": 105
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 169,
+          "world_model_sample_count": 161
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 115,
+          "world_model_sample_count": 107
+        }
+      ],
+      "observation_count": 5963,
+      "train_observation_count": 5320,
+      "validation_observation_count": 643,
+      "train_world_model_samples": 4960,
+      "validation_world_model_samples": 603
+    },
+    {
+      "task_id": 9,
+      "task_name": "pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl on the wooden cabinet and place it on the plate",
+      "source_hdf5_relative_path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5",
+      "source_hdf5_sha256": "4d503d447028f437211880bea4ee1a7f6732113ea8560181fcca163251864794",
+      "demos": [
+        {
+          "demo_id": 0,
+          "split": "train",
+          "observation_count": 136,
+          "world_model_sample_count": 128
+        },
+        {
+          "demo_id": 1,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 2,
+          "split": "train",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 3,
+          "split": "train",
+          "observation_count": 136,
+          "world_model_sample_count": 128
+        },
+        {
+          "demo_id": 4,
+          "split": "train",
+          "observation_count": 145,
+          "world_model_sample_count": 137
+        },
+        {
+          "demo_id": 5,
+          "split": "train",
+          "observation_count": 139,
+          "world_model_sample_count": 131
+        },
+        {
+          "demo_id": 6,
+          "split": "train",
+          "observation_count": 164,
+          "world_model_sample_count": 156
+        },
+        {
+          "demo_id": 7,
+          "split": "train",
+          "observation_count": 119,
+          "world_model_sample_count": 111
+        },
+        {
+          "demo_id": 8,
+          "split": "train",
+          "observation_count": 135,
+          "world_model_sample_count": 127
+        },
+        {
+          "demo_id": 9,
+          "split": "train",
+          "observation_count": 173,
+          "world_model_sample_count": 165
+        },
+        {
+          "demo_id": 10,
+          "split": "train",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 11,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 12,
+          "split": "train",
+          "observation_count": 126,
+          "world_model_sample_count": 118
+        },
+        {
+          "demo_id": 13,
+          "split": "train",
+          "observation_count": 134,
+          "world_model_sample_count": 126
+        },
+        {
+          "demo_id": 14,
+          "split": "train",
+          "observation_count": 136,
+          "world_model_sample_count": 128
+        },
+        {
+          "demo_id": 15,
+          "split": "train",
+          "observation_count": 193,
+          "world_model_sample_count": 185
+        },
+        {
+          "demo_id": 16,
+          "split": "train",
+          "observation_count": 142,
+          "world_model_sample_count": 134
+        },
+        {
+          "demo_id": 17,
+          "split": "train",
+          "observation_count": 182,
+          "world_model_sample_count": 174
+        },
+        {
+          "demo_id": 18,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 19,
+          "split": "train",
+          "observation_count": 135,
+          "world_model_sample_count": 127
+        },
+        {
+          "demo_id": 20,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 21,
+          "split": "train",
+          "observation_count": 137,
+          "world_model_sample_count": 129
+        },
+        {
+          "demo_id": 22,
+          "split": "train",
+          "observation_count": 145,
+          "world_model_sample_count": 137
+        },
+        {
+          "demo_id": 23,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 24,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 25,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 26,
+          "split": "train",
+          "observation_count": 143,
+          "world_model_sample_count": 135
+        },
+        {
+          "demo_id": 27,
+          "split": "train",
+          "observation_count": 124,
+          "world_model_sample_count": 116
+        },
+        {
+          "demo_id": 28,
+          "split": "train",
+          "observation_count": 141,
+          "world_model_sample_count": 133
+        },
+        {
+          "demo_id": 29,
+          "split": "train",
+          "observation_count": 122,
+          "world_model_sample_count": 114
+        },
+        {
+          "demo_id": 30,
+          "split": "train",
+          "observation_count": 132,
+          "world_model_sample_count": 124
+        },
+        {
+          "demo_id": 31,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 32,
+          "split": "train",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 33,
+          "split": "train",
+          "observation_count": 144,
+          "world_model_sample_count": 136
+        },
+        {
+          "demo_id": 34,
+          "split": "train",
+          "observation_count": 145,
+          "world_model_sample_count": 137
+        },
+        {
+          "demo_id": 35,
+          "split": "train",
+          "observation_count": 125,
+          "world_model_sample_count": 117
+        },
+        {
+          "demo_id": 36,
+          "split": "train",
+          "observation_count": 133,
+          "world_model_sample_count": 125
+        },
+        {
+          "demo_id": 37,
+          "split": "train",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        },
+        {
+          "demo_id": 38,
+          "split": "train",
+          "observation_count": 140,
+          "world_model_sample_count": 132
+        },
+        {
+          "demo_id": 39,
+          "split": "train",
+          "observation_count": 127,
+          "world_model_sample_count": 119
+        },
+        {
+          "demo_id": 40,
+          "split": "train",
+          "observation_count": 139,
+          "world_model_sample_count": 131
+        },
+        {
+          "demo_id": 41,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 42,
+          "split": "train",
+          "observation_count": 132,
+          "world_model_sample_count": 124
+        },
+        {
+          "demo_id": 43,
+          "split": "train",
+          "observation_count": 128,
+          "world_model_sample_count": 120
+        },
+        {
+          "demo_id": 44,
+          "split": "train",
+          "observation_count": 131,
+          "world_model_sample_count": 123
+        },
+        {
+          "demo_id": 45,
+          "split": "validation",
+          "observation_count": 130,
+          "world_model_sample_count": 122
+        },
+        {
+          "demo_id": 46,
+          "split": "validation",
+          "observation_count": 139,
+          "world_model_sample_count": 131
+        },
+        {
+          "demo_id": 47,
+          "split": "validation",
+          "observation_count": 136,
+          "world_model_sample_count": 128
+        },
+        {
+          "demo_id": 48,
+          "split": "validation",
+          "observation_count": 117,
+          "world_model_sample_count": 109
+        },
+        {
+          "demo_id": 49,
+          "split": "validation",
+          "observation_count": 138,
+          "world_model_sample_count": 130
+        }
+      ],
+      "observation_count": 6880,
+      "train_observation_count": 6220,
+      "validation_observation_count": 660,
+      "train_world_model_samples": 5860,
+      "validation_world_model_samples": 620
+    }
+  ],
+  "totals": {
+    "observations": 62250,
+    "train_observations": 55981,
+    "validation_observations": 6269,
+    "train_world_model_samples": 52381,
+    "validation_world_model_samples": 5869,
+    "world_model_samples": 58250
+  }
+}
