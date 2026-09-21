@@ -106,13 +106,14 @@ class C0ActorPolicy:
         self._language_cache[language] = cached
         return cached
 
-    def plan_batch(
+    def _predict_raw_batch(
         self, observations: list[dict[str, np.ndarray]], languages: list[str]
     ) -> np.ndarray:
-        """Return independent action chunks for a batch of live C0 inputs.
+        """Return denormalized, pre-clipping action chunks for live C0 inputs.
 
-        Batch members do not share observations, actions, or state; batching is
-        purely a GPU inference optimization for fixed evaluation episodes.
+        This private boundary exists so evaluators can audit clipping without
+        changing the public policy behavior: callers still execute clipped
+        actions in exactly the historical ``[-1, 1]`` range.
         """
         if not observations or len(observations) != len(languages):
             raise ValueError("observations and languages must be non-empty and equal length")
@@ -150,7 +151,50 @@ class C0ActorPolicy:
                 (proprio_tensor - self.proprio_mean) / self.proprio_std,
             )
             action_chunk = action_chunk * self.action_std + self.action_mean
-        return np.clip(action_chunk.float().cpu().numpy(), -1.0, 1.0)
+        return action_chunk.float().cpu().numpy()
+
+    @staticmethod
+    def _clipping_statistics(raw_chunks: np.ndarray) -> list[dict[str, float | int]]:
+        """Return one pre-execution clipping summary for every planned chunk."""
+
+        summaries: list[dict[str, float | int]] = []
+        for raw_chunk in raw_chunks:
+            raw = np.asarray(raw_chunk, dtype=np.float32)
+            lower = raw < -1.0
+            upper = raw > 1.0
+            outside = lower | upper
+            elements = int(raw.size)
+            summaries.append(
+                {
+                    "planned_action_elements": elements,
+                    "elements_below_minus_one": int(lower.sum()),
+                    "elements_above_one": int(upper.sum()),
+                    "elements_outside_minus_one_to_one": int(outside.sum()),
+                    "clipped_element_ratio": float(outside.mean()),
+                    "raw_min": float(raw.min()),
+                    "raw_max": float(raw.max()),
+                }
+            )
+        return summaries
+
+    def plan_batch(
+        self, observations: list[dict[str, np.ndarray]], languages: list[str]
+    ) -> np.ndarray:
+        """Return independent clipped action chunks for a batch of live C0 inputs.
+
+        Batch members do not share observations, actions, or state; batching is
+        purely a GPU inference optimization for fixed evaluation episodes.
+        """
+
+        return np.clip(self._predict_raw_batch(observations, languages), -1.0, 1.0)
+
+    def plan_batch_with_clipping_stats(
+        self, observations: list[dict[str, np.ndarray]], languages: list[str]
+    ) -> tuple[np.ndarray, list[dict[str, float | int]]]:
+        """Return historical clipped chunks plus diagnostics from raw chunks."""
+
+        raw_chunks = self._predict_raw_batch(observations, languages)
+        return np.clip(raw_chunks, -1.0, 1.0), self._clipping_statistics(raw_chunks)
 
     def _plan(self, observation: dict[str, np.ndarray], language: str) -> np.ndarray:
         return self.plan_batch([observation], [language])[0]

@@ -1,0 +1,28 @@
+{
+  "protocol_version": 1,
+  "status": "frozen_pre_d13",
+  "applies_to": ["C0", "C1", "C2"],
+  "suite": "libero_spatial",
+  "formal_evaluator": "scripts/evaluate_c0_all.py",
+  "parallel_envs": 1,
+  "max_steps": 300,
+  "episodes_per_task": 20,
+  "seed_and_initial_state_protocol": {
+    "seed_file": "configs/eval_seeds_spatial.json",
+    "seed_rule": "The listed fixed seed is applied to the environment and episode i uses the official task init_state i.",
+    "test_information_visibility": "The policy receives only its declared online observation and task language; it does not receive seed, init state, success, reward, or future data."
+  },
+  "camera_preprocessing": {
+    "camera": "agentview",
+    "source_contract": "uint8 RGB[128,128,3], upright; vertical_flip=false",
+    "encoder_preprocessing": "Pinned CLIPProcessor from openai/clip-vit-base-patch32 revision 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "camera_gating": "agentview observable is active only while refreshing a planning observation; it is disabled during intervening open-loop chunk actions."
+  },
+  "action_protocol": {
+    "horizon": 8,
+    "execution": "receding-horizon execution; plan a new chunk when the previous chunk is exhausted",
+    "clip_range": [-1.0, 1.0],
+    "logging": "Record pre-clipping element counts and ratios per episode, task, and run."
+  },
+  "comparability_rule": "Do not compare a parallel_envs>1 rollout directly to formal parallel_envs=1 results; batched fp16 numerical rounding can change borderline trajectories."
+}

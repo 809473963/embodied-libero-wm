@@ -75,6 +75,15 @@ def normalized_targets(
     return (actions - action_mean) / action_std
 
 
+def update_best_validation(historical_best: float, current_validation: float) -> tuple[float, bool]:
+    """Return the persisted historical best and whether this epoch improves it."""
+
+    if not np.isfinite(historical_best) or not np.isfinite(current_validation):
+        raise ValueError("best and current validation losses must be finite")
+    improved = current_validation < historical_best
+    return (current_validation if improved else historical_best), improved
+
+
 @torch.inference_mode()
 def evaluate(
     model: C0Actor,
@@ -111,9 +120,10 @@ def checkpoint_payload(
     feature_manifest_hash: str,
     normalization: dict[str, Any],
     task_id: int | None,
+    best_validation: float,
 ) -> dict[str, Any]:
     return {
-        "schema_version": 1,
+        "schema_version": 2,
         "method": "c0_actor_only",
         "epoch": epoch,
         "global_step": global_step,
@@ -121,6 +131,10 @@ def checkpoint_payload(
         "feature_manifest_sha256": feature_manifest_hash,
         "normalization": normalization,
         "task_id": task_id,
+        # Keep the historical best with every checkpoint.  Without this field,
+        # resuming from last.pt would reset the comparison threshold to inf and
+        # could overwrite a genuinely better historical best.pt.
+        "best_validation": float(best_validation),
         "model_state": model.state_dict(),
         "optimizer_state": optimizer.state_dict(),
         "rng_state": rng_state(),
@@ -230,12 +244,17 @@ def main() -> int:
             raise ValueError("resume feature manifest hash differs")
         if checkpoint.get("task_id") != args.task_id:
             raise ValueError("resume task_id differs")
+        if "best_validation" not in checkpoint:
+            raise ValueError(
+                "legacy resume checkpoint lacks best_validation; refusing an unsafe resume that could overwrite best.pt"
+            )
         model.load_state_dict(checkpoint["model_state"])
         optimizer.load_state_dict(checkpoint["optimizer_state"])
         restore_rng_state(checkpoint["rng_state"])
         epoch = int(checkpoint["epoch"])
         global_step = int(checkpoint["global_step"])
         normalization = checkpoint["normalization"]
+        best_validation = float(checkpoint["best_validation"])
 
     action_mean = torch.tensor(normalization["action"]["mean"], device=device).view(1, 1, -1)
     action_std = torch.tensor(normalization["action"]["std"], device=device).view(1, 1, -1)
@@ -310,12 +329,22 @@ def main() -> int:
         summary = {"event": "validation", "epoch": current_epoch, "global_step": global_step, **validation}
         with metrics_path.open("a") as metrics_file:
             metrics_file.write(json.dumps(summary) + "\n")
+        best_validation, improved_validation = update_best_validation(
+            best_validation, validation["raw_action_mse"]
+        )
         payload = checkpoint_payload(
-            model, optimizer, current_epoch + 1, global_step, config_hash, feature_manifest_hash, normalization, args.task_id
+            model,
+            optimizer,
+            current_epoch + 1,
+            global_step,
+            config_hash,
+            feature_manifest_hash,
+            normalization,
+            args.task_id,
+            best_validation,
         )
         torch.save(payload, args.output_dir / "last.pt")
-        if validation["raw_action_mse"] < best_validation:
-            best_validation = validation["raw_action_mse"]
+        if improved_validation:
             torch.save(payload, args.output_dir / "best.pt")
         print(json.dumps(summary), flush=True)
         if reached_limit:

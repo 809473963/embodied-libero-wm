@@ -72,6 +72,71 @@ def refresh_policy_observation(env: OffScreenRenderEnv) -> dict[str, np.ndarray]
     return observation
 
 
+def empty_clipping_stats() -> dict[str, Any]:
+    return {
+        "planned_chunks": 0,
+        "planned_action_elements": 0,
+        "elements_below_minus_one": 0,
+        "elements_above_one": 0,
+        "elements_outside_minus_one_to_one": 0,
+        "raw_min": float("inf"),
+        "raw_max": float("-inf"),
+    }
+
+
+def add_clipping_stats(total: dict[str, Any], update: dict[str, float | int]) -> None:
+    total["planned_chunks"] += 1
+    for key in (
+        "planned_action_elements",
+        "elements_below_minus_one",
+        "elements_above_one",
+        "elements_outside_minus_one_to_one",
+    ):
+        total[key] += int(update[key])
+    total["raw_min"] = min(float(total["raw_min"]), float(update["raw_min"]))
+    total["raw_max"] = max(float(total["raw_max"]), float(update["raw_max"]))
+
+
+def finalized_clipping_stats(total: dict[str, Any]) -> dict[str, Any]:
+    elements = int(total["planned_action_elements"])
+    return {
+        **{key: int(total[key]) for key in (
+            "planned_chunks",
+            "planned_action_elements",
+            "elements_below_minus_one",
+            "elements_above_one",
+            "elements_outside_minus_one_to_one",
+        )},
+        "clipped_element_ratio": (
+            float(total["elements_outside_minus_one_to_one"]) / elements if elements else 0.0
+        ),
+        "raw_min": None if not elements else float(total["raw_min"]),
+        "raw_max": None if not elements else float(total["raw_max"]),
+    }
+
+
+def aggregate_clipping_stats(episode_results: list[dict[str, Any]]) -> dict[str, Any]:
+    aggregate = empty_clipping_stats()
+    episodes_with_stats = 0
+    for result in episode_results:
+        stats = result.get("action_clipping")
+        if not isinstance(stats, dict):
+            continue
+        episodes_with_stats += 1
+        aggregate["planned_chunks"] += int(stats["planned_chunks"])
+        for key in (
+            "planned_action_elements",
+            "elements_below_minus_one",
+            "elements_above_one",
+            "elements_outside_minus_one_to_one",
+        ):
+            aggregate[key] += int(stats[key])
+        if stats["raw_min"] is not None:
+            aggregate["raw_min"] = min(float(aggregate["raw_min"]), float(stats["raw_min"]))
+            aggregate["raw_max"] = max(float(aggregate["raw_max"]), float(stats["raw_max"]))
+    return {"episodes_with_clipping_stats": episodes_with_stats, **finalized_clipping_stats(aggregate)}
+
+
 def partial_summary(
     checkpoint: Path,
     seed_spec: dict[str, Any],
@@ -97,6 +162,9 @@ def partial_summary(
         "macro_success_rate": macro_success_rate,
         "successes": sum(item["successes"] for item in task_results),
         "episodes": sum(item["episodes"] for item in task_results),
+        "action_clipping": aggregate_clipping_stats(
+            [episode for task in task_results for episode in task["episode_results"]]
+        ),
     }
 
 
@@ -130,6 +198,7 @@ def evaluate_task(
             chunk_indices = [horizon] * len(envs)
             active = [True] * len(envs)
             episode_steps = [0] * len(envs)
+            episode_clipping = [empty_clipping_stats() for _ in envs]
             for _ in range(max_steps):
                 plan_indices = [
                     index
@@ -139,13 +208,14 @@ def evaluate_task(
                 if plan_indices:
                     for index in plan_indices:
                         observations[index] = refresh_policy_observation(envs[index])
-                    new_chunks = policy.plan_batch(
+                    new_chunks, clipping_stats = policy.plan_batch_with_clipping_stats(
                         [policy_observation(observations[index]) for index in plan_indices],
                         [task.language] * len(plan_indices),
                     )
-                    for index, chunk in zip(plan_indices, new_chunks):
+                    for index, chunk, clip_stats in zip(plan_indices, new_chunks, clipping_stats):
                         action_chunks[index] = chunk
                         chunk_indices[index] = 0
+                        add_clipping_stats(episode_clipping[index], clip_stats)
                 if not any(active):
                     break
                 for index, env in enumerate(envs):
@@ -166,6 +236,7 @@ def evaluate_task(
                                 "init_state_index": episode_indices[index],
                                 "success": True,
                                 "steps": episode_steps[index],
+                                "action_clipping": finalized_clipping_stats(episode_clipping[index]),
                             }
                         )
                 if not any(active):
@@ -179,6 +250,7 @@ def evaluate_task(
                             "init_state_index": episode_indices[index],
                             "success": False,
                             "steps": episode_steps[index],
+                            "action_clipping": finalized_clipping_stats(episode_clipping[index]),
                         }
                     )
         finally:
@@ -199,6 +271,7 @@ def evaluate_task(
         "successes": successes,
         "success_rate": successes / len(episode_results),
         "episode_results": episode_results,
+        "action_clipping": aggregate_clipping_stats(episode_results),
     }
 
 

@@ -6,7 +6,7 @@
 
 - 基准：官方 `libero_spatial` 的 10 个任务，数据版本固定在 `configs/source_versions.yaml`。
 - 训练数据仅为官方 demonstrations；一个训练样本是 `(task_id, demo_id, t)` 的 transition。
-- C0 预测从时刻 `t` 开始的连续 `H=8` 个 7-D 动作；不足 8 步的末尾 transition 不产生样本。训练步长为 1。
+- C0 遵循官方 imitation-learning HDF5 的**同索引**约定：`obs[t] -> actions[t:t+8]`；不足 8 步的末尾 transition 不产生样本。训练步长为 1。Pre-D13 时序审计确认这不是相邻观测的物理 transition：对 published processed HDF5，`obs[t] + actions[t+1] -> obs[t+1]`。因此未来 world model 必须使用后一种 pairing，不能因为 C0 的 IL 标签约定而混用。
 - 训练/验证按完整 demonstration 划分，而非随机 transition 划分：每个任务 `demo_0`–`demo_44` 为训练，`demo_45`–`demo_49` 为验证。验证集只能用于模型选择和阈值选择，绝不用于官方测试成绩。
 - 在线评测每个任务执行 20 个固定 episode，种子在 `configs/eval_seeds_spatial.json`。C0/C1/C2 必须读同一份文件；训练随机种子固定为 `[11, 23, 47]`。
 
@@ -44,6 +44,12 @@
 ## 动作与执行约定
 
 动作 `a ∈ R^7` 直接沿用 LIBERO demonstration 中的 OSC-POSE 控制格式。训练前必须从**训练 demonstrations**单独计算每维归一化统计；验证/测试不得参与统计。在线动作裁剪到环境允许范围 `[-1, 1]`，并记录裁剪比例。C0 一次输出一个 `8×7` 动作块；环境以 receding horizon 执行，默认在下一次规划前最多执行该块。后续 C1/C2 的候选数、重排和提前中断只可改变“选哪个块/何时丢弃块”，不得改变动作尺度、观察字段或测试种子。
+
+## 正式评测数值协议
+
+正式主结果必须遵循 [evaluation_protocol_c0.json](../configs/evaluation_protocol_c0.json)：`parallel_envs=1`、`max_steps=300`、每个 task 的 20 个固定 seed/init-state、正向 `agentview` RGB 以及固定 CLIP 预处理。`scripts/evaluate_c0_all.py` 是 C0 的正式入口，且在每个 episode、task 和 run 输出去归一化原始动作落在 `[-1,1]` 外的元素数与裁剪比例。
+
+`parallel_envs>1` 仅可作为吞吐诊断；由于 batched FP16 推理可能使临界的开环轨迹发生数值差异，不能直接与上述正式结果比较。未来 C1/C2 的主结果必须沿用本协议，除非版本化新协议并重新公平评测所有可比较方法。
 
 ## 必须写入每个训练样本/特征 manifest 的元数据
 
