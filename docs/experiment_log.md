@@ -86,3 +86,8 @@
 - Selected two lowest-error and two highest-error validation samples per task from distinct demos, yielding 20 low-error and 20 high-error cases with complete 10-task coverage.
 - Generated four RGB contact sheets showing `k`, `k+1`, `k+4`, and `k+8`, then manually reviewed every sample. High errors often coincide with larger motion/contact-phase appearance changes, but static high-error and dynamic low-error counterexamples are present.
 - Concluded that mismatch reflects transition difficulty but is not a control-failure label. Exact per-sample metrics, panel hashes, and all 40 manual notes are in `docs/wm_sample_review.md`.
+
+## 2026-09-22 — Stage 2, D18 offline foundation gate
+
+- Re-audited D13 data/split/index fields, unique-row normalization, all three finite ensemble checkpoints, D16 held-out results, D17 sample coverage, and C0 immutability. The full test suite passes.
+- The offline world-model gate passes and authorizes D19. Because the stage-level G2 definition also requests a C1 output but the day schedule implements C1 on D19, final project G2 remains `PENDING_C1_OUTPUT_D19`; C2 remains unauthorized.

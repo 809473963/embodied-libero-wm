@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "day": "D18",
+  "source_commit": "7794d03d4af4e362ef857f135b4d8c767a3c5205",
+  "offline_world_model_gate": "PASS",
+  "formal_project_g2": "PENDING_C1_OUTPUT_D19",
+  "ordering_note": "The stage table includes C1 output in final G2, while the day plan implements C1 in D19. D18 can authorize D19 but cannot claim final project G2 or authorize C2.",
+  "proceed_to_d19": true,
+  "c2_authorized": false,
+  "checks": {
+    "d13_store_contract": {
+      "pass": true,
+      "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+      "fields": [
+        "actions",
+        "proprio",
+        "timestep",
+        "vision"
+      ],
+      "observations": {
+        "train": 55981,
+        "validation": 6269
+      },
+      "samples": {
+        "train": 52381,
+        "validation": 5869
+      }
+    },
+    "episode_split": {
+      "pass": true,
+      "train_episodes": 450,
+      "validation_episodes": 50,
+      "overlap": 0
+    },
+    "normalization": {
+      "pass": true,
+      "proprio_count": 55981,
+      "action_count": 55531,
+      "action0_excluded": true,
+      "overlapping_windows_expanded": false
+    },
+    "ensemble_checkpoints": {
+      "pass": true,
+      "members": [
+        {
+          "path": "results/world_model/d14_single_seed11/best.pt",
+          "seed": 11,
+          "sha256": "12304c9da129f93325201fad84ce38796ca71fcf427821f64644d4203f6b3888",
+          "best_validation": 0.009371344546612412,
+          "model_finite": true,
+          "optimizer_finite": true,
+          "contract_matches": true
+        },
+        {
+          "path": "results/world_model/d15_member_seed23/best.pt",
+          "seed": 23,
+          "sha256": "cbed3b53a6d770f9995877d6400e188a72b77ef68a3b077159885312df754805",
+          "best_validation": 0.009475131327288585,
+          "model_finite": true,
+          "optimizer_finite": true,
+          "contract_matches": true
+        },
+        {
+          "path": "results/world_model/d15_member_seed47/best.pt",
+          "seed": 47,
+          "sha256": "4ed392ec7d1204fd3b0e453415608f54f501f9d0aca29615253a32e9462b43a3",
+          "best_validation": 0.009410237975026298,
+          "model_finite": true,
+          "optimizer_finite": true,
+          "contract_matches": true
+        }
+      ]
+    },
+    "held_out_predictive_gate": {
+      "pass": true,
+      "learned_cosine_error": 0.008919060507001858,
+      "copy_cosine_error": 0.015795318101634155,
+      "relative_improvement": 0.43533517656228093,
+      "episode_bootstrap_ci95": [
+        0.006757430095986404,
+        0.007353543545136275
+      ],
+      "all_horizons_improve": true,
+      "all_tasks_improve": true
+    },
+    "qualitative_review": {
+      "pass": true,
+      "low_error_samples": 20,
+      "high_error_samples": 20,
+      "review_sha256": "73faa1975d5409b4025fa38fe45e8143c532b08e308a6222810a60b24b2841c6",
+      "interpretation": "mismatch relates to transition difficulty but is not a control-failure label"
+    },
+    "c0_unchanged": {
+      "pass": true,
+      "changed_paths": []
+    }
+  },
+  "known_limits": [
+    "uncertainty/error Pearson correlation is diagnostic, not calibrated",
+    "D17 found static high-error and dynamic low-error counterexamples",
+    "no online threshold has been selected",
+    "no C1 or C2 control result exists yet"
+  ]
+}
