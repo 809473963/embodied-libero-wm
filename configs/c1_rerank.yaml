@@ -1,0 +1,24 @@
+contract_version: c1-v1
+actor:
+  checkpoint: results/c0/seed11/best.pt
+  checkpoint_sha256: 8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4
+ensemble:
+  config: configs/world_model_ensemble.yaml
+candidates:
+  count: 3
+  generator: deterministic_antithetic_smoothed_gaussian
+  base_candidate_index: 0
+  seed: 1901
+  noise_std: [0.05, 0.05, 0.05, 0.02, 0.02, 0.02, 0.0]
+  temporal_kernel: [0.25, 0.5, 0.25]
+  clip_range: [-1.0, 1.0]
+rerank:
+  goal_horizon: 8
+  goal_progress_weight: 1.0
+  uncertainty_penalty_weight: 0.25
+  base_deviation_penalty_weight: 0.001
+  formula: "goal_progress - 0.25*mean_pairwise_uncertainty - 0.001*normalized_action_deviation"
+execution:
+  execute_full_selected_chunk: true
+  in_execution_verification: false
+  early_replan: false
