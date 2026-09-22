@@ -10,7 +10,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from scripts.generate_wm_sample_review import select_stratified_tails
+from scripts.generate_wm_sample_review import pearson, select_stratified_tails
 
 
 def main() -> int:
@@ -36,6 +36,8 @@ def main() -> int:
             assert len({row["demo_id"] for row in task_rows}) == 2
     assert all(row["demo_id"] in {45, 46} for row in correct)
     assert all(row["demo_id"] in {48, 49} for row in incorrect)
+    assert pearson([1.0, 2.0], [3.0, 3.0]) is None
+    assert pearson([1.0, 2.0, 3.0], [2.0, 4.0, 6.0]) > 0.999
     print({"correct": len(correct), "incorrect": len(incorrect), "task_coverage": 10})
     return 0
 

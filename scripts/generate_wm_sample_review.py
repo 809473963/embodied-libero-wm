@@ -122,8 +122,12 @@ def make_sheets(category: str, panels: list[Image.Image], output_dir: Path) -> l
     return names
 
 
-def pearson(first: list[float], second: list[float]) -> float:
-    return float(np.corrcoef(np.asarray(first), np.asarray(second))[0, 1])
+def pearson(first: list[float], second: list[float]) -> float | None:
+    first_array = np.asarray(first, dtype=np.float64)
+    second_array = np.asarray(second, dtype=np.float64)
+    if first_array.std() == 0.0 or second_array.std() == 0.0:
+        return None
+    return float(np.corrcoef(first_array, second_array)[0, 1])
 
 
 def main() -> int:
@@ -252,6 +256,7 @@ def main() -> int:
         "frames": config["frames"],
         "summaries": summaries,
         "selected_tail_correlations": correlations,
+        "correlation_null_semantics": "null means undefined because one selected-tail variable is constant",
         "sheets": sheets,
         "samples": all_records,
     }

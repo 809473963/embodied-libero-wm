@@ -80,3 +80,9 @@
 - Compared the frozen D15 ensemble against copy-current on all 5,869 D13 validation windows. Learned/copy cosine errors are `0.0089190605` / `0.0157953181`, a 43.53% relative reduction.
 - All eight horizons, all 50 held-out episodes, and all 10 tasks improve. A 10,000-replicate task-stratified episode bootstrap gives paired-improvement 95% CI `[0.00675743, 0.00735354]`.
 - The formal four-check gate passes. The full result is `results/wm/transition_eval.json`; the 5,869-row sample record is locally retained and hash-addressed for D17. A repeated run produced byte-identical hashes.
+
+## 2026-09-22 — Stage 2, D17 qualitative sample review
+
+- Selected two lowest-error and two highest-error validation samples per task from distinct demos, yielding 20 low-error and 20 high-error cases with complete 10-task coverage.
+- Generated four RGB contact sheets showing `k`, `k+1`, `k+4`, and `k+8`, then manually reviewed every sample. High errors often coincide with larger motion/contact-phase appearance changes, but static high-error and dynamic low-error counterexamples are present.
+- Concluded that mismatch reflects transition difficulty but is not a control-failure label. Exact per-sample metrics, panel hashes, and all 40 manual notes are in `docs/wm_sample_review.md`.
