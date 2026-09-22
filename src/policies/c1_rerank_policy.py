@@ -85,12 +85,16 @@ class C1RerankPolicy(C0ActorPolicy):
         self._rollout_seed = 0
         self._plan_index = 0
         self._last_plan_diagnostics: dict[str, Any] | None = None
+        self._last_selected_prediction: torch.Tensor | None = None
+        self._last_selected_uncertainty: torch.Tensor | None = None
 
     def reset(self, seed: int | None = None) -> None:
         super().reset()
         self._rollout_seed = 0 if seed is None else int(seed)
         self._plan_index = 0
         self._last_plan_diagnostics = None
+        self._last_selected_prediction = None
+        self._last_selected_uncertainty = None
 
     @staticmethod
     def _proprio(observation: dict[str, np.ndarray]) -> np.ndarray:
@@ -180,6 +184,10 @@ class C1RerankPolicy(C0ActorPolicy):
             raise FloatingPointError("C1 planning diagnostics contain NaN/Inf")
         self._plan_index += 1
         self._last_plan_diagnostics = diagnostics
+        # C1 never consumes these tensors. C2 uses this protected plan-time
+        # state to compare the selected candidate with later real observations.
+        self._last_selected_prediction = mean_prediction[selected].detach().clone()
+        self._last_selected_uncertainty = uncertainty[selected].detach().clone()
         return candidates[selected].float().cpu().numpy(), diagnostics
 
     def _plan(self, observation: dict[str, np.ndarray], language: str) -> np.ndarray:

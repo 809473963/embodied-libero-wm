@@ -1,0 +1,18 @@
+contract_version: c2-v1
+c1_config: configs/c1_rerank.yaml
+threshold_selection: results/threshold_selection.json
+threshold_selection_sha256: 3d07d136d9a9ae493ea04ad9bd08ec5f4099a993e301de0906c47996b46c23a1
+verification:
+  interval_steps: 2
+  horizons: [2, 4, 6, 8]
+  mismatch_threshold: 0.029063597321510315
+  uncertainty_threshold: 0.004451490938663483
+  trigger_rule: "mismatch > mismatch_threshold OR uncertainty > uncertainty_threshold"
+execution:
+  discard_remaining_chunk_on_trigger: true
+  replan_on_next_control_step: true
+  max_episode_steps: 300
+  zero_action_replans_allowed: false
+notes:
+  - "thresholds are immutable D20 validation-only outputs"
+  - "h8 exceedance is logged but cannot be an early replan because no chunk action remains"
