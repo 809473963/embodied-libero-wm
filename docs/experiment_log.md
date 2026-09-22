@@ -97,3 +97,9 @@
 - Implemented deterministic N=3 candidate generation around the unchanged C0 chunk and D15-ensemble scoring by language progress, disagreement penalty, and a small base-deviation penalty. C1 executes the selected H=8 chunk fully and has no early replan path.
 - Completed all 20 fixed task-0 episodes: 760 planning events, candidate counts `[20,366,374]`, no invalid values/events, and 0/20 success versus C0's same-protocol 0/20. This is functional C1 evidence, not an improvement claim.
 - The C1 output completes the stage-level G2 evidence. Online selected-candidate uncertainty is above the held-out D15 distribution and is carried forward as an explicit D20/D22 risk; no test-driven tuning was performed.
+
+## 2026-09-22 — Stage 3, D20 validation-only threshold selection
+
+- Evaluated 36 mismatch/uncertainty quantile pairs on 23,476 h2/h4/h6/h8 points from validation demos 45–49. No fixed simulator episode or success result entered selection.
+- Froze mismatch threshold `0.0290635973` (p99.5) and uncertainty threshold `0.0044514909` (p99.75), giving 0.75396% nominal OR-trigger rate against a ≤1% target.
+- A post-selection excluded diagnostic shows 59.47% of D19 plans have mean selected-candidate uncertainty above the threshold, warning of possible C2 over-replanning. Thresholds remain frozen; D24 must audit actual loop behavior.

@@ -1,0 +1,921 @@
+{
+  "schema_version": 1,
+  "contract_version": "d20-v1",
+  "status": "PASS",
+  "config": "configs/d20_threshold_selection.yaml",
+  "config_sha256": "b3dcddfb70706e9013e958b4195377eacbe3f43cb145b6f14899016e7723bd23",
+  "d16_result_sha256": "4e03b91c16d2458d489fc4924b01a4113595016e45709c961153e6e4429d8544",
+  "d16_samples_sha256": "d0f71bf9ade25116dd465bbecb09214b9b8544e2f853802ffa7116430da4ee3a",
+  "selection_data": "D13 validation demos 45-49 only; no fixed simulator evaluation episode",
+  "check_horizons": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "source_sample_count": 5869,
+  "check_point_count": 23476,
+  "episode_count": 50,
+  "task_count": 10,
+  "target_nominal_or_trigger_rate": 0.01,
+  "trigger_rule": "mismatch > mismatch_threshold OR uncertainty > uncertainty_threshold",
+  "selection_rule": "highest_nonzero_nominal_or_trigger_rate_not_exceeding_target_then_lowest_quantile_sum",
+  "label_semantics": "nominal expert-transition trigger calibration; no failure/deviation labels",
+  "mismatch_quantile_thresholds": {
+    "0.95": 0.01823246479034424,
+    "0.975": 0.02139623463153839,
+    "0.99": 0.02580772340297699,
+    "0.995": 0.029063597321510315,
+    "0.9975": 0.03311881422996521,
+    "0.999": 0.03968722969293627
+  },
+  "uncertainty_quantile_thresholds": {
+    "0.95": 0.002628132700920105,
+    "0.975": 0.003005517181009054,
+    "0.99": 0.0035705071059055626,
+    "0.995": 0.003973399812821299,
+    "0.9975": 0.004451490938663483,
+    "0.999": 0.004800231405533885
+  },
+  "grid": [
+    {
+      "mismatch_quantile": 0.95,
+      "uncertainty_quantile": 0.95,
+      "mismatch_threshold": 0.01823246479034424,
+      "uncertainty_threshold": 0.002628132700920105,
+      "check_count": 23476,
+      "trigger_count": 2221,
+      "nominal_or_trigger_rate": 0.0946072584767422,
+      "mismatch_only_rate": 0.0445987391378429,
+      "uncertainty_only_rate": 0.0445987391378429,
+      "both_rate": 0.005409780201056398
+    },
+    {
+      "mismatch_quantile": 0.95,
+      "uncertainty_quantile": 0.975,
+      "mismatch_threshold": 0.01823246479034424,
+      "uncertainty_threshold": 0.003005517181009054,
+      "check_count": 23476,
+      "trigger_count": 1692,
+      "nominal_or_trigger_rate": 0.07207360708808996,
+      "mismatch_only_rate": 0.047069347418640314,
+      "uncertainty_only_rate": 0.02206508774919066,
+      "both_rate": 0.002939171920258988
+    },
+    {
+      "mismatch_quantile": 0.95,
+      "uncertainty_quantile": 0.99,
+      "mismatch_threshold": 0.01823246479034424,
+      "uncertainty_threshold": 0.0035705071059055626,
+      "check_count": 23476,
+      "trigger_count": 1379,
+      "nominal_or_trigger_rate": 0.05874084171068325,
+      "mismatch_only_rate": 0.04873061850400409,
+      "uncertainty_only_rate": 0.00873232237178395,
+      "both_rate": 0.0012779008348952122
+    },
+    {
+      "mismatch_quantile": 0.95,
+      "uncertainty_quantile": 0.995,
+      "mismatch_threshold": 0.01823246479034424,
+      "uncertainty_threshold": 0.003973399812821299,
+      "check_count": 23476,
+      "trigger_count": 1277,
+      "nominal_or_trigger_rate": 0.05439597887203953,
+      "mismatch_only_rate": 0.049369568921451695,
+      "uncertainty_only_rate": 0.004387459533140228,
+      "both_rate": 0.0006389504174476061
+    },
+    {
+      "mismatch_quantile": 0.95,
+      "uncertainty_quantile": 0.9975,
+      "mismatch_threshold": 0.01823246479034424,
+      "uncertainty_threshold": 0.004451490938663483,
+      "check_count": 23476,
+      "trigger_count": 1229,
+      "nominal_or_trigger_rate": 0.05235133753620719,
+      "mismatch_only_rate": 0.049838132560913274,
+      "uncertainty_only_rate": 0.0023428181973078888,
+      "both_rate": 0.0001703867779860283
+    },
+    {
+      "mismatch_quantile": 0.95,
+      "uncertainty_quantile": 0.999,
+      "mismatch_threshold": 0.01823246479034424,
+      "uncertainty_threshold": 0.004800231405533885,
+      "check_count": 23476,
+      "trigger_count": 1196,
+      "nominal_or_trigger_rate": 0.05094564661782246,
+      "mismatch_only_rate": 0.04992332594990629,
+      "uncertainty_only_rate": 0.0009371272789231556,
+      "both_rate": 8.519338899301415e-05
+    },
+    {
+      "mismatch_quantile": 0.975,
+      "uncertainty_quantile": 0.95,
+      "mismatch_threshold": 0.02139623463153839,
+      "uncertainty_threshold": 0.002628132700920105,
+      "check_count": 23476,
+      "trigger_count": 1688,
+      "nominal_or_trigger_rate": 0.07190322031010393,
+      "mismatch_only_rate": 0.021894700971204634,
+      "uncertainty_only_rate": 0.04689896064065428,
+      "both_rate": 0.003109558698245016
+    },
+    {
+      "mismatch_quantile": 0.975,
+      "uncertainty_quantile": 0.975,
+      "mismatch_threshold": 0.02139623463153839,
+      "uncertainty_threshold": 0.003005517181009054,
+      "check_count": 23476,
+      "trigger_count": 1132,
+      "nominal_or_trigger_rate": 0.048219458170046005,
+      "mismatch_only_rate": 0.023215198500596355,
+      "uncertainty_only_rate": 0.023215198500596355,
+      "both_rate": 0.001789061168853297
+    },
+    {
+      "mismatch_quantile": 0.975,
+      "uncertainty_quantile": 0.99,
+      "mismatch_threshold": 0.02139623463153839,
+      "uncertainty_threshold": 0.0035705071059055626,
+      "check_count": 23476,
+      "trigger_count": 806,
+      "nominal_or_trigger_rate": 0.0343329357641847,
+      "mismatch_only_rate": 0.024322712557505538,
+      "uncertainty_only_rate": 0.009328676094735049,
+      "both_rate": 0.0006815471119441132
+    },
+    {
+      "mismatch_quantile": 0.975,
+      "uncertainty_quantile": 0.995,
+      "mismatch_threshold": 0.02139623463153839,
+      "uncertainty_threshold": 0.003973399812821299,
+      "check_count": 23476,
+      "trigger_count": 698,
+      "nominal_or_trigger_rate": 0.029732492758561935,
+      "mismatch_only_rate": 0.0247060828079741,
+      "uncertainty_only_rate": 0.0047282330891122845,
+      "both_rate": 0.0002981768614755495
+    },
+    {
+      "mismatch_quantile": 0.975,
+      "uncertainty_quantile": 0.9975,
+      "mismatch_threshold": 0.02139623463153839,
+      "uncertainty_threshold": 0.004451490938663483,
+      "check_count": 23476,
+      "trigger_count": 643,
+      "nominal_or_trigger_rate": 0.027389674561254046,
+      "mismatch_only_rate": 0.02487646958596013,
+      "uncertainty_only_rate": 0.002385414891804396,
+      "both_rate": 0.00012779008348952123
+    },
+    {
+      "mismatch_quantile": 0.975,
+      "uncertainty_quantile": 0.999,
+      "mismatch_threshold": 0.02139623463153839,
+      "uncertainty_threshold": 0.004800231405533885,
+      "check_count": 23476,
+      "trigger_count": 610,
+      "nominal_or_trigger_rate": 0.025983983642869312,
+      "mismatch_only_rate": 0.024961662974953145,
+      "uncertainty_only_rate": 0.0009797239734196626,
+      "both_rate": 4.259669449650707e-05
+    },
+    {
+      "mismatch_quantile": 0.99,
+      "uncertainty_quantile": 0.95,
+      "mismatch_threshold": 0.02580772340297699,
+      "uncertainty_threshold": 0.002628132700920105,
+      "check_count": 23476,
+      "trigger_count": 1379,
+      "nominal_or_trigger_rate": 0.05874084171068325,
+      "mismatch_only_rate": 0.00873232237178395,
+      "uncertainty_only_rate": 0.04873061850400409,
+      "both_rate": 0.0012779008348952122
+    },
+    {
+      "mismatch_quantile": 0.99,
+      "uncertainty_quantile": 0.975,
+      "mismatch_threshold": 0.02580772340297699,
+      "uncertainty_threshold": 0.003005517181009054,
+      "check_count": 23476,
+      "trigger_count": 806,
+      "nominal_or_trigger_rate": 0.0343329357641847,
+      "mismatch_only_rate": 0.009328676094735049,
+      "uncertainty_only_rate": 0.024322712557505538,
+      "both_rate": 0.0006815471119441132
+    },
+    {
+      "mismatch_quantile": 0.99,
+      "uncertainty_quantile": 0.99,
+      "mismatch_threshold": 0.02580772340297699,
+      "uncertainty_threshold": 0.0035705071059055626,
+      "check_count": 23476,
+      "trigger_count": 462,
+      "nominal_or_trigger_rate": 0.01967967285738627,
+      "mismatch_only_rate": 0.009669449650707105,
+      "uncertainty_only_rate": 0.009669449650707105,
+      "both_rate": 0.0003407735559720566
+    },
+    {
+      "mismatch_quantile": 0.99,
+      "uncertainty_quantile": 0.995,
+      "mismatch_threshold": 0.02580772340297699,
+      "uncertainty_threshold": 0.003973399812821299,
+      "check_count": 23476,
+      "trigger_count": 349,
+      "nominal_or_trigger_rate": 0.014866246379280967,
+      "mismatch_only_rate": 0.009839836428693134,
+      "uncertainty_only_rate": 0.004856023172601806,
+      "both_rate": 0.0001703867779860283
+    },
+    {
+      "mismatch_quantile": 0.99,
+      "uncertainty_quantile": 0.9975,
+      "mismatch_threshold": 0.02580772340297699,
+      "uncertainty_threshold": 0.004451490938663483,
+      "check_count": 23476,
+      "trigger_count": 294,
+      "nominal_or_trigger_rate": 0.012523428181973079,
+      "mismatch_only_rate": 0.010010223206679162,
+      "uncertainty_only_rate": 0.002513204975293917,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.99,
+      "uncertainty_quantile": 0.999,
+      "mismatch_threshold": 0.02580772340297699,
+      "uncertainty_threshold": 0.004800231405533885,
+      "check_count": 23476,
+      "trigger_count": 259,
+      "nominal_or_trigger_rate": 0.01103254387459533,
+      "mismatch_only_rate": 0.010010223206679162,
+      "uncertainty_only_rate": 0.0010223206679161698,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.995,
+      "uncertainty_quantile": 0.95,
+      "mismatch_threshold": 0.029063597321510315,
+      "uncertainty_threshold": 0.002628132700920105,
+      "check_count": 23476,
+      "trigger_count": 1284,
+      "nominal_or_trigger_rate": 0.054694155733515076,
+      "mismatch_only_rate": 0.0046856363946157775,
+      "uncertainty_only_rate": 0.04966774578292724,
+      "both_rate": 0.0003407735559720566
+    },
+    {
+      "mismatch_quantile": 0.995,
+      "uncertainty_quantile": 0.975,
+      "mismatch_threshold": 0.029063597321510315,
+      "uncertainty_threshold": 0.003005517181009054,
+      "check_count": 23476,
+      "trigger_count": 699,
+      "nominal_or_trigger_rate": 0.029775089453058443,
+      "mismatch_only_rate": 0.004770829783608792,
+      "uncertainty_only_rate": 0.02474867950247061,
+      "both_rate": 0.00025558016697904245
+    },
+    {
+      "mismatch_quantile": 0.995,
+      "uncertainty_quantile": 0.99,
+      "mismatch_threshold": 0.029063597321510315,
+      "uncertainty_threshold": 0.0035705071059055626,
+      "check_count": 23476,
+      "trigger_count": 351,
+      "nominal_or_trigger_rate": 0.014951439768273981,
+      "mismatch_only_rate": 0.00494121656159482,
+      "uncertainty_only_rate": 0.009925029817686148,
+      "both_rate": 8.519338899301415e-05
+    },
+    {
+      "mismatch_quantile": 0.995,
+      "uncertainty_quantile": 0.995,
+      "mismatch_threshold": 0.029063597321510315,
+      "uncertainty_threshold": 0.003973399812821299,
+      "check_count": 23476,
+      "trigger_count": 236,
+      "nominal_or_trigger_rate": 0.010052819901175668,
+      "mismatch_only_rate": 0.005026409950587834,
+      "uncertainty_only_rate": 0.005026409950587834,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.995,
+      "uncertainty_quantile": 0.9975,
+      "mismatch_threshold": 0.029063597321510315,
+      "uncertainty_threshold": 0.004451490938663483,
+      "check_count": 23476,
+      "trigger_count": 177,
+      "nominal_or_trigger_rate": 0.0075396149258817515,
+      "mismatch_only_rate": 0.005026409950587834,
+      "uncertainty_only_rate": 0.002513204975293917,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.995,
+      "uncertainty_quantile": 0.999,
+      "mismatch_threshold": 0.029063597321510315,
+      "uncertainty_threshold": 0.004800231405533885,
+      "check_count": 23476,
+      "trigger_count": 142,
+      "nominal_or_trigger_rate": 0.0060487306185040045,
+      "mismatch_only_rate": 0.005026409950587834,
+      "uncertainty_only_rate": 0.0010223206679161698,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.9975,
+      "uncertainty_quantile": 0.95,
+      "mismatch_threshold": 0.03311881422996521,
+      "uncertainty_threshold": 0.002628132700920105,
+      "check_count": 23476,
+      "trigger_count": 1227,
+      "nominal_or_trigger_rate": 0.05226614414721418,
+      "mismatch_only_rate": 0.002257624808314875,
+      "uncertainty_only_rate": 0.04975293917192026,
+      "both_rate": 0.00025558016697904245
+    },
+    {
+      "mismatch_quantile": 0.9975,
+      "uncertainty_quantile": 0.975,
+      "mismatch_threshold": 0.03311881422996521,
+      "uncertainty_threshold": 0.003005517181009054,
+      "check_count": 23476,
+      "trigger_count": 641,
+      "nominal_or_trigger_rate": 0.027304481172261034,
+      "mismatch_only_rate": 0.002300221502811382,
+      "uncertainty_only_rate": 0.024791276196967114,
+      "both_rate": 0.00021298347248253536
+    },
+    {
+      "mismatch_quantile": 0.9975,
+      "uncertainty_quantile": 0.99,
+      "mismatch_threshold": 0.03311881422996521,
+      "uncertainty_threshold": 0.0035705071059055626,
+      "check_count": 23476,
+      "trigger_count": 292,
+      "nominal_or_trigger_rate": 0.012438234792980065,
+      "mismatch_only_rate": 0.002428011586300903,
+      "uncertainty_only_rate": 0.009925029817686148,
+      "both_rate": 8.519338899301415e-05
+    },
+    {
+      "mismatch_quantile": 0.9975,
+      "uncertainty_quantile": 0.995,
+      "mismatch_threshold": 0.03311881422996521,
+      "uncertainty_threshold": 0.003973399812821299,
+      "check_count": 23476,
+      "trigger_count": 177,
+      "nominal_or_trigger_rate": 0.0075396149258817515,
+      "mismatch_only_rate": 0.002513204975293917,
+      "uncertainty_only_rate": 0.005026409950587834,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.9975,
+      "uncertainty_quantile": 0.9975,
+      "mismatch_threshold": 0.03311881422996521,
+      "uncertainty_threshold": 0.004451490938663483,
+      "check_count": 23476,
+      "trigger_count": 118,
+      "nominal_or_trigger_rate": 0.005026409950587834,
+      "mismatch_only_rate": 0.002513204975293917,
+      "uncertainty_only_rate": 0.002513204975293917,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.9975,
+      "uncertainty_quantile": 0.999,
+      "mismatch_threshold": 0.03311881422996521,
+      "uncertainty_threshold": 0.004800231405533885,
+      "check_count": 23476,
+      "trigger_count": 83,
+      "nominal_or_trigger_rate": 0.003535525643210087,
+      "mismatch_only_rate": 0.002513204975293917,
+      "uncertainty_only_rate": 0.0010223206679161698,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.999,
+      "uncertainty_quantile": 0.95,
+      "mismatch_threshold": 0.03968722969293627,
+      "uncertainty_threshold": 0.002628132700920105,
+      "check_count": 23476,
+      "trigger_count": 1195,
+      "nominal_or_trigger_rate": 0.05090304992332595,
+      "mismatch_only_rate": 0.0008945305844266485,
+      "uncertainty_only_rate": 0.04988072925540978,
+      "both_rate": 0.00012779008348952123
+    },
+    {
+      "mismatch_quantile": 0.999,
+      "uncertainty_quantile": 0.975,
+      "mismatch_threshold": 0.03968722969293627,
+      "uncertainty_threshold": 0.003005517181009054,
+      "check_count": 23476,
+      "trigger_count": 608,
+      "nominal_or_trigger_rate": 0.0258987902538763,
+      "mismatch_only_rate": 0.0008945305844266485,
+      "uncertainty_only_rate": 0.02487646958596013,
+      "both_rate": 0.00012779008348952123
+    },
+    {
+      "mismatch_quantile": 0.999,
+      "uncertainty_quantile": 0.99,
+      "mismatch_threshold": 0.03968722969293627,
+      "uncertainty_threshold": 0.0035705071059055626,
+      "check_count": 23476,
+      "trigger_count": 257,
+      "nominal_or_trigger_rate": 0.010947350485602317,
+      "mismatch_only_rate": 0.0009371272789231556,
+      "uncertainty_only_rate": 0.009925029817686148,
+      "both_rate": 8.519338899301415e-05
+    },
+    {
+      "mismatch_quantile": 0.999,
+      "uncertainty_quantile": 0.995,
+      "mismatch_threshold": 0.03968722969293627,
+      "uncertainty_threshold": 0.003973399812821299,
+      "check_count": 23476,
+      "trigger_count": 142,
+      "nominal_or_trigger_rate": 0.0060487306185040045,
+      "mismatch_only_rate": 0.0010223206679161698,
+      "uncertainty_only_rate": 0.005026409950587834,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.999,
+      "uncertainty_quantile": 0.9975,
+      "mismatch_threshold": 0.03968722969293627,
+      "uncertainty_threshold": 0.004451490938663483,
+      "check_count": 23476,
+      "trigger_count": 83,
+      "nominal_or_trigger_rate": 0.003535525643210087,
+      "mismatch_only_rate": 0.0010223206679161698,
+      "uncertainty_only_rate": 0.002513204975293917,
+      "both_rate": 0.0
+    },
+    {
+      "mismatch_quantile": 0.999,
+      "uncertainty_quantile": 0.999,
+      "mismatch_threshold": 0.03968722969293627,
+      "uncertainty_threshold": 0.004800231405533885,
+      "check_count": 23476,
+      "trigger_count": 48,
+      "nominal_or_trigger_rate": 0.0020446413358323396,
+      "mismatch_only_rate": 0.0010223206679161698,
+      "uncertainty_only_rate": 0.0010223206679161698,
+      "both_rate": 0.0
+    }
+  ],
+  "selected": {
+    "mismatch_quantile": 0.995,
+    "uncertainty_quantile": 0.9975,
+    "mismatch_threshold": 0.029063597321510315,
+    "uncertainty_threshold": 0.004451490938663483,
+    "check_count": 23476,
+    "trigger_count": 177,
+    "nominal_or_trigger_rate": 0.0075396149258817515,
+    "mismatch_only_rate": 0.005026409950587834,
+    "uncertainty_only_rate": 0.002513204975293917,
+    "both_rate": 0.0
+  },
+  "selected_breakdown": {
+    "episode_any_trigger_fraction": 0.6,
+    "mean_triggers_per_episode": 3.54,
+    "per_horizon_trigger_rate": {
+      "2": 0.002896575225762481,
+      "4": 0.004259669449650707,
+      "6": 0.008519338899301414,
+      "8": 0.014482876128812404
+    },
+    "per_task_trigger_rate": {
+      "0": 0.0024096385542168677,
+      "1": 0.0003980891719745223,
+      "2": 0.015993265993265993,
+      "3": 0.011312217194570135,
+      "4": 0.012177650429799427,
+      "5": 0.004437869822485207,
+      "6": 0.012012012012012012,
+      "7": 0.003951149425287357,
+      "8": 0.001658374792703151,
+      "9": 0.00967741935483871
+    },
+    "episodes": [
+      {
+        "task_id": 0,
+        "demo_id": 45,
+        "check_count": 328,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 0,
+        "demo_id": 46,
+        "check_count": 308,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 0,
+        "demo_id": 47,
+        "check_count": 336,
+        "trigger_count": 4,
+        "trigger_rate": 0.011904761904761904,
+        "any_trigger": true
+      },
+      {
+        "task_id": 0,
+        "demo_id": 48,
+        "check_count": 352,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 0,
+        "demo_id": 49,
+        "check_count": 336,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 1,
+        "demo_id": 45,
+        "check_count": 500,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 1,
+        "demo_id": 46,
+        "check_count": 504,
+        "trigger_count": 1,
+        "trigger_rate": 0.001984126984126984,
+        "any_trigger": true
+      },
+      {
+        "task_id": 1,
+        "demo_id": 47,
+        "check_count": 500,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 1,
+        "demo_id": 48,
+        "check_count": 532,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 1,
+        "demo_id": 49,
+        "check_count": 476,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 2,
+        "demo_id": 45,
+        "check_count": 472,
+        "trigger_count": 6,
+        "trigger_rate": 0.012711864406779662,
+        "any_trigger": true
+      },
+      {
+        "task_id": 2,
+        "demo_id": 46,
+        "check_count": 468,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 2,
+        "demo_id": 47,
+        "check_count": 436,
+        "trigger_count": 2,
+        "trigger_rate": 0.0045871559633027525,
+        "any_trigger": true
+      },
+      {
+        "task_id": 2,
+        "demo_id": 48,
+        "check_count": 492,
+        "trigger_count": 3,
+        "trigger_rate": 0.006097560975609756,
+        "any_trigger": true
+      },
+      {
+        "task_id": 2,
+        "demo_id": 49,
+        "check_count": 508,
+        "trigger_count": 27,
+        "trigger_rate": 0.0531496062992126,
+        "any_trigger": true
+      },
+      {
+        "task_id": 3,
+        "demo_id": 45,
+        "check_count": 364,
+        "trigger_count": 1,
+        "trigger_rate": 0.0027472527472527475,
+        "any_trigger": true
+      },
+      {
+        "task_id": 3,
+        "demo_id": 46,
+        "check_count": 380,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 3,
+        "demo_id": 47,
+        "check_count": 328,
+        "trigger_count": 5,
+        "trigger_rate": 0.01524390243902439,
+        "any_trigger": true
+      },
+      {
+        "task_id": 3,
+        "demo_id": 48,
+        "check_count": 368,
+        "trigger_count": 14,
+        "trigger_rate": 0.03804347826086957,
+        "any_trigger": true
+      },
+      {
+        "task_id": 3,
+        "demo_id": 49,
+        "check_count": 328,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 4,
+        "demo_id": 45,
+        "check_count": 644,
+        "trigger_count": 2,
+        "trigger_rate": 0.003105590062111801,
+        "any_trigger": true
+      },
+      {
+        "task_id": 4,
+        "demo_id": 46,
+        "check_count": 556,
+        "trigger_count": 11,
+        "trigger_rate": 0.019784172661870502,
+        "any_trigger": true
+      },
+      {
+        "task_id": 4,
+        "demo_id": 47,
+        "check_count": 572,
+        "trigger_count": 12,
+        "trigger_rate": 0.02097902097902098,
+        "any_trigger": true
+      },
+      {
+        "task_id": 4,
+        "demo_id": 48,
+        "check_count": 504,
+        "trigger_count": 4,
+        "trigger_rate": 0.007936507936507936,
+        "any_trigger": true
+      },
+      {
+        "task_id": 4,
+        "demo_id": 49,
+        "check_count": 516,
+        "trigger_count": 5,
+        "trigger_rate": 0.009689922480620155,
+        "any_trigger": true
+      },
+      {
+        "task_id": 5,
+        "demo_id": 45,
+        "check_count": 416,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 5,
+        "demo_id": 46,
+        "check_count": 400,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 5,
+        "demo_id": 47,
+        "check_count": 408,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 5,
+        "demo_id": 48,
+        "check_count": 400,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 5,
+        "demo_id": 49,
+        "check_count": 404,
+        "trigger_count": 9,
+        "trigger_rate": 0.022277227722772276,
+        "any_trigger": true
+      },
+      {
+        "task_id": 6,
+        "demo_id": 45,
+        "check_count": 584,
+        "trigger_count": 3,
+        "trigger_rate": 0.005136986301369863,
+        "any_trigger": true
+      },
+      {
+        "task_id": 6,
+        "demo_id": 46,
+        "check_count": 456,
+        "trigger_count": 3,
+        "trigger_rate": 0.006578947368421052,
+        "any_trigger": true
+      },
+      {
+        "task_id": 6,
+        "demo_id": 47,
+        "check_count": 444,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 6,
+        "demo_id": 48,
+        "check_count": 604,
+        "trigger_count": 8,
+        "trigger_rate": 0.013245033112582781,
+        "any_trigger": true
+      },
+      {
+        "task_id": 6,
+        "demo_id": 49,
+        "check_count": 576,
+        "trigger_count": 18,
+        "trigger_rate": 0.03125,
+        "any_trigger": true
+      },
+      {
+        "task_id": 7,
+        "demo_id": 45,
+        "check_count": 536,
+        "trigger_count": 1,
+        "trigger_rate": 0.0018656716417910447,
+        "any_trigger": true
+      },
+      {
+        "task_id": 7,
+        "demo_id": 46,
+        "check_count": 688,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 7,
+        "demo_id": 47,
+        "check_count": 464,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 7,
+        "demo_id": 48,
+        "check_count": 512,
+        "trigger_count": 2,
+        "trigger_rate": 0.00390625,
+        "any_trigger": true
+      },
+      {
+        "task_id": 7,
+        "demo_id": 49,
+        "check_count": 584,
+        "trigger_count": 8,
+        "trigger_rate": 0.0136986301369863,
+        "any_trigger": true
+      },
+      {
+        "task_id": 8,
+        "demo_id": 45,
+        "check_count": 420,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 8,
+        "demo_id": 46,
+        "check_count": 500,
+        "trigger_count": 2,
+        "trigger_rate": 0.004,
+        "any_trigger": true
+      },
+      {
+        "task_id": 8,
+        "demo_id": 47,
+        "check_count": 420,
+        "trigger_count": 0,
+        "trigger_rate": 0.0,
+        "any_trigger": false
+      },
+      {
+        "task_id": 8,
+        "demo_id": 48,
+        "check_count": 644,
+        "trigger_count": 1,
+        "trigger_rate": 0.0015527950310559005,
+        "any_trigger": true
+      },
+      {
+        "task_id": 8,
+        "demo_id": 49,
+        "check_count": 428,
+        "trigger_count": 1,
+        "trigger_rate": 0.002336448598130841,
+        "any_trigger": true
+      },
+      {
+        "task_id": 9,
+        "demo_id": 45,
+        "check_count": 488,
+        "trigger_count": 1,
+        "trigger_rate": 0.0020491803278688526,
+        "any_trigger": true
+      },
+      {
+        "task_id": 9,
+        "demo_id": 46,
+        "check_count": 524,
+        "trigger_count": 8,
+        "trigger_rate": 0.015267175572519083,
+        "any_trigger": true
+      },
+      {
+        "task_id": 9,
+        "demo_id": 47,
+        "check_count": 512,
+        "trigger_count": 6,
+        "trigger_rate": 0.01171875,
+        "any_trigger": true
+      },
+      {
+        "task_id": 9,
+        "demo_id": 48,
+        "check_count": 436,
+        "trigger_count": 6,
+        "trigger_rate": 0.013761467889908258,
+        "any_trigger": true
+      },
+      {
+        "task_id": 9,
+        "demo_id": 49,
+        "check_count": 520,
+        "trigger_count": 3,
+        "trigger_rate": 0.0057692307692307696,
+        "any_trigger": true
+      }
+    ]
+  },
+  "post_selection_excluded_d19_diagnostic": {
+    "used_for_selection": false,
+    "source": "results/c1/seed11/task0_d19.json",
+    "source_sha256": "24bb1aadb32cf222f469fec890e082c8c0d5b235b4dc272ee1ef82581e45f120",
+    "available_statistic": "selected-candidate mean h1-h8 uncertainty per plan",
+    "plan_count": 760,
+    "fraction_above_selected_uncertainty_threshold": 0.5947368421052631,
+    "warning": "test-rollout distribution shift diagnostic; must not alter selected thresholds"
+  },
+  "nan_inf_audit": "pass",
+  "d21_authorized": true
+}
