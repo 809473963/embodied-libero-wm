@@ -74,3 +74,9 @@
 - Trained independent seed-23 and seed-47 members and combined them with the frozen seed-11 D14 member. All three share the exact D13 store, split, architecture, and normalization contract.
 - Defined uncertainty as the mean pairwise cosine distance between three member latent predictions. On 5,869 validation samples its mean is `0.0015132597`, p95 is `0.0026366502`, and its diagnostic Pearson correlation with prediction error is `0.2501194`.
 - Ensemble mean prediction obtains validation cosine error `0.0089190605`, 4.83% below the best individual member. Training/member resources and checkpoint hashes are recorded in `docs/d15_world_model_ensemble_audit.md`; no D16 gate or C1/C2 result is claimed.
+
+## 2026-09-22 — Stage 2, D16 held-out transition gate
+
+- Compared the frozen D15 ensemble against copy-current on all 5,869 D13 validation windows. Learned/copy cosine errors are `0.0089190605` / `0.0157953181`, a 43.53% relative reduction.
+- All eight horizons, all 50 held-out episodes, and all 10 tasks improve. A 10,000-replicate task-stratified episode bootstrap gives paired-improvement 95% CI `[0.00675743, 0.00735354]`.
+- The formal four-check gate passes. The full result is `results/wm/transition_eval.json`; the 5,869-row sample record is locally retained and hash-addressed for D17. A repeated run produced byte-identical hashes.

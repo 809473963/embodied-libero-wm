@@ -1,0 +1,562 @@
+{
+  "schema_version": 1,
+  "contract_version": "d16-v1",
+  "status": "PASS",
+  "config": "configs/d16_transition_eval.yaml",
+  "config_sha256": "67924e5c1cd5f38a73a10916b84b62c978313f64b1663936610482d812d98b71",
+  "ensemble_config_sha256": "8cc3f41f60d939cca99edb1ec3836b3504e5738a35d72226aa5271aeb828e5da",
+  "d13_data_contract_version": "d13-v1",
+  "d13_store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+  "split": "validation demos 45-49; no simulator evaluation/test episodes",
+  "sample_count": 5869,
+  "episode_count": 50,
+  "member_seeds": [
+    11,
+    23,
+    47
+  ],
+  "learned": {
+    "predictor": "D15 normalized ensemble mean",
+    "overall_cosine_error": 0.008919060507001858,
+    "per_horizon_cosine_error": [
+      0.006295864627559946,
+      0.007558935940580487,
+      0.008384667937405004,
+      0.008990071237869249,
+      0.009452176928865502,
+      0.009844549633733945,
+      0.01020906335715643,
+      0.010617154392844308
+    ]
+  },
+  "copy_current": {
+    "predictor": "z0 repeated for all eight horizons",
+    "overall_cosine_error": 0.015795318101634155,
+    "per_horizon_cosine_error": [
+      0.00702432585566916,
+      0.010175105476931873,
+      0.012957110043826471,
+      0.01541427768542182,
+      0.017583273372773642,
+      0.01946334235406974,
+      0.02108555387284732,
+      0.02265955615153323
+    ]
+  },
+  "paired_improvement": {
+    "definition": "copy cosine error minus learned cosine error; positive favors learned",
+    "absolute_overall": 0.006876257594632297,
+    "relative_overall": 0.43533517656228093,
+    "per_horizon": [
+      0.0007284612281092144,
+      0.002616169536351386,
+      0.004572442106421467,
+      0.006424206447552571,
+      0.00813109644390814,
+      0.009618792720335795,
+      0.010876490515690888,
+      0.012042401758688924
+    ],
+    "sample_fraction_improved": 0.909865394445391,
+    "episode_fraction_improved": 1.0,
+    "task_fraction_improved": 1.0,
+    "episode_block_bootstrap": {
+      "unit": "episode",
+      "stratified_by": "task",
+      "replicates": 10000,
+      "seed": 1601,
+      "mean": 0.0070589497079796915,
+      "ci95_lower": 0.006757430095986404,
+      "ci95_upper": 0.007353543545136275
+    }
+  },
+  "tasks": [
+    {
+      "task_id": 0,
+      "sample_count": 415,
+      "learned_cosine_error": 0.00862348772675158,
+      "copy_cosine_error": 0.017448450894240873,
+      "copy_minus_learned": 0.008824963167489293
+    },
+    {
+      "task_id": 1,
+      "sample_count": 628,
+      "learned_cosine_error": 0.0065147158494041225,
+      "copy_cosine_error": 0.010053309867051757,
+      "copy_minus_learned": 0.003538594017647634
+    },
+    {
+      "task_id": 2,
+      "sample_count": 594,
+      "learned_cosine_error": 0.008828467880736296,
+      "copy_cosine_error": 0.015003989616829137,
+      "copy_minus_learned": 0.006175521736092841
+    },
+    {
+      "task_id": 3,
+      "sample_count": 442,
+      "learned_cosine_error": 0.009433746101899385,
+      "copy_cosine_error": 0.01964904005508617,
+      "copy_minus_learned": 0.010215293953186787
+    },
+    {
+      "task_id": 4,
+      "sample_count": 698,
+      "learned_cosine_error": 0.01055961139606883,
+      "copy_cosine_error": 0.017319975009876542,
+      "copy_minus_learned": 0.006760363613807711
+    },
+    {
+      "task_id": 5,
+      "sample_count": 507,
+      "learned_cosine_error": 0.007604561863683855,
+      "copy_cosine_error": 0.01358103596364723,
+      "copy_minus_learned": 0.005976474099963375
+    },
+    {
+      "task_id": 6,
+      "sample_count": 666,
+      "learned_cosine_error": 0.010820241829564979,
+      "copy_cosine_error": 0.020884077045115624,
+      "copy_minus_learned": 0.010063835215550645
+    },
+    {
+      "task_id": 7,
+      "sample_count": 696,
+      "learned_cosine_error": 0.008625255758478039,
+      "copy_cosine_error": 0.014774680041290563,
+      "copy_minus_learned": 0.006149424282812524
+    },
+    {
+      "task_id": 8,
+      "sample_count": 603,
+      "learned_cosine_error": 0.009053326290638293,
+      "copy_cosine_error": 0.015316756198161079,
+      "copy_minus_learned": 0.006263429907522785
+    },
+    {
+      "task_id": 9,
+      "sample_count": 620,
+      "learned_cosine_error": 0.008657120997386594,
+      "copy_cosine_error": 0.014754816589336242,
+      "copy_minus_learned": 0.0060976955919496475
+    }
+  ],
+  "episodes": [
+    {
+      "task_id": 0,
+      "demo_id": 45,
+      "sample_count": 82,
+      "learned_cosine_error": 0.007548095703851886,
+      "copy_cosine_error": 0.016407165131190928,
+      "copy_minus_learned": 0.008859069427339042
+    },
+    {
+      "task_id": 0,
+      "demo_id": 46,
+      "sample_count": 77,
+      "learned_cosine_error": 0.009242369273266235,
+      "copy_cosine_error": 0.01865306312774683,
+      "copy_minus_learned": 0.009410693854480597
+    },
+    {
+      "task_id": 0,
+      "demo_id": 47,
+      "sample_count": 84,
+      "learned_cosine_error": 0.009384763027940477,
+      "copy_cosine_error": 0.016507429381211598,
+      "copy_minus_learned": 0.00712266635327112
+    },
+    {
+      "task_id": 0,
+      "demo_id": 48,
+      "sample_count": 88,
+      "learned_cosine_error": 0.009323003786531362,
+      "copy_cosine_error": 0.01943906235762618,
+      "copy_minus_learned": 0.010116058571094816
+    },
+    {
+      "task_id": 0,
+      "demo_id": 49,
+      "sample_count": 84,
+      "learned_cosine_error": 0.007611865443842751,
+      "copy_cosine_error": 0.016216335285987173,
+      "copy_minus_learned": 0.008604469842144422
+    },
+    {
+      "task_id": 1,
+      "demo_id": 45,
+      "sample_count": 125,
+      "learned_cosine_error": 0.006324518740177154,
+      "copy_cosine_error": 0.010939337134361267,
+      "copy_minus_learned": 0.004614818394184113
+    },
+    {
+      "task_id": 1,
+      "demo_id": 46,
+      "sample_count": 126,
+      "learned_cosine_error": 0.007424140555991067,
+      "copy_cosine_error": 0.01163071541795655,
+      "copy_minus_learned": 0.004206574861965483
+    },
+    {
+      "task_id": 1,
+      "demo_id": 47,
+      "sample_count": 125,
+      "learned_cosine_error": 0.007125409185886383,
+      "copy_cosine_error": 0.009535364866256713,
+      "copy_minus_learned": 0.0024099556803703305
+    },
+    {
+      "task_id": 1,
+      "demo_id": 48,
+      "sample_count": 133,
+      "learned_cosine_error": 0.005480699017083734,
+      "copy_cosine_error": 0.008613728827103637,
+      "copy_minus_learned": 0.0031330298100199026
+    },
+    {
+      "task_id": 1,
+      "demo_id": 49,
+      "sample_count": 119,
+      "learned_cosine_error": 0.0062657637255532405,
+      "copy_cosine_error": 0.009605418233310474,
+      "copy_minus_learned": 0.003339654507757234
+    },
+    {
+      "task_id": 2,
+      "demo_id": 45,
+      "sample_count": 118,
+      "learned_cosine_error": 0.009518741740513656,
+      "copy_cosine_error": 0.013706043552039034,
+      "copy_minus_learned": 0.004187301811525377
+    },
+    {
+      "task_id": 2,
+      "demo_id": 46,
+      "sample_count": 117,
+      "learned_cosine_error": 0.008013253920098655,
+      "copy_cosine_error": 0.0142443117677656,
+      "copy_minus_learned": 0.006231057847666945
+    },
+    {
+      "task_id": 2,
+      "demo_id": 47,
+      "sample_count": 109,
+      "learned_cosine_error": 0.008827951933265826,
+      "copy_cosine_error": 0.015515062718763264,
+      "copy_minus_learned": 0.0066871107854974375
+    },
+    {
+      "task_id": 2,
+      "demo_id": 48,
+      "sample_count": 123,
+      "learned_cosine_error": 0.008637517932953873,
+      "copy_cosine_error": 0.01643501185789341,
+      "copy_minus_learned": 0.0077974939249395355
+    },
+    {
+      "task_id": 2,
+      "demo_id": 49,
+      "sample_count": 127,
+      "learned_cosine_error": 0.009123513548392949,
+      "copy_cosine_error": 0.01508522772882867,
+      "copy_minus_learned": 0.005961714180435722
+    },
+    {
+      "task_id": 3,
+      "demo_id": 45,
+      "sample_count": 91,
+      "learned_cosine_error": 0.008634368551301431,
+      "copy_cosine_error": 0.018689294192162188,
+      "copy_minus_learned": 0.010054925640860756
+    },
+    {
+      "task_id": 3,
+      "demo_id": 46,
+      "sample_count": 95,
+      "learned_cosine_error": 0.008725705742835998,
+      "copy_cosine_error": 0.018428102214085428,
+      "copy_minus_learned": 0.00970239647124943
+    },
+    {
+      "task_id": 3,
+      "demo_id": 47,
+      "sample_count": 82,
+      "learned_cosine_error": 0.009792265459531692,
+      "copy_cosine_error": 0.020148838166056608,
+      "copy_minus_learned": 0.010356572706524916
+    },
+    {
+      "task_id": 3,
+      "demo_id": 48,
+      "sample_count": 92,
+      "learned_cosine_error": 0.010529377052317495,
+      "copy_cosine_error": 0.02208995875780997,
+      "copy_minus_learned": 0.011560581705492476
+    },
+    {
+      "task_id": 3,
+      "demo_id": 49,
+      "sample_count": 82,
+      "learned_cosine_error": 0.009553387034230115,
+      "copy_cosine_error": 0.018890235209610404,
+      "copy_minus_learned": 0.009336848175380288
+    },
+    {
+      "task_id": 4,
+      "demo_id": 45,
+      "sample_count": 161,
+      "learned_cosine_error": 0.010232636091872032,
+      "copy_cosine_error": 0.015677307610926422,
+      "copy_minus_learned": 0.00544467151905439
+    },
+    {
+      "task_id": 4,
+      "demo_id": 46,
+      "sample_count": 139,
+      "learned_cosine_error": 0.009864935128808879,
+      "copy_cosine_error": 0.01639333244064729,
+      "copy_minus_learned": 0.006528397311838411
+    },
+    {
+      "task_id": 4,
+      "demo_id": 47,
+      "sample_count": 143,
+      "learned_cosine_error": 0.010418489106468387,
+      "copy_cosine_error": 0.016777827345824742,
+      "copy_minus_learned": 0.006359338239356355
+    },
+    {
+      "task_id": 4,
+      "demo_id": 48,
+      "sample_count": 126,
+      "learned_cosine_error": 0.011474587969363683,
+      "copy_cosine_error": 0.01954999826257191,
+      "copy_minus_learned": 0.008075410293208228
+    },
+    {
+      "task_id": 4,
+      "demo_id": 49,
+      "sample_count": 129,
+      "learned_cosine_error": 0.010978963832522547,
+      "copy_cosine_error": 0.018791424269362013,
+      "copy_minus_learned": 0.007812460436839466
+    },
+    {
+      "task_id": 5,
+      "demo_id": 45,
+      "sample_count": 104,
+      "learned_cosine_error": 0.006822555254285152,
+      "copy_cosine_error": 0.012753432258390464,
+      "copy_minus_learned": 0.005930877004105312
+    },
+    {
+      "task_id": 5,
+      "demo_id": 46,
+      "sample_count": 100,
+      "learned_cosine_error": 0.008135886639356613,
+      "copy_cosine_error": 0.014027257785201072,
+      "copy_minus_learned": 0.005891371145844459
+    },
+    {
+      "task_id": 5,
+      "demo_id": 47,
+      "sample_count": 102,
+      "learned_cosine_error": 0.007224877675374349,
+      "copy_cosine_error": 0.014715717046284209,
+      "copy_minus_learned": 0.00749083937090986
+    },
+    {
+      "task_id": 5,
+      "demo_id": 48,
+      "sample_count": 100,
+      "learned_cosine_error": 0.00750982716679573,
+      "copy_cosine_error": 0.012835999801754951,
+      "copy_minus_learned": 0.005326172634959221
+    },
+    {
+      "task_id": 5,
+      "demo_id": 49,
+      "sample_count": 101,
+      "learned_cosine_error": 0.008360972425135055,
+      "copy_cosine_error": 0.013583162190890547,
+      "copy_minus_learned": 0.005222189765755492
+    },
+    {
+      "task_id": 6,
+      "demo_id": 45,
+      "sample_count": 146,
+      "learned_cosine_error": 0.011539248519972579,
+      "copy_cosine_error": 0.021203041842130767,
+      "copy_minus_learned": 0.009663793322158188
+    },
+    {
+      "task_id": 6,
+      "demo_id": 46,
+      "sample_count": 114,
+      "learned_cosine_error": 0.009621020537196543,
+      "copy_cosine_error": 0.020994212739823156,
+      "copy_minus_learned": 0.011373192202626612
+    },
+    {
+      "task_id": 6,
+      "demo_id": 47,
+      "sample_count": 111,
+      "learned_cosine_error": 0.009742600893652116,
+      "copy_cosine_error": 0.022277686107266055,
+      "copy_minus_learned": 0.012535085213613939
+    },
+    {
+      "task_id": 6,
+      "demo_id": 48,
+      "sample_count": 151,
+      "learned_cosine_error": 0.010279151678874793,
+      "copy_cosine_error": 0.0213105244845744,
+      "copy_minus_learned": 0.011031372805699605
+    },
+    {
+      "task_id": 6,
+      "demo_id": 49,
+      "sample_count": 144,
+      "learned_cosine_error": 0.012438707157141633,
+      "copy_cosine_error": 0.018952073581102822,
+      "copy_minus_learned": 0.006513366423961189
+    },
+    {
+      "task_id": 7,
+      "demo_id": 45,
+      "sample_count": 134,
+      "learned_cosine_error": 0.009526235621366928,
+      "copy_cosine_error": 0.01619204673082081,
+      "copy_minus_learned": 0.006665811109453884
+    },
+    {
+      "task_id": 7,
+      "demo_id": 46,
+      "sample_count": 172,
+      "learned_cosine_error": 0.007768548635202785,
+      "copy_cosine_error": 0.01322604676838531,
+      "copy_minus_learned": 0.005457498133182526
+    },
+    {
+      "task_id": 7,
+      "demo_id": 47,
+      "sample_count": 116,
+      "learned_cosine_error": 0.008314446963626763,
+      "copy_cosine_error": 0.015251046688906077,
+      "copy_minus_learned": 0.006936599725279314
+    },
+    {
+      "task_id": 7,
+      "demo_id": 48,
+      "sample_count": 128,
+      "learned_cosine_error": 0.009814613906200975,
+      "copy_cosine_error": 0.016106016642879695,
+      "copy_minus_learned": 0.0062914027366787195
+    },
+    {
+      "task_id": 7,
+      "demo_id": 49,
+      "sample_count": 146,
+      "learned_cosine_error": 0.008011819463070126,
+      "copy_cosine_error": 0.013752544222220983,
+      "copy_minus_learned": 0.005740724759150858
+    },
+    {
+      "task_id": 8,
+      "demo_id": 45,
+      "sample_count": 105,
+      "learned_cosine_error": 0.009801307178678966,
+      "copy_cosine_error": 0.017111214924426306,
+      "copy_minus_learned": 0.00730990774574734
+    },
+    {
+      "task_id": 8,
+      "demo_id": 46,
+      "sample_count": 125,
+      "learned_cosine_error": 0.008633561491966247,
+      "copy_cosine_error": 0.014737727344036103,
+      "copy_minus_learned": 0.006104165852069856
+    },
+    {
+      "task_id": 8,
+      "demo_id": 47,
+      "sample_count": 105,
+      "learned_cosine_error": 0.008864703206788926,
+      "copy_cosine_error": 0.016202162490004585,
+      "copy_minus_learned": 0.0073374592832156586
+    },
+    {
+      "task_id": 8,
+      "demo_id": 48,
+      "sample_count": 161,
+      "learned_cosine_error": 0.008062247904191105,
+      "copy_cosine_error": 0.01294998162836762,
+      "copy_minus_learned": 0.004887733724176514
+    },
+    {
+      "task_id": 8,
+      "demo_id": 49,
+      "sample_count": 107,
+      "learned_cosine_error": 0.010486051997291707,
+      "copy_cosine_error": 0.016924639241160635,
+      "copy_minus_learned": 0.006438587243868928
+    },
+    {
+      "task_id": 9,
+      "demo_id": 45,
+      "sample_count": 122,
+      "learned_cosine_error": 0.00913070862899061,
+      "copy_cosine_error": 0.014061774997437586,
+      "copy_minus_learned": 0.004931066368446976
+    },
+    {
+      "task_id": 9,
+      "demo_id": 46,
+      "sample_count": 131,
+      "learned_cosine_error": 0.008414939273404712,
+      "copy_cosine_error": 0.014503098284925213,
+      "copy_minus_learned": 0.006088159011520501
+    },
+    {
+      "task_id": 9,
+      "demo_id": 47,
+      "sample_count": 128,
+      "learned_cosine_error": 0.009482075518462807,
+      "copy_cosine_error": 0.014875310356728733,
+      "copy_minus_learned": 0.005393234838265926
+    },
+    {
+      "task_id": 9,
+      "demo_id": 48,
+      "sample_count": 109,
+      "learned_cosine_error": 0.008635091877311742,
+      "copy_cosine_error": 0.01698713824836486,
+      "copy_minus_learned": 0.008352046371053117
+    },
+    {
+      "task_id": 9,
+      "demo_id": 49,
+      "sample_count": 130,
+      "learned_cosine_error": 0.007662929537204596,
+      "copy_cosine_error": 0.013668508197252568,
+      "copy_minus_learned": 0.006005578660047972
+    }
+  ],
+  "gate": {
+    "checks": {
+      "positive_overall_improvement": true,
+      "positive_episode_bootstrap_ci_lower": true,
+      "every_horizon_improves": true,
+      "h8_improvement_greater_than_h1": true
+    },
+    "pass": true
+  },
+  "sample_records": {
+    "path": "results/wm/transition_eval_samples.jsonl",
+    "sha256": "d0f71bf9ade25116dd465bbecb09214b9b8544e2f853802ffa7116430da4ee3a",
+    "count": 5869
+  },
+  "nan_inf_audit": "pass"
+}
