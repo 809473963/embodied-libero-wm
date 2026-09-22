@@ -91,3 +91,9 @@
 
 - Re-audited D13 data/split/index fields, unique-row normalization, all three finite ensemble checkpoints, D16 held-out results, D17 sample coverage, and C0 immutability. The full test suite passes.
 - The offline world-model gate passes and authorizes D19. Because the stage-level G2 definition also requests a C1 output but the day schedule implements C1 on D19, final project G2 remains `PENDING_C1_OUTPUT_D19`; C2 remains unauthorized.
+
+## 2026-09-22 — Stage 3, D19 C1 pre-execution reranking
+
+- Implemented deterministic N=3 candidate generation around the unchanged C0 chunk and D15-ensemble scoring by language progress, disagreement penalty, and a small base-deviation penalty. C1 executes the selected H=8 chunk fully and has no early replan path.
+- Completed all 20 fixed task-0 episodes: 760 planning events, candidate counts `[20,366,374]`, no invalid values/events, and 0/20 success versus C0's same-protocol 0/20. This is functional C1 evidence, not an improvement claim.
+- The C1 output completes the stage-level G2 evidence. Online selected-candidate uncertainty is above the held-out D15 distribution and is carried forward as an explicit D20/D22 risk; no test-driven tuning was performed.
