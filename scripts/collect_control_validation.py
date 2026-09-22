@@ -25,7 +25,6 @@ sys.path.insert(0, str(PROJECT_ROOT))
 from libero.libero import benchmark, get_libero_path
 from libero.libero.envs import OffScreenRenderEnv
 from scripts.evaluate_c0_all import (
-    disable_camera_observable,
     make_env,
     policy_observation,
     refresh_policy_observation,
@@ -47,6 +46,19 @@ def atomic_json(path: Path, content: dict[str, Any]) -> None:
     temporary = path.with_suffix(path.suffix + ".part")
     temporary.write_text(json.dumps(content, indent=2, ensure_ascii=False) + "\n")
     os.replace(temporary, path)
+
+
+def disable_all_camera_observables(env: OffScreenRenderEnv) -> list[str]:
+    """Disable every RGB observable between checks; only agentview is re-enabled."""
+
+    disabled = []
+    for name, observable in env.env._observables.items():
+        if name.endswith("_image"):
+            observable.set_active(False)
+            disabled.append(name)
+    if "agentview_image" not in disabled:
+        raise KeyError("control-validation environment has no agentview_image observable")
+    return disabled
 
 
 def encode_image(
@@ -160,7 +172,9 @@ def evaluate_episode(
     env.seed(seed)
     env.reset()
     observation = env.set_init_state(initial_state)
-    disable_camera_observable(env)
+    disabled_cameras = disable_all_camera_observables(env)
+    if any(name not in {"agentview_image", "robot0_eye_in_hand_image"} for name in disabled_cameras):
+        raise ValueError(f"unexpected camera observable set: {disabled_cameras}")
     policy.reset(seed=seed)
     plan_function = plan_c0_observed if method == "c0" else plan_c1_observed
     chunk = np.empty((0, 7), dtype=np.float32)
