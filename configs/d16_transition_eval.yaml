@@ -1,0 +1,20 @@
+contract_version: d16-v1
+ensemble_config: configs/world_model_ensemble.yaml
+split: validation
+horizon: 8
+batch_size: 256
+num_workers: 4
+bootstrap:
+  unit: episode
+  stratify_by: task
+  replicates: 10000
+  seed: 1601
+gate:
+  require_positive_overall_improvement: true
+  require_positive_episode_bootstrap_ci_lower: true
+  require_every_horizon_improves: true
+  require_h8_improvement_greater_than_h1: true
+notes:
+  - "copy prediction is z0 repeated over H"
+  - "learned prediction is the frozen D15 ensemble mean"
+  - "no simulator evaluation/test episode is read"
