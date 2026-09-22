@@ -109,3 +109,9 @@
 - Implemented C2 verification after every 2 actions at h2/h4/h6/h8. It compares the selected D15 ensemble prediction against a newly encoded live RGB observation and applies the immutable D20 mismatch-or-uncertainty rule.
 - Early triggers discard only a non-empty chunk suffix and replan on the next control step. The summary retains every plan/check and the ignored `replan_events.jsonl` is count- and SHA-addressed; synthetic, real-D13, resume, boundary, and finite-value checks pass.
 - A one-episode task-0 production smoke executed all 300 environment actions with no zero-action loop, but 90 of 103 plans ended early (84 at h2), including 86 uncertainty-only triggers. D21 is functionally valid but exposes the predeclared over-replanning risk. Only the narrow D22 task-0 comparison is authorized before deciding whether broader evaluation must stop.
+
+## 2026-09-22 — Stage 3, D22 task-0 ablation
+
+- Protocol-checked the all-task seed-11 C0 actor, C1, and C2 on the same task-0 episode indices, seeds 10000–10019, fixed initial states, 300-step limit, checkpoint hash, action clip, and official success API.
+- C0/C1/C2 all obtain 0/20, so no success-rate benefit or harm is identifiable. C2 performs 2,242 plans and 3,000 checks; 2,018 plans end early, averaging 100.9 replans per episode, with 1,859 uncertainty-only triggers.
+- All 6,000 actions are accounted for and no plan executes zero actions, ruling out an implementation-level infinite loop. The 90.01% early-plan rate is nevertheless an operational high-frequency replanning loop with no observed benefit. The frozen D20 thresholds were not changed, D22 status is `BLOCK_D23_HIGH_FREQUENCY_REPLANNING`, and the ten-task D23 expansion is not authorized.

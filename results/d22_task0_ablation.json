@@ -1,0 +1,389 @@
+{
+  "schema_version": 1,
+  "day": "D22",
+  "status": "BLOCK_D23_HIGH_FREQUENCY_REPLANNING",
+  "scope": "libero_spatial task 0, actor training seed 11",
+  "protocol": {
+    "episodes": 20,
+    "max_steps": 300,
+    "seed_file": "configs/eval_seeds_spatial.json",
+    "seed_file_sha256": "c43bab2dfdbb4b7a30ec143082930dde1de3bd2117ad790c2849fd6185ed1674",
+    "episode_identity_aligned": true,
+    "shared_actor_checkpoint_sha256": "8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4",
+    "checkpoint_hashes": {
+      "c0": "8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4",
+      "c1": "8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4",
+      "c2": "8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4"
+    },
+    "environment_action_range": [
+      -1.0,
+      1.0
+    ],
+    "action_clip_source_checks": {
+      "c0": true,
+      "c1": true,
+      "c2": true
+    }
+  },
+  "sources": {
+    "c0": {
+      "path": "/home/luo/embodied-libero-wm/results/c0/seed11/summary.json",
+      "sha256": "9d7b76f11a39baf9d1e1d543e2c528b3abe270a63c11eca0fbe219b27988dfc2"
+    },
+    "c1": {
+      "path": "/home/luo/embodied-libero-wm/results/c1/seed11/task0_d19.json",
+      "sha256": "24bb1aadb32cf222f469fec890e082c8c0d5b235b4dc272ee1ef82581e45f120"
+    },
+    "c2": {
+      "path": "/home/luo/embodied-libero-wm/results/c2/seed11/task0_d22.json",
+      "sha256": "a89189cbbdd09464d51e38002abac43cabc0cb8596de254fa1f678fc090f0c2c"
+    },
+    "c2_replan_jsonl": {
+      "path": "/home/luo/embodied-libero-wm/results/c2/seed11/replan_events_d22.jsonl",
+      "sha256": "d76a05b80a1d8756eb5671acb3e51c0bf41fe3540a44750a3782a9c284855107",
+      "event_count": 2018
+    }
+  },
+  "methods": {
+    "c0": {
+      "successes": 0,
+      "episodes": 20,
+      "success_rate": 0.0,
+      "planning_events": null,
+      "early_replan_events": 0
+    },
+    "c1": {
+      "successes": 0,
+      "episodes": 20,
+      "success_rate": 0.0,
+      "planning_events": 760,
+      "early_replan_events": 0
+    },
+    "c2": {
+      "successes": 0,
+      "episodes": 20,
+      "success_rate": 0.0,
+      "planning_events": 2242,
+      "verification_events": 3000,
+      "early_replan_events": 2018
+    }
+  },
+  "paired_episode_results": [
+    {
+      "episode_index": 0,
+      "seed": 10000,
+      "init_state_index": 0,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 103,
+      "c2_early_replans": 90
+    },
+    {
+      "episode_index": 1,
+      "seed": 10001,
+      "init_state_index": 1,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 114,
+      "c2_early_replans": 103
+    },
+    {
+      "episode_index": 2,
+      "seed": 10002,
+      "init_state_index": 2,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 132,
+      "c2_early_replans": 127
+    },
+    {
+      "episode_index": 3,
+      "seed": 10003,
+      "init_state_index": 3,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 102,
+      "c2_early_replans": 88
+    },
+    {
+      "episode_index": 4,
+      "seed": 10004,
+      "init_state_index": 4,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 88,
+      "c2_early_replans": 70
+    },
+    {
+      "episode_index": 5,
+      "seed": 10005,
+      "init_state_index": 5,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 117,
+      "c2_early_replans": 108
+    },
+    {
+      "episode_index": 6,
+      "seed": 10006,
+      "init_state_index": 6,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 105,
+      "c2_early_replans": 91
+    },
+    {
+      "episode_index": 7,
+      "seed": 10007,
+      "init_state_index": 7,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 87,
+      "c2_early_replans": 66
+    },
+    {
+      "episode_index": 8,
+      "seed": 10008,
+      "init_state_index": 8,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 112,
+      "c2_early_replans": 102
+    },
+    {
+      "episode_index": 9,
+      "seed": 10009,
+      "init_state_index": 9,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 104,
+      "c2_early_replans": 91
+    },
+    {
+      "episode_index": 10,
+      "seed": 10010,
+      "init_state_index": 10,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 114,
+      "c2_early_replans": 102
+    },
+    {
+      "episode_index": 11,
+      "seed": 10011,
+      "init_state_index": 11,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 113,
+      "c2_early_replans": 102
+    },
+    {
+      "episode_index": 12,
+      "seed": 10012,
+      "init_state_index": 12,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 119,
+      "c2_early_replans": 111
+    },
+    {
+      "episode_index": 13,
+      "seed": 10013,
+      "init_state_index": 13,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 128,
+      "c2_early_replans": 122
+    },
+    {
+      "episode_index": 14,
+      "seed": 10014,
+      "init_state_index": 14,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 116,
+      "c2_early_replans": 107
+    },
+    {
+      "episode_index": 15,
+      "seed": 10015,
+      "init_state_index": 15,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 115,
+      "c2_early_replans": 104
+    },
+    {
+      "episode_index": 16,
+      "seed": 10016,
+      "init_state_index": 16,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 113,
+      "c2_early_replans": 101
+    },
+    {
+      "episode_index": 17,
+      "seed": 10017,
+      "init_state_index": 17,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 122,
+      "c2_early_replans": 115
+    },
+    {
+      "episode_index": 18,
+      "seed": 10018,
+      "init_state_index": 18,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 130,
+      "c2_early_replans": 124
+    },
+    {
+      "episode_index": 19,
+      "seed": 10019,
+      "init_state_index": 19,
+      "c0_success": false,
+      "c1_success": false,
+      "c2_success": false,
+      "c0_steps": 300,
+      "c1_steps": 300,
+      "c2_steps": 300,
+      "c1_plans": 38,
+      "c2_plans": 108,
+      "c2_early_replans": 94
+    }
+  ],
+  "paired_success_differences": {
+    "c1_minus_c0": 0.0,
+    "c2_minus_c0": 0.0,
+    "c2_minus_c1": 0.0
+  },
+  "c2_behavior": {
+    "episodes_with_early_replan": 20,
+    "mean_early_replans_per_episode": 100.9,
+    "mean_executed_actions_per_plan": 2.6761819803746656,
+    "early_replan_fraction_of_plans": 0.9000892060660125,
+    "trigger_reason_counts": {
+      "mismatch_only": 37,
+      "uncertainty_only": 1859,
+      "both": 122
+    },
+    "horizon_check_counts": {
+      "2": 2242,
+      "4": 281,
+      "6": 255,
+      "8": 222
+    },
+    "horizon_early_replan_counts": {
+      "2": 1960,
+      "4": 25,
+      "6": 33,
+      "8": 0
+    },
+    "zero_action_plans": 0,
+    "all_environment_actions_accounted_for": true
+  },
+  "decision": {
+    "performance_claim": "no detected difference: all three methods are 0/20",
+    "behavior_finding": "C2 ends 90.01% of plans early and averages 100.9 replans per episode; the project stop-and-diagnose condition is met",
+    "thresholds_changed_from_test_results": false,
+    "d23_authorized": false
+  }
+}
