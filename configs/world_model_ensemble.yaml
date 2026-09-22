@@ -1,0 +1,15 @@
+contract_version: d15-v1
+member_count: 3
+member_seeds: [11, 23, 47]
+member_checkpoints:
+  - results/world_model/d14_single_seed11/best.pt
+  - results/world_model/d15_member_seed23/best.pt
+  - results/world_model/d15_member_seed47/best.pt
+aggregation:
+  prediction: l2_normalized_arithmetic_mean_of_member_latents
+  uncertainty: mean_pairwise_cosine_distance
+  uncertainty_formula: "2/(M*(M-1)) * sum_{i<j}(1-cos(pred_i,pred_j))"
+evaluation:
+  split: validation
+  batch_size: 256
+  num_workers: 4
