@@ -103,3 +103,9 @@
 - Evaluated 36 mismatch/uncertainty quantile pairs on 23,476 h2/h4/h6/h8 points from validation demos 45–49. No fixed simulator episode or success result entered selection.
 - Froze mismatch threshold `0.0290635973` (p99.5) and uncertainty threshold `0.0044514909` (p99.75), giving 0.75396% nominal OR-trigger rate against a ≤1% target.
 - A post-selection excluded diagnostic shows 59.47% of D19 plans have mean selected-candidate uncertainty above the threshold, warning of possible C2 over-replanning. Thresholds remain frozen; D24 must audit actual loop behavior.
+
+## 2026-09-22 — Stage 3, D21 C2 prediction verification
+
+- Implemented C2 verification after every 2 actions at h2/h4/h6/h8. It compares the selected D15 ensemble prediction against a newly encoded live RGB observation and applies the immutable D20 mismatch-or-uncertainty rule.
+- Early triggers discard only a non-empty chunk suffix and replan on the next control step. The summary retains every plan/check and the ignored `replan_events.jsonl` is count- and SHA-addressed; synthetic, real-D13, resume, boundary, and finite-value checks pass.
+- A one-episode task-0 production smoke executed all 300 environment actions with no zero-action loop, but 90 of 103 plans ended early (84 at h2), including 86 uncertainty-only triggers. D21 is functionally valid but exposes the predeclared over-replanning risk. Only the narrow D22 task-0 comparison is authorized before deciding whether broader evaluation must stop.
