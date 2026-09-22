@@ -1,0 +1,14 @@
+contract_version: d17-v1
+source_transition_eval: results/wm/transition_eval.json
+source_sample_records: results/wm/transition_eval_samples.jsonl
+samples_per_category: 20
+selection:
+  per_task_per_category: 2
+  require_distinct_demo_within_task: true
+  correct: lowest_mean_learned_cosine_error_per_task
+  incorrect: highest_mean_learned_cosine_error_per_task
+frames: [0, 1, 4, 8]
+notes:
+  - "correct/incorrect mean relative low/high prediction-error tails, not semantic ground truth"
+  - "review uses validation demonstrations only"
+  - "RGB and proprio are audit-only here and are not added to model inputs"
