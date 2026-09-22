@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "contract_version": "d15-v1",
+  "config": "configs/world_model_ensemble.yaml",
+  "config_sha256": "8cc3f41f60d939cca99edb1ec3836b3504e5738a35d72226aa5271aeb828e5da",
+  "member_count": 3,
+  "members": [
+    {
+      "seed": 11,
+      "path": "results/world_model/d14_single_seed11/best.pt",
+      "sha256": "12304c9da129f93325201fad84ce38796ca71fcf427821f64644d4203f6b3888",
+      "bytes": 9546723,
+      "best_validation": 0.009371344546612412,
+      "epoch": 13,
+      "global_step": 2665,
+      "source_commit": "c276bbcced898b2df7b41cf95e964390dd01fb81",
+      "config_sha256": "fc32c3c006fec9bc57a5aaeca2a3b2e0655e0dbba17c483826d7c1d52fc76577"
+    },
+    {
+      "seed": 23,
+      "path": "results/world_model/d15_member_seed23/best.pt",
+      "sha256": "cbed3b53a6d770f9995877d6400e188a72b77ef68a3b077159885312df754805",
+      "bytes": 9546659,
+      "best_validation": 0.009475131327288585,
+      "epoch": 12,
+      "global_step": 2460,
+      "source_commit": "b6cbe73109f4cec30367441ec93b6074cbfa337f",
+      "config_sha256": "fe64f21e0bb47e924bf3bb47b04d56b2f642088fdc554f3ab0f5e8066e23ce25"
+    },
+    {
+      "seed": 47,
+      "path": "results/world_model/d15_member_seed47/best.pt",
+      "sha256": "4ed392ec7d1204fd3b0e453415608f54f501f9d0aca29615253a32e9462b43a3",
+      "bytes": 9546723,
+      "best_validation": 0.009410237975026298,
+      "epoch": 14,
+      "global_step": 2870,
+      "source_commit": "b6cbe73109f4cec30367441ec93b6074cbfa337f",
+      "config_sha256": "2a1035097470f37e9d267cf99c003281a21905187e0058889b742a530158babb"
+    }
+  ],
+  "d13_data_contract_version": "d13-v1",
+  "d13_store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+  "d13_data_contract_sha256": "e988b7e1078b3c89614bc83225ba677045cfda3b854098a3e1180b85cca32181",
+  "normalization": {
+    "schema_version": 1,
+    "data_contract_version": "d13-v1",
+    "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "data_contract_sha256": "e988b7e1078b3c89614bc83225ba677045cfda3b854098a3e1180b85cca32181",
+    "train_episode_count": 450,
+    "minimum_std": 1e-06,
+    "z0": {
+      "rule": "frozen CLIP image latent is already L2-normalized; no standardization"
+    },
+    "language": {
+      "rule": "frozen CLIP text latent is already L2-normalized; no standardization"
+    },
+    "proprio": {
+      "mean": [
+        -0.025783763657440513,
+        0.10606899138900579,
+        1.0564510287578137,
+        0.01967004138558344,
+        -0.019863773416622973,
+        0.11607296051776846,
+        0.630624079682339,
+        0.058835829814016825,
+        -1.6500193539244463,
+        -0.1505161264838529,
+        2.30217305699021,
+        1.1153648861656535
+      ],
+      "std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "raw_std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "count": 55981,
+      "rule": "train demos 0-44: every episode proprio observation row exactly once; population mean/std; no overlapping WM-window expansion"
+    },
+    "action": {
+      "mean": [
+        0.15043248036961165,
+        0.13491899306777708,
+        -0.15583906462344355,
+        -0.004983779983459838,
+        -0.011163783694318051,
+        -0.01996220902811475,
+        0.10107867677513462
+      ],
+      "std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "raw_std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "count": 55531,
+      "rule": "train demos 0-44: every episode actions[1:] row exactly once; action[0] excluded; population mean/std; no overlapping WM-window expansion"
+    }
+  },
+  "aggregation": {
+    "prediction": "l2_normalized_arithmetic_mean_of_member_latents",
+    "uncertainty": "mean_pairwise_cosine_distance",
+    "uncertainty_formula": "2/(M*(M-1)) * sum_{i<j}(1-cos(pred_i,pred_j))"
+  }
+}

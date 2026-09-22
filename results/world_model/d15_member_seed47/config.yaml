@@ -1,0 +1,43 @@
+# D15 ensemble member 3/3. Architecture and data contract are identical to
+# D14; only the independent training seed changes.
+run:
+  method: d14_single_latent_forward_predictor
+  seed: 47
+  suite: libero_spatial
+data:
+  contract_version: d13-v1
+  store: artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5
+  data_contract: docs/world_model_data_contract.md
+  horizon: 8
+  latent_dim: 512
+  proprio_dim: 12
+  action_dim: 7
+  train_demo_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  validation_demo_ids: [45, 46, 47, 48, 49]
+  pairing: "(z[k], proprio[k], language, actions[k+1:k+9]) -> z[k+1:k+9]"
+normalization:
+  z0: l2_normalized_by_frozen_clip_no_standardization
+  language: l2_normalized_by_frozen_clip_no_standardization
+  proprio: train_only_unique_observation_rows_population_mean_std
+  actions: train_only_each_episode_actions_1_to_end_once_population_mean_std
+  minimum_std: 1.0e-6
+model:
+  latent_dim: 512
+  proprio_dim: 12
+  action_dim: 7
+  horizon: 8
+  z_projection_dim: 256
+  proprio_projection_dim: 64
+  language_projection_dim: 128
+  action_projection_dim: 64
+  gru_hidden_dim: 256
+optimization:
+  batch_size: 256
+  num_workers: 4
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  max_epochs: 15
+  precision: fp16
+  gradient_clip_norm: 10.0
+validation:
+  diagnostic_sample_count: 16

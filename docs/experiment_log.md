@@ -56,3 +56,21 @@
 ## 2026-09-20 — Stage 1, D11 all-task C0 launcher
 
 - Added an all-task evaluator that batches independent environment observations only for frozen-model inference. Each MuJoCo environment remains separate, uses its own fixed seed/init state, receives its own action chunk, and calls its own official `check_success()`; batching cannot exchange episode state or oracle data.
+
+## 2026-09-22 — Stage 2, D13 observation-aligned world-model data
+
+- Froze `d13-v1`: `(z[k], proprio[k], language, actions[k+1:k+9]) -> z[k+1:k+9]`, while leaving the C0 imitation-learning convention unchanged.
+- Created and audited an episode-grouped feature store with 62,250 unique observations, 52,381 train samples, and 5,869 validation samples. The store SHA-256 is `e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e`.
+- Verified multiple source indices, final legal starts, episode boundaries, split disjointness, and the oracle-field denylist. D13 commit `e37073e588505b4461d11dc81b174032ff297f2d` is tagged `d13-wm-data-v1`.
+
+## 2026-09-22 — Stage 2, D14 single latent predictor
+
+- Implemented the 792,000-parameter GRU latent-delta predictor and train-only unique-row normalization. Proprio count is 55,981; causal action count is 55,531.
+- Trained seed 11 for 15 epochs / 3,075 steps. The epoch-13 best checkpoint has validation cosine error `0.0093713445`, versus copy-current diagnostic `0.0157953181`.
+- Verified forward/backward, L2 output norms, finite gradients and checkpoint tensors, safe resume, historical-best protection, and independent checkpoint reload. Full evidence is in `docs/d14_world_model_single_predictor_audit.md`.
+
+## 2026-09-22 — Stage 2, D15 three-member ensemble
+
+- Trained independent seed-23 and seed-47 members and combined them with the frozen seed-11 D14 member. All three share the exact D13 store, split, architecture, and normalization contract.
+- Defined uncertainty as the mean pairwise cosine distance between three member latent predictions. On 5,869 validation samples its mean is `0.0015132597`, p95 is `0.0026366502`, and its diagnostic Pearson correlation with prediction error is `0.2501194`.
+- Ensemble mean prediction obtains validation cosine error `0.0089190605`, 4.83% below the best individual member. Training/member resources and checkpoint hashes are recorded in `docs/d15_world_model_ensemble_audit.md`; no D16 gate or C1/C2 result is claimed.

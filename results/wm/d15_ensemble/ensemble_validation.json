@@ -1,0 +1,111 @@
+{
+  "sample_count": 5869,
+  "ensemble_overall_cosine_error": 0.008919060507001858,
+  "ensemble_per_horizon_cosine_error": [
+    0.006295864627559946,
+    0.007558935940580487,
+    0.008384667937405004,
+    0.008990071237869249,
+    0.009452176928865502,
+    0.009844549633733945,
+    0.01020906335715643,
+    0.010617154392844308
+  ],
+  "members": [
+    {
+      "seed": 11,
+      "path": "results/world_model/d14_single_seed11/best.pt",
+      "sha256": "12304c9da129f93325201fad84ce38796ca71fcf427821f64644d4203f6b3888",
+      "bytes": 9546723,
+      "best_validation": 0.009371344546612412,
+      "epoch": 13,
+      "global_step": 2665,
+      "source_commit": "c276bbcced898b2df7b41cf95e964390dd01fb81",
+      "config_sha256": "fc32c3c006fec9bc57a5aaeca2a3b2e0655e0dbba17c483826d7c1d52fc76577",
+      "validation_overall_cosine_error_recomputed": 0.009371345020128609,
+      "validation_per_horizon_cosine_error_recomputed": [
+        0.00686870382558875,
+        0.008015182938805673,
+        0.00880832346319685,
+        0.009405851922707128,
+        0.009865780424312059,
+        0.010269540663085615,
+        0.010653712311155,
+        0.011083664612177791
+      ]
+    },
+    {
+      "seed": 23,
+      "path": "results/world_model/d15_member_seed23/best.pt",
+      "sha256": "cbed3b53a6d770f9995877d6400e188a72b77ef68a3b077159885312df754805",
+      "bytes": 9546659,
+      "best_validation": 0.009475131327288585,
+      "epoch": 12,
+      "global_step": 2460,
+      "source_commit": "b6cbe73109f4cec30367441ec93b6074cbfa337f",
+      "config_sha256": "fe64f21e0bb47e924bf3bb47b04d56b2f642088fdc554f3ab0f5e8066e23ce25",
+      "validation_overall_cosine_error_recomputed": 0.009475131579915188,
+      "validation_per_horizon_cosine_error_recomputed": [
+        0.006832797221825464,
+        0.00805096287889037,
+        0.0088777537239453,
+        0.00951298999713255,
+        0.010001979099260032,
+        0.010428213274931862,
+        0.010825175963993433,
+        0.011271180479342497
+      ]
+    },
+    {
+      "seed": 47,
+      "path": "results/world_model/d15_member_seed47/best.pt",
+      "sha256": "4ed392ec7d1204fd3b0e453415608f54f501f9d0aca29615253a32e9462b43a3",
+      "bytes": 9546723,
+      "best_validation": 0.009410237975026298,
+      "epoch": 14,
+      "global_step": 2870,
+      "source_commit": "b6cbe73109f4cec30367441ec93b6074cbfa337f",
+      "config_sha256": "2a1035097470f37e9d267cf99c003281a21905187e0058889b742a530158babb",
+      "validation_overall_cosine_error_recomputed": 0.00941023785950358,
+      "validation_per_horizon_cosine_error_recomputed": [
+        0.006862866013231666,
+        0.008050613456943165,
+        0.0088675586587019,
+        0.00946259963733818,
+        0.0099309508571797,
+        0.010320027533859587,
+        0.010685560071177895,
+        0.011101726647596543
+      ]
+    }
+  ],
+  "uncertainty_definition": "mean_pairwise_cosine_distance",
+  "uncertainty_formula": "2/(M*(M-1)) * sum_{i<j}(1-cos(pred_i,pred_j))",
+  "uncertainty_semantics": "epistemic member disagreement; not error or calibrated failure probability",
+  "uncertainty_mean": 0.0015132596866559496,
+  "uncertainty_std": 0.000600193598156564,
+  "uncertainty_per_horizon_mean": [
+    0.0016874157407113634,
+    0.0014510979500592382,
+    0.0014117280551555957,
+    0.001424301694045175,
+    0.001456250854243246,
+    0.001499199271263181,
+    0.0015534190224747583,
+    0.0016226649052950397
+  ],
+  "uncertainty_quantiles": {
+    "min": 0.000433504581451416,
+    "p50": 0.001385470270179212,
+    "p90": 0.0022882699966430666,
+    "p95": 0.002636650239583104,
+    "p99": 0.0035404929285868998,
+    "max": 0.006303807254880667
+  },
+  "uncertainty_error_pearson_diagnostic": 0.2501193649790504,
+  "inference_seconds": 0.37565257500136795,
+  "inference_ms_per_sample": 0.06400623189663791,
+  "gpu_peak_memory_allocated_bytes": 76961792,
+  "gpu_peak_memory_reserved_bytes": 98566144,
+  "nan_inf_audit": "pass"
+}

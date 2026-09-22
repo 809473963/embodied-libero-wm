@@ -174,7 +174,8 @@ def main() -> int:
     flattened_uncertainty = uncertainty.flatten()
     flattened_error = prediction_error.flatten()
     quantiles = torch.quantile(
-        flattened_uncertainty.double(), torch.tensor([0.0, 0.5, 0.9, 0.95, 0.99, 1.0])
+        flattened_uncertainty.double(),
+        torch.tensor([0.0, 0.5, 0.9, 0.95, 0.99, 1.0], dtype=torch.float64),
     )
     if not math.isfinite(pearson(flattened_uncertainty, flattened_error)):
         raise FloatingPointError("uncertainty/error correlation is undefined")
