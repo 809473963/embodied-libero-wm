@@ -1,0 +1,14 @@
+contract_version: d20-v1
+source_transition_eval: results/wm/transition_eval.json
+source_sample_records: results/wm/transition_eval_samples.jsonl
+split: validation_demos_45_49
+check_horizons: [2, 4, 6, 8]
+threshold_quantiles: [0.95, 0.975, 0.99, 0.995, 0.9975, 0.999]
+target_nominal_or_trigger_rate: 0.01
+selection_rule: highest_nonzero_nominal_or_trigger_rate_not_exceeding_target_then_lowest_quantile_sum
+trigger_rule: "mismatch > mismatch_threshold OR uncertainty > uncertainty_threshold"
+bootstrap_or_test_success_used: false
+notes:
+  - "validation demonstrations are nominal expert trajectories, not failure labels"
+  - "threshold selection does not use fixed simulator evaluation episodes"
+  - "D19 online uncertainty is evaluated only after selection as an excluded diagnostic"
