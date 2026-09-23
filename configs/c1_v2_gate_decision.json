@@ -1,0 +1,47 @@
+{
+  "schema_version": 1,
+  "protocol_sha256": "19ce68fabe912d849e65d283e4ce713beda233f4549385c672c8abb655060946",
+  "decision": "BLOCK_C1_V2_RERANKER",
+  "decision_partition": "controller_development init-state indices 30-39",
+  "c1_v2_or_c2_v2_40_49_observed": false,
+  "c0_v2_40_49_baseline_previously_observed": true,
+  "criteria": {
+    "c1_v2_total_successes_min": 36,
+    "c1_v2_success_retention_fraction_vs_c0_v2_min": 0.8,
+    "c1_v2_nonzero_tasks_min": 6,
+    "c1_v2_nonzero_task_delta_vs_c0_v2_min": -1,
+    "finite_actions_metrics_and_trajectories": true,
+    "planned_action_element_clipping_ratio_max": 0.1,
+    "replacement_count_min": 100,
+    "replacement_selected_score_ge_default_fraction_min": 1.0,
+    "replacement_positive_score_gain_fraction_min": 1.0,
+    "selected_observed_mismatch_nonworse_horizon_count_min": 2
+  },
+  "checks": {
+    "c1_v2_total_successes_min": true,
+    "c1_v2_success_retention_fraction_vs_c0_v2_min": true,
+    "c1_v2_nonzero_tasks_min": true,
+    "c1_v2_nonzero_task_delta_vs_c0_v2_min": true,
+    "finite_actions_metrics_and_trajectories": true,
+    "planned_action_element_clipping_ratio_max": true,
+    "replacement_count_min": true,
+    "replacement_selected_score_ge_default_fraction_min": true,
+    "replacement_positive_score_gain_fraction_min": true,
+    "selected_observed_mismatch_nonworse_horizon_count_min": false
+  },
+  "measured": {
+    "c0_v2_successes": 44,
+    "c1_v2_successes": 44,
+    "success_retention_fraction": 1.0,
+    "c0_v2_nonzero_tasks": 7,
+    "c1_v2_nonzero_tasks": 7,
+    "c1_v2_clipping_ratio": 0.0008247800586510264,
+    "replacement_count": 2441,
+    "selected_observed_mismatch_nonworse_horizon_count": 1
+  },
+  "audit_result": "results/c1_v2/rebase_audit.json",
+  "audit_result_sha256": "bca41d9330d57039bbf4e4cff6acd5486bedf25c7256f94456415c1e0aa709e5",
+  "distribution_table": "results/c1_v2/wm_distribution_table.csv",
+  "distribution_table_sha256": "d6128e7ae3d5a1ff4691734ec0f96b47dc51090e128686b2efc24de500f7d40f",
+  "next_step": "do not proceed to D20-v2 or C2-v2"
+}

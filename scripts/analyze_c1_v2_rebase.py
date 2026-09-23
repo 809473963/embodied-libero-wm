@@ -99,16 +99,28 @@ def load_protocol(path: Path) -> tuple[dict[str, Any], dict[str, Any], str]:
 
 
 def normalization_contract(protocol: dict[str, Any]) -> dict[str, Any]:
+    actor_record = protocol["c0_v2_freeze"]
+    actor_path = ROOT / actor_record["checkpoint"]
+    if sha256(actor_path) != actor_record["checkpoint_sha256"]:
+        raise ValueError("frozen C0-v2 checkpoint changed")
     actor_state = torch.load(
-        ROOT / protocol["c0_v2_freeze"]["checkpoint"],
+        actor_path,
         map_location="cpu",
         weights_only=False,
     )
+    ensemble_record = protocol["world_model_freeze"]
+    ensemble_path = ROOT / ensemble_record["ensemble_config"]
+    if sha256(ensemble_path) != ensemble_record["ensemble_config_sha256"]:
+        raise ValueError("frozen world-model ensemble config changed")
     ensemble_config = __import__("yaml").safe_load(
-        (ROOT / protocol["world_model_freeze"]["ensemble_config"]).read_text()
+        ensemble_path.read_text()
     )
+    member_paths = [ROOT / value for value in ensemble_config["member_checkpoints"]]
+    member_hashes = [sha256(path) for path in member_paths]
+    if member_hashes != ensemble_record["member_checkpoint_sha256"]:
+        raise ValueError("frozen world-model ensemble checkpoint changed")
     wm_state = torch.load(
-        ROOT / ensemble_config["member_checkpoints"][0],
+        member_paths[0],
         map_location="cpu",
         weights_only=False,
     )
@@ -461,6 +473,23 @@ def aggregate_controller(rollout: dict[str, Any]) -> dict[str, Any]:
         )
         for event in plans
     )
+    interface_summaries = [result["interface_summary"] for result in rollout["tasks"]]
+    actor_elements = sum(
+        int(item["actor_denormalized_preclip"]["elements"])
+        for item in interface_summaries
+    )
+    actor_outside = sum(
+        int(item["actor_denormalized_preclip"]["outside_elements"])
+        for item in interface_summaries
+    )
+    all_candidate_elements = sum(
+        int(item["all_candidate_preclip"]["elements"])
+        for item in interface_summaries
+    )
+    all_candidate_outside = sum(
+        int(item["all_candidate_preclip"]["outside_elements"])
+        for item in interface_summaries
+    )
     return {
         "successes": sum(bool(episode["success"]) for episode in all_episodes),
         "episodes": len(all_episodes),
@@ -472,6 +501,9 @@ def aggregate_controller(rollout: dict[str, Any]) -> dict[str, Any]:
         "replacement_rate": float(
             np.mean([bool(event["replaced_actor_default"]) for event in plans])
         ),
+        "actor_denormalized_preclip_clipping_ratio": actor_outside / actor_elements,
+        "all_generated_candidate_clipping_ratio": all_candidate_outside
+        / all_candidate_elements,
         "planned_action_clipping_ratio": selected_outside / selected_elements,
         "mean_planning_ms": float(np.mean([event["planning_ms"] for event in plans])),
         "p95_planning_ms": float(np.quantile([event["planning_ms"] for event in plans], 0.95)),
@@ -648,7 +680,7 @@ def gate_decision(
 
 def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
     buffer = io.StringIO()
-    writer = csv.DictWriter(buffer, fieldnames=list(rows[0]))
+    writer = csv.DictWriter(buffer, fieldnames=list(rows[0]), lineterminator="\n")
     writer.writeheader()
     writer.writerows(rows)
     atomic_text(path, buffer.getvalue())
@@ -698,6 +730,18 @@ def main() -> int:
     )
     historical = load_historical_c0_v1(protocol)
     expert = load_expert(protocol)
+    d20 = protocol["frozen_d20_v1_diagnostic_only"]
+    d20_path = ROOT / d20["result"]
+    if sha256(d20_path) != d20["result_sha256"]:
+        raise ValueError("frozen D20-v1 threshold result changed")
+    d20_result = json.loads(d20_path.read_text())
+    selected = d20_result["selected"]
+    if (
+        float(selected["mismatch_threshold"]) != float(d20["mismatch_threshold"])
+        or float(selected["uncertainty_threshold"])
+        != float(d20["uncertainty_threshold"])
+    ):
+        raise ValueError("protocol thresholds differ from frozen D20-v1 result")
     distributions = {
         "expert_demo_validation": expert,
         "historical_c0_v1_rollout_20_29": event_distribution(
@@ -710,7 +754,6 @@ def main() -> int:
             c1_v2["checks"], "selected_observed_mismatch", "selected_uncertainty"
         ),
     }
-    d20 = protocol["frozen_d20_v1_diagnostic_only"]
     distribution_rows, distribution_table = build_distribution_table(
         distributions,
         float(d20["mismatch_threshold"]),
@@ -720,7 +763,7 @@ def main() -> int:
     c1_summary = aggregate_controller(c1_v2)
     frozen_baseline = json.loads(
         (ROOT / protocol["controller_development"]["frozen_c0_v2_baseline"]).read_text()
-    )["c0_v2"]
+    )
     baseline_reproduced = (
         c0_summary["successes"] == frozen_baseline["successes"]
         and c0_summary["nonzero_tasks"] == frozen_baseline["nonzero_tasks"]
@@ -731,6 +774,23 @@ def main() -> int:
     finite = all(
         finite_tree(value)
         for value in (distribution_table, c0_summary, c1_summary, reranking)
+    )
+    interface_summaries = [result["interface_summary"] for result in c1_v2["tasks"]]
+    all_candidate_elements = sum(
+        int(item["all_candidate_preclip"]["elements"])
+        for item in interface_summaries
+    )
+    all_candidate_outside = sum(
+        int(item["all_candidate_preclip"]["outside_elements"])
+        for item in interface_summaries
+    )
+    actor_elements = sum(
+        int(item["actor_denormalized_preclip"]["elements"])
+        for item in interface_summaries
+    )
+    actor_outside = sum(
+        int(item["actor_denormalized_preclip"]["outside_elements"])
+        for item in interface_summaries
     )
     # Reaching this point means every stored plan has passed the independent
     # denormalize -> candidate -> WM-normalize equations and latent-norm audit.
@@ -763,7 +823,19 @@ def main() -> int:
             **normalization,
             "full_sidecar_backcheck_passed": True,
             "c0_v2_logging_reproduced_frozen_baseline": baseline_reproduced,
-            "raw_candidate_range": [
+            "actor_denormalized_preclip_range": [
+                min(item["actor_denormalized_preclip"]["min"] for item in interface_summaries),
+                max(item["actor_denormalized_preclip"]["max"] for item in interface_summaries),
+            ],
+            "actor_denormalized_preclip_clipping_ratio": actor_outside
+            / actor_elements,
+            "generated_candidate_preclip_range": [
+                min(item["all_candidate_preclip"]["min"] for item in interface_summaries),
+                max(item["all_candidate_preclip"]["max"] for item in interface_summaries),
+            ],
+            "all_generated_candidate_clipping_ratio": all_candidate_outside
+            / all_candidate_elements,
+            "raw_executable_candidate_range": [
                 min(
                     result["interface_summary"]["raw_candidate_range"][0]
                     for result in c1_v2["tasks"]

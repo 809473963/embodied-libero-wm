@@ -142,3 +142,12 @@
 - C0-v1 obtains 10/100 over 3/10 non-zero tasks; C0-v2 obtains 38/100 over 7/10 non-zero tasks, a +28-success and +4-task improvement. Mean steps fall from 284.09 to 225.62; C0-v2 planned-action clipping is 4.119%, below the frozen 10% ceiling.
 - Paired outcomes are 5 both-success, 5 C0-v1-only, 33 C0-v2-only, and 57 neither; exact two-sided McNemar `p=4.25596e-6`. All six precommitted acceptance checks pass, so the final verdict is `CAUSAL_ALIGNMENT_IMPROVES_BASELINE`.
 - The effect is broad but not uniform: C0-v2 remains 0/10 on tasks 7 and 9 and trails C0-v1 on tasks 4 and 6 in this holdout. The result supports causal label alignment for this fixed C0 setup, not a claim that all tasks or the WM controller are solved. D23 and D20-v2/C2-v2 remain blocked/not run.
+
+## 2026-09-24 — C1-v2 rebase and WM distribution audit
+
+- Froze C0-v2 at annotated tag `c0-v2-causal-aligned` and established the independent `C0-v2 -> C1-v2 -> D20-v2 -> C2-v2` stack. Corrected the online mapping: eight-element `candidate[0:8]` maps to D13's eight causal actions `a[k+1]...a[k+8]`; there is no missing ninth action.
+- Preregistered C1-v2 and its gate before rollout, then used only controller-development init-state indices 30–39. No C1-v2/C2-v2 result from 40–49 was viewed; D20-v1 thresholds remained diagnostic-only and unchanged.
+- Independently verified the complete Actor-normalized -> Actor-denormalized -> raw candidate -> WM-normalized -> ensemble path for every stored plan. The sidecar audit proves that the WM never receives Actor-normalized actions directly; the final selected-candidate clipping rate is 0.0825%.
+- C0-v2 and C1-v2 both obtain 44/100 successes over 7/10 non-zero tasks. C1-v2 replaces the Actor default on 2,441/2,728 plans (89.48%), but gains on tasks 1/3/5/8 are offset by regressions on tasks 2/6.
+- C0-v2 rollout mismatch and uncertainty are closer to expert validation than historical C0-v1 at all h2/h4/h6/h8 quantile comparisons. Median excess uncertainty is reduced by 58.0% on average, but C0-v2 medians remain 1.39–1.41× expert, so residual policy-induced OOD remains.
+- Replacement predictions are non-worse than the Actor-default prediction against the subsequent observed latent only at h8, not h2/h4/h6. The preregistered requirement was at least two horizons; final verdict is `BLOCK_C1_V2_RERANKER`. D20-v2, C2-v2, old D23, and 40–49 controller evaluation were not started.
