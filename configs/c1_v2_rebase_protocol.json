@@ -1,0 +1,116 @@
+{
+  "protocol_version": "c1-v2-rebase-and-wm-distribution-v1",
+  "status": "PREREGISTERED_BEFORE_C1_V2_DEVELOPMENT_ROLLOUT",
+  "created_at": "2026-09-24",
+  "stack": "C0-v2 -> C1-v2 -> D20-v2 -> C2-v2",
+  "suite": "libero_spatial",
+  "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "episodes_per_task": 10,
+  "max_steps": 300,
+  "action_horizon": 8,
+  "check_horizons": [2, 4, 6, 8],
+  "c0_v2_freeze": {
+    "commit": "20f3166d0a0f4d7ed034425c056f042d85fe077b",
+    "annotated_tag": "c0-v2-causal-aligned",
+    "checkpoint": "results/c0_v2/seed11/best.pt",
+    "checkpoint_sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0",
+    "config": "results/c0_v2/seed11/config.yaml",
+    "config_sha256": "33bb274fd6413bdd2ccd15158a25272e40f2580c3f33b31feb241f3cced12897",
+    "dataset_contract": "c0-v2-causal-alignment-v1",
+    "pairing": "obs[k] -> actions[k+1:k+9]",
+    "normalization": "embedded in checkpoint; train-only unique proprio rows and each episode actions[1:] once",
+    "development_result": "results/c0_v2/development_comparison.json",
+    "development_result_sha256": "ca64a2d5169efc4f4db0dccb34c546305a86a922a6648bd4763dd5ecb3ad5a29",
+    "confirmatory_result": "results/c0_v2/confirmatory_comparison.json",
+    "confirmatory_result_sha256": "ed2576d41bb4b02abda6158bea122ec4969354a933c2610ecf1a7cdcea6b494c"
+  },
+  "causal_mapping": {
+    "d13": "z[k] + actions[k+1:k+9] -> z[k+1:k+9]",
+    "python_half_open_count": 8,
+    "online": "candidate[0:8] maps naturally to a[k+1]...a[k+8] after the current observation",
+    "missing_ninth_action": false
+  },
+  "c1_v2": {
+    "config": "configs/c1_v2_rerank.yaml",
+    "config_sha256": "6e956d86bc84662369cc4f15109b948bf4ea1ca59a6c028db443ff1ed6086747",
+    "candidate_count": 3,
+    "base_candidate_index": 0,
+    "candidate_idea": "same deterministic antithetic smoothed Gaussian perturbation as C1-v1",
+    "world_model_changes_control_after_selection": false,
+    "early_replanning": false
+  },
+  "world_model_freeze": {
+    "ensemble_config": "configs/world_model_ensemble.yaml",
+    "ensemble_config_sha256": "8cc3f41f60d939cca99edb1ec3836b3504e5738a35d72226aa5271aeb828e5da",
+    "member_checkpoint_sha256": [
+      "12304c9da129f93325201fad84ce38796ca71fcf427821f64644d4203f6b3888",
+      "cbed3b53a6d770f9995877d6400e188a72b77ef68a3b077159885312df754805",
+      "4ed392ec7d1204fd3b0e453415608f54f501f9d0aca29615253a32e9462b43a3"
+    ],
+    "expert_validation_samples": "results/wm/transition_eval_samples.jsonl",
+    "expert_validation_samples_sha256": "d0f71bf9ade25116dd465bbecb09214b9b8544e2f853802ffa7116430da4ee3a"
+  },
+  "frozen_d20_v1_diagnostic_only": {
+    "result": "results/threshold_selection.json",
+    "result_sha256": "3d07d136d9a9ae493ea04ad9bd08ec5f4099a993e301de0906c47996b46c23a1",
+    "mismatch_threshold": 0.029063597321510315,
+    "uncertainty_threshold": 0.004451490938663483,
+    "may_change_actions": false,
+    "thresholds_may_be_modified": false
+  },
+  "historical_c0_v1_distribution": {
+    "partition": "init-state indices 20-29",
+    "diagnosis": "results/control_validation/d22_5_diagnosis.json",
+    "diagnosis_sha256": "acfbc124f0f5156250d3ffe7cea94c0cba54b8bb8e1a94dd287f9ff287a9f527",
+    "comparison_limit": "descriptive cross-partition comparison against C0-v2 indices 30-39; not a paired causal estimate"
+  },
+  "controller_development": {
+    "partition_source": "configs/c0_v2_causal_alignment_protocol.json",
+    "partition_source_sha256": "24ebc5f9d870a21293bf93c5129ce33376a908f9ea1f3726de0f6cc37e5c9a0c",
+    "partition_name": "controller_development",
+    "init_state_indices": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39],
+    "seed_generation_rule": "seed = 30000 + 100 * task_id + development_episode_index",
+    "frozen_c0_v2_baseline": "results/c0_v2/controller_development/c0_v2.json",
+    "frozen_c0_v2_baseline_sha256": "30f1615f7d44693f4378bd0c5e1d94286a05249bb560eb761e5b4d40c0b1f04d",
+    "wm_logging_changes_actions": false
+  },
+  "partition_boundaries": {
+    "0-19": "legacy exposed results; forbidden for design",
+    "20-29": "historical diagnosis/development; C0-v1 WM distribution reference only",
+    "30-39": "controller development for C0-v2 logging and C1-v2 comparison",
+    "40-49": "forbidden for C1/C2 design; future controller evaluation only and never fully blind because C0-v2 baseline outcomes are known"
+  },
+  "c1_v2_gate": {
+    "decision_must_be_committed_before_any_c1_v2_or_c2_v2_rollout_on_40_49": true,
+    "go_requires_all": {
+      "c1_v2_total_successes_min": 36,
+      "c1_v2_success_retention_fraction_vs_c0_v2_min": 0.8,
+      "c1_v2_nonzero_tasks_min": 6,
+      "c1_v2_nonzero_task_delta_vs_c0_v2_min": -1,
+      "finite_actions_metrics_and_trajectories": true,
+      "planned_action_element_clipping_ratio_max": 0.1,
+      "replacement_count_min": 100,
+      "replacement_selected_score_ge_default_fraction_min": 1.0,
+      "replacement_positive_score_gain_fraction_min": 1.0,
+      "selected_observed_mismatch_nonworse_horizon_count_min": 2
+    },
+    "observed_mismatch_definition": "on replacement plans, compare selected-candidate prediction and actor-default prediction with the same subsequently observed selected-policy latent; diagnostic, not a counterfactual default rollout",
+    "predicted_mismatch_limit": "no pre-execution target latent exists, so C1-v2 must not fabricate a predicted-error or predicted-mismatch label; uncertainty is reported separately",
+    "go_verdict": "GO_D20_V2",
+    "no_go_verdict": "BLOCK_C1_V2_RERANKER",
+    "interface_failure_verdict": "BLOCK_WM_INTERFACE"
+  },
+  "forbidden": [
+    "modify or retrain C0-v2",
+    "use init-state indices 40-49 for C1-v2 or C2-v2 design",
+    "tune against task4/task6 confirmatory regressions",
+    "modify the D13 world-model causal contract",
+    "retrain D14/D15 without a demonstrated action-interface error",
+    "modify D20-v1 thresholds",
+    "select D20-v2 thresholds",
+    "implement a replanning rule",
+    "run C2-v2",
+    "run old D23",
+    "overwrite C0-v1/C1-v1/C2-v1 or D21/D22 artifacts"
+  ]
+}

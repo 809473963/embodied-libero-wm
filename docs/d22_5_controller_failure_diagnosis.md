@@ -199,7 +199,7 @@ This is insufficient for a broad C1/C2 study: most tasks provide no baseline hea
 which to separate reranking/replanning effects. `BASELINE_COMPETENCE_BLOCK` therefore applies.
 A C0-v2 is required, but this round did not train or alter C0.
 
-## 8. Additional causal-index integration finding
+## 8. Online causal mapping correction
 
 D13's frozen observation-dynamics contract is:
 
@@ -207,21 +207,23 @@ D13's frozen observation-dynamics contract is:
 (z[k], p[k], language, actions[k+1:k+9]) -> z[k+1:k+9]
 ```
 
-The deployed D19/D21 integration instead feeds the immediately executed candidate chunk
-`candidate[0:8]` at the current observation. The diagnostic collector deliberately preserved
-this behavior so that it measured the actual deployed controller distribution; it did not repair
-or reinterpret the trace.
+Python's half-open slice `actions[k+1:k+9]` contains exactly eight actions:
+`a[k+1] ... a[k+8]`. Immediately after the current online observation, the generated
+`candidate[0:8]` naturally represents those same next eight causal actions. There is no missing
+ninth action and no action-index mismatch at this interface.
 
-This is an unresolved causal action-index mismatch. D20-v2 must first define how an online C0
-chunk maps to the WM's `k+1:k+9` training inputs (including the missing ninth action if needed),
-or introduce a versioned WM contract. Otherwise controller mismatch cannot be given a clean
-causal interpretation.
+The D19/D21 collector did feed the immediately executed candidate chunk to the WM. Its traces
+remain frozen as historical evidence, but the earlier interpretation of this mapping as an
+unresolved causal-index problem is retracted. D20-v2 still requires policy-induced calibration
+because the demonstrated uncertainty distribution shift remains real; that requirement is not
+evidence of an action-count error.
 
 ## 9. D20-v2 answers
 
 **A. D20-v1's largest problem:** threshold calibration used expert demonstration transitions,
 while C2 deployment uses policy-induced states/actions. The effect is especially severe for
-ensemble disagreement. The unresolved action-index mapping is a second structural problem.
+ensemble disagreement. The online eight-action mapping itself is causally aligned as corrected
+above.
 
 **B. Move calibration to policy-induced controller-validation?** Yes. D20-v2 should precommit
 separate controller calibration and controller evaluation rollouts. It must not tune and report

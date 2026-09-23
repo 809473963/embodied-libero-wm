@@ -1,0 +1,31 @@
+contract_version: c1-v2
+stack: C0-v2 -> C1-v2 -> D20-v2 -> C2-v2
+actor:
+  checkpoint: results/c0_v2/seed11/best.pt
+  checkpoint_sha256: 2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0
+  supervision_contract: "obs[k] -> actions[k+1:k+9]"
+  normalization_contract: c0-v2-causal-alignment-v1
+ensemble:
+  config: configs/world_model_ensemble.yaml
+  config_sha256: 8cc3f41f60d939cca99edb1ec3836b3504e5738a35d72226aa5271aeb828e5da
+  causal_action_mapping: "online candidate[0:8] == a[k+1]...a[k+8]"
+candidates:
+  count: 3
+  generator: deterministic_antithetic_smoothed_gaussian
+  base_candidate_index: 0
+  seed: 1901
+  noise_std: [0.05, 0.05, 0.05, 0.02, 0.02, 0.02, 0.0]
+  temporal_kernel: [0.25, 0.5, 0.25]
+  clip_range: [-1.0, 1.0]
+rerank:
+  goal_horizon: 8
+  goal_progress_weight: 1.0
+  uncertainty_penalty_weight: 0.25
+  base_deviation_penalty_weight: 0.001
+  formula: "goal_progress - 0.25*mean_pairwise_uncertainty - 0.001*normalized_action_deviation"
+execution:
+  horizon: 8
+  execute_full_selected_chunk: true
+  world_model_logging_only_after_selection: true
+  in_execution_verification: false
+  early_replan: false

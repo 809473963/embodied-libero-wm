@@ -122,7 +122,7 @@
 - Collected logging-only C0 and C1-selected rollouts on all 10 tasks without any replan or trigger-dependent control. C0/C1 produced 13,772/14,085 check events. At h2, policy uncertainty median is about 2× expert validation and p95 is 2.75–2.91×, whereas mismatch shifts only about 1.17–1.19× at the median.
 - Frozen D20 OR would trigger on 23.91% of C0 and 22.75% of C1 checks, dominated by uncertainty-only (22.15% / 20.96%); mismatch-only rates are 3.67% / 3.26%. Uncertainty still has moderate useful ranking signal: current/next high-error AUROC is about 0.70–0.73 and mismatch rises monotonically across uncertainty deciles. It should not be treated as a calibrated OR replan probability.
 - Independent C0 competence is 15/100 with per-task successes `[0,0,0,0,3,0,7,0,5,0]`; 7/10 tasks remain at floor. Final verdict is `BASELINE_COMPETENCE_BLOCK`, with secondary `GO_D20_V2_PROTOCOL_DESIGN_ONLY`. D23 stays blocked, D20-v1 is unchanged, and no C0-v2 was trained.
-- Diagnosed an additional unresolved integration issue: D13 trains on `actions[k+1:k+9]`, while deployed C1/C2 feeds the immediately executed candidate `[0:8]`. The trace preserves that behavior for diagnosis, but D20-v2 must resolve/version the causal mapping before further controller claims.
+- The original D22.5 write-up described D13 `actions[k+1:k+9]` versus online `candidate[0:8]` as an unresolved mapping. This was later corrected: both contain the same eight next actions, `a[k+1]...a[k+8]`; there is no missing ninth action. The measured policy-induced WM distribution shift remains valid independently of that interpretation.
 
 ## 2026-09-23 — C0-v2 causal-alignment preregistration
 
