@@ -151,3 +151,11 @@
 - C0-v2 and C1-v2 both obtain 44/100 successes over 7/10 non-zero tasks. C1-v2 replaces the Actor default on 2,441/2,728 plans (89.48%), but gains on tasks 1/3/5/8 are offset by regressions on tasks 2/6.
 - C0-v2 rollout mismatch and uncertainty are closer to expert validation than historical C0-v1 at all h2/h4/h6/h8 quantile comparisons. Median excess uncertainty is reduced by 58.0% on average, but C0-v2 medians remain 1.39–1.41× expert, so residual policy-induced OOD remains.
 - Replacement predictions are non-worse than the Actor-default prediction against the subsequent observed latent only at h8, not h2/h4/h6. The preregistered requirement was at least two horizons; final verdict is `BLOCK_C1_V2_RERANKER`. D20-v2, C2-v2, old D23, and 40–49 controller evaluation were not started.
+
+## 2026-09-24 — C1-v2.1 candidate discriminability diagnosis
+
+- Froze the C1-v2 negative result at annotated tag `c1-v2-reranker-negative`, then committed the complete offline diagnosis protocol and implementation before viewing results. The analysis uses all 5,869 demo-validation samples from demos 45–49 and performs no simulator rollout or init-state access.
+- The production N=3 generator contains useful alternatives under the preregistered expert-action oracle: an alternative is best on 65.87% of samples and best-of-three raw-action MSE improves 1.648% over the default. `CANDIDATE_GENERATOR_BLOCK` does not apply.
+- The frozen score cannot identify those alternatives: top-score oracle accuracy is 32.22%, below the 33.33% random reference; pairwise accuracy is 49.43%, mean within-sample Spearman is -0.0235, and score-margin/improvement Spearman is -0.0165. The old ~3.48e-4 selected-score gain is almost entirely goal-progress selection, while uncertainty and action-deviation contributions barely affect ordering.
+- Production candidates have mean normalized action-chunk separation 1.75294, but their predicted latent cosine separation is only 0.004235 times ordinary WM validation error. The diagnostic scale sweep finds no preregistered scale where generator, score, and WM sensitivity all work; it does not select a new scale.
+- Final blockers are `RERANKER_SCORE_BLOCK` and `WM_ACTION_SENSITIVITY_BLOCK`. The frozen C1-v2 verdict remains `BLOCK_C1_V2_RERANKER`; no new C1 controller, D20-v2, C2-v2, or 40–49 evaluation is authorized.
