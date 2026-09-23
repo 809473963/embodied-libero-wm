@@ -92,6 +92,7 @@ def validate_checkpoint(
 
 def require_committed_holdout_go(
     partition: str,
+    policy_label: str,
     gate_decision_path: Path | None,
     protocol_sha256: str,
     checkpoint_sha256: str,
@@ -111,8 +112,9 @@ def require_committed_holdout_go(
     expected = {
         "protocol_sha256": protocol_sha256,
         "decision": "GO_CONFIRMATORY_HOLDOUT",
-        "frozen_c0_v2_checkpoint_sha256": checkpoint_sha256,
     }
+    if policy_label == "c0_v2":
+        expected["frozen_c0_v2_checkpoint_sha256"] = checkpoint_sha256
     mismatches = [key for key, value in expected.items() if decision.get(key) != value]
     if mismatches:
         raise ValueError(f"holdout gate decision mismatch: {mismatches}")
@@ -322,7 +324,7 @@ def main() -> int:
     checkpoint_hash = checkpoint_record["checkpoint_sha256"]
     protocol_hash = sha256(args.protocol)
     require_committed_holdout_go(
-        args.partition, args.gate_decision, protocol_hash, checkpoint_hash
+        args.partition, args.policy_label, args.gate_decision, protocol_hash, checkpoint_hash
     )
     partition = protocol["partitions"][args.partition]
     protocol_task_ids = [int(value) for value in protocol["task_ids"]]

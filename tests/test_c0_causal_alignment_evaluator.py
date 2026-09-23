@@ -70,9 +70,9 @@ def main() -> None:
     assert result["nonzero_tasks"] == 1
     assert result["action_clipping"]["clipped_element_ratio"] == 2 / 112
 
-    require_committed_holdout_go("controller_development", None, "p", "c")
+    require_committed_holdout_go("controller_development", "c0_v1", None, "p", "c")
     try:
-        require_committed_holdout_go("confirmatory_holdout", None, "p", "c")
+        require_committed_holdout_go("confirmatory_holdout", "c0_v1", None, "p", "c")
     except ValueError as error:
         assert "--gate-decision" in str(error)
     else:
@@ -82,11 +82,30 @@ def main() -> None:
         untracked = Path(directory) / "decision.json"
         untracked.write_text(json.dumps({"decision": "GO_CONFIRMATORY_HOLDOUT"}))
         try:
-            require_committed_holdout_go("confirmatory_holdout", untracked, "p", "c")
+            require_committed_holdout_go(
+                "confirmatory_holdout", "c0_v2", untracked, "p", "c"
+            )
         except Exception:
             pass
         else:
             raise AssertionError("holdout accepted an uncommitted gate")
+    gate = PROJECT_ROOT / "configs/c0_v2_holdout_gate_decision.json"
+    protocol_hash = sha256(protocol_path)
+    require_committed_holdout_go(
+        "confirmatory_holdout", "c0_v1", gate, protocol_hash, sha256(checkpoint)
+    )
+    v2_checkpoint = PROJECT_ROOT / "results/c0_v2/seed11/best.pt"
+    require_committed_holdout_go(
+        "confirmatory_holdout", "c0_v2", gate, protocol_hash, sha256(v2_checkpoint)
+    )
+    try:
+        require_committed_holdout_go(
+            "confirmatory_holdout", "c0_v2", gate, protocol_hash, "wrong"
+        )
+    except ValueError as error:
+        assert "checkpoint" in str(error)
+    else:
+        raise AssertionError("holdout accepted the wrong C0-v2 checkpoint")
     print({"status": "PASS", "holdout_locked": True, "raw_episode_summary": True})
 
 
