@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "experiment": "c0-v2-causal-alignment",
+  "protocol_sha256": "24ebc5f9d870a21293bf93c5129ce33376a908f9ea1f3726de0f6cc37e5c9a0c",
+  "decision": "GO_CONFIRMATORY_HOLDOUT",
+  "holdout_observed_at_decision": false,
+  "frozen_c0_v2_checkpoint": "/home/luo/embodied-libero-wm/results/c0_v2/seed11/best.pt",
+  "frozen_c0_v2_checkpoint_sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0",
+  "development_comparison_sha256": "ca64a2d5169efc4f4db0dccb34c546305a86a922a6648bd4763dd5ecb3ad5a29",
+  "gate_criteria": {
+    "c0_v2_total_successes_min": 20,
+    "c0_v2_nonzero_tasks_min": 5,
+    "success_improvement_over_c0_v1_min": 10,
+    "nonzero_task_improvement_over_c0_v1_min": 2,
+    "finite_actions_and_metrics": true,
+    "planned_action_element_clipping_ratio_max": 0.1
+  },
+  "gate_checks": {
+    "c0_v2_total_successes_min": true,
+    "c0_v2_nonzero_tasks_min": true,
+    "success_improvement_over_c0_v1_min": true,
+    "nonzero_task_improvement_over_c0_v1_min": true,
+    "finite_actions_and_metrics": true,
+    "planned_action_element_clipping_ratio_max": true
+  },
+  "gate_measured": {
+    "c0_v1_successes": 11,
+    "c0_v2_successes": 45,
+    "success_improvement": 34,
+    "c0_v1_nonzero_tasks": 3,
+    "c0_v2_nonzero_tasks": 7,
+    "nonzero_task_improvement": 4,
+    "c0_v2_clipped_element_ratio": 0.040020026702269694
+  }
+}

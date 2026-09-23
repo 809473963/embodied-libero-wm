@@ -1,0 +1,224 @@
+{
+  "schema_version": 1,
+  "experiment": "c0-v2-causal-alignment",
+  "partition": "controller_development",
+  "protocol_sha256": "24ebc5f9d870a21293bf93c5129ce33376a908f9ea1f3726de0f6cc37e5c9a0c",
+  "holdout_observed": false,
+  "c0_v1_result": "/home/luo/embodied-libero-wm/results/c0_v2/controller_development/c0_v1.json",
+  "c0_v1_result_sha256": "12f0a71ed470901921bbcb8d5d6f3ffda764267111a137be54f5f66d3c1667c2",
+  "c0_v2_result": "/home/luo/embodied-libero-wm/results/c0_v2/controller_development/c0_v2.json",
+  "c0_v2_result_sha256": "30f1615f7d44693f4378bd0c5e1d94286a05249bb560eb761e5b4d40c0b1f04d",
+  "c0_v1": {
+    "successes": 11,
+    "episodes": 100,
+    "macro_success_rate": 0.11000000000000001,
+    "nonzero_tasks": 3,
+    "mean_steps": 281.88,
+    "clipped_element_ratio": 0.024879053216584703,
+    "tasks": [
+      {
+        "task_id": 0,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.007142857142857143
+      },
+      {
+        "task_id": 1,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.025798872180451127
+      },
+      {
+        "task_id": 2,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.0368890977443609
+      },
+      {
+        "task_id": 3,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.01593045112781955
+      },
+      {
+        "task_id": 4,
+        "successes": 3,
+        "episodes": 10,
+        "success_rate": 0.3,
+        "mean_steps": 258.5,
+        "clipped_element_ratio": 0.007513066202090592
+      },
+      {
+        "task_id": 5,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.028101503759398495
+      },
+      {
+        "task_id": 6,
+        "successes": 4,
+        "episodes": 10,
+        "success_rate": 0.4,
+        "mean_steps": 231.0,
+        "clipped_element_ratio": 0.03132618235007314
+      },
+      {
+        "task_id": 7,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.03143796992481203
+      },
+      {
+        "task_id": 8,
+        "successes": 4,
+        "episodes": 10,
+        "success_rate": 0.4,
+        "mean_steps": 229.3,
+        "clipped_element_ratio": 0.05326565557729941
+      },
+      {
+        "task_id": 9,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.01705827067669173
+      }
+    ]
+  },
+  "c0_v2": {
+    "successes": 45,
+    "episodes": 100,
+    "macro_success_rate": 0.45,
+    "nonzero_tasks": 7,
+    "mean_steps": 210.58,
+    "clipped_element_ratio": 0.040020026702269694,
+    "tasks": [
+      {
+        "task_id": 0,
+        "successes": 9,
+        "episodes": 10,
+        "success_rate": 0.9,
+        "mean_steps": 110.4,
+        "clipped_element_ratio": 0.04698581560283688
+      },
+      {
+        "task_id": 1,
+        "successes": 7,
+        "episodes": 10,
+        "success_rate": 0.7,
+        "mean_steps": 168.4,
+        "clipped_element_ratio": 0.03271028037383177
+      },
+      {
+        "task_id": 2,
+        "successes": 7,
+        "episodes": 10,
+        "success_rate": 0.7,
+        "mean_steps": 162.7,
+        "clipped_element_ratio": 0.036663216011042096
+      },
+      {
+        "task_id": 3,
+        "successes": 8,
+        "episodes": 10,
+        "success_rate": 0.8,
+        "mean_steps": 128.8,
+        "clipped_element_ratio": 0.0367965367965368
+      },
+      {
+        "task_id": 4,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.01738721804511278
+      },
+      {
+        "task_id": 5,
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 0.5,
+        "mean_steps": 202.0,
+        "clipped_element_ratio": 0.0429125138427464
+      },
+      {
+        "task_id": 6,
+        "successes": 5,
+        "episodes": 10,
+        "success_rate": 0.5,
+        "mean_steps": 208.1,
+        "clipped_element_ratio": 0.03442911255411255
+      },
+      {
+        "task_id": 7,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.05714285714285714
+      },
+      {
+        "task_id": 8,
+        "successes": 4,
+        "episodes": 10,
+        "success_rate": 0.4,
+        "mean_steps": 225.4,
+        "clipped_element_ratio": 0.037212787212787216
+      },
+      {
+        "task_id": 9,
+        "successes": 0,
+        "episodes": 10,
+        "success_rate": 0.0,
+        "mean_steps": 300.0,
+        "clipped_element_ratio": 0.05432330827067669
+      }
+    ]
+  },
+  "delta": {
+    "successes": 34,
+    "macro_success_rate": 0.33999999999999997,
+    "nonzero_tasks": 4,
+    "mean_steps": -71.29999999999998,
+    "clipped_element_ratio": 0.01514097348568499
+  },
+  "gate_criteria": {
+    "c0_v2_total_successes_min": 20,
+    "c0_v2_nonzero_tasks_min": 5,
+    "success_improvement_over_c0_v1_min": 10,
+    "nonzero_task_improvement_over_c0_v1_min": 2,
+    "finite_actions_and_metrics": true,
+    "planned_action_element_clipping_ratio_max": 0.1
+  },
+  "gate_checks": {
+    "c0_v2_total_successes_min": true,
+    "c0_v2_nonzero_tasks_min": true,
+    "success_improvement_over_c0_v1_min": true,
+    "nonzero_task_improvement_over_c0_v1_min": true,
+    "finite_actions_and_metrics": true,
+    "planned_action_element_clipping_ratio_max": true
+  },
+  "gate_measured": {
+    "c0_v1_successes": 11,
+    "c0_v2_successes": 45,
+    "success_improvement": 34,
+    "c0_v1_nonzero_tasks": 3,
+    "c0_v2_nonzero_tasks": 7,
+    "nonzero_task_improvement": 4,
+    "c0_v2_clipped_element_ratio": 0.040020026702269694
+  },
+  "gate_pass": true
+}

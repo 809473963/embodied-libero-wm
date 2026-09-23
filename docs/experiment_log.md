@@ -129,3 +129,9 @@
 - D22.5 remains frozen with `BASELINE_COMPETENCE_BLOCK`; D23 and D20-v2 threshold work remain blocked. New experimental status is `GO_C0_V2_CAUSAL_ALIGNMENT`.
 - Corrected the interpretation of Python's half-open slice: `actions[k+1:k+9]` contains exactly eight actions, `a[k+1]...a[k+8]`, so an online eight-action candidate does not lack a ninth action. The isolated question is whether changing C0 supervision from `actions[k:k+8]` to `actions[k+1:k+9]` improves baseline competence.
 - Before any rollout from init states 30–49, preregistered 30–39 as controller development and locked 40–49 as a one-shot confirmatory holdout. The numerical GO criteria are frozen in `configs/c0_v2_causal_alignment_protocol.json`.
+
+## 2026-09-23 — C0-v2 development gate
+
+- Trained the single-factor causal-label actor with the same C0 architecture and budget. The data layer contains exactly 52,381 train and 5,869 validation samples; best demo-validation raw action MSE is 0.042468849 at epoch 3.
+- On preregistered init-state indices 30–39, frozen C0-v1 obtains 11/100 over 3/10 non-zero tasks; C0-v2 obtains 45/100 over 7/10 non-zero tasks. Mean steps change from 281.88 to 210.58 and C0-v2 clipping is 4.00%.
+- All six preregistered gate checks pass. Before observing any init state in 40–49, froze checkpoint SHA-256 `2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0` and recorded `GO_CONFIRMATORY_HOLDOUT`.

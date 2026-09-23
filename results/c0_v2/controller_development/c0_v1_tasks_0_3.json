@@ -1,0 +1,807 @@
+{
+  "schema_version": 1,
+  "experiment": "c0-v2-causal-alignment",
+  "policy_label": "c0_v1",
+  "partition": "controller_development",
+  "protocol": "/home/luo/embodied-libero-wm/configs/c0_v2_causal_alignment_protocol.json",
+  "protocol_sha256": "24ebc5f9d870a21293bf93c5129ce33376a908f9ea1f3726de0f6cc37e5c9a0c",
+  "checkpoint": "/home/luo/embodied-libero-wm/results/c0/seed11/best.pt",
+  "checkpoint_sha256": "8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4",
+  "suite": "libero_spatial",
+  "episodes_per_task": 10,
+  "max_steps": 300,
+  "parallel_envs": 5,
+  "completed_task_ids": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "complete": false,
+  "tasks": [
+    {
+      "task_id": 0,
+      "task_name": "pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+      "episodes": 10,
+      "successes": 0,
+      "success_rate": 0.0,
+      "mean_steps": 300.0,
+      "episode_results": [
+        {
+          "episode_index": 0,
+          "seed": 30000,
+          "init_state_index": 30,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 6,
+            "elements_above_one": 22,
+            "elements_outside_minus_one_to_one": 28,
+            "clipped_element_ratio": 0.013157894736842105,
+            "raw_min": -1.1192816495895386,
+            "raw_max": 1.2283101081848145
+          }
+        },
+        {
+          "episode_index": 1,
+          "seed": 30001,
+          "init_state_index": 31,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 3,
+            "elements_above_one": 34,
+            "elements_outside_minus_one_to_one": 37,
+            "clipped_element_ratio": 0.01738721804511278,
+            "raw_min": -1.0811957120895386,
+            "raw_max": 1.2543609142303467
+          }
+        },
+        {
+          "episode_index": 2,
+          "seed": 30002,
+          "init_state_index": 32,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 7,
+            "elements_above_one": 1,
+            "elements_outside_minus_one_to_one": 8,
+            "clipped_element_ratio": 0.0037593984962406013,
+            "raw_min": -1.1543606519699097,
+            "raw_max": 1.0001238584518433
+          }
+        },
+        {
+          "episode_index": 3,
+          "seed": 30003,
+          "init_state_index": 33,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 1,
+            "elements_above_one": 0,
+            "elements_outside_minus_one_to_one": 1,
+            "clipped_element_ratio": 0.00046992481203007516,
+            "raw_min": -1.0270737409591675,
+            "raw_max": 0.9943346977233887
+          }
+        },
+        {
+          "episode_index": 4,
+          "seed": 30004,
+          "init_state_index": 34,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 1,
+            "elements_above_one": 22,
+            "elements_outside_minus_one_to_one": 23,
+            "clipped_element_ratio": 0.010808270676691729,
+            "raw_min": -1.008531928062439,
+            "raw_max": 1.2022591829299927
+          }
+        },
+        {
+          "episode_index": 5,
+          "seed": 30005,
+          "init_state_index": 35,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 3,
+            "elements_above_one": 0,
+            "elements_outside_minus_one_to_one": 3,
+            "clipped_element_ratio": 0.0014097744360902255,
+            "raw_min": -1.0897150039672852,
+            "raw_max": 0.9243834018707275
+          }
+        },
+        {
+          "episode_index": 6,
+          "seed": 30006,
+          "init_state_index": 36,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 4,
+            "elements_above_one": 0,
+            "elements_outside_minus_one_to_one": 4,
+            "clipped_element_ratio": 0.0018796992481203006,
+            "raw_min": -1.055137038230896,
+            "raw_max": 0.9610475301742554
+          }
+        },
+        {
+          "episode_index": 7,
+          "seed": 30007,
+          "init_state_index": 37,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 1,
+            "elements_above_one": 12,
+            "elements_outside_minus_one_to_one": 13,
+            "clipped_element_ratio": 0.006109022556390977,
+            "raw_min": -1.0411053895950317,
+            "raw_max": 1.1598058938980103
+          }
+        },
+        {
+          "episode_index": 8,
+          "seed": 30008,
+          "init_state_index": 38,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 6,
+            "elements_above_one": 20,
+            "elements_outside_minus_one_to_one": 26,
+            "clipped_element_ratio": 0.012218045112781954,
+            "raw_min": -1.1413313150405884,
+            "raw_max": 1.172348976135254
+          }
+        },
+        {
+          "episode_index": 9,
+          "seed": 30009,
+          "init_state_index": 39,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 3,
+            "elements_above_one": 6,
+            "elements_outside_minus_one_to_one": 9,
+            "clipped_element_ratio": 0.0042293233082706765,
+            "raw_min": -1.0486223697662354,
+            "raw_max": 1.1009502410888672
+          }
+        }
+      ],
+      "action_clipping": {
+        "episodes_with_clipping_stats": 10,
+        "planned_chunks": 380,
+        "planned_action_elements": 21280,
+        "elements_below_minus_one": 35,
+        "elements_above_one": 117,
+        "elements_outside_minus_one_to_one": 152,
+        "clipped_element_ratio": 0.007142857142857143,
+        "raw_min": -1.1543606519699097,
+        "raw_max": 1.2543609142303467
+      }
+    },
+    {
+      "task_id": 1,
+      "task_name": "pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl next to the ramekin and place it on the plate",
+      "episodes": 10,
+      "successes": 0,
+      "success_rate": 0.0,
+      "mean_steps": 300.0,
+      "episode_results": [
+        {
+          "episode_index": 0,
+          "seed": 30100,
+          "init_state_index": 30,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 4,
+            "elements_above_one": 28,
+            "elements_outside_minus_one_to_one": 32,
+            "clipped_element_ratio": 0.015037593984962405,
+            "raw_min": -1.0691686868667603,
+            "raw_max": 1.1303781270980835
+          }
+        },
+        {
+          "episode_index": 1,
+          "seed": 30101,
+          "init_state_index": 31,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 5,
+            "elements_above_one": 55,
+            "elements_outside_minus_one_to_one": 60,
+            "clipped_element_ratio": 0.02819548872180451,
+            "raw_min": -1.1333132982254028,
+            "raw_max": 1.289095401763916
+          }
+        },
+        {
+          "episode_index": 2,
+          "seed": 30102,
+          "init_state_index": 32,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 7,
+            "elements_above_one": 41,
+            "elements_outside_minus_one_to_one": 48,
+            "clipped_element_ratio": 0.022556390977443608,
+            "raw_min": -1.1423178911209106,
+            "raw_max": 1.2003295421600342
+          }
+        },
+        {
+          "episode_index": 3,
+          "seed": 30103,
+          "init_state_index": 33,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 18,
+            "elements_above_one": 31,
+            "elements_outside_minus_one_to_one": 49,
+            "clipped_element_ratio": 0.023026315789473683,
+            "raw_min": -1.2590643167495728,
+            "raw_max": 1.2061185836791992
+          }
+        },
+        {
+          "episode_index": 4,
+          "seed": 30104,
+          "init_state_index": 34,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 4,
+            "elements_above_one": 33,
+            "elements_outside_minus_one_to_one": 37,
+            "clipped_element_ratio": 0.01738721804511278,
+            "raw_min": -1.1915249824523926,
+            "raw_max": 1.1187999248504639
+          }
+        },
+        {
+          "episode_index": 5,
+          "seed": 30105,
+          "init_state_index": 35,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 5,
+            "elements_above_one": 85,
+            "elements_outside_minus_one_to_one": 90,
+            "clipped_element_ratio": 0.042293233082706765,
+            "raw_min": -1.093724012374878,
+            "raw_max": 1.2919899225234985
+          }
+        },
+        {
+          "episode_index": 6,
+          "seed": 30106,
+          "init_state_index": 36,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 1,
+            "elements_above_one": 100,
+            "elements_outside_minus_one_to_one": 101,
+            "clipped_element_ratio": 0.047462406015037595,
+            "raw_min": -1.0766855478286743,
+            "raw_max": 1.29006028175354
+          }
+        },
+        {
+          "episode_index": 7,
+          "seed": 30107,
+          "init_state_index": 37,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 3,
+            "elements_above_one": 50,
+            "elements_outside_minus_one_to_one": 53,
+            "clipped_element_ratio": 0.024906015037593984,
+            "raw_min": -1.0300805568695068,
+            "raw_max": 1.3643534183502197
+          }
+        },
+        {
+          "episode_index": 8,
+          "seed": 30108,
+          "init_state_index": 38,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 1,
+            "elements_above_one": 12,
+            "elements_outside_minus_one_to_one": 13,
+            "clipped_element_ratio": 0.006109022556390977,
+            "raw_min": -1.0220624208450317,
+            "raw_max": 1.0975732803344727
+          }
+        },
+        {
+          "episode_index": 9,
+          "seed": 30109,
+          "init_state_index": 39,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 10,
+            "elements_above_one": 56,
+            "elements_outside_minus_one_to_one": 66,
+            "clipped_element_ratio": 0.03101503759398496,
+            "raw_min": -1.1789820194244385,
+            "raw_max": 1.237958550453186
+          }
+        }
+      ],
+      "action_clipping": {
+        "episodes_with_clipping_stats": 10,
+        "planned_chunks": 380,
+        "planned_action_elements": 21280,
+        "elements_below_minus_one": 58,
+        "elements_above_one": 491,
+        "elements_outside_minus_one_to_one": 549,
+        "clipped_element_ratio": 0.025798872180451127,
+        "raw_min": -1.2590643167495728,
+        "raw_max": 1.3643534183502197
+      }
+    },
+    {
+      "task_id": 2,
+      "task_name": "pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl from table center and place it on the plate",
+      "episodes": 10,
+      "successes": 0,
+      "success_rate": 0.0,
+      "mean_steps": 300.0,
+      "episode_results": [
+        {
+          "episode_index": 0,
+          "seed": 30200,
+          "init_state_index": 30,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 35,
+            "elements_above_one": 36,
+            "elements_outside_minus_one_to_one": 71,
+            "clipped_element_ratio": 0.03336466165413534,
+            "raw_min": -1.291869044303894,
+            "raw_max": 1.184891939163208
+          }
+        },
+        {
+          "episode_index": 1,
+          "seed": 30201,
+          "init_state_index": 31,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 75,
+            "elements_above_one": 23,
+            "elements_outside_minus_one_to_one": 98,
+            "clipped_element_ratio": 0.046052631578947366,
+            "raw_min": -1.2474861145019531,
+            "raw_max": 1.1419562101364136
+          }
+        },
+        {
+          "episode_index": 2,
+          "seed": 30202,
+          "init_state_index": 32,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 73,
+            "elements_above_one": 20,
+            "elements_outside_minus_one_to_one": 93,
+            "clipped_element_ratio": 0.043703007518796994,
+            "raw_min": -1.176087498664856,
+            "raw_max": 1.190680980682373
+          }
+        },
+        {
+          "episode_index": 3,
+          "seed": 30203,
+          "init_state_index": 33,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 30,
+            "elements_above_one": 27,
+            "elements_outside_minus_one_to_one": 57,
+            "clipped_element_ratio": 0.026785714285714284,
+            "raw_min": -1.1336342096328735,
+            "raw_max": 1.1038447618484497
+          }
+        },
+        {
+          "episode_index": 4,
+          "seed": 30204,
+          "init_state_index": 34,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 23,
+            "elements_above_one": 31,
+            "elements_outside_minus_one_to_one": 54,
+            "clipped_element_ratio": 0.02537593984962406,
+            "raw_min": -1.2040680646896362,
+            "raw_max": 1.197434902191162
+          }
+        },
+        {
+          "episode_index": 5,
+          "seed": 30205,
+          "init_state_index": 35,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 53,
+            "elements_above_one": 28,
+            "elements_outside_minus_one_to_one": 81,
+            "clipped_element_ratio": 0.03806390977443609,
+            "raw_min": -1.2590643167495728,
+            "raw_max": 1.1993646621704102
+          }
+        },
+        {
+          "episode_index": 6,
+          "seed": 30206,
+          "init_state_index": 36,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 114,
+            "elements_above_one": 18,
+            "elements_outside_minus_one_to_one": 132,
+            "clipped_element_ratio": 0.06203007518796992,
+            "raw_min": -1.3044120073318481,
+            "raw_max": 1.087442398071289
+          }
+        },
+        {
+          "episode_index": 7,
+          "seed": 30207,
+          "init_state_index": 37,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 22,
+            "elements_above_one": 36,
+            "elements_outside_minus_one_to_one": 58,
+            "clipped_element_ratio": 0.02725563909774436,
+            "raw_min": -1.18863046169281,
+            "raw_max": 1.177173137664795
+          }
+        },
+        {
+          "episode_index": 8,
+          "seed": 30208,
+          "init_state_index": 38,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 56,
+            "elements_above_one": 40,
+            "elements_outside_minus_one_to_one": 96,
+            "clipped_element_ratio": 0.045112781954887216,
+            "raw_min": -1.2252947092056274,
+            "raw_max": 1.192610740661621
+          }
+        },
+        {
+          "episode_index": 9,
+          "seed": 30209,
+          "init_state_index": 39,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 25,
+            "elements_above_one": 20,
+            "elements_outside_minus_one_to_one": 45,
+            "clipped_element_ratio": 0.021146616541353382,
+            "raw_min": -1.1326693296432495,
+            "raw_max": 1.1130108833312988
+          }
+        }
+      ],
+      "action_clipping": {
+        "episodes_with_clipping_stats": 10,
+        "planned_chunks": 380,
+        "planned_action_elements": 21280,
+        "elements_below_minus_one": 506,
+        "elements_above_one": 279,
+        "elements_outside_minus_one_to_one": 785,
+        "clipped_element_ratio": 0.0368890977443609,
+        "raw_min": -1.3044120073318481,
+        "raw_max": 1.1993646621704102
+      }
+    },
+    {
+      "task_id": 3,
+      "task_name": "pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate",
+      "task_language": "pick up the black bowl on the cookie box and place it on the plate",
+      "episodes": 10,
+      "successes": 0,
+      "success_rate": 0.0,
+      "mean_steps": 300.0,
+      "episode_results": [
+        {
+          "episode_index": 0,
+          "seed": 30300,
+          "init_state_index": 30,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 16,
+            "elements_above_one": 14,
+            "elements_outside_minus_one_to_one": 30,
+            "clipped_element_ratio": 0.014097744360902255,
+            "raw_min": -1.190560221672058,
+            "raw_max": 1.1665598154067993
+          }
+        },
+        {
+          "episode_index": 1,
+          "seed": 30301,
+          "init_state_index": 31,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 49,
+            "elements_above_one": 9,
+            "elements_outside_minus_one_to_one": 58,
+            "clipped_element_ratio": 0.02725563909774436,
+            "raw_min": -1.3401113748550415,
+            "raw_max": 1.1105988025665283
+          }
+        },
+        {
+          "episode_index": 2,
+          "seed": 30302,
+          "init_state_index": 32,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 0,
+            "elements_above_one": 18,
+            "elements_outside_minus_one_to_one": 18,
+            "clipped_element_ratio": 0.008458646616541353,
+            "raw_min": -0.8576918840408325,
+            "raw_max": 1.1993646621704102
+          }
+        },
+        {
+          "episode_index": 3,
+          "seed": 30303,
+          "init_state_index": 33,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 29,
+            "elements_above_one": 13,
+            "elements_outside_minus_one_to_one": 42,
+            "clipped_element_ratio": 0.019736842105263157,
+            "raw_min": -1.181876540184021,
+            "raw_max": 1.133755087852478
+          }
+        },
+        {
+          "episode_index": 4,
+          "seed": 30304,
+          "init_state_index": 34,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 8,
+            "elements_above_one": 20,
+            "elements_outside_minus_one_to_one": 28,
+            "clipped_element_ratio": 0.013157894736842105,
+            "raw_min": -1.1027591228485107,
+            "raw_max": 1.2234858274459839
+          }
+        },
+        {
+          "episode_index": 5,
+          "seed": 30305,
+          "init_state_index": 35,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 0,
+            "elements_above_one": 23,
+            "elements_outside_minus_one_to_one": 23,
+            "clipped_element_ratio": 0.010808270676691729,
+            "raw_min": -0.9725048542022705,
+            "raw_max": 1.2553257942199707
+          }
+        },
+        {
+          "episode_index": 6,
+          "seed": 30306,
+          "init_state_index": 36,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 46,
+            "elements_above_one": 17,
+            "elements_outside_minus_one_to_one": 63,
+            "clipped_element_ratio": 0.029605263157894735,
+            "raw_min": -1.2426618337631226,
+            "raw_max": 1.1684895753860474
+          }
+        },
+        {
+          "episode_index": 7,
+          "seed": 30307,
+          "init_state_index": 37,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 0,
+            "elements_above_one": 14,
+            "elements_outside_minus_one_to_one": 14,
+            "clipped_element_ratio": 0.006578947368421052,
+            "raw_min": -0.9368054866790771,
+            "raw_max": 1.133755087852478
+          }
+        },
+        {
+          "episode_index": 8,
+          "seed": 30308,
+          "init_state_index": 38,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 16,
+            "elements_above_one": 13,
+            "elements_outside_minus_one_to_one": 29,
+            "clipped_element_ratio": 0.01362781954887218,
+            "raw_min": -1.2204704284667969,
+            "raw_max": 1.139544129371643
+          }
+        },
+        {
+          "episode_index": 9,
+          "seed": 30309,
+          "init_state_index": 39,
+          "success": false,
+          "steps": 300,
+          "action_clipping": {
+            "planned_chunks": 38,
+            "planned_action_elements": 2128,
+            "elements_below_minus_one": 8,
+            "elements_above_one": 26,
+            "elements_outside_minus_one_to_one": 34,
+            "clipped_element_ratio": 0.015977443609022556,
+            "raw_min": -1.1162669658660889,
+            "raw_max": 1.231204628944397
+          }
+        }
+      ],
+      "action_clipping": {
+        "episodes_with_clipping_stats": 10,
+        "planned_chunks": 380,
+        "planned_action_elements": 21280,
+        "elements_below_minus_one": 172,
+        "elements_above_one": 167,
+        "elements_outside_minus_one_to_one": 339,
+        "clipped_element_ratio": 0.01593045112781955,
+        "raw_min": -1.3401113748550415,
+        "raw_max": 1.2553257942199707
+      }
+    }
+  ],
+  "episodes": 40,
+  "successes": 0,
+  "macro_success_rate": 0.0,
+  "mean_steps": 300.0,
+  "nonzero_tasks": 0,
+  "action_clipping": {
+    "episodes_with_clipping_stats": 40,
+    "planned_chunks": 1520,
+    "planned_action_elements": 85120,
+    "elements_below_minus_one": 771,
+    "elements_above_one": 1054,
+    "elements_outside_minus_one_to_one": 1825,
+    "clipped_element_ratio": 0.02144031954887218,
+    "raw_min": -1.3401113748550415,
+    "raw_max": 1.3643534183502197
+  }
+}

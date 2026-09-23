@@ -1,0 +1,103 @@
+{
+  "method": "c0_actor_only",
+  "experiment": "c0_v2_causal_alignment",
+  "supervision_contract": "obs[k] -> actions[k+1:k+9]",
+  "action_start_offset": 1,
+  "seed": 11,
+  "source_commit": "65fb0879ce712ea639835adfa069132b583661f2",
+  "device": "cuda",
+  "in_memory": true,
+  "train_samples": 52381,
+  "validation_samples": 5869,
+  "parameters": 739512,
+  "config_sha256": "33bb274fd6413bdd2ccd15158a25272e40f2580c3f33b31feb241f3cced12897",
+  "feature_store": "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+  "feature_store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+  "feature_manifest": "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json",
+  "feature_manifest_sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc",
+  "normalization": {
+    "schema_version": 1,
+    "contract_version": "c0-v2-causal-alignment-v1",
+    "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "feature_manifest_sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc",
+    "train_episode_count": 450,
+    "minimum_std": 1e-06,
+    "proprio": {
+      "mean": [
+        -0.025783763657440513,
+        0.10606899138900579,
+        1.0564510287578137,
+        0.01967004138558344,
+        -0.019863773416622973,
+        0.11607296051776846,
+        0.630624079682339,
+        0.058835829814016825,
+        -1.6500193539244463,
+        -0.1505161264838529,
+        2.30217305699021,
+        1.1153648861656535
+      ],
+      "std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "raw_std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "count": 55981,
+      "rule": "train demos 0-44; every episode proprio observation row exactly once; population mean/std"
+    },
+    "action": {
+      "mean": [
+        0.15043248036961165,
+        0.13491899306777708,
+        -0.15583906462344355,
+        -0.004983779983459838,
+        -0.011163783694318051,
+        -0.01996220902811475,
+        0.10107867677513462
+      ],
+      "std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "raw_std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "count": 55531,
+      "rule": "train demos 0-44; every episode actions[1:] row exactly once; action[0] excluded; population mean/std"
+    }
+  }
+}
