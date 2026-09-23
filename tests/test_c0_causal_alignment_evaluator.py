@@ -61,6 +61,7 @@ def main() -> None:
         checkpoint,
         sha256(checkpoint),
         1,
+        [0],
         [task],
         True,
     )

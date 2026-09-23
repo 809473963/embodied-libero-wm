@@ -233,6 +233,7 @@ def build_result(
     checkpoint: Path,
     checkpoint_hash: str,
     parallel_envs: int,
+    requested_task_ids: list[int],
     tasks: list[dict[str, Any]],
     complete: bool,
 ) -> dict[str, Any]:
@@ -250,6 +251,7 @@ def build_result(
         "episodes_per_task": protocol["episodes_per_task"],
         "max_steps": protocol["max_steps"],
         "parallel_envs": parallel_envs,
+        "requested_task_ids": requested_task_ids,
         "completed_task_ids": [task["task_id"] for task in tasks],
         "complete": complete,
         "tasks": tasks,
@@ -269,6 +271,7 @@ def validate_resume(
     protocol_hash: str,
     checkpoint_hash: str,
     parallel_envs: int,
+    requested_task_ids: list[int],
 ) -> None:
     expected = {
         "schema_version": 1,
@@ -282,6 +285,11 @@ def validate_resume(
     mismatches = [key for key, value in expected.items() if existing.get(key) != value]
     if mismatches:
         raise ValueError(f"incompatible resume result: {mismatches}")
+    existing_requested = existing.get("requested_task_ids")
+    if existing_requested is not None and existing_requested != requested_task_ids:
+        raise ValueError("resume requested task IDs differ")
+    if existing_requested is None and requested_task_ids != list(range(10)):
+        raise ValueError("legacy partial result may only resume the full protocol task list")
 
 
 def main() -> int:
@@ -301,6 +309,7 @@ def main() -> int:
     parser.add_argument("--gate-decision", type=Path)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--parallel-envs", type=int, default=1)
+    parser.add_argument("--task-ids", type=int, nargs="+", choices=range(10))
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     args = parser.parse_args()
@@ -316,7 +325,12 @@ def main() -> int:
         args.partition, args.gate_decision, protocol_hash, checkpoint_hash
     )
     partition = protocol["partitions"][args.partition]
-    task_ids = [int(value) for value in protocol["task_ids"]]
+    protocol_task_ids = [int(value) for value in protocol["task_ids"]]
+    task_ids = args.task_ids if args.task_ids is not None else protocol_task_ids
+    if len(set(task_ids)) != len(task_ids) or task_ids != sorted(task_ids):
+        raise ValueError("--task-ids must be unique and sorted")
+    if not set(task_ids).issubset(protocol_task_ids):
+        raise ValueError("--task-ids leave the preregistered protocol")
     tasks: list[dict[str, Any]] = []
     if args.output.exists():
         if not args.resume:
@@ -329,6 +343,7 @@ def main() -> int:
             protocol_hash,
             checkpoint_hash,
             args.parallel_envs,
+            task_ids,
         )
         tasks = existing["tasks"]
         if [task["task_id"] for task in tasks] != task_ids[: len(tasks)]:
@@ -359,6 +374,7 @@ def main() -> int:
                 args.checkpoint,
                 checkpoint_hash,
                 args.parallel_envs,
+                task_ids,
                 tasks,
                 complete=position == len(task_ids) - 1,
             )
@@ -382,6 +398,7 @@ def main() -> int:
         args.checkpoint,
         checkpoint_hash,
         args.parallel_envs,
+        task_ids,
         tasks,
         complete=len(tasks) == len(task_ids),
     )
