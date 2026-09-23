@@ -347,11 +347,30 @@ def main() -> int:
                 continue
             scaler.unscale_(optimizer)
             gradient_norm = float(torch.nn.utils.clip_grad_norm_(model.parameters(), gradient_clip))
-            if not np.isfinite(gradient_norm) or not torch.isfinite(loss):
-                raise FloatingPointError("training produced NaN/Inf")
+            if not torch.isfinite(loss):
+                raise FloatingPointError("training loss produced NaN/Inf")
+            scale_before = float(scaler.get_scale())
             scaler.step(optimizer)
             scaler.update()
+            scale_after = float(scaler.get_scale())
             optimizer.zero_grad(set_to_none=True)
+            skipped_overflow = not np.isfinite(gradient_norm)
+            if skipped_overflow:
+                if not amp_enabled or scale_after >= scale_before:
+                    raise FloatingPointError("non-finite gradient was not handled by AMP scaler")
+                append_jsonl(
+                    metrics_path,
+                    {
+                        "event": "skipped_optimizer_step",
+                        "epoch": epoch,
+                        "global_step": global_step,
+                        "reason": "amp_nonfinite_gradient",
+                        "scale_before": scale_before,
+                        "scale_after": scale_after,
+                        "elapsed_seconds": time.perf_counter() - started,
+                    },
+                )
+                continue
             global_step += 1
             append_jsonl(
                 metrics_path,

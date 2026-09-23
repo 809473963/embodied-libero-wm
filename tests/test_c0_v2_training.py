@@ -28,6 +28,12 @@ def main() -> None:
     assert first_best == 0.25 and first_improved
     later_best, later_improved = update_best(first_best, 0.30)
     assert later_best == 0.25 and not later_improved
+    try:
+        update_best(first_best, float("nan"))
+    except ValueError:
+        pass
+    else:
+        raise AssertionError("non-finite validation was accepted")
     dataset = CausalActorDataset(STORE, "train")
     try:
         batch = next(iter(DataLoader(dataset, batch_size=2, shuffle=False)))
