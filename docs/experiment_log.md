@@ -135,3 +135,10 @@
 - Trained the single-factor causal-label actor with the same C0 architecture and budget. The data layer contains exactly 52,381 train and 5,869 validation samples; best demo-validation raw action MSE is 0.042468849 at epoch 3.
 - On preregistered init-state indices 30–39, frozen C0-v1 obtains 11/100 over 3/10 non-zero tasks; C0-v2 obtains 45/100 over 7/10 non-zero tasks. Mean steps change from 281.88 to 210.58 and C0-v2 clipping is 4.00%.
 - All six preregistered gate checks pass. Before observing any init state in 40–49, froze checkpoint SHA-256 `2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0` and recorded `GO_CONFIRMATORY_HOLDOUT`.
+
+## 2026-09-23 — C0-v2 one-shot confirmatory holdout
+
+- Ran the already-frozen C0-v1 and C0-v2 checkpoints once on preregistered init-state indices 40–49, 10 episodes for every LIBERO-Spatial task. The analyzer independently verified all 200 seed/index identities, checkpoint/protocol hashes, completion markers, and finite values.
+- C0-v1 obtains 10/100 over 3/10 non-zero tasks; C0-v2 obtains 38/100 over 7/10 non-zero tasks, a +28-success and +4-task improvement. Mean steps fall from 284.09 to 225.62; C0-v2 planned-action clipping is 4.119%, below the frozen 10% ceiling.
+- Paired outcomes are 5 both-success, 5 C0-v1-only, 33 C0-v2-only, and 57 neither; exact two-sided McNemar `p=4.25596e-6`. All six precommitted acceptance checks pass, so the final verdict is `CAUSAL_ALIGNMENT_IMPROVES_BASELINE`.
+- The effect is broad but not uniform: C0-v2 remains 0/10 on tasks 7 and 9 and trails C0-v1 on tasks 4 and 6 in this holdout. The result supports causal label alignment for this fixed C0 setup, not a claim that all tasks or the WM controller are solved. D23 and D20-v2/C2-v2 remain blocked/not run.
