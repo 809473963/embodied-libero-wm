@@ -1,0 +1,36 @@
+{
+  "protocol_version": "c0-v2-confirmatory-analysis-v1",
+  "precommitted_before_any_complete_holdout_task_result": true,
+  "source_rollout_protocol": "configs/c0_v2_causal_alignment_protocol.json",
+  "source_rollout_protocol_sha256": "24ebc5f9d870a21293bf93c5129ce33376a908f9ea1f3726de0f6cc37e5c9a0c",
+  "development_gate_commit": "d1cadf7",
+  "development_gate_decision": "configs/c0_v2_holdout_gate_decision.json",
+  "development_gate_decision_sha256": "544aaea70cdba5c367236761d4b9ca96e49574d98989364e325f1e62e01e2f25",
+  "partition": "confirmatory_holdout",
+  "init_state_indices": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
+  "episodes_per_task": 10,
+  "task_count": 10,
+  "c0_v1_result": "results/c0_v2/confirmatory_holdout/c0_v1.json",
+  "c0_v2_result": "results/c0_v2/confirmatory_holdout/c0_v2.json",
+  "frozen_c0_v1_checkpoint_sha256": "8666019d8572f0334965a560c41a3a3442b37692a4b65847375caf3f2f24bbb4",
+  "frozen_c0_v2_checkpoint_sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0",
+  "acceptance_requires_all": {
+    "c0_v2_total_successes_min": 20,
+    "c0_v2_nonzero_tasks_min": 5,
+    "success_improvement_over_c0_v1_min": 10,
+    "nonzero_task_improvement_over_c0_v1_min": 2,
+    "finite_actions_and_metrics": true,
+    "planned_action_element_clipping_ratio_max": 0.1
+  },
+  "verdict_mapping": {
+    "all_acceptance_checks_pass": "CAUSAL_ALIGNMENT_IMPROVES_BASELINE",
+    "any_acceptance_check_fails": "CAUSAL_ALIGNMENT_INSUFFICIENT",
+    "data_or_index_contract_fails": "BLOCK_DATA_INDEXING"
+  },
+  "prohibitions": [
+    "do not tune, retrain, or select another checkpoint from holdout outcomes",
+    "do not repeat a failed holdout episode",
+    "do not use legacy indices 0-19 or diagnosis indices 20-29",
+    "do not change the acceptance criteria after observing a complete task result"
+  ]
+}
