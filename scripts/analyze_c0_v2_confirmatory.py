@@ -8,13 +8,15 @@ import hashlib
 import json
 import math
 import os
+import sys
 from pathlib import Path
 from typing import Any
 
-from scripts.analyze_c0_v2_development import finite_tree, gate_evaluation, policy_summary
-
-
 ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from scripts.analyze_c0_v2_development import finite_tree, gate_evaluation, policy_summary
 
 
 def sha256(path: Path) -> str:
