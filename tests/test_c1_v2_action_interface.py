@@ -66,6 +66,12 @@ def real_chain_check() -> dict[str, object]:
     device = "cuda" if torch.cuda.is_available() else "cpu"
     policy = C1V2RerankPolicy(ROOT / "results/c0_v2/seed11/best.pt", device=device)
     policy.reset(seed=30000)
+    frozen_c0_chunk = policy.plan_batch([observation], [language])[0]
+    policy.reset(seed=30000)
+    observed_c0_chunk, _ = policy.plan_actor_default(observation, language)
+    c0_parity_max_abs = float(np.max(np.abs(frozen_c0_chunk - observed_c0_chunk)))
+    assert c0_parity_max_abs == 0.0
+    policy.reset(seed=30000)
     selected, diagnostics = policy.plan_chunk(observation, language)
     trace = policy._last_plan_tensors
     assert trace is not None
@@ -110,6 +116,7 @@ def real_chain_check() -> dict[str, object]:
         "wm_normalized_candidate_range": diagnostics["interface"][
             "wm_normalized_candidate_range"
         ],
+        "logging_only_c0_action_parity_max_abs": c0_parity_max_abs,
     }
 
 
