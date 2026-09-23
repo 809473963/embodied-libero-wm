@@ -1,0 +1,136 @@
+{
+  "protocol_version": "c1-v2.2-wm-action-conditioning-v1",
+  "status": "PREREGISTERED_BEFORE_ACTION_ABLATION",
+  "created_at": "2026-09-24",
+  "scope": "offline frozen-world-model action-conditioning diagnosis only",
+  "frozen_c1_v2_1": {
+    "commit": "196e43dbc5bc0989c4a7781fb97d20b626ca8b63",
+    "annotated_tag": "c1-v2-1-discriminability-negative",
+    "blockers": [
+      "RERANKER_SCORE_BLOCK",
+      "WM_ACTION_SENSITIVITY_BLOCK"
+    ],
+    "result": "results/c1_v2_1/candidate_diagnosis.json",
+    "result_sha256": "6fd0c3488b3e57fa098a8f5b9071e4e99912cc60f8b54774b4b1a857b6014339",
+    "report": "docs/c1_v2_1_candidate_discriminability_diagnosis.md",
+    "report_sha256": "6b08ed9524588421622490856b6b7b85e33e652396524ff5cb7fedee8369f210",
+    "production_candidate_separation_to_wm_error": 0.004235360117467972,
+    "may_be_overwritten": false
+  },
+  "data": {
+    "contract_version": "d13-v1",
+    "pairing": "(z[k], proprio[k], language, actions[k+1:k+9]) -> z[k+1:k+9]",
+    "horizon": 8,
+    "store": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+    "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "feature_manifest": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json",
+    "feature_manifest_sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc",
+    "split": "validation",
+    "demo_ids": [45, 46, 47, 48, 49],
+    "expected_samples": 5869,
+    "expected_episodes": 50,
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "simulator_rollout": false,
+    "init_state_indices_used": []
+  },
+  "world_model": {
+    "ensemble_config": "configs/world_model_ensemble.yaml",
+    "ensemble_config_sha256": "8cc3f41f60d939cca99edb1ec3836b3504e5738a35d72226aa5271aeb828e5da",
+    "member_checkpoint_sha256": [
+      "12304c9da129f93325201fad84ce38796ca71fcf427821f64644d4203f6b3888",
+      "cbed3b53a6d770f9995877d6400e188a72b77ef68a3b077159885312df754805",
+      "4ed392ec7d1204fd3b0e453415608f54f501f9d0aca29615253a32e9462b43a3"
+    ],
+    "member_seeds": [11, 23, 47],
+    "ordinary_validation_result": "results/wm/transition_eval.json",
+    "ordinary_validation_result_sha256": "4e03b91c16d2458d489fc4924b01a4113595016e45709c961153e6e4429d8544",
+    "frozen": true
+  },
+  "action_conditions": {
+    "correct": "raw actions[k+1:k+9]",
+    "zero": "physical-space zeros_like(correct), then frozen WM normalization",
+    "within_task_shuffle": {
+      "rule": "fixed-seed whole-chunk derangement within each task; source sample identity differs",
+      "seed": 220201
+    },
+    "cross_task_shuffle": {
+      "rule": "fixed-seed whole-chunk sample from a different task; original language is retained",
+      "seed": 220202
+    },
+    "temporal": {
+      "reverse": [7, 6, 5, 4, 3, 2, 1, 0],
+      "fixed_permutation": [2, 5, 0, 7, 3, 1, 6, 4],
+      "repeat_first": "repeat raw action[0] eight times"
+    },
+    "magnitude_scales": [0.0, 0.25, 0.5, 1.0, 1.5],
+    "magnitude_rule": "multiply correct actions in raw physical space; do not clip; then apply frozen WM normalization",
+    "language_changes": false,
+    "z0_changes": false,
+    "proprio_changes": false
+  },
+  "bootstrap": {
+    "method": "task-stratified episode-block percentile bootstrap; resample five validation demos with replacement within each task and preserve all sample rows",
+    "replicates": 10000,
+    "seed": 220203,
+    "interval": 0.95,
+    "random_pairwise_reference": 0.5
+  },
+  "interpretation_rules": {
+    "action_signal_checks": {
+      "correct_vs_within_shuffle_relative_error_increase_min": 0.005,
+      "correct_vs_within_shuffle_delta_ci95_lower_strictly_positive": true,
+      "correct_vs_within_shuffle_ranking_accuracy_min": 0.525,
+      "correct_vs_within_shuffle_ranking_ci95_lower_strictly_above_random": true,
+      "temporal_order_primary_condition": "fixed_permutation",
+      "temporal_order_relative_error_increase_min": 0.0025,
+      "temporal_order_delta_ci95_lower_strictly_positive": true,
+      "magnitude_primary_separation": "0.0x versus 1.0x prediction cosine separation divided by ordinary WM error",
+      "magnitude_monotonicity": "Spearman correlation between abs(scale-1.0) and prediction separation from 1.0x",
+      "magnitude_separation_to_wm_error_ratio_min": 0.01,
+      "magnitude_distance_response_spearman_min": 0.8
+    },
+    "action_signal_pass_rule": "at least three of four grouped checks pass, including correct-vs-within error advantage or ranking advantage",
+    "wm_action_ignoring_rule": "action signal does not pass and task-dependent action signal does not pass",
+    "low_local_sensitivity_rule": "action signal passes while frozen C1-v2.1 production candidate separation/error ratio is below 0.01",
+    "clip_state_sensitivity_limit": {
+      "real_displacement_to_ordinary_wm_error_ratio_max": 1.25,
+      "h8_real_displacement_median_max": 0.01,
+      "requires_both": true
+    },
+    "task_dependent_action_signal": {
+      "within_shuffle_task_accuracy_range_min": 0.1,
+      "tasks_with_accuracy_at_least_0_55_min": 2,
+      "tasks_with_accuracy_at_most_0_50_min": 2,
+      "alternative_delta_sign_rule": "or at least two tasks have relative error increase >=0.005 and at least two have non-positive error increase"
+    },
+    "no_action_conditioning_block_rule": "action signal passes, production local sensitivity ratio >=0.01, no CLIP state sensitivity limit, and no task-dependent action signal",
+    "priority_mapping": {
+      "WM_ACTION_IGNORING": "world-model action-aware training objective before any reranker work",
+      "WM_HAS_ACTION_SIGNAL_BUT_LOW_LOCAL_SENSITIVITY": "world-model local action sensitivity before reranker; candidate redesign remains diagnostic-only",
+      "CLIP_STATE_SENSITIVITY_LIMIT": "state representation investigation before controller design",
+      "TASK_DEPENDENT_ACTION_SIGNAL": "task-stratified world-model diagnosis before aggregate controller design",
+      "NO_ACTION_CONDITIONING_BLOCK": "reranker diagnosis may resume, but this protocol does not authorize it"
+    }
+  },
+  "optional_gradient_analysis": {
+    "execute": false,
+    "reason": "a faithful full [8,512] by [8,7] Jacobian over representative samples is disproportionately expensive; scalar-gradient surrogates would not answer the requested Jacobian-norm question"
+  },
+  "outputs": {
+    "result": "results/c1_v2_2/wm_action_conditioning.json",
+    "sample_sidecar": "artifacts/stage3/c1_v2_2_wm_action_conditioning/samples.npz",
+    "report": "docs/c1_v2_2_wm_action_conditioning_diagnosis.md"
+  },
+  "forbidden": [
+    "train or modify any world-model member",
+    "modify world-model loss or architecture",
+    "modify candidate generator",
+    "modify reranker weights",
+    "run any controller or simulator rollout",
+    "read or run init-state indices 0-49",
+    "start D20-v2",
+    "start C2-v2",
+    "use controller success",
+    "overwrite C1-v2 or C1-v2.1 negative artifacts"
+  ]
+}
