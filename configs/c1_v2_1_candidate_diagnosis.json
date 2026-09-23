@@ -1,0 +1,105 @@
+{
+  "protocol_version": "c1-v2.1-candidate-discriminability-v1",
+  "status": "PREREGISTERED_BEFORE_OFFLINE_VALIDATION_ANALYSIS",
+  "created_at": "2026-09-24",
+  "scope": "offline validation candidate-oracle, reranker-ranking, score-scale, action-separation, and frozen-WM sensitivity diagnosis only",
+  "frozen_c1_v2_negative": {
+    "commit": "bd1dae4698c8659f50830bc92d9c37d552dac109",
+    "annotated_tag": "c1-v2-reranker-negative",
+    "verdict": "BLOCK_C1_V2_RERANKER",
+    "audit": "results/c1_v2/rebase_audit.json",
+    "audit_sha256": "bca41d9330d57039bbf4e4cff6acd5486bedf25c7256f94456415c1e0aa709e5",
+    "gate": "configs/c1_v2_gate_decision.json",
+    "gate_sha256": "4f56544eaa7c04023342d54c3dd98fd6012522118cf8e6128f9407cb7e2ac2e0",
+    "may_be_overwritten": false
+  },
+  "validation": {
+    "store": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+    "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "feature_manifest": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json",
+    "feature_manifest_sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc",
+    "demo_ids": [45, 46, 47, 48, 49],
+    "expected_samples": 5869,
+    "sample_order": "CausalActorDataset validation order by task, demo, start_timestep",
+    "simulator_rollout": false,
+    "init_state_indices_used": []
+  },
+  "actor": {
+    "checkpoint": "results/c0_v2/seed11/best.pt",
+    "checkpoint_sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0",
+    "contract": "obs[k] -> actions[k+1:k+9]",
+    "frozen": true
+  },
+  "candidate_generator": {
+    "config": "configs/c1_v2_rerank.yaml",
+    "config_sha256": "6e956d86bc84662369cc4f15109b948bf4ea1ca59a6c028db443ff1ed6086747",
+    "candidate_count": 3,
+    "base_candidate_index": 0,
+    "base_noise_std": [0.05, 0.05, 0.05, 0.02, 0.02, 0.02, 0.0],
+    "temporal_kernel": [0.25, 0.5, 0.25],
+    "clip_range": [-1.0, 1.0],
+    "seed_base": 1901,
+    "sample_seed_rule": "seed_base + global_validation_sample_index",
+    "noise_scales": [0.0, 0.25, 0.5, 1.0, 2.0],
+    "production_scale": 1.0,
+    "sweep_is_diagnostic_only": true
+  },
+  "world_model": {
+    "ensemble_config": "configs/world_model_ensemble.yaml",
+    "ensemble_config_sha256": "8cc3f41f60d939cca99edb1ec3836b3504e5738a35d72226aa5271aeb828e5da",
+    "member_checkpoint_sha256": [
+      "12304c9da129f93325201fad84ce38796ca71fcf427821f64644d4203f6b3888",
+      "cbed3b53a6d770f9995877d6400e188a72b77ef68a3b077159885312df754805",
+      "4ed392ec7d1204fd3b0e453415608f54f501f9d0aca29615253a32e9462b43a3"
+    ],
+    "ordinary_validation_result": "results/wm/transition_eval.json",
+    "ordinary_validation_result_sha256": "4e03b91c16d2458d489fc4924b01a4113595016e45709c961153e6e4429d8544",
+    "frozen": true
+  },
+  "controller_development_score_scale": {
+    "source_audit": "results/c1_v2/rebase_audit.json",
+    "partition": "init-state indices 30-39",
+    "allowed_use": "read-only score-component scale comparison",
+    "controller_success_may_drive_parameter_selection": false
+  },
+  "ranking_definitions": {
+    "oracle_quality": "lowest raw-action MSE to expert actions[k+1:k+9]; exact ties use lowest candidate index for index accuracy and are separately counted",
+    "top_score": "highest frozen C1-v2 score; exact ties use lowest candidate index",
+    "random_top1_reference": 0.3333333333333333,
+    "pairwise_accuracy": "strict sign agreement between alternative-minus-default score and default-minus-alternative raw MSE; oracle-error ties excluded; score ties receive zero credit",
+    "correlations": "report pooled and mean within-sample Spearman/Kendall; conclusions prioritize within-sample ranking",
+    "score_margin_relation": "among score-selected replacements, correlate selected-minus-default score with default-minus-selected raw MSE"
+  },
+  "decision_rules": {
+    "candidate_generator_pass_requires_all": {
+      "production_scale_best_of_3_raw_mse_relative_gain_min": 0.01,
+      "production_scale_alternative_oracle_best_fraction_min": 0.1
+    },
+    "reranker_score_pass_requires_all": {
+      "production_scale_top_score_oracle_accuracy_min": 0.38,
+      "production_scale_default_alternative_pairwise_accuracy_min": 0.53,
+      "production_scale_mean_within_sample_spearman_min": 0.05,
+      "production_scale_replacement_margin_improvement_spearman_min": 0.05
+    },
+    "wm_action_sensitivity_pass_requires_all": {
+      "production_scale_mean_pairwise_normalized_action_l2_min": 0.25,
+      "production_scale_mean_pairwise_prediction_cosine_separation_to_ordinary_error_ratio_min": 0.01
+    },
+    "candidate_failure_verdict": "CANDIDATE_GENERATOR_BLOCK",
+    "reranker_failure_verdict": "RERANKER_SCORE_BLOCK",
+    "wm_sensitivity_failure_verdict": "WM_ACTION_SENSITIVITY_BLOCK",
+    "all_mechanisms_pass_verdict": "NO_MECHANISM_BLOCK"
+  },
+  "forbidden": [
+    "modify score weights",
+    "select a production noise scale",
+    "run any controller rollout",
+    "read or run init-state indices 40-49",
+    "start D20-v2",
+    "start C2-v2",
+    "retrain C0-v2",
+    "retrain any world-model member",
+    "overwrite C1-v2 rollout, audit, or gate artifacts",
+    "use controller success to iterate parameters"
+  ]
+}
