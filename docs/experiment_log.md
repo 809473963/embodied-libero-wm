@@ -123,3 +123,9 @@
 - Frozen D20 OR would trigger on 23.91% of C0 and 22.75% of C1 checks, dominated by uncertainty-only (22.15% / 20.96%); mismatch-only rates are 3.67% / 3.26%. Uncertainty still has moderate useful ranking signal: current/next high-error AUROC is about 0.70–0.73 and mismatch rises monotonically across uncertainty deciles. It should not be treated as a calibrated OR replan probability.
 - Independent C0 competence is 15/100 with per-task successes `[0,0,0,0,3,0,7,0,5,0]`; 7/10 tasks remain at floor. Final verdict is `BASELINE_COMPETENCE_BLOCK`, with secondary `GO_D20_V2_PROTOCOL_DESIGN_ONLY`. D23 stays blocked, D20-v1 is unchanged, and no C0-v2 was trained.
 - Diagnosed an additional unresolved integration issue: D13 trains on `actions[k+1:k+9]`, while deployed C1/C2 feeds the immediately executed candidate `[0:8]`. The trace preserves that behavior for diagnosis, but D20-v2 must resolve/version the causal mapping before further controller claims.
+
+## 2026-09-23 — C0-v2 causal-alignment preregistration
+
+- D22.5 remains frozen with `BASELINE_COMPETENCE_BLOCK`; D23 and D20-v2 threshold work remain blocked. New experimental status is `GO_C0_V2_CAUSAL_ALIGNMENT`.
+- Corrected the interpretation of Python's half-open slice: `actions[k+1:k+9]` contains exactly eight actions, `a[k+1]...a[k+8]`, so an online eight-action candidate does not lack a ninth action. The isolated question is whether changing C0 supervision from `actions[k:k+8]` to `actions[k+1:k+9]` improves baseline competence.
+- Before any rollout from init states 30–49, preregistered 30–39 as controller development and locked 40–49 as a one-shot confirmatory holdout. The numerical GO criteria are frozen in `configs/c0_v2_causal_alignment_protocol.json`.
