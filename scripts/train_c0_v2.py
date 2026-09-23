@@ -77,7 +77,9 @@ def restore_rng_state(state: dict[str, Any]) -> None:
 
 
 def update_best(historical: float, current: float) -> tuple[float, bool]:
-    if not np.isfinite(historical) or not np.isfinite(current):
+    # Positive infinity is the intentional before-first-validation sentinel.
+    # Reject NaN/-inf and any non-finite measured validation value.
+    if np.isnan(historical) or historical == float("-inf") or not np.isfinite(current):
         raise ValueError("best/current validation must be finite")
     improved = current < historical
     return (current if improved else historical), improved

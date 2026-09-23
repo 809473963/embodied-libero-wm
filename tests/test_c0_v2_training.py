@@ -15,7 +15,7 @@ from torch.utils.data import DataLoader
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from scripts.train_c0_v2 import normalization_tensors
+from scripts.train_c0_v2 import normalization_tensors, update_best
 from src.c0 import C0Actor, CausalActorDataset, compute_causal_actor_normalization
 
 
@@ -24,6 +24,10 @@ MANIFEST = ROOT / "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feat
 
 
 def main() -> None:
+    first_best, first_improved = update_best(float("inf"), 0.25)
+    assert first_best == 0.25 and first_improved
+    later_best, later_improved = update_best(first_best, 0.30)
+    assert later_best == 0.25 and not later_improved
     dataset = CausalActorDataset(STORE, "train")
     try:
         batch = next(iter(DataLoader(dataset, batch_size=2, shuffle=False)))
