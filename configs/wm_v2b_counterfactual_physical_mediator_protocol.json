@@ -1,0 +1,108 @@
+{
+  "protocol_version": "wm-v2b-counterfactual-physical-mediator-v1",
+  "status": "PREREGISTERED_BEFORE_DIFFERENTIAL_METRICS",
+  "date": "2026-09-24",
+  "purpose": "Test whether the frozen WM-v2B future-proprio head faithfully represents relative A0/A1/A2 physical counterfactual differences before any WM-v2C design.",
+  "frozen_upstream": {
+    "counterfactual_commit": "598a486b5cfea8390e7b72c41a7bd8a410b4b280",
+    "counterfactual_annotated_tag": "local-counterfactual-visual-transfer-confirmed",
+    "counterfactual_verdict": "VISUAL_TRANSFER_FAILURE_CONFIRMED",
+    "counterfactual_result": "results/local_candidate_counterfactual/diagnosis.json",
+    "counterfactual_result_sha256": "e3fede26f63f480df815c9a6bc78a658cfd15f7439f135194318e1002ef5f517",
+    "counterfactual_report": "docs/local_candidate_counterfactual_dynamics_audit.md",
+    "counterfactual_report_sha256": "0af8b49065798df96b06209fe2fd2d6ae3146e65b93a6c2774a975a97680037b",
+    "matched_branch_sidecar": "artifacts/stage3/local_candidate_counterfactual/branches.npz",
+    "matched_branch_sidecar_sha256": "6c81a692bac418a9defe3a8abc0086408b909ce1c99b9241c49361a7c298e12d",
+    "wm_v2b_commit": "5393c5c95dd7c65347bc11f572f4168681121ed6",
+    "wm_v2b_annotated_tag": "wm-v2b-proprio-transfer-insufficient",
+    "wm_v2b_result": "results/world_model_v2b/seed11/diagnosis.json",
+    "wm_v2b_result_sha256": "adec3dbd49295f19fb7cdacdfed260e4ec8afb928912c9e2657389f6131abf78",
+    "wm_v2b_validation_sidecar": "artifacts/stage3/wm_v2b_seed11_diagnosis/samples.npz",
+    "wm_v2b_validation_sidecar_sha256": "1553d59b734f65499e7e2e0fdec6c7174710cf0923c49a4ee88fe2d0e7a91a2a",
+    "wm_v2b_checkpoint": "results/world_model_v2b/seed11/best.pt",
+    "wm_v2b_checkpoint_sha256": "eb13775493a13d845e93db195c25d513b2fa8f679ac8578456fb8c64b2573848",
+    "wm_v2b_config": "configs/world_model_v2b_seed11.yaml",
+    "wm_v2b_config_sha256": "e0276dc4b205a2b0aee50a57d1b0465081ae77cb0c7bc914a9f4382a3301596b",
+    "wm_v2b_protocol": "configs/wm_v2b_future_proprio_protocol.json",
+    "wm_v2b_protocol_sha256": "0f5e1f6e3bd18eb61fe848b28b779fe92519643a454bb15f64de13e81c7473a2"
+  },
+  "scope": {
+    "validation_samples": 5869,
+    "validation_demos": [45, 46, 47, 48, 49],
+    "matched_branch_points": 40,
+    "matched_candidate_branches": 120,
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "init_state_indices": [30, 35],
+    "planning_indices": [0, 8],
+    "candidate_pairs": ["A0-A1", "A0-A2", "A1-A2"],
+    "horizon": 8,
+    "simulator_runs": 0,
+    "success_reward_done_used": false,
+    "init_state_indices_forbidden": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "coordinate_contract": {
+    "space": "train-standardized 12-D proprio coordinates",
+    "dimension_order": ["ee_x", "ee_y", "ee_z", "gripper_0", "gripper_1", "joint_0", "joint_1", "joint_2", "joint_3", "joint_4", "joint_5", "joint_6"],
+    "groups": {
+      "ee_pos": [0, 1, 2],
+      "gripper": [3, 4],
+      "joints": [5, 6, 7, 8, 9, 10, 11]
+    },
+    "validation_residual_recovery": "The frozen validation sidecar stores elementwise SmoothL1(beta=1). Recover |residual| exactly as sqrt(2*loss) when loss<0.5, otherwise loss+0.5. This is sufficient for RMSE, MAE, SmoothL1, horizon, group, and task summaries; signs are not inferred.",
+    "branch_prediction": "The matched sidecar stores predicted and real absolute future proprio in the same frozen standardized coordinate system.",
+    "delta_real": "standardized(real_p_i[h]) - standardized(real_p_j[h])",
+    "delta_pred": "predicted_standardized_p_i[h] - predicted_standardized_p_j[h]"
+  },
+  "metric_contract": {
+    "absolute_metrics": ["standardized RMSE", "standardized MAE", "SmoothL1 beta=1"],
+    "absolute_cuts": ["source/candidate", "horizon", "task", "ee_pos/gripper/joints"],
+    "direction": "cosine(delta_pred, delta_real) over eligible standardized proprio vectors",
+    "magnitude": "L2 norms plus ratio-of-means and the distribution of per-point pred_norm/real_norm",
+    "differential_error": "RMSE(delta_pred-delta_real) compared with zero-difference RMSE(delta_real)",
+    "relative_improvement": "(aggregate zero-difference RMSE - aggregate differential RMSE) / aggregate zero-difference RMSE",
+    "ranking": "Within each branch-point/horizon context, rank the three candidate-pair L2 separations; report mean within-context Spearman, three pair-of-pair ordering accuracy with ties worth 0.5, and pooled Pearson/Spearman.",
+    "sign": "sign agreement per dimension only where abs(delta_real[d]) reaches the frozen threshold",
+    "coupling": "Pearson and Spearman for real physical L2 versus real visual cosine separation and predicted physical L2 versus WM-v2B predicted visual cosine separation",
+    "summaries": ["mean", "median", "p25", "p75", "p90", "p95", "min", "max"],
+    "minimum_real_norm_for_direction_and_ratio": 0.0001,
+    "minimum_abs_real_delta_for_sign": 0.001,
+    "ranking_tie_tolerance": 1e-08
+  },
+  "bootstrap": {
+    "unit": "matched branch point; resampling retains all three candidate pairs, all eight horizons, and all 12 dimensions",
+    "replicates": 10000,
+    "seed": 220601,
+    "confidence": 0.95,
+    "reported_intervals": ["aggregate differential relative improvement", "aggregate direction mean", "within-context separation Spearman", "pairwise ranking accuracy", "per-pair differential improvement", "per-pair direction", "per-horizon differential improvement", "per-horizon direction"]
+  },
+  "authorization_gate": {
+    "differential_improvement": "aggregate relative improvement >= 0.05 and its branch-block bootstrap 95% CI lower bound > 0",
+    "direction_alignment": "aggregate mean cosine direction >= 0.10 and its branch-block bootstrap 95% CI lower bound > 0",
+    "ranking_relation": "mean within-context Spearman >= 0.10 with bootstrap CI lower bound > 0, and pairwise ranking accuracy >= 0.55 with bootstrap CI lower bound > 0.50",
+    "no_candidate_specific_collapse": "for every A0-A1/A0-A2/A1-A2 pair: differential relative improvement > 0, mean direction > 0, and predicted/real norm ratio-of-means >= 0.05",
+    "go": "all four gate groups pass -> GO_WM_V2C_DESIGN",
+    "block": "otherwise -> BLOCK_WM_V2C_PHYSICAL_MEDIATOR"
+  },
+  "mechanism_labels": {
+    "absolute_distribution_shift": "branch pooled RMSE or MAE divided by validation counterpart >= 1.5",
+    "relative_signal_valid": "GO gate passes while absolute_distribution_shift is true -> PHYSICAL_MEDIATOR_RELATIVE_SIGNAL_VALID",
+    "visual_transfer_block_confirmed": "GO gate passes and frozen VISUAL_TRANSFER_FAILURE_CONFIRMED is present -> PHYSICAL_MEDIATOR_VALID_VISUAL_TRANSFER_BLOCK_CONFIRMED",
+    "counterfactual_fail": "GO gate fails -> PHYSICAL_MEDIATOR_COUNTERFACTUAL_FAIL",
+    "mixed": "Both valid-relative labels may be reported when their conditions co-occur. Counterfactual fail is mutually exclusive with them."
+  },
+  "outputs": {
+    "result": "results/world_model_v2b_physical_mediator/diagnosis.json",
+    "derived_sidecar": "artifacts/stage3/wm_v2b_physical_mediator/metrics.npz",
+    "report": "docs/wm_v2b_counterfactual_physical_mediator_audit.md"
+  },
+  "forbidden": [
+    "run or access any simulator episode",
+    "train or modify WM-v2B or any WM-v2C",
+    "change lambda_p",
+    "modify C0-v2, candidate generation, production noise scale, or reranker",
+    "run C1, C2, D20-v2, or any init state",
+    "use task success, reward, done, or fake counterfactual targets",
+    "change gates after reading differential results",
+    "overwrite any frozen upstream result or sidecar"
+  ]
+}
