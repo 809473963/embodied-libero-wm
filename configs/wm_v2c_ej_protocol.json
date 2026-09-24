@@ -1,0 +1,210 @@
+{
+  "schema_version": 1,
+  "protocol_version": "wm-v2c-ej-explicit-physical-visual-coupling-v1",
+  "date": "2026-09-25",
+  "status": "PREREGISTERED_BEFORE_GRADIENT_CALIBRATION_AND_TRAINING",
+  "scientific_question": "Can the held-out-validated EE-position plus joint physical signal explicitly improve prediction of production-scale nearby-action visual counterfactual futures?",
+  "frozen_upstream": {
+    "wm_v2b_1_tag": "wm-v2b-1-partial-physical-mediator",
+    "wm_v2b_1_commit": "3e484d976a4d79431ac5d2f6c11f5a3112717f9e",
+    "wm_v2b_1_verdict": "PARTIAL_PHYSICAL_MEDIATOR_PASS",
+    "wm_v2b_1_authorization": "BLOCK_WM_V2C_PHYSICAL_MEDIATOR",
+    "wm_v2b_1_mechanism": "EE_JOINT_MEDIATOR_VALID_GRIPPER_INVALID",
+    "wm_v2b_1_result": "results/world_model_v2b_1/diagnosis.json",
+    "wm_v2b_1_result_sha256": "5690d3b30642143d605c7adddcb6f945c230ac2134a861a854bbae5b531f2c23",
+    "wm_v2b_1_report": "docs/wm_v2b_1_differential_physical_calibration_audit.md",
+    "wm_v2b_1_report_sha256": "a26622a15a7ce46035963afd54c2ba304a549fa3547101044e7e97024f62e50b",
+    "c0_v2_tag": "c0-v2-causal-aligned",
+    "c0_v2_commit": "20f3166d0a0f4d7ed034425c056f042d85fe077b",
+    "c0_v2_checkpoint": "results/c0_v2/seed11/best.pt",
+    "c0_v2_checkpoint_sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0",
+    "candidate_diagnosis_tag": "c1-v2-1-discriminability-negative",
+    "candidate_diagnosis_commit": "196e43dbc5bc0989c4a7781fb97d20b626ca8b63",
+    "candidate_protocol": "configs/c1_v2_1_candidate_diagnosis.json",
+    "candidate_protocol_sha256": "baa8f4bb1c01ab790da49cf30b8ccbeca32c444ae459cc5db31daa45a30b8b96",
+    "candidate_result": "results/c1_v2_1/candidate_diagnosis.json",
+    "candidate_result_sha256": "6fd0c3488b3e57fa098a8f5b9071e4e99912cc60f8b54774b4b1a857b6014339",
+    "candidate_validation_sidecar": "artifacts/stage3/c1_v2_1_candidate_diagnosis/samples.npz",
+    "candidate_validation_sidecar_sha256": "5870337ad96c58b3cedee4e124cf89018408446ed82fc7a2df52626f482398fd",
+    "candidate_generator_code": "src/control/candidate_reranker.py",
+    "candidate_generator_code_sha256": "10d9ea150b44a2d451724ddfdd0cbb11b1250f8c2ff72d61e24138b22895cefb",
+    "candidate_policy_code": "src/policies/c1_v2_rerank_policy.py",
+    "candidate_policy_code_sha256": "8d562804824f4aca993ab01c2f98d6dabe81be521ce2ff7cbfb673bec234aa69",
+    "action_conditioning_protocol": "configs/c1_v2_2_wm_action_conditioning.json",
+    "action_conditioning_protocol_sha256": "b71429a23da51c9b1e1c3864dd76b15ec994cef561f6d8979b56d59da9081b7a",
+    "production_candidate_noise_scale": 1.0,
+    "reranker_negative_result": "results/c1_v2/rebase_audit.json",
+    "reranker_negative_result_sha256": "bca41d9330d57039bbf4e4cff6acd5486bedf25c7256f94456415c1e0aa709e5",
+    "d13_data_config": "configs/d13_world_model_data.yaml",
+    "d13_data_config_sha256": "88a3f81394332735232c956dc50ddb5048c8c6706068f6fbf226ad578b3186fb",
+    "d13_data_contract": "docs/world_model_data_contract.md",
+    "d13_data_contract_sha256": "e988b7e1078b3c89614bc83225ba677045cfda3b854098a3e1180b85cca32181",
+    "d13_store": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+    "d13_store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "d14_seed11_checkpoint": "results/world_model/d14_single_seed11/best.pt",
+    "d14_seed11_checkpoint_sha256": "12304c9da129f93325201fad84ce38796ca71fcf427821f64644d4203f6b3888",
+    "d14_seed11_validation_error": 0.009371344546612412,
+    "copy_current_validation_error": 0.015795318148221042,
+    "d15_manifest": "results/wm/d15_ensemble/ensemble_manifest.json",
+    "d15_manifest_sha256": "1bf33109378c00565bc3beb1391c017cf5bcc57172d6c89ce891280525e39e41",
+    "wm_v2a_checkpoint": "results/world_model_v2a/seed11/best.pt",
+    "wm_v2a_checkpoint_sha256": "1e3741c1d5307014b070c6256af0753c8cb86f4c591b78c738324161223e1fe5",
+    "wm_v2a_result": "results/world_model_v2a/seed11/diagnosis.json",
+    "wm_v2a_result_sha256": "68f5d7b8fb01440918cc2dc7b8d4557eaf752362c8610085e5a6aede2373889c",
+    "wm_v2b_checkpoint": "results/world_model_v2b/seed11/best.pt",
+    "wm_v2b_checkpoint_sha256": "eb13775493a13d845e93db195c25d513b2fa8f679ac8578456fb8c64b2573848",
+    "wm_v2b_result": "results/world_model_v2b/seed11/diagnosis.json",
+    "wm_v2b_result_sha256": "adec3dbd49295f19fb7cdacdfed260e4ec8afb928912c9e2657389f6131abf78",
+    "matched_counterfactual_tag": "local-counterfactual-visual-transfer-confirmed",
+    "matched_counterfactual_commit": "598a486b5cfea8390e7b72c41a7bd8a410b4b280",
+    "matched_counterfactual_result": "results/local_candidate_counterfactual/diagnosis.json",
+    "matched_counterfactual_result_sha256": "e3fede26f63f480df815c9a6bc78a658cfd15f7439f135194318e1002ef5f517",
+    "matched_counterfactual_sidecar": "artifacts/stage3/local_candidate_counterfactual/branches.npz",
+    "matched_counterfactual_sidecar_sha256": "6c81a692bac418a9defe3a8abc0086408b909ce1c99b9241c49361a7c298e12d"
+  },
+  "data": {
+    "causal_contract": "(z[k], proprio[k], language, actions[k+1:k+9]) -> z[k+1:k+9]",
+    "horizon": 8,
+    "train_demo_ids": "0-44",
+    "validation_demo_ids": "45-49",
+    "train_samples": 52381,
+    "validation_samples": 5869,
+    "future_proprio_target_only": true,
+    "ej_indices": [0, 1, 2, 5, 6, 7, 8, 9, 10, 11],
+    "ej_semantics": "ee_pos[3] + joints[7]",
+    "gripper_indices_excluded": [3, 4],
+    "normalization": "frozen train-only unique-observation proprio and unique causal-action statistics"
+  },
+  "architecture": {
+    "initial_checkpoint": "results/world_model_v2b/seed11/best.pt",
+    "existing_weights_loaded": "all WM-v2B modules exactly",
+    "adapter_input": "predicted standardized EE-position plus joint delta [B,8,10]",
+    "adapter": "Linear(10,64)-GELU-Linear(64,128)-GELU-Linear(128,512)",
+    "adapter_final_layer_initialization": "exact zeros to preserve initial WM-v2B visual predictions",
+    "visual_equation": "normalize(z0 + base_visual_delta + physical_visual_residual)",
+    "warm_start": "none; all parameters jointly trainable from epoch 1",
+    "expected_wm_v2b_parameters": 826444,
+    "expected_adapter_parameters": 75072,
+    "expected_total_parameters": 901516,
+    "new_gru_transformer_camera_or_encoder": false
+  },
+  "experiment": {
+    "config": "configs/world_model_v2c_ej_seed11.yaml",
+    "config_sha256": "aae1cb7f822470be16ead5c82f41f24c211b2fe89f99c2d37b5f7599e72cb728",
+    "seed": 11,
+    "max_epochs": 15,
+    "checkpoint_selection": "minimum demo-validation total loss; visual cosine error tie-breaker",
+    "matched_counterfactual_used_for_checkpoint_or_hyperparameter_selection": false,
+    "seed23_seed47_authorized_only_after_full_seed11_pass": true
+  },
+  "gradient_calibration": {
+    "split": "train demos 0-44 only",
+    "selection_seed": 220801,
+    "sample_count": 1024,
+    "batch_size": 256,
+    "batch_count": 4,
+    "device": "cpu float32",
+    "optimizer_updates": 0,
+    "shared_parameter_set": "model.gru.parameters() only",
+    "g_z": "arithmetic mean of per-batch shared-GRU L2 gradient norms for L_z",
+    "g_ej": "arithmetic mean of per-batch shared-GRU L2 gradient norms for 10-D L_EJ",
+    "lambda_ej": "clip(g_z/g_ej,0.05,20.0)",
+    "clip_range": [0.05, 20.0],
+    "freeze_before_training": true
+  },
+  "loss": {
+    "visual": "mean(1-cosine(pred_z,z_future))",
+    "ej": "SmoothL1(predicted_EE_joint_delta,target_EE_joint_delta,beta=1)",
+    "residual": "mean(physical_visual_residual^2)",
+    "lambda_ej": "frozen train-only gradient calibration",
+    "lambda_res": 0.001,
+    "fake_counterfactual_separation_loss": false
+  },
+  "validation_diagnostics": {
+    "global_conditions": ["correct", "physical_zero", "within_task_shuffle", "cross_task_shuffle", "reverse", "fixed_temporal_permutation", "repeat_first", "scale_0p25", "scale_0p5", "scale_1p5"],
+    "production_candidates": ["A0", "A1", "A2"],
+    "adapter_ablation_modes": ["full_ej", "ee_only", "joints_only"],
+    "old_validation_local_ratio_references": {
+      "wm_v1": 0.004235360117467972,
+      "wm_v2a": 0.005306926090270281,
+      "wm_v2b": 0.00515718
+    }
+  },
+  "matched_counterfactual": {
+    "source": "frozen 40 branch points from init 30/35 and planning indices 0/8",
+    "simulator_rerun": false,
+    "real_visual_mean_cosine_separation": 0.004164010557865683,
+    "wm_v2b_transfer_ratio": 0.01438111434986727,
+    "wm_v2b_mean_candidate_specific_error": 0.015852862423007676,
+    "bootstrap": "10000 matched branch-point resamples retaining candidates and horizons",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 220901,
+    "direction_pairs": ["A0-A1", "A0-A2"]
+  },
+  "gate": {
+    "A_ordinary_visual": {
+      "relative_degradation_vs_d14_max": 0.05,
+      "must_beat_copy_current": true
+    },
+    "B_global_action": {
+      "within_shuffle_relative_error_increase_min": 0.005,
+      "within_shuffle_delta_ci95_lower_gt": 0.0,
+      "correct_action_win_accuracy_min": 0.525,
+      "accuracy_ci95_lower_gt": 0.5,
+      "temporal_permutation_delta_ci95_lower_gt": 0.0,
+      "magnitude_response_spearman_min": 0.9
+    },
+    "C_local_predicted_real_separation": {
+      "transfer_ratio_min": 0.04314334304960181,
+      "multiple_vs_wm_v2b_min": 3.0,
+      "all_horizons_reported": true
+    },
+    "D_candidate_specific_prediction": {
+      "mean_relative_degradation_vs_wm_v2b_max": 0.05,
+      "per_candidate_horizon_task_reported": true
+    },
+    "E_visual_delta_direction": {
+      "aggregate_direction_mean_gt": 0.0,
+      "aggregate_branch_bootstrap_ci95_lower_gt": 0.0,
+      "each_A0_relative_pair_direction_mean_gt": 0.0,
+      "each_A0_relative_pair_ci95_lower_gt": 0.0
+    },
+    "F_residual_non_degeneracy": {
+      "finite": true,
+      "adapter_pair_l2_to_base_pair_l2_min": 0.05,
+      "mean_residual_l2_to_base_delta_l2_max": 0.5,
+      "p95_residual_l2_to_base_delta_l2_max": 1.0,
+      "final_latent_unit_norm_tolerance": 0.0001
+    },
+    "decision_order": [
+      "IMPLEMENTATION_BLOCK for provenance, contract, gripper-path, finite, or identity failure",
+      "PREDICTION_QUALITY_REGRESSION if Gate A fails",
+      "PHYSICAL_VISUAL_ADAPTER_NOT_USING_LOCAL_SIGNAL if adapter candidate-sensitivity subgate fails",
+      "LOCAL_VISUAL_SEPARATION_ARTIFACT if Gate C passes but Gate D fails",
+      "PHYSICAL_TO_VISUAL_TRANSFER_STILL_INSUFFICIENT if any remaining major gate fails",
+      "WM_V2C_EJ_PASS only if Gates A-F all pass"
+    ],
+    "pass_authorization": "GO_RERANKER_REDIAGNOSIS only; never controller success, C2, D20-v2, or init 40-49"
+  },
+  "outputs": {
+    "gradient_calibration": "results/world_model_v2c_ej/seed11/gradient_calibration.json",
+    "calibration_freeze": "configs/wm_v2c_ej_calibration_freeze.json",
+    "training_dir": "results/world_model_v2c_ej/seed11",
+    "diagnosis": "results/world_model_v2c_ej/seed11/diagnosis.json",
+    "diagnostic_sidecar": "artifacts/stage3/wm_v2c_ej_seed11_diagnosis/samples.npz",
+    "report": "docs/wm_v2c_ej_physical_visual_coupling_audit.md"
+  },
+  "forbidden": [
+    "change the frozen D13 causal contract, split, H, normalization, camera, CLIP, or language encoder",
+    "feed future proprio or matched real branch futures into deployment inputs or training inputs",
+    "feed gripper dimensions 3/4 into the physical-visual adapter",
+    "use matched branches 30-39 to select architecture, lambda, checkpoint, adapter size, or training budget",
+    "access init states 40-49",
+    "modify C0-v2, candidate generator, production noise scale, or frozen reranker",
+    "use fake counterfactual separation supervision",
+    "run controller success, C1/C2, D20-v2, reward, done, or success selection",
+    "train seed23/47 or build an ensemble before seed11 full pass",
+    "overwrite any upstream checkpoint, result, sidecar, or report",
+    "reinterpret the full 12-D mediator as passed"
+  ]
+}
