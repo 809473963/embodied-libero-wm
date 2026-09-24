@@ -486,8 +486,21 @@ def matched_summary(
                     for candidate in range(3)
                 },
                 "per_horizon": error.mean(axis=(0, 1)).tolist(),
+                "per_candidate_per_horizon": {
+                    f"A{candidate}": error[:, candidate].mean(axis=0).tolist()
+                    for candidate in range(3)
+                },
                 "per_task": {
                     str(task): float(error[task_id == task].mean())
+                    for task in range(10)
+                },
+                "per_candidate_per_task": {
+                    str(task): {
+                        f"A{candidate}": float(
+                            error[task_id == task, candidate].mean()
+                        )
+                        for candidate in range(3)
+                    }
                     for task in range(10)
                 },
             },
@@ -766,6 +779,30 @@ def render_report(result: dict[str, Any]) -> str:
         ]
         for mode, values in matched["modes"].items()
     ]
+    candidate_horizon_rows = [
+        [
+            str(horizon + 1),
+            *[
+                f"{full['candidate_specific_error']['per_candidate_per_horizon'][f'A{candidate}'][horizon]:.6f}"
+                for candidate in range(3)
+            ],
+        ]
+        for horizon in range(8)
+    ]
+    candidate_task_rows = [
+        [
+            str(task),
+            *[
+                f"{full['candidate_specific_error']['per_candidate_per_task'][str(task)][f'A{candidate}']:.6f}"
+                for candidate in range(3)
+            ],
+        ]
+        for task in range(10)
+    ]
+    global_rows = [
+        [name, f"{values['overall']:.8f}"]
+        for name, values in global_action["condition_error"].items()
+    ]
     gate_rows = [
         [name, "pass" if passed else "FAIL"]
         for name, passed in decision["gate_pass"].items()
@@ -870,6 +907,8 @@ Fixed temporal permutation delta CI lower is
 `{global_action['temporal_permutation']['delta_bootstrap']['ci95_lower']:.8f}`;
 magnitude-distance Spearman is `{global_action['magnitude_distance_spearman']:.4f}`.
 
+{markdown_table(['condition','visual error'], global_rows)}
+
 ## Frozen production candidates on demo validation
 
 Mean candidate separation/error ratio is
@@ -892,12 +931,27 @@ Full-EJ A0/A1/A2 errors are
 Frozen WM-v2B aggregate reference is
 `{result['matched_counterfactual']['wm_v2b_mean_candidate_error']:.6f}`.
 
+By horizon:
+
+{markdown_table(['h','A0','A1','A2'], candidate_horizon_rows)}
+
+By task:
+
+{markdown_table(['task','A0','A1','A2'], candidate_task_rows)}
+
 ## Visual-delta direction fidelity
 
 Aggregate A0-relative direction is
 `{full['visual_delta_direction']['overall']['mean']:.4f}` with branch-bootstrap
 95% CI `[{full['visual_delta_direction']['bootstrap']['overall_ci95'][0]:.4f},
 {full['visual_delta_direction']['bootstrap']['overall_ci95'][1]:.4f}]`.
+The A0-A1 mean/CI are
+`{full['visual_delta_direction']['per_pair']['A0-A1']['mean']:.4f}` /
+`[{full['visual_delta_direction']['bootstrap']['per_pair_ci95']['A0-A1'][0]:.4f},
+{full['visual_delta_direction']['bootstrap']['per_pair_ci95']['A0-A1'][1]:.4f}]`;
+A0-A2 are `{full['visual_delta_direction']['per_pair']['A0-A2']['mean']:.4f}` /
+`[{full['visual_delta_direction']['bootstrap']['per_pair_ci95']['A0-A2'][0]:.4f},
+{full['visual_delta_direction']['bootstrap']['per_pair_ci95']['A0-A2'][1]:.4f}]`.
 
 ## Base/residual contribution and adapter action sensitivity
 
