@@ -1146,6 +1146,26 @@ def render_report(result: dict[str, Any]) -> str:
     analysis = result["analysis"]
     decision = analysis["decision"]
     real = analysis["real_counterfactual_dynamics"]
+    overall_real_rows = [
+        [
+            label,
+            str(values["n"]),
+            f"{values['mean']:.8g}",
+            f"{values['median']:.8g}",
+            f"{values['p75']:.8g}",
+            f"{values['p90']:.8g}",
+            f"{values['p95']:.8g}",
+        ]
+        for label, values in (
+            ("visual cosine", real["visual_cosine"]),
+            ("visual L2", real["visual_l2"]),
+            ("standardized proprio RMSE", real["proprio_standardized_rmse"]),
+            ("raw proprio L2", real["proprio_raw_l2"]),
+            ("pixel MAE", real["pixel_mae"]),
+            ("pixel RMSE", real["pixel_rmse"]),
+            ("unequal pixel fraction", real["unequal_pixel_fraction"]),
+        )
+    ]
     transfer_rows = []
     for model in MODEL_NAMES:
         item = analysis["model_transfer"][model]
@@ -1167,6 +1187,10 @@ def render_report(result: dict[str, Any]) -> str:
             [
                 str(row["horizon"]),
                 f"{row['real_visual_cosine']['mean']:.8g}",
+                f"{row['real_visual_cosine']['median']:.8g}",
+                f"{row['real_visual_cosine']['p75']:.8g}",
+                f"{row['real_visual_cosine']['p90']:.8g}",
+                f"{row['real_visual_cosine']['p95']:.8g}",
                 f"{row['real_proprio_standardized_rmse']['mean']:.6f}",
                 f"{row['pixel_mae']['mean']:.4f}",
                 *[
@@ -1183,12 +1207,67 @@ def render_report(result: dict[str, Any]) -> str:
             [
                 task_id,
                 f"{row['real_visual_cosine']['mean']:.8g}",
+                f"{row['real_visual_cosine']['median']:.8g}",
+                f"{row['real_visual_cosine']['p75']:.8g}",
+                f"{row['real_visual_cosine']['p90']:.8g}",
+                f"{row['real_visual_cosine']['p95']:.8g}",
                 f"{row['real_proprio_standardized_rmse']['mean']:.6f}",
                 *[
                     "n/a"
                     if row["models"][model]["transfer"]["ratio_of_means"] is None
                     else f"{row['models'][model]['transfer']['ratio_of_means']:.3f}"
                     for model in MODEL_NAMES
+                ],
+            ]
+        )
+    pair_rows = []
+    for pair_name, row in analysis["per_candidate_pair"].items():
+        pair_rows.append(
+            [
+                pair_name,
+                f"{row['real_visual_cosine']['mean']:.8g}",
+                f"{row['real_visual_cosine']['median']:.8g}",
+                f"{row['real_visual_cosine']['p75']:.8g}",
+                f"{row['real_visual_cosine']['p90']:.8g}",
+                f"{row['real_visual_cosine']['p95']:.8g}",
+                f"{row['real_proprio_standardized_rmse']['mean']:.6f}",
+                *[
+                    "n/a"
+                    if row["models"][model]["transfer"]["ratio_of_means"] is None
+                    else f"{row['models'][model]['transfer']['ratio_of_means']:.4f}"
+                    for model in MODEL_NAMES
+                ],
+            ]
+        )
+    candidate_horizon_rows = []
+    for row in analysis["per_horizon"]:
+        candidate_horizon_rows.append(
+            [
+                str(row["horizon"]),
+                *[
+                    f"{row['models'][model]['candidate_error'][candidate]['mean']:.6f}"
+                    for model in MODEL_NAMES
+                    for candidate in ("A0", "A1", "A2")
+                ],
+                *[
+                    f"{row['wm_v2b_proprio']['candidate_error'][candidate]['mean']:.6f}"
+                    for candidate in ("A0", "A1", "A2")
+                ],
+            ]
+        )
+    candidate_task_rows = []
+    for task_id, row in analysis["per_task"].items():
+        candidate_task_rows.append(
+            [
+                task_id,
+                *[
+                    f"{row['models'][model][f'{candidate}_error']['mean']:.6f}"
+                    for model in MODEL_NAMES
+                    for candidate in ("A0", "A1", "A2")
+                ],
+                *[
+                    f"{row['wm_v2b_proprio_error'][candidate]['mean']:.6f}"
+                    for candidate in ("A0", "A1", "A2")
                 ],
             ]
         )
@@ -1247,8 +1326,11 @@ frozen WM-v2B proprio prediction RMSE, real physical separation is
 `{100*real['real_proprio_to_wm_v2b_validation_rmse']:.2f}%`.
 
 The preregistered rule assigns `{decision['final_verdict']}`. This is a
-mechanism conclusion only. It does not rank candidates by task success and
-does not authorize a controller, threshold, candidate-scale, or model change.
+mechanism conclusion only. It does not rank candidates by task success. It
+clears the mechanism-evidence prerequisite for a separately preregistered
+WM-v2C physical-to-visual coupling design, but this round does not implement
+or train WM-v2C and does not authorize controller, threshold, candidate-scale,
+or reranker changes.
 
 ## Frozen provenance and data boundary
 
@@ -1259,6 +1341,23 @@ does not authorize a controller, threshold, candidate-scale, or model change.
 - Frozen C0-v2, C1-v2 generator, D15 ensemble, WM-v2A, and WM-v2B hashes all passed before execution.
 - Only controller-development init states 30 and 35 were used; 0--29 and 40--49 were not run.
 - No reward, done, success, or final task completion value is present in the result or sidecar.
+
+## Preflight correction history
+
+Two replay-identity implementation checks stopped before any mechanism metric
+was admitted. The original v1 preflight encoded identical RGB in different
+CLIP batch shapes, exposing a numerical batch-shape artifact rather than a
+simulator mismatch. V1.1 then incorrectly included a separate prefix-source
+renderer in the three-branch identity gate; the three actual branches were
+already RGB-, proprio-, observable-, and simulator-state-identical. Both
+blocked results and reports remain frozen at commits `2702525` and `9804a2e`.
+
+The final v1.2 amendment, committed as
+`{result['protocol']['preregistered_commit']}` before any real-future metric
+was viewed, restricts the gate to the three actual fresh branches and encodes
+their identical RGB in one shared CLIP batch. It changes no task, init state,
+seed, planning index, candidate, model, metric, denominator rule, threshold,
+or verdict mapping.
 
 ## Preregistered branch identities and candidate hashes
 
@@ -1283,21 +1382,29 @@ identity audit and never for restore.
 
 {markdown_table(['Model', 'Predicted cosine', 'Real cosine', 'Pred/real', 'A0 error', 'A1 error', 'A2 error'], transfer_rows)}
 
+Overall real-future distribution summaries:
+
+{markdown_table(['Metric', 'n', 'Mean', 'Median', 'p75', 'p90', 'p95'], overall_real_rows)}
+
 Ratios use ratio-of-means and are withheld when the matching real group mean
 is below the preregistered `1e-5` denominator floor. Absolute predicted, real,
 and signed differences remain in the JSON for every horizon, task, and pair.
 
 ## Per-horizon dynamics
 
-{markdown_table(['h', 'Real visual cosine', 'Real proprio RMSE', 'Pixel MAE', 'WM-v1 ratio', 'WM-v2A ratio', 'WM-v2B ratio'], horizon_rows)}
+{markdown_table(['h', 'Visual mean', 'Median', 'p75', 'p90', 'p95', 'Proprio mean', 'Pixel MAE', 'WM-v1 ratio', 'WM-v2A ratio', 'WM-v2B ratio'], horizon_rows)}
 
 ## Per-task dynamics
 
-{markdown_table(['Task', 'Real visual cosine', 'Real proprio RMSE', 'WM-v1 ratio', 'WM-v2A ratio', 'WM-v2B ratio'], task_rows)}
+{markdown_table(['Task', 'Visual mean', 'Median', 'p75', 'p90', 'p95', 'Proprio mean', 'WM-v1 ratio', 'WM-v2A ratio', 'WM-v2B ratio'], task_rows)}
 
 Each task contributes four branch points: init states 30/35 crossed with
 planning indices 0/8. Per-pair mean/median/p75/p90/p95 and model ratios are in
-the compact diagnosis JSON.
+the table below.
+
+## Candidate-pair dynamics and transfer
+
+{markdown_table(['Pair', 'Visual mean', 'Median', 'p75', 'p90', 'p95', 'Proprio mean', 'WM-v1 ratio', 'WM-v2A ratio', 'WM-v2B ratio'], pair_rows)}
 
 ## Candidate-specific future prediction fidelity
 
@@ -1311,6 +1418,15 @@ WM-v2B standardized-proprio RMSE is
 `{analysis['wm_v2b_proprio']['candidate_error']['A0']['mean']:.6f}` for A0,
 `{analysis['wm_v2b_proprio']['candidate_error']['A1']['mean']:.6f}` for A1,
 and `{analysis['wm_v2b_proprio']['candidate_error']['A2']['mean']:.6f}` for A2.
+
+Candidate-specific mean visual cosine errors and WM-v2B standardized-proprio
+RMSE by horizon:
+
+{markdown_table(['h', 'v1 A0', 'v1 A1', 'v1 A2', 'v2A A0', 'v2A A1', 'v2A A2', 'v2B A0', 'v2B A1', 'v2B A2', 'p A0', 'p A1', 'p A2'], candidate_horizon_rows)}
+
+The same candidate-specific errors by task:
+
+{markdown_table(['Task', 'v1 A0', 'v1 A1', 'v1 A2', 'v2A A0', 'v2A A1', 'v2A A2', 'v2B A0', 'v2B A1', 'v2B A2', 'p A0', 'p A1', 'p A2'], candidate_task_rows)}
 
 ## Does local physical motion map into CLIP motion?
 
@@ -1333,6 +1449,11 @@ does not make future proprio a task-success objective.
 - Any model meets `WM_LOCAL_COUNTERFACTUAL_PREDICTION_FAIL`: `{any(value['fail'] for value in decision['prediction_failure_by_model'].values())}`.
 
 Final verdict: `{decision['final_verdict']}`.
+
+This verdict permits the next experiment to *design* a separately
+preregistered WM-v2C physical-to-visual coupling. It does not itself authorize
+training that model, changing the controller/reranker, D20-v2, C2-v2, or any
+40--49 rollout.
 
 ## Integrity and forbidden-activity audit
 
