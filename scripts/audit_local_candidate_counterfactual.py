@@ -203,10 +203,10 @@ def validate_protocol(
     amendment = None
     if amendment_path is not None:
         amendment = json.loads(amendment_path.read_text())
-        if amendment["amendment_version"] != "local-candidate-counterfactual-dynamics-v1.1":
+        if amendment["amendment_version"] != "local-candidate-counterfactual-dynamics-v1.2":
             raise ValueError("unexpected protocol amendment")
         if amendment["status"] != (
-            "PREREGISTERED_AFTER_V1_PREFLIGHT_BLOCK_AND_BEFORE_ANY_MECHANISM_BRANCH_RESULT"
+            "FINAL_PREREGISTRATION_AFTER_REFERENCE_ENV_GATE_BUG_AND_BEFORE_ANY_MECHANISM_RESULT"
         ):
             raise ValueError("protocol amendment is not preregistered")
         if amendment["base_protocol"] != str(path.resolve().relative_to(ROOT)):
@@ -215,12 +215,16 @@ def validate_protocol(
             raise ValueError("amendment base protocol hash changed")
         if amendment["base_preregistered_commit"] != preregistered_commit:
             raise ValueError("amendment base protocol commit changed")
-        blocker = amendment["v1_preflight_blocker"]
+        if sha256(ROOT / amendment["v1_1_amendment"]) != amendment[
+            "v1_1_amendment_sha256"
+        ]:
+            raise ValueError("v1.1 amendment changed")
+        blocker = amendment["v1_1_preflight_blocker"]
         if sha256(ROOT / blocker["result"]) != blocker["result_sha256"]:
             raise ValueError("v1 preflight blocker result changed")
         if sha256(ROOT / blocker["report"]) != blocker["report_sha256"]:
             raise ValueError("v1 preflight blocker report changed")
-        if float(amendment["single_authorized_measurement_fix"]["clip_identity_threshold_unchanged"]) != float(
+        if float(amendment["final_authorized_alignment_fix"]["clip_identity_threshold_unchanged"]) != float(
             protocol["prefix_identity_gate"]["clip_latent_min_cosine"]
         ):
             raise ValueError("v1.1 changed the CLIP identity threshold")
@@ -428,10 +432,7 @@ def replay_prefix(
 
 def prefix_audit(
     protocol: dict[str, Any],
-    policy: C1V2RerankPolicy,
     prefix: np.ndarray,
-    reference_observation: dict[str, np.ndarray],
-    reference_state: np.ndarray,
     branch_observations: list[dict[str, np.ndarray]],
     branch_states: list[np.ndarray],
     identity_latents: np.ndarray,
@@ -439,7 +440,7 @@ def prefix_audit(
     gate = protocol["prefix_identity_gate"]
     prefix_hash = array_sha256(prefix.astype(np.float32))
     branch_prefix_hashes = [array_sha256(prefix.astype(np.float32)) for _ in range(3)]
-    rgb_reference = np.asarray(reference_observation["agentview_image"], dtype=np.uint8)
+    rgb_reference = np.asarray(branch_observations[0]["agentview_image"], dtype=np.uint8)
     rgb_hash = array_sha256(rgb_reference)
     branch_rgb_hashes = [
         array_sha256(np.asarray(observation["agentview_image"], dtype=np.uint8))
@@ -447,27 +448,35 @@ def prefix_audit(
     ]
     rgb_equal = all(
         np.array_equal(rgb_reference, observation["agentview_image"])
-        for observation in branch_observations
+        for observation in branch_observations[1:]
     )
-    reference_p = proprio_from_observation(reference_observation).astype(np.float64)
+    reference_p = proprio_from_observation(branch_observations[0]).astype(np.float64)
     proprio_max = max(
         float(np.max(np.abs(reference_p - proprio_from_observation(obs).astype(np.float64))))
-        for obs in branch_observations
+        for obs in branch_observations[1:]
     )
     state_max = 0.0
-    states_same_shape = all(state.shape == reference_state.shape for state in branch_states)
+    reference_state = branch_states[0]
+    states_same_shape = all(
+        state.shape == reference_state.shape for state in branch_states[1:]
+    )
     if states_same_shape:
         state_max = max(
             float(np.max(np.abs(reference_state - state))) if state.size else 0.0
-            for state in branch_states
+            for state in branch_states[1:]
         )
     else:
         state_max = float("inf")
-    if identity_latents.shape != (4, 512):
-        raise ValueError("identity CLIP batch must contain reference plus three branches")
+    if identity_latents.shape != (3, 512):
+        raise ValueError("identity CLIP batch must contain the three branches")
     reference_latent = identity_latents[0]
-    clip_cosines = np.sum(identity_latents[1:] * reference_latent[None, :], axis=-1)
-    observation = observation_identity(reference_observation, branch_observations)
+    clip_cosines = np.concatenate(
+        (
+            np.asarray([1.0], dtype=np.float32),
+            np.sum(identity_latents[1:] * reference_latent[None, :], axis=-1),
+        )
+    )
+    observation = observation_identity(branch_observations[0], branch_observations[1:])
     passed = bool(
         prefix_hash == branch_prefix_hashes[0] == branch_prefix_hashes[1] == branch_prefix_hashes[2]
         and rgb_equal
@@ -482,14 +491,14 @@ def prefix_audit(
         "pass": passed,
         "prefix_action_sha256": prefix_hash,
         "branch_prefix_action_sha256": branch_prefix_hashes,
-        "reference_rgb_sha256": rgb_hash,
+        "branch0_rgb_sha256": rgb_hash,
         "branch_rgb_sha256": branch_rgb_hashes,
         "rgb_exact": rgb_equal,
         "planning_observation": observation,
         "proprio_max_abs_difference": proprio_max,
         "simulator_state_same_shape": states_same_shape,
         "simulator_state_max_abs_difference": state_max,
-        "clip_cosine_to_reference": clip_cosines.astype(float).tolist(),
+        "clip_cosine_to_branch0": clip_cosines.astype(float).tolist(),
     }
 
 
@@ -507,10 +516,8 @@ def collect_branch_point(
     episode_position: int,
     planning_index: int,
     prefix: np.ndarray,
-    reference_observation: dict[str, np.ndarray],
-    reference_state: np.ndarray,
-    candidates: np.ndarray,
-    context: dict[str, torch.Tensor],
+    task_language: str,
+    plan_seed: int,
 ) -> tuple[dict[str, Any], dict[str, np.ndarray]]:
     envs: list[OffScreenRenderEnv] = []
     try:
@@ -523,15 +530,11 @@ def collect_branch_point(
             branch_states.append(state)
         identity_latents = encode_images(
             policy,
-            [reference_observation["agentview_image"]]
-            + [observation["agentview_image"] for observation in branch_observations],
+            [observation["agentview_image"] for observation in branch_observations],
         )
         audit = prefix_audit(
             protocol,
-            policy,
             prefix,
-            reference_observation,
-            reference_state,
             branch_observations,
             branch_states,
             identity_latents,
@@ -549,6 +552,12 @@ def collect_branch_point(
                 f"deterministic prefix identity failed: {identity}",
                 {"identity": identity, **audit},
             )
+
+        context = policy._actor_context(
+            policy_observation(branch_observations[0]), task_language
+        )
+        interface = policy._interface(context["actor_normalized"], plan_seed)
+        candidates = interface["candidates"].detach().float().cpu().numpy().copy()
 
         real_rgb = np.empty((3, 8, 128, 128, 3), dtype=np.uint8)
         real_z = np.empty((3, 8, 512), dtype=np.float32)
@@ -602,14 +611,14 @@ def collect_branch_point(
             "pred_z_wm_v2b_seed11": predictions["wm_v2b_seed11"],
             "pred_proprio_wm_v2b_standardized": pred_p,
             "prefix_actions": prefix.astype(np.float32),
-            "reference_rgb": np.asarray(
-                reference_observation["agentview_image"], dtype=np.uint8
+            "planning_rgb": np.asarray(
+                branch_observations[0]["agentview_image"], dtype=np.uint8
             ),
         }
         if not all(
             np.isfinite(value).all()
             for key, value in arrays.items()
-            if key not in {"real_rgb", "reference_rgb"}
+            if key not in {"real_rgb", "planning_rgb"}
         ):
             raise FloatingPointError("branch point contains NaN/Inf")
         return record, arrays
@@ -696,10 +705,8 @@ def collect(
                             episode_position,
                             planning_index,
                             prefix,
-                            reference_observation,
-                            simulator_state(reference_env),
-                            candidates,
-                            context,
+                            task.language,
+                            plan_seed,
                         )
                         records.append(record)
                         for key, value in arrays.items():
@@ -1089,7 +1096,7 @@ def analyze(
                 record["simulator_state_max_abs_difference"] for record in prefix_records
             ),
             "minimum_clip_cosine": min(
-                min(record["clip_cosine_to_reference"]) for record in prefix_records
+                min(record["clip_cosine_to_branch0"]) for record in prefix_records
             ),
         },
         "candidate_hashes": {
@@ -1259,8 +1266,8 @@ does not authorize a controller, threshold, candidate-scale, or model change.
 
 The ordered 40-candidate hash manifest is
 `{analysis['candidate_hashes']['ordered_manifest_sha256']}`. A candidate tensor
-was generated once at its reference planning observation and copied unchanged
-to all three independent branches.
+was generated once from the three branches' verified common planning
+observation and copied unchanged to all three independent branches.
 
 ## Prefix determinism passed before every branch
 
@@ -1268,7 +1275,7 @@ All {prefix['branch_points']} branch points pass. RGB and every planning
 observation array are bitwise identical. Maximum proprio difference is
 `{prefix['max_proprio_abs_difference']:.3g}`, maximum flattened simulator-state
 difference is `{prefix['max_simulator_state_abs_difference']:.3g}`, and minimum
-CLIP cosine to the reference planning observation is
+same-batch CLIP cosine to branch 0 is
 `{prefix['minimum_clip_cosine']:.9f}`. Flattened state is used only for this
 identity audit and never for restore.
 
@@ -1385,7 +1392,7 @@ def main() -> int:
     parser.add_argument(
         "--amendment",
         type=Path,
-        default=ROOT / "configs/local_candidate_counterfactual_protocol_v1_1_amendment.json",
+        default=ROOT / "configs/local_candidate_counterfactual_protocol_v1_2_amendment.json",
     )
     parser.add_argument(
         "--output",
