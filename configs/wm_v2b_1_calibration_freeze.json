@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "experiment_version": "wm-v2b-1-differential-physical-calibration-v1",
+  "status": "FROZEN_BEFORE_EVALUATION",
+  "protocol": "configs/wm_v2b_1_differential_calibration_protocol.json",
+  "protocol_sha256": "3f76587593c84d418ba2de92e834f9f4286bd6b3a639d481f3cffb0497957cb0",
+  "fit_source_commit": "097e0571d18ce5995fda6903adf49f497449de81",
+  "fit_partition": {
+    "name": "calibration",
+    "init_state_indices": [
+      31,
+      32,
+      33,
+      34
+    ],
+    "branch_points": 40,
+    "candidate_pairs_per_horizon": 120,
+    "horizon": 8
+  },
+  "calibration_manifest": "results/world_model_v2b_1/branches/calibration_manifest.json",
+  "calibration_manifest_sha256": "60faa70066f2c4a25ed093d1fed349c7db0b4a75746be1f692801e165e4532ac",
+  "calibration_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz",
+  "calibration_sidecar_sha256": "5e7c39e268b1696257107e2c8f068e2c4b40aa44f88ca8f6f92bc99d93d204d6",
+  "fit_rule": "closed-form no-intercept least squares alpha=sum(delta_pred*delta_real)/sum(delta_pred^2), using calibration partition only",
+  "coefficients": {
+    "global_scalar": 0.5324774511734892,
+    "per_horizon_scalar": [
+      0.40681922142640414,
+      0.5922941688472336,
+      0.5940356526370816,
+      0.5694837515893315,
+      0.5326402927412073,
+      0.5160091728198142,
+      0.5137498993535594,
+      0.5233804369411192
+    ],
+    "groupwise_scalar": {
+      "ee_pos": 0.6864590530750556,
+      "gripper": 0.4191461809363306,
+      "joints": 0.5263412312661285
+    },
+    "horizon_group_scalar": {
+      "ee_pos": [
+        0.4884155010643441,
+        0.72530348373822,
+        0.7949091644650648,
+        0.8043964478101098,
+        0.7427508152334599,
+        0.6830547326905078,
+        0.6559678769124035,
+        0.6254282977487753
+      ],
+      "gripper": [
+        0.7511931270049513,
+        1.1179119647604125,
+        0.9014592116644233,
+        0.6161356254469538,
+        0.1837260530819413,
+        0.08142931231101276,
+        0.16797482480725218,
+        0.16373493874594985
+      ],
+      "joints": [
+        0.3274054644025863,
+        0.49458475011681097,
+        0.5414674623677617,
+        0.5461535292377583,
+        0.5399332838378511,
+        0.5273397355970493,
+        0.5192998797571075,
+        0.5298158845650849
+      ]
+    }
+  },
+  "negative_alpha": {
+    "global_scalar": false,
+    "per_horizon_scalar": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "groupwise_scalar": {
+      "ee_pos": false,
+      "gripper": false,
+      "joints": false
+    },
+    "horizon_group_scalar": {
+      "ee_pos": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "gripper": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "joints": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ]
+    }
+  },
+  "calibration_partition_diagnostics_not_held_out": {
+    "zero_difference_rmse": 0.020665880874813754,
+    "raw_rmse": 0.019553749851568682,
+    "forms": {
+      "global_scalar": {
+        "calibration_partition_rmse": 0.01522601570619525,
+        "improvement_over_zero": 0.2632292909056812,
+        "improvement_over_raw": 0.22132502349805008
+      },
+      "per_horizon_scalar": {
+        "calibration_partition_rmse": 0.015202925966823573,
+        "improvement_over_zero": 0.26434657884087964,
+        "improvement_over_raw": 0.22250585784169005
+      },
+      "groupwise_scalar": {
+        "calibration_partition_rmse": 0.015165651754730681,
+        "improvement_over_zero": 0.2661502383276775,
+        "improvement_over_raw": 0.22441210152261254
+      },
+      "horizon_group_scalar": {
+        "calibration_partition_rmse": 0.014964512106773787,
+        "improvement_over_zero": 0.2758831720059138,
+        "improvement_over_raw": 0.23469860152817326
+      }
+    }
+  },
+  "evaluation_artifacts_present_at_fit_time": false,
+  "forbidden_activity_audit": {
+    "evaluation_partition_read_or_fit": false,
+    "iterative_tuning": false,
+    "alpha_clipped_or_sign_corrected": false,
+    "neural_model_trained_or_modified": false,
+    "calibration_form_selected_from_evaluation": false
+  }
+}
