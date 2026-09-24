@@ -1,0 +1,6333 @@
+{
+  "schema_version": 1,
+  "experiment_version": "wm-v2c-ej-explicit-physical-visual-coupling-v1",
+  "status": "COMPLETE_BEFORE_TRAINING",
+  "source_commit": "48d2fef9f79dc0055f86330bd1110f16a76c329a",
+  "protocol": {
+    "path": "configs/wm_v2c_ej_protocol.json",
+    "sha256": "cff07db51aa682aa6cd8d0823af9f898c23fc5e5ff1836aa64f6e1cc71933636"
+  },
+  "config": {
+    "path": "configs/world_model_v2c_ej_seed11.yaml",
+    "sha256": "aae1cb7f822470be16ead5c82f41f24c211b2fe89f99c2d37b5f7599e72cb728"
+  },
+  "data": {
+    "split": "train demos 0-44 only",
+    "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "normalization": {
+      "schema_version": 1,
+      "data_contract_version": "d13-v1",
+      "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+      "data_contract_sha256": "e988b7e1078b3c89614bc83225ba677045cfda3b854098a3e1180b85cca32181",
+      "train_episode_count": 450,
+      "minimum_std": 1e-06,
+      "z0": {
+        "rule": "frozen CLIP image latent is already L2-normalized; no standardization"
+      },
+      "language": {
+        "rule": "frozen CLIP text latent is already L2-normalized; no standardization"
+      },
+      "proprio": {
+        "mean": [
+          -0.025783763657440513,
+          0.10606899138900579,
+          1.0564510287578137,
+          0.01967004138558344,
+          -0.019863773416622973,
+          0.11607296051776846,
+          0.630624079682339,
+          0.058835829814016825,
+          -1.6500193539244463,
+          -0.1505161264838529,
+          2.30217305699021,
+          1.1153648861656535
+        ],
+        "std": [
+          0.11198754139650496,
+          0.13838893311714517,
+          0.10302571168984437,
+          0.017098450426581195,
+          0.01692212798271116,
+          0.13876829426628043,
+          0.4181082816666583,
+          0.12199119312512591,
+          0.5709841619594773,
+          0.20987855205791153,
+          0.3254920498940742,
+          0.47887200770027977
+        ],
+        "raw_std": [
+          0.11198754139650496,
+          0.13838893311714517,
+          0.10302571168984437,
+          0.017098450426581195,
+          0.01692212798271116,
+          0.13876829426628043,
+          0.4181082816666583,
+          0.12199119312512591,
+          0.5709841619594773,
+          0.20987855205791153,
+          0.3254920498940742,
+          0.47887200770027977
+        ],
+        "count": 55981,
+        "rule": "train demos 0-44: every episode proprio observation row exactly once; population mean/std; no overlapping WM-window expansion"
+      },
+      "action": {
+        "mean": [
+          0.15043248036961165,
+          0.13491899306777708,
+          -0.15583906462344355,
+          -0.004983779983459838,
+          -0.011163783694318051,
+          -0.01996220902811475,
+          0.10107867677513462
+        ],
+        "std": [
+          0.41536850774580286,
+          0.34807537368733604,
+          0.5100036906067751,
+          0.03836073771910598,
+          0.07189857236666077,
+          0.0581174084852896,
+          0.9948784353384025
+        ],
+        "raw_std": [
+          0.41536850774580286,
+          0.34807537368733604,
+          0.5100036906067751,
+          0.03836073771910598,
+          0.07189857236666077,
+          0.0581174084852896,
+          0.9948784353384025
+        ],
+        "count": 55531,
+        "rule": "train demos 0-44: every episode actions[1:] row exactly once; action[0] excluded; population mean/std; no overlapping WM-window expansion"
+      }
+    },
+    "sample_count": 1024,
+    "batch_count": 4,
+    "batch_size": 256,
+    "selection_seed": 220801,
+    "identity_sha256": "9e5c151e0a02b52b35e7f3f617b9a34a09c5e0625c8ff380c6b5b42c892dd6f9",
+    "identities": [
+      {
+        "dataset_index": 30488,
+        "task_id": 6,
+        "demo_id": 1,
+        "start_timestep": 73
+      },
+      {
+        "dataset_index": 49061,
+        "task_id": 9,
+        "demo_id": 26,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 3652,
+        "task_id": 0,
+        "demo_id": 43,
+        "start_timestep": 13
+      },
+      {
+        "dataset_index": 42058,
+        "task_id": 8,
+        "demo_id": 12,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 19479,
+        "task_id": 4,
+        "demo_id": 11,
+        "start_timestep": 39
+      },
+      {
+        "dataset_index": 12358,
+        "task_id": 2,
+        "demo_id": 29,
+        "start_timestep": 13
+      },
+      {
+        "dataset_index": 5646,
+        "task_id": 1,
+        "demo_id": 19,
+        "start_timestep": 101
+      },
+      {
+        "dataset_index": 43436,
+        "task_id": 8,
+        "demo_id": 23,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 2140,
+        "task_id": 0,
+        "demo_id": 3,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 33434,
+        "task_id": 6,
+        "demo_id": 32,
+        "start_timestep": 56
+      },
+      {
+        "dataset_index": 3275,
+        "task_id": 0,
+        "demo_id": 4,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 21648,
+        "task_id": 4,
+        "demo_id": 25,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 49993,
+        "task_id": 9,
+        "demo_id": 32,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 6781,
+        "task_id": 1,
+        "demo_id": 27,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 50096,
+        "task_id": 9,
+        "demo_id": 33,
+        "start_timestep": 56
+      },
+      {
+        "dataset_index": 40261,
+        "task_id": 7,
+        "demo_id": 40,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 35415,
+        "task_id": 6,
+        "demo_id": 8,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 33358,
+        "task_id": 6,
+        "demo_id": 31,
+        "start_timestep": 113
+      },
+      {
+        "dataset_index": 31274,
+        "task_id": 6,
+        "demo_id": 16,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 33317,
+        "task_id": 6,
+        "demo_id": 31,
+        "start_timestep": 72
+      },
+      {
+        "dataset_index": 29171,
+        "task_id": 5,
+        "demo_id": 40,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 10595,
+        "task_id": 2,
+        "demo_id": 14,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 49686,
+        "task_id": 9,
+        "demo_id": 30,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 5957,
+        "task_id": 1,
+        "demo_id": 21,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 40971,
+        "task_id": 7,
+        "demo_id": 5,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 45813,
+        "task_id": 8,
+        "demo_id": 43,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 3572,
+        "task_id": 0,
+        "demo_id": 42,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 27222,
+        "task_id": 5,
+        "demo_id": 23,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 7729,
+        "task_id": 1,
+        "demo_id": 33,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 9611,
+        "task_id": 1,
+        "demo_id": 7,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 38481,
+        "task_id": 7,
+        "demo_id": 29,
+        "start_timestep": 38
+      },
+      {
+        "dataset_index": 24125,
+        "task_id": 4,
+        "demo_id": 40,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 51021,
+        "task_id": 9,
+        "demo_id": 4,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 34216,
+        "task_id": 6,
+        "demo_id": 39,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 28735,
+        "task_id": 5,
+        "demo_id": 36,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 44724,
+        "task_id": 8,
+        "demo_id": 34,
+        "start_timestep": 4
+      },
+      {
+        "dataset_index": 30564,
+        "task_id": 6,
+        "demo_id": 10,
+        "start_timestep": 20
+      },
+      {
+        "dataset_index": 49378,
+        "task_id": 9,
+        "demo_id": 28,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 22165,
+        "task_id": 4,
+        "demo_id": 29,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 25938,
+        "task_id": 5,
+        "demo_id": 12,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 23028,
+        "task_id": 4,
+        "demo_id": 34,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 10611,
+        "task_id": 2,
+        "demo_id": 14,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 20073,
+        "task_id": 4,
+        "demo_id": 15,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 11692,
+        "task_id": 2,
+        "demo_id": 23,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 5368,
+        "task_id": 1,
+        "demo_id": 17,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 29981,
+        "task_id": 5,
+        "demo_id": 7,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 24038,
+        "task_id": 4,
+        "demo_id": 40,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 22846,
+        "task_id": 4,
+        "demo_id": 32,
+        "start_timestep": 106
+      },
+      {
+        "dataset_index": 165,
+        "task_id": 0,
+        "demo_id": 1,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 36296,
+        "task_id": 7,
+        "demo_id": 13,
+        "start_timestep": 82
+      },
+      {
+        "dataset_index": 41774,
+        "task_id": 8,
+        "demo_id": 10,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 12218,
+        "task_id": 2,
+        "demo_id": 27,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 34005,
+        "task_id": 6,
+        "demo_id": 37,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 1352,
+        "task_id": 0,
+        "demo_id": 22,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 16238,
+        "task_id": 3,
+        "demo_id": 21,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 1882,
+        "task_id": 0,
+        "demo_id": 28,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 31751,
+        "task_id": 6,
+        "demo_id": 2,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 39955,
+        "task_id": 7,
+        "demo_id": 38,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 20259,
+        "task_id": 4,
+        "demo_id": 16,
+        "start_timestep": 103
+      },
+      {
+        "dataset_index": 48464,
+        "task_id": 9,
+        "demo_id": 21,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 31682,
+        "task_id": 6,
+        "demo_id": 19,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 30528,
+        "task_id": 6,
+        "demo_id": 1,
+        "start_timestep": 113
+      },
+      {
+        "dataset_index": 33852,
+        "task_id": 6,
+        "demo_id": 36,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 22357,
+        "task_id": 4,
+        "demo_id": 3,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 35897,
+        "task_id": 7,
+        "demo_id": 10,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 6112,
+        "task_id": 1,
+        "demo_id": 22,
+        "start_timestep": 38
+      },
+      {
+        "dataset_index": 21063,
+        "task_id": 4,
+        "demo_id": 21,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 2670,
+        "task_id": 0,
+        "demo_id": 34,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 51584,
+        "task_id": 9,
+        "demo_id": 44,
+        "start_timestep": 16
+      },
+      {
+        "dataset_index": 9753,
+        "task_id": 1,
+        "demo_id": 8,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 18468,
+        "task_id": 3,
+        "demo_id": 44,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 2793,
+        "task_id": 0,
+        "demo_id": 35,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 14249,
+        "task_id": 2,
+        "demo_id": 44,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 34049,
+        "task_id": 6,
+        "demo_id": 37,
+        "start_timestep": 107
+      },
+      {
+        "dataset_index": 42576,
+        "task_id": 8,
+        "demo_id": 17,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 13718,
+        "task_id": 2,
+        "demo_id": 4,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 44475,
+        "task_id": 8,
+        "demo_id": 31,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 38906,
+        "task_id": 7,
+        "demo_id": 31,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 37431,
+        "task_id": 7,
+        "demo_id": 21,
+        "start_timestep": 15
+      },
+      {
+        "dataset_index": 10085,
+        "task_id": 2,
+        "demo_id": 1,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 11505,
+        "task_id": 2,
+        "demo_id": 21,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 51306,
+        "task_id": 9,
+        "demo_id": 41,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 4843,
+        "task_id": 1,
+        "demo_id": 13,
+        "start_timestep": 13
+      },
+      {
+        "dataset_index": 32132,
+        "task_id": 6,
+        "demo_id": 22,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 8555,
+        "task_id": 1,
+        "demo_id": 4,
+        "start_timestep": 23
+      },
+      {
+        "dataset_index": 38214,
+        "task_id": 7,
+        "demo_id": 27,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 4735,
+        "task_id": 1,
+        "demo_id": 12,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 21410,
+        "task_id": 4,
+        "demo_id": 23,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 9468,
+        "task_id": 1,
+        "demo_id": 6,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 15822,
+        "task_id": 3,
+        "demo_id": 18,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 1392,
+        "task_id": 0,
+        "demo_id": 22,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 300,
+        "task_id": 0,
+        "demo_id": 11,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 23980,
+        "task_id": 4,
+        "demo_id": 4,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 17652,
+        "task_id": 3,
+        "demo_id": 36,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 1709,
+        "task_id": 0,
+        "demo_id": 26,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 38183,
+        "task_id": 7,
+        "demo_id": 26,
+        "start_timestep": 156
+      },
+      {
+        "dataset_index": 5107,
+        "task_id": 1,
+        "demo_id": 15,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 2459,
+        "task_id": 0,
+        "demo_id": 32,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 33894,
+        "task_id": 6,
+        "demo_id": 36,
+        "start_timestep": 74
+      },
+      {
+        "dataset_index": 16079,
+        "task_id": 3,
+        "demo_id": 20,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 37026,
+        "task_id": 7,
+        "demo_id": 19,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 3503,
+        "task_id": 0,
+        "demo_id": 41,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 16018,
+        "task_id": 3,
+        "demo_id": 2,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 9511,
+        "task_id": 1,
+        "demo_id": 6,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 12320,
+        "task_id": 2,
+        "demo_id": 28,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 21507,
+        "task_id": 4,
+        "demo_id": 24,
+        "start_timestep": 38
+      },
+      {
+        "dataset_index": 10646,
+        "task_id": 2,
+        "demo_id": 14,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 41058,
+        "task_id": 7,
+        "demo_id": 6,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 34767,
+        "task_id": 6,
+        "demo_id": 43,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 23692,
+        "task_id": 4,
+        "demo_id": 38,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 8915,
+        "task_id": 1,
+        "demo_id": 42,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 34825,
+        "task_id": 6,
+        "demo_id": 43,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 20717,
+        "task_id": 4,
+        "demo_id": 19,
+        "start_timestep": 150
+      },
+      {
+        "dataset_index": 45505,
+        "task_id": 8,
+        "demo_id": 40,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 46427,
+        "task_id": 8,
+        "demo_id": 9,
+        "start_timestep": 24
+      },
+      {
+        "dataset_index": 9425,
+        "task_id": 1,
+        "demo_id": 6,
+        "start_timestep": 16
+      },
+      {
+        "dataset_index": 9087,
+        "task_id": 1,
+        "demo_id": 43,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 15509,
+        "task_id": 3,
+        "demo_id": 15,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 52111,
+        "task_id": 9,
+        "demo_id": 8,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 40737,
+        "task_id": 7,
+        "demo_id": 43,
+        "start_timestep": 116
+      },
+      {
+        "dataset_index": 38063,
+        "task_id": 7,
+        "demo_id": 26,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 10787,
+        "task_id": 2,
+        "demo_id": 15,
+        "start_timestep": 115
+      },
+      {
+        "dataset_index": 26357,
+        "task_id": 5,
+        "demo_id": 16,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 26884,
+        "task_id": 5,
+        "demo_id": 20,
+        "start_timestep": 23
+      },
+      {
+        "dataset_index": 16022,
+        "task_id": 3,
+        "demo_id": 2,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 16989,
+        "task_id": 3,
+        "demo_id": 3,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 28100,
+        "task_id": 5,
+        "demo_id": 30,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 24425,
+        "task_id": 4,
+        "demo_id": 43,
+        "start_timestep": 4
+      },
+      {
+        "dataset_index": 13892,
+        "task_id": 2,
+        "demo_id": 41,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 48438,
+        "task_id": 9,
+        "demo_id": 21,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 35519,
+        "task_id": 6,
+        "demo_id": 9,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 5464,
+        "task_id": 1,
+        "demo_id": 18,
+        "start_timestep": 23
+      },
+      {
+        "dataset_index": 40078,
+        "task_id": 7,
+        "demo_id": 39,
+        "start_timestep": 116
+      },
+      {
+        "dataset_index": 45944,
+        "task_id": 8,
+        "demo_id": 44,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 31120,
+        "task_id": 6,
+        "demo_id": 14,
+        "start_timestep": 122
+      },
+      {
+        "dataset_index": 46079,
+        "task_id": 8,
+        "demo_id": 5,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 9810,
+        "task_id": 1,
+        "demo_id": 8,
+        "start_timestep": 141
+      },
+      {
+        "dataset_index": 10820,
+        "task_id": 2,
+        "demo_id": 16,
+        "start_timestep": 20
+      },
+      {
+        "dataset_index": 48263,
+        "task_id": 9,
+        "demo_id": 2,
+        "start_timestep": 110
+      },
+      {
+        "dataset_index": 48698,
+        "task_id": 9,
+        "demo_id": 23,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 27769,
+        "task_id": 5,
+        "demo_id": 28,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 19409,
+        "task_id": 4,
+        "demo_id": 10,
+        "start_timestep": 100
+      },
+      {
+        "dataset_index": 26068,
+        "task_id": 5,
+        "demo_id": 13,
+        "start_timestep": 96
+      },
+      {
+        "dataset_index": 18264,
+        "task_id": 3,
+        "demo_id": 42,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 35358,
+        "task_id": 6,
+        "demo_id": 8,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 35484,
+        "task_id": 6,
+        "demo_id": 9,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 7741,
+        "task_id": 1,
+        "demo_id": 33,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 5931,
+        "task_id": 1,
+        "demo_id": 20,
+        "start_timestep": 137
+      },
+      {
+        "dataset_index": 5511,
+        "task_id": 1,
+        "demo_id": 18,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 2016,
+        "task_id": 0,
+        "demo_id": 29,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 48019,
+        "task_id": 9,
+        "demo_id": 18,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 47064,
+        "task_id": 9,
+        "demo_id": 12,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 44540,
+        "task_id": 8,
+        "demo_id": 32,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 6570,
+        "task_id": 1,
+        "demo_id": 25,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 4078,
+        "task_id": 0,
+        "demo_id": 7,
+        "start_timestep": 61
+      },
+      {
+        "dataset_index": 35373,
+        "task_id": 6,
+        "demo_id": 8,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 4560,
+        "task_id": 1,
+        "demo_id": 10,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 18969,
+        "task_id": 3,
+        "demo_id": 9,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 39563,
+        "task_id": 7,
+        "demo_id": 35,
+        "start_timestep": 145
+      },
+      {
+        "dataset_index": 47218,
+        "task_id": 9,
+        "demo_id": 13,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 52270,
+        "task_id": 9,
+        "demo_id": 9,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 47173,
+        "task_id": 9,
+        "demo_id": 13,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 6412,
+        "task_id": 1,
+        "demo_id": 24,
+        "start_timestep": 113
+      },
+      {
+        "dataset_index": 18687,
+        "task_id": 3,
+        "demo_id": 6,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 18172,
+        "task_id": 3,
+        "demo_id": 41,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 26111,
+        "task_id": 5,
+        "demo_id": 14,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 12706,
+        "task_id": 2,
+        "demo_id": 31,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 39887,
+        "task_id": 7,
+        "demo_id": 38,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 21170,
+        "task_id": 4,
+        "demo_id": 21,
+        "start_timestep": 154
+      },
+      {
+        "dataset_index": 23616,
+        "task_id": 4,
+        "demo_id": 38,
+        "start_timestep": 17
+      },
+      {
+        "dataset_index": 12266,
+        "task_id": 2,
+        "demo_id": 28,
+        "start_timestep": 24
+      },
+      {
+        "dataset_index": 52376,
+        "task_id": 9,
+        "demo_id": 9,
+        "start_timestep": 160
+      },
+      {
+        "dataset_index": 19643,
+        "task_id": 4,
+        "demo_id": 12,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 15535,
+        "task_id": 3,
+        "demo_id": 15,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 12563,
+        "task_id": 2,
+        "demo_id": 30,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 20916,
+        "task_id": 4,
+        "demo_id": 20,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 13874,
+        "task_id": 2,
+        "demo_id": 40,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 36261,
+        "task_id": 7,
+        "demo_id": 13,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 21355,
+        "task_id": 4,
+        "demo_id": 23,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 4218,
+        "task_id": 0,
+        "demo_id": 9,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 2050,
+        "task_id": 0,
+        "demo_id": 29,
+        "start_timestep": 113
+      },
+      {
+        "dataset_index": 15220,
+        "task_id": 3,
+        "demo_id": 12,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 13103,
+        "task_id": 2,
+        "demo_id": 34,
+        "start_timestep": 117
+      },
+      {
+        "dataset_index": 48885,
+        "task_id": 9,
+        "demo_id": 24,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 6500,
+        "task_id": 1,
+        "demo_id": 25,
+        "start_timestep": 20
+      },
+      {
+        "dataset_index": 3597,
+        "task_id": 0,
+        "demo_id": 42,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 38842,
+        "task_id": 7,
+        "demo_id": 30,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 13368,
+        "task_id": 2,
+        "demo_id": 37,
+        "start_timestep": 14
+      },
+      {
+        "dataset_index": 47327,
+        "task_id": 9,
+        "demo_id": 14,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 36251,
+        "task_id": 7,
+        "demo_id": 13,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 11110,
+        "task_id": 2,
+        "demo_id": 18,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 6483,
+        "task_id": 1,
+        "demo_id": 25,
+        "start_timestep": 3
+      },
+      {
+        "dataset_index": 17188,
+        "task_id": 3,
+        "demo_id": 31,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 40301,
+        "task_id": 7,
+        "demo_id": 40,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 14825,
+        "task_id": 3,
+        "demo_id": 0,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 14405,
+        "task_id": 2,
+        "demo_id": 6,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 7803,
+        "task_id": 1,
+        "demo_id": 33,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 33902,
+        "task_id": 6,
+        "demo_id": 36,
+        "start_timestep": 82
+      },
+      {
+        "dataset_index": 43625,
+        "task_id": 8,
+        "demo_id": 25,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 28884,
+        "task_id": 5,
+        "demo_id": 37,
+        "start_timestep": 92
+      },
+      {
+        "dataset_index": 14943,
+        "task_id": 3,
+        "demo_id": 1,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 20353,
+        "task_id": 4,
+        "demo_id": 17,
+        "start_timestep": 74
+      },
+      {
+        "dataset_index": 19226,
+        "task_id": 4,
+        "demo_id": 1,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 25606,
+        "task_id": 5,
+        "demo_id": 1,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 19626,
+        "task_id": 4,
+        "demo_id": 12,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 47144,
+        "task_id": 9,
+        "demo_id": 12,
+        "start_timestep": 108
+      },
+      {
+        "dataset_index": 19135,
+        "task_id": 4,
+        "demo_id": 0,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 19863,
+        "task_id": 4,
+        "demo_id": 13,
+        "start_timestep": 112
+      },
+      {
+        "dataset_index": 40394,
+        "task_id": 7,
+        "demo_id": 41,
+        "start_timestep": 62
+      },
+      {
+        "dataset_index": 50777,
+        "task_id": 9,
+        "demo_id": 38,
+        "start_timestep": 92
+      },
+      {
+        "dataset_index": 22642,
+        "task_id": 4,
+        "demo_id": 31,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 16676,
+        "task_id": 3,
+        "demo_id": 26,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 23289,
+        "task_id": 4,
+        "demo_id": 35,
+        "start_timestep": 139
+      },
+      {
+        "dataset_index": 40134,
+        "task_id": 7,
+        "demo_id": 4,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 51648,
+        "task_id": 9,
+        "demo_id": 44,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 36793,
+        "task_id": 7,
+        "demo_id": 17,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 42374,
+        "task_id": 8,
+        "demo_id": 15,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 36428,
+        "task_id": 7,
+        "demo_id": 14,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 9049,
+        "task_id": 1,
+        "demo_id": 43,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 49246,
+        "task_id": 9,
+        "demo_id": 27,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 32529,
+        "task_id": 6,
+        "demo_id": 26,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 41021,
+        "task_id": 7,
+        "demo_id": 5,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 20323,
+        "task_id": 4,
+        "demo_id": 17,
+        "start_timestep": 44
+      },
+      {
+        "dataset_index": 14769,
+        "task_id": 2,
+        "demo_id": 9,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 49014,
+        "task_id": 9,
+        "demo_id": 25,
+        "start_timestep": 96
+      },
+      {
+        "dataset_index": 18764,
+        "task_id": 3,
+        "demo_id": 7,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 3404,
+        "task_id": 0,
+        "demo_id": 40,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 23644,
+        "task_id": 4,
+        "demo_id": 38,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 26212,
+        "task_id": 5,
+        "demo_id": 14,
+        "start_timestep": 120
+      },
+      {
+        "dataset_index": 35691,
+        "task_id": 7,
+        "demo_id": 0,
+        "start_timestep": 145
+      },
+      {
+        "dataset_index": 33988,
+        "task_id": 6,
+        "demo_id": 37,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 4475,
+        "task_id": 1,
+        "demo_id": 1,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 44276,
+        "task_id": 8,
+        "demo_id": 3,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 15792,
+        "task_id": 3,
+        "demo_id": 18,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 42779,
+        "task_id": 8,
+        "demo_id": 18,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 47415,
+        "task_id": 9,
+        "demo_id": 15,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 15449,
+        "task_id": 3,
+        "demo_id": 15,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 51458,
+        "task_id": 9,
+        "demo_id": 43,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 10402,
+        "task_id": 2,
+        "demo_id": 12,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 22574,
+        "task_id": 4,
+        "demo_id": 31,
+        "start_timestep": 16
+      },
+      {
+        "dataset_index": 21544,
+        "task_id": 4,
+        "demo_id": 24,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 589,
+        "task_id": 0,
+        "demo_id": 14,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 8245,
+        "task_id": 1,
+        "demo_id": 37,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 49033,
+        "task_id": 9,
+        "demo_id": 25,
+        "start_timestep": 115
+      },
+      {
+        "dataset_index": 21734,
+        "task_id": 4,
+        "demo_id": 25,
+        "start_timestep": 133
+      },
+      {
+        "dataset_index": 43845,
+        "task_id": 8,
+        "demo_id": 27,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 20377,
+        "task_id": 4,
+        "demo_id": 17,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 47488,
+        "task_id": 9,
+        "demo_id": 15,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 37323,
+        "task_id": 7,
+        "demo_id": 20,
+        "start_timestep": 96
+      },
+      {
+        "dataset_index": 28945,
+        "task_id": 5,
+        "demo_id": 38,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 41964,
+        "task_id": 8,
+        "demo_id": 11,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 34380,
+        "task_id": 6,
+        "demo_id": 4,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 28719,
+        "task_id": 5,
+        "demo_id": 36,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 20704,
+        "task_id": 4,
+        "demo_id": 19,
+        "start_timestep": 137
+      },
+      {
+        "dataset_index": 14843,
+        "task_id": 3,
+        "demo_id": 0,
+        "start_timestep": 23
+      },
+      {
+        "dataset_index": 11739,
+        "task_id": 2,
+        "demo_id": 23,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 26383,
+        "task_id": 5,
+        "demo_id": 16,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 50714,
+        "task_id": 9,
+        "demo_id": 38,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 5397,
+        "task_id": 1,
+        "demo_id": 17,
+        "start_timestep": 61
+      },
+      {
+        "dataset_index": 25219,
+        "task_id": 4,
+        "demo_id": 8,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 1636,
+        "task_id": 0,
+        "demo_id": 25,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 20913,
+        "task_id": 4,
+        "demo_id": 20,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 37695,
+        "task_id": 7,
+        "demo_id": 23,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 3710,
+        "task_id": 0,
+        "demo_id": 43,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 16878,
+        "task_id": 3,
+        "demo_id": 29,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 33793,
+        "task_id": 6,
+        "demo_id": 35,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 5365,
+        "task_id": 1,
+        "demo_id": 17,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 38259,
+        "task_id": 7,
+        "demo_id": 27,
+        "start_timestep": 72
+      },
+      {
+        "dataset_index": 12554,
+        "task_id": 2,
+        "demo_id": 30,
+        "start_timestep": 13
+      },
+      {
+        "dataset_index": 20829,
+        "task_id": 4,
+        "demo_id": 2,
+        "start_timestep": 108
+      },
+      {
+        "dataset_index": 18770,
+        "task_id": 3,
+        "demo_id": 7,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 45423,
+        "task_id": 8,
+        "demo_id": 4,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 37587,
+        "task_id": 7,
+        "demo_id": 22,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 13753,
+        "task_id": 2,
+        "demo_id": 4,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 48100,
+        "task_id": 9,
+        "demo_id": 19,
+        "start_timestep": 74
+      },
+      {
+        "dataset_index": 52201,
+        "task_id": 9,
+        "demo_id": 8,
+        "start_timestep": 112
+      },
+      {
+        "dataset_index": 34687,
+        "task_id": 6,
+        "demo_id": 42,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 35539,
+        "task_id": 6,
+        "demo_id": 9,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 36523,
+        "task_id": 7,
+        "demo_id": 15,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 51178,
+        "task_id": 9,
+        "demo_id": 40,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 6550,
+        "task_id": 1,
+        "demo_id": 25,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 9067,
+        "task_id": 1,
+        "demo_id": 43,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 27615,
+        "task_id": 5,
+        "demo_id": 27,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 37952,
+        "task_id": 7,
+        "demo_id": 25,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 3120,
+        "task_id": 0,
+        "demo_id": 38,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 30302,
+        "task_id": 6,
+        "demo_id": 0,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 4453,
+        "task_id": 1,
+        "demo_id": 1,
+        "start_timestep": 56
+      },
+      {
+        "dataset_index": 34033,
+        "task_id": 6,
+        "demo_id": 37,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 49286,
+        "task_id": 9,
+        "demo_id": 27,
+        "start_timestep": 100
+      },
+      {
+        "dataset_index": 10367,
+        "task_id": 2,
+        "demo_id": 12,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 44495,
+        "task_id": 8,
+        "demo_id": 31,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 5043,
+        "task_id": 1,
+        "demo_id": 14,
+        "start_timestep": 96
+      },
+      {
+        "dataset_index": 34786,
+        "task_id": 6,
+        "demo_id": 43,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 37027,
+        "task_id": 7,
+        "demo_id": 19,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 36035,
+        "task_id": 7,
+        "demo_id": 11,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 26774,
+        "task_id": 5,
+        "demo_id": 2,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 31501,
+        "task_id": 6,
+        "demo_id": 18,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 37380,
+        "task_id": 7,
+        "demo_id": 20,
+        "start_timestep": 153
+      },
+      {
+        "dataset_index": 26113,
+        "task_id": 5,
+        "demo_id": 14,
+        "start_timestep": 21
+      },
+      {
+        "dataset_index": 345,
+        "task_id": 0,
+        "demo_id": 11,
+        "start_timestep": 94
+      },
+      {
+        "dataset_index": 42344,
+        "task_id": 8,
+        "demo_id": 15,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 24470,
+        "task_id": 4,
+        "demo_id": 43,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 39335,
+        "task_id": 7,
+        "demo_id": 34,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 20153,
+        "task_id": 4,
+        "demo_id": 15,
+        "start_timestep": 139
+      },
+      {
+        "dataset_index": 20544,
+        "task_id": 4,
+        "demo_id": 18,
+        "start_timestep": 117
+      },
+      {
+        "dataset_index": 43591,
+        "task_id": 8,
+        "demo_id": 25,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 2174,
+        "task_id": 0,
+        "demo_id": 30,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 38696,
+        "task_id": 7,
+        "demo_id": 3,
+        "start_timestep": 128
+      },
+      {
+        "dataset_index": 27869,
+        "task_id": 5,
+        "demo_id": 29,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 39984,
+        "task_id": 7,
+        "demo_id": 39,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 23606,
+        "task_id": 4,
+        "demo_id": 38,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 51852,
+        "task_id": 9,
+        "demo_id": 6,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 22566,
+        "task_id": 4,
+        "demo_id": 31,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 13312,
+        "task_id": 2,
+        "demo_id": 36,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 2029,
+        "task_id": 0,
+        "demo_id": 29,
+        "start_timestep": 92
+      },
+      {
+        "dataset_index": 7560,
+        "task_id": 1,
+        "demo_id": 32,
+        "start_timestep": 4
+      },
+      {
+        "dataset_index": 10795,
+        "task_id": 2,
+        "demo_id": 15,
+        "start_timestep": 123
+      },
+      {
+        "dataset_index": 26728,
+        "task_id": 5,
+        "demo_id": 19,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 17244,
+        "task_id": 3,
+        "demo_id": 32,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 26934,
+        "task_id": 5,
+        "demo_id": 20,
+        "start_timestep": 73
+      },
+      {
+        "dataset_index": 32117,
+        "task_id": 6,
+        "demo_id": 22,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 28154,
+        "task_id": 5,
+        "demo_id": 31,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 50588,
+        "task_id": 9,
+        "demo_id": 37,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 10289,
+        "task_id": 2,
+        "demo_id": 11,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 46303,
+        "task_id": 8,
+        "demo_id": 7,
+        "start_timestep": 95
+      },
+      {
+        "dataset_index": 4323,
+        "task_id": 1,
+        "demo_id": 0,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 4187,
+        "task_id": 0,
+        "demo_id": 9,
+        "start_timestep": 15
+      },
+      {
+        "dataset_index": 42252,
+        "task_id": 8,
+        "demo_id": 14,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 32143,
+        "task_id": 6,
+        "demo_id": 22,
+        "start_timestep": 113
+      },
+      {
+        "dataset_index": 8253,
+        "task_id": 1,
+        "demo_id": 37,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 44048,
+        "task_id": 8,
+        "demo_id": 29,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 45373,
+        "task_id": 8,
+        "demo_id": 4,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 4144,
+        "task_id": 0,
+        "demo_id": 8,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 16923,
+        "task_id": 3,
+        "demo_id": 29,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 49265,
+        "task_id": 9,
+        "demo_id": 27,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 45508,
+        "task_id": 8,
+        "demo_id": 40,
+        "start_timestep": 14
+      },
+      {
+        "dataset_index": 33505,
+        "task_id": 6,
+        "demo_id": 33,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 22285,
+        "task_id": 4,
+        "demo_id": 3,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 1837,
+        "task_id": 0,
+        "demo_id": 27,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 15947,
+        "task_id": 3,
+        "demo_id": 19,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 33822,
+        "task_id": 6,
+        "demo_id": 36,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 34393,
+        "task_id": 6,
+        "demo_id": 4,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 12651,
+        "task_id": 2,
+        "demo_id": 31,
+        "start_timestep": 3
+      },
+      {
+        "dataset_index": 7854,
+        "task_id": 1,
+        "demo_id": 34,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 10681,
+        "task_id": 2,
+        "demo_id": 15,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 5672,
+        "task_id": 1,
+        "demo_id": 2,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 17734,
+        "task_id": 3,
+        "demo_id": 37,
+        "start_timestep": 39
+      },
+      {
+        "dataset_index": 45162,
+        "task_id": 8,
+        "demo_id": 38,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 14058,
+        "task_id": 2,
+        "demo_id": 42,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 43029,
+        "task_id": 8,
+        "demo_id": 2,
+        "start_timestep": 127
+      },
+      {
+        "dataset_index": 31276,
+        "task_id": 6,
+        "demo_id": 16,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 29274,
+        "task_id": 5,
+        "demo_id": 41,
+        "start_timestep": 0
+      },
+      {
+        "dataset_index": 2471,
+        "task_id": 0,
+        "demo_id": 32,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 49858,
+        "task_id": 9,
+        "demo_id": 31,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 19873,
+        "task_id": 4,
+        "demo_id": 13,
+        "start_timestep": 122
+      },
+      {
+        "dataset_index": 17383,
+        "task_id": 3,
+        "demo_id": 33,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 38067,
+        "task_id": 7,
+        "demo_id": 26,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 49598,
+        "task_id": 9,
+        "demo_id": 3,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 25209,
+        "task_id": 4,
+        "demo_id": 8,
+        "start_timestep": 73
+      },
+      {
+        "dataset_index": 15673,
+        "task_id": 3,
+        "demo_id": 17,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 4672,
+        "task_id": 1,
+        "demo_id": 11,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 36729,
+        "task_id": 7,
+        "demo_id": 17,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 39964,
+        "task_id": 7,
+        "demo_id": 39,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 35047,
+        "task_id": 6,
+        "demo_id": 5,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 2179,
+        "task_id": 0,
+        "demo_id": 30,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 39060,
+        "task_id": 7,
+        "demo_id": 32,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 29766,
+        "task_id": 5,
+        "demo_id": 44,
+        "start_timestep": 131
+      },
+      {
+        "dataset_index": 13656,
+        "task_id": 2,
+        "demo_id": 39,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 13938,
+        "task_id": 2,
+        "demo_id": 41,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 27907,
+        "task_id": 5,
+        "demo_id": 29,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 44532,
+        "task_id": 8,
+        "demo_id": 32,
+        "start_timestep": 0
+      },
+      {
+        "dataset_index": 26631,
+        "task_id": 5,
+        "demo_id": 18,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 26795,
+        "task_id": 5,
+        "demo_id": 2,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 4314,
+        "task_id": 1,
+        "demo_id": 0,
+        "start_timestep": 61
+      },
+      {
+        "dataset_index": 46878,
+        "task_id": 9,
+        "demo_id": 10,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 36443,
+        "task_id": 7,
+        "demo_id": 14,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 39649,
+        "task_id": 7,
+        "demo_id": 36,
+        "start_timestep": 72
+      },
+      {
+        "dataset_index": 23059,
+        "task_id": 4,
+        "demo_id": 34,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 25242,
+        "task_id": 4,
+        "demo_id": 8,
+        "start_timestep": 106
+      },
+      {
+        "dataset_index": 24150,
+        "task_id": 4,
+        "demo_id": 40,
+        "start_timestep": 123
+      },
+      {
+        "dataset_index": 18219,
+        "task_id": 3,
+        "demo_id": 41,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 23832,
+        "task_id": 4,
+        "demo_id": 39,
+        "start_timestep": 101
+      },
+      {
+        "dataset_index": 29938,
+        "task_id": 5,
+        "demo_id": 6,
+        "start_timestep": 77
+      },
+      {
+        "dataset_index": 49976,
+        "task_id": 9,
+        "demo_id": 32,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 13282,
+        "task_id": 2,
+        "demo_id": 36,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 48553,
+        "task_id": 9,
+        "demo_id": 22,
+        "start_timestep": 20
+      },
+      {
+        "dataset_index": 23298,
+        "task_id": 4,
+        "demo_id": 35,
+        "start_timestep": 148
+      },
+      {
+        "dataset_index": 47451,
+        "task_id": 9,
+        "demo_id": 15,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 31765,
+        "task_id": 6,
+        "demo_id": 2,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 34936,
+        "task_id": 6,
+        "demo_id": 44,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 33561,
+        "task_id": 6,
+        "demo_id": 33,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 3296,
+        "task_id": 0,
+        "demo_id": 4,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 26685,
+        "task_id": 5,
+        "demo_id": 19,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 47548,
+        "task_id": 9,
+        "demo_id": 15,
+        "start_timestep": 140
+      },
+      {
+        "dataset_index": 2663,
+        "task_id": 0,
+        "demo_id": 34,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 67,
+        "task_id": 0,
+        "demo_id": 0,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 10735,
+        "task_id": 2,
+        "demo_id": 15,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 1301,
+        "task_id": 0,
+        "demo_id": 21,
+        "start_timestep": 103
+      },
+      {
+        "dataset_index": 9995,
+        "task_id": 2,
+        "demo_id": 0,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 49851,
+        "task_id": 9,
+        "demo_id": 31,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 45118,
+        "task_id": 8,
+        "demo_id": 37,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 43704,
+        "task_id": 8,
+        "demo_id": 26,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 9152,
+        "task_id": 1,
+        "demo_id": 44,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 21700,
+        "task_id": 4,
+        "demo_id": 25,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 43493,
+        "task_id": 8,
+        "demo_id": 24,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 26796,
+        "task_id": 5,
+        "demo_id": 2,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 10376,
+        "task_id": 2,
+        "demo_id": 12,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 18564,
+        "task_id": 3,
+        "demo_id": 5,
+        "start_timestep": 39
+      },
+      {
+        "dataset_index": 16446,
+        "task_id": 3,
+        "demo_id": 24,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 34688,
+        "task_id": 6,
+        "demo_id": 42,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 23004,
+        "task_id": 4,
+        "demo_id": 33,
+        "start_timestep": 116
+      },
+      {
+        "dataset_index": 17046,
+        "task_id": 3,
+        "demo_id": 3,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 30514,
+        "task_id": 6,
+        "demo_id": 1,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 38239,
+        "task_id": 7,
+        "demo_id": 27,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 26226,
+        "task_id": 5,
+        "demo_id": 14,
+        "start_timestep": 134
+      },
+      {
+        "dataset_index": 41270,
+        "task_id": 7,
+        "demo_id": 7,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 19759,
+        "task_id": 4,
+        "demo_id": 13,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 26269,
+        "task_id": 5,
+        "demo_id": 15,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 50360,
+        "task_id": 9,
+        "demo_id": 35,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 37193,
+        "task_id": 7,
+        "demo_id": 2,
+        "start_timestep": 82
+      },
+      {
+        "dataset_index": 26459,
+        "task_id": 5,
+        "demo_id": 17,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 48561,
+        "task_id": 9,
+        "demo_id": 22,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 19584,
+        "task_id": 4,
+        "demo_id": 11,
+        "start_timestep": 144
+      },
+      {
+        "dataset_index": 40194,
+        "task_id": 7,
+        "demo_id": 4,
+        "start_timestep": 112
+      },
+      {
+        "dataset_index": 48619,
+        "task_id": 9,
+        "demo_id": 22,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 25939,
+        "task_id": 5,
+        "demo_id": 12,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 28767,
+        "task_id": 5,
+        "demo_id": 36,
+        "start_timestep": 77
+      },
+      {
+        "dataset_index": 29876,
+        "task_id": 5,
+        "demo_id": 6,
+        "start_timestep": 15
+      },
+      {
+        "dataset_index": 47141,
+        "task_id": 9,
+        "demo_id": 12,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 47711,
+        "task_id": 9,
+        "demo_id": 16,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 13353,
+        "task_id": 2,
+        "demo_id": 36,
+        "start_timestep": 112
+      },
+      {
+        "dataset_index": 24803,
+        "task_id": 4,
+        "demo_id": 5,
+        "start_timestep": 124
+      },
+      {
+        "dataset_index": 36462,
+        "task_id": 7,
+        "demo_id": 15,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 10981,
+        "task_id": 2,
+        "demo_id": 17,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 15564,
+        "task_id": 3,
+        "demo_id": 16,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 25805,
+        "task_id": 5,
+        "demo_id": 11,
+        "start_timestep": 13
+      },
+      {
+        "dataset_index": 44249,
+        "task_id": 8,
+        "demo_id": 3,
+        "start_timestep": 62
+      },
+      {
+        "dataset_index": 51279,
+        "task_id": 9,
+        "demo_id": 41,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 13739,
+        "task_id": 2,
+        "demo_id": 4,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 38723,
+        "task_id": 7,
+        "demo_id": 3,
+        "start_timestep": 155
+      },
+      {
+        "dataset_index": 22309,
+        "task_id": 4,
+        "demo_id": 3,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 22130,
+        "task_id": 4,
+        "demo_id": 28,
+        "start_timestep": 121
+      },
+      {
+        "dataset_index": 32469,
+        "task_id": 6,
+        "demo_id": 25,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 21318,
+        "task_id": 4,
+        "demo_id": 23,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 35895,
+        "task_id": 7,
+        "demo_id": 10,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 5,
+        "task_id": 0,
+        "demo_id": 0,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 30064,
+        "task_id": 5,
+        "demo_id": 7,
+        "start_timestep": 110
+      },
+      {
+        "dataset_index": 44229,
+        "task_id": 8,
+        "demo_id": 3,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 24796,
+        "task_id": 4,
+        "demo_id": 5,
+        "start_timestep": 117
+      },
+      {
+        "dataset_index": 42550,
+        "task_id": 8,
+        "demo_id": 16,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 23533,
+        "task_id": 4,
+        "demo_id": 37,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 25362,
+        "task_id": 4,
+        "demo_id": 9,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 9370,
+        "task_id": 1,
+        "demo_id": 5,
+        "start_timestep": 108
+      },
+      {
+        "dataset_index": 7842,
+        "task_id": 1,
+        "demo_id": 34,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 11210,
+        "task_id": 2,
+        "demo_id": 19,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 11207,
+        "task_id": 2,
+        "demo_id": 19,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 28203,
+        "task_id": 5,
+        "demo_id": 31,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 21657,
+        "task_id": 4,
+        "demo_id": 25,
+        "start_timestep": 56
+      },
+      {
+        "dataset_index": 7698,
+        "task_id": 1,
+        "demo_id": 33,
+        "start_timestep": 0
+      },
+      {
+        "dataset_index": 15586,
+        "task_id": 3,
+        "demo_id": 16,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 45697,
+        "task_id": 8,
+        "demo_id": 41,
+        "start_timestep": 97
+      },
+      {
+        "dataset_index": 1150,
+        "task_id": 0,
+        "demo_id": 20,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 4673,
+        "task_id": 1,
+        "demo_id": 11,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 35121,
+        "task_id": 6,
+        "demo_id": 6,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 25441,
+        "task_id": 5,
+        "demo_id": 0,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 26217,
+        "task_id": 5,
+        "demo_id": 14,
+        "start_timestep": 125
+      },
+      {
+        "dataset_index": 9949,
+        "task_id": 2,
+        "demo_id": 0,
+        "start_timestep": 17
+      },
+      {
+        "dataset_index": 8847,
+        "task_id": 1,
+        "demo_id": 41,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 41247,
+        "task_id": 7,
+        "demo_id": 7,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 25824,
+        "task_id": 5,
+        "demo_id": 11,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 23468,
+        "task_id": 4,
+        "demo_id": 36,
+        "start_timestep": 154
+      },
+      {
+        "dataset_index": 43511,
+        "task_id": 8,
+        "demo_id": 24,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 26924,
+        "task_id": 5,
+        "demo_id": 20,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 27363,
+        "task_id": 5,
+        "demo_id": 24,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 43147,
+        "task_id": 8,
+        "demo_id": 20,
+        "start_timestep": 115
+      },
+      {
+        "dataset_index": 38656,
+        "task_id": 7,
+        "demo_id": 3,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 32988,
+        "task_id": 6,
+        "demo_id": 29,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 21091,
+        "task_id": 4,
+        "demo_id": 21,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 17204,
+        "task_id": 3,
+        "demo_id": 31,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 13091,
+        "task_id": 2,
+        "demo_id": 34,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 40374,
+        "task_id": 7,
+        "demo_id": 41,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 16954,
+        "task_id": 3,
+        "demo_id": 29,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 9935,
+        "task_id": 2,
+        "demo_id": 0,
+        "start_timestep": 3
+      },
+      {
+        "dataset_index": 1519,
+        "task_id": 0,
+        "demo_id": 24,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 39611,
+        "task_id": 7,
+        "demo_id": 36,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 26292,
+        "task_id": 5,
+        "demo_id": 15,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 18022,
+        "task_id": 3,
+        "demo_id": 4,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 40901,
+        "task_id": 7,
+        "demo_id": 44,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 7334,
+        "task_id": 1,
+        "demo_id": 30,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 42336,
+        "task_id": 8,
+        "demo_id": 15,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 49766,
+        "task_id": 9,
+        "demo_id": 30,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 3059,
+        "task_id": 0,
+        "demo_id": 37,
+        "start_timestep": 133
+      },
+      {
+        "dataset_index": 22824,
+        "task_id": 4,
+        "demo_id": 32,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 38781,
+        "task_id": 7,
+        "demo_id": 30,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 28669,
+        "task_id": 5,
+        "demo_id": 35,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 42989,
+        "task_id": 8,
+        "demo_id": 2,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 51048,
+        "task_id": 9,
+        "demo_id": 4,
+        "start_timestep": 112
+      },
+      {
+        "dataset_index": 13022,
+        "task_id": 2,
+        "demo_id": 34,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 3486,
+        "task_id": 0,
+        "demo_id": 41,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 23686,
+        "task_id": 4,
+        "demo_id": 38,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 24900,
+        "task_id": 4,
+        "demo_id": 6,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 24201,
+        "task_id": 4,
+        "demo_id": 41,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 4923,
+        "task_id": 1,
+        "demo_id": 13,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 42790,
+        "task_id": 8,
+        "demo_id": 18,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 16550,
+        "task_id": 3,
+        "demo_id": 25,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 18660,
+        "task_id": 3,
+        "demo_id": 6,
+        "start_timestep": 44
+      },
+      {
+        "dataset_index": 14233,
+        "task_id": 2,
+        "demo_id": 44,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 25549,
+        "task_id": 5,
+        "demo_id": 1,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 20491,
+        "task_id": 4,
+        "demo_id": 18,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 12940,
+        "task_id": 2,
+        "demo_id": 33,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 46444,
+        "task_id": 8,
+        "demo_id": 9,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 16819,
+        "task_id": 3,
+        "demo_id": 28,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 42688,
+        "task_id": 8,
+        "demo_id": 17,
+        "start_timestep": 130
+      },
+      {
+        "dataset_index": 29749,
+        "task_id": 5,
+        "demo_id": 44,
+        "start_timestep": 114
+      },
+      {
+        "dataset_index": 16918,
+        "task_id": 3,
+        "demo_id": 29,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 35747,
+        "task_id": 7,
+        "demo_id": 1,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 29243,
+        "task_id": 5,
+        "demo_id": 40,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 21939,
+        "task_id": 4,
+        "demo_id": 27,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 14799,
+        "task_id": 2,
+        "demo_id": 9,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 37007,
+        "task_id": 7,
+        "demo_id": 19,
+        "start_timestep": 16
+      },
+      {
+        "dataset_index": 30479,
+        "task_id": 6,
+        "demo_id": 1,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 1191,
+        "task_id": 0,
+        "demo_id": 20,
+        "start_timestep": 72
+      },
+      {
+        "dataset_index": 23779,
+        "task_id": 4,
+        "demo_id": 39,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 10144,
+        "task_id": 2,
+        "demo_id": 10,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 6669,
+        "task_id": 1,
+        "demo_id": 26,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 17943,
+        "task_id": 3,
+        "demo_id": 39,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 26724,
+        "task_id": 5,
+        "demo_id": 19,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 33396,
+        "task_id": 6,
+        "demo_id": 32,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 6654,
+        "task_id": 1,
+        "demo_id": 26,
+        "start_timestep": 39
+      },
+      {
+        "dataset_index": 17554,
+        "task_id": 3,
+        "demo_id": 35,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 4150,
+        "task_id": 0,
+        "demo_id": 8,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 29046,
+        "task_id": 5,
+        "demo_id": 39,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 27993,
+        "task_id": 5,
+        "demo_id": 3,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 52185,
+        "task_id": 9,
+        "demo_id": 8,
+        "start_timestep": 96
+      },
+      {
+        "dataset_index": 10178,
+        "task_id": 2,
+        "demo_id": 10,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 40627,
+        "task_id": 7,
+        "demo_id": 43,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 49895,
+        "task_id": 9,
+        "demo_id": 31,
+        "start_timestep": 94
+      },
+      {
+        "dataset_index": 22478,
+        "task_id": 4,
+        "demo_id": 30,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 47372,
+        "task_id": 9,
+        "demo_id": 14,
+        "start_timestep": 92
+      },
+      {
+        "dataset_index": 21434,
+        "task_id": 4,
+        "demo_id": 23,
+        "start_timestep": 122
+      },
+      {
+        "dataset_index": 12764,
+        "task_id": 2,
+        "demo_id": 32,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 21824,
+        "task_id": 4,
+        "demo_id": 26,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 18331,
+        "task_id": 3,
+        "demo_id": 43,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 9357,
+        "task_id": 1,
+        "demo_id": 5,
+        "start_timestep": 95
+      },
+      {
+        "dataset_index": 11991,
+        "task_id": 2,
+        "demo_id": 26,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 2963,
+        "task_id": 0,
+        "demo_id": 37,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 20685,
+        "task_id": 4,
+        "demo_id": 19,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 44844,
+        "task_id": 8,
+        "demo_id": 35,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 17367,
+        "task_id": 3,
+        "demo_id": 33,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 15186,
+        "task_id": 3,
+        "demo_id": 12,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 6777,
+        "task_id": 1,
+        "demo_id": 27,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 24471,
+        "task_id": 4,
+        "demo_id": 43,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 9490,
+        "task_id": 1,
+        "demo_id": 6,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 36751,
+        "task_id": 7,
+        "demo_id": 17,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 45880,
+        "task_id": 8,
+        "demo_id": 43,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 47171,
+        "task_id": 9,
+        "demo_id": 13,
+        "start_timestep": 17
+      },
+      {
+        "dataset_index": 2650,
+        "task_id": 0,
+        "demo_id": 34,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 35113,
+        "task_id": 6,
+        "demo_id": 6,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 21954,
+        "task_id": 4,
+        "demo_id": 27,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 37160,
+        "task_id": 7,
+        "demo_id": 2,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 52055,
+        "task_id": 9,
+        "demo_id": 7,
+        "start_timestep": 77
+      },
+      {
+        "dataset_index": 51397,
+        "task_id": 9,
+        "demo_id": 42,
+        "start_timestep": 73
+      },
+      {
+        "dataset_index": 33168,
+        "task_id": 6,
+        "demo_id": 30,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 31981,
+        "task_id": 6,
+        "demo_id": 21,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 11531,
+        "task_id": 2,
+        "demo_id": 21,
+        "start_timestep": 66
+      },
+      {
+        "dataset_index": 15927,
+        "task_id": 3,
+        "demo_id": 19,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 8759,
+        "task_id": 1,
+        "demo_id": 40,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 27868,
+        "task_id": 5,
+        "demo_id": 29,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 31449,
+        "task_id": 6,
+        "demo_id": 17,
+        "start_timestep": 110
+      },
+      {
+        "dataset_index": 17774,
+        "task_id": 3,
+        "demo_id": 37,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 31310,
+        "task_id": 6,
+        "demo_id": 16,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 39604,
+        "task_id": 7,
+        "demo_id": 36,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 45979,
+        "task_id": 8,
+        "demo_id": 44,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 34118,
+        "task_id": 6,
+        "demo_id": 38,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 29627,
+        "task_id": 5,
+        "demo_id": 43,
+        "start_timestep": 97
+      },
+      {
+        "dataset_index": 33300,
+        "task_id": 6,
+        "demo_id": 31,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 16953,
+        "task_id": 3,
+        "demo_id": 29,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 46922,
+        "task_id": 9,
+        "demo_id": 11,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 21920,
+        "task_id": 4,
+        "demo_id": 27,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 37592,
+        "task_id": 7,
+        "demo_id": 22,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 855,
+        "task_id": 0,
+        "demo_id": 17,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 31592,
+        "task_id": 6,
+        "demo_id": 18,
+        "start_timestep": 120
+      },
+      {
+        "dataset_index": 1826,
+        "task_id": 0,
+        "demo_id": 27,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 27209,
+        "task_id": 5,
+        "demo_id": 23,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 13893,
+        "task_id": 2,
+        "demo_id": 41,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 19722,
+        "task_id": 4,
+        "demo_id": 12,
+        "start_timestep": 108
+      },
+      {
+        "dataset_index": 38957,
+        "task_id": 7,
+        "demo_id": 31,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 26978,
+        "task_id": 5,
+        "demo_id": 21,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 24634,
+        "task_id": 4,
+        "demo_id": 44,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 8584,
+        "task_id": 1,
+        "demo_id": 4,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 5254,
+        "task_id": 1,
+        "demo_id": 16,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 25142,
+        "task_id": 4,
+        "demo_id": 8,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 9959,
+        "task_id": 2,
+        "demo_id": 0,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 39034,
+        "task_id": 7,
+        "demo_id": 32,
+        "start_timestep": 24
+      },
+      {
+        "dataset_index": 47239,
+        "task_id": 9,
+        "demo_id": 13,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 29806,
+        "task_id": 5,
+        "demo_id": 5,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 33367,
+        "task_id": 6,
+        "demo_id": 31,
+        "start_timestep": 122
+      },
+      {
+        "dataset_index": 16578,
+        "task_id": 3,
+        "demo_id": 25,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 47964,
+        "task_id": 9,
+        "demo_id": 18,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 47075,
+        "task_id": 9,
+        "demo_id": 12,
+        "start_timestep": 39
+      },
+      {
+        "dataset_index": 25669,
+        "task_id": 5,
+        "demo_id": 10,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 14783,
+        "task_id": 2,
+        "demo_id": 9,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 28408,
+        "task_id": 5,
+        "demo_id": 33,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 32361,
+        "task_id": 6,
+        "demo_id": 24,
+        "start_timestep": 103
+      },
+      {
+        "dataset_index": 34984,
+        "task_id": 6,
+        "demo_id": 5,
+        "start_timestep": 21
+      },
+      {
+        "dataset_index": 47438,
+        "task_id": 9,
+        "demo_id": 15,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 39124,
+        "task_id": 7,
+        "demo_id": 32,
+        "start_timestep": 114
+      },
+      {
+        "dataset_index": 47942,
+        "task_id": 9,
+        "demo_id": 18,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 31126,
+        "task_id": 6,
+        "demo_id": 14,
+        "start_timestep": 128
+      },
+      {
+        "dataset_index": 34775,
+        "task_id": 6,
+        "demo_id": 43,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 14026,
+        "task_id": 2,
+        "demo_id": 42,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 48636,
+        "task_id": 9,
+        "demo_id": 22,
+        "start_timestep": 103
+      },
+      {
+        "dataset_index": 49170,
+        "task_id": 9,
+        "demo_id": 26,
+        "start_timestep": 119
+      },
+      {
+        "dataset_index": 20832,
+        "task_id": 4,
+        "demo_id": 2,
+        "start_timestep": 111
+      },
+      {
+        "dataset_index": 15250,
+        "task_id": 3,
+        "demo_id": 12,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 32370,
+        "task_id": 6,
+        "demo_id": 24,
+        "start_timestep": 112
+      },
+      {
+        "dataset_index": 33944,
+        "task_id": 6,
+        "demo_id": 37,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 14102,
+        "task_id": 2,
+        "demo_id": 42,
+        "start_timestep": 113
+      },
+      {
+        "dataset_index": 33208,
+        "task_id": 6,
+        "demo_id": 30,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 36395,
+        "task_id": 7,
+        "demo_id": 14,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 36349,
+        "task_id": 7,
+        "demo_id": 14,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 39228,
+        "task_id": 7,
+        "demo_id": 33,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 30873,
+        "task_id": 6,
+        "demo_id": 12,
+        "start_timestep": 107
+      },
+      {
+        "dataset_index": 24383,
+        "task_id": 4,
+        "demo_id": 42,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 6098,
+        "task_id": 1,
+        "demo_id": 22,
+        "start_timestep": 24
+      },
+      {
+        "dataset_index": 8161,
+        "task_id": 1,
+        "demo_id": 37,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 11501,
+        "task_id": 2,
+        "demo_id": 21,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 23374,
+        "task_id": 4,
+        "demo_id": 36,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 46566,
+        "task_id": 9,
+        "demo_id": 0,
+        "start_timestep": 45
+      },
+      {
+        "dataset_index": 8438,
+        "task_id": 1,
+        "demo_id": 39,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 40269,
+        "task_id": 7,
+        "demo_id": 40,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 3184,
+        "task_id": 0,
+        "demo_id": 39,
+        "start_timestep": 17
+      },
+      {
+        "dataset_index": 9449,
+        "task_id": 1,
+        "demo_id": 6,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 16697,
+        "task_id": 3,
+        "demo_id": 27,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 41605,
+        "task_id": 8,
+        "demo_id": 0,
+        "start_timestep": 44
+      },
+      {
+        "dataset_index": 36575,
+        "task_id": 7,
+        "demo_id": 15,
+        "start_timestep": 119
+      },
+      {
+        "dataset_index": 3621,
+        "task_id": 0,
+        "demo_id": 42,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 9135,
+        "task_id": 1,
+        "demo_id": 43,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 29103,
+        "task_id": 5,
+        "demo_id": 4,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 11903,
+        "task_id": 2,
+        "demo_id": 25,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 18731,
+        "task_id": 3,
+        "demo_id": 7,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 29245,
+        "task_id": 5,
+        "demo_id": 40,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 4582,
+        "task_id": 1,
+        "demo_id": 10,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 36678,
+        "task_id": 7,
+        "demo_id": 16,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 35652,
+        "task_id": 7,
+        "demo_id": 0,
+        "start_timestep": 106
+      },
+      {
+        "dataset_index": 20294,
+        "task_id": 4,
+        "demo_id": 17,
+        "start_timestep": 15
+      },
+      {
+        "dataset_index": 37623,
+        "task_id": 7,
+        "demo_id": 22,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 19876,
+        "task_id": 4,
+        "demo_id": 13,
+        "start_timestep": 125
+      },
+      {
+        "dataset_index": 42896,
+        "task_id": 8,
+        "demo_id": 19,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 7259,
+        "task_id": 1,
+        "demo_id": 3,
+        "start_timestep": 128
+      },
+      {
+        "dataset_index": 5940,
+        "task_id": 1,
+        "demo_id": 20,
+        "start_timestep": 146
+      },
+      {
+        "dataset_index": 27001,
+        "task_id": 5,
+        "demo_id": 21,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 27468,
+        "task_id": 5,
+        "demo_id": 25,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 6466,
+        "task_id": 1,
+        "demo_id": 24,
+        "start_timestep": 167
+      },
+      {
+        "dataset_index": 31056,
+        "task_id": 6,
+        "demo_id": 14,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 40587,
+        "task_id": 7,
+        "demo_id": 42,
+        "start_timestep": 134
+      },
+      {
+        "dataset_index": 20529,
+        "task_id": 4,
+        "demo_id": 18,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 31692,
+        "task_id": 6,
+        "demo_id": 19,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 47472,
+        "task_id": 9,
+        "demo_id": 15,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 52002,
+        "task_id": 9,
+        "demo_id": 7,
+        "start_timestep": 24
+      },
+      {
+        "dataset_index": 1556,
+        "task_id": 0,
+        "demo_id": 24,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 17600,
+        "task_id": 3,
+        "demo_id": 35,
+        "start_timestep": 82
+      },
+      {
+        "dataset_index": 26030,
+        "task_id": 5,
+        "demo_id": 13,
+        "start_timestep": 58
+      },
+      {
+        "dataset_index": 46738,
+        "task_id": 9,
+        "demo_id": 1,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 13794,
+        "task_id": 2,
+        "demo_id": 40,
+        "start_timestep": 3
+      },
+      {
+        "dataset_index": 31770,
+        "task_id": 6,
+        "demo_id": 2,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 16365,
+        "task_id": 3,
+        "demo_id": 23,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 12938,
+        "task_id": 2,
+        "demo_id": 33,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 50641,
+        "task_id": 9,
+        "demo_id": 37,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 45525,
+        "task_id": 8,
+        "demo_id": 40,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 18813,
+        "task_id": 3,
+        "demo_id": 8,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 31252,
+        "task_id": 6,
+        "demo_id": 16,
+        "start_timestep": 23
+      },
+      {
+        "dataset_index": 15986,
+        "task_id": 3,
+        "demo_id": 19,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 35836,
+        "task_id": 7,
+        "demo_id": 10,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 10500,
+        "task_id": 2,
+        "demo_id": 13,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 29972,
+        "task_id": 5,
+        "demo_id": 7,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 7329,
+        "task_id": 1,
+        "demo_id": 30,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 40532,
+        "task_id": 7,
+        "demo_id": 42,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 43661,
+        "task_id": 8,
+        "demo_id": 25,
+        "start_timestep": 96
+      },
+      {
+        "dataset_index": 37547,
+        "task_id": 7,
+        "demo_id": 22,
+        "start_timestep": 15
+      },
+      {
+        "dataset_index": 3734,
+        "task_id": 0,
+        "demo_id": 44,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 557,
+        "task_id": 0,
+        "demo_id": 14,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 24606,
+        "task_id": 4,
+        "demo_id": 44,
+        "start_timestep": 56
+      },
+      {
+        "dataset_index": 47340,
+        "task_id": 9,
+        "demo_id": 14,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 48708,
+        "task_id": 9,
+        "demo_id": 23,
+        "start_timestep": 38
+      },
+      {
+        "dataset_index": 39747,
+        "task_id": 7,
+        "demo_id": 37,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 34917,
+        "task_id": 6,
+        "demo_id": 44,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 27746,
+        "task_id": 5,
+        "demo_id": 28,
+        "start_timestep": 23
+      },
+      {
+        "dataset_index": 8239,
+        "task_id": 1,
+        "demo_id": 37,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 33884,
+        "task_id": 6,
+        "demo_id": 36,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 42627,
+        "task_id": 8,
+        "demo_id": 17,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 7137,
+        "task_id": 1,
+        "demo_id": 3,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 41704,
+        "task_id": 8,
+        "demo_id": 1,
+        "start_timestep": 36
+      },
+      {
+        "dataset_index": 39098,
+        "task_id": 7,
+        "demo_id": 32,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 43522,
+        "task_id": 8,
+        "demo_id": 24,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 14667,
+        "task_id": 2,
+        "demo_id": 8,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 35421,
+        "task_id": 6,
+        "demo_id": 8,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 441,
+        "task_id": 0,
+        "demo_id": 12,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 40599,
+        "task_id": 7,
+        "demo_id": 42,
+        "start_timestep": 146
+      },
+      {
+        "dataset_index": 38805,
+        "task_id": 7,
+        "demo_id": 30,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 33319,
+        "task_id": 6,
+        "demo_id": 31,
+        "start_timestep": 74
+      },
+      {
+        "dataset_index": 27279,
+        "task_id": 5,
+        "demo_id": 23,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 43153,
+        "task_id": 8,
+        "demo_id": 21,
+        "start_timestep": 4
+      },
+      {
+        "dataset_index": 9766,
+        "task_id": 1,
+        "demo_id": 8,
+        "start_timestep": 97
+      },
+      {
+        "dataset_index": 25087,
+        "task_id": 4,
+        "demo_id": 7,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 45760,
+        "task_id": 8,
+        "demo_id": 42,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 36220,
+        "task_id": 7,
+        "demo_id": 13,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 49261,
+        "task_id": 9,
+        "demo_id": 27,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 26545,
+        "task_id": 5,
+        "demo_id": 17,
+        "start_timestep": 105
+      },
+      {
+        "dataset_index": 22017,
+        "task_id": 4,
+        "demo_id": 28,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 4882,
+        "task_id": 1,
+        "demo_id": 13,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 42011,
+        "task_id": 8,
+        "demo_id": 12,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 21530,
+        "task_id": 4,
+        "demo_id": 24,
+        "start_timestep": 61
+      },
+      {
+        "dataset_index": 27047,
+        "task_id": 5,
+        "demo_id": 21,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 18582,
+        "task_id": 3,
+        "demo_id": 5,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 25146,
+        "task_id": 4,
+        "demo_id": 8,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 24665,
+        "task_id": 4,
+        "demo_id": 44,
+        "start_timestep": 115
+      },
+      {
+        "dataset_index": 8875,
+        "task_id": 1,
+        "demo_id": 41,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 42118,
+        "task_id": 8,
+        "demo_id": 13,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 35853,
+        "task_id": 7,
+        "demo_id": 10,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 26952,
+        "task_id": 5,
+        "demo_id": 20,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 10273,
+        "task_id": 2,
+        "demo_id": 11,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 47181,
+        "task_id": 9,
+        "demo_id": 13,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 16814,
+        "task_id": 3,
+        "demo_id": 28,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 3928,
+        "task_id": 0,
+        "demo_id": 5,
+        "start_timestep": 121
+      },
+      {
+        "dataset_index": 14857,
+        "task_id": 3,
+        "demo_id": 0,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 28853,
+        "task_id": 5,
+        "demo_id": 37,
+        "start_timestep": 61
+      },
+      {
+        "dataset_index": 5859,
+        "task_id": 1,
+        "demo_id": 20,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 46275,
+        "task_id": 8,
+        "demo_id": 7,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 36010,
+        "task_id": 7,
+        "demo_id": 11,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 10695,
+        "task_id": 2,
+        "demo_id": 15,
+        "start_timestep": 23
+      },
+      {
+        "dataset_index": 41172,
+        "task_id": 7,
+        "demo_id": 7,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 21555,
+        "task_id": 4,
+        "demo_id": 24,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 4490,
+        "task_id": 1,
+        "demo_id": 1,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 11162,
+        "task_id": 2,
+        "demo_id": 19,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 27836,
+        "task_id": 5,
+        "demo_id": 29,
+        "start_timestep": 15
+      },
+      {
+        "dataset_index": 1546,
+        "task_id": 0,
+        "demo_id": 24,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 14333,
+        "task_id": 2,
+        "demo_id": 5,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 47954,
+        "task_id": 9,
+        "demo_id": 18,
+        "start_timestep": 53
+      },
+      {
+        "dataset_index": 50506,
+        "task_id": 9,
+        "demo_id": 36,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 11494,
+        "task_id": 2,
+        "demo_id": 21,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 15433,
+        "task_id": 3,
+        "demo_id": 14,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 28180,
+        "task_id": 5,
+        "demo_id": 31,
+        "start_timestep": 27
+      },
+      {
+        "dataset_index": 51834,
+        "task_id": 9,
+        "demo_id": 6,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 13860,
+        "task_id": 2,
+        "demo_id": 40,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 31496,
+        "task_id": 6,
+        "demo_id": 18,
+        "start_timestep": 24
+      },
+      {
+        "dataset_index": 25253,
+        "task_id": 4,
+        "demo_id": 8,
+        "start_timestep": 117
+      },
+      {
+        "dataset_index": 20298,
+        "task_id": 4,
+        "demo_id": 17,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 40782,
+        "task_id": 7,
+        "demo_id": 43,
+        "start_timestep": 161
+      },
+      {
+        "dataset_index": 6479,
+        "task_id": 1,
+        "demo_id": 24,
+        "start_timestep": 180
+      },
+      {
+        "dataset_index": 8741,
+        "task_id": 1,
+        "demo_id": 40,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 23180,
+        "task_id": 4,
+        "demo_id": 35,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 41256,
+        "task_id": 7,
+        "demo_id": 7,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 42900,
+        "task_id": 8,
+        "demo_id": 19,
+        "start_timestep": 94
+      },
+      {
+        "dataset_index": 9124,
+        "task_id": 1,
+        "demo_id": 43,
+        "start_timestep": 107
+      },
+      {
+        "dataset_index": 34970,
+        "task_id": 6,
+        "demo_id": 5,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 39295,
+        "task_id": 7,
+        "demo_id": 34,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 44272,
+        "task_id": 8,
+        "demo_id": 3,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 39889,
+        "task_id": 7,
+        "demo_id": 38,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 23319,
+        "task_id": 4,
+        "demo_id": 36,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 45205,
+        "task_id": 8,
+        "demo_id": 38,
+        "start_timestep": 53
+      },
+      {
+        "dataset_index": 36031,
+        "task_id": 7,
+        "demo_id": 11,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 21536,
+        "task_id": 4,
+        "demo_id": 24,
+        "start_timestep": 67
+      },
+      {
+        "dataset_index": 15565,
+        "task_id": 3,
+        "demo_id": 16,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 39103,
+        "task_id": 7,
+        "demo_id": 32,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 11726,
+        "task_id": 2,
+        "demo_id": 23,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 24506,
+        "task_id": 4,
+        "demo_id": 43,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 22809,
+        "task_id": 4,
+        "demo_id": 32,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 34284,
+        "task_id": 6,
+        "demo_id": 39,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 35968,
+        "task_id": 7,
+        "demo_id": 11,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 25496,
+        "task_id": 5,
+        "demo_id": 0,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 39451,
+        "task_id": 7,
+        "demo_id": 35,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 47599,
+        "task_id": 9,
+        "demo_id": 16,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 17385,
+        "task_id": 3,
+        "demo_id": 33,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 7647,
+        "task_id": 1,
+        "demo_id": 32,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 4956,
+        "task_id": 1,
+        "demo_id": 14,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 16169,
+        "task_id": 3,
+        "demo_id": 21,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 24454,
+        "task_id": 4,
+        "demo_id": 43,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 39589,
+        "task_id": 7,
+        "demo_id": 36,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 1720,
+        "task_id": 0,
+        "demo_id": 26,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 24020,
+        "task_id": 4,
+        "demo_id": 4,
+        "start_timestep": 128
+      },
+      {
+        "dataset_index": 15765,
+        "task_id": 3,
+        "demo_id": 18,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 42541,
+        "task_id": 8,
+        "demo_id": 16,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 51073,
+        "task_id": 9,
+        "demo_id": 40,
+        "start_timestep": 0
+      },
+      {
+        "dataset_index": 34263,
+        "task_id": 6,
+        "demo_id": 39,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 41419,
+        "task_id": 7,
+        "demo_id": 8,
+        "start_timestep": 126
+      },
+      {
+        "dataset_index": 38163,
+        "task_id": 7,
+        "demo_id": 26,
+        "start_timestep": 136
+      },
+      {
+        "dataset_index": 44950,
+        "task_id": 8,
+        "demo_id": 36,
+        "start_timestep": 13
+      },
+      {
+        "dataset_index": 32925,
+        "task_id": 6,
+        "demo_id": 29,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 1106,
+        "task_id": 0,
+        "demo_id": 2,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 30457,
+        "task_id": 6,
+        "demo_id": 1,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 6050,
+        "task_id": 1,
+        "demo_id": 21,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 15965,
+        "task_id": 3,
+        "demo_id": 19,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 9831,
+        "task_id": 1,
+        "demo_id": 9,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 16907,
+        "task_id": 3,
+        "demo_id": 29,
+        "start_timestep": 38
+      },
+      {
+        "dataset_index": 42635,
+        "task_id": 8,
+        "demo_id": 17,
+        "start_timestep": 77
+      },
+      {
+        "dataset_index": 8149,
+        "task_id": 1,
+        "demo_id": 36,
+        "start_timestep": 101
+      },
+      {
+        "dataset_index": 17180,
+        "task_id": 3,
+        "demo_id": 31,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 49476,
+        "task_id": 9,
+        "demo_id": 29,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 26686,
+        "task_id": 5,
+        "demo_id": 19,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 2947,
+        "task_id": 0,
+        "demo_id": 37,
+        "start_timestep": 21
+      },
+      {
+        "dataset_index": 50373,
+        "task_id": 9,
+        "demo_id": 35,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 51879,
+        "task_id": 9,
+        "demo_id": 6,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 12332,
+        "task_id": 2,
+        "demo_id": 28,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 22353,
+        "task_id": 4,
+        "demo_id": 3,
+        "start_timestep": 79
+      },
+      {
+        "dataset_index": 35509,
+        "task_id": 6,
+        "demo_id": 9,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 30963,
+        "task_id": 6,
+        "demo_id": 13,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 12794,
+        "task_id": 2,
+        "demo_id": 32,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 21892,
+        "task_id": 4,
+        "demo_id": 27,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 34391,
+        "task_id": 6,
+        "demo_id": 4,
+        "start_timestep": 100
+      },
+      {
+        "dataset_index": 43239,
+        "task_id": 8,
+        "demo_id": 21,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 30173,
+        "task_id": 5,
+        "demo_id": 8,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 31589,
+        "task_id": 6,
+        "demo_id": 18,
+        "start_timestep": 117
+      },
+      {
+        "dataset_index": 40383,
+        "task_id": 7,
+        "demo_id": 41,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 1977,
+        "task_id": 0,
+        "demo_id": 29,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 13500,
+        "task_id": 2,
+        "demo_id": 38,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 5478,
+        "task_id": 1,
+        "demo_id": 18,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 5974,
+        "task_id": 1,
+        "demo_id": 21,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 509,
+        "task_id": 0,
+        "demo_id": 13,
+        "start_timestep": 60
+      },
+      {
+        "dataset_index": 33711,
+        "task_id": 6,
+        "demo_id": 35,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 48699,
+        "task_id": 9,
+        "demo_id": 23,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 32502,
+        "task_id": 6,
+        "demo_id": 25,
+        "start_timestep": 119
+      },
+      {
+        "dataset_index": 5476,
+        "task_id": 1,
+        "demo_id": 18,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 26751,
+        "task_id": 5,
+        "demo_id": 2,
+        "start_timestep": 3
+      },
+      {
+        "dataset_index": 19620,
+        "task_id": 4,
+        "demo_id": 12,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 412,
+        "task_id": 0,
+        "demo_id": 12,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 22884,
+        "task_id": 4,
+        "demo_id": 32,
+        "start_timestep": 144
+      },
+      {
+        "dataset_index": 46769,
+        "task_id": 9,
+        "demo_id": 1,
+        "start_timestep": 120
+      },
+      {
+        "dataset_index": 51614,
+        "task_id": 9,
+        "demo_id": 44,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 44262,
+        "task_id": 8,
+        "demo_id": 3,
+        "start_timestep": 75
+      },
+      {
+        "dataset_index": 38237,
+        "task_id": 7,
+        "demo_id": 27,
+        "start_timestep": 50
+      },
+      {
+        "dataset_index": 342,
+        "task_id": 0,
+        "demo_id": 11,
+        "start_timestep": 91
+      },
+      {
+        "dataset_index": 10704,
+        "task_id": 2,
+        "demo_id": 15,
+        "start_timestep": 32
+      },
+      {
+        "dataset_index": 26587,
+        "task_id": 5,
+        "demo_id": 18,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 9583,
+        "task_id": 1,
+        "demo_id": 7,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 12862,
+        "task_id": 2,
+        "demo_id": 32,
+        "start_timestep": 100
+      },
+      {
+        "dataset_index": 11789,
+        "task_id": 2,
+        "demo_id": 24,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 35726,
+        "task_id": 7,
+        "demo_id": 1,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 51079,
+        "task_id": 9,
+        "demo_id": 40,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 35761,
+        "task_id": 7,
+        "demo_id": 1,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 49012,
+        "task_id": 9,
+        "demo_id": 25,
+        "start_timestep": 94
+      },
+      {
+        "dataset_index": 33271,
+        "task_id": 6,
+        "demo_id": 31,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 15671,
+        "task_id": 3,
+        "demo_id": 17,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 14409,
+        "task_id": 2,
+        "demo_id": 6,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 16196,
+        "task_id": 3,
+        "demo_id": 21,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 29641,
+        "task_id": 5,
+        "demo_id": 44,
+        "start_timestep": 6
+      },
+      {
+        "dataset_index": 40734,
+        "task_id": 7,
+        "demo_id": 43,
+        "start_timestep": 113
+      },
+      {
+        "dataset_index": 51575,
+        "task_id": 9,
+        "demo_id": 44,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 41311,
+        "task_id": 7,
+        "demo_id": 8,
+        "start_timestep": 18
+      },
+      {
+        "dataset_index": 29277,
+        "task_id": 5,
+        "demo_id": 41,
+        "start_timestep": 3
+      },
+      {
+        "dataset_index": 5296,
+        "task_id": 1,
+        "demo_id": 16,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 18854,
+        "task_id": 3,
+        "demo_id": 8,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 51639,
+        "task_id": 9,
+        "demo_id": 44,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 15888,
+        "task_id": 3,
+        "demo_id": 18,
+        "start_timestep": 156
+      },
+      {
+        "dataset_index": 17561,
+        "task_id": 3,
+        "demo_id": 35,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 16603,
+        "task_id": 3,
+        "demo_id": 25,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 35878,
+        "task_id": 7,
+        "demo_id": 10,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 5909,
+        "task_id": 1,
+        "demo_id": 20,
+        "start_timestep": 115
+      },
+      {
+        "dataset_index": 40630,
+        "task_id": 7,
+        "demo_id": 43,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 3056,
+        "task_id": 0,
+        "demo_id": 37,
+        "start_timestep": 130
+      },
+      {
+        "dataset_index": 45980,
+        "task_id": 8,
+        "demo_id": 44,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 8609,
+        "task_id": 1,
+        "demo_id": 4,
+        "start_timestep": 77
+      },
+      {
+        "dataset_index": 43204,
+        "task_id": 8,
+        "demo_id": 21,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 17705,
+        "task_id": 3,
+        "demo_id": 37,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 8565,
+        "task_id": 1,
+        "demo_id": 4,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 28537,
+        "task_id": 5,
+        "demo_id": 34,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 17099,
+        "task_id": 3,
+        "demo_id": 30,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 45277,
+        "task_id": 8,
+        "demo_id": 39,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 24429,
+        "task_id": 4,
+        "demo_id": 43,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 4994,
+        "task_id": 1,
+        "demo_id": 14,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 27793,
+        "task_id": 5,
+        "demo_id": 28,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 12627,
+        "task_id": 2,
+        "demo_id": 30,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 8659,
+        "task_id": 1,
+        "demo_id": 4,
+        "start_timestep": 127
+      },
+      {
+        "dataset_index": 39134,
+        "task_id": 7,
+        "demo_id": 32,
+        "start_timestep": 124
+      },
+      {
+        "dataset_index": 38227,
+        "task_id": 7,
+        "demo_id": 27,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 49785,
+        "task_id": 9,
+        "demo_id": 30,
+        "start_timestep": 108
+      },
+      {
+        "dataset_index": 11879,
+        "task_id": 2,
+        "demo_id": 24,
+        "start_timestep": 96
+      },
+      {
+        "dataset_index": 16156,
+        "task_id": 3,
+        "demo_id": 20,
+        "start_timestep": 82
+      },
+      {
+        "dataset_index": 36510,
+        "task_id": 7,
+        "demo_id": 15,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 8485,
+        "task_id": 1,
+        "demo_id": 39,
+        "start_timestep": 69
+      },
+      {
+        "dataset_index": 39248,
+        "task_id": 7,
+        "demo_id": 33,
+        "start_timestep": 104
+      },
+      {
+        "dataset_index": 23495,
+        "task_id": 4,
+        "demo_id": 37,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 922,
+        "task_id": 0,
+        "demo_id": 18,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 35110,
+        "task_id": 6,
+        "demo_id": 6,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 23076,
+        "task_id": 4,
+        "demo_id": 34,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 17971,
+        "task_id": 3,
+        "demo_id": 4,
+        "start_timestep": 14
+      },
+      {
+        "dataset_index": 34463,
+        "task_id": 6,
+        "demo_id": 40,
+        "start_timestep": 57
+      },
+      {
+        "dataset_index": 21926,
+        "task_id": 4,
+        "demo_id": 27,
+        "start_timestep": 41
+      },
+      {
+        "dataset_index": 22,
+        "task_id": 0,
+        "demo_id": 0,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 41081,
+        "task_id": 7,
+        "demo_id": 6,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 41486,
+        "task_id": 7,
+        "demo_id": 9,
+        "start_timestep": 62
+      },
+      {
+        "dataset_index": 19272,
+        "task_id": 4,
+        "demo_id": 1,
+        "start_timestep": 97
+      },
+      {
+        "dataset_index": 23151,
+        "task_id": 4,
+        "demo_id": 35,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 8701,
+        "task_id": 1,
+        "demo_id": 40,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 22888,
+        "task_id": 4,
+        "demo_id": 33,
+        "start_timestep": 0
+      },
+      {
+        "dataset_index": 24823,
+        "task_id": 4,
+        "demo_id": 5,
+        "start_timestep": 144
+      },
+      {
+        "dataset_index": 44398,
+        "task_id": 8,
+        "demo_id": 30,
+        "start_timestep": 62
+      },
+      {
+        "dataset_index": 26540,
+        "task_id": 5,
+        "demo_id": 17,
+        "start_timestep": 100
+      },
+      {
+        "dataset_index": 18382,
+        "task_id": 3,
+        "demo_id": 43,
+        "start_timestep": 56
+      },
+      {
+        "dataset_index": 13139,
+        "task_id": 2,
+        "demo_id": 35,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 16416,
+        "task_id": 3,
+        "demo_id": 23,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 7965,
+        "task_id": 1,
+        "demo_id": 35,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 16240,
+        "task_id": 3,
+        "demo_id": 21,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 3407,
+        "task_id": 0,
+        "demo_id": 40,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 36554,
+        "task_id": 7,
+        "demo_id": 15,
+        "start_timestep": 98
+      },
+      {
+        "dataset_index": 16955,
+        "task_id": 3,
+        "demo_id": 29,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 44409,
+        "task_id": 8,
+        "demo_id": 30,
+        "start_timestep": 73
+      },
+      {
+        "dataset_index": 49454,
+        "task_id": 9,
+        "demo_id": 29,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 25872,
+        "task_id": 5,
+        "demo_id": 11,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 29721,
+        "task_id": 5,
+        "demo_id": 44,
+        "start_timestep": 86
+      },
+      {
+        "dataset_index": 31215,
+        "task_id": 6,
+        "demo_id": 15,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 34228,
+        "task_id": 6,
+        "demo_id": 39,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 38863,
+        "task_id": 7,
+        "demo_id": 30,
+        "start_timestep": 112
+      },
+      {
+        "dataset_index": 20677,
+        "task_id": 4,
+        "demo_id": 19,
+        "start_timestep": 110
+      },
+      {
+        "dataset_index": 291,
+        "task_id": 0,
+        "demo_id": 11,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 38463,
+        "task_id": 7,
+        "demo_id": 29,
+        "start_timestep": 20
+      },
+      {
+        "dataset_index": 8830,
+        "task_id": 1,
+        "demo_id": 41,
+        "start_timestep": 46
+      },
+      {
+        "dataset_index": 13156,
+        "task_id": 2,
+        "demo_id": 35,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 33873,
+        "task_id": 6,
+        "demo_id": 36,
+        "start_timestep": 53
+      },
+      {
+        "dataset_index": 8345,
+        "task_id": 1,
+        "demo_id": 38,
+        "start_timestep": 64
+      },
+      {
+        "dataset_index": 34291,
+        "task_id": 6,
+        "demo_id": 4,
+        "start_timestep": 0
+      },
+      {
+        "dataset_index": 11528,
+        "task_id": 2,
+        "demo_id": 21,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 24522,
+        "task_id": 4,
+        "demo_id": 43,
+        "start_timestep": 101
+      },
+      {
+        "dataset_index": 30747,
+        "task_id": 6,
+        "demo_id": 11,
+        "start_timestep": 84
+      },
+      {
+        "dataset_index": 34698,
+        "task_id": 6,
+        "demo_id": 42,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 35957,
+        "task_id": 7,
+        "demo_id": 11,
+        "start_timestep": 15
+      },
+      {
+        "dataset_index": 18300,
+        "task_id": 3,
+        "demo_id": 42,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 13764,
+        "task_id": 2,
+        "demo_id": 4,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 15803,
+        "task_id": 3,
+        "demo_id": 18,
+        "start_timestep": 71
+      },
+      {
+        "dataset_index": 98,
+        "task_id": 0,
+        "demo_id": 1,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 47448,
+        "task_id": 9,
+        "demo_id": 15,
+        "start_timestep": 40
+      },
+      {
+        "dataset_index": 52188,
+        "task_id": 9,
+        "demo_id": 8,
+        "start_timestep": 99
+      },
+      {
+        "dataset_index": 652,
+        "task_id": 0,
+        "demo_id": 15,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 5736,
+        "task_id": 1,
+        "demo_id": 2,
+        "start_timestep": 74
+      },
+      {
+        "dataset_index": 1047,
+        "task_id": 0,
+        "demo_id": 2,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 43646,
+        "task_id": 8,
+        "demo_id": 25,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 24018,
+        "task_id": 4,
+        "demo_id": 4,
+        "start_timestep": 126
+      },
+      {
+        "dataset_index": 7700,
+        "task_id": 1,
+        "demo_id": 33,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 31299,
+        "task_id": 6,
+        "demo_id": 16,
+        "start_timestep": 70
+      },
+      {
+        "dataset_index": 22247,
+        "task_id": 4,
+        "demo_id": 29,
+        "start_timestep": 104
+      },
+      {
+        "dataset_index": 19328,
+        "task_id": 4,
+        "demo_id": 10,
+        "start_timestep": 19
+      },
+      {
+        "dataset_index": 16332,
+        "task_id": 3,
+        "demo_id": 22,
+        "start_timestep": 82
+      },
+      {
+        "dataset_index": 10429,
+        "task_id": 2,
+        "demo_id": 12,
+        "start_timestep": 93
+      },
+      {
+        "dataset_index": 19702,
+        "task_id": 4,
+        "demo_id": 12,
+        "start_timestep": 88
+      },
+      {
+        "dataset_index": 37342,
+        "task_id": 7,
+        "demo_id": 20,
+        "start_timestep": 115
+      },
+      {
+        "dataset_index": 37600,
+        "task_id": 7,
+        "demo_id": 22,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 33696,
+        "task_id": 6,
+        "demo_id": 34,
+        "start_timestep": 97
+      },
+      {
+        "dataset_index": 19023,
+        "task_id": 3,
+        "demo_id": 9,
+        "start_timestep": 114
+      },
+      {
+        "dataset_index": 11626,
+        "task_id": 2,
+        "demo_id": 22,
+        "start_timestep": 61
+      },
+      {
+        "dataset_index": 29193,
+        "task_id": 5,
+        "demo_id": 40,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 38649,
+        "task_id": 7,
+        "demo_id": 3,
+        "start_timestep": 81
+      },
+      {
+        "dataset_index": 18728,
+        "task_id": 3,
+        "demo_id": 7,
+        "start_timestep": 9
+      },
+      {
+        "dataset_index": 26175,
+        "task_id": 5,
+        "demo_id": 14,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 43149,
+        "task_id": 8,
+        "demo_id": 21,
+        "start_timestep": 0
+      },
+      {
+        "dataset_index": 36766,
+        "task_id": 7,
+        "demo_id": 17,
+        "start_timestep": 48
+      },
+      {
+        "dataset_index": 45346,
+        "task_id": 8,
+        "demo_id": 39,
+        "start_timestep": 97
+      },
+      {
+        "dataset_index": 41383,
+        "task_id": 7,
+        "demo_id": 8,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 37002,
+        "task_id": 7,
+        "demo_id": 19,
+        "start_timestep": 11
+      },
+      {
+        "dataset_index": 7446,
+        "task_id": 1,
+        "demo_id": 31,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 19061,
+        "task_id": 4,
+        "demo_id": 0,
+        "start_timestep": 31
+      },
+      {
+        "dataset_index": 5841,
+        "task_id": 1,
+        "demo_id": 20,
+        "start_timestep": 47
+      },
+      {
+        "dataset_index": 37046,
+        "task_id": 7,
+        "demo_id": 19,
+        "start_timestep": 55
+      },
+      {
+        "dataset_index": 39804,
+        "task_id": 7,
+        "demo_id": 37,
+        "start_timestep": 87
+      },
+      {
+        "dataset_index": 40335,
+        "task_id": 7,
+        "demo_id": 41,
+        "start_timestep": 3
+      },
+      {
+        "dataset_index": 25169,
+        "task_id": 4,
+        "demo_id": 8,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 15544,
+        "task_id": 3,
+        "demo_id": 15,
+        "start_timestep": 102
+      },
+      {
+        "dataset_index": 20397,
+        "task_id": 4,
+        "demo_id": 17,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 45608,
+        "task_id": 8,
+        "demo_id": 41,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 5261,
+        "task_id": 1,
+        "demo_id": 16,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 1113,
+        "task_id": 0,
+        "demo_id": 2,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 2184,
+        "task_id": 0,
+        "demo_id": 30,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 37939,
+        "task_id": 7,
+        "demo_id": 25,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 30212,
+        "task_id": 5,
+        "demo_id": 9,
+        "start_timestep": 22
+      },
+      {
+        "dataset_index": 19784,
+        "task_id": 4,
+        "demo_id": 13,
+        "start_timestep": 33
+      },
+      {
+        "dataset_index": 24944,
+        "task_id": 4,
+        "demo_id": 6,
+        "start_timestep": 115
+      },
+      {
+        "dataset_index": 31826,
+        "task_id": 6,
+        "demo_id": 20,
+        "start_timestep": 10
+      },
+      {
+        "dataset_index": 40711,
+        "task_id": 7,
+        "demo_id": 43,
+        "start_timestep": 90
+      },
+      {
+        "dataset_index": 52172,
+        "task_id": 9,
+        "demo_id": 8,
+        "start_timestep": 83
+      },
+      {
+        "dataset_index": 35719,
+        "task_id": 7,
+        "demo_id": 1,
+        "start_timestep": 26
+      },
+      {
+        "dataset_index": 37239,
+        "task_id": 7,
+        "demo_id": 20,
+        "start_timestep": 12
+      },
+      {
+        "dataset_index": 9517,
+        "task_id": 1,
+        "demo_id": 6,
+        "start_timestep": 108
+      },
+      {
+        "dataset_index": 9847,
+        "task_id": 1,
+        "demo_id": 9,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 13021,
+        "task_id": 2,
+        "demo_id": 34,
+        "start_timestep": 35
+      },
+      {
+        "dataset_index": 46113,
+        "task_id": 8,
+        "demo_id": 6,
+        "start_timestep": 7
+      },
+      {
+        "dataset_index": 30820,
+        "task_id": 6,
+        "demo_id": 12,
+        "start_timestep": 54
+      },
+      {
+        "dataset_index": 5080,
+        "task_id": 1,
+        "demo_id": 14,
+        "start_timestep": 133
+      },
+      {
+        "dataset_index": 44333,
+        "task_id": 8,
+        "demo_id": 3,
+        "start_timestep": 146
+      },
+      {
+        "dataset_index": 21354,
+        "task_id": 4,
+        "demo_id": 23,
+        "start_timestep": 42
+      },
+      {
+        "dataset_index": 44226,
+        "task_id": 8,
+        "demo_id": 3,
+        "start_timestep": 39
+      },
+      {
+        "dataset_index": 29939,
+        "task_id": 5,
+        "demo_id": 6,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 5132,
+        "task_id": 1,
+        "demo_id": 15,
+        "start_timestep": 43
+      },
+      {
+        "dataset_index": 5961,
+        "task_id": 1,
+        "demo_id": 21,
+        "start_timestep": 13
+      },
+      {
+        "dataset_index": 1467,
+        "task_id": 0,
+        "demo_id": 23,
+        "start_timestep": 68
+      },
+      {
+        "dataset_index": 21934,
+        "task_id": 4,
+        "demo_id": 27,
+        "start_timestep": 49
+      },
+      {
+        "dataset_index": 2848,
+        "task_id": 0,
+        "demo_id": 36,
+        "start_timestep": 16
+      },
+      {
+        "dataset_index": 41719,
+        "task_id": 8,
+        "demo_id": 1,
+        "start_timestep": 51
+      },
+      {
+        "dataset_index": 43397,
+        "task_id": 8,
+        "demo_id": 23,
+        "start_timestep": 37
+      },
+      {
+        "dataset_index": 28775,
+        "task_id": 5,
+        "demo_id": 36,
+        "start_timestep": 85
+      },
+      {
+        "dataset_index": 16523,
+        "task_id": 3,
+        "demo_id": 25,
+        "start_timestep": 8
+      },
+      {
+        "dataset_index": 11624,
+        "task_id": 2,
+        "demo_id": 22,
+        "start_timestep": 59
+      },
+      {
+        "dataset_index": 17747,
+        "task_id": 3,
+        "demo_id": 37,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 50287,
+        "task_id": 9,
+        "demo_id": 34,
+        "start_timestep": 111
+      },
+      {
+        "dataset_index": 25620,
+        "task_id": 5,
+        "demo_id": 1,
+        "start_timestep": 80
+      },
+      {
+        "dataset_index": 48899,
+        "task_id": 9,
+        "demo_id": 24,
+        "start_timestep": 97
+      },
+      {
+        "dataset_index": 3729,
+        "task_id": 0,
+        "demo_id": 44,
+        "start_timestep": 2
+      },
+      {
+        "dataset_index": 7363,
+        "task_id": 1,
+        "demo_id": 30,
+        "start_timestep": 65
+      },
+      {
+        "dataset_index": 37570,
+        "task_id": 7,
+        "demo_id": 22,
+        "start_timestep": 38
+      },
+      {
+        "dataset_index": 39605,
+        "task_id": 7,
+        "demo_id": 36,
+        "start_timestep": 28
+      },
+      {
+        "dataset_index": 27583,
+        "task_id": 5,
+        "demo_id": 26,
+        "start_timestep": 89
+      },
+      {
+        "dataset_index": 7868,
+        "task_id": 1,
+        "demo_id": 34,
+        "start_timestep": 61
+      },
+      {
+        "dataset_index": 11247,
+        "task_id": 2,
+        "demo_id": 2,
+        "start_timestep": 5
+      },
+      {
+        "dataset_index": 42044,
+        "task_id": 8,
+        "demo_id": 12,
+        "start_timestep": 52
+      },
+      {
+        "dataset_index": 17438,
+        "task_id": 3,
+        "demo_id": 34,
+        "start_timestep": 1
+      },
+      {
+        "dataset_index": 26518,
+        "task_id": 5,
+        "demo_id": 17,
+        "start_timestep": 78
+      },
+      {
+        "dataset_index": 8814,
+        "task_id": 1,
+        "demo_id": 41,
+        "start_timestep": 30
+      },
+      {
+        "dataset_index": 37557,
+        "task_id": 7,
+        "demo_id": 22,
+        "start_timestep": 25
+      },
+      {
+        "dataset_index": 15795,
+        "task_id": 3,
+        "demo_id": 18,
+        "start_timestep": 63
+      },
+      {
+        "dataset_index": 1597,
+        "task_id": 0,
+        "demo_id": 25,
+        "start_timestep": 29
+      },
+      {
+        "dataset_index": 19427,
+        "task_id": 4,
+        "demo_id": 10,
+        "start_timestep": 118
+      },
+      {
+        "dataset_index": 11708,
+        "task_id": 2,
+        "demo_id": 23,
+        "start_timestep": 34
+      },
+      {
+        "dataset_index": 28005,
+        "task_id": 5,
+        "demo_id": 3,
+        "start_timestep": 76
+      },
+      {
+        "dataset_index": 40317,
+        "task_id": 7,
+        "demo_id": 40,
+        "start_timestep": 107
+      },
+      {
+        "dataset_index": 43998,
+        "task_id": 8,
+        "demo_id": 28,
+        "start_timestep": 92
+      },
+      {
+        "dataset_index": 29392,
+        "task_id": 5,
+        "demo_id": 41,
+        "start_timestep": 118
+      }
+    ],
+    "evaluation_or_matched_branches_used": false
+  },
+  "model": {
+    "seed": 11,
+    "parameters": 901516,
+    "wm_v2b_checkpoint": "results/world_model_v2b/seed11/best.pt",
+    "wm_v2b_checkpoint_sha256": "eb13775493a13d845e93db195c25d513b2fa8f679ac8578456fb8c64b2573848",
+    "wm_v2b_checkpoint_epoch": 14,
+    "shared_parameter_set": "model.gru.parameters() only",
+    "initial_state_sha256": "e8c459afd16830669a71517a46394ec43c61e776867f7269b7d52bbc44212d56",
+    "initial_max_abs_physical_visual_residual": 0.0,
+    "optimizer_updates": 0,
+    "device": "cpu",
+    "dtype": "float32",
+    "gripper_adapter_input": false
+  },
+  "batches": [
+    {
+      "batch": 0,
+      "first_dataset_index": 30488,
+      "last_dataset_index": 11739,
+      "identity_sha256": "67373dd13921859882080b300ba7695f0f35007b99840dcb0df4dd72743937f7",
+      "visual_loss": 0.008480814285576344,
+      "ej_loss": 0.0006688118446618319,
+      "g_z": 0.005838874157004855,
+      "g_ej": 0.004892945995837879
+    },
+    {
+      "batch": 1,
+      "first_dataset_index": 26383,
+      "last_dataset_index": 16819,
+      "identity_sha256": "dda63d6dbb16b77b9bfa1e14e0fa2da5976ddbc3c9464cb7f63c2395fe969dba",
+      "visual_loss": 0.008306286297738552,
+      "ej_loss": 0.0006673534517176449,
+      "g_z": 0.005117925834894955,
+      "g_ej": 0.0036411101558411897
+    },
+    {
+      "batch": 2,
+      "first_dataset_index": 42688,
+      "last_dataset_index": 22809,
+      "identity_sha256": "3e57b8c015dfb795b7c810af296486dde43f6e8ade3671710a287b63912de485",
+      "visual_loss": 0.00831698253750801,
+      "ej_loss": 0.0005916779628023505,
+      "g_z": 0.006911505567864073,
+      "g_ej": 0.003814743203733768
+    },
+    {
+      "batch": 3,
+      "first_dataset_index": 34284,
+      "last_dataset_index": 29392,
+      "identity_sha256": "11a94ed4006fd3fb856abde35f3508e1f802af8afca2a5932d96f818a8d8c680",
+      "visual_loss": 0.007950996048748493,
+      "ej_loss": 0.0007257027318701148,
+      "g_z": 0.006369661538882672,
+      "g_ej": 0.0036823067610250323
+    }
+  ],
+  "gradient_calibration": {
+    "aggregation": "arithmetic mean of four per-batch gradient norms",
+    "g_z": 0.006059491774661639,
+    "g_ej": 0.004007776529109467,
+    "unclipped_lambda_ej": 1.5119335448596145,
+    "clip_range": [
+      0.05,
+      20.0
+    ],
+    "final_lambda_ej": 1.5119335448596145,
+    "was_clipped": false
+  },
+  "lambda_res": 0.001,
+  "validation_metrics_used": false,
+  "matched_counterfactual_used": false,
+  "nan_inf_audit": "pass"
+}
