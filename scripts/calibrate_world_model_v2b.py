@@ -235,7 +235,7 @@ def main() -> int:
             "final_lambda_p": final_lambda,
             "was_clipped": final_lambda != raw_lambda,
         },
-        "validation_metrics_used": false,
+        "validation_metrics_used": False,
         "nan_inf_audit": "pass",
     }
     write_json(args.output, result)
