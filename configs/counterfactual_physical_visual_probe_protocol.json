@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "protocol_version": "counterfactual-physical-visual-sufficiency-probe-v1",
+  "date": "2026-09-25",
+  "status": "PREREGISTERED_BEFORE_PROBE_CALIBRATION",
+  "scientific_questions": [
+    "Can real standardized EE-position plus joint counterfactual differences predict real CLIP visual counterfactual differences?",
+    "Does candidate-independent pre-action scene context add significant held-out predictive value?",
+    "How much of a successful real-physical mapping remains after substituting the frozen calibrated WM-v2B.1 physical prediction?"
+  ],
+  "frozen_upstream": {
+    "primary_tag": "wm-v2c-ej-transfer-insufficient",
+    "primary_commit": "b39af288e9bea09e94b04ef43483f8c5217d0412",
+    "annotated_tags": {
+      "wm-v2c-ej-transfer-insufficient": "b39af288e9bea09e94b04ef43483f8c5217d0412",
+      "wm-v2b-1-partial-physical-mediator": "3e484d976a4d79431ac5d2f6c11f5a3112717f9e",
+      "wm-v2b-proprio-transfer-insufficient": "5393c5c95dd7c65347bc11f572f4168681121ed6",
+      "wm-v2a-delta-objective-insufficient": "8c884ac69bfd76b079181d7ed41d52db48914870",
+      "local-counterfactual-visual-transfer-confirmed": "598a486b5cfea8390e7b72c41a7bd8a410b4b280",
+      "c0-v2-causal-aligned": "20f3166d0a0f4d7ed034425c056f042d85fe077b",
+      "c1-v2-1-discriminability-negative": "196e43dbc5bc0989c4a7781fb97d20b626ca8b63"
+    },
+    "reports_results_tree": {
+      "tag": "wm-v2c-ej-transfer-insufficient",
+      "scope": "Every .md/.json/.csv/.yaml/.yml path tracked below docs/ and results/ at the tag; digest is SHA-256 over path, NUL, current file SHA-256, newline in git tree order.",
+      "file_count": 142,
+      "sha256": "2101b083bee714eeb70d3181a04df952716696734b66c069239bea6d78df511d"
+    },
+    "files": [
+      {
+        "path": "configs/wm_v2c_ej_protocol.json",
+        "sha256": "cff07db51aa682aa6cd8d0823af9f898c23fc5e5ff1836aa64f6e1cc71933636"
+      },
+      {
+        "path": "results/world_model_v2c_ej/seed11/diagnosis.json",
+        "sha256": "39bd7716b8e939da10b4ae953c9496833c9c216d5bae764ee80062e4d2f454dc"
+      },
+      {
+        "path": "docs/wm_v2c_ej_physical_visual_coupling_audit.md",
+        "sha256": "974816dd60a85f7e2e884aed0ee6cc6649799d3628a038d073dd18ff3a26692e"
+      },
+      {
+        "path": "configs/wm_v2b_1_calibration_freeze.json",
+        "sha256": "9fa482a5ec3efe1d05142b27a373b3dc38633a2ce696b5c3ef92c82acdce39a8"
+      },
+      {
+        "path": "results/world_model_v2b_1/diagnosis.json",
+        "sha256": "5690d3b30642143d605c7adddcb6f945c230ac2134a861a854bbae5b531f2c23"
+      },
+      {
+        "path": "docs/wm_v2b_1_differential_physical_calibration_audit.md",
+        "sha256": "a26622a15a7ce46035963afd54c2ba304a549fa3547101044e7e97024f62e50b"
+      },
+      {
+        "path": "results/world_model_v2b/seed11/best.pt",
+        "sha256": "eb13775493a13d845e93db195c25d513b2fa8f679ac8578456fb8c64b2573848"
+      },
+      {
+        "path": "results/world_model_v2b/seed11/diagnosis.json",
+        "sha256": "adec3dbd49295f19fb7cdacdfed260e4ec8afb928912c9e2657389f6131abf78"
+      },
+      {
+        "path": "results/world_model_v2a/seed11/best.pt",
+        "sha256": "1e3741c1d5307014b070c6256af0753c8cb86f4c591b78c738324161223e1fe5"
+      },
+      {
+        "path": "results/world_model_v2a/seed11/diagnosis.json",
+        "sha256": "68f5d7b8fb01440918cc2dc7b8d4557eaf752362c8610085e5a6aede2373889c"
+      },
+      {
+        "path": "results/wm/d15_ensemble/ensemble_manifest.json",
+        "sha256": "1bf33109378c00565bc3beb1391c017cf5bcc57172d6c89ce891280525e39e41"
+      },
+      {
+        "path": "configs/d13_world_model_data.yaml",
+        "sha256": "88a3f81394332735232c956dc50ddb5048c8c6706068f6fbf226ad578b3186fb"
+      },
+      {
+        "path": "docs/world_model_data_contract.md",
+        "sha256": "e988b7e1078b3c89614bc83225ba677045cfda3b854098a3e1180b85cca32181"
+      },
+      {
+        "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+        "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"
+      },
+      {
+        "path": "results/c0_v2/seed11/best.pt",
+        "sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0"
+      },
+      {
+        "path": "configs/c1_v2_1_candidate_diagnosis.json",
+        "sha256": "baa8f4bb1c01ab790da49cf30b8ccbeca32c444ae459cc5db31daa45a30b8b96"
+      },
+      {
+        "path": "results/c1_v2_1/candidate_diagnosis.json",
+        "sha256": "6fd0c3488b3e57fa098a8f5b9071e4e99912cc60f8b54774b4b1a857b6014339"
+      },
+      {
+        "path": "artifacts/stage3/c1_v2_1_candidate_diagnosis/samples.npz",
+        "sha256": "5870337ad96c58b3cedee4e124cf89018408446ed82fc7a2df52626f482398fd"
+      }
+    ]
+  },
+  "implementation": {
+    "script": "scripts/probe_counterfactual_physical_visual.py",
+    "script_sha256": "4188a319fbf8e8d1aa40d7d52fee55bd5c1faf08f13a3c404ddfc83b9f03cab5",
+    "module": "src/probes/physical_visual.py",
+    "module_sha256": "745ec7d61b5826421756c1bb754a7243d4b2ef16024fee333394553277481b20"
+  },
+  "partitions": {
+    "calibration_init_states": [31, 32, 33, 34],
+    "calibration_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz",
+    "calibration_sha256": "5e7c39e268b1696257107e2c8f068e2c4b40aa44f88ca8f6f92bc99d93d204d6",
+    "evaluation_init_states": [36, 37, 38, 39],
+    "evaluation_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/evaluation_branches.npz",
+    "evaluation_sha256": "76ff1ee009b686c5d71cd7968c37aeec02afcce9485bd3f1bd8ea232faca60fe",
+    "historical_reference_only": [30, 35],
+    "forbidden_init_states": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
+    "tasks": 10,
+    "branch_points": 40,
+    "planning_index": 8,
+    "candidate_pairs": ["A0-A1", "A0-A2", "A1-A2"],
+    "horizon": 8,
+    "samples_per_partition": 960,
+    "block_rule": "All three pairs and eight horizons from one branch point remain in one partition and one bootstrap block.",
+    "simulator_rerun": false
+  },
+  "sample_contract": {
+    "physical_real": "train-standardized real_p_i[h]-real_p_j[h], restricted to ee_pos indices 0:3 and joint indices 5:12",
+    "physical_predicted": "frozen WM-v2B predicted standardized delta_i-delta_j, multiplied by frozen WM-v2B.1 per-horizon alpha, then restricted to the same ten EE+joint dimensions",
+    "visual_target": "frozen CLIP z_real_i[h]-z_real_j[h]",
+    "real_visual_separation": "1-cosine(z_real_i,z_real_j)",
+    "predicted_visual_separation": "0.5*L2(predicted_visual_delta)^2, using the unit-latent difference identity",
+    "gripper_indices_excluded": [3, 4],
+    "input_dimensions": {
+      "physical": 10,
+      "context": 256,
+      "visual_target": 512
+    }
+  },
+  "context": {
+    "source": "frozen WM-v2B initial_hidden output before the GRU",
+    "wm_v2b_checkpoint": "results/world_model_v2b/seed11/best.pt",
+    "inputs": ["z0", "train-normalized proprio0", "language"],
+    "forbidden_inputs": ["actions", "future RGB", "future proprio", "candidate identity", "candidate outcome", "reward", "done", "success"],
+    "candidate_identity_test": "repeat each bitwise-verified common pre-action input three times through the frozen extractor; maximum absolute c0 difference <=1e-7"
+  },
+  "physical_mediator": {
+    "freeze": "configs/wm_v2b_1_calibration_freeze.json",
+    "calibration_form": "per_horizon_scalar",
+    "retraining_on_probe": false
+  },
+  "probes": {
+    "ridge_grid": [0.0001, 0.001, 0.01, 0.1, 1.0],
+    "selection": "leave-one-init-out CV within init 31-34; minimize arithmetic mean fold RMSE; exact tie selects the larger alpha",
+    "p0": "zero 512-D visual delta",
+    "p1": "no-bias mean-loss ridge Linear(10,512); exactly antisymmetric",
+    "p2": "mean-loss ridge Linear(256,512) with unpenalized intercept; context-only diagnostic and deliberately strong baseline",
+    "p3": {
+      "architecture": "u_p=Linear(10,64,bias=False); u_c=sigmoid(Linear(256,64,bias=True)); pred=Linear(64,512,bias=False)(u_p*u_c)",
+      "hidden_dim": 64,
+      "optimizer": "AdamW",
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "gradient_clip_norm": 10.0,
+      "loss": "mean squared error on raw 512-D visual difference",
+      "batching": "full inner-fold calibration batch",
+      "max_epochs": 1000,
+      "patience": 100,
+      "minimum_delta": 0.0,
+      "fold_seed_base": 221100,
+      "final_seed": 221199,
+      "final_epoch_rule": "round-half-up median of four inner-fold best epochs, then train once on all init 31-34 without evaluation early stopping",
+      "context_output_shortcut": false,
+      "antisymmetry": "exact for fixed context"
+    }
+  },
+  "metrics": {
+    "primary": "RMSE(predicted visual difference, real visual difference)",
+    "direction": "cosine(predicted visual difference, real visual difference); zero prediction is assigned direction 0",
+    "magnitude": ["ratio of means", "median predicted/real norm ratio", "p25", "p75"],
+    "minimum_real_visual_delta_norm": 0.0001,
+    "separation": ["Pearson", "Spearman", "mean within-context three-pair Spearman", "pair-of-pair ordering accuracy with ties worth 0.5"],
+    "undefined_constant_correlation": "reported as value 0 with defined=false",
+    "ranking_tie_tolerance": 1e-08,
+    "cuts": ["aggregate", "h1-h8", "task0-task9", "A0-A1/A0-A2/A1-A2"]
+  },
+  "negative_controls": {
+    "scope": "held-out evaluation only; P3 parameters remain frozen",
+    "physical_shuffle": "within-task fixed-seed branch-point derangement; preserve pair and horizon; keep context and target fixed",
+    "physical_shuffle_seed": 221301,
+    "context_shuffle": "within-task fixed-seed branch-point derangement; keep real physical delta and target fixed",
+    "context_shuffle_seed": 221302
+  },
+  "bootstrap": {
+    "unit": "task-stratified held-out branch point; resample four branch points with replacement within each task and retain all pairs, horizons, and coordinates",
+    "replicates": 10000,
+    "seed": 221401,
+    "confidence": 0.95
+  },
+  "gates": {
+    "minimum_incremental_improvement": 0.05,
+    "norm_ratio_min": 0.25,
+    "norm_ratio_max": 4.0,
+    "p1_sufficient": "improvement over zero CI lower >0; direction point and CI lower >0; every pair direction point >0; norm ratio-of-means in [0.25,4]",
+    "p3_real_pass": "improvement over zero CI lower >0; improvement over both P1 and P2 >=5% with CI lower >0; aggregate direction and CI lower >0; every pair direction >0; both fixed shuffles significantly worsen RMSE and direction; norm ratio-of-means in [0.25,4]",
+    "shuffle_significant": "relative RMSE degradation CI lower >0 and direction degradation CI lower >0",
+    "p3_predicted_pass": "improvement over zero CI lower >0; improvement over P2 >=5% with CI lower >0; aggregate direction and CI lower >0; every pair direction >0; norm ratio-of-means in [0.25,4]",
+    "decision_order": [
+      "P3 real pass -> CONTEXT_CONDITIONED_PHYSICAL_VISUAL_SIGNAL_CONFIRMED and GO_CONTEXT_CONDITIONED_WM_DESIGN",
+      "P3 real pass plus P3 predicted pass -> also CONTEXT_CONDITIONED_DEPLOYABLE_MEDIATOR_CONFIRMED",
+      "P3 real pass plus P3 predicted fail -> also PHYSICAL_MEDIATOR_ACCURACY_REMAINS_BOTTLENECK",
+      "otherwise P1 pass and P3 lacks significant >=5% gain over P1 -> PHYSICAL_ONLY_VISUAL_MAPPING_SUFFICIENT and BLOCK_CONTEXT_CONDITIONED_WM_DESIGN",
+      "otherwise P3 lacks significant >=5% gain over P2 and physical shuffle does not significantly worsen -> CONTEXT_DOMINATES_PHYSICAL_SIGNAL_NOT_ADDITIVE and BLOCK",
+      "otherwise -> EE_JOINT_NOT_SUFFICIENT_FOR_VISUAL_COUNTERFACTUAL and BLOCK",
+      "any provenance, split, finite, identity, or implementation failure before metrics -> DATA_OR_IMPLEMENTATION_BLOCK"
+    ]
+  },
+  "outputs": {
+    "calibration_freeze": "configs/counterfactual_physical_visual_probe_freeze.json",
+    "weights": "artifacts/stage3/counterfactual_physical_visual_probe/calibration_weights.npz",
+    "evaluation_metrics": "artifacts/stage3/counterfactual_physical_visual_probe/evaluation_metrics.npz",
+    "result": "results/counterfactual_physical_visual_probe/diagnosis.json",
+    "report": "docs/counterfactual_physical_visual_sufficiency_probe.md"
+  },
+  "forbidden": [
+    "read init 36-39 values before the calibration freeze and weight hash are committed",
+    "access or run init 40-49",
+    "fit on historical init 30/35",
+    "rerun the simulator when the frozen sidecars already contain the required real futures",
+    "train or modify any World Model, CLIP encoder, C0 actor, candidate generator, production scale, reranker, controller, C1, C2, or D20-v2",
+    "use gripper, action identity, candidate identity, pair identity embedding, candidate score, expert-action error, noise seed, reward, done, success, or task outcome as probe inputs",
+    "use future RGB, future proprio, future object state, or candidate outcome as context",
+    "select architecture, hidden size, ridge alpha, epoch, target, threshold, or verdict gate from init 36-39",
+    "train seed23/47 or overwrite an upstream artifact"
+  ]
+}
