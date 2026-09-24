@@ -18,6 +18,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 from scripts.wm_v2c_ej_common import load_initialized_model
+from scripts.calibrate_world_model_v2c_ej import gradient_norm
 from src.world_models import (
     EJ_PROPRIO_INDICES,
     FutureProprioWorldModelDataset,
@@ -128,3 +129,18 @@ def test_deployment_signature_has_no_future_target() -> None:
         "actions",
     ]
 
+
+def test_gradient_calibration_uses_independent_forward_graphs() -> None:
+    _, _, model, _ = load()
+    z0 = torch.nn.functional.normalize(torch.randn(2, 512), dim=-1)
+    proprio = torch.randn(2, 12)
+    language = torch.nn.functional.normalize(torch.randn(2, 512), dim=-1)
+    actions = torch.randn(2, 8, 7)
+    visual_components = model.forward_with_components(z0, proprio, language, actions)
+    visual_loss = visual_components["pred_z"].square().mean()
+    g_visual = gradient_norm(visual_loss, tuple(model.gru.parameters()))
+    ej_components = model.forward_with_components(z0, proprio, language, actions)
+    ej_loss = ej_components["pred_ej_delta"].square().mean()
+    g_ej = gradient_norm(ej_loss, tuple(model.gru.parameters()))
+    assert g_visual >= 0.0
+    assert g_ej > 0.0

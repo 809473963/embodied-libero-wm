@@ -147,10 +147,21 @@ def main() -> int:
             visual_loss = cosine_distance(
                 components["pred_z"], batch["z_future"]
             ).mean()
-            ej_loss = ej_delta_error(
-                components["pred_proprio_delta"], target_p, beta=1.0
-            ).mean()
             g_z = gradient_norm(visual_loss, shared)
+
+            # Use an independent forward graph for the second loss, matching
+            # the frozen WM-v2B gradient-calibration procedure. This avoids
+            # retaining one graph while keeping both norms fully independent.
+            ej_components = model.forward_with_components(
+                batch["z0"],
+                normalized_proprio,
+                batch["language"],
+                normalized_actions,
+            )
+            assert_initial_visual_parity(ej_components)
+            ej_loss = ej_delta_error(
+                ej_components["pred_proprio_delta"], target_p, beta=1.0
+            ).mean()
             g_ej = gradient_norm(ej_loss, shared)
             if not all(np.isfinite(value) and value > 0 for value in (g_z, g_ej)):
                 raise FloatingPointError("invalid gradient-calibration norm")
