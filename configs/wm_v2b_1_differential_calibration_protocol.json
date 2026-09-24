@@ -1,0 +1,165 @@
+{
+  "protocol_version": "wm-v2b-1-differential-physical-calibration-v1",
+  "status": "PREREGISTERED_BEFORE_INIT_31_39_BRANCH_EXECUTION",
+  "date": "2026-09-24",
+  "purpose": "Determine on disjoint matched simulator branches whether the frozen WM-v2B proprio counterfactual failure is repairable by closed-form scalar calibration without neural-model training.",
+  "frozen_upstream": {
+    "mediator_commit": "816891dc0d8472679ca2e2ed7f73fc2c74a0c2a6",
+    "mediator_annotated_tag": "wm-v2b-physical-mediator-blocked",
+    "mediator_verdict": "BLOCK_WM_V2C_PHYSICAL_MEDIATOR",
+    "mediator_mechanism": "PHYSICAL_MEDIATOR_COUNTERFACTUAL_FAIL",
+    "mediator_result": "results/world_model_v2b_physical_mediator/diagnosis.json",
+    "mediator_result_sha256": "07bc7dba47a71b917c98c2be541527641157c66742f0314b29cf8db37aebd39d",
+    "mediator_report": "docs/wm_v2b_counterfactual_physical_mediator_audit.md",
+    "mediator_report_sha256": "66c75d65d1d1b90944aa6e63fb0d85f2487d7032ac433c88b297577473e943a5",
+    "historical_branch_result": "results/local_candidate_counterfactual/diagnosis.json",
+    "historical_branch_result_sha256": "e3fede26f63f480df815c9a6bc78a658cfd15f7439f135194318e1002ef5f517",
+    "historical_branch_sidecar": "artifacts/stage3/local_candidate_counterfactual/branches.npz",
+    "historical_branch_sidecar_sha256": "6c81a692bac418a9defe3a8abc0086408b909ce1c99b9241c49361a7c298e12d",
+    "historical_branch_protocol": "configs/local_candidate_counterfactual_protocol.json",
+    "historical_branch_protocol_sha256": "b1c8c622e23c8c6879f6209ba93bf1be76b370909c1d1285c5b2d4406760159c",
+    "historical_branch_amendment": "configs/local_candidate_counterfactual_protocol_v1_2_amendment.json",
+    "historical_branch_amendment_sha256": "84b3a37b8dbc408fba6cdefdff92e713e3e67f9d5e86b3fa00788ccf07dd0cd3",
+    "historical_collector": "scripts/audit_local_candidate_counterfactual.py",
+    "historical_collector_sha256": "647adb63b6be65f1f695d979febb9ac7377a67c9fb0c777b895486b0b0998f30",
+    "validation_sidecar": "artifacts/stage3/wm_v2b_seed11_diagnosis/samples.npz",
+    "validation_sidecar_sha256": "1553d59b734f65499e7e2e0fdec6c7174710cf0923c49a4ee88fe2d0e7a91a2a",
+    "wm_v2b_checkpoint": "results/world_model_v2b/seed11/best.pt",
+    "wm_v2b_checkpoint_sha256": "eb13775493a13d845e93db195c25d513b2fa8f679ac8578456fb8c64b2573848",
+    "controller_partition_protocol": "configs/c0_v2_causal_alignment_protocol.json",
+    "controller_partition_protocol_sha256": "24ebc5f9d870a21293bf93c5129ce33376a908f9ea1f3726de0f6cc37e5c9a0c"
+  },
+  "partitions": {
+    "calibration": {
+      "role": "fit scalar parameters only; never report as held-out evidence",
+      "init_state_indices": [31, 32, 33, 34],
+      "episode_positions": [1, 2, 3, 4],
+      "task_seed_rule": "30000 + 100*task_id + episode_position",
+      "tasks": 10,
+      "planning_indices": [8],
+      "prefix_steps": [64],
+      "branch_points": 40,
+      "candidate_branches": 120
+    },
+    "evaluation": {
+      "role": "held-out final calibration evaluation; never fit or select calibration form",
+      "init_state_indices": [36, 37, 38, 39],
+      "episode_positions": [6, 7, 8, 9],
+      "task_seed_rule": "30000 + 100*task_id + episode_position",
+      "tasks": 10,
+      "planning_indices": [8],
+      "prefix_steps": [64],
+      "branch_points": 40,
+      "candidate_branches": 120
+    },
+    "historical_reference": {
+      "init_state_indices": [30, 35],
+      "planning_indices": [0, 8],
+      "branch_points": 40,
+      "use": "distribution-shift reference only; forbidden for fitting, form selection, or thresholds"
+    },
+    "forbidden_init_state_indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "branch_construction": {
+    "suite": "libero_spatial",
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "reference_path": "Run frozen C0-v2 actor-default open-loop chunks from the official init state through planning index 8.",
+    "branch_path": "For each candidate, create a fresh independent environment, seed/reset/set the same official init state, replay the identical 64 raw physical prefix actions, then execute the copied eight-action candidate.",
+    "candidate_generator": "Frozen C1-v2.1 deterministic antithetic smoothed Gaussian at production 1x scale; candidate tensor generated once and copied to all branches.",
+    "candidate_seed_formula": "1901 + rollout_seed*1000003 + planning_index",
+    "candidate_count": 3,
+    "horizon": 8,
+    "mid_episode_flattened_state_restore": false,
+    "independent_noise_per_branch": false,
+    "replanning_inside_branch": false,
+    "success_reward_done_recorded": false
+  },
+  "prefix_identity_gate": {
+    "executed_raw_prefix_actions": "bitwise equal float32 arrays and identical SHA-256",
+    "agentview_rgb": "bitwise equal uint8 arrays and identical SHA-256",
+    "planning_observation": "same keys, shapes, dtypes, and bitwise-equal numeric arrays",
+    "proprio_max_abs_tolerance": 0.0,
+    "simulator_flattened_state_max_abs_tolerance": 1e-10,
+    "clip_latent_min_cosine": 0.999999,
+    "failure_action": "stop the affected partition immediately, retain only a replay blocker artifact, and do not fit or evaluate calibration"
+  },
+  "coordinate_contract": {
+    "space": "frozen train-standardized 12-D proprio coordinates",
+    "dimension_order": ["ee_x", "ee_y", "ee_z", "gripper_0", "gripper_1", "joint_0", "joint_1", "joint_2", "joint_3", "joint_4", "joint_5", "joint_6"],
+    "groups": {
+      "ee_pos": [0, 1, 2],
+      "gripper": [3, 4],
+      "joints": [5, 6, 7, 8, 9, 10, 11]
+    },
+    "delta_real": "standardized(real_p_i[h]) - standardized(real_p_j[h])",
+    "delta_pred": "predicted_standardized_p_i[h] - predicted_standardized_p_j[h]",
+    "candidate_pairs": ["A0-A1", "A0-A2", "A1-A2"]
+  },
+  "calibration_models": {
+    "fit_rule": "closed-form no-intercept least squares alpha=sum(delta_pred*delta_real)/sum(delta_pred^2), using calibration partition only",
+    "global_scalar": "one alpha shared by all horizons and coordinates; diagnostic",
+    "per_horizon_scalar": "eight alphas, one per horizon; fixed primary authorization form because overscaling is historically horizon-dependent",
+    "groupwise_scalar": "three alphas for preregistered ee_pos/gripper/joints groups; diagnostic and partial-mediator form",
+    "horizon_group_scalar": "24 alphas; fit and freeze from calibration data, but evaluate only as a secondary diagnostic if all three simpler forms fail the aggregate zero-baseline gate; never authorizes GO in this experiment",
+    "negative_alpha_rule": "report mechanism abnormality and fail the corresponding calibration form; never take absolute value or clip",
+    "evaluation_form_selection": "forbidden; per_horizon_scalar is fixed as the only full-mediator authorization form before evaluation"
+  },
+  "metrics": {
+    "absolute": ["standardized RMSE", "standardized MAE", "SmoothL1 beta=1"],
+    "absolute_sources": ["D13 validation", "historical init 30/35", "calibration init 31-34", "evaluation init 36-39"],
+    "differential_error": "RMSE(calibrated_delta-real_delta)",
+    "zero_baseline": "RMSE(real_delta)",
+    "raw_baseline": "RMSE(raw_delta_pred-real_delta)",
+    "improvement_zero": "(E_zero-E_calibrated)/E_zero",
+    "improvement_raw": "(E_raw-E_calibrated)/E_raw",
+    "direction": "cosine(calibrated_delta, real_delta)",
+    "magnitude_ratio": "ratio-of-means plus distribution of calibrated_norm/real_norm",
+    "ranking": "within-context Spearman over three candidate-pair norms, pair-of-pair ordering accuracy with ties worth 0.5, and pooled Pearson/Spearman",
+    "sign": "per-dimension sign agreement where abs(real_delta) reaches threshold",
+    "minimum_real_norm": 0.0001,
+    "minimum_abs_real_delta_for_sign": 0.001,
+    "ranking_tie_tolerance": 1e-08,
+    "cuts": ["horizon", "task", "candidate_pair", "ee_pos/gripper/joints", "calibration_form"]
+  },
+  "bootstrap": {
+    "unit": "held-out matched branch point; resampling retains all three candidate pairs, all eight horizons, and all 12 coordinates",
+    "replicates": 10000,
+    "seed": 220701,
+    "confidence": 0.95
+  },
+  "authorization_gate": {
+    "primary_form": "per_horizon_scalar",
+    "aggregate_zero_improvement": "improvement_zero >= 0.05 and branch-block 95% CI lower bound > 0",
+    "aggregate_raw_improvement": "improvement_raw > 0 and branch-block 95% CI lower bound > 0",
+    "direction": "mean cosine >= 0.10 and branch-block 95% CI lower bound > 0",
+    "ranking": "within-context Spearman >= 0.10 with CI lower > 0; ordering accuracy >= 0.55 with CI lower > 0.50",
+    "candidate_pair_consistency": "every A0-A1/A0-A2/A1-A2 pair has improvement_zero > 0, direction > 0, and magnitude ratio-of-means in [0.5,1.5]",
+    "full_gripper_validity": "real sign-eligible coverage >= 0.10; improvement_zero >= 0.05 with CI lower > 0; direction >= 0.10 with CI lower > 0; sign accuracy >= 0.55 with CI lower > 0.50",
+    "positive_alpha": "all eight primary per-horizon alphas are strictly positive",
+    "full_pass": "all primary-form aggregate, pair, ranking, direction, gripper, and positive-alpha checks pass -> PHYSICAL_MEDIATOR_CALIBRATION_PASS and GO_WM_V2C_DESIGN",
+    "partial_group_gate": "under frozen groupwise calibration, ee_pos or joints has improvement_zero >= 0.05 with CI lower > 0, direction >= 0.10 with CI lower > 0, and sign accuracy >= 0.55 with CI lower > 0.50, while the full gate fails because gripper fails -> PARTIAL_PHYSICAL_MEDIATOR_PASS; authorization remains BLOCK",
+    "retrain": "if full and partial gates fail, or no simple calibration form significantly beats zero, output PHYSICAL_MEDIATOR_RETRAIN_REQUIRED and BLOCK_WM_V2C_PHYSICAL_MEDIATOR"
+  },
+  "artifacts": {
+    "calibration_manifest": "results/world_model_v2b_1/branches/calibration_manifest.json",
+    "calibration_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz",
+    "calibration_freeze": "configs/wm_v2b_1_calibration_freeze.json",
+    "evaluation_manifest": "results/world_model_v2b_1/branches/evaluation_manifest.json",
+    "evaluation_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/evaluation_branches.npz",
+    "result": "results/world_model_v2b_1/diagnosis.json",
+    "derived_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/analysis_metrics.npz",
+    "report": "docs/wm_v2b_1_differential_physical_calibration_audit.md"
+  },
+  "forbidden": [
+    "fit on or inspect evaluation branches before calibration freeze is committed",
+    "use init states 30/35 for fitting, model selection, or thresholds",
+    "access init states outside 31-34 and 36-39",
+    "train or modify WM-v2B or any neural calibration model",
+    "clip, sign-correct, or iteratively tune fitted alpha values",
+    "select calibration form from evaluation results",
+    "modify candidate generator, production scale, reranker, C0-v2, or controllers",
+    "run C1/C2 success, D20-v2, task-success selection, reward, done, or fake targets",
+    "train or design WM-v2C in this experiment",
+    "overwrite any frozen upstream artifact"
+  ]
+}
