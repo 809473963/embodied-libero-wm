@@ -912,6 +912,9 @@ def render_report(result: dict[str, Any]) -> str:
     overall = differential["overall"]
     overall_ranking = ranking["overall"]
     labels = ", ".join(f"`{label}`" for label in decision["mechanism_labels"])
+    result_sha256 = hashlib.sha256(
+        (json.dumps(result, indent=2, ensure_ascii=False) + "\n").encode()
+    ).hexdigest()
     return f"""# The physical mediator {'passes' if result['verdict'] == 'GO_WM_V2C_DESIGN' else 'does not pass'} the counterfactual fidelity gate
 
 Date: 2026-09-24
@@ -935,6 +938,19 @@ direction cosine is `{overall['direction_cosine']['mean']:.4f}` (95% CI
 {format_ci(bootstrap['direction_mean_ci95'])}), and predicted/real physical
 magnitude ratio-of-means is `{overall['magnitude_ratio']['ratio_of_means']:.4f}`.
 
+The direction and ranking signal is real but insufficient for a physical
+mediator. Within-context separation Spearman is `{overall_ranking['within_context_spearman']['mean']:.4f}` and ordering
+accuracy is `{overall_ranking['pairwise_ordering_accuracy']['mean']:.2%}`, yet the predicted candidate differences are
+systematically too large. That over-scaling makes the full vector prediction
+slightly worse than predicting no candidate difference at all. Two of three
+candidate pairs have negative improvement, and the aggregate confidence
+interval includes zero.
+
+Absolute branch prediction is also shifted: pooled branch RMSE is `{absolute['distribution_shift']['rmse_ratio']:.3f}x`
+validation RMSE. The gripper subgroup is especially weak, with direction
+cosine `{differential['groups']['gripper']['direction_cosine']['mean']:.4f}` and sign accuracy `{sign['groups']['gripper']['accuracy']:.2%}`. The result therefore does not
+receive either valid-relative-signal mechanism label.
+
 The preregistered authorization decision is `{result['verdict']}`. This report
 does not train WM-v2C or change WM-v2B, candidates, reranking, or controllers.
 
@@ -957,6 +973,11 @@ The pooled branch-to-validation ratios are RMSE
 `{absolute['distribution_shift']['smooth_l1_ratio']:.3f}x`. This comparison
 replaces the invalid cross-metric comparison between validation SmoothL1 and
 branch RMSE.
+
+The A0/A1/A2 absolute errors are similar to one another, so there is no single
+candidate-specific absolute collapse. Their pooled shift is nevertheless
+large and material: equality across candidates does not establish that their
+*differences* are represented faithfully.
 
 Per horizon (`R/M/S` = RMSE/MAE/SmoothL1):
 
@@ -998,6 +1019,22 @@ By task:
 
 {markdown_table(['Task', 'Direction', 'Norm ratio', 'Median ratio', 'p25', 'p75', 'Diff RMSE', 'Zero RMSE', 'Improvement', 'Improvement CI', 'Direction CI'], task_diff_rows)}
 
+## Why positive direction is not enough
+
+The head usually points candidate differences in the right direction, but it
+does not reproduce their size accurately. Aggregate predicted norm is
+`{overall['magnitude_ratio']['ratio_of_means']:.3f}x` real norm. At h1 the ratio is `{differential['per_horizon'][0]['magnitude_ratio']['ratio_of_means']:.3f}x` and differential error is
+`{-100*differential['per_horizon'][0]['relative_improvement_over_zero']:.1f}%` worse than zero-difference. Only h7 and h8 have small positive point
+estimates, and both confidence intervals cross zero.
+
+The failure is not uniform across coordinates. EE-position differences
+improve over zero by `{100*differential['groups']['ee_pos']['relative_improvement_over_zero']:.2f}%`, but joints are `{abs(100*differential['groups']['joints']['relative_improvement_over_zero']):.2f}%` worse and gripper is
+`{abs(100*differential['groups']['gripper']['relative_improvement_over_zero']):.2f}%` worse, with gripper direction near zero. Only three of ten tasks have
+a positive differential-improvement point estimate. A future mediator would
+therefore require differential calibration and coordinate-level validation;
+the current head cannot be coupled directly into a visual predictor on this
+evidence.
+
 ## Separation ranking fidelity
 
 Overall mean within-context Spearman is
@@ -1007,6 +1044,11 @@ ordering accuracy is `{overall_ranking['pairwise_ordering_accuracy']['mean']:.2%
 (95% CI {format_ci(bootstrap['pairwise_ordering_accuracy_ci95'])}). Pooled
 predicted-vs-real separation Spearman/Pearson are
 `{overall_ranking['pooled']['spearman']:.4f}` / `{overall_ranking['pooled']['pearson']:.4f}`.
+
+This passes the preregistered ordinal gate: the head can often tell which of
+the three pairwise physical separations is larger. Ranking discards absolute
+scale and vector residual, however, so it cannot rescue the failed
+zero-difference and pair-consistency gates.
 
 {markdown_table(['h', 'Within Spearman', 'Ordering accuracy', 'Pooled Spearman', 'Pooled Pearson'], ranking_horizon_rows)}
 
@@ -1034,7 +1076,10 @@ Real physical versus real visual separation has Pearson/Spearman
 Predicted physical versus predicted visual separation has Pearson/Spearman
 `{coupling['overall']['predicted_physical_to_predicted_visual']['pearson']:.4f}` /
 `{coupling['overall']['predicted_physical_to_predicted_visual']['spearman']:.4f}`.
-These associations do not establish a causal mediation path.
+These associations do not establish a causal mediation path. In particular,
+the stronger predicted-predicted correlation measures internal co-response of
+two outputs from the same model; it must not be interpreted as mediator
+accuracy against the matched real futures.
 
 {markdown_table(['h', 'Real Pearson', 'Real Spearman', 'Pred Pearson', 'Pred Spearman'], coupling_rows)}
 
@@ -1052,9 +1097,17 @@ Final authorization verdict: `{result['verdict']}`.
 
 Mechanism label(s): {labels}.
 
+`PHYSICAL_MEDIATOR_RELATIVE_SIGNAL_VALID` and
+`PHYSICAL_MEDIATOR_VALID_VISUAL_TRANSFER_BLOCK_CONFIRMED` are not assigned.
+Although direction and ranking pass, the preregistered definition requires all
+four gate groups, including positive differential improvement and no
+candidate-pair collapse. Direct WM-v2C design from this frozen head remains
+blocked. Any future experiment must be separately preregistered; this audit
+does not authorize a new objective, architecture, training run, or controller.
+
 ## Integrity and forbidden-activity audit
 
-- Result: `{result['artifacts']['result']}`; final SHA-256 is reported after write.
+- Result: `{result['artifacts']['result']}`, SHA-256 `{result_sha256}`.
 - Derived sidecar: `{result['artifacts']['derived_sidecar']}`, SHA-256 `{result['artifacts']['derived_sidecar_sha256']}`.
 - Frozen matched-branch sidecar SHA-256: `{result['protocol']['matched_branch_sidecar_sha256']}`.
 - Frozen validation sidecar SHA-256: `{result['protocol']['validation_sidecar_sha256']}`.
