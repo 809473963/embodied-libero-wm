@@ -123,7 +123,9 @@ def path_last_commit(path: Path) -> str:
     ).strip()
 
 
-def validate_protocol(path: Path) -> tuple[dict[str, Any], str]:
+def validate_protocol(
+    path: Path, amendment_path: Path | None = None
+) -> tuple[dict[str, Any], str, dict[str, Any] | None]:
     protocol = json.loads(path.read_text())
     if protocol["protocol_version"] != "local-candidate-counterfactual-dynamics-v1":
         raise ValueError("unexpected local-counterfactual protocol")
@@ -198,7 +200,34 @@ def validate_protocol(path: Path) -> tuple[dict[str, Any], str]:
     preregistered_commit = path_last_commit(path)
     if not preregistered_commit:
         raise ValueError("protocol must be committed before simulator execution")
-    return protocol, preregistered_commit
+    amendment = None
+    if amendment_path is not None:
+        amendment = json.loads(amendment_path.read_text())
+        if amendment["amendment_version"] != "local-candidate-counterfactual-dynamics-v1.1":
+            raise ValueError("unexpected protocol amendment")
+        if amendment["status"] != (
+            "PREREGISTERED_AFTER_V1_PREFLIGHT_BLOCK_AND_BEFORE_ANY_MECHANISM_BRANCH_RESULT"
+        ):
+            raise ValueError("protocol amendment is not preregistered")
+        if amendment["base_protocol"] != str(path.resolve().relative_to(ROOT)):
+            raise ValueError("amendment base protocol path changed")
+        if amendment["base_protocol_sha256"] != sha256(path):
+            raise ValueError("amendment base protocol hash changed")
+        if amendment["base_preregistered_commit"] != preregistered_commit:
+            raise ValueError("amendment base protocol commit changed")
+        blocker = amendment["v1_preflight_blocker"]
+        if sha256(ROOT / blocker["result"]) != blocker["result_sha256"]:
+            raise ValueError("v1 preflight blocker result changed")
+        if sha256(ROOT / blocker["report"]) != blocker["report_sha256"]:
+            raise ValueError("v1 preflight blocker report changed")
+        if float(amendment["single_authorized_measurement_fix"]["clip_identity_threshold_unchanged"]) != float(
+            protocol["prefix_identity_gate"]["clip_latent_min_cosine"]
+        ):
+            raise ValueError("v1.1 changed the CLIP identity threshold")
+        preregistered_commit = path_last_commit(amendment_path)
+        if not preregistered_commit:
+            raise ValueError("amendment must be committed before simulator execution")
+    return protocol, preregistered_commit, amendment
 
 
 def disable_all_cameras(env: OffScreenRenderEnv) -> None:
@@ -405,7 +434,7 @@ def prefix_audit(
     reference_state: np.ndarray,
     branch_observations: list[dict[str, np.ndarray]],
     branch_states: list[np.ndarray],
-    branch_latents: np.ndarray,
+    identity_latents: np.ndarray,
 ) -> dict[str, Any]:
     gate = protocol["prefix_identity_gate"]
     prefix_hash = array_sha256(prefix.astype(np.float32))
@@ -434,10 +463,10 @@ def prefix_audit(
         )
     else:
         state_max = float("inf")
-    reference_latent = encode_images(
-        policy, [reference_observation["agentview_image"]]
-    )[0]
-    clip_cosines = np.sum(branch_latents * reference_latent[None, :], axis=-1)
+    if identity_latents.shape != (4, 512):
+        raise ValueError("identity CLIP batch must contain reference plus three branches")
+    reference_latent = identity_latents[0]
+    clip_cosines = np.sum(identity_latents[1:] * reference_latent[None, :], axis=-1)
     observation = observation_identity(reference_observation, branch_observations)
     passed = bool(
         prefix_hash == branch_prefix_hashes[0] == branch_prefix_hashes[1] == branch_prefix_hashes[2]
@@ -492,8 +521,10 @@ def collect_branch_point(
             envs.append(env)
             branch_observations.append(observation)
             branch_states.append(state)
-        branch_latents = encode_images(
-            policy, [observation["agentview_image"] for observation in branch_observations]
+        identity_latents = encode_images(
+            policy,
+            [reference_observation["agentview_image"]]
+            + [observation["agentview_image"] for observation in branch_observations],
         )
         audit = prefix_audit(
             protocol,
@@ -503,7 +534,7 @@ def collect_branch_point(
             reference_state,
             branch_observations,
             branch_states,
-            branch_latents,
+            identity_latents,
         )
         identity = {
             "task_id": task_id,
@@ -1311,17 +1342,25 @@ def blocker_result(
     protocol_path: Path,
     protocol: dict[str, Any],
     preregistered_commit: str,
+    amendment_path: Path | None,
+    amendment: dict[str, Any] | None,
     failure: CounterfactualReplayError,
 ) -> dict[str, Any]:
     return {
         "schema_version": 1,
-        "experiment_version": protocol["protocol_version"],
+        "experiment_version": (
+            protocol["protocol_version"]
+            if amendment is None
+            else amendment["amendment_version"]
+        ),
         "status": "BLOCKED",
         "verdict": "BLOCK_COUNTERFACTUAL_REPLAY",
         "protocol": {
             "path": str(protocol_path.relative_to(ROOT)),
             "sha256": sha256(protocol_path),
             "preregistered_commit": preregistered_commit,
+            "amendment": None if amendment_path is None else str(amendment_path.relative_to(ROOT)),
+            "amendment_sha256": None if amendment_path is None else sha256(amendment_path),
             "wm_v2b_commit": protocol["frozen_upstream"]["wm_v2b_commit"],
             "wm_v2b_tag": protocol["frozen_upstream"]["wm_v2b_annotated_tag"],
         },
@@ -1344,6 +1383,11 @@ def main() -> int:
         default=ROOT / "configs/local_candidate_counterfactual_protocol.json",
     )
     parser.add_argument(
+        "--amendment",
+        type=Path,
+        default=ROOT / "configs/local_candidate_counterfactual_protocol_v1_1_amendment.json",
+    )
+    parser.add_argument(
         "--output",
         type=Path,
         default=ROOT / "results/local_candidate_counterfactual/diagnosis.json",
@@ -1363,14 +1407,23 @@ def main() -> int:
     for path in (args.output, args.sidecar, args.report):
         if path.exists():
             raise FileExistsError(f"refusing to overwrite existing artifact: {path}")
-    protocol, preregistered_commit = validate_protocol(args.protocol)
+    protocol, preregistered_commit, amendment = validate_protocol(
+        args.protocol, args.amendment
+    )
     device = torch.device(args.device)
     if device.type == "cuda" and not torch.cuda.is_available():
         raise RuntimeError("CUDA requested but unavailable")
     try:
         records, arrays = collect(protocol, device)
     except CounterfactualReplayError as failure:
-        result = blocker_result(args.protocol, protocol, preregistered_commit, failure)
+        result = blocker_result(
+            args.protocol,
+            protocol,
+            preregistered_commit,
+            args.amendment,
+            amendment,
+            failure,
+        )
         atomic_json(args.output, result)
         atomic_text(
             args.report,
@@ -1387,13 +1440,16 @@ def main() -> int:
     sidecar_hash = sha256(args.sidecar)
     result: dict[str, Any] = {
         "schema_version": 1,
-        "experiment_version": protocol["protocol_version"],
+        "experiment_version": amendment["amendment_version"],
         "status": "COMPLETE",
         "verdict": analysis["decision"]["final_verdict"],
         "protocol": {
             "path": str(args.protocol.relative_to(ROOT)),
             "sha256": sha256(args.protocol),
             "preregistered_commit": preregistered_commit,
+            "base_preregistered_commit": amendment["base_preregistered_commit"],
+            "amendment": str(args.amendment.relative_to(ROOT)),
+            "amendment_sha256": sha256(args.amendment),
             "execution_source_commit": source_commit(),
             "wm_v2b_commit": protocol["frozen_upstream"]["wm_v2b_commit"],
             "wm_v2b_tag": protocol["frozen_upstream"]["wm_v2b_annotated_tag"],

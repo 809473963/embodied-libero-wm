@@ -1,0 +1,57 @@
+{
+  "amendment_version": "local-candidate-counterfactual-dynamics-v1.1",
+  "status": "PREREGISTERED_AFTER_V1_PREFLIGHT_BLOCK_AND_BEFORE_ANY_MECHANISM_BRANCH_RESULT",
+  "date": "2026-09-24",
+  "base_protocol": "configs/local_candidate_counterfactual_protocol.json",
+  "base_protocol_sha256": "b1c8c622e23c8c6879f6209ba93bf1be76b370909c1d1285c5b2d4406760159c",
+  "base_preregistered_commit": "a831364b8c439d8083fb4abf92ceebf14fbd1300",
+  "v1_preflight_blocker": {
+    "commit": "270252506bcb700910352ac73ac21e33cd9ccea2",
+    "result": "results/local_candidate_counterfactual/preflight_v1_blocked.json",
+    "result_sha256": "390a510747d9018333b15a990d75735fe62e46d1ef55bffdd858fc219bc3baaa",
+    "report": "docs/local_candidate_counterfactual_replay_preflight_v1_blocked.md",
+    "report_sha256": "0b9b32463abef242bd8cfb06eccc3cb94cc3fef88ad9fd2e4b9075cfa3210b19",
+    "failed_identity": "task0/init30/seed30000/plan0/prefix0",
+    "physical_identity_evidence": {
+      "prefix_action_hash_equal": true,
+      "rgb_bitwise_equal": true,
+      "planning_observation_bitwise_equal": true,
+      "proprio_max_abs_difference": 0.0,
+      "simulator_state_max_abs_difference": 0.0
+    },
+    "failed_measurement": {
+      "metric": "CLIP cosine between separately encoded batch-size-1 reference and batch-size-3 branch images",
+      "measured": 0.999998927116394,
+      "frozen_threshold": 0.999999,
+      "cause": "batch-shape-dependent FP16 CLIP numerical difference despite bitwise-identical RGB"
+    },
+    "offline_reproduction": {
+      "same_image_same_batch_cosine": 1.0,
+      "same_image_cross_batch_cosine": 0.999999463558197,
+      "same_image_cross_batch_max_abs_latent_difference": 0.0002843141555786133,
+      "simulator_used": false
+    }
+  },
+  "single_authorized_measurement_fix": {
+    "old": "encode reference RGB as batch size 1 and three branch RGBs as batch size 3",
+    "new": "encode reference RGB plus the three branch RGBs together as one batch of 4, then compare rows within that same forward pass",
+    "reason": "make CLIP identity invariant to inference batch shape; no physical trajectory, candidate, model, threshold, or verdict rule changes",
+    "clip_identity_threshold_unchanged": 0.999999
+  },
+  "unchanged_from_base_protocol": [
+    "tasks 0-9",
+    "init states 30 and 35",
+    "controller-development seeds",
+    "planning indices 0 and 8",
+    "three fresh environment branches",
+    "deterministic raw-action prefix replay",
+    "A0/A1/A2 generated once then copied",
+    "H=8",
+    "all metric definitions",
+    "near-zero denominator rule",
+    "all decision thresholds and verdict mapping",
+    "forbidden success/reward/done fields",
+    "forbidden init states and mechanisms"
+  ],
+  "rerun_authorization": "Run the full base protocol once only after this amendment and implementation are committed. Preserve the v1 blocker artifacts without overwrite."
+}

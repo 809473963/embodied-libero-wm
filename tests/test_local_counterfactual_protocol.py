@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "configs/local_candidate_counterfactual_protocol.json"
 SCRIPT = ROOT / "scripts/audit_local_candidate_counterfactual.py"
+AMENDMENT = ROOT / "configs/local_candidate_counterfactual_protocol_v1_1_amendment.json"
 
 
 def sha256(path: Path) -> str:
@@ -80,6 +81,28 @@ def test_branch_implementation_has_no_flattened_state_restore_or_success_use() -
     assert branch["replanning_inside_branch"] is False
 
 
+def test_v1_1_only_changes_clip_identity_batching_and_preserves_blocker() -> None:
+    amendment = json.loads(AMENDMENT.read_text())
+    assert amendment["amendment_version"] == (
+        "local-candidate-counterfactual-dynamics-v1.1"
+    )
+    assert amendment["base_protocol_sha256"] == sha256(PROTOCOL)
+    blocker = amendment["v1_preflight_blocker"]
+    assert sha256(ROOT / blocker["result"]) == blocker["result_sha256"]
+    assert sha256(ROOT / blocker["report"]) == blocker["report_sha256"]
+    assert blocker["physical_identity_evidence"] == {
+        "prefix_action_hash_equal": True,
+        "rgb_bitwise_equal": True,
+        "planning_observation_bitwise_equal": True,
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_max_abs_difference": 0.0,
+    }
+    fix = amendment["single_authorized_measurement_fix"]
+    assert "one batch of 4" in fix["new"]
+    assert fix["clip_identity_threshold_unchanged"] == 0.999999
+    assert "all metric definitions" in amendment["unchanged_from_base_protocol"]
+
+
 def test_ratio_and_gate_definitions_are_numeric_and_preregistered() -> None:
     protocol = json.loads(PROTOCOL.read_text())
     metrics = protocol["metric_contract"]
@@ -93,4 +116,3 @@ def test_ratio_and_gate_definitions_are_numeric_and_preregistered() -> None:
     assert "1.50" in rules["wm_local_counterfactual_prediction_fail_per_model"]
     assert rules["reference_values"]["d15_ordinary_validation_visual_error"] > 0
     assert rules["reference_values"]["wm_v2b_validation_proprio_rmse"] > 0
-
