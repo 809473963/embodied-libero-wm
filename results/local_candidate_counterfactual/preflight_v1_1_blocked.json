@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "experiment_version": "local-candidate-counterfactual-dynamics-v1.1",
+  "status": "BLOCKED",
+  "verdict": "BLOCK_COUNTERFACTUAL_REPLAY",
+  "protocol": {
+    "path": "configs/local_candidate_counterfactual_protocol.json",
+    "sha256": "b1c8c622e23c8c6879f6209ba93bf1be76b370909c1d1285c5b2d4406760159c",
+    "preregistered_commit": "4f4561bf403b81f8b98ef29d3e82cf26e39c5e79",
+    "amendment": "configs/local_candidate_counterfactual_protocol_v1_1_amendment.json",
+    "amendment_sha256": "3162435faa93d6321a3c6da9926ae85276336d56996e33ebf35ecbe769ec6186",
+    "wm_v2b_commit": "5393c5c95dd7c65347bc11f572f4168681121ed6",
+    "wm_v2b_tag": "wm-v2b-proprio-transfer-insufficient"
+  },
+  "failure": {
+    "message": "deterministic prefix identity failed: {'task_id': 0, 'episode_position': 0, 'init_state_index': 30, 'seed': 30000, 'planning_index': 8, 'prefix_steps': 64}",
+    "prefix_audit": {
+      "identity": {
+        "task_id": 0,
+        "episode_position": 0,
+        "init_state_index": 30,
+        "seed": 30000,
+        "planning_index": 8,
+        "prefix_steps": 64
+      },
+      "pass": false,
+      "prefix_action_sha256": "a70496f56b3788bae3260775c46f9a58337d124a3d63b878eeed23855facd433",
+      "branch_prefix_action_sha256": [
+        "a70496f56b3788bae3260775c46f9a58337d124a3d63b878eeed23855facd433",
+        "a70496f56b3788bae3260775c46f9a58337d124a3d63b878eeed23855facd433",
+        "a70496f56b3788bae3260775c46f9a58337d124a3d63b878eeed23855facd433"
+      ],
+      "reference_rgb_sha256": "0446de8019c1d1f2310fe0f3f277da8b18475d228f207c13ef59b4c3df58d049",
+      "branch_rgb_sha256": [
+        "d4cc547190fbd99639471946a2f1011fb303c1987ba91176d759d6462c431a3a",
+        "d4cc547190fbd99639471946a2f1011fb303c1987ba91176d759d6462c431a3a",
+        "d4cc547190fbd99639471946a2f1011fb303c1987ba91176d759d6462c431a3a"
+      ],
+      "rgb_exact": false,
+      "planning_observation": {
+        "keys": [
+          "agentview_image",
+          "akita_black_bowl_1_pos",
+          "akita_black_bowl_1_quat",
+          "akita_black_bowl_1_to_robot0_eef_pos",
+          "akita_black_bowl_1_to_robot0_eef_quat",
+          "akita_black_bowl_2_pos",
+          "akita_black_bowl_2_quat",
+          "akita_black_bowl_2_to_robot0_eef_pos",
+          "akita_black_bowl_2_to_robot0_eef_quat",
+          "cookies_1_pos",
+          "cookies_1_quat",
+          "cookies_1_to_robot0_eef_pos",
+          "cookies_1_to_robot0_eef_quat",
+          "glazed_rim_porcelain_ramekin_1_pos",
+          "glazed_rim_porcelain_ramekin_1_quat",
+          "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "object-state",
+          "plate_1_pos",
+          "plate_1_quat",
+          "plate_1_to_robot0_eef_pos",
+          "plate_1_to_robot0_eef_quat",
+          "robot0_eef_pos",
+          "robot0_eef_quat",
+          "robot0_gripper_qpos",
+          "robot0_gripper_qvel",
+          "robot0_joint_pos",
+          "robot0_joint_pos_cos",
+          "robot0_joint_pos_sin",
+          "robot0_joint_vel",
+          "robot0_proprio-state"
+        ],
+        "exact": false,
+        "max_abs_difference": 183.0,
+        "branches": {
+          "0": {
+            "same_keys": true,
+            "exact": false,
+            "max_abs_difference": 183.0
+          },
+          "1": {
+            "same_keys": true,
+            "exact": false,
+            "max_abs_difference": 183.0
+          },
+          "2": {
+            "same_keys": true,
+            "exact": false,
+            "max_abs_difference": 183.0
+          }
+        }
+      },
+      "proprio_max_abs_difference": 0.0,
+      "simulator_state_same_shape": true,
+      "simulator_state_max_abs_difference": 0.0,
+      "clip_cosine_to_reference": [
+        0.9498412013053894,
+        0.9498412013053894,
+        0.9498412013053894
+      ]
+    }
+  },
+  "forbidden_activity_audit": {
+    "mid_episode_state_restore": false,
+    "success_reward_done_used": false,
+    "init_state_outside_30_39": false,
+    "model_training": false,
+    "controller_or_candidate_modified": false
+  }
+}
