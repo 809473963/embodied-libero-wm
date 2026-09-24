@@ -584,6 +584,9 @@ def main() -> int:
     }
     copy_error = 1.0 - np.sum(
         data["z0"][:, None, :] * data["z_future"], axis=-1
+    ) / (
+        np.linalg.norm(data["z0"], axis=-1)[:, None]
+        * np.linalg.norm(data["z_future"], axis=-1)
     )
     zero_p_element = F.smooth_l1_loss(
         torch.zeros_like(torch.from_numpy(data["target_p_delta"])),
@@ -653,6 +656,10 @@ def main() -> int:
     )
     proprio_direction, proprio_direction_arrays = directional_summary(
         candidates["1x_raw_action_mse"], arrays["candidate_p_error"], data["task_id"], bootstrap
+    )
+    proprio_direction["definition"] = (
+        "lower expert-action MSE should rank with lower predicted-proprio "
+        "future-delta SmoothL1; imitation-oriented only"
     )
     magnitude = []
     distances = []

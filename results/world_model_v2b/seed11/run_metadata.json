@@ -1,0 +1,140 @@
+{
+  "method": "wm_v2b_future_proprio_auxiliary",
+  "version": "wm-v2b-seed11-v1",
+  "seed": 11,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "amp_enabled": true,
+  "train_samples": 52381,
+  "validation_samples": 5869,
+  "parameters": 826444,
+  "backbone_parameters": 792000,
+  "auxiliary_head_parameters": 34444,
+  "source_commit": "801809f880517cebbe6c5d7ebc8b58a4d5198048",
+  "config_sha256": "e0276dc4b205a2b0aee50a57d1b0465081ae77cb0c7bc914a9f4382a3301596b",
+  "normalization": {
+    "schema_version": 1,
+    "data_contract_version": "d13-v1",
+    "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "data_contract_sha256": "e988b7e1078b3c89614bc83225ba677045cfda3b854098a3e1180b85cca32181",
+    "train_episode_count": 450,
+    "minimum_std": 1e-06,
+    "z0": {
+      "rule": "frozen CLIP image latent is already L2-normalized; no standardization"
+    },
+    "language": {
+      "rule": "frozen CLIP text latent is already L2-normalized; no standardization"
+    },
+    "proprio": {
+      "mean": [
+        -0.025783763657440513,
+        0.10606899138900579,
+        1.0564510287578137,
+        0.01967004138558344,
+        -0.019863773416622973,
+        0.11607296051776846,
+        0.630624079682339,
+        0.058835829814016825,
+        -1.6500193539244463,
+        -0.1505161264838529,
+        2.30217305699021,
+        1.1153648861656535
+      ],
+      "std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "raw_std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "count": 55981,
+      "rule": "train demos 0-44: every episode proprio observation row exactly once; population mean/std; no overlapping WM-window expansion"
+    },
+    "action": {
+      "mean": [
+        0.15043248036961165,
+        0.13491899306777708,
+        -0.15583906462344355,
+        -0.004983779983459838,
+        -0.011163783694318051,
+        -0.01996220902811475,
+        0.10107867677513462
+      ],
+      "std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "raw_std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "count": 55531,
+      "rule": "train demos 0-44: every episode actions[1:] row exactly once; action[0] excluded; population mean/std; no overlapping WM-window expansion"
+    }
+  },
+  "data_pairing": "(z[k], proprio[k], language, actions[k+1:k+9]) -> z[k+1:k+9]",
+  "auxiliary_target": "proprio[k+1:k+9], training target only",
+  "future_proprio_is_input": false,
+  "loss_contract": {
+    "visual": "mean_cosine_distance_equal_horizon_weight",
+    "proprio": "smooth_l1_predicted_standardized_proprio_delta",
+    "proprio_beta": 1.0,
+    "proprio_reduction": "mean_over_batch_horizon_dimension",
+    "lambda_p": "from_frozen_gradient_calibration",
+    "calibration_freeze": "configs/wm_v2b_calibration_freeze.json",
+    "total": "visual_plus_lambda_p_times_proprio"
+  },
+  "calibration_freeze_sha256": "66e0934efa2ad39c47251f3f3b6ceff81f2e27bfe3dfe85f3ca2a1e040911166",
+  "gradient_calibration": {
+    "aggregation": "arithmetic mean across batches",
+    "g_z": 0.014294528582276918,
+    "g_p": 0.03348239513664998,
+    "unclipped_lambda_p": 0.42692670353890133,
+    "clip_range": [
+      0.05,
+      20.0
+    ],
+    "final_lambda_p": 0.42692670353890133,
+    "was_clipped": false
+  },
+  "lambda_p": 0.42692670353890133,
+  "completed_epochs": 15,
+  "global_step": 3075,
+  "best_validation_total_loss": 0.010427749202037219,
+  "best_checkpoint_visual_cosine_error": 0.009627359166606807,
+  "wall_time_seconds": 336.5713890019979,
+  "gpu_peak_memory_allocated_bytes": 78600704,
+  "gpu_peak_memory_reserved_bytes": 127926272,
+  "nan_inf_audit": "pass"
+}
