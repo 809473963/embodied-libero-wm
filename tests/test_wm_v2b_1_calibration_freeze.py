@@ -161,5 +161,7 @@ def test_frozen_coefficients_recompute_from_calibration_only() -> None:
         *coefficients["groupwise_scalar"].values(),
     ]
     assert all(value > 0 for value in all_primary)
-    assert not (ROOT / protocol["artifacts"]["evaluation_manifest"]).exists()
-    assert not (ROOT / protocol["artifacts"]["evaluation_sidecar"]).exists()
+    # The immutable freeze records that evaluation did not exist when the fit
+    # was performed.  Authorized held-out collection may happen later, so the
+    # current filesystem is deliberately not used as evidence about fit time.
+    assert freeze["evaluation_artifacts_present_at_fit_time"] is False
