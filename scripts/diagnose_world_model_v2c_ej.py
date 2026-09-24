@@ -949,10 +949,28 @@ def main() -> int:
         type=Path,
         default=ROOT / "results/world_model_v2c_ej/seed11/best.pt",
     )
+    parser.add_argument(
+        "--checkpoint-freeze",
+        type=Path,
+        default=ROOT / "configs/wm_v2c_ej_checkpoint_freeze.json",
+    )
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
     parser.add_argument("--batch-size", type=int, default=128)
     args = parser.parse_args()
     protocol, config = load_protocol_and_config(args.protocol, args.config)
+    checkpoint_freeze = json.loads(args.checkpoint_freeze.read_text())
+    if checkpoint_freeze["status"] != (
+        "FROZEN_BEFORE_MATCHED_COUNTERFACTUAL_DIAGNOSIS"
+    ):
+        raise ValueError("WM-v2C-EJ checkpoint is not frozen before diagnosis")
+    if Path(checkpoint_freeze["checkpoint"]) != args.checkpoint.relative_to(ROOT):
+        raise ValueError("diagnosis checkpoint differs from checkpoint freeze")
+    if file_sha256(args.checkpoint) != checkpoint_freeze["checkpoint_sha256"]:
+        raise ValueError("frozen WM-v2C-EJ checkpoint changed")
+    if file_sha256(ROOT / checkpoint_freeze["metrics"]) != checkpoint_freeze[
+        "metrics_sha256"
+    ]:
+        raise ValueError("frozen WM-v2C-EJ training curve changed")
     output_path = ROOT / protocol["outputs"]["diagnosis"]
     sidecar_path = ROOT / protocol["outputs"]["diagnostic_sidecar"]
     report_path = ROOT / protocol["outputs"]["report"]
@@ -1181,6 +1199,8 @@ def main() -> int:
             "lambda_res": float(checkpoint["lambda_res"]),
             "ej_indices": config["data"]["ej_target_indices"],
             "gripper_indices_excluded": [3, 4],
+            "checkpoint_freeze": str(args.checkpoint_freeze.relative_to(ROOT)),
+            "checkpoint_freeze_sha256": file_sha256(args.checkpoint_freeze),
         },
         "gradient_calibration": gradient_result["gradient_calibration"],
         "training": {

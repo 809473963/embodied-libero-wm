@@ -1,0 +1,91 @@
+# WM-v2C-EJ adds only an explicit predicted-EE/joint-to-visual residual path
+# to the frozen-form WM-v2B architecture. Gripper never enters the adapter.
+run:
+  method: wm_v2c_ej_physical_visual_coupling
+  version: wm-v2c-ej-seed11-v1
+  seed: 11
+  suite: libero_spatial
+
+data:
+  contract_version: d13-v1
+  store: artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5
+  data_contract: docs/world_model_data_contract.md
+  horizon: 8
+  latent_dim: 512
+  proprio_dim: 12
+  action_dim: 7
+  train_demo_ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+  validation_demo_ids: [45, 46, 47, 48, 49]
+  pairing: "(z[k], proprio[k], language, actions[k+1:k+9]) -> z[k+1:k+9]"
+  future_proprio_target: "proprio[k+1:k+9], training target only"
+  ej_target_indices: [0, 1, 2, 5, 6, 7, 8, 9, 10, 11]
+  gripper_indices_excluded_from_coupling: [3, 4]
+
+normalization:
+  z0: l2_normalized_by_frozen_clip_no_standardization
+  language: l2_normalized_by_frozen_clip_no_standardization
+  proprio: train_only_unique_observation_rows_population_mean_std
+  actions: train_only_each_episode_actions_1_to_end_once_population_mean_std
+  future_ej_target: standardized_future_minus_standardized_p0_selected_10d
+  minimum_std: 1.0e-6
+
+model:
+  latent_dim: 512
+  proprio_dim: 12
+  action_dim: 7
+  horizon: 8
+  z_projection_dim: 256
+  proprio_projection_dim: 64
+  language_projection_dim: 128
+  action_projection_dim: 64
+  gru_hidden_dim: 256
+  proprio_head_hidden_dim: 128
+  physical_adapter_hidden_dim: 64
+  physical_adapter_bottleneck_dim: 128
+
+initialization:
+  checkpoint: results/world_model_v2b/seed11/best.pt
+  load_existing_modules: strict_all_wm_v2b_weights
+  adapter_hidden_layers: torch_seed11_default_linear_initialization
+  adapter_final_layer: exact_zero_weight_and_bias
+  warm_start: none
+  trainable_after_initialization: all_parameters
+
+loss:
+  visual: mean_cosine_distance_equal_horizon_weight
+  ej: smooth_l1_predicted_standardized_ee_joint_delta
+  ej_beta: 1.0
+  ej_reduction: mean_over_batch_horizon_10_dimensions
+  lambda_ej: from_frozen_train_only_gradient_calibration
+  calibration_freeze: configs/wm_v2c_ej_calibration_freeze.json
+  residual: mean_squared_physical_visual_residual
+  lambda_res: 0.001
+  total: visual_plus_lambda_ej_times_ej_plus_lambda_res_times_residual
+
+calibration:
+  selection_seed: 220801
+  batch_count: 4
+  batch_size: 256
+  sample_count: 1024
+  split: train_only_demos_0_44
+  device: cpu_float32
+  shared_parameters: gru_only
+  aggregation: arithmetic_mean_of_per_batch_l2_gradient_norms
+  formula: lambda_ej_equals_g_z_div_g_ej
+  clip_min: 0.05
+  clip_max: 20.0
+
+optimization:
+  batch_size: 256
+  num_workers: 4
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  max_epochs: 15
+  precision: fp16
+  gradient_clip_norm: 10.0
+
+validation:
+  diagnostic_sample_count: 16
+  checkpoint_selection: minimum_validation_total_loss
+  tie_breaker: lower_validation_visual_cosine_error
+  matched_counterfactual_not_used_for_checkpoint_selection: true

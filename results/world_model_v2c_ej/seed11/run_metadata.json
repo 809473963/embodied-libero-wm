@@ -1,0 +1,156 @@
+{
+  "method": "wm_v2c_ej_physical_visual_coupling",
+  "version": "wm-v2c-ej-seed11-v1",
+  "seed": 11,
+  "device": "cuda",
+  "device_name": "NVIDIA GeForce RTX 4070 Laptop GPU",
+  "amp_enabled": true,
+  "train_samples": 52381,
+  "validation_samples": 5869,
+  "parameters": 901516,
+  "wm_v2b_parameters": 826444,
+  "adapter_parameters": 75072,
+  "source_commit": "4ad232e8e3cfeb262abce983c639efa94647a79f",
+  "config_sha256": "aae1cb7f822470be16ead5c82f41f24c211b2fe89f99c2d37b5f7599e72cb728",
+  "normalization": {
+    "schema_version": 1,
+    "data_contract_version": "d13-v1",
+    "store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "data_contract_sha256": "e988b7e1078b3c89614bc83225ba677045cfda3b854098a3e1180b85cca32181",
+    "train_episode_count": 450,
+    "minimum_std": 1e-06,
+    "z0": {
+      "rule": "frozen CLIP image latent is already L2-normalized; no standardization"
+    },
+    "language": {
+      "rule": "frozen CLIP text latent is already L2-normalized; no standardization"
+    },
+    "proprio": {
+      "mean": [
+        -0.025783763657440513,
+        0.10606899138900579,
+        1.0564510287578137,
+        0.01967004138558344,
+        -0.019863773416622973,
+        0.11607296051776846,
+        0.630624079682339,
+        0.058835829814016825,
+        -1.6500193539244463,
+        -0.1505161264838529,
+        2.30217305699021,
+        1.1153648861656535
+      ],
+      "std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "raw_std": [
+        0.11198754139650496,
+        0.13838893311714517,
+        0.10302571168984437,
+        0.017098450426581195,
+        0.01692212798271116,
+        0.13876829426628043,
+        0.4181082816666583,
+        0.12199119312512591,
+        0.5709841619594773,
+        0.20987855205791153,
+        0.3254920498940742,
+        0.47887200770027977
+      ],
+      "count": 55981,
+      "rule": "train demos 0-44: every episode proprio observation row exactly once; population mean/std; no overlapping WM-window expansion"
+    },
+    "action": {
+      "mean": [
+        0.15043248036961165,
+        0.13491899306777708,
+        -0.15583906462344355,
+        -0.004983779983459838,
+        -0.011163783694318051,
+        -0.01996220902811475,
+        0.10107867677513462
+      ],
+      "std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "raw_std": [
+        0.41536850774580286,
+        0.34807537368733604,
+        0.5100036906067751,
+        0.03836073771910598,
+        0.07189857236666077,
+        0.0581174084852896,
+        0.9948784353384025
+      ],
+      "count": 55531,
+      "rule": "train demos 0-44: every episode actions[1:] row exactly once; action[0] excluded; population mean/std; no overlapping WM-window expansion"
+    }
+  },
+  "data_pairing": "(z[k], proprio[k], language, actions[k+1:k+9]) -> z[k+1:k+9]",
+  "ej_target_indices": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "gripper_adapter_input": false,
+  "future_proprio_is_input": false,
+  "loss_contract": {
+    "visual": "mean_cosine_distance_equal_horizon_weight",
+    "ej": "smooth_l1_predicted_standardized_ee_joint_delta",
+    "ej_beta": 1.0,
+    "ej_reduction": "mean_over_batch_horizon_10_dimensions",
+    "lambda_ej": "from_frozen_train_only_gradient_calibration",
+    "calibration_freeze": "configs/wm_v2c_ej_calibration_freeze.json",
+    "residual": "mean_squared_physical_visual_residual",
+    "lambda_res": 0.001,
+    "total": "visual_plus_lambda_ej_times_ej_plus_lambda_res_times_residual"
+  },
+  "calibration_freeze_sha256": "49a62085aa92613904d77952fbd548077a788fbf024bd8aaa9dc874a51d9073a",
+  "gradient_calibration": {
+    "aggregation": "arithmetic mean of four per-batch gradient norms",
+    "g_z": 0.006059491774661639,
+    "g_ej": 0.004007776529109467,
+    "unclipped_lambda_ej": 1.5119335448596145,
+    "clip_range": [
+      0.05,
+      20.0
+    ],
+    "final_lambda_ej": 1.5119335448596145,
+    "was_clipped": false
+  },
+  "lambda_ej": 1.5119335448596145,
+  "lambda_res": 0.001,
+  "matched_counterfactual_used_for_selection": false,
+  "completed_epochs": 15,
+  "global_step": 3075,
+  "best_validation_total_loss": 0.011387606749805415,
+  "best_checkpoint_visual_cosine_error": 0.009687810986447037,
+  "wall_time_seconds": 550.0275164539926,
+  "gpu_peak_memory_allocated_bytes": 98592256,
+  "gpu_peak_memory_reserved_bytes": 155189248,
+  "nan_inf_audit": "pass"
+}
