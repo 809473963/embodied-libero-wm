@@ -14,6 +14,7 @@ import torch
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL_PATH = ROOT / "configs/counterfactual_physical_visual_probe_protocol.json"
+FREEZE_PATH = ROOT / "configs/counterfactual_physical_visual_probe_freeze.json"
 
 from src.probes import (
     ContextConditionedPhysicalVisualProbe,
@@ -152,3 +153,48 @@ def test_ridge_no_bias_preserves_antisymmetry_and_bias_variant_fits_intercept() 
     with_bias = fit_ridge(context, target, 1.0e-4, bias=True)
     assert np.isfinite(predict_ridge(context, with_bias)).all()
     assert np.linalg.norm(with_bias.bias) > 0
+
+
+def test_calibration_freeze_precedes_held_out_evaluation() -> None:
+    protocol = load_protocol()
+    freeze = json.loads(FREEZE_PATH.read_text())
+    assert freeze["status"] == "FROZEN_BEFORE_HELD_OUT_EVALUATION"
+    assert freeze["protocol_sha256"] == sha256(PROTOCOL_PATH)
+    assert freeze["calibration_execution_source_commit"] == subprocess.check_output(
+        ["git", "rev-parse", "b59cef7^{}"], cwd=ROOT, text=True
+    ).strip()
+    assert freeze["partition"]["init_state_indices"] == [31, 32, 33, 34]
+    assert freeze["partition"]["sample_count"] == 960
+    assert freeze["source_sidecar_sha256"] == protocol["partitions"][
+        "calibration_sha256"
+    ]
+    assert freeze["context"]["candidate_copy_max_abs_difference"] == 0.0
+    assert freeze["context"]["actions_or_futures_used"] is False
+    assert freeze["evaluation_sidecar_read"] is False
+    assert not any(freeze["forbidden_activity_audit"].values())
+
+    grid = protocol["probes"]["ridge_grid"]
+    assert freeze["ridge"]["grid"] == grid
+    for name in ("p1", "p2"):
+        records = freeze["ridge"][f"{name}_cv"]
+        assert [row["alpha"] for row in records] == grid
+        assert all(len(row["folds"]) == 4 for row in records)
+        selected = min(records, key=lambda row: (row["mean_fold_rmse"], -row["alpha"]))
+        assert freeze["ridge"][f"{name}_selected_alpha"] == selected["alpha"]
+    assert freeze["p3"]["parameters"] == 49856
+    assert len(freeze["p3"]["folds"]) == 4
+    best_epochs = [row["best_epoch"] for row in freeze["p3"]["folds"]]
+    assert freeze["p3"]["final_epoch"] == int(np.floor(np.median(best_epochs) + 0.5))
+
+    weight_path = ROOT / freeze["weights"]["path"]
+    assert sha256(weight_path) == freeze["weights"]["sha256"]
+    with np.load(weight_path, allow_pickle=False) as weights:
+        assert weights["p1_weight"].shape == (10, 512)
+        assert weights["p1_bias"].shape == (512,)
+        assert np.count_nonzero(weights["p1_bias"]) == 0
+        assert weights["p2_weight"].shape == (256, 512)
+        assert weights["p2_bias"].shape == (512,)
+        assert weights["p3__physical__weight"].shape == (64, 10)
+        assert weights["p3__context_gate__weight"].shape == (64, 256)
+        assert weights["p3__visual__weight"].shape == (512, 64)
+        assert all(np.isfinite(weights[name]).all() for name in weights.files)
