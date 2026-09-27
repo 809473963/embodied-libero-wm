@@ -1,0 +1,5946 @@
+{
+  "schema_version": 1,
+  "experiment_version": "local-visual-counterfactual-missing-state-audit-v1",
+  "status": "COMPLETE",
+  "protocol_sha256": "ee4255393fb6a68e579ffe0e67738178f54edd4915e090ea887377d14e9da9e8",
+  "preregistered_commit": "ffd9627f11058e2bac86e2dc67d93d06a7a664e5",
+  "inventory_scope": "task0-9, official init31, controller-development seed position1; reset/set-init only",
+  "tasks": [
+    {
+      "task_id": 0,
+      "task_language": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            14
+          ],
+          "dtype": "object",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 14,
+        "initial_active_geom_pairs": [
+          [
+            "akita_black_bowl_1_g8",
+            "plate_1_g2"
+          ],
+          [
+            "akita_black_bowl_1_g8",
+            "plate_1_g3"
+          ],
+          [
+            "akita_black_bowl_1_g9",
+            "plate_1_g2"
+          ],
+          [
+            "akita_black_bowl_1_g9",
+            "plate_1_g3"
+          ],
+          [
+            "akita_black_bowl_1_g25",
+            "plate_1_g2"
+          ],
+          [
+            "akita_black_bowl_1_g25",
+            "plate_1_g2"
+          ],
+          [
+            "akita_black_bowl_1_g25",
+            "plate_1_g2"
+          ],
+          [
+            "akita_black_bowl_1_g25",
+            "plate_1_g3"
+          ],
+          [
+            "akita_black_bowl_1_g25",
+            "plate_1_g3"
+          ],
+          [
+            "akita_black_bowl_1_g25",
+            "plate_1_g3"
+          ],
+          [
+            "akita_black_bowl_1_g26",
+            "plate_1_g2"
+          ],
+          [
+            "akita_black_bowl_1_g26",
+            "plate_1_g2"
+          ],
+          [
+            "akita_black_bowl_1_g26",
+            "plate_1_g3"
+          ],
+          [
+            "akita_black_bowl_1_g26",
+            "plate_1_g3"
+          ]
+        ],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 1,
+      "task_language": "pick up the black bowl next to the ramekin and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 2,
+      "task_language": "pick up the black bowl from table center and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 3,
+      "task_language": "pick up the black bowl on the cookie box and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 4,
+      "task_language": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 5,
+      "task_language": "pick up the black bowl on the ramekin and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 6,
+      "task_language": "pick up the black bowl next to the cookie box and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 7,
+      "task_language": "pick up the black bowl on the stove and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 8,
+      "task_language": "pick up the black bowl next to the plate and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            6
+          ],
+          "dtype": "object",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 6,
+        "initial_active_geom_pairs": [
+          [
+            "akita_black_bowl_1_g5",
+            "plate_1_g4"
+          ],
+          [
+            "akita_black_bowl_1_g5",
+            "plate_1_g5"
+          ],
+          [
+            "akita_black_bowl_1_g21",
+            "plate_1_g4"
+          ],
+          [
+            "akita_black_bowl_1_g21",
+            "plate_1_g4"
+          ],
+          [
+            "akita_black_bowl_1_g22",
+            "plate_1_g4"
+          ],
+          [
+            "akita_black_bowl_1_g22",
+            "plate_1_g4"
+          ]
+        ],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    },
+    {
+      "task_id": 9,
+      "task_language": "pick up the black bowl on the wooden cabinet and place it on the plate",
+      "bddl": "/home/luo/embodied-libero-wm/third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.bddl",
+      "observation_fields": [
+        {
+          "name": "agentview_image",
+          "shape": [
+            128,
+            128,
+            3
+          ],
+          "dtype": "uint8",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "akita_black_bowl_2_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "cookies_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "object-state",
+          "shape": [
+            70
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "plate_1_to_robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float32",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_pos",
+          "shape": [
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_eef_quat",
+          "shape": [
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qpos",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_gripper_qvel",
+          "shape": [
+            2
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_cos",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_pos_sin",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_joint_vel",
+          "shape": [
+            7
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        },
+        {
+          "name": "robot0_proprio-state",
+          "shape": [
+            39
+          ],
+          "dtype": "float64",
+          "semantic_source": "LIBERO/robosuite observation",
+          "observation_accessible": true,
+          "simulator_internal_only": false,
+          "future_oracle": false
+        }
+      ],
+      "robot_state_keys": [
+        "robot0_eef_pos",
+        "robot0_eef_quat",
+        "robot0_gripper_qpos",
+        "robot0_gripper_qvel",
+        "robot0_joint_pos",
+        "robot0_joint_pos_cos",
+        "robot0_joint_pos_sin",
+        "robot0_joint_vel",
+        "robot0_proprio-state"
+      ],
+      "object_state_keys": [
+        "akita_black_bowl_1_pos",
+        "akita_black_bowl_1_quat",
+        "akita_black_bowl_1_to_robot0_eef_pos",
+        "akita_black_bowl_1_to_robot0_eef_quat",
+        "akita_black_bowl_2_pos",
+        "akita_black_bowl_2_quat",
+        "akita_black_bowl_2_to_robot0_eef_pos",
+        "akita_black_bowl_2_to_robot0_eef_quat",
+        "cookies_1_pos",
+        "cookies_1_quat",
+        "cookies_1_to_robot0_eef_pos",
+        "cookies_1_to_robot0_eef_quat",
+        "glazed_rim_porcelain_ramekin_1_pos",
+        "glazed_rim_porcelain_ramekin_1_quat",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+        "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+        "plate_1_pos",
+        "plate_1_quat",
+        "plate_1_to_robot0_eef_pos",
+        "plate_1_to_robot0_eef_quat"
+      ],
+      "simulator_fields": [
+        {
+          "name": "sim.data.body_xpos",
+          "shape": [
+            38,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.body_xquat",
+          "shape": [
+            38,
+            4
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo body world quaternions (wxyz)",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xpos",
+          "shape": [
+            31,
+            3
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.site_xmat",
+          "shape": [
+            31,
+            9
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo site world rotation matrices",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qpos",
+          "shape": [
+            48
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized positions",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.qvel",
+          "shape": [
+            43
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo generalized velocities",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        },
+        {
+          "name": "sim.data.contact[:ncon]",
+          "shape": [
+            0
+          ],
+          "dtype": "float64",
+          "semantic_source": "MuJoCo active contacts",
+          "observation_accessible": false,
+          "simulator_internal_only": true,
+          "future_oracle": true
+        }
+      ],
+      "parsed_obj_of_interest": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "all_objects": [
+        "akita_black_bowl_1",
+        "akita_black_bowl_2",
+        "cookies_1",
+        "glazed_rim_porcelain_ramekin_1",
+        "plate_1"
+      ],
+      "fixtures": [
+        "wooden_cabinet_1",
+        "flat_stove_1"
+      ],
+      "selected_relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "object_schema": {
+        "akita_black_bowl_1": {
+          "category": "akita_black_bowl",
+          "root_body": "akita_black_bowl_1_main",
+          "body_id": 23,
+          "contact_geoms": [
+            "akita_black_bowl_1_g1",
+            "akita_black_bowl_1_g2",
+            "akita_black_bowl_1_g3",
+            "akita_black_bowl_1_g4",
+            "akita_black_bowl_1_g5",
+            "akita_black_bowl_1_g6",
+            "akita_black_bowl_1_g7",
+            "akita_black_bowl_1_g8",
+            "akita_black_bowl_1_g9",
+            "akita_black_bowl_1_g10",
+            "akita_black_bowl_1_g11",
+            "akita_black_bowl_1_g12",
+            "akita_black_bowl_1_g13",
+            "akita_black_bowl_1_g14",
+            "akita_black_bowl_1_g15",
+            "akita_black_bowl_1_g16",
+            "akita_black_bowl_1_g17",
+            "akita_black_bowl_1_g18",
+            "akita_black_bowl_1_g19",
+            "akita_black_bowl_1_g20",
+            "akita_black_bowl_1_g21",
+            "akita_black_bowl_1_g22",
+            "akita_black_bowl_1_g23",
+            "akita_black_bowl_1_g24",
+            "akita_black_bowl_1_g25",
+            "akita_black_bowl_1_g26",
+            "akita_black_bowl_1_g27",
+            "akita_black_bowl_1_g28",
+            "akita_black_bowl_1_g29",
+            "akita_black_bowl_1_g30",
+            "akita_black_bowl_1_g31",
+            "akita_black_bowl_1_g32",
+            "akita_black_bowl_1_g33",
+            "akita_black_bowl_1_g34",
+            "akita_black_bowl_1_g35",
+            "akita_black_bowl_1_g36",
+            "akita_black_bowl_1_g37",
+            "akita_black_bowl_1_g38",
+            "akita_black_bowl_1_g39",
+            "akita_black_bowl_1_g40"
+          ]
+        },
+        "plate_1": {
+          "category": "plate",
+          "root_body": "plate_1_main",
+          "body_id": 27,
+          "contact_geoms": [
+            "plate_1_g1",
+            "plate_1_g2",
+            "plate_1_g3",
+            "plate_1_g4",
+            "plate_1_g5",
+            "plate_1_g6",
+            "plate_1_g7",
+            "plate_1_g8",
+            "plate_1_g9",
+            "plate_1_g10"
+          ]
+        }
+      },
+      "eef": {
+        "site_id": 13,
+        "site_name": "gripper0_grip_site",
+        "observation_quaternion_key_present": true,
+        "simulator_rotation_matrix_present": true
+      },
+      "contact": {
+        "sim_ncon": 0,
+        "initial_active_geom_pairs": [],
+        "robot_contact_geoms": [
+          "robot0_link0_collision",
+          "robot0_link1_collision",
+          "robot0_link2_collision",
+          "robot0_link3_collision",
+          "robot0_link4_collision",
+          "robot0_link5_collision",
+          "robot0_link6_collision"
+        ],
+        "gripper_contact_geoms": [
+          "gripper0_hand_collision",
+          "gripper0_finger1_collision",
+          "gripper0_finger1_pad_collision",
+          "gripper0_finger2_collision",
+          "gripper0_finger2_pad_collision"
+        ],
+        "check_grasp_callable": true,
+        "classification_names": [
+          "robot_object",
+          "object_environment",
+          "gripper_object",
+          "grasp_helper"
+        ]
+      }
+    }
+  ],
+  "availability": {
+    "ee_orientation": true,
+    "object_pose": true,
+    "contact_state": true,
+    "relative_geometry": true
+  },
+  "future_oracle_warning": "EE/object/contact future state is used only for mechanism diagnosis and is not a deployable input.",
+  "forbidden_activity_audit": {
+    "candidate_execution": false,
+    "evaluation_init_36_39_access": false,
+    "init_40_49_access": false,
+    "reward_done_success_read": false,
+    "model_or_controller_change": false
+  }
+}
