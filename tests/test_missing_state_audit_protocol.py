@@ -19,6 +19,7 @@ from src.probes.missing_state import (
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "configs/missing_state_audit_protocol.json"
+AMENDMENT = ROOT / "configs/missing_state_audit_analysis_amendment.json"
 FREEZE = ROOT / "configs/missing_state_audit_calibration_freeze.json"
 CALIBRATION_MANIFEST = ROOT / "results/missing_state_audit/calibration_manifest.json"
 
@@ -46,8 +47,21 @@ def test_protocol_freeze_split_hierarchy_and_forbidden_boundaries() -> None:
     ).strip() == "tag"
     for item in protocol["frozen_upstream"]["files"]:
         assert sha256(ROOT / item["path"]) == item["sha256"]
-    for item in protocol["implementation"].values():
-        assert sha256(ROOT / item["path"]) == item["sha256"]
+    amendment = json.loads(AMENDMENT.read_text())
+    assert amendment["base_protocol_sha256"] == sha256(PROTOCOL)
+    assert amendment["status"] == "FROZEN_AFTER_HELD_OUT_REPLAY_AND_BEFORE_ANY_DIAGNOSIS_ARTIFACT"
+    assert amendment["old_analyzer_sha256"] == protocol["implementation"]["analyzer"]["sha256"]
+    assert amendment["new_analyzer_sha256"] == sha256(
+        ROOT / protocol["implementation"]["analyzer"]["path"]
+    )
+    assert amendment["old_feature_module_sha256"] == protocol["implementation"][
+        "feature_module"
+    ]["sha256"]
+    assert amendment["new_feature_module_sha256"] == sha256(
+        ROOT / protocol["implementation"]["feature_module"]["path"]
+    )
+    collector = protocol["implementation"]["collector"]
+    assert sha256(ROOT / collector["path"]) == collector["sha256"]
     assert protocol["partitions"]["calibration"]["init_state_indices"] == [31, 32, 33, 34]
     assert protocol["partitions"]["evaluation"]["init_state_indices"] == [36, 37, 38, 39]
     assert set(range(40, 50)).issubset(protocol["partitions"]["forbidden_init_state_indices"])

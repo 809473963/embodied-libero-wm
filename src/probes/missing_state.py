@@ -124,8 +124,10 @@ def scalar_metrics(prediction: np.ndarray, target: np.ndarray) -> dict[str, floa
     else:
         from scipy import stats
 
-        pearson = float(stats.pearsonr(pred, true).statistic)
-        spearman = float(stats.spearmanr(pred, true).statistic)
+        pearson_value = float(stats.pearsonr(pred, true).statistic)
+        spearman_value = float(stats.spearmanr(pred, true).statistic)
+        pearson = pearson_value if np.isfinite(pearson_value) else None
+        spearman = spearman_value if np.isfinite(spearman_value) else None
     return {"rmse": rmse, "mae": mae, "r2": r2, "pearson": pearson, "spearman": spearman}
 
 

@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "amendment_version": "local-visual-counterfactual-missing-state-audit-v1.2",
+  "date": "2026-09-27",
+  "status": "FROZEN_AFTER_HELD_OUT_REPLAY_AND_BEFORE_ANY_DIAGNOSIS_ARTIFACT",
+  "base_protocol": "configs/missing_state_audit_protocol.json",
+  "base_protocol_sha256": "d515f4071d2c729621c43a471f33408ab9d3f881d91a9306135384e1e5db6708",
+  "reason": "The first evaluation-analysis invocation reached the mandatory finite-tree guard before writing any diagnosis because SciPy represented correlations involving a constant predictor as NaN.",
+  "scope": "Serialization-only handling: undefined point correlations become JSON null; a constant-input Spearman bootstrap replicate contributes 0.0. Ridge fits, calibration weights, object-motion bins, targets, features, shuffles, bootstrap samples, gate thresholds, and decision mapping are unchanged.",
+  "held_out_boundary": {
+    "evaluation_state_replay_complete": true,
+    "diagnosis_written_before_fix": false,
+    "evaluation_fit_or_threshold_selection": false,
+    "calibration_weights_changed": false,
+    "evaluation_state_rerun_authorized": false
+  },
+  "old_analyzer_sha256": "997d9f4c5989bb0f738c2baf6756b7ff76541d9258f3c011656ca2d475ec43f8",
+  "new_analyzer_sha256": "804ce6076fa465c582d29866dc9a04fb2d659b7bb962dbcd1b46dfe64073a2f9",
+  "old_feature_module_sha256": "0497fe387c5434e066bba9518f9ebecc18a5f56f54ce23c2cf5e0bbbdc39e1a7",
+  "new_feature_module_sha256": "fee75a5e7fe699ec2db17d9fee47a16cc9784006ecf7995fa90d7c402d9b190e",
+  "frozen_calibration_weights_sha256": "3a0f0820e52c0e81b45857fdc764236ac18668d547cf06d384444494b9f6a2cd",
+  "frozen_evaluation_state_sidecar_sha256": "0fe5fe70cd1463886c2cbc75f2ba8181922103fe939b110d5a97249b31f345af"
+}

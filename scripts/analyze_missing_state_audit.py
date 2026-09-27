@@ -85,8 +85,23 @@ def load_protocol(path: Path, phase: str) -> tuple[dict[str, Any], str]:
     if not preregistered_commit:
         raise ValueError("protocol must be committed")
     implementation = protocol["implementation"]["analyzer"]
-    if sha256(ROOT / implementation["path"]) != implementation["sha256"]:
-        raise ValueError("analyzer changed after preregistration")
+    analyzer_hash = sha256(ROOT / implementation["path"])
+    module_hash = sha256(ROOT / protocol["implementation"]["feature_module"]["path"])
+    if analyzer_hash != implementation["sha256"]:
+        amendment_path = ROOT / "configs/missing_state_audit_analysis_amendment.json"
+        amendment = json.loads(amendment_path.read_text())
+        if not last_commit(amendment_path):
+            raise ValueError("analysis amendment must be committed")
+        if amendment["base_protocol_sha256"] != sha256(path):
+            raise ValueError("analysis amendment references another protocol")
+        if amendment["old_analyzer_sha256"] != implementation["sha256"]:
+            raise ValueError("analysis amendment old analyzer hash mismatch")
+        if amendment["new_analyzer_sha256"] != analyzer_hash:
+            raise ValueError("analysis amendment new analyzer hash mismatch")
+        if amendment["old_feature_module_sha256"] != protocol["implementation"]["feature_module"]["sha256"]:
+            raise ValueError("analysis amendment old feature-module hash mismatch")
+        if amendment["new_feature_module_sha256"] != module_hash:
+            raise ValueError("analysis amendment new feature-module hash mismatch")
     inventory = ROOT / protocol["outputs"]["state_inventory"]
     if not inventory.exists() or not last_commit(inventory):
         raise RuntimeError("state inventory must be committed")
@@ -147,13 +162,24 @@ def correlation(x: np.ndarray, y: np.ndarray) -> dict[str, Any]:
         return {"n": int(first.size), "pearson": None, "pearson_p": None, "spearman": None, "spearman_p": None}
     pearson = stats.pearsonr(first, second)
     spearman = stats.spearmanr(first, second)
+    pearson_value = float(pearson.statistic)
+    spearman_value = float(spearman.statistic)
     return {
         "n": int(first.size),
-        "pearson": float(pearson.statistic),
-        "pearson_p": float(pearson.pvalue),
-        "spearman": float(spearman.statistic),
-        "spearman_p": float(spearman.pvalue),
+        "pearson": pearson_value if np.isfinite(pearson_value) else None,
+        "pearson_p": float(pearson.pvalue) if np.isfinite(pearson.pvalue) else None,
+        "spearman": spearman_value if np.isfinite(spearman_value) else None,
+        "spearman_p": float(spearman.pvalue) if np.isfinite(spearman.pvalue) else None,
     }
+
+
+def safe_spearman_value(first: np.ndarray, second: np.ndarray) -> float:
+    x = np.asarray(first, dtype=np.float64).reshape(-1)
+    y = np.asarray(second, dtype=np.float64).reshape(-1)
+    if x.size < 3 or np.std(x) <= 1.0e-15 or np.std(y) <= 1.0e-15:
+        return 0.0
+    value = float(stats.spearmanr(x, y).statistic)
+    return value if np.isfinite(value) else 0.0
 
 
 def summary(values: np.ndarray) -> dict[str, float | int]:
@@ -438,7 +464,7 @@ def evaluate(protocol: dict[str, Any], preregistered_commit: str) -> None:
         record = cut_correlations(scalar, target, metadata)
         record["overall"]["spearman_ci95"] = metric_bootstrap(
             draws,
-            lambda indices, value=scalar: float(stats.spearmanr(value[indices], target[indices]).statistic),
+            lambda indices, value=scalar: safe_spearman_value(value[indices], target[indices]),
         )
         associations[key] = record
     action_to_rotation = cut_correlations(
@@ -446,11 +472,9 @@ def evaluate(protocol: dict[str, Any], preregistered_commit: str) -> None:
     )
     action_to_rotation["overall"]["spearman_ci95"] = metric_bootstrap(
         draws,
-        lambda indices: float(
-            stats.spearmanr(
-                dataset["scalars"]["action_rotation"][indices],
-                dataset["scalars"]["ee_rotation"][indices],
-            ).statistic
+        lambda indices: safe_spearman_value(
+            dataset["scalars"]["action_rotation"][indices],
+            dataset["scalars"]["ee_rotation"][indices],
         ),
     )
 
