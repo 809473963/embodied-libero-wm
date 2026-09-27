@@ -30,7 +30,7 @@ from scripts.evaluate_c0_all import refresh_policy_observation, trusted_init_sta
 from scripts.collect_missing_state_audit import relevant_objects
 
 
-OUTPUT = ROOT / "results/visual_target_suitability/mask_inventory.json"
+OUTPUT = ROOT / "results/visual_target_suitability/mask_inventory_v1_1.json"
 CAMERA = "agentview"
 HEIGHT = 128
 WIDTH = 128
@@ -109,7 +109,10 @@ def render_segmentation(inner: Any) -> np.ndarray:
         depth=False,
         segmentation=True,
     )
-    result = np.asarray(raw[::-1], dtype=np.int32)
+    # This installed robosuite uses the direct OpenCV-style sensor convention.
+    # Inventory v1 proved direct sim.render RGB is bitwise identical to the
+    # stored upright agentview; applying [::-1] would invert the mask.
+    result = np.asarray(raw, dtype=np.int32)
     if result.shape != (HEIGHT, WIDTH, 2):
         raise RuntimeError(f"unexpected segmentation shape {result.shape}")
     return result
@@ -123,7 +126,7 @@ def render_rgb(inner: Any) -> np.ndarray:
         depth=False,
         segmentation=False,
     )
-    return np.asarray(raw[::-1], dtype=np.uint8)
+    return np.asarray(raw, dtype=np.uint8)
 
 
 def masks_from_segmentation(segmentation: np.ndarray, ids: dict[str, set[int]]) -> dict[str, np.ndarray]:
@@ -254,12 +257,12 @@ def main() -> int:
         print(json.dumps({"task": task_id, "inventory": "complete"}), flush=True)
     result = {
         "schema_version": 1,
-        "experiment_version": "visual-target-suitability-audit-mask-inventory-v1",
+        "experiment_version": "visual-target-suitability-audit-mask-inventory-v1.1",
         "status": "COMPLETE",
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
         "scope": "task0-9, calibration init31 only; reset/set-init and render only",
         "implementation": {
-            "element_segmentation": "sim.render(..., segmentation=True), vertically flipped once to match upright agentview",
+            "element_segmentation": "direct sim.render(..., segmentation=True); no vertical flip because direct RGB is bitwise identical to upright agentview in this installed robosuite",
             "robot_mask": "robot_model and gripper visual/contact geom IDs",
             "relevant_object_mask": "parsed_problem['obj_of_interest'] object visual/contact geom IDs",
             "other_object_mask": "remaining objects_dict visual/contact geom IDs",
@@ -286,6 +289,10 @@ def main() -> int:
             "init_40_49_access": False,
             "reward_done_success_read": False,
             "model_or_controller_change": False,
+        },
+        "correction_history": {
+            "blocked_v1": "results/visual_target_suitability/mask_inventory.json",
+            "change": "Removed one erroneous vertical flip after the v1 RGB orientation gate failed; no candidate or held-out branch was accessed.",
         },
     }
     atomic_json(OUTPUT, result)
