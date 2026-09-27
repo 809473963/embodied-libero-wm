@@ -1,0 +1,246 @@
+{
+  "schema_version": 1,
+  "protocol_version": "local-visual-counterfactual-missing-state-audit-v1",
+  "date": "2026-09-27",
+  "status": "PREREGISTERED_BEFORE_STATE_INVENTORY_OR_REPLAY",
+  "scientific_question": "Which omitted real state changes explain production-scale A0/A1/A2 matched visual counterfactual differences: EE orientation, object motion, contact branching, EE-object relative geometry, or a combination?",
+  "frozen_upstream": {
+    "primary_tag": "physical-visual-sufficiency-negative",
+    "primary_commit": "c561e86198f70804d08e5734bbe713a893fa4335",
+    "frozen_verdicts": [
+      "PHYSICAL_TO_VISUAL_TRANSFER_STILL_INSUFFICIENT",
+      "CONTEXT_DOMINATES_PHYSICAL_SIGNAL_NOT_ADDITIVE",
+      "BLOCK_CONTEXT_CONDITIONED_WM_DESIGN",
+      "BLOCK_RERANKER_REDIAGNOSIS"
+    ],
+    "controller_protocol": "configs/c0_v2_causal_alignment_protocol.json",
+    "c0_v2_checkpoint": "results/c0_v2/seed11/best.pt",
+    "c1_v2_config": "configs/c1_v2_rebase_protocol.json",
+    "files": [
+      {
+        "path": "configs/counterfactual_physical_visual_probe_protocol.json",
+        "sha256": "5d0679a2e9ad805d23b7f407d7960cd1154e18f0ebd155b7ba9f5e1748606cb7"
+      },
+      {
+        "path": "configs/counterfactual_physical_visual_probe_freeze.json",
+        "sha256": "19d00538e5f0273c630a02a519df00897753a96a0079e72a23d1b26a0bc24b36"
+      },
+      {
+        "path": "results/counterfactual_physical_visual_probe/diagnosis.json",
+        "sha256": "b2ea73ae18c96dd2c3fc3c990750705b51195b2f4982bbc747a32eed9696407d"
+      },
+      {
+        "path": "docs/counterfactual_physical_visual_sufficiency_probe.md",
+        "sha256": "6e816968d63c6e0041f6bb3f491f118c40692ddc7b9826715df1188d2f36e8f5"
+      },
+      {
+        "path": "results/world_model_v2c_ej/seed11/diagnosis.json",
+        "sha256": "39bd7716b8e939da10b4ae953c9496833c9c216d5bae764ee80062e4d2f454dc"
+      },
+      {
+        "path": "docs/wm_v2c_ej_physical_visual_coupling_audit.md",
+        "sha256": "974816dd60a85f7e2e884aed0ee6cc6649799d3628a038d073dd18ff3a26692e"
+      },
+      {
+        "path": "configs/wm_v2b_1_calibration_freeze.json",
+        "sha256": "9fa482a5ec3efe1d05142b27a373b3dc38633a2ce696b5c3ef92c82acdce39a8"
+      },
+      {
+        "path": "results/world_model_v2b_1/diagnosis.json",
+        "sha256": "5690d3b30642143d605c7adddcb6f945c230ac2134a861a854bbae5b531f2c23"
+      },
+      {
+        "path": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz",
+        "sha256": "5e7c39e268b1696257107e2c8f068e2c4b40aa44f88ca8f6f92bc99d93d204d6"
+      },
+      {
+        "path": "artifacts/stage3/wm_v2b_1_differential_calibration/evaluation_branches.npz",
+        "sha256": "76ff1ee009b686c5d71cd7968c37aeec02afcce9485bd3f1bd8ea232faca60fe"
+      },
+      {
+        "path": "artifacts/stage3/local_candidate_counterfactual/branches.npz",
+        "sha256": "6c81a692bac418a9defe3a8abc0086408b909ce1c99b9241c49361a7c298e12d"
+      },
+      {
+        "path": "results/c0_v2/seed11/best.pt",
+        "sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0"
+      },
+      {
+        "path": "configs/c0_v2_causal_alignment_protocol.json",
+        "sha256": "24ebc5f9d870a21293bf93c5129ce33376a908f9ea1f3726de0f6cc37e5c9a0c"
+      }
+    ],
+    "transitive_ledger": "configs/counterfactual_physical_visual_probe_protocol.json transitively hash-checks C0-v2, C1-v2.1 generator/scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, matched branches, reports, results, and checkpoints."
+  },
+  "implementation": {
+    "collector": {
+      "path": "scripts/collect_missing_state_audit.py",
+      "sha256": "d59e78dbbb2c867b9d49265149cbd5bb8663f3cd57ed2fc4e7628bc5b8a057a9"
+    },
+    "analyzer": {
+      "path": "scripts/analyze_missing_state_audit.py",
+      "sha256": "997d9f4c5989bb0f738c2baf6756b7ff76541d9258f3c011656ca2d475ec43f8"
+    },
+    "feature_module": {
+      "path": "src/probes/missing_state.py",
+      "sha256": "0497fe387c5434e066bba9518f9ebecc18a5f56f54ce23c2cf5e0bbbdc39e1a7"
+    }
+  },
+  "scope": {
+    "suite": "libero_spatial",
+    "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+    "planning_index": 8,
+    "prefix_steps": 64,
+    "candidate_count": 3,
+    "candidate_pairs": ["A0-A1", "A0-A2", "A1-A2"],
+    "horizon": 8,
+    "rows_per_branch": 24,
+    "bootstrap_and_split_unit": "matched branch point retaining all three pairs and eight horizons"
+  },
+  "partitions": {
+    "calibration": {
+      "init_state_indices": [31, 32, 33, 34],
+      "episode_positions": [1, 2, 3, 4],
+      "branch_points": 40,
+      "rows": 960,
+      "source_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz",
+      "state_sidecar": "artifacts/stage3/missing_state_audit/calibration_states.npz",
+      "state_manifest": "results/missing_state_audit/calibration_manifest.json"
+    },
+    "evaluation": {
+      "init_state_indices": [36, 37, 38, 39],
+      "episode_positions": [6, 7, 8, 9],
+      "branch_points": 40,
+      "rows": 960,
+      "source_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/evaluation_branches.npz",
+      "state_sidecar": "artifacts/stage3/missing_state_audit/evaluation_states.npz",
+      "state_manifest": "results/missing_state_audit/evaluation_manifest.json"
+    },
+    "historical_reference_only": [30, 35],
+    "forbidden_init_state_indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "replay": {
+    "environment": "fresh environment for every candidate branch",
+    "initialization": "official init state plus deterministic replay of the frozen 64-action raw prefix",
+    "candidate": "exact frozen A0/A1/A2 tensor regenerated and byte-compared, then copied one candidate per branch",
+    "mid_episode_state_restore": false,
+    "reward_done_success_recorded": false,
+    "future_reproduction": "replayed future RGB must be bitwise equal and 12-D proprio max absolute difference must be zero versus the frozen source sidecar"
+  },
+  "prefix_identity_gate": {
+    "executed_raw_prefix_actions": "bitwise equal float32 arrays and identical SHA-256",
+    "agentview_rgb": "bitwise equal uint8 arrays and identical SHA-256",
+    "planning_observation": "same keys, shapes, dtypes, and bitwise-equal numeric arrays",
+    "proprio_max_abs_tolerance": 0.0,
+    "simulator_flattened_state_max_abs_tolerance": 1e-10,
+    "clip_latent_min_cosine": 0.999999,
+    "failure_action": "stop without admitting mechanism metrics"
+  },
+  "state_inventory": {
+    "first_action": true,
+    "inventory_init_state": 31,
+    "inventory_episode_position": 1,
+    "fields": [
+      "observation keys",
+      "robot-state keys",
+      "object-state keys",
+      "simulator body/site/joint state",
+      "contact information",
+      "grasp/contact helper",
+      "end-effector pose information"
+    ],
+    "per_field_metadata": ["name", "shape", "dtype", "semantic source", "observation accessible", "simulator-only", "future oracle"],
+    "field_name_policy": "discover and record actual runtime fields; do not infer absent names"
+  },
+  "feature_contract": {
+    "F_EJ": "10 signed train-standardized differential coordinates: ee_pos[0:3] plus joints[5:12]; gripper excluded",
+    "F_ROT": "3-D relative rotation vector plus geodesic angle from rotation matrices; quaternion q/-q invariant",
+    "F_OBJECT": "across task-declared relevant manipulable objects: mean translation vector, mean relative rotvec, max/mean translation norm, max/mean rotation angle (10-D); object-wise poses retained",
+    "F_CONTACT": "four verified binary contact splits (robot-object, object-environment, gripper-object, grasp helper), any split, four onset differences, four duration differences (13-D)",
+    "F_REL": "object-minus-EE relative position and object-to-EE relative orientation, aggregated as mean differential vectors plus max/mean position and rotation magnitudes (10-D)",
+    "nested_sets": {
+      "S0": ["F_EJ"],
+      "S1": ["F_EJ", "F_ROT"],
+      "S2": ["F_EJ", "F_ROT", "F_OBJECT"],
+      "S3": ["F_EJ", "F_ROT", "F_OBJECT", "F_CONTACT"],
+      "S4": ["F_EJ", "F_ROT", "F_OBJECT", "F_CONTACT", "F_REL"]
+    },
+    "unavailable_rule": "preserve the slot as UNAVAILABLE and do not reorder the hierarchy",
+    "future_oracle_rule": "future EE/object/contact/relative state is mechanism-only and is forbidden as a deployable input"
+  },
+  "targets": {
+    "primary": "D_visual = 1-cosine(z_real_i[h], z_real_j[h])",
+    "secondary": "delta_z_real = z_real_i[h]-z_real_j[h]",
+    "secondary_gate": "evaluate a feature extension's calibration-frozen multi-output ridge only if its primary scalar extension passes the held-out gate"
+  },
+  "probe": {
+    "model": "closed-form ridge regression with intercept for every S0-S4 set",
+    "ridge_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0],
+    "feature_normalization": "calibration-only mean/std; constant dimensions use scale 1",
+    "hyperparameter_selection": "leave-one-init-state-out CV inside init31-34; minimum mean fold RMSE; exact tie chooses larger alpha",
+    "constant_baseline": "calibration-partition mean D_visual",
+    "held_out_metrics": ["RMSE", "MAE", "R2", "Pearson", "Spearman"],
+    "secondary_metrics": ["512-D delta-z RMSE", "improvement over zero", "direction cosine", "norm ratio"]
+  },
+  "association": {
+    "cuts": ["overall", "h1-h8", "task0-task9", "A0-A1/A0-A2/A1-A2"],
+    "metrics": ["Pearson", "Spearman"],
+    "contact_conditioning": "compare same versus different verified contact states with distribution summaries and branch bootstrap",
+    "object_motion_bins": "low/medium/high by calibration-only 1/3 and 2/3 quantiles of max relevant-object translation; freeze before evaluation"
+  },
+  "shuffle": {
+    "rule": "shuffle only the newly added group across branch points within identical task, horizon, and candidate pair; fixed derangement; keep parent features and target fixed",
+    "seed": 222101,
+    "groups": ["F_ROT", "F_OBJECT", "F_CONTACT", "F_REL"]
+  },
+  "bootstrap": {
+    "unit": "task-stratified matched branch point retaining all 24 correlated pair/horizon rows",
+    "replicates": 10000,
+    "seed": 222201,
+    "confidence": 0.95
+  },
+  "gates": {
+    "minimum_incremental_rmse_improvement": 0.05,
+    "increment_rule": "relative held-out RMSE improvement >=5% and branch-bootstrap 95% CI lower bound >0",
+    "shuffle_rule": "held-out shuffled-group relative RMSE degradation >0 and branch-bootstrap 95% CI lower bound >0",
+    "minimum_spearman": 0.10,
+    "association_rule": "aggregate Spearman >=0.10 and branch-bootstrap 95% CI lower bound >0",
+    "minimum_positive_tasks": 3,
+    "rotation": "action-rotation to real-EE-rotation association passes, real-EE-rotation to visual association passes, and S1 vs S0 increment passes",
+    "object": "S2 vs S1 increment and object shuffle pass; translation-max or rotation-max association passes; at least three tasks have positive point Spearman",
+    "contact": "verified contact-different visual mean exceeds contact-same with CI lower >0; S3 vs S2 increment and contact shuffle pass",
+    "relative": "S4 vs S3 increment and relative-group shuffle pass; relative-translation-max or relative-rotation-max association passes",
+    "robot_kinematics_only_insufficient": "S0 fails the same 5% plus positive-CI improvement rule against the calibration-mean constant baseline",
+    "multi_factor": "two or more new feature groups pass their complete gate",
+    "no_tested_state": "no new feature group passes its complete gate"
+  },
+  "decision": {
+    "rotation_only": "GO_FULL_EE_POSE_DYNAMICS_DESIGN",
+    "object_only": "GO_OBJECT_AWARE_DYNAMICS_DIAGNOSIS",
+    "contact_only": "GO_INTERACTION_MODE_DYNAMICS_DIAGNOSIS",
+    "relative_only": "GO_OBJECT_RELATIVE_STATE_DIAGNOSIS",
+    "multiple": "GO_STRUCTURED_STATE_DYNAMICS_DESIGN",
+    "none": "BLOCK_STRUCTURED_PHYSICAL_WM_ROUTE",
+    "controller_authorization": false
+  },
+  "outputs": {
+    "state_inventory": "results/missing_state_audit/state_inventory.json",
+    "calibration_freeze": "configs/missing_state_audit_calibration_freeze.json",
+    "calibration_weights": "artifacts/stage3/missing_state_audit/calibration_weights.npz",
+    "evaluation_metrics": "artifacts/stage3/missing_state_audit/evaluation_metrics.npz",
+    "diagnosis": "results/missing_state_audit/diagnosis.json",
+    "report": "docs/local_visual_counterfactual_missing_state_audit.md"
+  },
+  "forbidden": [
+    "access or run init states 40-49",
+    "use historical init30/35 for fitting, thresholds, or model selection",
+    "read evaluation state variables before the calibration weights, object bins, and hyperparameters are committed",
+    "randomly split the 960 correlated pair/horizon rows",
+    "use future object/contact/relative state as a deployable model or controller input",
+    "train or modify any World Model, CLIP encoder, C0 actor, candidate generator, production noise, reranker, or controller",
+    "run C1/C2/D20-v2, controller success, task outcome, reward, or done",
+    "train seed23/47 or manufacture a fake counterfactual target",
+    "change the candidate generator or noise scale from audit results",
+    "overwrite any upstream report, result, checkpoint, or sidecar"
+  ]
+}
