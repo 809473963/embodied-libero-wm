@@ -19,6 +19,8 @@ from src.probes.missing_state import (
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "configs/missing_state_audit_protocol.json"
+FREEZE = ROOT / "configs/missing_state_audit_calibration_freeze.json"
+CALIBRATION_MANIFEST = ROOT / "results/missing_state_audit/calibration_manifest.json"
 
 
 def sha256(path: Path) -> str:
@@ -84,3 +86,49 @@ def test_ridge_standardization_cv_shapes_and_finite_values() -> None:
     assert prediction.shape == y.shape
     assert np.isfinite(prediction).all()
     assert np.all(fit.scale > 0)
+
+
+def test_calibration_replay_and_freeze_precede_evaluation() -> None:
+    protocol = json.loads(PROTOCOL.read_text())
+    manifest = json.loads(CALIBRATION_MANIFEST.read_text())
+    freeze = json.loads(FREEZE.read_text())
+    assert manifest["status"] == "COMPLETE"
+    assert manifest["partition"] == "calibration"
+    assert len(manifest["branch_identities"]) == 40
+    assert {row["init_state_index"] for row in manifest["branch_identities"]} == {
+        31,
+        32,
+        33,
+        34,
+    }
+    assert all(row["prefix_audit"]["pass"] for row in manifest["branch_identities"])
+    assert all(row["future_rgb_exact"] for row in manifest["branch_identities"])
+    assert max(
+        row["future_proprio_max_abs_difference"]
+        for row in manifest["branch_identities"]
+    ) == 0.0
+    assert sha256(ROOT / manifest["artifact"]["path"]) == manifest["artifact"]["sha256"]
+
+    assert freeze["status"] == "FROZEN_BEFORE_HELD_OUT_STATE_REPLAY_OR_EVALUATION"
+    assert freeze["protocol_sha256"] == sha256(PROTOCOL)
+    assert freeze["partition"]["evaluation_state_sidecar_read"] is False
+    assert freeze["partition"]["rows"] == 960
+    assert freeze["feature_group_dimensions"] == {
+        "ej": 10,
+        "rotation": 4,
+        "object": 10,
+        "contact": 13,
+        "relative": 10,
+    }
+    assert [freeze["feature_sets"][name]["dimensions"] for name in FEATURE_SET_GROUPS] == [
+        10,
+        14,
+        24,
+        37,
+        47,
+    ]
+    assert sha256(ROOT / freeze["weights"]["path"]) == freeze["weights"]["sha256"]
+    assert freeze["object_motion_bin_thresholds_calibration_only"][0] < freeze[
+        "object_motion_bin_thresholds_calibration_only"
+    ][1]
+    assert not any(freeze["forbidden_activity_audit"].values())

@@ -1,0 +1,3625 @@
+{
+  "schema_version": 1,
+  "experiment_version": "local-visual-counterfactual-missing-state-audit-v1",
+  "status": "COMPLETE",
+  "partition": "calibration",
+  "protocol_sha256": "d515f4071d2c729621c43a471f33408ab9d3f881d91a9306135384e1e5db6708",
+  "preregistered_commit": "f4efb7304f4b593384bb740881d2a0b53909d6e8",
+  "source_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz",
+  "source_sidecar_sha256": "5e7c39e268b1696257107e2c8f068e2c4b40aa44f88ca8f6f92bc99d93d204d6",
+  "branch_identities": [
+    {
+      "branch_index": 0,
+      "task_id": 0,
+      "init_state_index": 31,
+      "seed": 30001,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "08392fbd5ab417f67051d6059c3a39731be7429416a70f4767b44354eb8600a3",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "f33e5ab8abeaafaaca687213d06756de757de05fdb9435fd60163cdd7fc12afe",
+        "branch_prefix_action_sha256": [
+          "f33e5ab8abeaafaaca687213d06756de757de05fdb9435fd60163cdd7fc12afe",
+          "f33e5ab8abeaafaaca687213d06756de757de05fdb9435fd60163cdd7fc12afe",
+          "f33e5ab8abeaafaaca687213d06756de757de05fdb9435fd60163cdd7fc12afe"
+        ],
+        "branch0_rgb_sha256": "f83eed18824334b72018c8127c02d3d9a35dd8d5f1342e78f5b13d0399a038ad",
+        "branch_rgb_sha256": [
+          "f83eed18824334b72018c8127c02d3d9a35dd8d5f1342e78f5b13d0399a038ad",
+          "f83eed18824334b72018c8127c02d3d9a35dd8d5f1342e78f5b13d0399a038ad",
+          "f83eed18824334b72018c8127c02d3d9a35dd8d5f1342e78f5b13d0399a038ad"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 1,
+      "task_id": 0,
+      "init_state_index": 32,
+      "seed": 30002,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "4e968afb92bbfe17f02f396a80ef09558382083eac2e676d0a14659554b74fd7",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "a20e945709e01f2fc0d7a0f1ab47e1e7c3bcad6774610bf70f78ff50b873d058",
+        "branch_prefix_action_sha256": [
+          "a20e945709e01f2fc0d7a0f1ab47e1e7c3bcad6774610bf70f78ff50b873d058",
+          "a20e945709e01f2fc0d7a0f1ab47e1e7c3bcad6774610bf70f78ff50b873d058",
+          "a20e945709e01f2fc0d7a0f1ab47e1e7c3bcad6774610bf70f78ff50b873d058"
+        ],
+        "branch0_rgb_sha256": "49f903e59a8522a824cd9fe69075e759bfbdde0968f9cbf036acd65b2adad3a3",
+        "branch_rgb_sha256": [
+          "49f903e59a8522a824cd9fe69075e759bfbdde0968f9cbf036acd65b2adad3a3",
+          "49f903e59a8522a824cd9fe69075e759bfbdde0968f9cbf036acd65b2adad3a3",
+          "49f903e59a8522a824cd9fe69075e759bfbdde0968f9cbf036acd65b2adad3a3"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.000000238418579,
+          1.000000238418579
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 2,
+      "task_id": 0,
+      "init_state_index": 33,
+      "seed": 30003,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "96399d0dc53bae1b16c073d5ce8fe8dfd7ae9efad8cd5f938e5000c3001369c2",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "f25a6a665daeddd009948df49c0f1d7ebbf1e5c3fbaa44c25c06f6db7dffc756",
+        "branch_prefix_action_sha256": [
+          "f25a6a665daeddd009948df49c0f1d7ebbf1e5c3fbaa44c25c06f6db7dffc756",
+          "f25a6a665daeddd009948df49c0f1d7ebbf1e5c3fbaa44c25c06f6db7dffc756",
+          "f25a6a665daeddd009948df49c0f1d7ebbf1e5c3fbaa44c25c06f6db7dffc756"
+        ],
+        "branch0_rgb_sha256": "e6187e85a2070994f5cf26563b9e6487c72628423b29f6da4612a69da4c64fb3",
+        "branch_rgb_sha256": [
+          "e6187e85a2070994f5cf26563b9e6487c72628423b29f6da4612a69da4c64fb3",
+          "e6187e85a2070994f5cf26563b9e6487c72628423b29f6da4612a69da4c64fb3",
+          "e6187e85a2070994f5cf26563b9e6487c72628423b29f6da4612a69da4c64fb3"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 3,
+      "task_id": 0,
+      "init_state_index": 34,
+      "seed": 30004,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "e4f2f77b4260a7f93074e2969150fd8d5620ebeb396a5e8c1c99bc3d44aec8bf",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "920b5d5c9ec53134d005155571a1466cbd97812b19518a57e724a643e70ac698",
+        "branch_prefix_action_sha256": [
+          "920b5d5c9ec53134d005155571a1466cbd97812b19518a57e724a643e70ac698",
+          "920b5d5c9ec53134d005155571a1466cbd97812b19518a57e724a643e70ac698",
+          "920b5d5c9ec53134d005155571a1466cbd97812b19518a57e724a643e70ac698"
+        ],
+        "branch0_rgb_sha256": "7979f81d75382b4884c18cff4dc0e5c861abd62982b29a8577fe12bc7686de22",
+        "branch_rgb_sha256": [
+          "7979f81d75382b4884c18cff4dc0e5c861abd62982b29a8577fe12bc7686de22",
+          "7979f81d75382b4884c18cff4dc0e5c861abd62982b29a8577fe12bc7686de22",
+          "7979f81d75382b4884c18cff4dc0e5c861abd62982b29a8577fe12bc7686de22"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 4,
+      "task_id": 1,
+      "init_state_index": 31,
+      "seed": 30101,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "f4a3df6b484237d7fa2bd57b13819d963e87eb630a7e778ae41a754a1e9d1a96",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "8325ef74e40e97aad58b405ab271c12060a840dcf8d3ae5a306cfbf245ca1432",
+        "branch_prefix_action_sha256": [
+          "8325ef74e40e97aad58b405ab271c12060a840dcf8d3ae5a306cfbf245ca1432",
+          "8325ef74e40e97aad58b405ab271c12060a840dcf8d3ae5a306cfbf245ca1432",
+          "8325ef74e40e97aad58b405ab271c12060a840dcf8d3ae5a306cfbf245ca1432"
+        ],
+        "branch0_rgb_sha256": "885dd2dd127c8eabd51e9cb59763b7352b01af886a7cfc0cdb44f7f2a2ba35c7",
+        "branch_rgb_sha256": [
+          "885dd2dd127c8eabd51e9cb59763b7352b01af886a7cfc0cdb44f7f2a2ba35c7",
+          "885dd2dd127c8eabd51e9cb59763b7352b01af886a7cfc0cdb44f7f2a2ba35c7",
+          "885dd2dd127c8eabd51e9cb59763b7352b01af886a7cfc0cdb44f7f2a2ba35c7"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 5,
+      "task_id": 1,
+      "init_state_index": 32,
+      "seed": 30102,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "27740ce29b7e89e4265796ae7334f213c4ca57bebc14e6d1f0f9f9225df767e0",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "95e42636f894856bbb51ec64d4965bd31786f938b48f706391067beb6cb61f28",
+        "branch_prefix_action_sha256": [
+          "95e42636f894856bbb51ec64d4965bd31786f938b48f706391067beb6cb61f28",
+          "95e42636f894856bbb51ec64d4965bd31786f938b48f706391067beb6cb61f28",
+          "95e42636f894856bbb51ec64d4965bd31786f938b48f706391067beb6cb61f28"
+        ],
+        "branch0_rgb_sha256": "2a1f2b06ecd45fbf8c2fc437d1f3a42a9c7ed692044ea69d841c64a405963221",
+        "branch_rgb_sha256": [
+          "2a1f2b06ecd45fbf8c2fc437d1f3a42a9c7ed692044ea69d841c64a405963221",
+          "2a1f2b06ecd45fbf8c2fc437d1f3a42a9c7ed692044ea69d841c64a405963221",
+          "2a1f2b06ecd45fbf8c2fc437d1f3a42a9c7ed692044ea69d841c64a405963221"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 6,
+      "task_id": 1,
+      "init_state_index": 33,
+      "seed": 30103,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "1d746b617736770f9d082c01d30ef3518ff0146d697a5475e28755d10f214024",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "09c7fffc99e44124fbfa843f0e1d63018bb738f58efd53641c86a52673b5f7e1",
+        "branch_prefix_action_sha256": [
+          "09c7fffc99e44124fbfa843f0e1d63018bb738f58efd53641c86a52673b5f7e1",
+          "09c7fffc99e44124fbfa843f0e1d63018bb738f58efd53641c86a52673b5f7e1",
+          "09c7fffc99e44124fbfa843f0e1d63018bb738f58efd53641c86a52673b5f7e1"
+        ],
+        "branch0_rgb_sha256": "e6a84d3707e7bb971b075678b642523f106f89279b510fa4523128eca31ada1b",
+        "branch_rgb_sha256": [
+          "e6a84d3707e7bb971b075678b642523f106f89279b510fa4523128eca31ada1b",
+          "e6a84d3707e7bb971b075678b642523f106f89279b510fa4523128eca31ada1b",
+          "e6a84d3707e7bb971b075678b642523f106f89279b510fa4523128eca31ada1b"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 7,
+      "task_id": 1,
+      "init_state_index": 34,
+      "seed": 30104,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "e0fd8acc31436c0b5eebfc2e3660b1470ed85a7ca98729fc068715cff6187242",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "61117e24012ca286738cbfb36b64430563ad967e4af41220045a83c42bfb8982",
+        "branch_prefix_action_sha256": [
+          "61117e24012ca286738cbfb36b64430563ad967e4af41220045a83c42bfb8982",
+          "61117e24012ca286738cbfb36b64430563ad967e4af41220045a83c42bfb8982",
+          "61117e24012ca286738cbfb36b64430563ad967e4af41220045a83c42bfb8982"
+        ],
+        "branch0_rgb_sha256": "64ff69153414e229f7e1a2d5e811781ed9132086672ca43787913d16a14c865b",
+        "branch_rgb_sha256": [
+          "64ff69153414e229f7e1a2d5e811781ed9132086672ca43787913d16a14c865b",
+          "64ff69153414e229f7e1a2d5e811781ed9132086672ca43787913d16a14c865b",
+          "64ff69153414e229f7e1a2d5e811781ed9132086672ca43787913d16a14c865b"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 8,
+      "task_id": 2,
+      "init_state_index": 31,
+      "seed": 30201,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "21f1cdabc64c0e416ca6de3bf708f395ffe3039814703bf332a73fc260b485e0",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "dbf91d76db17ef589f1fc23bfbdb77586dda87a71709cbc6432ebad07f2f51cb",
+        "branch_prefix_action_sha256": [
+          "dbf91d76db17ef589f1fc23bfbdb77586dda87a71709cbc6432ebad07f2f51cb",
+          "dbf91d76db17ef589f1fc23bfbdb77586dda87a71709cbc6432ebad07f2f51cb",
+          "dbf91d76db17ef589f1fc23bfbdb77586dda87a71709cbc6432ebad07f2f51cb"
+        ],
+        "branch0_rgb_sha256": "f6a1a499412e184ebe02241dc6359e48629ac136fed1f5719bfb0d2f408e2e6e",
+        "branch_rgb_sha256": [
+          "f6a1a499412e184ebe02241dc6359e48629ac136fed1f5719bfb0d2f408e2e6e",
+          "f6a1a499412e184ebe02241dc6359e48629ac136fed1f5719bfb0d2f408e2e6e",
+          "f6a1a499412e184ebe02241dc6359e48629ac136fed1f5719bfb0d2f408e2e6e"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 9,
+      "task_id": 2,
+      "init_state_index": 32,
+      "seed": 30202,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "f1b9224abdc710055fd50dd0b7cfdc2623e279878c7e39b049826e4fa9a0c826",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "2714050aed54ec7846def3a2590122f43e0354b3dd8f85bda27b10a13e8c8eb4",
+        "branch_prefix_action_sha256": [
+          "2714050aed54ec7846def3a2590122f43e0354b3dd8f85bda27b10a13e8c8eb4",
+          "2714050aed54ec7846def3a2590122f43e0354b3dd8f85bda27b10a13e8c8eb4",
+          "2714050aed54ec7846def3a2590122f43e0354b3dd8f85bda27b10a13e8c8eb4"
+        ],
+        "branch0_rgb_sha256": "c1c1a78a5119466a79c44dd9181c070ee3897eb3d781c80d1fe15ac5b5881d1f",
+        "branch_rgb_sha256": [
+          "c1c1a78a5119466a79c44dd9181c070ee3897eb3d781c80d1fe15ac5b5881d1f",
+          "c1c1a78a5119466a79c44dd9181c070ee3897eb3d781c80d1fe15ac5b5881d1f",
+          "c1c1a78a5119466a79c44dd9181c070ee3897eb3d781c80d1fe15ac5b5881d1f"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999998807907104,
+          0.9999998807907104
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 10,
+      "task_id": 2,
+      "init_state_index": 33,
+      "seed": 30203,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "98f96ebb1a5d2c2e2fb822947b12468ed823f19efbfe2470d73687e00f85f44a",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "75fed5d52e01ed661da29fb9fab05ff3ce46b75158d61cea4a19b8133a4455d8",
+        "branch_prefix_action_sha256": [
+          "75fed5d52e01ed661da29fb9fab05ff3ce46b75158d61cea4a19b8133a4455d8",
+          "75fed5d52e01ed661da29fb9fab05ff3ce46b75158d61cea4a19b8133a4455d8",
+          "75fed5d52e01ed661da29fb9fab05ff3ce46b75158d61cea4a19b8133a4455d8"
+        ],
+        "branch0_rgb_sha256": "d8ba8b89986e1c716d121831814a73c4ae2ac9568d7e1909b730103f63f1cc0c",
+        "branch_rgb_sha256": [
+          "d8ba8b89986e1c716d121831814a73c4ae2ac9568d7e1909b730103f63f1cc0c",
+          "d8ba8b89986e1c716d121831814a73c4ae2ac9568d7e1909b730103f63f1cc0c",
+          "d8ba8b89986e1c716d121831814a73c4ae2ac9568d7e1909b730103f63f1cc0c"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999998807907104,
+          0.9999998807907104
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 11,
+      "task_id": 2,
+      "init_state_index": 34,
+      "seed": 30204,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "0c441e104d387b403e17758225ad836c0f15b5ce9151c541cdbe3f6be47f49a1",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "e9e9730e22cbde3865940ee0af5340a6ab645e3a384e16bdfd977f0568bd2142",
+        "branch_prefix_action_sha256": [
+          "e9e9730e22cbde3865940ee0af5340a6ab645e3a384e16bdfd977f0568bd2142",
+          "e9e9730e22cbde3865940ee0af5340a6ab645e3a384e16bdfd977f0568bd2142",
+          "e9e9730e22cbde3865940ee0af5340a6ab645e3a384e16bdfd977f0568bd2142"
+        ],
+        "branch0_rgb_sha256": "17d899617cee053da79348f876e1ba6f64e91a4d66cf675cde9aa901e07fd454",
+        "branch_rgb_sha256": [
+          "17d899617cee053da79348f876e1ba6f64e91a4d66cf675cde9aa901e07fd454",
+          "17d899617cee053da79348f876e1ba6f64e91a4d66cf675cde9aa901e07fd454",
+          "17d899617cee053da79348f876e1ba6f64e91a4d66cf675cde9aa901e07fd454"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999998211860657,
+          0.9999998211860657
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 12,
+      "task_id": 3,
+      "init_state_index": 31,
+      "seed": 30301,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "1d6c3f048f0fcc65b56b4f95b74968a0af24b86ec520263f347cdc5f228c6305",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "97e71a41b46a52d4fd6619f9abcac6a781cbed284342d991526445d944d77284",
+        "branch_prefix_action_sha256": [
+          "97e71a41b46a52d4fd6619f9abcac6a781cbed284342d991526445d944d77284",
+          "97e71a41b46a52d4fd6619f9abcac6a781cbed284342d991526445d944d77284",
+          "97e71a41b46a52d4fd6619f9abcac6a781cbed284342d991526445d944d77284"
+        ],
+        "branch0_rgb_sha256": "04ab64ad69da5b60e15db8131342e2bf464279d424904ad08a077fa1e6662e2e",
+        "branch_rgb_sha256": [
+          "04ab64ad69da5b60e15db8131342e2bf464279d424904ad08a077fa1e6662e2e",
+          "04ab64ad69da5b60e15db8131342e2bf464279d424904ad08a077fa1e6662e2e",
+          "04ab64ad69da5b60e15db8131342e2bf464279d424904ad08a077fa1e6662e2e"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 13,
+      "task_id": 3,
+      "init_state_index": 32,
+      "seed": 30302,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "328f843ebaedeae3c1ba4c7edccd75438bd1ed43e836f20ab72342400e6a16d6",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "b15407fec0fb0e7eb0d8597fcef52712510ed6da45f025d6ef8a78702f64610f",
+        "branch_prefix_action_sha256": [
+          "b15407fec0fb0e7eb0d8597fcef52712510ed6da45f025d6ef8a78702f64610f",
+          "b15407fec0fb0e7eb0d8597fcef52712510ed6da45f025d6ef8a78702f64610f",
+          "b15407fec0fb0e7eb0d8597fcef52712510ed6da45f025d6ef8a78702f64610f"
+        ],
+        "branch0_rgb_sha256": "c8404306e4b837b6ffd3c8aae3e915afce88f16204e6e4854ad1a8f0a6d2061a",
+        "branch_rgb_sha256": [
+          "c8404306e4b837b6ffd3c8aae3e915afce88f16204e6e4854ad1a8f0a6d2061a",
+          "c8404306e4b837b6ffd3c8aae3e915afce88f16204e6e4854ad1a8f0a6d2061a",
+          "c8404306e4b837b6ffd3c8aae3e915afce88f16204e6e4854ad1a8f0a6d2061a"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999999403953552,
+          0.9999999403953552
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 14,
+      "task_id": 3,
+      "init_state_index": 33,
+      "seed": 30303,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "829d5f8d9c78a09c489e1bd8f5694c8de33d33d536372e101307a0d2c046f142",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "8b20245e4d2a7d4eb533c70e232b3e00e3bca6535e220d91eea40187ed5388ad",
+        "branch_prefix_action_sha256": [
+          "8b20245e4d2a7d4eb533c70e232b3e00e3bca6535e220d91eea40187ed5388ad",
+          "8b20245e4d2a7d4eb533c70e232b3e00e3bca6535e220d91eea40187ed5388ad",
+          "8b20245e4d2a7d4eb533c70e232b3e00e3bca6535e220d91eea40187ed5388ad"
+        ],
+        "branch0_rgb_sha256": "7fc9060c173dc4225061fb93711c86a9aea6a33dfbeb2802f57738c8c2b967ef",
+        "branch_rgb_sha256": [
+          "7fc9060c173dc4225061fb93711c86a9aea6a33dfbeb2802f57738c8c2b967ef",
+          "7fc9060c173dc4225061fb93711c86a9aea6a33dfbeb2802f57738c8c2b967ef",
+          "7fc9060c173dc4225061fb93711c86a9aea6a33dfbeb2802f57738c8c2b967ef"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.000000238418579,
+          1.000000238418579
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 15,
+      "task_id": 3,
+      "init_state_index": 34,
+      "seed": 30304,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "f10060196b82c9fd7e3fcb727b07b19696b84ec987d38de79859dc3abd466ef6",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "0398cb616fa57a4dfebcdbd87aaa1fa2771386840723925c5d47188b4c9f15ea",
+        "branch_prefix_action_sha256": [
+          "0398cb616fa57a4dfebcdbd87aaa1fa2771386840723925c5d47188b4c9f15ea",
+          "0398cb616fa57a4dfebcdbd87aaa1fa2771386840723925c5d47188b4c9f15ea",
+          "0398cb616fa57a4dfebcdbd87aaa1fa2771386840723925c5d47188b4c9f15ea"
+        ],
+        "branch0_rgb_sha256": "16925a03ca5f79a1da462633dbac82996b1781f3853df6a59e5e9cc063f1408e",
+        "branch_rgb_sha256": [
+          "16925a03ca5f79a1da462633dbac82996b1781f3853df6a59e5e9cc063f1408e",
+          "16925a03ca5f79a1da462633dbac82996b1781f3853df6a59e5e9cc063f1408e",
+          "16925a03ca5f79a1da462633dbac82996b1781f3853df6a59e5e9cc063f1408e"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 16,
+      "task_id": 4,
+      "init_state_index": 31,
+      "seed": 30401,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "1853ca69ba135e60865eae8de2ab6d90ac023215679b094214dd4097b137f4bf",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "c9dd7f0b98ef6d8b292c77bb7578871bbe3c9444d019fca6680986643a68eb58",
+        "branch_prefix_action_sha256": [
+          "c9dd7f0b98ef6d8b292c77bb7578871bbe3c9444d019fca6680986643a68eb58",
+          "c9dd7f0b98ef6d8b292c77bb7578871bbe3c9444d019fca6680986643a68eb58",
+          "c9dd7f0b98ef6d8b292c77bb7578871bbe3c9444d019fca6680986643a68eb58"
+        ],
+        "branch0_rgb_sha256": "c68a526ad70f6196b05a6dbba7733856d976563b6ecd1555b59a34f2e5e7b0e7",
+        "branch_rgb_sha256": [
+          "c68a526ad70f6196b05a6dbba7733856d976563b6ecd1555b59a34f2e5e7b0e7",
+          "c68a526ad70f6196b05a6dbba7733856d976563b6ecd1555b59a34f2e5e7b0e7",
+          "c68a526ad70f6196b05a6dbba7733856d976563b6ecd1555b59a34f2e5e7b0e7"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 17,
+      "task_id": 4,
+      "init_state_index": 32,
+      "seed": 30402,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "70bf191bb7f90923b488cba08e4340f18ec7d261b533ea95bf2e371c999b4208",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "d0bf61614ef178e9c4d947d7e8e79163c71ded8a6b5a03343c48e6afa521c08c",
+        "branch_prefix_action_sha256": [
+          "d0bf61614ef178e9c4d947d7e8e79163c71ded8a6b5a03343c48e6afa521c08c",
+          "d0bf61614ef178e9c4d947d7e8e79163c71ded8a6b5a03343c48e6afa521c08c",
+          "d0bf61614ef178e9c4d947d7e8e79163c71ded8a6b5a03343c48e6afa521c08c"
+        ],
+        "branch0_rgb_sha256": "b4e371f1777659e181742eb92004ed8587a1c00bc434acb96c9e8da6ba443625",
+        "branch_rgb_sha256": [
+          "b4e371f1777659e181742eb92004ed8587a1c00bc434acb96c9e8da6ba443625",
+          "b4e371f1777659e181742eb92004ed8587a1c00bc434acb96c9e8da6ba443625",
+          "b4e371f1777659e181742eb92004ed8587a1c00bc434acb96c9e8da6ba443625"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 18,
+      "task_id": 4,
+      "init_state_index": 33,
+      "seed": 30403,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "6919463da5d3cbd68f0e2b1f071025a64766975f46ef871aa87a2accb34a8f1e",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "083f1e460d75c622dc663fb776a819cde65b430539969572b6c8f6508ce2f141",
+        "branch_prefix_action_sha256": [
+          "083f1e460d75c622dc663fb776a819cde65b430539969572b6c8f6508ce2f141",
+          "083f1e460d75c622dc663fb776a819cde65b430539969572b6c8f6508ce2f141",
+          "083f1e460d75c622dc663fb776a819cde65b430539969572b6c8f6508ce2f141"
+        ],
+        "branch0_rgb_sha256": "21d4620114bed663b7896812057c9967beaa660f938d944365c25e852c9b5489",
+        "branch_rgb_sha256": [
+          "21d4620114bed663b7896812057c9967beaa660f938d944365c25e852c9b5489",
+          "21d4620114bed663b7896812057c9967beaa660f938d944365c25e852c9b5489",
+          "21d4620114bed663b7896812057c9967beaa660f938d944365c25e852c9b5489"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0000001192092896,
+          1.0000001192092896
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 19,
+      "task_id": 4,
+      "init_state_index": 34,
+      "seed": 30404,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "3713989b9b689a7cf5d7157ee63d28846af463cf831d0964efbacffe57db5c3b",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "b0b091784b006dec4606f203c161570335a4dd8f530997b4209e36db3d049163",
+        "branch_prefix_action_sha256": [
+          "b0b091784b006dec4606f203c161570335a4dd8f530997b4209e36db3d049163",
+          "b0b091784b006dec4606f203c161570335a4dd8f530997b4209e36db3d049163",
+          "b0b091784b006dec4606f203c161570335a4dd8f530997b4209e36db3d049163"
+        ],
+        "branch0_rgb_sha256": "99839adf723ce0f273e72ef22cce7de91140f21ff6c8f05691b9c5b1a0199f03",
+        "branch_rgb_sha256": [
+          "99839adf723ce0f273e72ef22cce7de91140f21ff6c8f05691b9c5b1a0199f03",
+          "99839adf723ce0f273e72ef22cce7de91140f21ff6c8f05691b9c5b1a0199f03",
+          "99839adf723ce0f273e72ef22cce7de91140f21ff6c8f05691b9c5b1a0199f03"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 20,
+      "task_id": 5,
+      "init_state_index": 31,
+      "seed": 30501,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "62a69cb826d6c8b3972f0e3ac1a94a3e29d268ae0a65591e66a3f0d65f750ff3",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "58812a39bbb8b51d03274e9228c7b254c28b375edead1db94f5019040cc50309",
+        "branch_prefix_action_sha256": [
+          "58812a39bbb8b51d03274e9228c7b254c28b375edead1db94f5019040cc50309",
+          "58812a39bbb8b51d03274e9228c7b254c28b375edead1db94f5019040cc50309",
+          "58812a39bbb8b51d03274e9228c7b254c28b375edead1db94f5019040cc50309"
+        ],
+        "branch0_rgb_sha256": "7cf614f94dfe7129df08fe00a3c3d55dc7b987e65aa54cdf9e965f9fd9bc3995",
+        "branch_rgb_sha256": [
+          "7cf614f94dfe7129df08fe00a3c3d55dc7b987e65aa54cdf9e965f9fd9bc3995",
+          "7cf614f94dfe7129df08fe00a3c3d55dc7b987e65aa54cdf9e965f9fd9bc3995",
+          "7cf614f94dfe7129df08fe00a3c3d55dc7b987e65aa54cdf9e965f9fd9bc3995"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 21,
+      "task_id": 5,
+      "init_state_index": 32,
+      "seed": 30502,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "76e5484faf9a9fd68f48d8a3adbda56c5cd6921c901658d0e1bc747a3d92a7de",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "860eeef5985bf80a3cdace605b3be9849528aa5797a3c5ecabff891defc0fd80",
+        "branch_prefix_action_sha256": [
+          "860eeef5985bf80a3cdace605b3be9849528aa5797a3c5ecabff891defc0fd80",
+          "860eeef5985bf80a3cdace605b3be9849528aa5797a3c5ecabff891defc0fd80",
+          "860eeef5985bf80a3cdace605b3be9849528aa5797a3c5ecabff891defc0fd80"
+        ],
+        "branch0_rgb_sha256": "b5d53a2c4e4ac6c2e5f0ed15444a4560c1c43856f9304f9aa2147d0883cd4f06",
+        "branch_rgb_sha256": [
+          "b5d53a2c4e4ac6c2e5f0ed15444a4560c1c43856f9304f9aa2147d0883cd4f06",
+          "b5d53a2c4e4ac6c2e5f0ed15444a4560c1c43856f9304f9aa2147d0883cd4f06",
+          "b5d53a2c4e4ac6c2e5f0ed15444a4560c1c43856f9304f9aa2147d0883cd4f06"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 22,
+      "task_id": 5,
+      "init_state_index": 33,
+      "seed": 30503,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "b1cbf7d18f9a6452a5bbecc08052c1c44079765589b4c1b330721927e07b6064",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "be518756a1a681df0b22faaadb639199dda5597d18d714b0c68d28fb4db3f7a4",
+        "branch_prefix_action_sha256": [
+          "be518756a1a681df0b22faaadb639199dda5597d18d714b0c68d28fb4db3f7a4",
+          "be518756a1a681df0b22faaadb639199dda5597d18d714b0c68d28fb4db3f7a4",
+          "be518756a1a681df0b22faaadb639199dda5597d18d714b0c68d28fb4db3f7a4"
+        ],
+        "branch0_rgb_sha256": "7c4670f056a3eb562f96294dc10713a90f60431b312408296cc28a5c8d876030",
+        "branch_rgb_sha256": [
+          "7c4670f056a3eb562f96294dc10713a90f60431b312408296cc28a5c8d876030",
+          "7c4670f056a3eb562f96294dc10713a90f60431b312408296cc28a5c8d876030",
+          "7c4670f056a3eb562f96294dc10713a90f60431b312408296cc28a5c8d876030"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999998807907104,
+          0.9999998807907104
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 23,
+      "task_id": 5,
+      "init_state_index": 34,
+      "seed": 30504,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "ba904398e407931c3e9f21e58930acd7566558f2e03c8b18e6956261691f8f17",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "c87b28a68b39a4f82924c103d50aed8bd4d1b0c5ccf5bd9307289c4d7af5268d",
+        "branch_prefix_action_sha256": [
+          "c87b28a68b39a4f82924c103d50aed8bd4d1b0c5ccf5bd9307289c4d7af5268d",
+          "c87b28a68b39a4f82924c103d50aed8bd4d1b0c5ccf5bd9307289c4d7af5268d",
+          "c87b28a68b39a4f82924c103d50aed8bd4d1b0c5ccf5bd9307289c4d7af5268d"
+        ],
+        "branch0_rgb_sha256": "9bc05c25a3ecbf627bc189afda6fc076b867833fc56e75f646edc78301fe091c",
+        "branch_rgb_sha256": [
+          "9bc05c25a3ecbf627bc189afda6fc076b867833fc56e75f646edc78301fe091c",
+          "9bc05c25a3ecbf627bc189afda6fc076b867833fc56e75f646edc78301fe091c",
+          "9bc05c25a3ecbf627bc189afda6fc076b867833fc56e75f646edc78301fe091c"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 24,
+      "task_id": 6,
+      "init_state_index": 31,
+      "seed": 30601,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "0b3006a2aa3f75d432d33018bef51a82f59191ac5d8b1fe19deb9c39d35fe001",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "435eabdb85f43f47f8efe8e13fd1fe97661964fc21fe3d9a97d4189cdf307912",
+        "branch_prefix_action_sha256": [
+          "435eabdb85f43f47f8efe8e13fd1fe97661964fc21fe3d9a97d4189cdf307912",
+          "435eabdb85f43f47f8efe8e13fd1fe97661964fc21fe3d9a97d4189cdf307912",
+          "435eabdb85f43f47f8efe8e13fd1fe97661964fc21fe3d9a97d4189cdf307912"
+        ],
+        "branch0_rgb_sha256": "c214bff1c832778bc4a6b84dc8f42e897243c1136292578f7fdc71e1ffc5c0d7",
+        "branch_rgb_sha256": [
+          "c214bff1c832778bc4a6b84dc8f42e897243c1136292578f7fdc71e1ffc5c0d7",
+          "c214bff1c832778bc4a6b84dc8f42e897243c1136292578f7fdc71e1ffc5c0d7",
+          "c214bff1c832778bc4a6b84dc8f42e897243c1136292578f7fdc71e1ffc5c0d7"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999999403953552,
+          0.9999999403953552
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 25,
+      "task_id": 6,
+      "init_state_index": 32,
+      "seed": 30602,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "2483900a90e9330b51afed246583fc1e16d944188500c828a8de27d1f66def41",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "eabb9bd39c7b5ebd53ff9ad3e67b845e960b9833acc5412fa7302a74bf6eb13b",
+        "branch_prefix_action_sha256": [
+          "eabb9bd39c7b5ebd53ff9ad3e67b845e960b9833acc5412fa7302a74bf6eb13b",
+          "eabb9bd39c7b5ebd53ff9ad3e67b845e960b9833acc5412fa7302a74bf6eb13b",
+          "eabb9bd39c7b5ebd53ff9ad3e67b845e960b9833acc5412fa7302a74bf6eb13b"
+        ],
+        "branch0_rgb_sha256": "34dcc00b42ddea62976353f60cf7c8f3aab9d85d39cdec8705295c6ab00faa05",
+        "branch_rgb_sha256": [
+          "34dcc00b42ddea62976353f60cf7c8f3aab9d85d39cdec8705295c6ab00faa05",
+          "34dcc00b42ddea62976353f60cf7c8f3aab9d85d39cdec8705295c6ab00faa05",
+          "34dcc00b42ddea62976353f60cf7c8f3aab9d85d39cdec8705295c6ab00faa05"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999999403953552,
+          0.9999999403953552
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 26,
+      "task_id": 6,
+      "init_state_index": 33,
+      "seed": 30603,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "095818707276f832e4f2be994d0f9b2f99ab02c0470201e92fbb1a45e570d54f",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "de3dcab30720c56c1059321a1c927266362859200d27bf63e0cee0930f4bf2b8",
+        "branch_prefix_action_sha256": [
+          "de3dcab30720c56c1059321a1c927266362859200d27bf63e0cee0930f4bf2b8",
+          "de3dcab30720c56c1059321a1c927266362859200d27bf63e0cee0930f4bf2b8",
+          "de3dcab30720c56c1059321a1c927266362859200d27bf63e0cee0930f4bf2b8"
+        ],
+        "branch0_rgb_sha256": "19634f8e0a1a50490850cb41421fef2a85428886f22cb7ef711c455821d08b0f",
+        "branch_rgb_sha256": [
+          "19634f8e0a1a50490850cb41421fef2a85428886f22cb7ef711c455821d08b0f",
+          "19634f8e0a1a50490850cb41421fef2a85428886f22cb7ef711c455821d08b0f",
+          "19634f8e0a1a50490850cb41421fef2a85428886f22cb7ef711c455821d08b0f"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 27,
+      "task_id": 6,
+      "init_state_index": 34,
+      "seed": 30604,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "a8b9168b42eb381709057d647ad8db6202f53a4113ac6ef58ef7a58b5fe0ff78",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "c6d632229c96a9a26518766a3edcbbac28a0439eb30ee7021cdabc60036455bc",
+        "branch_prefix_action_sha256": [
+          "c6d632229c96a9a26518766a3edcbbac28a0439eb30ee7021cdabc60036455bc",
+          "c6d632229c96a9a26518766a3edcbbac28a0439eb30ee7021cdabc60036455bc",
+          "c6d632229c96a9a26518766a3edcbbac28a0439eb30ee7021cdabc60036455bc"
+        ],
+        "branch0_rgb_sha256": "16a1599985b1db3d2ea16b6255c051ce9678490076d05b7bbdad67adfaf8614e",
+        "branch_rgb_sha256": [
+          "16a1599985b1db3d2ea16b6255c051ce9678490076d05b7bbdad67adfaf8614e",
+          "16a1599985b1db3d2ea16b6255c051ce9678490076d05b7bbdad67adfaf8614e",
+          "16a1599985b1db3d2ea16b6255c051ce9678490076d05b7bbdad67adfaf8614e"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 28,
+      "task_id": 7,
+      "init_state_index": 31,
+      "seed": 30701,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "af119c1a32de73e4f89036c810e3b417a008b28be884d892ad0265976291e259",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "488b0129fc3e6c9519267aa284ce1b06fc6c80aad50f6df882b3c47f48aa989e",
+        "branch_prefix_action_sha256": [
+          "488b0129fc3e6c9519267aa284ce1b06fc6c80aad50f6df882b3c47f48aa989e",
+          "488b0129fc3e6c9519267aa284ce1b06fc6c80aad50f6df882b3c47f48aa989e",
+          "488b0129fc3e6c9519267aa284ce1b06fc6c80aad50f6df882b3c47f48aa989e"
+        ],
+        "branch0_rgb_sha256": "2b1a66e97efaecf5cd791891f27a81453866676a9fefd6abadcc14b0ec9025d0",
+        "branch_rgb_sha256": [
+          "2b1a66e97efaecf5cd791891f27a81453866676a9fefd6abadcc14b0ec9025d0",
+          "2b1a66e97efaecf5cd791891f27a81453866676a9fefd6abadcc14b0ec9025d0",
+          "2b1a66e97efaecf5cd791891f27a81453866676a9fefd6abadcc14b0ec9025d0"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.000000238418579,
+          1.000000238418579
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 29,
+      "task_id": 7,
+      "init_state_index": 32,
+      "seed": 30702,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "1e1dbcc2b47175c01817dbaef514d46354af5db55ad44bbb9230198b16682cb1",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "2de451f4fea7723d4e6cbb2ca12d0ef888b17ea435085c20fa8fea8ad3133e22",
+        "branch_prefix_action_sha256": [
+          "2de451f4fea7723d4e6cbb2ca12d0ef888b17ea435085c20fa8fea8ad3133e22",
+          "2de451f4fea7723d4e6cbb2ca12d0ef888b17ea435085c20fa8fea8ad3133e22",
+          "2de451f4fea7723d4e6cbb2ca12d0ef888b17ea435085c20fa8fea8ad3133e22"
+        ],
+        "branch0_rgb_sha256": "63f0113afe8c681de8186fff2cefa2734a657ec4beec06061a2197948d7609e7",
+        "branch_rgb_sha256": [
+          "63f0113afe8c681de8186fff2cefa2734a657ec4beec06061a2197948d7609e7",
+          "63f0113afe8c681de8186fff2cefa2734a657ec4beec06061a2197948d7609e7",
+          "63f0113afe8c681de8186fff2cefa2734a657ec4beec06061a2197948d7609e7"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999999403953552,
+          0.9999999403953552
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 30,
+      "task_id": 7,
+      "init_state_index": 33,
+      "seed": 30703,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "2cd91ba4692b0cc1e3639db8732da6455c477a2d04e54654f4d1b183f234d16a",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "b48502290940165f33a976a4100292dfc677acc33b83d0dc5ba2fcf18958ce48",
+        "branch_prefix_action_sha256": [
+          "b48502290940165f33a976a4100292dfc677acc33b83d0dc5ba2fcf18958ce48",
+          "b48502290940165f33a976a4100292dfc677acc33b83d0dc5ba2fcf18958ce48",
+          "b48502290940165f33a976a4100292dfc677acc33b83d0dc5ba2fcf18958ce48"
+        ],
+        "branch0_rgb_sha256": "4a57a0b39f180923f5891814b0a4bf53110ea460200eabedf5e9fe3a18b4b977",
+        "branch_rgb_sha256": [
+          "4a57a0b39f180923f5891814b0a4bf53110ea460200eabedf5e9fe3a18b4b977",
+          "4a57a0b39f180923f5891814b0a4bf53110ea460200eabedf5e9fe3a18b4b977",
+          "4a57a0b39f180923f5891814b0a4bf53110ea460200eabedf5e9fe3a18b4b977"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999998807907104,
+          0.9999998807907104
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 31,
+      "task_id": 7,
+      "init_state_index": 34,
+      "seed": 30704,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "989927e6d13cc8a147ee0baf9269bea8b8a01c19f6d7a0d28c2758dadaf2bb71",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "e2af05e188f9074a381fd0d6415a783e6a3f47e0fc694349ddc3637d30c3a9c7",
+        "branch_prefix_action_sha256": [
+          "e2af05e188f9074a381fd0d6415a783e6a3f47e0fc694349ddc3637d30c3a9c7",
+          "e2af05e188f9074a381fd0d6415a783e6a3f47e0fc694349ddc3637d30c3a9c7",
+          "e2af05e188f9074a381fd0d6415a783e6a3f47e0fc694349ddc3637d30c3a9c7"
+        ],
+        "branch0_rgb_sha256": "89d9a2b7522093e841b4a0fa36ac201c9122ae187338ff553fae25f7ba5e5e1b",
+        "branch_rgb_sha256": [
+          "89d9a2b7522093e841b4a0fa36ac201c9122ae187338ff553fae25f7ba5e5e1b",
+          "89d9a2b7522093e841b4a0fa36ac201c9122ae187338ff553fae25f7ba5e5e1b",
+          "89d9a2b7522093e841b4a0fa36ac201c9122ae187338ff553fae25f7ba5e5e1b"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 32,
+      "task_id": 8,
+      "init_state_index": 31,
+      "seed": 30801,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "bd6078ac757a184145c341bc2705664e30c586a60113c3c2af6258f781aa0ae6",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "829e36807a3618bf8aff9c66363f96a2e36b78a244e8ee892c0c4a354ad9137d",
+        "branch_prefix_action_sha256": [
+          "829e36807a3618bf8aff9c66363f96a2e36b78a244e8ee892c0c4a354ad9137d",
+          "829e36807a3618bf8aff9c66363f96a2e36b78a244e8ee892c0c4a354ad9137d",
+          "829e36807a3618bf8aff9c66363f96a2e36b78a244e8ee892c0c4a354ad9137d"
+        ],
+        "branch0_rgb_sha256": "1389042d6358784710e74a1fca077952214a8f69fe4ef8bc9d65bd0e2ce1099e",
+        "branch_rgb_sha256": [
+          "1389042d6358784710e74a1fca077952214a8f69fe4ef8bc9d65bd0e2ce1099e",
+          "1389042d6358784710e74a1fca077952214a8f69fe4ef8bc9d65bd0e2ce1099e",
+          "1389042d6358784710e74a1fca077952214a8f69fe4ef8bc9d65bd0e2ce1099e"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 33,
+      "task_id": 8,
+      "init_state_index": 32,
+      "seed": 30802,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "36a297980fd7860be8c9309083c6e4d19f35264ca393ed8eb304c9392e5b4e1b",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "381c7da9ab0060a1904cf5f83ebd56a294f2f0736c145d19aca84d2c5076dd0a",
+        "branch_prefix_action_sha256": [
+          "381c7da9ab0060a1904cf5f83ebd56a294f2f0736c145d19aca84d2c5076dd0a",
+          "381c7da9ab0060a1904cf5f83ebd56a294f2f0736c145d19aca84d2c5076dd0a",
+          "381c7da9ab0060a1904cf5f83ebd56a294f2f0736c145d19aca84d2c5076dd0a"
+        ],
+        "branch0_rgb_sha256": "89c23beca367e0148066abb217b5ddbefa3a614306e819da02422c25fae1f2e5",
+        "branch_rgb_sha256": [
+          "89c23beca367e0148066abb217b5ddbefa3a614306e819da02422c25fae1f2e5",
+          "89c23beca367e0148066abb217b5ddbefa3a614306e819da02422c25fae1f2e5",
+          "89c23beca367e0148066abb217b5ddbefa3a614306e819da02422c25fae1f2e5"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0000001192092896,
+          1.0000001192092896
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 34,
+      "task_id": 8,
+      "init_state_index": 33,
+      "seed": 30803,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "336a2f42bb43af9fafeb8cf089edd1b1a0c883de565c038b57176b5c1480439e",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "bbbaaf4c7f428b525def0270cfc3e1f733d24a4ff55c9f09dcf2a3704b51a43b",
+        "branch_prefix_action_sha256": [
+          "bbbaaf4c7f428b525def0270cfc3e1f733d24a4ff55c9f09dcf2a3704b51a43b",
+          "bbbaaf4c7f428b525def0270cfc3e1f733d24a4ff55c9f09dcf2a3704b51a43b",
+          "bbbaaf4c7f428b525def0270cfc3e1f733d24a4ff55c9f09dcf2a3704b51a43b"
+        ],
+        "branch0_rgb_sha256": "4f2322d4a1ca30490c05058a1636d134b01485ec38b438e38fbc99d82e550fb3",
+        "branch_rgb_sha256": [
+          "4f2322d4a1ca30490c05058a1636d134b01485ec38b438e38fbc99d82e550fb3",
+          "4f2322d4a1ca30490c05058a1636d134b01485ec38b438e38fbc99d82e550fb3",
+          "4f2322d4a1ca30490c05058a1636d134b01485ec38b438e38fbc99d82e550fb3"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0000001192092896,
+          1.0000001192092896
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 35,
+      "task_id": 8,
+      "init_state_index": 34,
+      "seed": 30804,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "1e96379cf358189d568140ba1fe93f96298ff1c12f27f71baa42c88880146483",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "d7f7243cd105b8393c70ebbc93c9291c6a93d092f63f59a48131f7349500fbc4",
+        "branch_prefix_action_sha256": [
+          "d7f7243cd105b8393c70ebbc93c9291c6a93d092f63f59a48131f7349500fbc4",
+          "d7f7243cd105b8393c70ebbc93c9291c6a93d092f63f59a48131f7349500fbc4",
+          "d7f7243cd105b8393c70ebbc93c9291c6a93d092f63f59a48131f7349500fbc4"
+        ],
+        "branch0_rgb_sha256": "f67fea0e3311a9c0267ddc00009d978452596ea5824ed960df51adf59abb5aec",
+        "branch_rgb_sha256": [
+          "f67fea0e3311a9c0267ddc00009d978452596ea5824ed960df51adf59abb5aec",
+          "f67fea0e3311a9c0267ddc00009d978452596ea5824ed960df51adf59abb5aec",
+          "f67fea0e3311a9c0267ddc00009d978452596ea5824ed960df51adf59abb5aec"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999998807907104,
+          0.9999998807907104
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 36,
+      "task_id": 9,
+      "init_state_index": 31,
+      "seed": 30901,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "b067ffa324d077ce0170e224a711e12eef02183ba39d945b3b774a672e044078",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "9b1a6756ee0c6bebbd1c906df6bf1cf3c696975a9ff87ec09e1bebf81f4e4a39",
+        "branch_prefix_action_sha256": [
+          "9b1a6756ee0c6bebbd1c906df6bf1cf3c696975a9ff87ec09e1bebf81f4e4a39",
+          "9b1a6756ee0c6bebbd1c906df6bf1cf3c696975a9ff87ec09e1bebf81f4e4a39",
+          "9b1a6756ee0c6bebbd1c906df6bf1cf3c696975a9ff87ec09e1bebf81f4e4a39"
+        ],
+        "branch0_rgb_sha256": "7933c33bd4718ad8499d83cf0b1ad4e17829f89f08da0021ba5942614c9a18ba",
+        "branch_rgb_sha256": [
+          "7933c33bd4718ad8499d83cf0b1ad4e17829f89f08da0021ba5942614c9a18ba",
+          "7933c33bd4718ad8499d83cf0b1ad4e17829f89f08da0021ba5942614c9a18ba",
+          "7933c33bd4718ad8499d83cf0b1ad4e17829f89f08da0021ba5942614c9a18ba"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0000001192092896,
+          1.0000001192092896
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 37,
+      "task_id": 9,
+      "init_state_index": 32,
+      "seed": 30902,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "db0b8583557a9b4db45e8e135c383c8026593fdc9439de4b3d0ded06657f6f15",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "b3f69a2e6c7984be8eb2d2030cb5e677fd453b245e0e7bf4e03c156a03040d01",
+        "branch_prefix_action_sha256": [
+          "b3f69a2e6c7984be8eb2d2030cb5e677fd453b245e0e7bf4e03c156a03040d01",
+          "b3f69a2e6c7984be8eb2d2030cb5e677fd453b245e0e7bf4e03c156a03040d01",
+          "b3f69a2e6c7984be8eb2d2030cb5e677fd453b245e0e7bf4e03c156a03040d01"
+        ],
+        "branch0_rgb_sha256": "6e5764fcad56da48c2d5526d70f15b159eadfdadbcebd3ae881d85e90ac41aa2",
+        "branch_rgb_sha256": [
+          "6e5764fcad56da48c2d5526d70f15b159eadfdadbcebd3ae881d85e90ac41aa2",
+          "6e5764fcad56da48c2d5526d70f15b159eadfdadbcebd3ae881d85e90ac41aa2",
+          "6e5764fcad56da48c2d5526d70f15b159eadfdadbcebd3ae881d85e90ac41aa2"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 38,
+      "task_id": 9,
+      "init_state_index": 33,
+      "seed": 30903,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "9511c2083fbab83e51406f4720c87c4b7de1a5f1d2d4f37e9ace2881214dcdf7",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "e8b5257e3becbe7e53168708916de8f18101bde72e72fb11f98f28e1bf63bf71",
+        "branch_prefix_action_sha256": [
+          "e8b5257e3becbe7e53168708916de8f18101bde72e72fb11f98f28e1bf63bf71",
+          "e8b5257e3becbe7e53168708916de8f18101bde72e72fb11f98f28e1bf63bf71",
+          "e8b5257e3becbe7e53168708916de8f18101bde72e72fb11f98f28e1bf63bf71"
+        ],
+        "branch0_rgb_sha256": "94d3696af320553a41ca005d6fe2a3292cf7ae29ff9c1f0e29d82c4f3a323364",
+        "branch_rgb_sha256": [
+          "94d3696af320553a41ca005d6fe2a3292cf7ae29ff9c1f0e29d82c4f3a323364",
+          "94d3696af320553a41ca005d6fe2a3292cf7ae29ff9c1f0e29d82c4f3a323364",
+          "94d3696af320553a41ca005d6fe2a3292cf7ae29ff9c1f0e29d82c4f3a323364"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    },
+    {
+      "branch_index": 39,
+      "task_id": 9,
+      "init_state_index": 34,
+      "seed": 30904,
+      "planning_index": 8,
+      "prefix_steps": 64,
+      "candidate_sha256": "21034896e7f8c2cf486ee5101a006e7ec25143d55e440d5cdbc56cf5c72c8a02",
+      "relevant_objects": [
+        "akita_black_bowl_1",
+        "plate_1"
+      ],
+      "prefix_audit": {
+        "pass": true,
+        "prefix_action_sha256": "76a1159147f5ad3e4ebef064f960d20bc27b01e6f229f296bb5b9027c46759b4",
+        "branch_prefix_action_sha256": [
+          "76a1159147f5ad3e4ebef064f960d20bc27b01e6f229f296bb5b9027c46759b4",
+          "76a1159147f5ad3e4ebef064f960d20bc27b01e6f229f296bb5b9027c46759b4",
+          "76a1159147f5ad3e4ebef064f960d20bc27b01e6f229f296bb5b9027c46759b4"
+        ],
+        "branch0_rgb_sha256": "f88502ad2021369fb5b25d7dfd6d5c7ee015737073f7029952432789ad9065e3",
+        "branch_rgb_sha256": [
+          "f88502ad2021369fb5b25d7dfd6d5c7ee015737073f7029952432789ad9065e3",
+          "f88502ad2021369fb5b25d7dfd6d5c7ee015737073f7029952432789ad9065e3",
+          "f88502ad2021369fb5b25d7dfd6d5c7ee015737073f7029952432789ad9065e3"
+        ],
+        "rgb_exact": true,
+        "planning_observation": {
+          "keys": [
+            "agentview_image",
+            "akita_black_bowl_1_pos",
+            "akita_black_bowl_1_quat",
+            "akita_black_bowl_1_to_robot0_eef_pos",
+            "akita_black_bowl_1_to_robot0_eef_quat",
+            "akita_black_bowl_2_pos",
+            "akita_black_bowl_2_quat",
+            "akita_black_bowl_2_to_robot0_eef_pos",
+            "akita_black_bowl_2_to_robot0_eef_quat",
+            "cookies_1_pos",
+            "cookies_1_quat",
+            "cookies_1_to_robot0_eef_pos",
+            "cookies_1_to_robot0_eef_quat",
+            "glazed_rim_porcelain_ramekin_1_pos",
+            "glazed_rim_porcelain_ramekin_1_quat",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_pos",
+            "glazed_rim_porcelain_ramekin_1_to_robot0_eef_quat",
+            "object-state",
+            "plate_1_pos",
+            "plate_1_quat",
+            "plate_1_to_robot0_eef_pos",
+            "plate_1_to_robot0_eef_quat",
+            "robot0_eef_pos",
+            "robot0_eef_quat",
+            "robot0_gripper_qpos",
+            "robot0_gripper_qvel",
+            "robot0_joint_pos",
+            "robot0_joint_pos_cos",
+            "robot0_joint_pos_sin",
+            "robot0_joint_vel",
+            "robot0_proprio-state"
+          ],
+          "exact": true,
+          "max_abs_difference": 0.0,
+          "branches": {
+            "0": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            },
+            "1": {
+              "same_keys": true,
+              "exact": true,
+              "max_abs_difference": 0.0
+            }
+          }
+        },
+        "proprio_max_abs_difference": 0.0,
+        "simulator_state_same_shape": true,
+        "simulator_state_max_abs_difference": 0.0,
+        "clip_cosine_to_branch0": [
+          1.0,
+          0.9999998807907104,
+          0.9999998807907104
+        ]
+      },
+      "future_rgb_exact": true,
+      "future_proprio_max_abs_difference": 0.0
+    }
+  ],
+  "artifact": {
+    "path": "artifacts/stage3/missing_state_audit/calibration_states.npz",
+    "sha256": "b1f86ea8f3819b31d54058d8912160fa17507bc0ed3454cc8d89ad33e4f64ca8",
+    "arrays": {
+      "ee_pos": [
+        40,
+        3,
+        8,
+        3
+      ],
+      "ee_quat_xyzw": [
+        40,
+        3,
+        8,
+        4
+      ],
+      "ee_rotmat": [
+        40,
+        3,
+        8,
+        3,
+        3
+      ],
+      "object_pos": [
+        40,
+        3,
+        8,
+        2,
+        3
+      ],
+      "object_quat_wxyz": [
+        40,
+        3,
+        8,
+        2,
+        4
+      ],
+      "object_rotmat": [
+        40,
+        3,
+        8,
+        2,
+        3,
+        3
+      ],
+      "contact_per_object": [
+        40,
+        3,
+        8,
+        2,
+        4
+      ],
+      "contact_any": [
+        40,
+        3,
+        8,
+        4
+      ],
+      "contact_counts": [
+        40,
+        3,
+        8,
+        4
+      ],
+      "object_mask": [
+        40,
+        2
+      ],
+      "object_names": [
+        40,
+        2
+      ],
+      "task_id": [
+        40
+      ],
+      "init_state_index": [
+        40
+      ],
+      "seed": [
+        40
+      ],
+      "planning_index": [
+        40
+      ]
+    }
+  },
+  "nan_inf_audit": "pass",
+  "forbidden_activity_audit": {
+    "mid_episode_restore": false,
+    "reward_done_success_read": false,
+    "controller_or_model_change": false,
+    "init_40_49_access": false
+  }
+}
