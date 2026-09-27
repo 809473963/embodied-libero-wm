@@ -3,6 +3,12 @@
   "protocol_version": "local-visual-counterfactual-missing-state-audit-v1",
   "date": "2026-09-27",
   "status": "PREREGISTERED_BEFORE_STATE_INVENTORY_OR_REPLAY",
+  "preflight_correction": {
+    "version": "v1.1",
+    "reason": "The first calibration invocation stopped inside policy construction because c1_v2_config pointed to the rebase protocol JSON instead of the frozen deployment YAML.",
+    "boundary": "No environment was created, no simulator branch was replayed, and no calibration artifact or mechanism metric existed before this correction.",
+    "changed_field_only": "frozen_upstream.c1_v2_config and its direct SHA-256"
+  },
   "scientific_question": "Which omitted real state changes explain production-scale A0/A1/A2 matched visual counterfactual differences: EE orientation, object motion, contact branching, EE-object relative geometry, or a combination?",
   "frozen_upstream": {
     "primary_tag": "physical-visual-sufficiency-negative",
@@ -15,7 +21,8 @@
     ],
     "controller_protocol": "configs/c0_v2_causal_alignment_protocol.json",
     "c0_v2_checkpoint": "results/c0_v2/seed11/best.pt",
-    "c1_v2_config": "configs/c1_v2_rebase_protocol.json",
+    "c1_v2_config": "configs/c1_v2_rerank.yaml",
+    "c1_v2_config_sha256": "6e956d86bc84662369cc4f15109b948bf4ea1ca59a6c028db443ff1ed6086747",
     "files": [
       {
         "path": "configs/counterfactual_physical_visual_probe_protocol.json",
@@ -64,6 +71,10 @@
       {
         "path": "results/c0_v2/seed11/best.pt",
         "sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0"
+      },
+      {
+        "path": "configs/c1_v2_rerank.yaml",
+        "sha256": "6e956d86bc84662369cc4f15109b948bf4ea1ca59a6c028db443ff1ed6086747"
       },
       {
         "path": "configs/c0_v2_causal_alignment_protocol.json",

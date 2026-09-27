@@ -32,6 +32,11 @@ def sha256(path: Path) -> str:
 def test_protocol_freeze_split_hierarchy_and_forbidden_boundaries() -> None:
     protocol = json.loads(PROTOCOL.read_text())
     assert protocol["status"] == "PREREGISTERED_BEFORE_STATE_INVENTORY_OR_REPLAY"
+    assert protocol["preflight_correction"]["version"] == "v1.1"
+    assert protocol["frozen_upstream"]["c1_v2_config"] == "configs/c1_v2_rerank.yaml"
+    assert sha256(ROOT / protocol["frozen_upstream"]["c1_v2_config"]) == protocol[
+        "frozen_upstream"
+    ]["c1_v2_config_sha256"]
     assert subprocess.check_output(
         ["git", "cat-file", "-t", protocol["frozen_upstream"]["primary_tag"]],
         cwd=ROOT,
