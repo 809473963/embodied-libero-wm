@@ -10,6 +10,7 @@ import json
 import math
 import os
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any, Callable
 
@@ -20,6 +21,7 @@ from PIL import Image, ImageDraw
 from scipy import stats
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from scripts.extract_world_model_features import load_clip
 from src.probes.missing_state import (

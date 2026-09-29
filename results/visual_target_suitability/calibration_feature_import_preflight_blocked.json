@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "experiment_version": "visual-target-suitability-audit-v1",
+  "status": "BLOCKED_REPOSITORY_IMPORT_PRECHECK",
+  "date": "2026-09-30",
+  "calibration_mask_freeze_commit": "c72e9ca20e4d72d32130c476ab6c524870d7e52e",
+  "phase_attempted": "calibrate",
+  "failure": "Direct script execution could not import scripts.extract_world_model_features because the repository root was absent from sys.path.",
+  "boundary": {
+    "protocol_loaded": false,
+    "calibration_source_or_masks_loaded": false,
+    "clip_model_loaded": false,
+    "feature_or_metric_computed": false,
+    "calibration_weight_or_freeze_written": false,
+    "held_out_evaluation_accessed": false
+  },
+  "authorized_implementation_only_fix": "Insert the resolved repository root into sys.path before repository-local imports; update the preregistered analyzer hash without changing any data, preprocessing, feature, threshold, bootstrap, gate, or decision rule."
+}

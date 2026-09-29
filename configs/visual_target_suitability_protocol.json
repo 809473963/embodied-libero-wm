@@ -64,6 +64,12 @@
       "blocked_preflight_commit": "296a33eb3e0d7a977bcd71e342c19a2012e8c5a4",
       "blocked_record": "results/visual_target_suitability/calibration_mask_preflight_blocked.json",
       "change": "Require native segmentation object_type=5 before matching object_id to geom ID sets; type=6 site and type=5 geom ID namespaces overlap. The first calibration branch stopped before any sidecar, manifest, feature, or mechanism result was written. No threshold, feature set, split, bootstrap, gate, or decision rule changed."
+    },
+    {
+      "version": "v1.3",
+      "status": "COMPLETE",
+      "blocked_record": "results/visual_target_suitability/calibration_feature_import_preflight_blocked.json",
+      "change": "Add the resolved repository root to sys.path before repository-local imports. The failed invocation stopped before protocol/data/model loading and wrote no feature, weight, metric, or freeze artifact. No scientific setting changed."
     }
   ],
   "implementation": {
@@ -73,7 +79,7 @@
     },
     "analyzer": {
       "path": "scripts/analyze_visual_target_suitability.py",
-      "sha256": "31c9e9cf0145586ee18a8303aeac29858b5c12edf6ddf7ff2e1b6942c78105fb"
+      "sha256": "d3192b90c0aa03cc1020f50357f0914c71968b921d50f3d6dd15873d6c5ce9e7"
     },
     "feature_module": {
       "path": "src/probes/visual_target.py",
