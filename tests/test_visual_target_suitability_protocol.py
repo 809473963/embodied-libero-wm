@@ -23,6 +23,7 @@ INVENTORY = ROOT / "results/visual_target_suitability/mask_inventory_v1_2.json"
 BLOCKED_INVENTORY = ROOT / "results/visual_target_suitability/mask_inventory.json"
 CALIBRATION_MASK_MANIFEST = ROOT / "results/visual_target_suitability/calibration_mask_manifest.json"
 CALIBRATION_FREEZE = ROOT / "configs/visual_target_suitability_calibration_freeze.json"
+EVALUATION_MASK_MANIFEST = ROOT / "results/visual_target_suitability/evaluation_mask_manifest.json"
 
 
 def sha256(path: Path) -> str:
@@ -213,3 +214,26 @@ def test_calibration_visual_features_and_models_are_frozen_before_evaluation() -
     assert set(montage["selected_rows"]) == {"low_p10", "median_p50", "high_p90"}
     assert sha256(ROOT / montage["path"]) == montage["sha256"]
     assert not any(freeze["forbidden_activity_audit"].values())
+
+
+def test_held_out_masks_are_exact_and_use_only_init36_39() -> None:
+    manifest = json.loads(EVALUATION_MASK_MANIFEST.read_text())
+    assert manifest["status"] == "COMPLETE"
+    assert manifest["partition"] == "evaluation"
+    assert len(manifest["branch_identities"]) == 40
+    assert {row["task_id"] for row in manifest["branch_identities"]} == set(range(10))
+    assert {row["init_state_index"] for row in manifest["branch_identities"]} == {36, 37, 38, 39}
+    assert all(row["prefix_audit"]["pass"] for row in manifest["branch_identities"])
+    assert all(row["future_rgb_exact"] for row in manifest["branch_identities"])
+    assert all(row["mask_partition_exact"] for row in manifest["branch_identities"])
+    assert all(row["robot_hidden_absent"] for row in manifest["branch_identities"])
+    assert all(row["no_robot_relevant_area_not_smaller"] for row in manifest["branch_identities"])
+    assert max(row["robot_hidden_state_max_abs_difference"] for row in manifest["branch_identities"]) == 0.0
+    assert not any(manifest["forbidden_activity_audit"].values())
+    artifact = ROOT / manifest["artifact"]["path"]
+    assert sha256(artifact) == manifest["artifact"]["sha256"]
+    arrays = np.load(artifact, allow_pickle=False)
+    assert arrays["masks"].shape == (40, 3, 8, 4, 128, 128)
+    assert arrays["no_robot_relevant_mask"].shape == (40, 3, 8, 128, 128)
+    assert np.all(arrays["masks"].sum(axis=3) == 1)
+    assert set(arrays["init_state_index"].tolist()) == {36, 37, 38, 39}
