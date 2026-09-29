@@ -30,7 +30,7 @@ from scripts.evaluate_c0_all import refresh_policy_observation, trusted_init_sta
 from scripts.collect_missing_state_audit import relevant_objects
 
 
-OUTPUT = ROOT / "results/visual_target_suitability/mask_inventory_v1_1.json"
+OUTPUT = ROOT / "results/visual_target_suitability/mask_inventory_v1_2.json"
 CAMERA = "agentview"
 HEIGHT = 128
 WIDTH = 128
@@ -130,10 +130,16 @@ def render_rgb(inner: Any) -> np.ndarray:
 
 
 def masks_from_segmentation(segmentation: np.ndarray, ids: dict[str, set[int]]) -> dict[str, np.ndarray]:
+    # MuJoCo element segmentation stores (object_type, object_id).  Both geom
+    # (type 5) and site (type 6) pixels are present for this camera, and their
+    # integer ID namespaces overlap.  Only type-5 IDs may be compared with the
+    # geom ID sets assembled above; otherwise a site whose ID happens to equal
+    # a robot geom ID becomes a false robot pixel.
+    is_geom = segmentation[..., 0] == 5
     geom = segmentation[..., 1]
-    robot = np.isin(geom, list(ids["robot"]))
-    relevant = np.isin(geom, list(ids["relevant"]))
-    other = np.isin(geom, list(ids["other"]))
+    robot = is_geom & np.isin(geom, list(ids["robot"]))
+    relevant = is_geom & np.isin(geom, list(ids["relevant"]))
+    other = is_geom & np.isin(geom, list(ids["other"]))
     background = ~(robot | relevant | other)
     return {
         "robot": robot,
@@ -257,12 +263,12 @@ def main() -> int:
         print(json.dumps({"task": task_id, "inventory": "complete"}), flush=True)
     result = {
         "schema_version": 1,
-        "experiment_version": "visual-target-suitability-audit-mask-inventory-v1.1",
+        "experiment_version": "visual-target-suitability-audit-mask-inventory-v1.2",
         "status": "COMPLETE",
         "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
         "scope": "task0-9, calibration init31 only; reset/set-init and render only",
         "implementation": {
-            "element_segmentation": "direct sim.render(..., segmentation=True); no vertical flip because direct RGB is bitwise identical to upright agentview in this installed robosuite",
+            "element_segmentation": "direct sim.render(..., segmentation=True); no vertical flip because direct RGB is bitwise identical to upright agentview; only object_type=5 geom IDs enter semantic masks because site and geom ID namespaces overlap",
             "robot_mask": "robot_model and gripper visual/contact geom IDs",
             "relevant_object_mask": "parsed_problem['obj_of_interest'] object visual/contact geom IDs",
             "other_object_mask": "remaining objects_dict visual/contact geom IDs",
@@ -292,7 +298,11 @@ def main() -> int:
         },
         "correction_history": {
             "blocked_v1": "results/visual_target_suitability/mask_inventory.json",
-            "change": "Removed one erroneous vertical flip after the v1 RGB orientation gate failed; no candidate or held-out branch was accessed.",
+            "v1_1": "results/visual_target_suitability/mask_inventory_v1_1.json",
+            "changes": [
+                "Removed one erroneous vertical flip after the v1 RGB orientation gate failed; no candidate or held-out branch was accessed.",
+                "After the first calibration branch stopped before artifact output, restricted semantic ID matching to MuJoCo object_type=5 geoms so type=6 site IDs cannot collide with geom IDs."
+            ]
         },
     }
     atomic_json(OUTPUT, result)

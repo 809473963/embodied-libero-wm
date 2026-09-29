@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "experiment_version": "visual-target-suitability-audit-v1",
+  "status": "BLOCKED_SEGMENTATION_TYPE_PRECHECK",
+  "date": "2026-09-30",
+  "preregistered_commit": "87a3e66a2470d30e4e774293c66649ecc7b49337",
+  "partition_attempted": "calibration",
+  "first_branch_identity": {
+    "task_id": 0,
+    "init_state_index": 31,
+    "planning_index": 8,
+    "prefix_steps": 64
+  },
+  "failure": "The robot-hidden segmentation still contained pixels classified as robot, so the combined collector gate stopped before writing any mask sidecar or manifest.",
+  "diagnosis": "Native element segmentation contains object_type=5 geom pixels and object_type=6 site pixels. The v1.1 helper compared object_id to geom ID sets without first requiring object_type=5. Overlapping site/geom integer IDs created false robot pixels after all actual robot geoms were hidden.",
+  "evidence": {
+    "future_rgb_bitwise_exact": true,
+    "semantic_partition_exact": true,
+    "robot_hidden_state_max_abs_difference": 0.0,
+    "robot_hidden_metadata_restored": true,
+    "relevant_visible_pixels_not_smaller_without_robot": true,
+    "false_robot_pixels_after_hiding_range_on_first_branch": [94, 104],
+    "segmentation_object_types_present": [5, 6]
+  },
+  "artifact_admission": {
+    "mask_sidecar_written": false,
+    "mask_manifest_written": false,
+    "feature_or_mechanism_metric_computed": false,
+    "held_out_evaluation_accessed": false
+  },
+  "authorized_implementation_only_fix": "Require segmentation object_type == 5 before matching geom IDs; rerun calibration inventory and preregister the corrected implementation hash without changing scientific thresholds, features, partitions, gates, or decision mapping."
+}
