@@ -22,6 +22,7 @@ PROTOCOL = ROOT / "configs/visual_target_suitability_protocol.json"
 INVENTORY = ROOT / "results/visual_target_suitability/mask_inventory_v1_2.json"
 BLOCKED_INVENTORY = ROOT / "results/visual_target_suitability/mask_inventory.json"
 CALIBRATION_MASK_MANIFEST = ROOT / "results/visual_target_suitability/calibration_mask_manifest.json"
+CALIBRATION_FREEZE = ROOT / "configs/visual_target_suitability_calibration_freeze.json"
 
 
 def sha256(path: Path) -> str:
@@ -169,3 +170,46 @@ def test_calibration_masks_are_exact_and_do_not_cross_partition() -> None:
     assert arrays["no_robot_relevant_mask"].shape == (40, 3, 8, 128, 128)
     assert np.all(arrays["masks"].sum(axis=3) == 1)
     assert set(arrays["init_state_index"].tolist()) == {31, 32, 33, 34}
+
+
+def test_calibration_visual_features_and_models_are_frozen_before_evaluation() -> None:
+    freeze = json.loads(CALIBRATION_FREEZE.read_text())
+    assert freeze["status"] == "FROZEN_BEFORE_HELD_OUT_MASK_COLLECTION_OR_ANALYSIS"
+    assert freeze["protocol_sha256"] == sha256(PROTOCOL)
+    assert freeze["partition"] == {
+        "init_state_indices": [31, 32, 33, 34],
+        "branch_points": 40,
+        "rows": 960,
+        "evaluation_mask_or_feature_read": False,
+    }
+    assert freeze["replacement_background"]["rgb"] == [126, 119, 111]
+    assert freeze["clip_interface"]["full_reencode_min_cosine_to_frozen_real_z"] >= 0.99999
+    assert freeze["clip_interface"]["full_reencode_max_abs_difference_to_frozen_real_z"] <= 2e-5
+    assert freeze["clip_interface"]["patch_shape"] == [49, 512]
+    assert freeze["feature_group_dimensions"] == {
+        "full_pixel": 4,
+        "robot_pixel": 6,
+        "relevant_pixel": 6,
+        "visibility": 4,
+        "patch": 11,
+    }
+    assert [freeze["models"][name]["dimensions"] for name in ("V0", "V1", "V2", "V3", "V4")] == [
+        4,
+        10,
+        16,
+        20,
+        31,
+    ]
+    assert [freeze["models"][name]["selected_alpha"] for name in ("V0", "V1", "V2", "V3", "V4")] == [
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        0.001,
+    ]
+    for artifact in freeze["artifacts"].values():
+        assert sha256(ROOT / artifact["path"]) == artifact["sha256"]
+    montage = freeze["representative_montage"]
+    assert set(montage["selected_rows"]) == {"low_p10", "median_p50", "high_p90"}
+    assert sha256(ROOT / montage["path"]) == montage["sha256"]
+    assert not any(freeze["forbidden_activity_audit"].values())
