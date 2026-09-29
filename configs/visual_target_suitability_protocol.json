@@ -57,12 +57,19 @@
       "version": "v1.1",
       "status": "COMPLETE",
       "change": "Remove only the incorrect vertical flip, require bitwise direct-render/observation RGB identity, and retain the same native element-segmentation semantics."
+    },
+    {
+      "version": "v1.2",
+      "status": "COMPLETE",
+      "blocked_preflight_commit": "296a33eb3e0d7a977bcd71e342c19a2012e8c5a4",
+      "blocked_record": "results/visual_target_suitability/calibration_mask_preflight_blocked.json",
+      "change": "Require native segmentation object_type=5 before matching object_id to geom ID sets; type=6 site and type=5 geom ID namespaces overlap. The first calibration branch stopped before any sidecar, manifest, feature, or mechanism result was written. No threshold, feature set, split, bootstrap, gate, or decision rule changed."
     }
   ],
   "implementation": {
     "collector": {
       "path": "scripts/collect_visual_target_masks.py",
-      "sha256": "b1e241b735b6cf009e6ee6fc3aa658c985bed11672b7e0c6e5ba4c135fdb6956"
+      "sha256": "0e1d8b9d7c6fc61f532b322ac1ec741f7f5951e342c2b01970a58ff3e4c924aa"
     },
     "analyzer": {
       "path": "scripts/analyze_visual_target_suitability.py",
@@ -71,6 +78,10 @@
     "feature_module": {
       "path": "src/probes/visual_target.py",
       "sha256": "d1587d0842497bcfed8444012a179f7d92cdd5f52c2cfc88c837edff176e545c"
+    },
+    "mask_renderer": {
+      "path": "scripts/inventory_visual_target_masks.py",
+      "sha256": "7fa1e779d5cd2049d6473b848f966a5e4542b2b8244da6c553d2947f1af93087"
     }
   },
   "scope": {
@@ -107,10 +118,10 @@
     "forbidden_init_state_indices": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
   },
   "mask_inventory": {
-    "path": "results/visual_target_suitability/mask_inventory_v1_1.json",
-    "sha256": "dffcbcccac9851dc678160d65b5c413db8ac46e1e54cdbacffd99d26e77e5c44",
+    "path": "results/visual_target_suitability/mask_inventory_v1_2.json",
+    "sha256": "dfc9536005f0ba0e308b65e723e222c33036bb4c80c61c802e9ea4cb52cef1e6",
     "inventory_init_state": 31,
-    "renderer": "native MuJoCo element segmentation from the same agentview camera",
+    "renderer": "native MuJoCo element segmentation from the same agentview camera; only object_type=5 geom pixels enter geom-ID semantic classes",
     "semantic_partition": "robot, parsed_problem obj_of_interest relevant geoms, other non-robot geoms, background",
     "relevant_object_rule": "runtime parsed_problem[\"obj_of_interest\"]; never language/name heuristics",
     "orientation_gate": "direct simulator RGB must be bitwise identical to upright observation RGB without vertical flip",

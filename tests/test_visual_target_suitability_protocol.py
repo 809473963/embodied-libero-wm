@@ -19,7 +19,7 @@ from src.probes.visual_target import (
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "configs/visual_target_suitability_protocol.json"
-INVENTORY = ROOT / "results/visual_target_suitability/mask_inventory_v1_1.json"
+INVENTORY = ROOT / "results/visual_target_suitability/mask_inventory_v1_2.json"
 BLOCKED_INVENTORY = ROOT / "results/visual_target_suitability/mask_inventory.json"
 
 

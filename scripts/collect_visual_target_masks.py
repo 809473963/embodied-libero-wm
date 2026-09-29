@@ -87,7 +87,7 @@ def load_protocol(path: Path, partition: str) -> tuple[dict[str, Any], str]:
     for item in protocol["frozen_upstream"]["files"]:
         if sha256(ROOT / item["path"]) != item["sha256"]:
             raise ValueError(f"frozen upstream changed: {item['path']}")
-    for key in ("collector", "feature_module"):
+    for key in ("collector", "feature_module", "mask_renderer"):
         item = protocol["implementation"][key]
         if sha256(ROOT / item["path"]) != item["sha256"]:
             raise ValueError(f"implementation changed after preregistration: {item['path']}")
