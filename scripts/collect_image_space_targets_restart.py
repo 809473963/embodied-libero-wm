@@ -266,7 +266,11 @@ def collect_partition(
                     )
                     camera_static &= bool(np.max(np.abs(current_matrix - frozen_matrix)) <= 1.0e-12)
             if not rgb_exact or not merged_exact or not state_exact or not camera_static:
-                raise RuntimeError("frozen replay/per-object mask gate failed")
+                raise RuntimeError(
+                    "frozen replay/per-object mask gate failed: "
+                    f"rgb_exact={rgb_exact}, merged_exact={merged_exact}, "
+                    f"state_exact={state_exact}, camera_static={camera_static}"
+                )
             all_masks.append(masks)
             records.append(
                 {

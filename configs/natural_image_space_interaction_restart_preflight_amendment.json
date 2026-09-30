@@ -24,5 +24,12 @@
       "10-percent gate and decision mapping",
       "per-object future-mask collection and all replay identity checks"
     ]
+  },
+  "diagnostic_logging_amendment": {
+    "trigger": "the second invocation reached the combined replay-identity guard and stopped before artifact output",
+    "change": "include the four pre-existing subcheck booleans in the exception text",
+    "gate_change": false,
+    "artifact_written": false,
+    "target_or_representation_result_viewed": false
   }
 }

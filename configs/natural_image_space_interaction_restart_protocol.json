@@ -44,7 +44,7 @@
     ]
   },
   "implementation": {
-    "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "759b84fdb6919a89e13ef6a6ea31871acc7087152504141650d4d526aac75774"},
+    "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "80f0f463c97b448ba72dcd6078b9c138b4e6f77815736fdfcdf46ddf9fb2a545"},
     "analyzer": {"path": "scripts/analyze_natural_image_space_interaction_restart.py", "sha256": "a939446e7422e19929b3a6168d3040a15f20841ca3d1216e016285c32fb00ac7"},
     "camera_adapter": {"path": "src/probes/image_space_relevance_restart.py", "sha256": "736052a47bb05acf645788edf938fe3b012874c7cdb5e0da63ef7f674e38c0b0"},
     "frozen_target_module": {"path": "src/probes/image_space_relevance.py", "sha256": "7d84c3c80858304105e94a2f67468f90be8cb08f7741549227024c0d66413178"},
@@ -240,6 +240,14 @@
       "artifact_written": false,
       "target_or_representation_result_viewed": false,
       "correction": "run the already-frozen sanity check at the official zero-step init31 planning observation, matching the validated camera-contract experiment",
+      "scientific_change": false
+    },
+    {
+      "phase": "second calibration object-mask collection invocation",
+      "stop": "the combined replay-identity guard failed before exposing which subcheck failed",
+      "artifact_written": false,
+      "target_or_representation_result_viewed": false,
+      "correction": "report the already-computed RGB, merged-mask, EE-state, and camera-static booleans in the exception",
       "scientific_change": false
     }
   ]
