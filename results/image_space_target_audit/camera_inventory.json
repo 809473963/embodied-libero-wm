@@ -1,0 +1,1423 @@
+{
+  "schema_version": 1,
+  "protocol_version": "natural-image-space-interaction-target-audit-v1",
+  "date": "2026-09-30",
+  "status": "CAMERA_PROJECTION_BLOCK",
+  "protocol_commit": "ba419ca096a6c8794095ee5fb00bfe23b6458dba",
+  "protocol_sha256": "cbe7448503ffbbcf69d5135dc1454492a5ccf97f132c4e8a99c152ff7eaedc47",
+  "camera_name": "agentview",
+  "selected_projection_convention": "vertical_flip_to_direct_render",
+  "candidate_conventions": {
+    "direct_render": {
+      "median_distance_to_robot_mask_pixels": 3.747694213515908,
+      "p95_distance_to_robot_mask_pixels": 12.307038330019747,
+      "max_distance_to_robot_mask_pixels": 14.146922824147014
+    },
+    "vertical_flip_to_direct_render": {
+      "median_distance_to_robot_mask_pixels": 1.0947535364913823,
+      "p95_distance_to_robot_mask_pixels": 1.4111140405987739,
+      "max_distance_to_robot_mask_pixels": 1.453557774719355
+    }
+  },
+  "selected_median_margin_pixels": 2.652940677024526,
+  "projection_contract": {
+    "world_to_pixel": "robosuite intrinsic @ inverse(corrected camera pose)",
+    "output": "unclipped floating (u,v), top-left origin, u right, v down",
+    "normalization": "u / image_width; v / image_height"
+  },
+  "gate": {
+    "maximum_median_robot_mask_distance_pixels": 8.0,
+    "maximum_p95_robot_mask_distance_pixels": 18.0,
+    "minimum_median_margin_over_alternative_pixels": 4.0,
+    "pass": false
+  },
+  "tasks": [
+    {
+      "task_id": 0,
+      "init_state_index": 31,
+      "seed": 30001,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.22327450934472357,
+        -0.009046255716913112,
+        1.1635111411995542
+      ],
+      "site_segmentation_visible_pixels": 7,
+      "site_distance_pixels": {
+        "direct_render": 63.99022100193112,
+        "vertical_flip_to_direct_render": 0.44581636086434584
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            62.554350059131494,
+            31.012180222421023
+          ],
+          "depth": 0.9668409495664774,
+          "distance_to_robot_mask_pixels": 4.012643822749054,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            62.554350059131494,
+            95.98781977757898
+          ],
+          "depth": 0.9668409495664774,
+          "distance_to_robot_mask_pixels": 1.083693583432274,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 1,
+      "init_state_index": 31,
+      "seed": 30101,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.22219803078164435,
+        0.007962236619070953,
+        1.1460895251645613
+      ],
+      "site_segmentation_visible_pixels": 4,
+      "site_distance_pixels": {
+        "direct_render": 59.39648226466665,
+        "vertical_flip_to_direct_render": 0.473267120233316
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            65.25929143605643,
+            33.60408369788334
+          ],
+          "depth": 0.9769488654144323,
+          "distance_to_robot_mask_pixels": 1.3200623618628002,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            65.25929143605643,
+            93.39591630211666
+          ],
+          "depth": 0.9769488654144323,
+          "distance_to_robot_mask_pixels": 0.8398802861009879,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 2,
+      "init_state_index": 31,
+      "seed": 30201,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.217817874754744,
+        0.015512880519309859,
+        1.1637035857060887
+      ],
+      "site_segmentation_visible_pixels": 5,
+      "site_distance_pixels": {
+        "direct_render": 63.61304606334761,
+        "vertical_flip_to_direct_render": 0.6258228348447826
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            66.49036171164431,
+            31.388843943461154
+          ],
+          "depth": 0.9624747872758109,
+          "distance_to_robot_mask_pixels": 2.6568008129790677,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            66.49036171164431,
+            95.61115605653885
+          ],
+          "depth": 0.9624747872758109,
+          "distance_to_robot_mask_pixels": 0.7957656127291683,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 3,
+      "init_state_index": 31,
+      "seed": 30301,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.21678687372319683,
+        0.0004113595913105044,
+        1.163948412703292
+      ],
+      "site_segmentation_visible_pixels": 6,
+      "site_distance_pixels": {
+        "direct_render": 63.570131936592304,
+        "vertical_flip_to_direct_render": 0.4349580289303448
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            64.06612387907784,
+            31.429902453524836
+          ],
+          "depth": 0.9615188559926301,
+          "distance_to_robot_mask_pixels": 3.690219654787045,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            64.06612387907784,
+            95.57009754647517
+          ],
+          "depth": 0.9615188559926301,
+          "distance_to_robot_mask_pixels": 1.0941370214582977,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 4,
+      "init_state_index": 31,
+      "seed": 30401,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.2056428915765735,
+        -0.010765355793903822,
+        1.1873763617890958
+      ],
+      "site_segmentation_visible_pixels": 5,
+      "site_distance_pixels": {
+        "direct_render": 68.23133471021838,
+        "vertical_flip_to_direct_render": 0.3238160711300229
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            62.22697052386933,
+            28.769042797868167
+          ],
+          "depth": 0.9381298647417107,
+          "distance_to_robot_mask_pixels": 14.146922824147014,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            62.22697052386933,
+            98.23095720213183
+          ],
+          "depth": 0.9381298647417107,
+          "distance_to_robot_mask_pixels": 1.453557774719355,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 5,
+      "init_state_index": 31,
+      "seed": 30501,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.22805838539569673,
+        -0.006595488314672229,
+        1.144780410354347
+      ],
+      "site_segmentation_visible_pixels": 6,
+      "site_distance_pixels": {
+        "direct_render": 59.64831926931493,
+        "vertical_flip_to_direct_render": 0.35367287485311844
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            62.96262447631508,
+            33.35169244040233
+          ],
+          "depth": 0.9823306861414012,
+          "distance_to_robot_mask_pixels": 10.058290614975322,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            62.96262447631508,
+            93.64830755959767
+          ],
+          "depth": 0.9823306861414012,
+          "distance_to_robot_mask_pixels": 1.095370051524467,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 6,
+      "init_state_index": 31,
+      "seed": 30601,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.21667113055478393,
+        6.115343928940963e-05,
+        1.1663643652086937
+      ],
+      "site_segmentation_visible_pixels": 5,
+      "site_distance_pixels": {
+        "direct_render": 63.923473303353376,
+        "vertical_flip_to_direct_render": 0.08507794135388366
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            64.00986452153974,
+            31.084504126051975
+          ],
+          "depth": 0.9599109461592202,
+          "distance_to_robot_mask_pixels": 4.038746860674699,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            64.00986452153974,
+            95.91549587394803
+          ],
+          "depth": 0.9599109461592202,
+          "distance_to_robot_mask_pixels": 0.9937349812830055,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 7,
+      "init_state_index": 31,
+      "seed": 30701,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.21115678412712618,
+        -0.016304724717569965,
+        1.1703981278494586
+      ],
+      "site_segmentation_visible_pixels": 6,
+      "site_distance_pixels": {
+        "direct_render": 64.09928993516786,
+        "vertical_flip_to_direct_render": 0.370073181090121
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            61.35677984682706,
+            30.901702999739452
+          ],
+          "depth": 0.9530865190764244,
+          "distance_to_robot_mask_pixels": 3.8051687722447713,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            61.35677984682706,
+            96.09829700026054
+          ],
+          "depth": 0.9530865190764244,
+          "distance_to_robot_mask_pixels": 1.272787675234613,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 8,
+      "init_state_index": 31,
+      "seed": 30801,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.20458783965328328,
+        0.007190219182339353,
+        1.1781656769527187
+      ],
+      "site_segmentation_visible_pixels": 5,
+      "site_distance_pixels": {
+        "direct_render": 65.76308429461227,
+        "vertical_flip_to_direct_render": 0.2965325696542014
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            65.17801206712855,
+            30.237156633519593
+          ],
+          "depth": 0.9430957977350044,
+          "distance_to_robot_mask_pixels": 2.768572152527033,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            65.17801206712855,
+            96.76284336648041
+          ],
+          "depth": 0.9430957977350044,
+          "distance_to_robot_mask_pixels": 1.1214250592747816,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "task_id": 9,
+      "init_state_index": 31,
+      "seed": 30901,
+      "camera_name": "agentview",
+      "image_width": 128,
+      "image_height": 128,
+      "pixel_origin": "top-left of direct upright agentview RGB; u rightward, v downward",
+      "projected_coordinate_order": "(u, v)",
+      "world_axis_convention": "MuJoCo world xyz",
+      "camera_axis_correction": "robosuite get_camera_extrinsic_matrix diag(1,-1,-1,1)",
+      "rgb_matches_observation_bitwise": true,
+      "eef_site_id": 13,
+      "eef_site_name": "gripper0_grip_site",
+      "eef_world_position": [
+        -0.21059813721864637,
+        -0.008775479371676538,
+        1.165222913847992
+      ],
+      "site_segmentation_visible_pixels": 5,
+      "site_distance_pixels": {
+        "direct_render": 63.2946155599837,
+        "vertical_flip_to_direct_render": 0.5109441605458217
+      },
+      "projection_candidates": {
+        "direct_render": {
+          "projected_uv": [
+            62.58157600885226,
+            31.70676750038941
+          ],
+          "depth": 0.9559033049482514,
+          "distance_to_robot_mask_pixels": 2.6964498726907045,
+          "inside_image": true
+        },
+        "vertical_flip_to_direct_render": {
+          "projected_uv": [
+            62.58157600885226,
+            95.29323249961058
+          ],
+          "depth": 0.9559033049482514,
+          "distance_to_robot_mask_pixels": 1.359238365562508,
+          "inside_image": true
+        }
+      },
+      "camera_id": 2,
+      "fovy_degrees": 45.0,
+      "camera_position_world": [
+        0.6586131746834771,
+        0.0,
+        1.6103500240372424
+      ],
+      "camera_rotation_world": [
+        [
+          -7.268184498698815e-08,
+          -0.6282664504107425,
+          0.7779982437565529
+        ],
+        [
+          0.9999999999999858,
+          7.268184498698815e-08,
+          1.521152659944569e-07
+        ],
+        [
+          -1.521152659944569e-07,
+          0.7779982437565529,
+          0.6282664504107283
+        ]
+      ],
+      "intrinsic": [
+        [
+          154.50966799187808,
+          0.0,
+          64.0
+        ],
+        [
+          0.0,
+          154.50966799187808,
+          64.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera_pose_extrinsic": [
+        [
+          -7.268184498698815e-08,
+          0.6282664504107425,
+          -0.7779982437565529,
+          0.6586131746834771
+        ],
+        [
+          0.9999999999999858,
+          -7.268184498698815e-08,
+          -1.521152659944569e-07,
+          0.0
+        ],
+        [
+          -1.521152659944569e-07,
+          -0.7779982437565529,
+          -0.6282664504107283,
+          1.6103500240372424
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "world_to_pixel": [
+        [
+          -49.791898830467126,
+          154.50965825649885,
+          -40.20907632956585,
+          97.54428759608415
+        ],
+        [
+          47.28135306298016,
+          -2.096542476162193e-05,
+          -160.41730316737585,
+          227.18788596743354
+        ],
+        [
+          -0.7779982437565529,
+          -1.521152659944569e-07,
+          -0.6282664504107283,
+          1.5241287867393822
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "forbidden_activity_audit": {
+    "candidate_execution": false,
+    "evaluation_init36_39_access": false,
+    "init40_49_access": false,
+    "reward_done_success_or_task_outcome_read": false,
+    "model_or_controller_change": false
+  }
+}
