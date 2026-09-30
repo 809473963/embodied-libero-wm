@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "protocol_version": "natural-image-space-interaction-target-audit-v1",
+  "date": "2026-09-30",
+  "status": "BLOCKED_AT_PREREGISTERED_CAMERA_GATE",
+  "protocol_commit": "ba419ca096a6c8794095ee5fb00bfe23b6458dba",
+  "protocol_sha256": "cbe7448503ffbbcf69d5135dc1454492a5ccf97f132c4e8a99c152ff7eaedc47",
+  "frozen_upstream_verdicts": [
+    "GLOBAL_CLIP_SPATIAL_COMPRESSION",
+    "NATURAL_PATCH_TASK_RELEVANCE_UNRESOLVED",
+    "BLOCK_VISUAL_TARGET_REDESIGN"
+  ],
+  "blocking_condition": "CAMERA_PROJECTION_BLOCK",
+  "mechanism_labels": [
+    "DATA_OR_IMPLEMENTATION_BLOCK"
+  ],
+  "camera_inventory": {
+    "status": "CAMERA_PROJECTION_BLOCK",
+    "camera_name": "agentview",
+    "image_shape": [128, 128, 3],
+    "selected_projection_convention": "vertical_flip_to_direct_render",
+    "selected": {
+      "median_distance_to_robot_mask_pixels": 1.0947535364913823,
+      "p95_distance_to_robot_mask_pixels": 1.4111140405987739,
+      "max_distance_to_robot_mask_pixels": 1.453557774719355
+    },
+    "alternative": {
+      "name": "direct_render",
+      "median_distance_to_robot_mask_pixels": 3.747694213515908,
+      "p95_distance_to_robot_mask_pixels": 12.307038330019747,
+      "max_distance_to_robot_mask_pixels": 14.146922824147014
+    },
+    "selected_median_margin_pixels": 2.652940677024526,
+    "gate": {
+      "maximum_median_robot_mask_distance_pixels": 8.0,
+      "maximum_p95_robot_mask_distance_pixels": 18.0,
+      "minimum_median_margin_over_alternative_pixels": 4.0,
+      "distance_checks_pass": true,
+      "margin_check_pass": false,
+      "overall_pass": false
+    },
+    "secondary_site_segmentation_diagnostic": {
+      "selected_convention_distance_range_pixels": [0.08507794135388366, 0.6258228348447826],
+      "alternative_convention_distance_range_pixels": [59.39648226466665, 68.23133471021838],
+      "interpretation": "strongly favors the selected convention but was not the frozen authorization gate and cannot retroactively replace it"
+    },
+    "all_ten_tasks_rgb_matches_observation_bitwise": true,
+    "all_ten_tasks_positive_depth": true,
+    "all_ten_tasks_projected_inside_image": true
+  },
+  "execution_boundary": {
+    "camera_inventory_init_states": [31],
+    "camera_inventory_tasks": [0,1,2,3,4,5,6,7,8,9],
+    "calibration_target_construction_run": false,
+    "calibration_per_object_mask_replay_run": false,
+    "development_evaluation_init36_39_opened": false,
+    "historical_init30_35_used": false,
+    "init40_49_accessed": false,
+    "image_space_probe_fit": false,
+    "image_space_shuffle_or_bootstrap_run": false
+  },
+  "requested_questions": {
+    "Q1_immediate_2d_robot_motion": "unresolved because the camera gate blocked target construction",
+    "Q2_relevant_object_image_space_change": "unresolved because per-object natural masks and targets were not constructed",
+    "Q3_relative_or_interaction_geometry": "unresolved because the preregistered camera gate failed",
+    "Q4_2d_representation_versus_3d_target_mismatch": "not tested; no IMAGE_SPACE_TARGET_MISMATCH_SUPPORTED label is assigned"
+  },
+  "candidate_headroom_reference": {
+    "source": "frozen C1-v2.1 offline validation oracle",
+    "best_of_three_expert_action_mse_gain": 0.01648,
+    "interpretation": "the current candidate set has modest imitation-oriented headroom even if a future representation issue is resolved; no success-rate claim is made"
+  },
+  "decision": {
+    "final_mechanism_verdict": "DATA_OR_IMPLEMENTATION_BLOCK",
+    "blocking_condition": "CAMERA_PROJECTION_BLOCK",
+    "next_stage_authorization": "BLOCK_VISUAL_TARGET_REDESIGN",
+    "controller_authorization": false,
+    "go_spatial_target_design": false,
+    "repeat_similar_representation_probe_authorized": false
+  },
+  "artifacts": {
+    "camera_inventory": {
+      "path": "results/image_space_target_audit/camera_inventory.json",
+      "sha256": "b927dd4020123ffd546181d868108ad68f32b944f9bbc5e959e8209acb0b7e20"
+    }
+  },
+  "nan_inf_audit": "pass",
+  "forbidden_activity_audit": {
+    "modified_or_masked_rgb_used": false,
+    "masked_clip_inference": false,
+    "reward_done_success_or_task_outcome_read": false,
+    "init40_49_access": false,
+    "world_model_clip_actor_candidate_reranker_or_controller_change": false,
+    "controller_success_run": false,
+    "development_evaluation_opened_after_block": false,
+    "upstream_overwrite": false
+  }
+}
