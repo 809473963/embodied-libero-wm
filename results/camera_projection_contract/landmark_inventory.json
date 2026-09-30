@@ -1,0 +1,6625 @@
+{
+  "schema_version": 1,
+  "protocol_version": "camera-projection-contract-resolution-v1",
+  "date": "2026-09-30",
+  "status": "LANDMARK_INVENTORY_FROZEN",
+  "protocol_commit": "f1c362e7e2505da6f55a716b94fab4225cfcede9",
+  "protocol_sha256": "ed5ba8561f504762e140694e7d02e9dccd49961b8147259d62f8f04106b25907",
+  "source_coordinate_trace": {
+    "source_files": [
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/utils/camera_utils.py",
+        "sha256": "7cb6ce02936b181c296a38c0c79d6dd436618656a08fb67a5553a733a8652247"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/environments/robot_env.py",
+        "sha256": "a0b39012c175272a2037a7a66a771d416b905a5a7b847e53c60a0588407398af"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/utils/mjcf_utils.py",
+        "sha256": "3c96c9722288b48b55a41fa0c400576e352d2f8f40eb1c6cbc126c070d79d348"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/macros.py",
+        "sha256": "d09834e770db690f43f46d6dc93605efe316b8b5eb7fe6cf2bc1647df95a302d"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/scripts/evaluate_c0_all.py",
+        "sha256": "cd043c1681666f25c471ab3f651cd80eabb8cc86cad6087bb1c0150be52f3b86"
+      }
+    ],
+    "robosuite_image_convention": "opengl",
+    "robosuite_image_convention_slice": 1,
+    "camera_axis_correction": "diag(1,-1,-1,1) applied on the right of the MuJoCo camera pose",
+    "utility_transform": "K4 @ inverse(corrected_camera_pose_world)",
+    "utility_project": "homogeneous transform, divide by z, round, return clipped (row=v, column=u)",
+    "direct_render_pipeline": "sim.render result is returned unchanged because IMAGE_CONVENTION='opengl' maps to slice +1",
+    "coordinate_resolution": "direct RGB remains unchanged; only raw projected v is converted by v_upright=H-1-v_raw",
+    "final_formula": {
+      "camera_coordinates": "[x_c,y_c,z_c] = diag(1,-1,-1) @ R_wc^T @ (X_world-C)",
+      "u_upright": "fx*x_c/z_c + cx",
+      "v_upright": "H - 1 - (fy*y_c/z_c + cy)",
+      "depth": "z_c, required positive"
+    },
+    "protocol_commit": "f1c362e7e2505da6f55a716b94fab4225cfcede9",
+    "old_four_pixel_robot_mask_margin_reused": false
+  },
+  "camera_reference": {
+    "camera_name": "agentview",
+    "camera_id": 2,
+    "image_height": 128,
+    "image_width": 128,
+    "fovy_degrees": 45.0,
+    "camera_position_world": [
+      0.6586131746834771,
+      0.0,
+      1.6103500240372424
+    ],
+    "camera_rotation_world": [
+      [
+        -7.268184498698815e-08,
+        -0.6282664504107425,
+        0.7779982437565529
+      ],
+      [
+        0.9999999999999858,
+        7.268184498698815e-08,
+        1.521152659944569e-07
+      ],
+      [
+        -1.521152659944569e-07,
+        0.7779982437565529,
+        0.6282664504107283
+      ]
+    ],
+    "intrinsic": [
+      [
+        154.50966799187808,
+        0.0,
+        64.0
+      ],
+      [
+        0.0,
+        154.50966799187808,
+        64.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "corrected_camera_pose_world": [
+      [
+        -7.268184498698815e-08,
+        0.6282664504107425,
+        -0.7779982437565529,
+        0.6586131746834771
+      ],
+      [
+        0.9999999999999858,
+        -7.268184498698815e-08,
+        -1.521152659944569e-07,
+        0.0
+      ],
+      [
+        -1.521152659944569e-07,
+        -0.7779982437565529,
+        -0.6282664504107283,
+        1.6103500240372424
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "world_to_raw_pixel": [
+      [
+        -49.791898830467126,
+        154.50965825649885,
+        -40.20907632956585,
+        97.54428759608415
+      ],
+      [
+        47.28135306298016,
+        -2.096542476162193e-05,
+        -160.41730316737585,
+        227.18788596743354
+      ],
+      [
+        -0.7779982437565529,
+        -1.521152659944569e-07,
+        -0.6282664504107283,
+        1.5241287867393822
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "tasks": [
+    {
+      "task_id": 0,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 35,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 7,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 38,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 1,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 1,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 32,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 4,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 23,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 1,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 2,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 24,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 5,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 32,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 1,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 3,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 30,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 6,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 13,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 3,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 4,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 1,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 5,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 35,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 5,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 33,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 6,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 6,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 4,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 6,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 27,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 5,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 17,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 7,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 26,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 6,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 43,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 4,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 8,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 24,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 5,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 38,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    },
+    {
+      "task_id": 9,
+      "init_state_index": 31,
+      "rgb_shape": [
+        128,
+        128,
+        3
+      ],
+      "rgb_dtype": "uint8",
+      "direct_rgb_equals_observation_bitwise": true,
+      "direct_rgb_observation_max_abs_diff": 0,
+      "camera": {
+        "camera_name": "agentview",
+        "camera_id": 2,
+        "image_height": 128,
+        "image_width": 128,
+        "fovy_degrees": 45.0,
+        "camera_position_world": [
+          0.6586131746834771,
+          0.0,
+          1.6103500240372424
+        ],
+        "camera_rotation_world": [
+          [
+            -7.268184498698815e-08,
+            -0.6282664504107425,
+            0.7779982437565529
+          ],
+          [
+            0.9999999999999858,
+            7.268184498698815e-08,
+            1.521152659944569e-07
+          ],
+          [
+            -1.521152659944569e-07,
+            0.7779982437565529,
+            0.6282664504107283
+          ]
+        ],
+        "intrinsic": [
+          [
+            154.50966799187808,
+            0.0,
+            64.0
+          ],
+          [
+            0.0,
+            154.50966799187808,
+            64.0
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "corrected_camera_pose_world": [
+          [
+            -7.268184498698815e-08,
+            0.6282664504107425,
+            -0.7779982437565529,
+            0.6586131746834771
+          ],
+          [
+            0.9999999999999858,
+            -7.268184498698815e-08,
+            -1.521152659944569e-07,
+            0.0
+          ],
+          [
+            -1.521152659944569e-07,
+            -0.7779982437565529,
+            -0.6282664504107283,
+            1.6103500240372424
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "world_to_raw_pixel": [
+          [
+            -49.791898830467126,
+            154.50965825649885,
+            -40.20907632956585,
+            97.54428759608415
+          ],
+          [
+            47.28135306298016,
+            -2.096542476162193e-05,
+            -160.41730316737585,
+            227.18788596743354
+          ],
+          [
+            -0.7779982437565529,
+            -1.521152659944569e-07,
+            -0.6282664504107283,
+            1.5241287867393822
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ]
+      },
+      "sites": [
+        {
+          "name": "table_top",
+          "mujoco_type": "site",
+          "id": 0,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.001,
+            0.001,
+            0.001
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_plate_region",
+          "mujoco_type": "site",
+          "id": 1,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_plate_region",
+          "mujoco_type": "site",
+          "id": 2,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_box_region",
+          "mujoco_type": "site",
+          "id": 3,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000002,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_box_region",
+          "mujoco_type": "site",
+          "id": 4,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.010000000000000009,
+            0.010000000000000002,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_between_plate_ramekin_region",
+          "mujoco_type": "site",
+          "id": 5,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999998,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_ramekin_region",
+          "mujoco_type": "site",
+          "id": 6,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_next_to_ramekin_region",
+          "mujoco_type": "site",
+          "id": 7,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_center",
+          "mujoco_type": "site",
+          "id": 8,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.025,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_table_front",
+          "mujoco_type": "site",
+          "id": 9,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999995,
+            0.01,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_cabinet_region",
+          "mujoco_type": "site",
+          "id": 10,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.01,
+            0.010000000000000009,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "main_table_stove_region",
+          "mujoco_type": "site",
+          "id": 11,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.009999999999999981,
+            0.009999999999999995,
+            0.007
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "gripper0_ft_frame",
+          "mujoco_type": "site",
+          "id": 12,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 17,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site",
+          "mujoco_type": "site",
+          "id": 13,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 5,
+          "site_size": [
+            0.01,
+            0.01,
+            0.01
+          ],
+          "site_type": 2,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_x",
+          "mujoco_type": "site",
+          "id": 14,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_y",
+          "mujoco_type": "site",
+          "id": 15,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_ee_z",
+          "mujoco_type": "site",
+          "id": 16,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.005,
+            0.1,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "gripper0_grip_site_cylinder",
+          "mujoco_type": "site",
+          "id": 17,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 37,
+          "site_size": [
+            0.005,
+            10.0,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 1
+        },
+        {
+          "name": "akita_black_bowl_1_default_site",
+          "mujoco_type": "site",
+          "id": 18,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "akita_black_bowl_2_default_site",
+          "mujoco_type": "site",
+          "id": 19,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "cookies_1_default_site",
+          "mujoco_type": "site",
+          "id": 20,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "glazed_rim_porcelain_ramekin_1_default_site",
+          "mujoco_type": "site",
+          "id": 21,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "plate_1_default_site",
+          "mujoco_type": "site",
+          "id": 22,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_default_site",
+          "mujoco_type": "site",
+          "id": 23,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_side",
+          "mujoco_type": "site",
+          "id": 24,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.12534,
+            0.09438,
+            0.00147
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_top_region",
+          "mujoco_type": "site",
+          "id": 25,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_middle_region",
+          "mujoco_type": "site",
+          "id": 26,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "wooden_cabinet_1_bottom_region",
+          "mujoco_type": "site",
+          "id": 27,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.02993,
+            0.07561,
+            0.10224
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_default_site",
+          "mujoco_type": "site",
+          "id": 28,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.002,
+            0.002,
+            0.002
+          ],
+          "site_type": 2,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_cook_region",
+          "mujoco_type": "site",
+          "id": 29,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": false,
+          "visible_pixels": 0,
+          "site_size": [
+            0.075,
+            0.075,
+            0.0025
+          ],
+          "site_type": 6,
+          "site_group": 0
+        },
+        {
+          "name": "flat_stove_1_burner",
+          "mujoco_type": "site",
+          "id": 30,
+          "world_position_source": "sim.data.site_xpos[site_id]",
+          "world_position_finite": true,
+          "visible": true,
+          "visible_pixels": 3,
+          "site_size": [
+            0.0625,
+            0.0005,
+            0.005
+          ],
+          "site_type": 5,
+          "site_group": 0
+        }
+      ]
+    }
+  ],
+  "landmarks": [
+    {
+      "name": "akita_black_bowl_1_default_site",
+      "mujoco_type": "site",
+      "id": 18,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "akita_black_bowl_2_default_site",
+      "mujoco_type": "site",
+      "id": 19,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "cookies_1_default_site",
+      "mujoco_type": "site",
+      "id": 20,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "flat_stove_1_burner",
+      "mujoco_type": "site",
+      "id": 30,
+      "visible_task_count": 7,
+      "visible_pixel_range": [
+        0,
+        4
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "flat_stove_1_cook_region",
+      "mujoco_type": "site",
+      "id": 29,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "flat_stove_1_default_site",
+      "mujoco_type": "site",
+      "id": 28,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "glazed_rim_porcelain_ramekin_1_default_site",
+      "mujoco_type": "site",
+      "id": 21,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "gripper0_ee_x",
+      "mujoco_type": "site",
+      "id": 14,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "gripper0_ee_y",
+      "mujoco_type": "site",
+      "id": 15,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "gripper0_ee_z",
+      "mujoco_type": "site",
+      "id": 16,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "gripper0_ft_frame",
+      "mujoco_type": "site",
+      "id": 12,
+      "visible_task_count": 10,
+      "visible_pixel_range": [
+        1,
+        35
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "gripper0_grip_site",
+      "mujoco_type": "site",
+      "id": 13,
+      "visible_task_count": 10,
+      "visible_pixel_range": [
+        4,
+        7
+      ],
+      "primary": true,
+      "reason": "explicit semantic allowlist; finite site_xpos; visible and compact in all ten tasks"
+    },
+    {
+      "name": "gripper0_grip_site_cylinder",
+      "mujoco_type": "site",
+      "id": 17,
+      "visible_task_count": 10,
+      "visible_pixel_range": [
+        6,
+        43
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_between_plate_ramekin_region",
+      "mujoco_type": "site",
+      "id": 5,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_box_region",
+      "mujoco_type": "site",
+      "id": 3,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_cabinet_region",
+      "mujoco_type": "site",
+      "id": 10,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_next_to_box_region",
+      "mujoco_type": "site",
+      "id": 4,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_next_to_plate_region",
+      "mujoco_type": "site",
+      "id": 2,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_next_to_ramekin_region",
+      "mujoco_type": "site",
+      "id": 7,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_plate_region",
+      "mujoco_type": "site",
+      "id": 1,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_ramekin_region",
+      "mujoco_type": "site",
+      "id": 6,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_stove_region",
+      "mujoco_type": "site",
+      "id": 11,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_table_center",
+      "mujoco_type": "site",
+      "id": 8,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "main_table_table_front",
+      "mujoco_type": "site",
+      "id": 9,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "plate_1_default_site",
+      "mujoco_type": "site",
+      "id": 22,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "table_top",
+      "mujoco_type": "site",
+      "id": 0,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "wooden_cabinet_1_bottom_region",
+      "mujoco_type": "site",
+      "id": 27,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "wooden_cabinet_1_default_site",
+      "mujoco_type": "site",
+      "id": 23,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "wooden_cabinet_1_middle_region",
+      "mujoco_type": "site",
+      "id": 26,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "wooden_cabinet_1_top_region",
+      "mujoco_type": "site",
+      "id": 25,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    },
+    {
+      "name": "wooden_cabinet_1_top_side",
+      "mujoco_type": "site",
+      "id": 24,
+      "visible_task_count": 0,
+      "visible_pixel_range": [
+        0,
+        0
+      ],
+      "primary": false,
+      "reason": "excluded by frozen name, visibility, or compactness criterion"
+    }
+  ],
+  "primary_landmarks": [
+    {
+      "name": "gripper0_grip_site",
+      "mujoco_type": "site",
+      "id": 13,
+      "visible_task_count": 10,
+      "visible_pixel_range": [
+        4,
+        7
+      ],
+      "primary": true,
+      "reason": "explicit semantic allowlist; finite site_xpos; visible and compact in all ten tasks"
+    }
+  ],
+  "quantitative_projection_comparison_performed": false,
+  "forbidden_activity_audit": {
+    "candidate_execution": false,
+    "init36_39_access": false,
+    "init30_35_access": false,
+    "init40_49_access": false,
+    "reward_done_success_or_task_outcome_read": false,
+    "image_space_target_or_representation_analysis": false,
+    "model_controller_or_upstream_change": false
+  }
+}
