@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "status": "POST_EVALUATION_MECHANICAL_DECISION_MAPPING_CORRECTION",
+  "source_diagnosis_commit": "acacc81",
+  "source_diagnosis_sha256": "1d9e90627491cb0dace90c7e03948d3d5588913dca8700f7be326272cf244ed9",
+  "result_exposure": "All frozen metrics were already visible; this amendment changes no metric, interval, gate input, target, representation, model, bootstrap draw, or authorization.",
+  "error": "The restart wrapper added an unpreregistered relevant-only semantic-attribution requirement before assigning the positive object-family label.",
+  "preregistered_mapping": {
+    "positive_object_case": "Assign SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED when object centroid or object mask difference completes the primary target gate.",
+    "distributed_only_case": "Assign only SPATIAL_SIGNAL_REMAINS_NONUNIQUE when full patch is effective while both relevant-only and strict-interaction shuffles fail."
+  },
+  "frozen_evidence": {
+    "object_mask_primary_gate_pass": true,
+    "object_mask_increment": 0.16791381243677803,
+    "object_mask_increment_ci95": [0.12188660570333976, 0.2092841402928089],
+    "object_mask_full_patch_shuffle_pass": true,
+    "object_mask_positive_tasks": 8,
+    "object_mask_positive_horizons": 7,
+    "object_mask_positive_pairs": 3,
+    "object_mask_relevant_only_shuffle_pass": false,
+    "object_mask_strict_interaction_shuffle_pass": true,
+    "object_mask_strict_interaction_shuffle_ci95": [0.04063988998669006, 0.12088576435576597]
+  },
+  "corrected_decision": {
+    "mechanism_labels": [
+      "SPATIAL_EE_SIGNAL_CONFIRMED",
+      "SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED",
+      "IMAGE_SPACE_TARGET_MISMATCH_SUPPORTED",
+      "GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL"
+    ],
+    "next_stage_authorization": "GO_SPATIAL_TARGET_DESIGN",
+    "controller_authorization": false,
+    "representation_audit_stop_recommended": false,
+    "repeat_similar_representation_probe_if_unresolved": false
+  },
+  "numeric_result_changed": false,
+  "next_stage_authorization_changed": false,
+  "controller_authorization_changed": false
+}

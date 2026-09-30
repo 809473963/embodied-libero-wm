@@ -20561,13 +20561,22 @@
   "decision": {
     "mechanism_labels": [
       "SPATIAL_EE_SIGNAL_CONFIRMED",
+      "SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED",
       "IMAGE_SPACE_TARGET_MISMATCH_SUPPORTED",
-      "SPATIAL_SIGNAL_REMAINS_NONUNIQUE"
+      "GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL"
     ],
     "next_stage_authorization": "GO_SPATIAL_TARGET_DESIGN",
     "controller_authorization": false,
     "representation_audit_stop_recommended": false,
     "repeat_similar_representation_probe_if_unresolved": false
+  },
+  "decision_mapping_amendment": {
+    "path": "configs/natural_image_space_interaction_restart_decision_amendment.json",
+    "sha256": "a708c1d8354d65da05d2714e4671baf9875f4dcbe5cfc7b93060c429a3900954",
+    "source_diagnosis_sha256": "1d9e90627491cb0dace90c7e03948d3d5588913dca8700f7be326272cf244ed9",
+    "reason": "correct an over-restrictive wrapper label rule to the preregistered positive-object and distributed-only decision mapping",
+    "numeric_result_changed": false,
+    "authorization_changed": false
   },
   "artifacts": {
     "evaluation_derived": {
