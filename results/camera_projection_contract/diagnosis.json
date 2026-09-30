@@ -1,0 +1,2855 @@
+{
+  "schema_version": 1,
+  "protocol_version": "camera-projection-contract-resolution-v1",
+  "date": "2026-09-30",
+  "status": "COMPLETE",
+  "protocol_commit": "f1c362e7e2505da6f55a716b94fab4225cfcede9",
+  "protocol_sha256": "ed5ba8561f504762e140694e7d02e9dccd49961b8147259d62f8f04106b25907",
+  "landmark_inventory_sha256": "c0f2f7df0ae0ed4774826a335d7d8e505b168d7fc950e4c824957088514efca8",
+  "old_block_preserved": {
+    "verdict": "DATA_OR_IMPLEMENTATION_BLOCK",
+    "blocking_condition": "CAMERA_PROJECTION_BLOCK",
+    "old_robot_mask_margin_threshold_pixels": 4.0,
+    "old_result_changed": false
+  },
+  "data_boundary": {
+    "init_state_indices": [
+      31,
+      32,
+      33,
+      34
+    ],
+    "tasks": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "planning_observation_only": true,
+    "candidate_execution": false,
+    "init30_35_access": false,
+    "init36_39_access": false,
+    "init40_49_access": false
+  },
+  "coordinate_trace": {
+    "source_files": [
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/utils/camera_utils.py",
+        "sha256": "7cb6ce02936b181c296a38c0c79d6dd436618656a08fb67a5553a733a8652247"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/environments/robot_env.py",
+        "sha256": "a0b39012c175272a2037a7a66a771d416b905a5a7b847e53c60a0588407398af"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/utils/mjcf_utils.py",
+        "sha256": "3c96c9722288b48b55a41fa0c400576e352d2f8f40eb1c6cbc126c070d79d348"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/robosuite/macros.py",
+        "sha256": "d09834e770db690f43f46d6dc93605efe316b8b5eb7fe6cf2bc1647df95a302d"
+      },
+      {
+        "path": "/home/luo/embodied-libero-wm/scripts/evaluate_c0_all.py",
+        "sha256": "cd043c1681666f25c471ab3f651cd80eabb8cc86cad6087bb1c0150be52f3b86"
+      }
+    ],
+    "robosuite_image_convention": "opengl",
+    "robosuite_image_convention_slice": 1,
+    "camera_axis_correction": "diag(1,-1,-1,1) applied on the right of the MuJoCo camera pose",
+    "utility_transform": "K4 @ inverse(corrected_camera_pose_world)",
+    "utility_project": "homogeneous transform, divide by z, round, return clipped (row=v, column=u)",
+    "direct_render_pipeline": "sim.render result is returned unchanged because IMAGE_CONVENTION='opengl' maps to slice +1",
+    "coordinate_resolution": "direct RGB remains unchanged; only raw projected v is converted by v_upright=H-1-v_raw",
+    "final_formula": {
+      "camera_coordinates": "[x_c,y_c,z_c] = diag(1,-1,-1) @ R_wc^T @ (X_world-C)",
+      "u_upright": "fx*x_c/z_c + cx",
+      "v_upright": "H - 1 - (fy*y_c/z_c + cy)",
+      "depth": "z_c, required positive"
+    },
+    "protocol_commit": "f1c362e7e2505da6f55a716b94fab4225cfcede9",
+    "old_four_pixel_robot_mask_margin_reused": false
+  },
+  "camera": {
+    "camera_name": "agentview",
+    "camera_id": 2,
+    "image_height": 128,
+    "image_width": 128,
+    "fovy_degrees": 45.0,
+    "camera_position_world": [
+      0.6586131746834771,
+      0.0,
+      1.6103500240372424
+    ],
+    "camera_rotation_world": [
+      [
+        -7.268184498698815e-08,
+        -0.6282664504107425,
+        0.7779982437565529
+      ],
+      [
+        0.9999999999999858,
+        7.268184498698815e-08,
+        1.521152659944569e-07
+      ],
+      [
+        -1.521152659944569e-07,
+        0.7779982437565529,
+        0.6282664504107283
+      ]
+    ],
+    "intrinsic": [
+      [
+        154.50966799187808,
+        0.0,
+        64.0
+      ],
+      [
+        0.0,
+        154.50966799187808,
+        64.0
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "corrected_camera_pose_world": [
+      [
+        -7.268184498698815e-08,
+        0.6282664504107425,
+        -0.7779982437565529,
+        0.6586131746834771
+      ],
+      [
+        0.9999999999999858,
+        -7.268184498698815e-08,
+        -1.521152659944569e-07,
+        0.0
+      ],
+      [
+        -1.521152659944569e-07,
+        -0.7779982437565529,
+        -0.6282664504107283,
+        1.6103500240372424
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "world_to_raw_pixel": [
+      [
+        -49.791898830467126,
+        154.50965825649885,
+        -40.20907632956585,
+        97.54428759608415
+      ],
+      [
+        47.28135306298016,
+        -2.096542476162193e-05,
+        -160.41730316737585,
+        227.18788596743354
+      ],
+      [
+        -0.7779982437565529,
+        -1.521152659944569e-07,
+        -0.6282664504107283,
+        1.5241287867393822
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ]
+  },
+  "primary_landmarks": [
+    {
+      "name": "gripper0_grip_site",
+      "mujoco_type": "site",
+      "id": 13,
+      "visible_task_count": 10,
+      "visible_pixel_range": [
+        4,
+        7
+      ],
+      "primary": true,
+      "reason": "explicit semantic allowlist; finite site_xpos; visible and compact in all ten tasks"
+    }
+  ],
+  "primary_rows": [
+    {
+      "task_id": 0,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 7,
+      "world_position": [
+        -0.22327450934472357,
+        -0.009046255716913112,
+        1.1635111411995542
+      ],
+      "raw_utility_float_uv": [
+        62.554350059131494,
+        31.012180222421023
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        63
+      ],
+      "independent_raw_uv": [
+        62.5543500591315,
+        31.012180222421044
+      ],
+      "independent_upright_uv": [
+        62.5543500591315,
+        95.98781977757895
+      ],
+      "camera_depth": 0.9668409495664774,
+      "independent_depth": 0.9668409495664771,
+      "pixels": {
+        "direct_render": [
+          62.554350059131494,
+          31.012180222421023
+        ],
+        "vertical_flip_to_direct_render": [
+          62.554350059131494,
+          95.98781977757898
+        ]
+      },
+      "errors": {
+        "direct_render": 63.99022100193112,
+        "vertical_flip_to_direct_render": 0.44581636086434584
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 1,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 4,
+      "world_position": [
+        -0.22219803078164435,
+        0.007962236619070953,
+        1.1460895251645613
+      ],
+      "raw_utility_float_uv": [
+        65.25929143605643,
+        33.60408369788334
+      ],
+      "official_rounded_clipped_row_col": [
+        34,
+        65
+      ],
+      "independent_raw_uv": [
+        65.25929143605643,
+        33.60408369788336
+      ],
+      "independent_upright_uv": [
+        65.25929143605643,
+        93.39591630211663
+      ],
+      "camera_depth": 0.9769488654144323,
+      "independent_depth": 0.9769488654144323,
+      "pixels": {
+        "direct_render": [
+          65.25929143605643,
+          33.60408369788334
+        ],
+        "vertical_flip_to_direct_render": [
+          65.25929143605643,
+          93.39591630211666
+        ]
+      },
+      "errors": {
+        "direct_render": 59.39648226466665,
+        "vertical_flip_to_direct_render": 0.473267120233316
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 2,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.217817874754744,
+        0.015512880519309859,
+        1.1637035857060887
+      ],
+      "raw_utility_float_uv": [
+        66.49036171164431,
+        31.388843943461154
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        66
+      ],
+      "independent_raw_uv": [
+        66.49036171164433,
+        31.38884394346119
+      ],
+      "independent_upright_uv": [
+        66.49036171164433,
+        95.61115605653882
+      ],
+      "camera_depth": 0.9624747872758109,
+      "independent_depth": 0.9624747872758108,
+      "pixels": {
+        "direct_render": [
+          66.49036171164431,
+          31.388843943461154
+        ],
+        "vertical_flip_to_direct_render": [
+          66.49036171164431,
+          95.61115605653885
+        ]
+      },
+      "errors": {
+        "direct_render": 63.61304606334761,
+        "vertical_flip_to_direct_render": 0.6258228348447826
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 3,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.21678687372319683,
+        0.0004113595913105044,
+        1.163948412703292
+      ],
+      "raw_utility_float_uv": [
+        64.06612387907784,
+        31.429902453524836
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        64
+      ],
+      "independent_raw_uv": [
+        64.06612387907784,
+        31.42990245352486
+      ],
+      "independent_upright_uv": [
+        64.06612387907784,
+        95.57009754647514
+      ],
+      "camera_depth": 0.9615188559926301,
+      "independent_depth": 0.9615188559926302,
+      "pixels": {
+        "direct_render": [
+          64.06612387907784,
+          31.429902453524836
+        ],
+        "vertical_flip_to_direct_render": [
+          64.06612387907784,
+          95.57009754647517
+        ]
+      },
+      "errors": {
+        "direct_render": 63.570131936592304,
+        "vertical_flip_to_direct_render": 0.4349580289303448
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 4,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.2056428915765735,
+        -0.010765355793903822,
+        1.1873763617890958
+      ],
+      "raw_utility_float_uv": [
+        62.22697052386933,
+        28.769042797868167
+      ],
+      "official_rounded_clipped_row_col": [
+        29,
+        62
+      ],
+      "independent_raw_uv": [
+        62.22697052386935,
+        28.76904279786818
+      ],
+      "independent_upright_uv": [
+        62.22697052386935,
+        98.23095720213182
+      ],
+      "camera_depth": 0.9381298647417107,
+      "independent_depth": 0.9381298647417107,
+      "pixels": {
+        "direct_render": [
+          62.22697052386933,
+          28.769042797868167
+        ],
+        "vertical_flip_to_direct_render": [
+          62.22697052386933,
+          98.23095720213183
+        ]
+      },
+      "errors": {
+        "direct_render": 68.23133471021838,
+        "vertical_flip_to_direct_render": 0.3238160711300229
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 5,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.22805838539569673,
+        -0.006595488314672229,
+        1.144780410354347
+      ],
+      "raw_utility_float_uv": [
+        62.96262447631508,
+        33.35169244040233
+      ],
+      "official_rounded_clipped_row_col": [
+        33,
+        63
+      ],
+      "independent_raw_uv": [
+        62.962624476315064,
+        33.35169244040234
+      ],
+      "independent_upright_uv": [
+        62.962624476315064,
+        93.64830755959767
+      ],
+      "camera_depth": 0.9823306861414012,
+      "independent_depth": 0.9823306861414013,
+      "pixels": {
+        "direct_render": [
+          62.96262447631508,
+          33.35169244040233
+        ],
+        "vertical_flip_to_direct_render": [
+          62.96262447631508,
+          93.64830755959767
+        ]
+      },
+      "errors": {
+        "direct_render": 59.64831926931493,
+        "vertical_flip_to_direct_render": 0.35367287485311844
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 6,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.21667113055478393,
+        6.115343928940963e-05,
+        1.1663643652086937
+      ],
+      "raw_utility_float_uv": [
+        64.00986452153974,
+        31.084504126051975
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        64
+      ],
+      "independent_raw_uv": [
+        64.00986452153974,
+        31.084504126052003
+      ],
+      "independent_upright_uv": [
+        64.00986452153974,
+        95.915495873948
+      ],
+      "camera_depth": 0.9599109461592202,
+      "independent_depth": 0.9599109461592203,
+      "pixels": {
+        "direct_render": [
+          64.00986452153974,
+          31.084504126051975
+        ],
+        "vertical_flip_to_direct_render": [
+          64.00986452153974,
+          95.91549587394803
+        ]
+      },
+      "errors": {
+        "direct_render": 63.923473303353376,
+        "vertical_flip_to_direct_render": 0.08507794135388366
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 7,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.21115678412712618,
+        -0.016304724717569965,
+        1.1703981278494586
+      ],
+      "raw_utility_float_uv": [
+        61.35677984682706,
+        30.901702999739452
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        61
+      ],
+      "independent_raw_uv": [
+        61.356779846827074,
+        30.901702999739463
+      ],
+      "independent_upright_uv": [
+        61.356779846827074,
+        96.09829700026054
+      ],
+      "camera_depth": 0.9530865190764244,
+      "independent_depth": 0.9530865190764244,
+      "pixels": {
+        "direct_render": [
+          61.35677984682706,
+          30.901702999739452
+        ],
+        "vertical_flip_to_direct_render": [
+          61.35677984682706,
+          96.09829700026054
+        ]
+      },
+      "errors": {
+        "direct_render": 64.09928993516786,
+        "vertical_flip_to_direct_render": 0.370073181090121
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 8,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.20458783965328328,
+        0.007190219182339353,
+        1.1781656769527187
+      ],
+      "raw_utility_float_uv": [
+        65.17801206712855,
+        30.237156633519593
+      ],
+      "official_rounded_clipped_row_col": [
+        30,
+        65
+      ],
+      "independent_raw_uv": [
+        65.17801206712855,
+        30.237156633519596
+      ],
+      "independent_upright_uv": [
+        65.17801206712855,
+        96.76284336648041
+      ],
+      "camera_depth": 0.9430957977350044,
+      "independent_depth": 0.9430957977350045,
+      "pixels": {
+        "direct_render": [
+          65.17801206712855,
+          30.237156633519593
+        ],
+        "vertical_flip_to_direct_render": [
+          65.17801206712855,
+          96.76284336648041
+        ]
+      },
+      "errors": {
+        "direct_render": 65.76308429461227,
+        "vertical_flip_to_direct_render": 0.2965325696542014
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 9,
+      "init_state_index": 31,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.21059813721864637,
+        -0.008775479371676538,
+        1.165222913847992
+      ],
+      "raw_utility_float_uv": [
+        62.58157600885226,
+        31.70676750038941
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        63
+      ],
+      "independent_raw_uv": [
+        62.581576008852274,
+        31.706767500389432
+      ],
+      "independent_upright_uv": [
+        62.581576008852274,
+        95.29323249961057
+      ],
+      "camera_depth": 0.9559033049482514,
+      "independent_depth": 0.9559033049482514,
+      "pixels": {
+        "direct_render": [
+          62.58157600885226,
+          31.70676750038941
+        ],
+        "vertical_flip_to_direct_render": [
+          62.58157600885226,
+          95.29323249961058
+        ]
+      },
+      "errors": {
+        "direct_render": 63.2946155599837,
+        "vertical_flip_to_direct_render": 0.5109441605458217
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 0,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.21169740361191516,
+        -0.028422771213225898,
+        1.1741883842090322
+      ],
+      "raw_utility_float_uv": [
+        59.38276348357033,
+        30.299264235576654
+      ],
+      "official_rounded_clipped_row_col": [
+        30,
+        59
+      ],
+      "independent_raw_uv": [
+        59.38276348357033,
+        30.299264235576686
+      ],
+      "independent_upright_uv": [
+        59.38276348357033,
+        96.70073576442331
+      ],
+      "camera_depth": 0.9511258310202946,
+      "independent_depth": 0.9511258310202946,
+      "pixels": {
+        "direct_render": [
+          59.38276348357033,
+          30.299264235576654
+        ],
+        "vertical_flip_to_direct_render": [
+          59.38276348357033,
+          96.70073576442334
+        ]
+      },
+      "errors": {
+        "direct_render": 65.70185071876539,
+        "vertical_flip_to_direct_render": 0.48586723191647224
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 1,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.22587909172995063,
+        -0.004043246762343347,
+        1.1550797629793141
+      ],
+      "raw_utility_float_uv": [
+        63.35873242518935,
+        32.04103381227291
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        63
+      ],
+      "independent_raw_uv": [
+        63.35873242518935,
+        32.041033812272914
+      ],
+      "independent_upright_uv": [
+        63.35873242518935,
+        94.95896618772709
+      ],
+      "camera_depth": 0.9741644613933697,
+      "independent_depth": 0.9741644613933698,
+      "pixels": {
+        "direct_render": [
+          63.35873242518935,
+          32.04103381227291
+        ],
+        "vertical_flip_to_direct_render": [
+          63.35873242518935,
+          94.9589661877271
+        ]
+      },
+      "errors": {
+        "direct_render": 61.96000468047748,
+        "vertical_flip_to_direct_render": 0.36107163642673684
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 2,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.20952307831012923,
+        0.01294850640407311,
+        1.1665434391521319
+      ],
+      "raw_utility_float_uv": [
+        66.09663746846282,
+        31.593398827253775
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        66
+      ],
+      "independent_raw_uv": [
+        66.09663746846282,
+        31.593398827253807
+      ],
+      "independent_upright_uv": [
+        66.09663746846282,
+        95.40660117274619
+      ],
+      "camera_depth": 0.9542372659554307,
+      "independent_depth": 0.9542372659554306,
+      "pixels": {
+        "direct_render": [
+          66.09663746846282,
+          31.593398827253775
+        ],
+        "vertical_flip_to_direct_render": [
+          66.09663746846282,
+          95.40660117274622
+        ]
+      },
+      "errors": {
+        "direct_render": 63.406674814880596,
+        "vertical_flip_to_direct_render": 0.41792740277409923
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 3,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.21030667821542823,
+        0.021907782465798265,
+        1.16070765458857
+      ],
+      "raw_utility_float_uv": [
+        67.53149446098433,
+        32.390482704505814
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        68
+      ],
+      "independent_raw_uv": [
+        67.53149446098435,
+        32.39048270450586
+      ],
+      "independent_upright_uv": [
+        67.53149446098435,
+        94.60951729549414
+      ],
+      "camera_depth": 0.9585133315958294,
+      "independent_depth": 0.9585133315958292,
+      "pixels": {
+        "direct_render": [
+          67.53149446098433,
+          32.390482704505814
+        ],
+        "vertical_flip_to_direct_render": [
+          67.53149446098433,
+          94.60951729549419
+        ]
+      },
+      "errors": {
+        "direct_render": 61.611809807421295,
+        "vertical_flip_to_direct_render": 0.6098968622697898
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 4,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.21047555982211977,
+        -0.02444157791455742,
+        1.168553391080196
+      ],
+      "raw_utility_float_uv": [
+        60.04028676799465,
+        31.225384451920295
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        60
+      ],
+      "independent_raw_uv": [
+        60.04028676799466,
+        31.22538445192034
+      ],
+      "independent_upright_uv": [
+        60.04028676799466,
+        95.77461554807965
+      ],
+      "camera_depth": 0.9537155152232315,
+      "independent_depth": 0.9537155152232315,
+      "pixels": {
+        "direct_render": [
+          60.04028676799465,
+          31.225384451920295
+        ],
+        "vertical_flip_to_direct_render": [
+          60.04028676799465,
+          95.77461554807971
+        ]
+      },
+      "errors": {
+        "direct_render": 63.77462827276256,
+        "vertical_flip_to_direct_render": 0.22895670953886677
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 5,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.20351527140180037,
+        -0.010651704863143426,
+        1.190634712602099
+      ],
+      "raw_utility_float_uv": [
+        62.23873773746641,
+        28.431312286718818
+      ],
+      "official_rounded_clipped_row_col": [
+        28,
+        62
+      ],
+      "independent_raw_uv": [
+        62.23873773746642,
+        28.431312286718864
+      ],
+      "independent_upright_uv": [
+        62.23873773746642,
+        98.56868771328114
+      ],
+      "camera_depth": 0.9344274674655897,
+      "independent_depth": 0.9344274674655897,
+      "pixels": {
+        "direct_render": [
+          62.23873773746641,
+          28.431312286718818
+        ],
+        "vertical_flip_to_direct_render": [
+          62.23873773746641,
+          98.56868771328118
+        ]
+      },
+      "errors": {
+        "direct_render": 69.56909734828625,
+        "vertical_flip_to_direct_render": 0.49297666878382634
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 6,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.2105459437340568,
+        0.005759137171175377,
+        1.1736322199928746
+      ],
+      "raw_utility_float_uv": [
+        64.93612631052974,
+        30.467810218511246
+      ],
+      "official_rounded_clipped_row_col": [
+        30,
+        65
+      ],
+      "independent_raw_uv": [
+        64.93612631052976,
+        30.467810218511246
+      ],
+      "independent_upright_uv": [
+        64.93612631052976,
+        96.53218978148875
+      ],
+      "camera_depth": 0.9505794113759053,
+      "independent_depth": 0.9505794113759054,
+      "pixels": {
+        "direct_render": [
+          64.93612631052974,
+          30.467810218511246
+        ],
+        "vertical_flip_to_direct_render": [
+          64.93612631052974,
+          96.53218978148875
+        ]
+      },
+      "errors": {
+        "direct_render": 65.53222091006275,
+        "vertical_flip_to_direct_render": 0.4721506631892863
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 7,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 4,
+      "world_position": [
+        -0.21695122630340086,
+        0.02226860690935147,
+        1.1769981033102492
+      ],
+      "raw_utility_float_uv": [
+        67.6087284765499,
+        29.492196058562598
+      ],
+      "official_rounded_clipped_row_col": [
+        29,
+        68
+      ],
+      "independent_raw_uv": [
+        67.6087284765499,
+        29.492196058562634
+      ],
+      "independent_upright_uv": [
+        67.6087284765499,
+        97.50780394143737
+      ],
+      "camera_depth": 0.9534480358899736,
+      "independent_depth": 0.9534480358899735,
+      "pixels": {
+        "direct_render": [
+          67.6087284765499,
+          29.492196058562598
+        ],
+        "vertical_flip_to_direct_render": [
+          67.6087284765499,
+          97.5078039414374
+        ]
+      },
+      "errors": {
+        "direct_render": 67.51054838581682,
+        "vertical_flip_to_direct_render": 0.6287689282459171
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 8,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.2194397612374934,
+        -0.01866068808520903,
+        1.1500133905315872
+      ],
+      "raw_utility_float_uv": [
+        61.03473801550318,
+        33.25020778496772
+      ],
+      "official_rounded_clipped_row_col": [
+        33,
+        61
+      ],
+      "independent_raw_uv": [
+        61.03473801550318,
+        33.25020778496773
+      ],
+      "independent_upright_uv": [
+        61.03473801550318,
+        93.74979221503227
+      ],
+      "camera_depth": 0.972337707636998,
+      "independent_depth": 0.9723377076369979,
+      "pixels": {
+        "direct_render": [
+          61.03473801550318,
+          33.25020778496772
+        ],
+        "vertical_flip_to_direct_render": [
+          61.03473801550318,
+          93.74979221503227
+        ]
+      },
+      "errors": {
+        "direct_render": 59.749802313223206,
+        "vertical_flip_to_direct_render": 0.25260773024504984
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 9,
+      "init_state_index": 32,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.20513809221884505,
+        0.001557779262053448,
+        1.17727850669197
+      ],
+      "raw_utility_float_uv": [
+        64.2549693992745,
+        30.32878318344101
+      ],
+      "official_rounded_clipped_row_col": [
+        30,
+        64
+      ],
+      "independent_raw_uv": [
+        64.2549693992745,
+        30.328783183441047
+      ],
+      "independent_upright_uv": [
+        64.2549693992745,
+        96.67121681655895
+      ],
+      "camera_depth": 0.9440812734320447,
+      "independent_depth": 0.9440812734320447,
+      "pixels": {
+        "direct_render": [
+          64.2549693992745,
+          30.32878318344101
+        ],
+        "vertical_flip_to_direct_render": [
+          64.2549693992745,
+          96.671216816559
+        ]
+      },
+      "errors": {
+        "direct_render": 65.6717117757872,
+        "vertical_flip_to_direct_render": 0.41606222645176616
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 0,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.22022089614430834,
+        -0.0008301689623445418,
+        1.1653157618208696
+      ],
+      "raw_utility_float_uv": [
+        63.86686949719925,
+        30.97452271735174
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        64
+      ],
+      "independent_raw_uv": [
+        63.86686949719926,
+        30.97452271735176
+      ],
+      "independent_upright_uv": [
+        63.86686949719926,
+        96.02547728264824
+      ],
+      "camera_depth": 0.9633314600175584,
+      "independent_depth": 0.9633314600175582,
+      "pixels": {
+        "direct_render": [
+          63.86686949719925,
+          30.97452271735174
+        ],
+        "vertical_flip_to_direct_render": [
+          63.86686949719925,
+          96.02547728264827
+        ]
+      },
+      "errors": {
+        "direct_render": 64.0313454801325,
+        "vertical_flip_to_direct_render": 0.13554638581356993
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 1,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.2160027525706366,
+        -0.01847984533350335,
+        1.178916249742449
+      ],
+      "raw_utility_float_uv": [
+        60.99918052717049,
+        29.276165440437463
+      ],
+      "official_rounded_clipped_row_col": [
+        29,
+        61
+      ],
+      "independent_raw_uv": [
+        60.999180527170495,
+        29.276165440437488
+      ],
+      "independent_upright_uv": [
+        60.999180527170495,
+        97.7238345595625
+      ],
+      "camera_depth": 0.9515050241397692,
+      "independent_depth": 0.9515050241397692,
+      "pixels": {
+        "direct_render": [
+          60.99918052717049,
+          29.276165440437463
+        ],
+        "vertical_flip_to_direct_render": [
+          60.99918052717049,
+          97.72383455956253
+        ]
+      },
+      "errors": {
+        "direct_render": 67.72383456452043,
+        "vertical_flip_to_direct_render": 0.2761666562562148
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 2,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.2090795197188317,
+        -0.007094853290571605,
+        1.194044863432139
+      ],
+      "raw_utility_float_uv": [
+        62.829609694481114,
+        27.4999816374387
+      ],
+      "official_rounded_clipped_row_col": [
+        27,
+        63
+      ],
+      "independent_raw_uv": [
+        62.82960969448113,
+        27.49998163743875
+      ],
+      "independent_upright_uv": [
+        62.82960969448113,
+        99.50001836256125
+      ],
+      "camera_depth": 0.9366139589856597,
+      "independent_depth": 0.9366139589856597,
+      "pixels": {
+        "direct_render": [
+          62.829609694481114,
+          27.4999816374387
+        ],
+        "vertical_flip_to_direct_render": [
+          62.829609694481114,
+          99.50001836256129
+        ]
+      },
+      "errors": {
+        "direct_render": 71.50022138918744,
+        "vertical_flip_to_direct_render": 0.5282182257275028
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 3,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 7,
+      "world_position": [
+        -0.20432343713674583,
+        0.021352998778540147,
+        1.1815691825458017
+      ],
+      "raw_utility_float_uv": [
+        67.50705104345217,
+        29.74541818580374
+      ],
+      "official_rounded_clipped_row_col": [
+        30,
+        68
+      ],
+      "independent_raw_uv": [
+        67.50705104345217,
+        29.74541818580377
+      ],
+      "independent_upright_uv": [
+        67.50705104345217,
+        97.25458181419623
+      ],
+      "camera_depth": 0.9407517825091991,
+      "independent_depth": 0.9407517825091991,
+      "pixels": {
+        "direct_render": [
+          67.50705104345217,
+          29.74541818580374
+        ],
+        "vertical_flip_to_direct_render": [
+          67.50705104345217,
+          97.25458181419626
+        ]
+      },
+      "errors": {
+        "direct_render": 66.25652203470004,
+        "vertical_flip_to_direct_render": 0.5548067896854334
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 4,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.2120780614257397,
+        -0.017894111101079132,
+        1.1603903232994008
+      ],
+      "raw_utility_float_uv": [
+        61.120279979049265,
+        32.303049971261395
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        61
+      ],
+      "independent_raw_uv": [
+        61.12027997904928,
+        32.3030499712614
+      ],
+      "independent_upright_uv": [
+        61.12027997904928,
+        94.6969500287386
+      ],
+      "camera_depth": 0.9600908392795977,
+      "independent_depth": 0.9600908392795975,
+      "pixels": {
+        "direct_render": [
+          61.120279979049265,
+          32.303049971261395
+        ],
+        "vertical_flip_to_direct_render": [
+          61.120279979049265,
+          94.6969500287386
+        ]
+      },
+      "errors": {
+        "direct_render": 61.69706727326695,
+        "vertical_flip_to_direct_render": 0.3260468654068429
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 5,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 7,
+      "world_position": [
+        -0.20512027146950262,
+        -0.021097739905346292,
+        1.1724235556664604
+      ],
+      "raw_utility_float_uv": [
+        60.55820486989838,
+        31.05474651895033
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        61
+      ],
+      "independent_raw_uv": [
+        60.55820486989838,
+        31.05474651895034
+      ],
+      "independent_upright_uv": [
+        60.55820486989838,
+        95.94525348104966
+      ],
+      "camera_depth": 0.947117615214319,
+      "independent_depth": 0.947117615214319,
+      "pixels": {
+        "direct_render": [
+          60.55820486989838,
+          31.05474651895033
+        ],
+        "vertical_flip_to_direct_render": [
+          60.55820486989838,
+          95.94525348104966
+        ]
+      },
+      "errors": {
+        "direct_render": 63.947689836556826,
+        "vertical_flip_to_direct_render": 0.4451742561275133
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 6,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.21959054520492957,
+        -0.018270244933417192,
+        1.1711488152787557
+      ],
+      "raw_utility_float_uv": [
+        61.0569444019774,
+        30.16422791472086
+      ],
+      "official_rounded_clipped_row_col": [
+        30,
+        61
+      ],
+      "independent_raw_uv": [
+        61.056944401977404,
+        30.16422791472089
+      ],
+      "independent_upright_uv": [
+        61.056944401977404,
+        96.8357720852791
+      ],
+      "camera_depth": 0.9591763389556309,
+      "independent_depth": 0.9591763389556311,
+      "pixels": {
+        "direct_render": [
+          61.0569444019774,
+          30.16422791472086
+        ],
+        "vertical_flip_to_direct_render": [
+          61.0569444019774,
+          96.83577208527913
+        ]
+      },
+      "errors": {
+        "direct_render": 65.83579671219705,
+        "vertical_flip_to_direct_render": 0.17382023153283435
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 7,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.2057602402305277,
+        0.019065901623059694,
+        1.1706495719591294
+      ],
+      "raw_utility_float_uv": [
+        67.10508369370024,
+        31.27002890515267
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        67
+      ],
+      "independent_raw_uv": [
+        67.10508369370022,
+        31.270028905152706
+      ],
+      "independent_upright_uv": [
+        67.10508369370022,
+        95.72997109484729
+      ],
+      "camera_depth": 0.9487300381238437,
+      "independent_depth": 0.9487300381238437,
+      "pixels": {
+        "direct_render": [
+          67.10508369370024,
+          31.27002890515267
+        ],
+        "vertical_flip_to_direct_render": [
+          67.10508369370024,
+          95.72997109484733
+        ]
+      },
+      "errors": {
+        "direct_render": 63.730057730499176,
+        "vertical_flip_to_direct_render": 0.2897554008118493
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 8,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.21382187373860437,
+        0.0027999110659050596,
+        1.169435454185928
+      ],
+      "raw_utility_float_uv": [
+        64.45265687192678,
+        30.844845551928007
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        64
+      ],
+      "independent_raw_uv": [
+        64.45265687192676,
+        30.844845551928046
+      ],
+      "independent_upright_uv": [
+        64.45265687192676,
+        96.15515444807195
+      ],
+      "camera_depth": 0.9557647667729917,
+      "independent_depth": 0.9557647667729918,
+      "pixels": {
+        "direct_render": [
+          64.45265687192678,
+          30.844845551928007
+        ],
+        "vertical_flip_to_direct_render": [
+          64.45265687192678,
+          96.155154448072
+        ]
+      },
+      "errors": {
+        "direct_render": 64.15675132439044,
+        "vertical_flip_to_direct_render": 0.47850929610516524
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 9,
+      "init_state_index": 33,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.2004610639545765,
+        -0.005313291986048923,
+        1.1693105161736257
+      ],
+      "raw_utility_float_uv": [
+        63.13169791738745,
+        31.870772180924494
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        63
+      ],
+      "independent_raw_uv": [
+        63.13169791738744,
+        31.870772180924547
+      ],
+      "independent_upright_uv": [
+        63.13169791738744,
+        95.12922781907545
+      ],
+      "camera_depth": 0.9454485758215053,
+      "independent_depth": 0.9454485758215052,
+      "pixels": {
+        "direct_render": [
+          63.13169791738745,
+          31.870772180924494
+        ],
+        "vertical_flip_to_direct_render": [
+          63.13169791738745,
+          95.12922781907551
+        ]
+      },
+      "errors": {
+        "direct_render": 62.12936740170489,
+        "vertical_flip_to_direct_render": 0.1845106248084482
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 0,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 4,
+      "world_position": [
+        -0.21645258921660054,
+        -0.007287773690643005,
+        1.1575471137926872
+      ],
+      "raw_utility_float_uv": [
+        62.83348827905361,
+        32.38760998286951
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        63
+      ],
+      "independent_raw_uv": [
+        62.83348827905362,
+        32.38760998286956
+      ],
+      "independent_upright_uv": [
+        62.83348827905362,
+        94.61239001713044
+      ],
+      "camera_depth": 0.9652805057493228,
+      "independent_depth": 0.9652805057493227,
+      "pixels": {
+        "direct_render": [
+          62.83348827905361,
+          32.38760998286951
+        ],
+        "vertical_flip_to_direct_render": [
+          62.83348827905361,
+          94.61239001713048
+        ]
+      },
+      "errors": {
+        "direct_render": 61.61802744598629,
+        "vertical_flip_to_direct_render": 0.4218621244347942
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 1,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.2055205366710131,
+        0.013901454916740302,
+        1.174111325872349
+      ],
+      "raw_utility_float_uv": [
+        66.26965374423959,
+        30.773234325439883
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        66
+      ],
+      "independent_raw_uv": [
+        66.26965374423959,
+        30.773234325439894
+      ],
+      "independent_upright_uv": [
+        66.26965374423959,
+        96.22676567456011
+      ],
+      "camera_depth": 0.9463686461178564,
+      "independent_depth": 0.9463686461178566,
+      "pixels": {
+        "direct_render": [
+          66.26965374423959,
+          30.773234325439883
+        ],
+        "vertical_flip_to_direct_render": [
+          66.26965374423959,
+          96.22676567456011
+        ]
+      },
+      "errors": {
+        "direct_render": 64.22733173779396,
+        "vertical_flip_to_direct_render": 0.3523291258768337
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 2,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 4,
+      "world_position": [
+        -0.21232180689589264,
+        0.00029465645674438636,
+        1.1631817297698481
+      ],
+      "raw_utility_float_uv": [
+        64.04751830154736,
+        31.87657342171015
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        64
+      ],
+      "independent_raw_uv": [
+        64.04751830154737,
+        31.876573421710162
+      ],
+      "independent_upright_uv": [
+        64.04751830154737,
+        95.12342657828984
+      ],
+      "camera_depth": 0.9585267230256695,
+      "independent_depth": 0.9585267230256695,
+      "pixels": {
+        "direct_render": [
+          64.04751830154736,
+          31.87657342171015
+        ],
+        "vertical_flip_to_direct_render": [
+          64.04751830154736,
+          95.12342657828985
+        ]
+      },
+      "errors": {
+        "direct_render": 63.123444463794364,
+        "vertical_flip_to_direct_render": 0.13225773780874367
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 3,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.20150260182867097,
+        0.004859978453062959,
+        1.1776567318559341
+      ],
+      "raw_utility_float_uv": [
+        64.79800353158822,
+        30.545789221188056
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        65
+      ],
+      "independent_raw_uv": [
+        64.79800353158822,
+        30.54578922118808
+      ],
+      "independent_upright_uv": [
+        64.79800353158822,
+        96.45421077881193
+      ],
+      "camera_depth": 0.9410152416097608,
+      "independent_depth": 0.9410152416097608,
+      "pixels": {
+        "direct_render": [
+          64.79800353158822,
+          30.545789221188056
+        ],
+        "vertical_flip_to_direct_render": [
+          64.79800353158822,
+          96.45421077881194
+        ]
+      },
+      "errors": {
+        "direct_render": 65.45452246598695,
+        "vertical_flip_to_direct_render": 0.4971016041412262
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 4,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.20224276477539938,
+        0.004197278584863673,
+        1.1912583818464155
+      ],
+      "raw_utility_float_uv": [
+        64.69507816065273,
+        28.430675370742204
+      ],
+      "official_rounded_clipped_row_col": [
+        28,
+        65
+      ],
+      "independent_raw_uv": [
+        64.69507816065274,
+        28.43067537074223
+      ],
+      "independent_upright_uv": [
+        64.69507816065274,
+        98.56932462925778
+      ],
+      "camera_depth": 0.933045626823967,
+      "independent_depth": 0.9330456268239669,
+      "pixels": {
+        "direct_render": [
+          64.69507816065273,
+          28.430675370742204
+        ],
+        "vertical_flip_to_direct_render": [
+          64.69507816065273,
+          98.56932462925779
+        ]
+      },
+      "errors": {
+        "direct_render": 69.57279686070174,
+        "vertical_flip_to_direct_render": 0.5276917690042757
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 5,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.19834382294203762,
+        0.006458398527438892,
+        1.196634521396831
+      ],
+      "raw_utility_float_uv": [
+        65.07691246414986,
+        27.89561114590205
+      ],
+      "official_rounded_clipped_row_col": [
+        28,
+        65
+      ],
+      "independent_raw_uv": [
+        65.07691246414986,
+        27.89561114590211
+      ],
+      "independent_upright_uv": [
+        65.07691246414986,
+        99.10438885409789
+      ],
+      "camera_depth": 0.9266346084688994,
+      "independent_depth": 0.9266346084688994,
+      "pixels": {
+        "direct_render": [
+          65.07691246414986,
+          27.89561114590205
+        ],
+        "vertical_flip_to_direct_render": [
+          65.07691246414986,
+          99.10438885409795
+        ]
+      },
+      "errors": {
+        "direct_render": 70.10443104493264,
+        "vertical_flip_to_direct_render": 0.129663256173388
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 6,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.20894595856142703,
+        -0.004235918514519549,
+        1.1719417672961743
+      ],
+      "raw_utility_float_uv": [
+        63.31137142102702,
+        30.838597394084452
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        63
+      ],
+      "independent_raw_uv": [
+        63.311371421027026,
+        30.83859739408448
+      ],
+      "independent_upright_uv": [
+        63.311371421027026,
+        96.16140260591553
+      ],
+      "camera_depth": 0.9503966819573066,
+      "independent_depth": 0.9503966819573068,
+      "pixels": {
+        "direct_render": [
+          63.31137142102702,
+          30.838597394084452
+        ],
+        "vertical_flip_to_direct_render": [
+          63.31137142102702,
+          96.16140260591555
+        ]
+      },
+      "errors": {
+        "direct_render": 64.16215813484004,
+        "vertical_flip_to_direct_render": 0.3507177825955179
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 7,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.20017201580765048,
+        0.004081006016911005,
+        1.192686012096624
+      ],
+      "raw_utility_float_uv": [
+        64.67764516742464,
+        28.36640557696387
+      ],
+      "official_rounded_clipped_row_col": [
+        28,
+        65
+      ],
+      "independent_raw_uv": [
+        64.67764516742463,
+        28.366405576963892
+      ],
+      "independent_upright_uv": [
+        64.67764516742463,
+        98.6335944230361
+      ],
+      "camera_depth": 0.9305376555916869,
+      "independent_depth": 0.9305376555916871,
+      "pixels": {
+        "direct_render": [
+          64.67764516742464,
+          28.36640557696387
+        ],
+        "vertical_flip_to_direct_render": [
+          64.67764516742464,
+          98.63359442303613
+        ]
+      },
+      "errors": {
+        "direct_render": 69.6368916253793,
+        "vertical_flip_to_direct_render": 0.488022217644764
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 8,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 6,
+      "world_position": [
+        -0.19964058324313344,
+        0.019249635086988466,
+        1.174963249447293
+      ],
+      "raw_utility_float_uv": [
+        67.15989029182603,
+        31.09046347341473
+      ],
+      "official_rounded_clipped_row_col": [
+        31,
+        67
+      ],
+      "independent_raw_uv": [
+        67.15989029182604,
+        31.090463473414736
+      ],
+      "independent_upright_uv": [
+        67.15989029182604,
+        95.90953652658527
+      ],
+      "camera_depth": 0.9412588168636048,
+      "independent_depth": 0.9412588168636047,
+      "pixels": {
+        "direct_render": [
+          67.15989029182603,
+          31.09046347341473
+        ],
+        "vertical_flip_to_direct_render": [
+          67.15989029182603,
+          95.90953652658527
+        ]
+      },
+      "errors": {
+        "direct_render": 63.909736534806314,
+        "vertical_flip_to_direct_render": 0.1837077718619186
+      },
+      "selected_in_frame": true,
+      "finite": true
+    },
+    {
+      "task_id": 9,
+      "init_state_index": 34,
+      "landmark_name": "gripper0_grip_site",
+      "landmark_id": 13,
+      "site_visible_pixels": 5,
+      "world_position": [
+        -0.20925854087918816,
+        -0.0011216901510486352,
+        1.1631183829505756
+      ],
+      "raw_utility_float_uv": [
+        63.81876726561936,
+        32.11679661965041
+      ],
+      "official_rounded_clipped_row_col": [
+        32,
+        64
+      ],
+      "independent_raw_uv": [
+        63.81876726561937,
+        32.11679661965046
+      ],
+      "independent_upright_uv": [
+        63.81876726561937,
+        94.88320338034954
+      ],
+      "camera_depth": 0.9561833063412514,
+      "independent_depth": 0.9561833063412515,
+      "pixels": {
+        "direct_render": [
+          63.81876726561936,
+          32.11679661965041
+        ],
+        "vertical_flip_to_direct_render": [
+          63.81876726561936,
+          94.88320338034958
+        ]
+      },
+      "errors": {
+        "direct_render": 61.88861963599577,
+        "vertical_flip_to_direct_render": 0.215607871778487
+      },
+      "selected_in_frame": true,
+      "finite": true
+    }
+  ],
+  "primary_metrics": {
+    "pooled": {
+      "direct_render": {
+        "n": 40,
+        "mean": 64.61812402660112,
+        "median": 64.01078324103182,
+        "p95": 69.66026859635697,
+        "max": 71.50022138918744
+      },
+      "vertical_flip_to_direct_render": {
+        "n": 40,
+        "mean": 0.37444457992342733,
+        "median": 0.3930677037709436,
+        "p95": 0.6106931608985394,
+        "max": 0.6287689282459171
+      }
+    },
+    "per_task": {
+      "0": {
+        "direct_render": {
+          "n": 4,
+          "mean": 63.83536116170382,
+          "median": 64.01078324103182,
+          "p95": 65.45127493297045,
+          "max": 65.70185071876539
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.37227302575729554,
+          "median": 0.43383924264957,
+          "p95": 0.4798596012586533,
+          "max": 0.48586723191647224
+        }
+      },
+      "1": {
+        "direct_render": {
+          "n": 4,
+          "mean": 63.32691331186463,
+          "median": 63.09366820913572,
+          "p95": 67.19935914051146,
+          "max": 67.72383456452043
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.36570863469827536,
+          "median": 0.35670038115178526,
+          "p95": 0.4564377976623291,
+          "max": 0.473267120233316
+        }
+      },
+      "2": {
+        "direct_render": {
+          "n": 4,
+          "mean": 65.41084668280251,
+          "median": 63.50986043911411,
+          "p95": 70.31714509031147,
+          "max": 71.50022138918744
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.4260565502887821,
+          "median": 0.473072814250801,
+          "p95": 0.6111821434771906,
+          "max": 0.6258228348447826
+        }
+      },
+      "3": {
+        "direct_render": {
+          "n": 4,
+          "mean": 64.22324656117515,
+          "median": 64.51232720128962,
+          "p95": 66.13622209939308,
+          "max": 66.25652203470004
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.5241908212566986,
+          "median": 0.5259541969133298,
+          "p95": 0.6016333513821364,
+          "max": 0.6098968622697898
+        }
+      },
+      "4": {
+        "direct_render": {
+          "n": 4,
+          "mean": 65.81895677923741,
+          "median": 66.00298149149047,
+          "p95": 69.37157753812924,
+          "max": 69.57279686070174
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.35162785377000205,
+          "median": 0.3249314682684329,
+          "p95": 0.49744503346466074,
+          "max": 0.5276917690042757
+        }
+      },
+      "5": {
+        "direct_render": {
+          "n": 4,
+          "mean": 65.81738437477266,
+          "median": 66.75839359242154,
+          "p95": 70.02413099043568,
+          "max": 70.10443104493264
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.3553717639844615,
+          "median": 0.3994235654903159,
+          "p95": 0.4858063068853794,
+          "max": 0.49297666878382634
+        }
+      },
+      "6": {
+        "direct_render": {
+          "n": 4,
+          "mean": 64.86341226511331,
+          "median": 64.8471895224514,
+          "p95": 65.7902603418769,
+          "max": 65.83579671219705
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.2704416546678805,
+          "median": 0.2622690070641761,
+          "p95": 0.453935731100221,
+          "max": 0.4721506631892863
+        }
+      },
+      "7": {
+        "direct_render": {
+          "n": 4,
+          "mean": 66.2441969192158,
+          "median": 65.80491916049235,
+          "p95": 69.31794013944493,
+          "max": 69.6368916253793
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.44415493194816286,
+          "median": 0.42904769936744247,
+          "p95": 0.6076569216557441,
+          "max": 0.6287689282459171
+        }
+      },
+      "8": {
+        "direct_render": {
+          "n": 4,
+          "mean": 63.39484361675805,
+          "median": 64.03324392959837,
+          "p95": 65.522134349079,
+          "max": 65.76308429461227
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.30283934196658374,
+          "median": 0.2745701499496256,
+          "p95": 0.4512127871375206,
+          "max": 0.47850929610516524
+        }
+      },
+      "9": {
+        "direct_render": {
+          "n": 4,
+          "mean": 63.24607859336788,
+          "median": 62.71199148084429,
+          "p95": 65.31514734341667,
+          "max": 65.6717117757872
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 4,
+          "mean": 0.33178122089613077,
+          "median": 0.3158350491151266,
+          "p95": 0.49671187043171333,
+          "max": 0.5109441605458217
+        }
+      }
+    },
+    "per_landmark": {
+      "gripper0_grip_site": {
+        "direct_render": {
+          "n": 40,
+          "mean": 64.61812402660112,
+          "median": 64.01078324103182,
+          "p95": 69.66026859635697,
+          "max": 71.50022138918744
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 40,
+          "mean": 0.37444457992342733,
+          "median": 0.3930677037709436,
+          "p95": 0.6106931608985394,
+          "max": 0.6287689282459171
+        }
+      }
+    },
+    "per_init": {
+      "31": {
+        "direct_render": {
+          "n": 10,
+          "mean": 63.552999833918804,
+          "median": 63.76825968335049,
+          "p95": 67.12062202319562,
+          "max": 68.23133471021838
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 10,
+          "mean": 0.3919981143499958,
+          "median": 0.40251560501023287,
+          "p95": 0.5741274314102501,
+          "max": 0.6258228348447826
+        }
+      },
+      "32": {
+        "direct_render": {
+          "n": 10,
+          "mean": 64.44883490274836,
+          "median": 64.65342459141266,
+          "p95": 68.64275031517501,
+          "max": 69.56909734828625
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 10,
+          "mean": 0.43662860598418113,
+          "median": 0.4450390329816928,
+          "p95": 0.6202764985566598,
+          "max": 0.6287689282459171
+        }
+      },
+      "33": {
+        "direct_render": {
+          "n": 10,
+          "mean": 65.1008653747156,
+          "median": 64.09404840226148,
+          "p95": 69.80084731808728,
+          "max": 71.50022138918744
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 10,
+          "mean": 0.3392554732275374,
+          "median": 0.3079011331093461,
+          "p95": 0.5428419359043646,
+          "max": 0.5548067896854334
+        }
+      },
+      "34": {
+        "direct_render": {
+          "n": 10,
+          "mean": 65.36979599502173,
+          "median": 64.194744936317,
+          "p95": 69.89403830613364,
+          "max": 70.10443104493264
+        },
+        "vertical_flip_to_direct_render": {
+          "n": 10,
+          "mean": 0.3298961261319949,
+          "median": 0.3515234542361758,
+          "p95": 0.5139261948159034,
+          "max": 0.5276917690042757
+        }
+      }
+    }
+  },
+  "rgb_orientation": {
+    "rows": [
+      {
+        "task_id": 0,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 1,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 2,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 3,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 4,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 5,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 6,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 7,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 8,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 9,
+        "init_state_index": 31,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 0,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 1,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 2,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 3,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 4,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 5,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 6,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 7,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 8,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 9,
+        "init_state_index": 32,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 0,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 1,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 2,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 3,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 4,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 5,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 6,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 7,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 8,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 9,
+        "init_state_index": 33,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 0,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 1,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 2,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 3,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 4,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 5,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 6,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 7,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 8,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      },
+      {
+        "task_id": 9,
+        "init_state_index": 34,
+        "shape": [
+          128,
+          128,
+          3
+        ],
+        "dtype": "uint8",
+        "bitwise_equal": true,
+        "max_abs_difference": 0
+      }
+    ],
+    "all_bitwise_equal": true,
+    "maximum_absolute_difference": 0,
+    "interpretation": "direct sim.render RGB already equals upright observation; image array is not flipped"
+  },
+  "source_vs_independent": {
+    "maximum_raw_pixel_difference": 6.039613253960852e-14,
+    "maximum_depth_difference": 2.220446049250313e-16,
+    "maximum_camera_matrix_drift": 0.0,
+    "pass": true
+  },
+  "alternative_conventions": [
+    "direct_render",
+    "vertical_flip_to_direct_render"
+  ],
+  "selected_convention": "vertical_flip_to_direct_render",
+  "historical_robot_mask_reproduction": {
+    "direct_render": {
+      "n": 40,
+      "mean": 4.21694831828227,
+      "median": 3.747694213515908,
+      "p95": 10.076599392175277,
+      "max": 14.146922824147014
+    },
+    "vertical_flip_to_direct_render": {
+      "n": 40,
+      "mean": 1.1592275486994894,
+      "median": 1.1585292173637938,
+      "p95": 1.4290036628064584,
+      "max": 1.475768752897188
+    }
+  },
+  "relevant_object_center_secondary": {
+    "role": "secondary only; body centers need not equal visible-mask centroids",
+    "n": 80,
+    "inside_mask_rate": 0.0,
+    "inside_visible_bbox_rate": 1.0,
+    "distance_to_own_mask": {
+      "n": 80,
+      "mean": 0.38064818208749907,
+      "median": 0.3726452755754502,
+      "p95": 0.60869162562104,
+      "max": 0.6842875003777118
+    }
+  },
+  "geom_footprint_secondary": {
+    "status": "GEOM_FOOTPRINT_CHECK_NOT_IMPLEMENTED",
+    "reason": "a new mesh/primitive rasterizer would add implementation risk and is not needed when native site segmentation supplies a tight primary reference"
+  },
+  "gates": {
+    "source_coordinate_trace_complete": true,
+    "direct_rgb_orientation_verified": true,
+    "source_vs_independent_projection": true,
+    "selected_absolute_alignment": true,
+    "alternative_rejected_by_same_absolute_gate": true,
+    "multi_task_state_landmark_consistency": true,
+    "finite_positive_depth_in_frame": true
+  },
+  "decision": {
+    "final_verdict": "CAMERA_PROJECTION_CONTRACT_VALIDATED",
+    "authorization": "GO_IMAGE_SPACE_TARGET_AUDIT_RESTART",
+    "spatial_target_design_authorized": false,
+    "world_model_reranker_controller_authorized": false
+  },
+  "nan_inf_depth_in_frame_audit": "pass",
+  "forbidden_activity_audit": {
+    "candidate_execution": false,
+    "reward_done_success_or_task_outcome_read": false,
+    "init30_35_access": false,
+    "init36_39_access": false,
+    "init40_49_access": false,
+    "image_space_target_construction": false,
+    "global_patch_ridge_pca_or_shuffle": false,
+    "model_reranker_controller_change": false,
+    "upstream_overwrite": false
+  }
+}
