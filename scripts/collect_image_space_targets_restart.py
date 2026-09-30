@@ -234,22 +234,31 @@ def collect_partition(
             merged_exact = True
             state_exact = True
             camera_static = True
+            first_mismatch: dict[str, Any] | None = None
             for horizon in range(8):
                 for candidate, env in enumerate(envs):
                     env.step(candidates[candidate, horizon])
                     observation = refresh_policy_observation(env)
                     expected_rgb = np.asarray(source["real_rgb"][branch, candidate, horizon])
                     actual_rgb = np.asarray(observation["agentview_image"], dtype=np.uint8)
-                    rgb_exact &= bool(np.array_equal(actual_rgb, expected_rgb))
-                    rgb_exact &= bool(np.array_equal(render_rgb(env.env), expected_rgb))
+                    direct_rgb = render_rgb(env.env)
+                    observation_rgb_exact = bool(np.array_equal(actual_rgb, expected_rgb))
+                    direct_rgb_exact = bool(np.array_equal(direct_rgb, expected_rgb))
+                    rgb_exact &= observation_rgb_exact
+                    rgb_exact &= direct_rgb_exact
                     segmentation = render_segmentation(env.env)
                     ids = per_candidate_ids[candidate]
                     semantic = masks_from_segmentation(segmentation, ids)
                     stacked = np.stack([semantic[name] for name in MASK_NAMES])
-                    merged_exact &= bool(np.array_equal(stacked, frozen_masks["masks"][branch, candidate, horizon]))
+                    frozen_stacked = np.asarray(
+                        frozen_masks["masks"][branch, candidate, horizon], dtype=np.bool_
+                    )
+                    stacked_exact = bool(np.array_equal(stacked, frozen_stacked))
+                    merged_exact &= stacked_exact
                     per_object = _per_object_masks(segmentation, ids, object_names)
                     union = np.any(per_object[np.asarray(state["object_mask"][branch], dtype=bool)], axis=0)
-                    merged_exact &= bool(np.array_equal(union, semantic["relevant"]))
+                    union_exact = bool(np.array_equal(union, semantic["relevant"]))
+                    merged_exact &= union_exact
                     masks[candidate, horizon] = per_object
                     ee_site = int(env.env.robots[0].eef_site_id)
                     actual_ee = np.asarray(env.env.sim.data.site_xpos[ee_site], dtype=np.float64)
@@ -265,11 +274,47 @@ def collect_partition(
                         dtype=np.float64,
                     )
                     camera_static &= bool(np.max(np.abs(current_matrix - frozen_matrix)) <= 1.0e-12)
+                    if first_mismatch is None and not (
+                        observation_rgb_exact and direct_rgb_exact and stacked_exact and union_exact
+                    ):
+                        expected_i16 = expected_rgb.astype(np.int16)
+                        actual_i16 = actual_rgb.astype(np.int16)
+                        direct_i16 = direct_rgb.astype(np.int16)
+                        first_mismatch = {
+                            "branch": branch,
+                            "task_id": task_id,
+                            "init_state_index": init_index,
+                            "candidate": candidate,
+                            "horizon": horizon,
+                            "observation_rgb_exact": observation_rgb_exact,
+                            "direct_rgb_exact": direct_rgb_exact,
+                            "observation_max_abs_difference": int(
+                                np.max(np.abs(actual_i16 - expected_i16))
+                            ),
+                            "direct_max_abs_difference": int(
+                                np.max(np.abs(direct_i16 - expected_i16))
+                            ),
+                            "observation_different_values": int(
+                                np.count_nonzero(actual_rgb != expected_rgb)
+                            ),
+                            "direct_different_values": int(
+                                np.count_nonzero(direct_rgb != expected_rgb)
+                            ),
+                            "observation_equals_direct": bool(
+                                np.array_equal(actual_rgb, direct_rgb)
+                            ),
+                            "merged_mask_exact": stacked_exact,
+                            "merged_mask_different_pixels": int(
+                                np.count_nonzero(stacked != frozen_stacked)
+                            ),
+                            "per_object_union_exact": union_exact,
+                        }
             if not rgb_exact or not merged_exact or not state_exact or not camera_static:
                 raise RuntimeError(
                     "frozen replay/per-object mask gate failed: "
                     f"rgb_exact={rgb_exact}, merged_exact={merged_exact}, "
-                    f"state_exact={state_exact}, camera_static={camera_static}"
+                    f"state_exact={state_exact}, camera_static={camera_static}, "
+                    f"first_mismatch={json.dumps(first_mismatch, sort_keys=True)}"
                 )
             all_masks.append(masks)
             records.append(
