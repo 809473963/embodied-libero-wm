@@ -45,7 +45,7 @@
   },
   "implementation": {
     "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "37f1bebe0a1ba4fbb4ef350390d43752336653aed96496bc4d807a11332b2591"},
-    "analyzer": {"path": "scripts/analyze_natural_image_space_interaction_restart.py", "sha256": "a939446e7422e19929b3a6168d3040a15f20841ca3d1216e016285c32fb00ac7"},
+    "analyzer": {"path": "scripts/analyze_natural_image_space_interaction_restart.py", "sha256": "b7422e5b63850bd7e40e2c6154cf9859aae1242c4516edb947af51316cce018b"},
     "camera_adapter": {"path": "src/probes/image_space_relevance_restart.py", "sha256": "736052a47bb05acf645788edf938fe3b012874c7cdb5e0da63ef7f674e38c0b0"},
     "frozen_target_module": {"path": "src/probes/image_space_relevance.py", "sha256": "7d84c3c80858304105e94a2f67468f90be8cb08f7741549227024c0d66413178"},
     "frozen_analyzer_core": {"path": "scripts/analyze_natural_image_space_interaction.py", "sha256": "40ab64c1966f3b5e1fe48dab8ab2bdc0e89597cb4f12f56a59480bbc335411c2"},
@@ -264,6 +264,14 @@
       "artifact_written": false,
       "target_or_representation_result_viewed": false,
       "correction": "complete and close the identical zero-step sanity environment before creating the three persistent candidate-branch renderers",
+      "scientific_change": false
+    },
+    {
+      "phase": "first calibration-analysis invocation",
+      "stop": "the restart analyzer failed at local-module import before loading the protocol or any data",
+      "artifact_written": false,
+      "target_or_representation_result_viewed": false,
+      "correction": "add the repository root to sys.path before importing the frozen analyzer core",
       "scientific_change": false
     }
   ]

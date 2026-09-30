@@ -7,12 +7,14 @@ import argparse
 import json
 import os
 import subprocess
+import sys
 from pathlib import Path
 from typing import Any
 
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 from scripts import analyze_natural_image_space_interaction as legacy
 from src.probes.image_space_relevance_restart import (
