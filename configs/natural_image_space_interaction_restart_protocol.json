@@ -44,7 +44,7 @@
     ]
   },
   "implementation": {
-    "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "b1385ae37949c239ca9c047eb45639bb6336f3a2ed2d10feb4f36e492fcae933"},
+    "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "759b84fdb6919a89e13ef6a6ea31871acc7087152504141650d4d526aac75774"},
     "analyzer": {"path": "scripts/analyze_natural_image_space_interaction_restart.py", "sha256": "a939446e7422e19929b3a6168d3040a15f20841ca3d1216e016285c32fb00ac7"},
     "camera_adapter": {"path": "src/probes/image_space_relevance_restart.py", "sha256": "736052a47bb05acf645788edf938fe3b012874c7cdb5e0da63ef7f674e38c0b0"},
     "frozen_target_module": {"path": "src/probes/image_space_relevance.py", "sha256": "7d84c3c80858304105e94a2f67468f90be8cb08f7741549227024c0d66413178"},
@@ -60,7 +60,7 @@
     "image_orientation_change": false,
     "round_or_clip": false,
     "maximum_runtime_matrix_difference": 1e-12,
-    "implementation_sanity_partition": "calibration init31, one planning point per task",
+    "implementation_sanity_partition": "calibration init31 official zero-step planning observation, one point per task",
     "implementation_sanity_max_pixels": 2.0
   },
   "scope": {
@@ -232,5 +232,15 @@
     "Do not train or modify CLIP, any World Model, actor, candidate generator, scale, reranker, controller, C1/C2, D20-v2, or seed23/47.",
     "Do not overwrite the old blocked audit, frozen camera contract, or any upstream artifact.",
     "Do not lower the frozen 10-percent redesign gate or change the frozen 10-D global or patch summaries."
+  ],
+  "preflight_correction_history": [
+    {
+      "phase": "first calibration object-mask collection invocation",
+      "stop": "the exact gripper site marker was not visible after the plan-8 64-step prefix, so the implementation-only sanity distance could not be computed",
+      "artifact_written": false,
+      "target_or_representation_result_viewed": false,
+      "correction": "run the already-frozen sanity check at the official zero-step init31 planning observation, matching the validated camera-contract experiment",
+      "scientific_change": false
+    }
   ]
 }

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-01",
+  "status": "IMPLEMENTATION_ONLY_AMENDMENT_BEFORE_ANY_TARGET_OR_REPRESENTATION_RESULT",
+  "parent_protocol_commit": "8eb1d7ffa847939ff3208f96bbc82efca54ce14e",
+  "blocked_invocation": {
+    "phase": "calibration per-object mask collection",
+    "output_written": false,
+    "failure": "gripper0_grip_site native type-6 marker was invisible after the 64-step plan-8 prefix",
+    "camera_contract_failure": false,
+    "target_result_viewed": false,
+    "representation_result_viewed": false
+  },
+  "correction": {
+    "before": "implementation sanity attempted at the plan-8 post-prefix planning state",
+    "after": "implementation sanity runs at the official zero-step init31 planning observation, one task at a time",
+    "reason": "the frozen camera-contract experiment validated this visible zero-step landmark; the sanity check is only an invocation guard and is not downstream camera science",
+    "unchanged": [
+      "frozen camera contract and hash",
+      "projection formula and orientation",
+      "target definitions and aggregation",
+      "calibration and development-evaluation split",
+      "ridge and bootstrap settings",
+      "10-percent gate and decision mapping",
+      "per-object future-mask collection and all replay identity checks"
+    ]
+  }
+}
