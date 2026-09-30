@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-30",
+  "status": "POST_EVALUATION_METADATA_CLARIFICATION_NO_METRIC_CHANGE",
+  "base_protocol": "configs/natural_spatial_target_relevance_protocol.json",
+  "base_protocol_sha256": "c5a3d9fc810144271190949d6b2bbb3015f4fc2ac01b1c9c36e1ba4fbd7ea17b",
+  "diagnosis": "results/natural_spatial_target_relevance/diagnosis.json",
+  "diagnosis_sha256_before_amendment": "a21e5371927a80b78192afb3c13d6323407907273eee879799d1d0c2d86c4c46",
+  "field": "interaction_region.threshold_selection",
+  "incorrect_text": "fixed a priori as one CLIP patch width at 224px mapped to the native 128px image",
+  "clarification": "The preregistered and executed threshold is exactly 32 pixels in the native 128x128 image. One 7x7 cell is approximately 18.3 native pixels, so 32 pixels is approximately 1.75 cell widths, not one cell width.",
+  "unchanged": [
+    "pixel_distance_threshold = 32.0",
+    "interaction indicator arrays",
+    "calibration fits and hashes",
+    "held-out evaluation arrays and hashes",
+    "bootstrap draws",
+    "all metrics, gates, labels, and authorization"
+  ],
+  "rerun_performed": false,
+  "scientific_impact": "The interaction region is broader than its prose rationale implied. Interaction-specific evidence must therefore be interpreted conservatively. The amendment does not change the preregistered numeric threshold or any result."
+}
