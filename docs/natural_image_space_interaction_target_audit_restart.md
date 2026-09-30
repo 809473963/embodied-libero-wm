@@ -1,4 +1,4 @@
-# Natural object-footprint targets clear the spatial-design gate, but patch attribution remains nonunique
+# Natural object-footprint targets clear the spatial-design gate
 
 Date: 2026-10-01
 
@@ -6,8 +6,9 @@ Final mechanism labels:
 
 ```text
 SPATIAL_EE_SIGNAL_CONFIRMED
+SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED
 IMAGE_SPACE_TARGET_MISMATCH_SUPPORTED
-SPATIAL_SIGNAL_REMAINS_NONUNIQUE
+GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL
 ```
 
 Next-stage authorization: `GO_SPATIAL_TARGET_DESIGN`
@@ -26,15 +27,21 @@ full-patch shuffle, improve at least 7/10 tasks and 4/8 horizons, and improve al
 three candidate pairs. The object family therefore authorizes
 `GO_SPATIAL_TARGET_DESIGN`.
 
-That authorization is deliberately narrower than a unique semantic mechanism
-claim. Shuffling only the relevant-object patch scalar does not significantly
-worsen either passing object probe: object-mask degradation is `1.23%` with CI
+The preregistered positive-object mapping therefore assigns
+`SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED`. G+P materially outperforms G and the
+ObjMask strict-interaction shuffle worsens RMSE by `7.99%` with CI
+`[4.06%,12.09%]`, assigning
+`GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL` as well.
+
+Those labels do not prove a uniquely relevant-object-local mechanism.
+Shuffling only the relevant-object patch scalar does not significantly worsen
+either passing object probe: object-mask degradation is `1.23%` with CI
 `[-0.84%,3.37%]`, and visible-area degradation is `0.08%` with CI
 `[-0.36%,0.51%]`. The eight image-space targets are also correlated; held-out
 Spearman is `0.835` between EE displacement and object-mask difference, and
-`0.904` between object-centroid and relative-vector displacement. The final
-label is therefore `SPATIAL_SIGNAL_REMAINS_NONUNIQUE`, not
-`SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED`.
+`0.904` between object-centroid and relative-vector displacement. The positive
+labels establish target-family relevance and lost spatial information, while
+the relevant-only attribution remains unresolved.
 
 The robot result is independently strong. EE image displacement improves by
 `15.03%` (CI `[6.24%,22.68%]`) with a `39.65%` full-patch shuffle degradation.
@@ -114,7 +121,18 @@ The execution order was:
 4. open and collect init36--39 per-object masks;
 5. commit the evaluation mask manifest;
 6. run the one-shot frozen development evaluation;
-7. freeze the immutable diagnosis at commit `acacc81`.
+7. freeze the numerical diagnosis at commit `acacc81`;
+8. correct one post-evaluation label-mapping bug without changing any metric,
+   gate, interval, authorization, or sidecar.
+
+The source diagnosis wrapper had added an unpreregistered relevant-only
+shuffle requirement before assigning the positive object label. The frozen
+mapping instead requires a complete ObjCtr or ObjMask primary pass; the
+distributed-only fallback additionally requires both relevant-only and strict
+shuffles to fail. ObjMask passes the primary gate and its strict shuffle passes,
+so the wrapper downgrade was incorrect. The mechanical correction is recorded
+in `configs/natural_image_space_interaction_restart_decision_amendment.json`
+and committed as `b9dca47`.
 
 ## Development-data boundary
 
@@ -290,9 +308,10 @@ full-patch shuffle.
 
 The strict scalar carries incremental information for ObjMask and a small
 amount for RelVec, but neither result identifies relevant-object patch content
-uniquely. For the object family, the preregistered semantic attribution check
-is the relevant-only shuffle, and it fails for both passing targets. This is
-why the final mechanism label is `SPATIAL_SIGNAL_REMAINS_NONUNIQUE`.
+uniquely. The positive object label follows the complete ObjMask target gate;
+the relevant-only failures remain an explicit interpretive limit. Because the
+ObjMask strict shuffle passes, the preregistered distributed-only condition
+requiring both semantic shuffles to fail is not satisfied.
 
 ## Equal-rank signed PCA remains negative
 
@@ -419,8 +438,9 @@ Final mechanism labels:
 
 ```text
 SPATIAL_EE_SIGNAL_CONFIRMED
+SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED
 IMAGE_SPACE_TARGET_MISMATCH_SUPPORTED
-SPATIAL_SIGNAL_REMAINS_NONUNIQUE
+GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL
 ```
 
 Next-stage authorization:
@@ -430,18 +450,18 @@ GO_SPATIAL_TARGET_DESIGN
 ```
 
 The GO permits only a separately preregistered design study for a spatial
-visual target. Because semantic attribution remains nonunique, that design
-must preserve the distinction between object-footprint prediction and generic
-correlated spatial motion, and it must retain natural-image, capacity-matched,
-shuffle, task/horizon/pair, and held-out controls. It does not authorize
-patch-level World-Model training automatically.
+visual target. Because relevant-object-local attribution remains unresolved,
+that design must preserve the distinction between object-footprint prediction
+and generic correlated spatial motion, and it must retain natural-image,
+capacity-matched, shuffle, task/horizon/pair, and held-out controls. It does
+not authorize patch-level World-Model training automatically.
 
 `REPRESENTATION_AUDIT_STOP_RECOMMENDED` is not assigned because the frozen
 non-robot authorization gate passed. Repeating another similar representation
 probe is nevertheless not authorized by this report; the allowed next action
 is the separately preregistered spatial-target design only.
 
-## Four required answers
+## Five required answers
 
 **Q1 — Is the stronger patch signal mainly immediate 2D robot motion?**
 
@@ -453,11 +473,11 @@ EE motion prevents claiming that the signal is independent of robot motion.
 **Q2 — Does the patch representation stably encode relevant-object natural
 image-space change?**
 
-At the target level, yes: object mask and area changes pass the complete
-frozen gate. At the semantic-attribution level, no unique relevant-object
-patch source is established because relevant-only shuffles cross zero. The
-correct conclusion is object-family target relevance with nonunique spatial
-support.
+At the target level, yes: object mask and area changes pass the complete frozen
+gate, assigning the positive object label. A unique relevant-object patch
+source is not established because relevant-only shuffles cross zero. The
+strict-interaction scalar does matter for ObjMask, so the evidence supports
+lost spatial information without reducing it to one semantic patch channel.
 
 **Q3 — Does it stably encode EE-object relative or interaction geometry?**
 
@@ -473,6 +493,15 @@ increments exceed the frozen 3D object-translation result enough to satisfy
 the preregistered mismatch rule. Centroid and relative targets do not support
 the same claim.
 
+**Q5 — Is the evidence sufficient to upgrade `BLOCK_VISUAL_TARGET_REDESIGN`
+to `GO_SPATIAL_TARGET_DESIGN`?**
+
+Yes. ObjMask and Area are non-robot primary targets in the object family and
+both complete the frozen aggregate, CI, full-shuffle, task, horizon, and pair
+gate. The upgrade authorizes only a separately preregistered spatial-target
+design. It does not authorize choosing a final target post hoc, training a
+World Model, reranker work, or control.
+
 ## Artifacts, finite values, and automated verification
 
 | Artifact | SHA-256 |
@@ -486,7 +515,9 @@ the same claim.
 | Evaluation object-mask manifest | `9519a75766c6e2abb833183017a6356e0cd4e14598ebc698da60db4325bacc48` |
 | Evaluation object masks | `c3871bbce09fdf25eb3b3503fa5a24c098d662b600bb2e4da157757bd7bccd7c` |
 | Evaluation derived sidecar | `ecd1941ad0b9fb692e0ff99d53710b4ee6e75f161780171d6f9177aa2a22ed8f` |
-| Compact diagnosis | `1d9e90627491cb0dace90c7e03948d3d5588913dca8700f7be326272cf244ed9` |
+| Decision-mapping amendment | `a708c1d8354d65da05d2714e4671baf9875f4dcbe5cfc7b93060c429a3900954` |
+| Source numerical diagnosis | `1d9e90627491cb0dace90c7e03948d3d5588913dca8700f7be326272cf244ed9` |
+| Corrected compact diagnosis | `0bfba2b5439fdb8d9c54e1df6802b01ade15ecbb8a9cd65be1b8e9c12c0d86d9` |
 
 All admitted inputs, targets, representations, weights, predictions,
 residuals, bootstrap statistics, projected coordinates, and depths are finite.
@@ -498,7 +529,7 @@ recalculation.
 The 14 required protocol tests pass. Seven additional result tests independently
 verify artifact hashes, the init-state boundary, finite identities, RMSE and
 increment recomputation from the frozen sidecar, the object-family gate,
-nonunique semantic attribution, authorization, preserved old block, and
+the preregistered positive-object mapping, authorization, preserved old block, and
 forbidden-activity mapping. Together they pass `21/21`. The complete repository
 suite passes `126` tests; the remaining 21 messages are dependency deprecation
 warnings, not test failures.

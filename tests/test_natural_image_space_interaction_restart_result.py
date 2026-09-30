@@ -24,9 +24,13 @@ def _result() -> dict:
 
 def test_restart_result_and_derived_hashes() -> None:
     result = _result()
-    assert _sha256(RESULT_PATH) == "1d9e90627491cb0dace90c7e03948d3d5588913dca8700f7be326272cf244ed9"
+    assert _sha256(RESULT_PATH) == "0bfba2b5439fdb8d9c54e1df6802b01ade15ecbb8a9cd65be1b8e9c12c0d86d9"
     assert result["artifacts"]["evaluation_derived"]["sha256"] == _sha256(DERIVED_PATH)
     assert _sha256(DERIVED_PATH) == "ecd1941ad0b9fb692e0ff99d53710b4ee6e75f161780171d6f9177aa2a22ed8f"
+    amendment = result["decision_mapping_amendment"]
+    assert _sha256(ROOT / amendment["path"]) == amendment["sha256"]
+    assert amendment["numeric_result_changed"] is False
+    assert amendment["authorization_changed"] is False
 
 
 def test_restart_result_boundary() -> None:
@@ -86,14 +90,20 @@ def test_object_family_clears_only_the_frozen_primary_gate() -> None:
         assert decision["positive_pairs"] == 3
 
 
-def test_object_semantic_attribution_remains_nonunique() -> None:
+def test_object_label_uses_preregistered_positive_case() -> None:
     result = _result()
     for target in result["family_decisions"]["object"]["passing_targets"]:
         semantic = result["shuffle_controls"][target]["relevant_patch_only"]
         assert semantic["passes"] is False
         assert semantic["ci95"][0] <= 0.0
-    assert "SPATIAL_SIGNAL_REMAINS_NONUNIQUE" in result["decision"]["mechanism_labels"]
-    assert "SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED" not in result["decision"]["mechanism_labels"]
+    assert result["shuffle_controls"]["object_mask_difference"][
+        "strict_interaction_only"
+    ]["passes"] is True
+    assert "SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED" in result["decision"]["mechanism_labels"]
+    assert "GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL" in result["decision"][
+        "mechanism_labels"
+    ]
+    assert "SPATIAL_SIGNAL_REMAINS_NONUNIQUE" not in result["decision"]["mechanism_labels"]
 
 
 def test_authorization_and_forbidden_activity_mapping() -> None:
