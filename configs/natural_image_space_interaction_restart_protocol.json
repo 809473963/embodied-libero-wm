@@ -44,7 +44,7 @@
     ]
   },
   "implementation": {
-    "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "a80287315ea8ea94bbddc4981c4c6407b1dd726994ee8cebc3f123067098940c"},
+    "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "37f1bebe0a1ba4fbb4ef350390d43752336653aed96496bc4d807a11332b2591"},
     "analyzer": {"path": "scripts/analyze_natural_image_space_interaction_restart.py", "sha256": "a939446e7422e19929b3a6168d3040a15f20841ca3d1216e016285c32fb00ac7"},
     "camera_adapter": {"path": "src/probes/image_space_relevance_restart.py", "sha256": "736052a47bb05acf645788edf938fe3b012874c7cdb5e0da63ef7f674e38c0b0"},
     "frozen_target_module": {"path": "src/probes/image_space_relevance.py", "sha256": "7d84c3c80858304105e94a2f67468f90be8cb08f7741549227024c0d66413178"},
@@ -256,6 +256,14 @@
       "artifact_written": false,
       "target_or_representation_result_viewed": false,
       "correction": "report the first mismatched branch/candidate/horizon and bounded RGB/mask difference summaries without saving images or changing any gate",
+      "scientific_change": false
+    },
+    {
+      "phase": "fourth calibration object-mask collection invocation",
+      "stop": "the bounded diagnostics showed that closing the short-lived sanity environment after persistent branch renderers were already alive invalidated their shared offscreen rendering context",
+      "artifact_written": false,
+      "target_or_representation_result_viewed": false,
+      "correction": "complete and close the identical zero-step sanity environment before creating the three persistent candidate-branch renderers",
       "scientific_change": false
     }
   ]

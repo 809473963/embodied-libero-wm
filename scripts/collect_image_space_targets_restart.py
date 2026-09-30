@@ -118,6 +118,55 @@ def _per_object_masks(
     return result
 
 
+def _run_contract_sanity(
+    protocol: dict[str, Any],
+    contract: dict[str, Any],
+    bddl: Path,
+    seed: int,
+    init_state: Any,
+    task_id: int,
+    init_index: int,
+) -> dict[str, Any]:
+    """Validate the frozen adapter before creating persistent branch renderers."""
+
+    sanity_env, _ = base.create_episode_env(bddl, seed, init_state)
+    try:
+        sanity_observation = refresh_policy_observation(sanity_env)
+        sanity_inner = sanity_env.env
+        sanity_rgb = render_rgb(sanity_inner)
+        segmentation = render_segmentation(sanity_inner)
+        site_id = int(sanity_inner.robots[0].eef_site_id)
+        site_mask = (segmentation[..., 0] == 6) & (segmentation[..., 1] == site_id)
+        world = np.asarray(sanity_inner.sim.data.site_xpos[site_id], dtype=np.float64)
+        check = implementation_sanity_distance(world, site_mask, contract)
+        check.update(
+            {
+                "task_id": task_id,
+                "init_state_index": init_index,
+                "site_id": site_id,
+                "zero_step_planning_observation": True,
+                "rgb_matches_observation_bitwise": bool(
+                    np.array_equal(
+                        sanity_rgb,
+                        np.asarray(sanity_observation["agentview_image"], dtype=np.uint8),
+                    )
+                ),
+            }
+        )
+        if not (
+            check["finite"]
+            and check["positive_depth"]
+            and check["in_frame"]
+            and check["rgb_matches_observation_bitwise"]
+            and check["distance_pixels"]
+            <= float(protocol["camera_contract"]["implementation_sanity_max_pixels"])
+        ):
+            raise RuntimeError("DATA_OR_IMPLEMENTATION_BLOCK: frozen-contract sanity")
+        return check
+    finally:
+        sanity_env.close()
+
+
 def collect_partition(
     protocol: dict[str, Any],
     partition: str,
@@ -154,6 +203,14 @@ def collect_partition(
         task = suite.get_task(task_id)
         bddl = Path(get_libero_path("bddl_files")) / task.problem_folder / task.bddl_file
         init_state = trusted_init_states(suite, task_id)[init_index]
+        if partition == "calibration" and init_index == 31:
+            # Complete and close the short-lived renderer before persistent
+            # branch renderers are created; MuJoCo offscreen contexts are shared.
+            sanity.append(
+                _run_contract_sanity(
+                    protocol, contract, bddl, seed, init_state, task_id, init_index
+                )
+            )
         envs = []
         try:
             observations, simulator_states = [], []
@@ -181,49 +238,6 @@ def collect_partition(
             matrix_error = float(np.max(np.abs(runtime_matrix - frozen_matrix)))
             if matrix_error > float(protocol["camera_contract"]["maximum_runtime_matrix_difference"]):
                 raise RuntimeError("DATA_OR_IMPLEMENTATION_BLOCK: runtime camera matrix drift")
-
-            if partition == "calibration" and init_index == 31:
-                # The exact site marker can be occluded after the plan-8 prefix.
-                # Check contract invocation at the official zero-step init31
-                # planning observation, matching the frozen camera experiment.
-                sanity_env, _ = base.create_episode_env(bddl, seed, init_state)
-                try:
-                    sanity_observation = refresh_policy_observation(sanity_env)
-                    sanity_inner = sanity_env.env
-                    sanity_rgb = render_rgb(sanity_inner)
-                    segmentation = render_segmentation(sanity_inner)
-                    site_id = int(sanity_inner.robots[0].eef_site_id)
-                    site_mask = (segmentation[..., 0] == 6) & (segmentation[..., 1] == site_id)
-                    world = np.asarray(sanity_inner.sim.data.site_xpos[site_id], dtype=np.float64)
-                    check = implementation_sanity_distance(world, site_mask, contract)
-                    check.update(
-                        {
-                            "task_id": task_id,
-                            "init_state_index": init_index,
-                            "site_id": site_id,
-                            "zero_step_planning_observation": True,
-                            "rgb_matches_observation_bitwise": bool(
-                                np.array_equal(
-                                    sanity_rgb,
-                                    np.asarray(
-                                        sanity_observation["agentview_image"], dtype=np.uint8
-                                    ),
-                                )
-                            ),
-                        }
-                    )
-                    if not (
-                        check["finite"]
-                        and check["positive_depth"]
-                        and check["in_frame"]
-                        and check["rgb_matches_observation_bitwise"]
-                        and check["distance_pixels"]
-                        <= float(protocol["camera_contract"]["implementation_sanity_max_pixels"])
-                    ):
-                        raise RuntimeError("DATA_OR_IMPLEMENTATION_BLOCK: frozen-contract sanity")
-                    sanity.append(check)
-                finally:
-                    sanity_env.close()
 
             per_candidate_ids = [mask_id_sets(env.env) for env in envs]
             object_names = [str(name) for name in state["object_names"][branch] if str(name)]
