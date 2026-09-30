@@ -1,0 +1,236 @@
+{
+  "schema_version": 1,
+  "protocol_version": "natural-image-space-interaction-target-audit-restart-v1",
+  "date": "2026-09-30",
+  "status": "PREREGISTERED_BEFORE_RESTART_TARGET_COLLECTION_OR_RESULTS",
+  "scientific_question": "After resolving the camera contract independently, do frozen natural patch features add stable image-space object, EE-object-relative, or interaction information beyond frozen global CLIP features?",
+  "frozen_upstream": {
+    "primary_tag": "camera-projection-contract-validated",
+    "primary_commit": "6bbe11532404ae6d5a41807aecb06b7994667729",
+    "verdicts": [
+      "CAMERA_PROJECTION_CONTRACT_VALIDATED",
+      "GO_IMAGE_SPACE_TARGET_AUDIT_RESTART",
+      "GLOBAL_CLIP_SPATIAL_COMPRESSION",
+      "NATURAL_PATCH_TASK_RELEVANCE_UNRESOLVED",
+      "BLOCK_VISUAL_TARGET_REDESIGN"
+    ],
+    "files": [
+      {"path": "artifacts/camera_projection_contract/frozen_contract.json", "sha256": "5eb187c5b3b7eab7a8f2503f9ee8e9dc4bb12e2e65cfb5d017b1913c2d614e0e"},
+      {"path": "results/camera_projection_contract/diagnosis.json", "sha256": "b66536051ee2f71e0fd28ec06bb33e4c3d4851194d7bc8956a82ded8b7470008"},
+      {"path": "docs/camera_projection_contract_resolution.md", "sha256": "a0f709976e8a91ef037f271523bf4e50db0e7b085f6e414e269d85756ce30ba8"},
+      {"path": "configs/natural_spatial_target_relevance_protocol.json", "sha256": "c5a3d9fc810144271190949d6b2bbb3015f4fc2ac01b1c9c36e1ba4fbd7ea17b"},
+      {"path": "results/natural_spatial_target_relevance/diagnosis.json", "sha256": "a21e5371927a80b78192afb3c13d6323407907273eee879799d1d0c2d86c4c46"},
+      {"path": "artifacts/stage3/natural_spatial_target_relevance/calibration_derived.npz", "sha256": "2fd61f169a8645c390c8dc02168a067bcc5fb1bce689caf46edae7103c02c443"},
+      {"path": "artifacts/stage3/natural_spatial_target_relevance/evaluation_derived.npz", "sha256": "336ccb1507f08645c944af04823df7d907e36f2e9dff527799434b2cd147e85f"},
+      {"path": "artifacts/stage3/visual_target_suitability/calibration_features.npz", "sha256": "7c9d88ce1c2723e6f88eaffcfc19544c69a1cf4fb16c1dc6d035761f6d608e88"},
+      {"path": "artifacts/stage3/visual_target_suitability/evaluation_features.npz", "sha256": "3b4c05dd4e6428d835c0f61c1cc86bb79a963a08b259a2cbef223565959dfbdb"},
+      {"path": "artifacts/stage3/visual_target_suitability/calibration_masks.npz", "sha256": "230fd5d6e5e00de57216120e400ff7f3e07b5d9f13ddf2d6458b989759f8a528"},
+      {"path": "artifacts/stage3/visual_target_suitability/evaluation_masks.npz", "sha256": "c8346011ddf4a285d755e92687254019f419c00525ec1a9516b9b54ec57f238c"},
+      {"path": "artifacts/stage3/missing_state_audit/calibration_states.npz", "sha256": "b1f86ea8f3819b31d54058d8912160fa17507bc0ed3454cc8d89ad33e4f64ca8"},
+      {"path": "artifacts/stage3/missing_state_audit/evaluation_states.npz", "sha256": "0fe5fe70cd1463886c2cbc75f2ba8181922103fe939b110d5a97249b31f345af"},
+      {"path": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz", "sha256": "5e7c39e268b1696257107e2c8f068e2c4b40aa44f88ca8f6f92bc99d93d204d6"},
+      {"path": "artifacts/stage3/wm_v2b_1_differential_calibration/evaluation_branches.npz", "sha256": "76ff1ee009b686c5d71cd7968c37aeec02afcce9485bd3f1bd8ea232faca60fe"}
+    ],
+    "transitive_ledger": "Camera-contract and natural-spatial freezes transitively preserve C0-v2, C1-v2.1 candidates and scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, frozen RGB/global/patch/state sidecars, and every prior mechanism verdict."
+  },
+  "preserved_blocked_audit": {
+    "verdicts": ["DATA_OR_IMPLEMENTATION_BLOCK", "CAMERA_PROJECTION_BLOCK"],
+    "interpretation": "The restart is independent; the old blocked experiment, its 4-pixel margin gate, and its artifacts remain immutable.",
+    "files": [
+      {"path": "configs/natural_image_space_interaction_protocol.json", "sha256": "cbe7448503ffbbcf69d5135dc1454492a5ccf97f132c4e8a99c152ff7eaedc47"},
+      {"path": "results/image_space_target_audit/camera_inventory.json", "sha256": "b927dd4020123ffd546181d868108ad68f32b944f9bbc5e959e8209acb0b7e20"},
+      {"path": "results/image_space_target_audit/diagnosis.json", "sha256": "93cc90746f79c2dee8a340440bb01fac34e6b859ad982a610f0e24b401ba4141"},
+      {"path": "docs/natural_image_space_interaction_target_audit.md", "sha256": "7340e1521a8a9304ffcff64554043e883bc569f1d566fc6c2eda8ce017008e98"}
+    ]
+  },
+  "implementation": {
+    "collector": {"path": "scripts/collect_image_space_targets_restart.py", "sha256": "b1385ae37949c239ca9c047eb45639bb6336f3a2ed2d10feb4f36e492fcae933"},
+    "analyzer": {"path": "scripts/analyze_natural_image_space_interaction_restart.py", "sha256": "a939446e7422e19929b3a6168d3040a15f20841ca3d1216e016285c32fb00ac7"},
+    "camera_adapter": {"path": "src/probes/image_space_relevance_restart.py", "sha256": "736052a47bb05acf645788edf938fe3b012874c7cdb5e0da63ef7f674e38c0b0"},
+    "frozen_target_module": {"path": "src/probes/image_space_relevance.py", "sha256": "7d84c3c80858304105e94a2f67468f90be8cb08f7741549227024c0d66413178"},
+    "frozen_analyzer_core": {"path": "scripts/analyze_natural_image_space_interaction.py", "sha256": "40ab64c1966f3b5e1fe48dab8ab2bdc0e89597cb4f12f56a59480bbc335411c2"},
+    "protocol_test": {"path": "tests/test_natural_image_space_interaction_restart_protocol.py", "sha256": "7c7782ab901d34ea84c1443bef74972d3081716fe3f4706ad23c7b890d4864d4"}
+  },
+  "camera_contract": {
+    "path": "artifacts/camera_projection_contract/frozen_contract.json",
+    "sha256": "5eb187c5b3b7eab7a8f2503f9ee8e9dc4bb12e2e65cfb5d017b1913c2d614e0e",
+    "required_status": "CAMERA_PROJECTION_CONTRACT_VALIDATED",
+    "required_authorization": "GO_IMAGE_SPACE_TARGET_AUDIT_RESTART",
+    "projection_reselection": false,
+    "image_orientation_change": false,
+    "round_or_clip": false,
+    "maximum_runtime_matrix_difference": 1e-12,
+    "implementation_sanity_partition": "calibration init31, one planning point per task",
+    "implementation_sanity_max_pixels": 2.0
+  },
+  "scope": {
+    "suite": "libero_spatial",
+    "task_ids": [0,1,2,3,4,5,6,7,8,9],
+    "planning_index": 8,
+    "prefix_steps": 64,
+    "candidate_count": 3,
+    "candidate_pairs": ["A0-A1", "A0-A2", "A1-A2"],
+    "horizon": 8,
+    "rows_per_branch": 24,
+    "bootstrap_and_split_unit": "task-stratified matched branch point retaining all three candidate pairs and eight horizons"
+  },
+  "partitions": {
+    "calibration": {
+      "init_state_indices": [31,32,33,34],
+      "branch_points": 40,
+      "rows": 960,
+      "branch_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/calibration_branches.npz",
+      "visual_features": "artifacts/stage3/visual_target_suitability/calibration_features.npz",
+      "frozen_masks": "artifacts/stage3/visual_target_suitability/calibration_masks.npz",
+      "state_sidecar": "artifacts/stage3/missing_state_audit/calibration_states.npz",
+      "natural_spatial_derived": "artifacts/stage3/natural_spatial_target_relevance/calibration_derived.npz",
+      "per_object_mask_sidecar": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz",
+      "per_object_mask_manifest": "results/image_space_target_audit_restart/calibration_object_masks_manifest.json",
+      "use": "target construction, leave-one-init-out CV, fitting, and coefficient freeze"
+    },
+    "development_evaluation": {
+      "init_state_indices": [36,37,38,39],
+      "branch_points": 40,
+      "rows": 960,
+      "branch_sidecar": "artifacts/stage3/wm_v2b_1_differential_calibration/evaluation_branches.npz",
+      "visual_features": "artifacts/stage3/visual_target_suitability/evaluation_features.npz",
+      "frozen_masks": "artifacts/stage3/visual_target_suitability/evaluation_masks.npz",
+      "state_sidecar": "artifacts/stage3/missing_state_audit/evaluation_states.npz",
+      "natural_spatial_derived": "artifacts/stage3/natural_spatial_target_relevance/evaluation_derived.npz",
+      "per_object_mask_sidecar": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz",
+      "per_object_mask_manifest": "results/image_space_target_audit_restart/evaluation_object_masks_manifest.json",
+      "use": "frozen development evaluation, not blind confirmation"
+    },
+    "historical_reference_only": [30,35],
+    "forbidden_init_state_indices": [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,40,41,42,43,44,45,46,47,48,49]
+  },
+  "relevant_objects": {
+    "selection": "runtime parsed_problem[\"obj_of_interest\"]",
+    "name_or_language_selection": false,
+    "mask": "union every native type-5 geom segmentation pixel belonging to each selected object",
+    "object_slots": 2
+  },
+  "natural_image_contract": {
+    "rgb_modification": "none",
+    "masked_clip_inference": false,
+    "encoder": "openai/clip-vit-base-patch32 revision 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "global_feature": "same frozen natural-image visual_projection plus L2 normalization [512]",
+    "patch_feature": "same natural image last_hidden_state[:,1:] -> post_layernorm -> visual_projection -> per-token L2 normalization [49,512]",
+    "patch_grid": [7,7],
+    "image_shape": [128,128,3]
+  },
+  "image_space_targets": {
+    "coordinate_normalization": "u/image_width and v/image_height; projected EE remains floating and unclipped",
+    "object_aggregation": "retain both runtime obj_of_interest slots and use calibration-frozen maximum across valid object-wise scalar magnitudes",
+    "invisible_object_rule": "visibility=0; area and mask metrics remain defined; centroid and relative targets are invalid and never imputed",
+    "ee_image_displacement": "L2 norm of candidate-pair projected EE coordinate difference",
+    "object_centroid_displacement": "maximum normalized image centroid displacement among objects visible in both candidates",
+    "object_mask_difference": "maximum full-image symmetric-difference fraction among per-object natural semantic masks; object-wise 1-IoU retained diagnostically",
+    "visible_area_difference": "maximum absolute full-image visible-area-fraction difference",
+    "relative_image_displacement": "maximum norm of pair difference in (object centroid - projected EE)",
+    "ee_object_distance_change": "maximum absolute change in object-centroid to projected-EE distance",
+    "strict_proximity_change": "maximum absolute change in projected-EE to natural object-mask distance divided by image diagonal",
+    "robot_object_adjacency_change": "maximum absolute change in fraction of object-boundary pixels within frozen square dilation radius of natural robot mask",
+    "strict_patch_sigma_pixels": 16.0,
+    "near_contact_pixels": 8.0,
+    "adjacency_radius_pixels": 4,
+    "visible_area_relative_denominator_floor": 0.00006103515625,
+    "deployment_role": "offline diagnostic oracle only"
+  },
+  "representations": {
+    "global_10d": "exact frozen global_summary from natural-spatial audit",
+    "patch_10d": "exact frozen patch_summary from natural-spatial audit; dimensions and broad interaction component unchanged",
+    "global_plus_patch_20d": "exact frozen concatenation",
+    "strict_interaction_secondary": "one scalar: natural patch distance weighted by relevant-object fractional coverage and a frozen 16-pixel Gaussian around projected EE",
+    "signed_pca16": "exact frozen calibration-fit global and patch PCA16; secondary only"
+  },
+  "probes": {
+    "model": "independent closed-form ridge regression with intercept",
+    "ridge_grid": [0.0001,0.001,0.01,0.1,1.0,10.0],
+    "selection": "leave-one-init-state-out CV within init31-34; minimum mean RMSE; exact tie favors larger alpha",
+    "metrics": ["RMSE","MAE","R2","Pearson","Spearman"]
+  },
+  "near_contact_probe": {
+    "model": "balanced L2 logistic probe",
+    "alpha": 1.0,
+    "metrics": ["AUROC","balanced accuracy"],
+    "verdict_role": "secondary only"
+  },
+  "shuffle": {
+    "rule": "derange named feature group across branch points within identical task, horizon, and candidate pair",
+    "groups": ["all frozen 10-D patch summary", "relevant_patch_mean only", "strict interaction scalar only"],
+    "seed": 225201
+  },
+  "bootstrap": {
+    "unit": "task-stratified matched branch point retaining all 24 correlated rows",
+    "replicates": 10000,
+    "correlation_replicates": 2000,
+    "seed": 225301,
+    "confidence": 0.95
+  },
+  "gates": {
+    "minimum_incremental_rmse_improvement": 0.10,
+    "increment_ci_rule": "G+P versus G relative RMSE improvement CI lower > 0",
+    "patch_shuffle_rule": "full-patch shuffle degradation >0 and CI lower >0",
+    "minimum_positive_tasks": 7,
+    "minimum_positive_horizons": 4,
+    "minimum_positive_pairs": 3,
+    "target_pass": "all aggregate increment, CI, full-patch shuffle, task, horizon, and pair checks pass",
+    "authorization_families": ["object","relative","interaction"],
+    "robot_only_authorization": false,
+    "semantic_label_rule": "object/relative labels additionally require relevant-patch shuffle; interaction label requires strict-interaction shuffle",
+    "grouped_horizons_secondary": {"early": [1,2], "middle": [3,4,5], "late": [6,7,8]}
+  },
+  "comparison_to_3d": {
+    "prior_diagnosis": "results/natural_spatial_target_relevance/diagnosis.json",
+    "target_mapping": {
+      "object_centroid_displacement": "object_translation",
+      "object_mask_difference": "object_translation",
+      "visible_area_difference": "object_translation",
+      "relative_image_displacement": "relative_translation",
+      "ee_object_distance_change": "relative_translation",
+      "strict_proximity_change": "relative_translation"
+    },
+    "minimum_increment_advantage": 0.02,
+    "mismatch_rule": "mapped 2D target must pass complete primary gate and exceed corresponding frozen 3D increment by at least two percentage points"
+  },
+  "candidate_headroom_reference": {
+    "source": "frozen C1-v2.1 offline validation oracle",
+    "best_of_three_expert_action_mse_gain": 0.01648,
+    "interpretation": "candidate imitation-oriented oracle headroom remains modest and is not a controller-success claim or a representation gate"
+  },
+  "decision": {
+    "allowed_labels": [
+      "IMAGE_SPACE_TARGET_MISMATCH_SUPPORTED",
+      "SPATIAL_EE_SIGNAL_CONFIRMED",
+      "SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED",
+      "SPATIAL_RELATIVE_IMAGE_GEOMETRY_SIGNAL_CONFIRMED",
+      "SPATIAL_INTERACTION_IMAGE_SIGNAL_CONFIRMED",
+      "GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL",
+      "SPATIAL_SIGNAL_REMAINS_NONUNIQUE",
+      "NATURAL_IMAGE_SPACE_RELEVANCE_UNRESOLVED",
+      "IMAGE_SPACE_TARGETS_DO_NOT_RESCUE_PATCH_RELEVANCE",
+      "DATA_OR_IMPLEMENTATION_BLOCK"
+    ],
+    "authorization_pass": "GO_SPATIAL_TARGET_DESIGN",
+    "authorization_fail": "BLOCK_VISUAL_TARGET_REDESIGN",
+    "controller_authorization": false,
+    "unresolved_stop_recommendation": "REPRESENTATION_AUDIT_STOP_RECOMMENDED"
+  },
+  "outputs": {
+    "calibration_weights": "artifacts/stage3/image_space_target_audit_restart/calibration_weights.npz",
+    "calibration_derived": "artifacts/stage3/image_space_target_audit_restart/calibration_derived.npz",
+    "calibration_freeze": "configs/natural_image_space_interaction_restart_calibration_freeze.json",
+    "evaluation_derived": "artifacts/stage3/image_space_target_audit_restart/evaluation_derived.npz",
+    "diagnosis": "results/image_space_target_audit_restart/diagnosis.json",
+    "report": "docs/natural_image_space_interaction_target_audit_restart.md"
+  },
+  "forbidden": [
+    "Do not reselect or compare camera conventions, rerun the site-landmark science gate, change image orientation, or use the old robot-mask margin.",
+    "Do not access init40-49, reward, done, success, task outcome, or controller outcome.",
+    "Do not use modified or masked RGB or masked CLIP inference.",
+    "Do not train or modify CLIP, any World Model, actor, candidate generator, scale, reranker, controller, C1/C2, D20-v2, or seed23/47.",
+    "Do not overwrite the old blocked audit, frozen camera contract, or any upstream artifact.",
+    "Do not lower the frozen 10-percent redesign gate or change the frozen 10-D global or patch summaries."
+  ]
+}
