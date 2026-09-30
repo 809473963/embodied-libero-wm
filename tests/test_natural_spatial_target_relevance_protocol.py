@@ -23,6 +23,7 @@ from src.probes.spatial_relevance import (
 
 ROOT = Path(__file__).resolve().parents[1]
 PROTOCOL = ROOT / "configs/natural_spatial_target_relevance_protocol.json"
+FREEZE = ROOT / "configs/natural_spatial_target_relevance_calibration_freeze.json"
 
 
 def sha256(path: Path) -> str:
@@ -123,3 +124,29 @@ def test_external_target_contract_has_six_targets_and_960_rows() -> None:
     assert result["metadata"]["horizon"].min() == 1
     assert result["metadata"]["horizon"].max() == 8
     assert np.isfinite(np.concatenate(list(result["targets"].values()))).all()
+
+
+def test_calibration_is_hash_frozen_before_development_evaluation() -> None:
+    protocol = json.loads(PROTOCOL.read_text())
+    freeze = json.loads(FREEZE.read_text())
+    assert freeze["status"] == "FROZEN_BEFORE_INIT36_39_RELEVANCE_EVALUATION"
+    assert freeze["protocol_sha256"] == sha256(PROTOCOL)
+    assert freeze["partition"] == {
+        "init_state_indices": [31, 32, 33, 34],
+        "branch_points": 40,
+        "rows": 960,
+        "evaluation_features_or_state_read": False,
+    }
+    assert freeze["natural_image_only"] is True
+    assert freeze["representation_dimensions"] == {
+        "global_summary": 10,
+        "patch_summary": 10,
+        "global_plus_patch": 20,
+        "global_pca16": 16,
+        "patch_pca16": 16,
+    }
+    assert set(freeze["target_p75_calibration_only"]) == set(TARGET_NAMES)
+    for artifact in freeze["artifacts"].values():
+        assert sha256(ROOT / artifact["path"]) == artifact["sha256"]
+    assert not any(freeze["forbidden_activity_audit"].values())
+    assert protocol["interaction_region"] == freeze["interaction_region"]
