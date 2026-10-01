@@ -98,6 +98,15 @@ bootstrap, thresholds, labels, and decision mapping were committed at
 before demos36--39 were opened. The one-shot numerical diagnosis was frozen at
 `58fa479` before this report.
 
+The upstream visible-area protocol's transitive ledger was also independently
+reverified: its annotated `continuous-footprint-decomposition-resolved` tag and
+all 14 listed artifacts match their frozen hashes. That ledger transitively
+covers C0-v2 preprocessing/normalization/weights, C1-v2.1 production
+candidates, D13/D14/D15, WM-v2A/B/B.1/C-EJ, branch identities, camera and
+spatial-target studies, and natural-extraction studies. The current audit adds
+direct checks of the D13 store/manifest, C0 checkpoint, production candidate
+config, historical C1-v2.1 diagnosis, and immediately preceding report/result.
+
 The meaningful-headroom rule was frozen as all of:
 
 - relative raw expert-action MSE gain at least 5%;
@@ -555,11 +564,11 @@ actions, covariance spectra, distributions, bootstrap gains, and reportable
 metrics are finite. Every oracle error is no greater than its corresponding A0
 error. Exact family aliases and nested monotonicity are independently tested.
 
-Five protocol tests and five result tests independently verify frozen hashes,
+Five protocol tests and six result tests independently verify frozen hashes,
 partition boundaries, deterministic nested noise, bootstrap structure, sample
 identities, exact gain recomputation, oracle non-regression, family aliases,
-decision mapping, authorization, finite arrays, and candidate validity. The
-complete repository suite passes `178` tests; the remaining 21 messages are
+decision mapping, authorization, transitive upstream integrity, finite arrays,
+and candidate validity. The complete repository suite passes `179` tests; the remaining 21 messages are
 dependency deprecation warnings, not failures.
 
 ## Forbidden-activity audit

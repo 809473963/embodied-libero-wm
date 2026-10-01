@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import subprocess
 
 import numpy as np
 
@@ -81,3 +82,16 @@ def test_finite_and_validity_audit() -> None:
         assert family["clip_fraction"] < 0.06
         assert 0.0 <= family["boundary_hit_fraction"] <= 1.0
 
+
+def test_transitive_upstream_ledger_is_still_frozen() -> None:
+    protocol_path = ROOT / "configs/relevant_object_visible_area_natural_extraction_protocol.json"
+    protocol = json.loads(protocol_path.read_text())
+    upstream = protocol["frozen_upstream"]
+    assert subprocess.check_output(
+        ["git", "rev-parse", f"{upstream['tag']}^{{}}"], cwd=ROOT, text=True
+    ).strip() == upstream["commit"]
+    assert len(upstream["files"]) == 14
+    for record in upstream["files"]:
+        assert sha256(ROOT / record["path"]) == record["sha256"]
+    assert "C0-v2" in upstream["transitive_ledger"]
+    assert "WM-v2A/B/B.1/C-EJ" in upstream["transitive_ledger"]
