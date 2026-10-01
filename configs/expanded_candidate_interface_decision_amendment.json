@@ -1,0 +1,44 @@
+{
+  "amendment_version": "expanded-candidate-interface-design-audit-v1-decision-amendment-1",
+  "created_at": "2026-10-02",
+  "reason": "post-evaluation design-contract audit found that the calibration-selected N64/G12 interface contains 51 continuous alternatives, so the final antithetic bank has one unmatched positive direction; it also excludes the preregistered C0-sign gripper form from the combined allocation",
+  "source_numerical_diagnosis": {
+    "path": "results/expanded_candidate_interface_design/diagnosis.json",
+    "sha256": "434d262ca0ea52127b71d31fac579533e646048dac5fe3785e1830a7b8cdc488"
+  },
+  "evaluation_sidecar": {
+    "path": "results/expanded_candidate_interface_design/evaluation_derived.npz",
+    "sha256": "93f0270c28d93eebb131fda5584eccd5f1c955d3d8d02e351268dc5e5f9ce70f"
+  },
+  "unchanged_numerical_findings": {
+    "selected_family": "ALLOC_G12",
+    "selected_total_count": 64,
+    "continuous_alternatives": 51,
+    "structured_gripper_alternatives": 12,
+    "h8_gain": 0.6283492932364835,
+    "h8_ci95": [0.6058841191091657, 0.6474452367997305],
+    "h1_gain": 0.8046303388121476,
+    "positive_task_count": 10,
+    "structured_gripper_h8_increment": 0.532185048972576,
+    "structured_gripper_h8_increment_ci95": [0.5024641401674895, 0.5576111177173586]
+  },
+  "contract_failures": {
+    "exact_positive_negative_symmetry": false,
+    "reason_positive_negative_symmetry": "51 nonzero continuous alternatives cannot be partitioned into exact antithetic pairs",
+    "complete_preregistered_gripper_form_coverage_in_allocation": false,
+    "reason_gripper_coverage": "c0_binarized was evaluated as G3 but omitted from every G4/G8/G12 combined allocation",
+    "post_evaluation_repair_allowed": false
+  },
+  "corrected_final_mechanism_labels": [
+    "STRUCTURED_GRIPPER_PROPOSALS_VALID",
+    "N64_REQUIRED_FOR_HEADROOM",
+    "STRONG_EXPANDED_CANDIDATE_HEADROOM",
+    "EXPANDED_CANDIDATE_INTERFACE_UNRESOLVED",
+    "DATA_OR_IMPLEMENTATION_BLOCK"
+  ],
+  "removed_label": "EXPANDED_CANDIDATE_INTERFACE_VALID",
+  "corrected_candidate_value_authorization": "BLOCK_CANDIDATE_VALUE_AUDIT",
+  "spatial_world_model_authorization": "BLOCK_SPATIAL_WM_PROTOTYPE",
+  "controller_authorization": false,
+  "repair_boundary": "a corrected symmetric allocation, such as an odd realized total or an odd structured-gripper allocation that includes c0_binarized, requires a separately preregistered restart; it may not be selected or evaluated post hoc on the already opened development partition"
+}

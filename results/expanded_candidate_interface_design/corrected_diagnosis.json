@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "audit": "expanded-candidate-interface-design-audit-v1",
+  "status": "CORRECTED_BY_POST_EVALUATION_CONTRACT_AMENDMENT",
+  "source_numerical_diagnosis": {
+    "path": "results/expanded_candidate_interface_design/diagnosis.json",
+    "sha256": "434d262ca0ea52127b71d31fac579533e646048dac5fe3785e1830a7b8cdc488"
+  },
+  "decision_amendment": {
+    "path": "configs/expanded_candidate_interface_decision_amendment.json",
+    "sha256": "71cf5e2709a614d88b652b6edb792b140e96baf566276328384613fe79568ff8"
+  },
+  "numerical_candidate": {
+    "name": "ALLOC_G12",
+    "total_count": 64,
+    "continuous_alternatives": 51,
+    "structured_gripper_alternatives": 12,
+    "scale": 2.5,
+    "bank_style": "antithetic",
+    "h8_gain": 0.6283492932364835,
+    "h8_ci95": [0.6058841191091657, 0.6474452367997305],
+    "h1_gain": 0.8046303388121476,
+    "positive_task_count": 10,
+    "pareto_frontier_within_executed_families": true
+  },
+  "contract_gate": {
+    "exact_positive_negative_symmetry": false,
+    "c0_binarized_admitted_to_combined_allocation": false,
+    "pass": false
+  },
+  "final_mechanism_labels": [
+    "STRUCTURED_GRIPPER_PROPOSALS_VALID",
+    "N64_REQUIRED_FOR_HEADROOM",
+    "STRONG_EXPANDED_CANDIDATE_HEADROOM",
+    "EXPANDED_CANDIDATE_INTERFACE_UNRESOLVED",
+    "DATA_OR_IMPLEMENTATION_BLOCK"
+  ],
+  "candidate_value_authorization": "BLOCK_CANDIDATE_VALUE_AUDIT",
+  "spatial_world_model_authorization": "BLOCK_SPATIAL_WM_PROTOTYPE",
+  "controller_authorization": false,
+  "selected_interface": null,
+  "simulator_runs": 0,
+  "reward_done_success_reads": 0,
+  "forbidden_demo_access": false
+}
