@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "protocol_version": "relevant-object-visible-area-natural-extraction-v1",
+  "date": "2026-10-01",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION_RESULTS",
+  "scientific_question": "Can the frozen 1-D union relevant-object visible-area fraction be recovered from frozen natural-RGB features, optionally conditioned on the existing frozen task-language representation, with sufficient absolute fidelity and counterfactual decision signal?",
+  "current_authorization": "GO_MINIMAL_SPATIAL_EXTRACTION_AUDIT",
+  "persistent_world_model_block": "BLOCK_SPATIAL_WM_PROTOTYPE",
+  "controller_authorization": false,
+  "frozen_upstream": {
+    "tag": "continuous-footprint-decomposition-resolved",
+    "commit": "863f32450a1a45545ef6fdd283618245f16f0a75",
+    "verdicts": [
+      "VISIBLE_AREA_DOMINANT_TARGET",
+      "MINIMAL_CONTINUOUS_FOOTPRINT_VALID",
+      "BINARY_COMPONENT_REDUNDANT_GIVEN_AREA",
+      "SOFT_OCCUPANCY_ADDS_VALUE_BEYOND_AREA",
+      "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED",
+      "GO_MINIMAL_SPATIAL_EXTRACTION_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ],
+    "language_feature_store": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+    "language_contract": "reuse the existing frozen task_metadata/language_features [10,512]; do not re-encode or tune language",
+    "files": [
+      {"path": "configs/continuous_footprint_information_decomposition_protocol.json", "sha256": "dde748f90ebda8c052e3880bcaa4d3151e0a87e7c6f8c3742251d67e0dc5acf4"},
+      {"path": "configs/continuous_footprint_information_decomposition_calibration_freeze.json", "sha256": "f8516574faa3a730b566d2c8b51f4199fa8d074faad84c3cc889803c10924bf4"},
+      {"path": "artifacts/stage3/continuous_footprint_decomposition/calibration_weights.npz", "sha256": "f0877cf62985a2b35c441e5cfbfd7086811661c42654ec0d3013e608a8a11e9c"},
+      {"path": "artifacts/stage3/continuous_footprint_decomposition/calibration_derived.npz", "sha256": "ce05c63d0a50a8125500469831e6af4c4b99d0745e4299f1e90230e0a122b52d"},
+      {"path": "artifacts/stage3/continuous_footprint_decomposition/evaluation_derived.npz", "sha256": "3bf4882e311df0e2aca9482c46c998203f8d0ca0b5fe72230c0b10024d936602"},
+      {"path": "results/continuous_footprint_decomposition/diagnosis.json", "sha256": "e56a515c5929cf8b3dfdd908602f16f732e5cb2dafb9b887604e4a567abc53c9"},
+      {"path": "docs/continuous_footprint_information_decomposition_audit.md", "sha256": "293c58ee767cad78a452ed9471e483b167f8b4cbd7767eb5e7f7dd3c734634eb"},
+      {"path": "artifacts/stage3/visual_target_suitability/calibration_features.npz", "sha256": "7c9d88ce1c2723e6f88eaffcfc19544c69a1cf4fb16c1dc6d035761f6d608e88"},
+      {"path": "artifacts/stage3/visual_target_suitability/evaluation_features.npz", "sha256": "3b4c05dd4e6428d835c0f61c1cc86bb79a963a08b259a2cbef223565959dfbdb"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz", "sha256": "1130aa7fdec1fd0cbe2a8458339bd4187252b729c7ce929388e8f50dd8ae321f"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz", "sha256": "c3871bbce09fdf25eb3b3503fa5a24c098d662b600bb2e4da157757bd7bccd7c"},
+      {"path": "artifacts/stage3/spatial_visual_target_design/calibration_derived.npz", "sha256": "2baee7dc428a564670046465cfa9851a3443c26c02b8000cd63e81d7cb30222e"},
+      {"path": "artifacts/stage3/spatial_visual_target_design/evaluation_derived.npz", "sha256": "7cab9829b8c5b25bb9116acc4216382206d346b7caf7755e207edb3e14670754"},
+      {"path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5", "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"}
+    ],
+    "transitive_ledger": "The annotated upstream tag transitively freezes C0-v2, the C1-v2.1 candidate generator and production scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, the camera contract, natural RGB and CLIP features, per-object masks used as labels only, branch identities, and every prior mechanism report/result/checkpoint."
+  },
+  "implementation": {
+    "extraction_module": {"path": "src/probes/visible_area_extraction.py", "sha256": "362a7693b15f39e2e0d827b9f4e213c57fd20198755fd171d10a630773a6223e"},
+    "analyzer": {"path": "scripts/analyze_visible_area_natural_extraction.py", "sha256": "96aaf012b2bde715da3bb1ba4967a997e887fd9b67be652eb48bf6e64368afe7"},
+    "protocol_test": {"path": "tests/test_visible_area_natural_extraction_protocol.py", "sha256": "416c4b4717d6707347e691d9db276cecef8c2db4e62597896fb5846b6f0889a0"}
+  },
+  "partitions": {
+    "calibration": {
+      "init_state_indices": [31, 32, 33, 34],
+      "branch_points": 40,
+      "image_states": 960,
+      "pair_rows": 960,
+      "natural_features": "artifacts/stage3/visual_target_suitability/calibration_features.npz",
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz",
+      "continuous_footprint_derived": "artifacts/stage3/spatial_visual_target_design/calibration_derived.npz",
+      "use": "all input/model/epoch selection, feature normalization, tie threshold, downstream ridge CV and fit, and freezing"
+    },
+    "development_evaluation": {
+      "init_state_indices": [36, 37, 38, 39],
+      "branch_points": 40,
+      "image_states": 960,
+      "pair_rows": 960,
+      "natural_features": "artifacts/stage3/visual_target_suitability/evaluation_features.npz",
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz",
+      "continuous_footprint_derived": "artifacts/stage3/spatial_visual_target_design/evaluation_derived.npz",
+      "use": "one-shot frozen development evaluation, explicitly not blind confirmation"
+    },
+    "historical_reference_only": [30, 35],
+    "forbidden_init_state_indices": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "target": {
+    "name": "F1 relevant-object visible-area fraction",
+    "formula": "pixel count in the union of the two runtime obj_of_interest natural segmentation masks divided by 128*128",
+    "range": [0.0, 1.0],
+    "mask_role": "training/evaluation label only; never an extractor input",
+    "redesign_forbidden": true
+  },
+  "inputs": {
+    "E0_visual": "natural RGB-derived frozen visual feature only",
+    "E1_visual_language": "the same visual feature concatenated with the existing frozen 512-D task-language feature",
+    "V0_global": "full natural-image frozen global CLIP projection [512]",
+    "V1_patch_mean": "unweighted arithmetic mean of the 49 frozen natural CLIP patch-token projections [512], with no post-mean L2 normalization",
+    "forbidden_inputs": "segmentation masks, depth, simulator state, proprioception, object pose, EE pose, contact, future action, candidate identity, future simulator state, masked/cropped/object-only image inference"
+  },
+  "models": {
+    "M0": "calibration-mean constant",
+    "M1_linear": "standardized input -> Linear(d,1) -> sigmoid",
+    "M2_mlp": "standardized input -> Linear(d,64)-GELU-Linear(64,32)-GELU-Linear(32,1)-sigmoid",
+    "maximum_parameters": 200000,
+    "loss": "unweighted mean squared error on raw area fraction",
+    "optimizer": "AdamW",
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "maximum_epochs": 240,
+    "seed": 241001,
+    "epoch_selection": "within each candidate, leave-one-init-state-out validation chooses minimum MAE epoch; final epoch is round-half-up median of four best epochs",
+    "normalization": "featurewise calibration-only mean/std; columns below 1e-8 std use scale one",
+    "candidate_count": 8
+  },
+  "selection": {
+    "per_condition": "select exactly one of V0/V1 x M1/M2 separately for E0 and E1",
+    "lexicographic_order": ["lowest calibration OOF area MAE", "lowest calibration OOF signed pair-difference RMSE", "largest calibration OOF downstream Area RMSE improvement", "fewest trainable parameters", "lexical candidate name"],
+    "evaluation_role": "all eight frozen models are reported, but only the two calibration-selected condition representatives enter authorization",
+    "language_rule": "if E0 passes the complete frozen gate, select E0 even when E1 also passes; language is needed only when E1 passes and E0 fails"
+  },
+  "candidate_differential": {
+    "signed_difference": "A_i-A_j in canonical A0-A1, A0-A2, A1-A2 order",
+    "tie_quantile": 0.10,
+    "tie_rule": "freeze the 10th percentile of strictly positive absolute calibration pair differences; omit rows at or below it only from direction accuracy",
+    "ordering": "per branch/horizon mean three-way Spearman, pairwise ordering accuracy, maximum-area agreement, and minimum-area agreement",
+    "scale_control": "compare candidate mean absolute separation divided by adjacent-horizon temporal movement in predicted and real area coordinates"
+  },
+  "downstream": {
+    "pair_summary": "the exact frozen six-slot F1 summary: absolute scalar difference repeated in RMSE/MAE/max/top-quartile/scale slots with centroid slot zero",
+    "baseline": "frozen 10-D global summary G",
+    "model": "closed-form ridge with intercept",
+    "ridge_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0],
+    "selection": "leave-one-init-state-out CV on init31-34; exact ties favor larger alpha",
+    "primary_targets": ["Area", "frozen Area residual after calibration EE-only control"],
+    "secondary_targets": ["ObjMask", "frozen ObjMask residual after calibration EE-only control"]
+  },
+  "shuffle": {
+    "rule": "derange the complete six-dimensional predicted-area summary across branch points within identical task, horizon, and candidate pair while G and target remain fixed",
+    "seed": 241101
+  },
+  "bootstrap": {
+    "unit": "task-stratified matched branch point retaining all 24 candidate-image or pair/horizon rows",
+    "replicates": 10000,
+    "seed": 241201,
+    "confidence": 0.95
+  },
+  "gates": {
+    "minimum_mae_improvement": 0.20,
+    "minimum_area_increment": 0.10,
+    "minimum_residual_increment": 0.05,
+    "minimum_positive_tasks": 7,
+    "minimum_positive_horizons": 4,
+    "minimum_positive_pairs": 3,
+    "minimum_dynamic_range_ratio": 0.25,
+    "dynamic_range_rule": "both std(predicted image area)/std(real image area) and std(predicted pair delta)/std(real pair delta) must be at least 0.25",
+    "complete_gate": "absolute MAE improvement >=20 percent with CI lower >0; downstream Area gain >=10 percent with CI lower >0; predicted-area shuffle CI lower >0; Area-residual gain >=5 percent with CI lower >0; positive on >=7 tasks, >=4 horizons, and all three pairs; no image or pair dynamic-range collapse"
+  },
+  "decision": {
+    "allowed_labels": [
+      "NATURAL_VISIBLE_AREA_PROXY_VALID",
+      "VISUAL_ONLY_AREA_EXTRACTION_SUFFICIENT",
+      "TASK_LANGUAGE_NEEDED_FOR_AREA_EXTRACTION",
+      "SPATIAL_TARGET_EXTRACTION_RESOLVED",
+      "AREA_REGRESSION_ACCURATE_BUT_DECISION_SIGNAL_INSUFFICIENT",
+      "AREA_DYNAMIC_RANGE_COLLAPSE",
+      "NATURAL_VISIBLE_AREA_EXTRACTION_FAILED",
+      "NATURAL_SPATIAL_EXTRACTION_BLOCK"
+    ],
+    "go": "GO_MINIMAL_SPATIAL_WM_PROTOTYPE",
+    "go_scope": "permits only a separately preregistered seed11 single-model offline action-conditioned future-visible-area World Model prototype; no reranker, score redesign, controller, reward, success, seed23/47, or init40-49",
+    "block": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "alternative_encoder_audit_authorization": false,
+    "persistent_controller_authorization": false
+  },
+  "outputs": {
+    "calibration_weights": "artifacts/stage3/visible_area_natural_extraction/calibration_weights.npz",
+    "calibration_derived": "artifacts/stage3/visible_area_natural_extraction/calibration_derived.npz",
+    "calibration_freeze": "configs/relevant_object_visible_area_natural_extraction_calibration_freeze.json",
+    "evaluation_derived": "artifacts/stage3/visible_area_natural_extraction/evaluation_derived.npz",
+    "diagnosis": "results/visible_area_natural_extraction/diagnosis.json",
+    "report": "docs/relevant_object_visible_area_natural_extraction_audit.md"
+  },
+  "forbidden": [
+    "Do not train a World Model, GRU, Transformer, action-conditioned model, actor, candidate generator, reranker, score, or controller.",
+    "Do not run C1/C2, D20-v2, seed23/47, reward, done, success, final task outcome, controller rollout, or init40-49.",
+    "Do not select or fine-tune an encoder; do not use SAM, DINO, SigLIP, CNN, a large decoder, masked RGB, cropped RGB, or object-only inference.",
+    "Do not use masks, depth, state, proprioception, object/EE pose, contact, future action, candidate ID, or future simulator state as extractor inputs.",
+    "Do not reconstruct the 49-D soft footprint, redesign F1, tune any form on init36-39, or overwrite upstream artifacts."
+  ]
+}
