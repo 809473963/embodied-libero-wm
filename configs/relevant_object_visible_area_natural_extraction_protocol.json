@@ -40,8 +40,8 @@
     "transitive_ledger": "The annotated upstream tag transitively freezes C0-v2, the C1-v2.1 candidate generator and production scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, the camera contract, natural RGB and CLIP features, per-object masks used as labels only, branch identities, and every prior mechanism report/result/checkpoint."
   },
   "implementation": {
-    "extraction_module": {"path": "src/probes/visible_area_extraction.py", "sha256": "362a7693b15f39e2e0d827b9f4e213c57fd20198755fd171d10a630773a6223e"},
-    "analyzer": {"path": "scripts/analyze_visible_area_natural_extraction.py", "sha256": "96aaf012b2bde715da3bb1ba4967a997e887fd9b67be652eb48bf6e64368afe7"},
+    "extraction_module": {"path": "src/probes/visible_area_extraction.py", "sha256": "7121d6e43c8892cb61c0729429ac47cec1bc752c00e21a422713765eaefe39ca"},
+    "analyzer": {"path": "scripts/analyze_visible_area_natural_extraction.py", "sha256": "40fbc4ca87816c57395416822f47f7f53520077003a52501376768b5f9895948"},
     "protocol_test": {"path": "tests/test_visible_area_natural_extraction_protocol.py", "sha256": "416c4b4717d6707347e691d9db276cecef8c2db4e62597896fb5846b6f0889a0"}
   },
   "partitions": {
@@ -84,8 +84,8 @@
   },
   "models": {
     "M0": "calibration-mean constant",
-    "M1_linear": "standardized input -> Linear(d,1) -> sigmoid",
-    "M2_mlp": "standardized input -> Linear(d,64)-GELU-Linear(64,32)-GELU-Linear(32,1)-sigmoid",
+    "M1_linear": "standardized input -> Linear(d,1); inverse target standardization; fixed clamp to [0,1]",
+    "M2_mlp": "standardized input -> Linear(d,64)-GELU-Linear(64,32)-GELU-Linear(32,1); inverse target standardization; fixed clamp to [0,1]",
     "maximum_parameters": 200000,
     "loss": "unweighted mean squared error on raw area fraction",
     "optimizer": "AdamW",
@@ -94,9 +94,19 @@
     "maximum_epochs": 240,
     "seed": 241001,
     "epoch_selection": "within each candidate, leave-one-init-state-out validation chooses minimum MAE epoch; final epoch is round-half-up median of four best epochs",
-    "normalization": "featurewise calibration-only mean/std; columns below 1e-8 std use scale one",
+    "normalization": "featurewise calibration-only mean/std; columns below 1e-8 std use scale one; area target uses the training fold mean/std, is inverted at prediction, and is then clamped to [0,1]",
     "candidate_count": 8
   },
+  "calibration_preflight_correction_history": [
+    {
+      "phase": "after the first calibration invocation and before any init36-39 access",
+      "issue": "A sigmoid output initialized near 0.5 remained far outside the approximately 0.026 target scale, making the linear baseline an optimization nonstarter rather than a meaningful extractor.",
+      "calibration_results_viewed": true,
+      "development_evaluation_accessed": false,
+      "correction": "Standardize the area target using each calibration training fold, use an unconstrained scalar head, invert the standardization, and apply a preregistered fixed [0,1] clamp.",
+      "unchanged": "natural features, language representation, E0/E1 and V0/V1 candidates, M1/M2 widths and parameter ceilings, MSE loss, optimizer, epochs, split, OOF selection order, tie formula, downstream probes, bootstrap, shuffle, numeric gates, labels, and authorizations"
+    }
+  ],
   "selection": {
     "per_condition": "select exactly one of V0/V1 x M1/M2 separately for E0 and E1",
     "lexicographic_order": ["lowest calibration OOF area MAE", "lowest calibration OOF signed pair-difference RMSE", "largest calibration OOF downstream Area RMSE improvement", "fewest trainable parameters", "lexical candidate name"],

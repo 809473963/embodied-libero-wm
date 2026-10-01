@@ -174,9 +174,11 @@ def fold_fit(
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
     mean, scale = standardizer(x[train])
+    target_mean = float(np.mean(y[train]))
+    target_scale = max(float(np.std(y[train])), 1.0e-8)
     train_x = torch.from_numpy(((x[train] - mean) / scale).astype(np.float32))
     valid_x = torch.from_numpy(((x[valid] - mean) / scale).astype(np.float32))
-    train_y = torch.from_numpy(y[train].astype(np.float32))
+    train_y = torch.from_numpy(((y[train] - target_mean) / target_scale).astype(np.float32))
     valid_y = y[valid]
     model = AreaHead(x.shape[1], form)
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
@@ -189,6 +191,7 @@ def fold_fit(
         model.eval()
         with torch.no_grad():
             prediction = model(valid_x).cpu().numpy().astype(np.float64)
+            prediction = np.clip(prediction * target_scale + target_mean, 0.0, 1.0)
         model.train()
         mae = float(np.mean(np.abs(prediction - valid_y)))
         if mae < best_mae - 1.0e-12:

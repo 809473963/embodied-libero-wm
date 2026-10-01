@@ -33,7 +33,7 @@ class AreaHead(nn.Module):
             raise ValueError(form)
 
     def forward(self, value: torch.Tensor) -> torch.Tensor:
-        return torch.sigmoid(self.network(value)).squeeze(-1)
+        return self.network(value).squeeze(-1)
 
 
 @dataclass(frozen=True)
@@ -41,6 +41,8 @@ class FittedAreaHead:
     form: str
     mean: np.ndarray
     scale: np.ndarray
+    target_mean: np.ndarray
+    target_scale: np.ndarray
     state_dict: dict[str, np.ndarray]
 
 
@@ -68,8 +70,10 @@ def train_head(
     torch.manual_seed(seed)
     torch.use_deterministic_algorithms(True)
     mean, scale = standardizer(x)
+    target_mean = np.asarray(np.mean(y), dtype=np.float32)
+    target_scale = np.asarray(max(float(np.std(y)), 1.0e-8), dtype=np.float32)
     feature = torch.from_numpy(((np.asarray(x) - mean) / scale).astype(np.float32))
-    target = torch.from_numpy(np.asarray(y, dtype=np.float32))
+    target = torch.from_numpy(((np.asarray(y, dtype=np.float32) - target_mean) / target_scale).astype(np.float32))
     model = AreaHead(feature.shape[1], form)
     optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
     for _ in range(int(epochs)):
@@ -78,7 +82,7 @@ def train_head(
         loss.backward()
         optimizer.step()
     state = {name: value.detach().cpu().numpy() for name, value in model.state_dict().items()}
-    return FittedAreaHead(form, mean.astype(np.float32), scale.astype(np.float32), state)
+    return FittedAreaHead(form, mean.astype(np.float32), scale.astype(np.float32), target_mean, target_scale, state)
 
 
 def predict_head(x: np.ndarray, fitted: FittedAreaHead) -> np.ndarray:
@@ -88,6 +92,7 @@ def predict_head(x: np.ndarray, fitted: FittedAreaHead) -> np.ndarray:
     model.eval()
     with torch.no_grad():
         output = model(torch.from_numpy(feature)).cpu().numpy().astype(np.float64)
+    output = np.clip(output * float(fitted.target_scale) + float(fitted.target_mean), 0.0, 1.0)
     if not np.isfinite(output).all() or np.any(output < 0.0) or np.any(output > 1.0):
         raise FloatingPointError("invalid visible-area prediction")
     return output
@@ -97,6 +102,8 @@ def fitted_to_arrays(prefix: str, fitted: FittedAreaHead) -> dict[str, np.ndarra
     result = {
         f"{prefix}__mean": fitted.mean,
         f"{prefix}__scale": fitted.scale,
+        f"{prefix}__target_mean": fitted.target_mean,
+        f"{prefix}__target_scale": fitted.target_scale,
         f"{prefix}__form": np.asarray(fitted.form),
     }
     for name, value in fitted.state_dict.items():
@@ -111,6 +118,8 @@ def fitted_from_arrays(prefix: str, arrays: dict[str, np.ndarray]) -> FittedArea
         str(np.asarray(arrays[f"{prefix}__form"]).item()),
         np.asarray(arrays[f"{prefix}__mean"], dtype=np.float32),
         np.asarray(arrays[f"{prefix}__scale"], dtype=np.float32),
+        np.asarray(arrays[f"{prefix}__target_mean"], dtype=np.float32),
+        np.asarray(arrays[f"{prefix}__target_scale"], dtype=np.float32),
         state,
     )
 
@@ -199,4 +208,3 @@ def candidate_ordering(real: np.ndarray, predicted: np.ndarray) -> dict[str, flo
         "top_agreement": float(np.mean(top_hits)),
         "bottom_agreement": float(np.mean(bottom_hits)),
     }
-
