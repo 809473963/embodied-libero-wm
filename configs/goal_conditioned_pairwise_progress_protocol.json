@@ -1,0 +1,142 @@
+{
+  "protocol_version": "goal-conditioned-pairwise-progress-v1",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION",
+  "created_at": "2026-10-02",
+  "scope": "Stage-B offline audit of task-language-conditioned demonstration-progress preference using real frozen expert observation trajectories; no World Model, candidate future, simulator, controller, reward, or success",
+  "frozen_upstream": {
+    "commit": "5d38525",
+    "annotated_tag": "expanded-candidate-interface-valid",
+    "formal_state": [
+      "EXPANDED_CANDIDATE_INTERFACE_VALID",
+      "STRUCTURED_GRIPPER_PROPOSALS_VALID",
+      "N64_REQUIRED_FOR_HEADROOM",
+      "STRONG_EXPANDED_CANDIDATE_HEADROOM",
+      "GO_CANDIDATE_VALUE_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ]
+  },
+  "partitions": {
+    "calibration_demo_ids": [31, 32, 33, 34],
+    "evaluation_demo_ids": [36, 37, 38, 39],
+    "historical_reference_demo_ids": [30, 35],
+    "forbidden_demo_ids": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "frozen_inputs": [
+    {"role": "d13_store", "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5", "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"},
+    {"role": "d13_manifest", "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json", "sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc"},
+    {"role": "selected_candidate_interface", "path": "results/expanded_candidate_contract_restart/selected_interface.json", "sha256": "5cd3311d847c410a75cca6970e7acf4e5ec3af811c739946df7ec18532a9f14a"},
+    {"role": "stage_a_diagnosis", "path": "results/expanded_candidate_contract_restart/diagnosis.json", "sha256": "899c9ae6d0ed9c922a87a7aa162834ca967c07ecd3e6978afa6b5f98448c74a4"},
+    {"role": "stage_a_report", "path": "docs/expanded_candidate_interface_contract_restart.md", "sha256": "d5f9adea616f4db0122c4a70f011530497a57f1b4a96b38e5d4cd3273c6aa689"}
+  ],
+  "implementation": [
+    {"path": "src/probes/goal_conditioned_progress.py", "sha256": "4fa5b4d7f9800e8209827c8673749dbf687063d66b313a6db52f9583df39fbfe"},
+    {"path": "scripts/audit_goal_conditioned_pairwise_progress.py", "sha256": "e10b3b27abd9f000a50534daa0a238730d51d559a2fa7fbcb3f84b8d2a294db8"}
+  ],
+  "input_contract": {
+    "visual": "frozen natural-RGB CLIP ViT-B/32 global projection [512]",
+    "language": "frozen task-language feature [512]",
+    "proprio": "frozen 12-D proprioception, ablation only",
+    "forbidden_inputs": ["expert action", "future expert action", "action MSE", "reward", "done", "success", "task outcome", "simulator state", "object pose"],
+    "label": "temporal ordering and normalized index in existing expert demonstrations",
+    "interpretation": "demonstration-progress preference, not task-optimal value"
+  },
+  "pair_construction": {
+    "gap_bins": ["1-2", "3-4", "5-8", "9-16", ">16", "terminal-anchor"],
+    "gt16_gap_support": "17 through min(32, trajectory_length-1)",
+    "per_demo_per_bin_forward": 32,
+    "include_exact_reverse_for_every_same_demo_pair": true,
+    "sampling": "deterministic evenly spaced indices in each finite pair population",
+    "local_primary_bins": ["1-2", "3-4", "5-8"],
+    "terminal_anchor_separate_from_local": true,
+    "cross_demo_points": 16,
+    "cross_demo_matched_progress": "same task, cyclic different demo, 16 equal normalized-progress anchors from 0.1 to 0.9",
+    "cross_demo_mismatched_progress": "same task, cyclic different demo, normalized-progress separation 0.25, both directions",
+    "no_synthetic_images": true
+  },
+  "models": {
+    "V0": {
+      "name": "task-conditioned terminal prototype similarity",
+      "terminal_tail_states": 8,
+      "prototype_source": "calibration demos only",
+      "score": "cosine similarity between frozen visual feature and task prototype"
+    },
+    "V1": {
+      "name": "absolute scalar normalized-progress predictor",
+      "input": ["visual", "language"],
+      "architecture": "Linear(1024,64)-GELU-Linear(64,1)",
+      "pair_score": "V1(sb)-V1(sa)"
+    },
+    "V2": {
+      "name": "antisymmetric pairwise progress predictor",
+      "primary_input": ["za", "zb", "zb-za", "language"],
+      "architecture": "raw MLP Linear(input,64)-GELU-Linear(64,1); final logit raw(a,b,l)-raw(b,a,l)",
+      "trainable_parameter_max": 200000,
+      "primary_condition": "visual+language",
+      "ablations": ["proprio+language", "visual+proprio+language"]
+    }
+  },
+  "training": {
+    "seed": 11,
+    "epochs": 40,
+    "batch_size": 512,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "V1_loss": "mean squared error to normalized trajectory progress",
+    "V2_loss": "binary cross entropy with logits to temporal-order preference",
+    "feature_standardization": "calibration-only mean/std with 1e-6 floor; frozen for evaluation",
+    "selection": "none; architecture, epoch count, threshold 0.5, and primary condition are fixed before calibration"
+  },
+  "probability_calibration": {
+    "applies_to": ["V0", "V1"],
+    "temperature_grid": [0.5, 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000],
+    "selection": "calibration same-demo pair log loss",
+    "V2": "native sigmoid of antisymmetric logit"
+  },
+  "controls": {
+    "wrong_language": "deterministic task derangement task_id -> (task_id+1) mod 10",
+    "symmetry": "P(b>a)+P(a>b), structurally exact for V2 and reported numerically",
+    "scene_time_shortcut": ["cross-demo matched-progress neutrality", "cross-demo mismatched-progress preference"],
+    "robot_shortcut": ["proprio+language", "visual+proprio+language"],
+    "monotonicity_gaps": [1, 4, 8, 16]
+  },
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261002,
+    "unit": "task-stratified demo block; resample four complete demos per task",
+    "confidence_interval": "percentile 95%"
+  },
+  "decision_rules": {
+    "local_accuracy_min": 0.65,
+    "local_ci_lower_min": 0.55,
+    "positive_task_min": 7,
+    "wrong_language_drop_min": 0.05,
+    "wrong_language_ci_lower_strictly_positive": true,
+    "robot_shortcut_accuracy_floor": 0.65,
+    "robot_shortcut_required_visual_margin": 0.02,
+    "v2_noninferiority_margin": 0.02,
+    "pairwise_outperformance_min": 0.02,
+    "terminal_accuracy_high": 0.80,
+    "pass_labels": ["GOAL_CONDITIONED_PROGRESS_VALID", "CANDIDATE_VALUE_REPRESENTATION_VALID"],
+    "pass_authorization": "GO_WORLD_MODEL_INTERFACE_AUDIT",
+    "fail_label": "CANDIDATE_VALUE_AUDIT_BLOCKED",
+    "fail_authorization": "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+    "spatial_world_model_always": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "controller_always": false
+  },
+  "outputs": {
+    "directory": "results/goal_conditioned_pairwise_progress",
+    "report": "docs/goal_conditioned_pairwise_progress_audit.md"
+  },
+  "forbidden": [
+    "read demo/init40-49",
+    "read expert actions as evaluator inputs",
+    "read reward, done, success, task outcome, state, or object pose",
+    "run simulator, candidate execution, or branch rollout",
+    "train or run a World Model",
+    "modify or fine-tune visual or language encoders",
+    "construct synthetic images",
+    "describe demonstration progress as task-optimal value",
+    "run a reranker or controller"
+  ]
+}
