@@ -390,6 +390,7 @@ def evaluate(protocol: dict[str, Any], protocol_commit: str) -> None:
         "F1_to_F3": nested("F1", "F3"),
         "F3_to_F4": nested("F3", "F4"),
         "F4_to_F5": nested("F4", "F5"),
+        "area_to_soft_map_plus_area": nested("F1", "F0"),
         "area_to_binary_plus_area": nested("F1", "B2"),
         "soft_map_to_soft_map_plus_area": nested("F2", "F0"),
     }
@@ -429,7 +430,7 @@ def evaluate(protocol: dict[str, Any], protocol_commit: str) -> None:
     binary_conditional = nested_analysis["area_to_binary_plus_area"]["object_mask_difference"]
     if binary_conditional["overall"] < conditional_threshold or binary_conditional["ci95"][0] <= 0.0:
         labels.append("BINARY_COMPONENT_REDUNDANT_GIVEN_AREA")
-    soft_conditional = nested_analysis["F1_to_F3"]["object_mask_difference"]
+    soft_conditional = nested_analysis["area_to_soft_map_plus_area"]["object_mask_difference"]
     if soft_conditional["overall"] >= conditional_threshold and soft_conditional["ci95"][0] > 0.0:
         labels.append("SOFT_OCCUPANCY_ADDS_VALUE_BEYOND_AREA")
     area_conditional = nested_analysis["soft_map_to_soft_map_plus_area"]

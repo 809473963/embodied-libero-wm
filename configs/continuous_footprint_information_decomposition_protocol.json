@@ -35,7 +35,7 @@
   },
   "implementation": {
     "decomposition_module": {"path": "src/probes/continuous_footprint_decomposition.py", "sha256": "34b7d50de36528dae25ab63e43befe9bbf36695971dc13905d9eadf44886ec12"},
-    "analyzer": {"path": "scripts/analyze_continuous_footprint_decomposition.py", "sha256": "d3924cac8d2b2d02ac26e45867676d7cb88a1eb6a27fb6311ed3f501d9a94354"},
+    "analyzer": {"path": "scripts/analyze_continuous_footprint_decomposition.py", "sha256": "99bb4a1e1d69db1151518ada1eefa1feaf408167795cc455726e389223bb92ca"},
     "protocol_test": {"path": "tests/test_continuous_footprint_decomposition_protocol.py", "sha256": "40e19075ec513f44a89736ec0d4f0dfdfebc60d80d808c2b2b7ef2e60a3486a1"}
   },
   "partitions": {
@@ -111,7 +111,18 @@
     "complete_target_gate": "same raw target clears 10 percent, positive CI, shuffle, 7 tasks, 4 horizons, all 3 pairs; its matched EE-conditioned residual clears 5 percent with positive CI; raw gain retains at least 80 percent of F0",
     "conditional_label_rule": "a conditional component adds value only at >=5 percent RMSE improvement with CI lower above zero; otherwise binary is redundant given area"
   },
-  "nested_analysis": ["F1->F3", "F3->F4", "F4->F5", "G+area->G+area+binary", "G+soft-map->G+soft-map+area"],
+  "nested_analysis": ["F1->F3", "F3->F4", "F4->F5", "G+area->G+soft-map+area", "G+area->G+area+binary", "G+soft-map->G+soft-map+area"],
+  "preflight_correction_history": [
+    {
+      "phase": "after calibration and before development evaluation",
+      "issue": "The first implementation mapped SOFT_OCCUPANCY_ADDS_VALUE_BEYOND_AREA to F1->F3 rather than the intended G+area->G+soft-map+area comparison.",
+      "calibration_results_viewed": true,
+      "development_evaluation_accessed": false,
+      "correction": "Add the missing F1->F0 nested comparison and use it only for the already-preregistered conditional label.",
+      "scientific_change": false,
+      "unchanged": "F0-F7 formulas, pair summaries, data, ridge forms and grid, targets, residuals, bootstrap draws, shuffles, numeric gates, minimum-dimension rule, partitions, and authorizations"
+    }
+  ],
   "decision": {
     "allowed_labels": ["VISIBLE_AREA_DOMINANT_TARGET", "AREA_CENTROID_TARGET_VALID", "CONTINUOUS_SHAPE_EXTENT_REQUIRED", "FULL_SOFT_FOOTPRINT_STRUCTURE_REQUIRED", "BINARY_COMPONENT_REDUNDANT_GIVEN_AREA", "SOFT_OCCUPANCY_ADDS_VALUE_BEYOND_AREA", "VISIBLE_AREA_ADDS_VALUE_BEYOND_SOFT_MAP", "SHAPE_DETAIL_NOT_REQUIRED", "MINIMAL_CONTINUOUS_FOOTPRINT_VALID", "CONTINUOUS_FOOTPRINT_DECOMPOSITION_UNRESOLVED", "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED", "DATA_OR_IMPLEMENTATION_BLOCK"],
     "minimum_rule": "lowest dimension among candidates with a complete target gate; candidate order breaks exact dimensional ties",
