@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "status": "POST_EVALUATION_DIAGNOSTIC_FROM_FROZEN_SIDECAR_NO_GATE_CHANGE",
+  "source_diagnosis_sha256": "98c1e65dcaaed3ad8f077a7ab921ba2a491343077d1b04cca4b5b51524ae9946",
+  "source_evaluation_derived_sha256": "6cd343b36c09751f933206e8d3176026396ac6b154c19c697d343988c1e32ddc",
+  "bootstrap": {
+    "replicates": 10000,
+    "unit": "task-stratified matched branch point retaining all candidate/horizon rows",
+    "seed_e0": 241202,
+    "seed_e1": 241203,
+    "confidence": 0.95
+  },
+  "E0_visual": {
+    "direction_accuracy_ci": [0.46322378716744916, 0.5524138048607511],
+    "mean_three_way_spearman_ci": [-0.032281646934131866, 0.10527116860329389],
+    "pairwise_ordering_accuracy_ci": [0.4104166666666666, 0.4739583333333332],
+    "top_agreement_ci": [0.29375, 0.396875],
+    "bottom_agreement_ci": [0.3125, 0.396875]
+  },
+  "E1_visual_language": {
+    "direction_accuracy_ci": [0.4813008130081301, 0.5403235770845511],
+    "mean_three_way_spearman_ci": [-0.037891415976886555, 0.08091625720323378],
+    "pairwise_ordering_accuracy_ci": [0.4104166666666666, 0.4624999999999999],
+    "top_agreement_ci": [0.290625, 0.375],
+    "bottom_agreement_ci": [0.265625, 0.359375]
+  },
+  "decision_effect": "none"
+}
