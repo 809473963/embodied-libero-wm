@@ -1,0 +1,117 @@
+{
+  "protocol_version": "expanded-candidate-contract-restart-v1",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION",
+  "created_at": "2026-10-02",
+  "scope": "Stage-A clean restart to select one exact deterministic finite N64 one-shot candidate contract; no value model, World Model, simulator, or controller",
+  "frozen_upstream": {
+    "commit": "241546e9021faac9c1313536aebb3c0962ee32bf",
+    "annotated_tag": "expanded-candidate-contract-restart",
+    "formal_state": [
+      "STRUCTURED_GRIPPER_PROPOSALS_VALID",
+      "N64_REQUIRED_FOR_HEADROOM",
+      "STRONG_EXPANDED_CANDIDATE_HEADROOM",
+      "EXPANDED_CANDIDATE_INTERFACE_UNRESOLVED",
+      "DATA_OR_IMPLEMENTATION_BLOCK",
+      "BLOCK_CANDIDATE_VALUE_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ]
+  },
+  "partitions": {
+    "calibration_demo_ids": [31, 32, 33, 34],
+    "evaluation_demo_ids": [36, 37, 38, 39],
+    "historical_reference_demo_ids": [30, 35],
+    "forbidden_demo_ids": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "expected_sample_counts": {"calibration": 4724, "evaluation": 4563},
+  "frozen_inputs": [
+    {"role": "d13_store", "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5", "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"},
+    {"role": "d13_manifest", "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json", "sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc"},
+    {"role": "c0_checkpoint", "path": "results/c0_v2/seed11/best.pt", "sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0"},
+    {"role": "production_candidate_config", "path": "configs/c1_v2_rerank.yaml", "sha256": "6e956d86bc84662369cc4f15109b948bf4ea1ca59a6c028db443ff1ed6086747"},
+    {"role": "planning_report", "path": "docs/candidate_generation_planning_architecture_audit.md", "sha256": "ac5a81623f5bb7f8109d2cc64f53e98b08930e2493a1f5590a351c8f149f5a59"},
+    {"role": "planning_diagnosis", "path": "results/candidate_generation_planning_architecture/diagnosis.json", "sha256": "2eac841dc55f32a9e5ba3987cf78daea7cf093720dfb10e033cfef2334eb8eb9"},
+    {"role": "blocked_interface_report", "path": "docs/expanded_candidate_interface_design_audit.md", "sha256": "6281cb47c68ed0d0e7d85fd448eb865be14a70fc6387a84703592ee17a7ca5a0"},
+    {"role": "blocked_interface_diagnosis", "path": "results/expanded_candidate_interface_design/corrected_diagnosis.json", "sha256": "91528c70881d228186829e3596d50e99628489949f279c06f1320f6838429659"},
+    {"role": "blocked_interface_amendment", "path": "configs/expanded_candidate_interface_decision_amendment.json", "sha256": "71cf5e2709a614d88b652b6edb792b140e96baf566276328384613fe79568ff8"}
+  ],
+  "implementation": [
+    {"path": "src/probes/expanded_candidate_contract_restart.py", "sha256": "1076ce2fb81b0be690a57b8639543fa39c861b257c812a131099d663824cdc46"},
+    {"path": "scripts/audit_expanded_candidate_contract_restart.py", "sha256": "84de008061fca102717556345a3a83e300c68db10966a952948077d06ec6b402"}
+  ],
+  "candidate_design": {
+    "N_total": 64,
+    "H": 8,
+    "scale": 2.5,
+    "production_noise_std": [0.05, 0.05, 0.05, 0.02, 0.02, 0.02, 0.0],
+    "temporal_kernel": [0.25, 0.5, 0.25],
+    "continuous_dimensions": [0, 1, 2, 3, 4, 5],
+    "continuous_gripper": "unchanged C0",
+    "sampling": "deterministic exact antithetic +epsilon_i then -epsilon_i",
+    "seed_base": 1901,
+    "seed_rule": "seed_base + admitted partition row + direction_index*1000003",
+    "bounds": [-1.0, 1.0],
+    "allocations": [
+      {"name": "C52_G11", "continuous": 52, "gripper": 11},
+      {"name": "C50_G13", "continuous": 50, "gripper": 13},
+      {"name": "C48_G15", "continuous": 48, "gripper": 15}
+    ],
+    "gripper_mandatory": ["c0_binarized", "all_negative", "all_positive"],
+    "g3_zero_tie": "positive",
+    "switch_universe": "both negative-to-positive and positive-to-negative after each step 1 through 7",
+    "switch_preorder": [
+      "minus_to_plus_after_4", "plus_to_minus_after_4",
+      "minus_to_plus_after_3", "plus_to_minus_after_3",
+      "minus_to_plus_after_5", "plus_to_minus_after_5",
+      "minus_to_plus_after_2", "plus_to_minus_after_2",
+      "minus_to_plus_after_6", "plus_to_minus_after_6",
+      "minus_to_plus_after_1", "plus_to_minus_after_1",
+      "minus_to_plus_after_7", "plus_to_minus_after_7"
+    ],
+    "switch_selection": "within each allocation, start with mandatory G3 and both constants; greedily append the remaining switch maximizing calibration mean H1/H2 gain, then H8 gain, then predefined lower switch order",
+    "allocation_selection": "among numerically and structurally valid allocations maximize calibration H8 gain, then mean H1/H2 gain, then lower candidate-any-clip fraction, then larger continuous count",
+    "candidate_order": "A0 once; continuous +epsilon_i/-epsilon_i pairs in direction order; selected gripper forms in frozen selection order",
+    "no_cartesian_product": true
+  },
+  "validity": {
+    "max_component_clip_fraction": 0.01,
+    "max_candidate_clip_fraction": 0.25,
+    "max_boundary_hit_fraction": 0.10,
+    "invalid_candidate_count": 0,
+    "exact_total": 64,
+    "exact_antithetic_symmetry": true,
+    "g3_required": true,
+    "unique_special_form_contract": true
+  },
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261002,
+    "unit": "task-stratified demo/init block; resample four complete demos per task",
+    "confidence_interval": "percentile 95%"
+  },
+  "decision_rules": {
+    "h8_gain_min": 0.10,
+    "h1_gain_min": 0.10,
+    "positive_task_min": 7,
+    "ci_lower_strictly_positive": true,
+    "pass_label": "EXPANDED_CANDIDATE_INTERFACE_VALID",
+    "pass_authorization": "GO_CANDIDATE_VALUE_AUDIT",
+    "fail_label": "EXPANDED_CANDIDATE_INTERFACE_UNRESOLVED",
+    "fail_authorization": "BLOCK_CANDIDATE_VALUE_AUDIT",
+    "spatial_world_model_always": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "controller_always": false
+  },
+  "outputs": {
+    "directory": "results/expanded_candidate_contract_restart",
+    "report": "docs/expanded_candidate_interface_contract_restart.md"
+  },
+  "forbidden": [
+    "read demo/init40-49",
+    "run simulator or candidate futures",
+    "read reward, done, success, or task outcome",
+    "use Gaussian gripper proposals",
+    "construct continuous-by-gripper Cartesian products",
+    "run iterative search",
+    "train or modify actor, proposal policy, World Model, evaluator, reranker, controller, or visual encoder",
+    "repair or redesign candidates after evaluation access"
+  ]
+}
