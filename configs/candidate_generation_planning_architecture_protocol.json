@@ -1,0 +1,161 @@
+{
+  "protocol_version": "candidate-generation-planning-architecture-audit-v1",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION",
+  "created_at": "2026-10-02",
+  "self_path": "configs/candidate_generation_planning_architecture_protocol.json",
+  "scope": "offline expert-action imitation-oracle candidate-search headroom only; no World Model, goal/value model, simulator outcome, reranker, or controller evaluation",
+  "frozen_upstream": {
+    "commit": "346554a125d83bfbbd7471a8e48385581922c849",
+    "annotated_tag": "planning-architecture-reaudit-start",
+    "upstream_verdicts": [
+      "AREA_REGRESSION_ACCURATE_BUT_DECISION_SIGNAL_INSUFFICIENT",
+      "NATURAL_SPATIAL_EXTRACTION_BLOCK",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ]
+  },
+  "partitions": {
+    "calibration_demo_ids": [31, 32, 33, 34],
+    "evaluation_demo_ids": [36, 37, 38, 39],
+    "historical_reference_demo_ids": [30, 35],
+    "forbidden_demo_ids": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "expected_sample_counts": {
+    "calibration": 4724,
+    "evaluation": 4563
+  },
+  "sample_contract": "for each explicitly admitted task/demo group only: natural observation features and proprio at k predict frozen expert actions[k+1:k+9], for every legal 0<=k<=T-9",
+  "frozen_inputs": [
+    {
+      "role": "d13_store",
+      "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+      "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"
+    },
+    {
+      "role": "d13_manifest",
+      "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json",
+      "sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc"
+    },
+    {
+      "role": "c0_checkpoint",
+      "path": "results/c0_v2/seed11/best.pt",
+      "sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0"
+    },
+    {
+      "role": "production_candidate_config",
+      "path": "configs/c1_v2_rerank.yaml",
+      "sha256": "6e956d86bc84662369cc4f15109b948bf4ea1ca59a6c028db443ff1ed6086747"
+    },
+    {
+      "role": "historical_c1_diagnosis",
+      "path": "results/c1_v2_1/candidate_diagnosis.json",
+      "sha256": "6fd0c3488b3e57fa098a8f5b9071e4e99912cc60f8b54774b4b1a857b6014339"
+    },
+    {
+      "role": "upstream_visible_area_report",
+      "path": "docs/relevant_object_visible_area_natural_extraction_audit.md",
+      "sha256": "ec5f226b568213d73c87ff4cb21f9431cfbb1432cc8eb55eeeb6588292d00e1e"
+    },
+    {
+      "role": "upstream_visible_area_diagnosis",
+      "path": "results/visible_area_natural_extraction/diagnosis.json",
+      "sha256": "98c1e65dcaaed3ad8f077a7ab921ba2a491343077d1b04cca4b5b51524ae9946"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/probes/planning_architecture.py",
+      "sha256": "fb1726598987b26d045f62f5109864117dd5aec03ebdf33cd5c499e7fae181f7"
+    },
+    {
+      "path": "scripts/audit_candidate_generation_planning_architecture.py",
+      "sha256": "28f9da1dd8133d6e46521eed8f183a42e0effc6fa6cabe53a519e2454860e47e"
+    }
+  ],
+  "historical_reference": {
+    "p0_relative_gain": 0.016482572869561455,
+    "diagnosis_path": "results/c1_v2_1/candidate_diagnosis.json",
+    "diagnosis_sha256": "6fd0c3488b3e57fa098a8f5b9071e4e99912cc60f8b54774b4b1a857b6014339",
+    "allowed_use": "comparison only; its demos45-49 numerical arrays are not opened by this audit"
+  },
+  "primary_metric": {
+    "name": "raw expert-action MSE",
+    "horizon": 8,
+    "action_dimensions": 7,
+    "oracle": "minimum MSE candidate with stable lowest-index tie break",
+    "interpretation": "imitation-oriented candidate-search headroom only; unavailable at deployment and not task success or a future planning objective"
+  },
+  "candidate_families": {
+    "seed_base": 1901,
+    "seed_rule": "direction0 uses seed_base+ordered_partition_row and exactly reproduces C1-v2.1; later directions add direction_index*1000003",
+    "production_noise_std": [0.05, 0.05, 0.05, 0.02, 0.02, 0.02, 0.0],
+    "temporal_kernel": [0.25, 0.5, 0.25],
+    "action_bounds": [-1.0, 1.0],
+    "P0": "N3 nested antithetic production noise",
+    "P1": "nested same-scale N=8,16,32,64 after P0 N=3",
+    "P2": "N32 translation-only, rotation-only, gripper-only, translation+rotation, and full-non-gripper; translation+rotation and full-non-gripper are exact aliases for this 7-D interface",
+    "gripper_noise_std": 0.5,
+    "P3": "same-scale N32 at 0.5x,1x,2x and mixed N32 cycling 0.5x,1x,2x across the 31 alternatives",
+    "cem_seed_base": 712301,
+    "P4": {
+      "iterations": [1, 2, 3, 4],
+      "candidates_per_iteration": 32,
+      "elite_count": 4,
+      "initial_mean": "C0",
+      "initial_std": "production_noise_std",
+      "update": "unweighted current-iteration elite mean and population std",
+      "std_floor": "0.1x initial elementwise",
+      "std_ceiling": "2x initial elementwise",
+      "reported_pool": "cumulative candidates through each iteration",
+      "objective": "expert-action MSE oracle; diagnostic and unavailable at deployment"
+    },
+    "P5": "N32: A0 + 8 full@1x + 8 full@2x + 8 translation-only@2x + 7 rotation-only@2x",
+    "task_specific_rules": false
+  },
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261002,
+    "unit": "task-stratified demo/init block; resample four complete demos per task and retain every legal action window",
+    "confidence_interval": "percentile 95%"
+  },
+  "decision_rules": {
+    "meaningful_relative_gain": 0.05,
+    "strong_relative_gain": 0.10,
+    "positive_task_min": 7,
+    "expanded_vs_p0_min": 0.02,
+    "family_increment_min": 0.02,
+    "iterative_vs_one_shot_min": 0.05,
+    "case_A": "no expanded one-shot clears the meaningful gate plus 2pp-over-P0 gate and iteration4 does not clear the iterative gate -> BLOCK_PLANNER_PROTOTYPE",
+    "case_B": "at least one expanded one-shot clears the meaningful gate and exceeds P0 by >=2pp with paired CI lower >0, while iterative does not significantly exceed one-shot -> GO_EXPANDED_CANDIDATE_PLANNER_DESIGN",
+    "case_C": "iteration4 clears the meaningful gate and exceeds the best one-shot relative gain by >=5pp with paired CI lower >0 -> GO_MODEL_BASED_PLANNER_DESIGN",
+    "spatial_world_model_authorization_always": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "controller_authorization_always": false
+  },
+  "allowed_labels": [
+    "CURRENT_N3_CANDIDATE_SET_UNDERPOWERED",
+    "LOCAL_CANDIDATE_NEIGHBORHOOD_SATURATED",
+    "MORE_LOCAL_SAMPLES_ADD_HEADROOM",
+    "MULTISCALE_SEARCH_ADDS_HEADROOM",
+    "STRUCTURED_ACTION_SEARCH_ADDS_HEADROOM",
+    "GRIPPER_SEARCH_ADDS_HEADROOM",
+    "ITERATIVE_ACTION_SEARCH_HAS_ORACLE_VALUE",
+    "C0_IS_STRONG_LOCAL_OPTIMUM",
+    "C0_SHOULD_BE_PROPOSAL_PRIOR",
+    "ONE_SHOT_RERANKING_ARCHITECTURE_LIMIT",
+    "CANDIDATE_HEADROOM_REMAINS_LOW",
+    "PLANNING_ARCHITECTURE_UNRESOLVED",
+    "DATA_OR_IMPLEMENTATION_BLOCK"
+  ],
+  "outputs": {
+    "directory": "results/candidate_generation_planning_architecture",
+    "report": "docs/candidate_generation_planning_architecture_audit.md"
+  },
+  "forbidden": [
+    "read any demo/init 40-49 numerical data",
+    "run simulator or candidate futures",
+    "read reward, done, success, or final task outcome",
+    "train or modify a World Model, encoder, actor, proposal policy, reranker, score, goal, value, cost, or controller",
+    "claim expert-action MSE is a deployment objective or task-success metric",
+    "authorize spatial World Model or controller work",
+    "add candidate family after evaluation access"
+  ]
+}
