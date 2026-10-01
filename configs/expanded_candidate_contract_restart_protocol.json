@@ -1,6 +1,9 @@
 {
   "protocol_version": "expanded-candidate-contract-restart-v1",
   "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION",
+  "implementation_preflight_history": [
+    "the first calibration build rejected every mathematically antithetic pair because validation required bitwise equality after float32 A0+/-epsilon addition and subtraction; before evaluation access, the unchanged candidates were revalidated with a frozen 2e-7 absolute float32 antisymmetry tolerance and maximum error reporting"
+  ],
   "created_at": "2026-10-02",
   "scope": "Stage-A clean restart to select one exact deterministic finite N64 one-shot candidate contract; no value model, World Model, simulator, or controller",
   "frozen_upstream": {
@@ -35,7 +38,7 @@
     {"role": "blocked_interface_amendment", "path": "configs/expanded_candidate_interface_decision_amendment.json", "sha256": "71cf5e2709a614d88b652b6edb792b140e96baf566276328384613fe79568ff8"}
   ],
   "implementation": [
-    {"path": "src/probes/expanded_candidate_contract_restart.py", "sha256": "1076ce2fb81b0be690a57b8639543fa39c861b257c812a131099d663824cdc46"},
+    {"path": "src/probes/expanded_candidate_contract_restart.py", "sha256": "ad218c6095b76f0d80fde6a10040db2f11604b03526d58d5dfc8d2aa24ca0e10"},
     {"path": "scripts/audit_expanded_candidate_contract_restart.py", "sha256": "84de008061fca102717556345a3a83e300c68db10966a952948077d06ec6b402"}
   ],
   "candidate_design": {
@@ -79,6 +82,7 @@
     "invalid_candidate_count": 0,
     "exact_total": 64,
     "exact_antithetic_symmetry": true,
+    "max_float32_pair_antisymmetry_error": 2e-7,
     "g3_required": true,
     "unique_special_form_contract": true
   },

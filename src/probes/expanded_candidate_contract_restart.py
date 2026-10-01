@@ -140,8 +140,11 @@ def validate_exact_contract(
     continuous_indices = np.flatnonzero(category == 1)
     deviations = preclip[:, continuous_indices] - default[:, None]
     pair_checks = []
+    pair_errors = []
     for offset in range(0, len(continuous_indices), 2):
-        pair_checks.append(bool(np.array_equal(deviations[:, offset], -deviations[:, offset + 1])))
+        error = float(np.max(np.abs(deviations[:, offset] + deviations[:, offset + 1])))
+        pair_errors.append(error)
+        pair_checks.append(error <= 2.0e-7)
     special_forms = forms[1 + len(continuous_indices):]
     return {
         "exact_total_64": candidates.shape[1] == 64,
@@ -149,7 +152,9 @@ def validate_exact_contract(
         "continuous_count_even": len(continuous_indices) % 2 == 0,
         "continuous_pair_count": len(continuous_indices) // 2,
         "all_antithetic_pairs_exact": all(pair_checks),
-        "unmatched_continuous_direction_count": 0 if all(pair_checks) else 1,
+        "max_float32_pair_antisymmetry_error": max(pair_errors, default=0.0),
+        "pair_antisymmetry_tolerance": 2.0e-7,
+        "unmatched_continuous_direction_count": 0 if all(pair_checks) else int(sum(not value for value in pair_checks)),
         "g3_included": "c0_binarized" in special_forms,
         "mandatory_constants_included": all(name in special_forms for name in ("all_negative", "all_positive")),
         "unique_special_form_contract": len(special_forms) == len(set(special_forms)),
