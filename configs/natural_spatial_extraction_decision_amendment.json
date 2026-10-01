@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-01",
+  "status": "POST_EVALUATION_LABEL_MAPPING_CORRECTION",
+  "source_numerical_diagnosis": {
+    "path": "results/natural_spatial_extraction/diagnosis.json",
+    "commit": "13a756b74155bb48b0c5a0d90d3b7b2fad409d6f",
+    "sha256": "67c2566f4548a4e259269cf7bc2f4e64523d67cf8b8bf32f824f1a9692dc5d2c"
+  },
+  "issue": "The numerical analyzer required a complete natural recovery pass before assigning LOCALIZATION_NOT_SUFFICIENT and required a natural area design pass before assigning VISIBLE_SCALE_SIGNAL_NEEDED. The user's frozen case definitions instead assign the first when binary localization metrics pass but downstream value fails, and the second when B2/B4 is clearly superior to B1 in oracle sufficiency.",
+  "correction": {
+    "VISIBLE_SCALE_SIGNAL_NEEDED": "assigned because oracle B2 passes while B1 and B4 fail; held-out B2 gains are 10.92% for ObjMask and 58.91% for Area, whereas B1 gains are -1.04% and 0.39% and B4 gains are -1.02% and 0.85%",
+    "LOCALIZATION_NOT_SUFFICIENT": "assigned because C1, C2, and C3 each clear binary IoU, balanced-accuracy, and recall gates, while no natural design clears the downstream deployment bridge"
+  },
+  "unchanged": [
+    "all source and derived numeric arrays",
+    "all predictions and recovery metrics",
+    "all RMSE values, correlations, bootstrap intervals, and shuffle results",
+    "all oracle and natural gates",
+    "selected target null",
+    "target simplification failure block type",
+    "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "alternative encoder authorization false",
+    "controller authorization false"
+  ],
+  "corrected_mechanism_labels": [
+    "SOFT_FOOTPRINT_INFORMATION_REQUIRED",
+    "VISIBLE_SCALE_SIGNAL_NEEDED",
+    "LOCALIZATION_NOT_SUFFICIENT",
+    "NATURAL_SPATIAL_EXTRACTION_BLOCK",
+    "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED"
+  ]
+}
