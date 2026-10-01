@@ -32,7 +32,7 @@
     "transitive_ledger": "The upstream restart transitively preserves C0-v2, C1-v2.1 candidate identities and production scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, the camera contract, and all prior mechanism verdicts."
   },
   "implementation": {
-    "target_module": {"path": "src/probes/spatial_target_design.py", "sha256": "2036a5bd90449bf2041f865966a678eb1f46fda0d796051c9abd84485aa9a169"},
+    "target_module": {"path": "src/probes/spatial_target_design.py", "sha256": "72910475991ea45da0c964ece9e35c742e20ba5c9430d75674a8e45fc285eb8f"},
     "analyzer": {"path": "scripts/analyze_spatial_visual_target_design.py", "sha256": "3ceaa61cf82201cc2807a58f278b699eae4dfa2673cde99cbe90adbb9daab212"},
     "protocol_test": {"path": "tests/test_spatial_visual_target_design_protocol.py", "sha256": "344883f5611803a85f9fae521c3d2d43d7e716b25fbcc72a1b2aaa0302f11fc8"}
   },
@@ -185,6 +185,24 @@
     "diagnosis": "results/spatial_visual_target_design/diagnosis.json",
     "report": "docs/spatial_visual_target_design_study.md"
   },
+  "preflight_correction_history": [
+    {
+      "phase": "first calibration invocation",
+      "stop": "CuBLAS deterministic execution required CUBLAS_WORKSPACE_CONFIG before the first decoder forward pass",
+      "artifact_written": false,
+      "calibration_or_evaluation_result_viewed": false,
+      "correction": "set CUBLAS_WORKSPACE_CONFIG=:4096:8 for the unchanged deterministic run",
+      "scientific_change": false
+    },
+    {
+      "phase": "second calibration invocation",
+      "stop": "CUDA adaptive_avg_pool2d backward has no deterministic implementation for the preregistered 7-to-4 decoder path",
+      "artifact_written": false,
+      "calibration_or_evaluation_result_viewed": false,
+      "correction": "replace only the 7-to-4 area-pooling implementation with its exact fixed separable overlap matrix",
+      "scientific_change": false
+    }
+  ],
   "forbidden": [
     "Do not train a World Model, GRU, Transformer, action-conditioned dynamics model, encoder, or fine-tune CLIP.",
     "Do not change candidates, production scale, reranker, scoring rule, actor, or controller.",

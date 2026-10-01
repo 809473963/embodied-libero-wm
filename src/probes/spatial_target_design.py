@@ -173,7 +173,27 @@ class SpatialProxy(nn.Module):
             logits = self.patch_out(F.gelu(self.patch_in(patch))).squeeze(-1)
         logits = logits.reshape(-1, 1, 7, 7)
         if resolution != 7:
-            logits = F.interpolate(logits, size=(resolution, resolution), mode="area")
+            if resolution != 4:
+                raise ValueError(f"unsupported frozen proxy resolution: {resolution}")
+            # Fixed separable area weights avoid CUDA's nondeterministic
+            # adaptive-pooling backward kernel while preserving exact cell
+            # overlap under a 7-to-4 grid conversion.
+            source_edges = np.arange(8, dtype=np.float32)
+            target_edges = np.linspace(0.0, 7.0, 5, dtype=np.float32)
+            weight = np.zeros((4, 7), dtype=np.float32)
+            for target_index in range(4):
+                for source_index in range(7):
+                    overlap = max(
+                        0.0,
+                        min(target_edges[target_index + 1], source_edges[source_index + 1])
+                        - max(target_edges[target_index], source_edges[source_index]),
+                    )
+                    weight[target_index, source_index] = overlap / (
+                        target_edges[target_index + 1] - target_edges[target_index]
+                    )
+            operator = torch.as_tensor(weight, dtype=logits.dtype, device=logits.device)
+            logits = torch.einsum("ai,bij,cj->bac", operator, logits.squeeze(1), operator)
+            logits = logits[:, None]
         area_logit = self.area_head(patch.mean(dim=1)).squeeze(-1)
         return logits.squeeze(1), area_logit
 
