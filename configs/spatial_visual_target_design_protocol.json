@@ -1,0 +1,198 @@
+{
+  "schema_version": 1,
+  "protocol_version": "spatial-visual-target-design-study-v1",
+  "date": "2026-10-01",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION_RESULTS",
+  "scientific_question": "Can the confirmed natural image-space object-footprint signal be compressed into a small, stable, natural-image-recoverable per-image state that is worth predicting in a future spatial World Model?",
+  "current_authorization": "GO_SPATIAL_TARGET_DESIGN",
+  "controller_authorization": false,
+  "frozen_upstream": {
+    "tag": "natural-image-space-target-design-go",
+    "commit": "b5963a67718bf0420ebf139125033412a6a2b01f",
+    "verdicts": [
+      "C0_CAUSAL_ALIGNMENT_FIXED",
+      "GLOBAL_CLIP_SPATIAL_COMPRESSION",
+      "SPATIAL_EE_SIGNAL_CONFIRMED",
+      "SPATIAL_OBJECT_IMAGE_SIGNAL_CONFIRMED",
+      "IMAGE_SPACE_TARGET_MISMATCH_SUPPORTED",
+      "GLOBAL_POOLING_LOSES_IMAGE_SPACE_INTERACTION_SIGNAL",
+      "GO_SPATIAL_TARGET_DESIGN"
+    ],
+    "files": [
+      {"path": "configs/natural_image_space_interaction_restart_protocol.json", "sha256": "796a57e50726f5119d1ae3e3bce76b2338d6fe9208c4d5357bc4ef6f54658d95"},
+      {"path": "results/image_space_target_audit_restart/diagnosis.json", "sha256": "0bfba2b5439fdb8d9c54e1df6802b01ade15ecbb8a9cd65be1b8e9c12c0d86d9"},
+      {"path": "docs/natural_image_space_interaction_target_audit_restart.md", "sha256": "1c0829074d890ba8396b0406731eae2507bda82d8ffcd493e519080b9f00b3e0"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/calibration_derived.npz", "sha256": "48dd842842d26d2a94d009c04b6bc1c526119743be2e9fd1c6bd32b9e8ef0989"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/evaluation_derived.npz", "sha256": "ecd1941ad0b9fb692e0ff99d53710b4ee6e75f161780171d6f9177aa2a22ed8f"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz", "sha256": "1130aa7fdec1fd0cbe2a8458339bd4187252b729c7ce929388e8f50dd8ae321f"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz", "sha256": "c3871bbce09fdf25eb3b3503fa5a24c098d662b600bb2e4da157757bd7bccd7c"},
+      {"path": "artifacts/stage3/visual_target_suitability/calibration_features.npz", "sha256": "7c9d88ce1c2723e6f88eaffcfc19544c69a1cf4fb16c1dc6d035761f6d608e88"},
+      {"path": "artifacts/stage3/visual_target_suitability/evaluation_features.npz", "sha256": "3b4c05dd4e6428d835c0f61c1cc86bb79a963a08b259a2cbef223565959dfbdb"}
+    ],
+    "transitive_ledger": "The upstream restart transitively preserves C0-v2, C1-v2.1 candidate identities and production scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, the camera contract, and all prior mechanism verdicts."
+  },
+  "implementation": {
+    "target_module": {"path": "src/probes/spatial_target_design.py", "sha256": "2036a5bd90449bf2041f865966a678eb1f46fda0d796051c9abd84485aa9a169"},
+    "analyzer": {"path": "scripts/analyze_spatial_visual_target_design.py", "sha256": "3ceaa61cf82201cc2807a58f278b699eae4dfa2673cde99cbe90adbb9daab212"},
+    "protocol_test": {"path": "tests/test_spatial_visual_target_design_protocol.py", "sha256": "344883f5611803a85f9fae521c3d2d43d7e716b25fbcc72a1b2aaa0302f11fc8"}
+  },
+  "partitions": {
+    "calibration": {
+      "init_state_indices": [31, 32, 33, 34],
+      "branch_points": 40,
+      "pair_rows": 960,
+      "visual_features": "artifacts/stage3/visual_target_suitability/calibration_features.npz",
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz",
+      "image_space_derived": "artifacts/stage3/image_space_target_audit_restart/calibration_derived.npz",
+      "use": "all target-form, rank, resolution, decoder, threshold, normalization, ridge, and residual calibration"
+    },
+    "development_evaluation": {
+      "init_state_indices": [36, 37, 38, 39],
+      "branch_points": 40,
+      "pair_rows": 960,
+      "visual_features": "artifacts/stage3/visual_target_suitability/evaluation_features.npz",
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz",
+      "image_space_derived": "artifacts/stage3/image_space_target_audit_restart/evaluation_derived.npz",
+      "use": "one-shot frozen development evaluation, not blind confirmation"
+    },
+    "historical_reference_only": [30, 35],
+    "forbidden_init_state_indices": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "per_image_contract": {
+    "rule": "Every target is S(I_t) from one unmodified natural future image; candidate-pair differences are evaluation operations only.",
+    "global": "frozen natural-image CLIP ViT-B/32 L2-normalized global projection [512]",
+    "patch": "frozen natural-image CLIP ViT-B/32 49 post-layernorm projected and per-token-normalized features [49,512]",
+    "teacher": "native relevant-object segmentation is an offline training/diagnostic teacher and never a deployment input"
+  },
+  "candidate_definitions": {
+    "D0": "T0 frozen global CLIP only; immutable baseline",
+    "D1": "T2 calibration-selected low-dimensional generic spatial map only",
+    "D2": "T3 calibration-selected low-resolution object occupancy plus visible area; oracle teacher target",
+    "D3": "T4 natural-image proxy occupancy plus area, without global CLIP",
+    "D4": "T5 global CLIP plus the same natural-image proxy",
+    "D5": "T6 global CLIP plus direct object-footprint auxiliary target; teacher labels are training-only"
+  },
+  "t1_reference": {
+    "definition": "full [49,512] natural patch tensor",
+    "role": "upper-information reference only; cannot be mechanically selected"
+  },
+  "t2_generic": {
+    "candidates": ["calibration PCA per-patch maps", "patch-to-global cosine residual map"],
+    "pca_ranks": [1, 2, 4],
+    "pca_seed": 226001,
+    "selection": "maximize the worse leave-one-init-out G+map improvement over G across ObjMask and Area; candidates within one percentage point choose the smaller per-image dimension",
+    "tie_tolerance_percentage_points": 0.01
+  },
+  "footprint": {
+    "resolutions": [4, 7],
+    "occupancy": "union relevant-object pixel fraction inside fixed floor-linspace image cells",
+    "visible_area": "exact union relevant-object visible fraction in the 128x128 natural image",
+    "selection": "resolution must clear the calibration 10-percent oracle increment when possible; among allowed forms select the lowest proxy CV loss with the preregistered size/width tie rules"
+  },
+  "t4_proxy": {
+    "input": "frozen natural patch features only",
+    "architecture": "shared task-agnostic per-patch Linear(512,h)-GELU-Linear(h,1), or h=0 linear ablation, plus a pooled patch area head",
+    "hidden_widths": [0, 32],
+    "cv_epochs": 80,
+    "final_epochs": 160,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "seed": 226101,
+    "selection_tolerance_fraction": 0.01,
+    "threshold_grid": [0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5],
+    "selection": "minimize leave-one-init-out normalized occupancy-MSE plus area-MAE; forms within 1 percent choose fewer output cells then smaller hidden width; choose threshold by OOF IoU, balanced-accuracy tie-break, then lower threshold"
+  },
+  "pair_summaries": {
+    "spatial_dimensions": 6,
+    "values": ["map RMSE", "map MAE", "map max", "top-quartile mean", "map-centroid displacement", "visible-area difference"],
+    "generic_last_value": "absolute whole-state mean difference",
+    "probe_role": "fixed low-capacity comparison feature, not the stored per-image target"
+  },
+  "distance_contract": {
+    "global": "cosine distance",
+    "full_patch": "mean per-patch cosine distance",
+    "generic": "per-image state RMSE",
+    "footprint_and_proxy": "RMSE after concatenating occupancy cells and the area scalar",
+    "hybrid": "root-mean-square of global and spatial distances after separate calibration ordinary-temporal normalization",
+    "ordinary_motion": "within the same real candidate branch, adjacent h1-h8 future images; 40 branches x 3 candidates x 7 transitions",
+    "scale_control": "ratio of mean candidate-pair distance to mean ordinary temporal distance"
+  },
+  "probes": {
+    "model": "closed-form ridge with intercept",
+    "ridge_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0],
+    "selection": "leave-one-init-state-out CV within init31-34; exact tie favors larger alpha",
+    "targets": ["ObjMask", "Area", "EE", "ObjMask residual after calibration EE-only fit", "Area residual after calibration EE-only fit"]
+  },
+  "shuffle": {
+    "rule": "derange the entire new six-dimensional spatial summary across branch points within identical task, horizon, and candidate pair while keeping global and target fixed",
+    "seed": 226201
+  },
+  "bootstrap": {
+    "unit": "task-stratified matched branch point retaining all 24 pair/horizon rows",
+    "replicates": 10000,
+    "correlation_replicates": 2000,
+    "seed": 226301,
+    "confidence": 0.95
+  },
+  "gates": {
+    "minimum_primary_increment": 0.1,
+    "minimum_residual_increment": 0.05,
+    "minimum_positive_tasks": 7,
+    "minimum_positive_horizons": 4,
+    "minimum_positive_pairs": 3,
+    "shuffle_rule": "relative degradation positive with branch-bootstrap CI lower above zero",
+    "minimum_candidate_temporal_ratio": 0.1,
+    "minimum_separation_object_spearman": 0.2,
+    "maximum_total_dimension": 600,
+    "natural_recovery": {
+      "minimum_occupancy_mse_improvement": 0.25,
+      "minimum_iou": 0.25,
+      "minimum_balanced_accuracy": 0.7,
+      "minimum_positive_recall": 0.5,
+      "minimum_area_mae_improvement": 0.2
+    },
+    "design_pass": "at least one ObjMask/Area primary pass, at least one 5-percent residual pass, spatial shuffle, scale-controlled separation, 7/10 tasks, 4/8 horizons, all pairs, reasonable dimension, and deployment compatibility",
+    "deployment_rule": "D2/D5 are oracle teacher designs and cannot alone authorize GO; D3/D4 additionally require the frozen natural-recovery gate"
+  },
+  "decision": {
+    "allowed_labels": [
+      "OBJECT_FOOTPRINT_TARGET_VALID",
+      "LOW_DIM_SPATIAL_MAP_VALID",
+      "NATURAL_SPATIAL_PROXY_VALID",
+      "HYBRID_GLOBAL_SPATIAL_TARGET_VALID",
+      "OBJECT_AUXILIARY_TARGET_VALID",
+      "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED",
+      "ORACLE_SPATIAL_TARGET_VALID",
+      "NATURAL_SPATIAL_EXTRACTION_BLOCK",
+      "SPATIAL_TARGET_DESIGN_UNRESOLVED",
+      "DATA_OR_IMPLEMENTATION_BLOCK"
+    ],
+    "go": "GO_SPATIAL_WM_PROTOTYPE",
+    "block": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "selection_order": ["D4_hybrid_global_proxy", "D1_low_dim_generic", "D3_natural_proxy"],
+    "go_scope": "seed11 single-model small spatial World Model prototype only"
+  },
+  "candidate_headroom_reference": {
+    "source": "frozen C1-v2.1 offline validation oracle",
+    "best_of_three_expert_action_mse_gain": 0.01648,
+    "gate_role": "discussion only; does not alter target-design gates"
+  },
+  "outputs": {
+    "calibration_weights": "artifacts/stage3/spatial_visual_target_design/calibration_weights.npz",
+    "calibration_derived": "artifacts/stage3/spatial_visual_target_design/calibration_derived.npz",
+    "calibration_freeze": "configs/spatial_visual_target_design_calibration_freeze.json",
+    "evaluation_derived": "artifacts/stage3/spatial_visual_target_design/evaluation_derived.npz",
+    "diagnosis": "results/spatial_visual_target_design/diagnosis.json",
+    "report": "docs/spatial_visual_target_design_study.md"
+  },
+  "forbidden": [
+    "Do not train a World Model, GRU, Transformer, action-conditioned dynamics model, encoder, or fine-tune CLIP.",
+    "Do not change candidates, production scale, reranker, scoring rule, actor, or controller.",
+    "Do not run C1/C2, D20-v2, controller rollout, reward, done, success, or final task outcome.",
+    "Do not access init40-49 or run seed23/47.",
+    "Do not reopen EE/joint, context-conditioned physical, object-state physical, contact-adapter, or global-CLIP-delta routes.",
+    "Do not use simulator segmentation, object IDs, future state, reward, or success as T4 input or as a deployment input.",
+    "Do not add candidates beyond D0-D5 or choose formulas, ranks, resolution, widths, thresholds, normalization, or gates from init36-39.",
+    "Do not overwrite any upstream config, result, report, checkpoint, or sidecar."
+  ]
+}
