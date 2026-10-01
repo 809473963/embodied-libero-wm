@@ -1,0 +1,201 @@
+{
+  "protocol_version": "expanded-candidate-interface-design-audit-v1",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION",
+  "created_at": "2026-10-02",
+  "self_path": "configs/expanded_candidate_interface_design_protocol.json",
+  "scope": "offline design and frozen development evaluation of one deterministic one-shot candidate interface using expert-action MSE only; no future model, value, reranker, simulator, or controller",
+  "frozen_upstream": {
+    "commit": "4e43c7add65b13034db4cea1c7715d190e65a426",
+    "annotated_tag": "expanded-candidate-interface-start",
+    "upstream_labels": [
+      "CURRENT_N3_CANDIDATE_SET_UNDERPOWERED",
+      "MORE_LOCAL_SAMPLES_ADD_HEADROOM",
+      "GRIPPER_SEARCH_ADDS_HEADROOM"
+    ],
+    "upstream_authorization": "GO_EXPANDED_CANDIDATE_PLANNER_DESIGN",
+    "continuing_block": "BLOCK_SPATIAL_WM_PROTOTYPE"
+  },
+  "partitions": {
+    "calibration_demo_ids": [31, 32, 33, 34],
+    "evaluation_demo_ids": [36, 37, 38, 39],
+    "historical_reference_demo_ids": [30, 35],
+    "forbidden_demo_ids": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "expected_sample_counts": {
+    "calibration": 4724,
+    "evaluation": 4563
+  },
+  "sample_contract": "only explicitly admitted task/demo HDF5 groups; natural observation and proprio at k feed frozen C0-v2 and expert target is actions[k+1:k+9]",
+  "frozen_inputs": [
+    {
+      "role": "d13_store",
+      "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+      "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"
+    },
+    {
+      "role": "d13_manifest",
+      "path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json",
+      "sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc"
+    },
+    {
+      "role": "c0_checkpoint",
+      "path": "results/c0_v2/seed11/best.pt",
+      "sha256": "2346603c8123e0a1cdee408cb635a2ffd12d6bc4e0cc5d91eacbc1330f5faac0"
+    },
+    {
+      "role": "production_candidate_config",
+      "path": "configs/c1_v2_rerank.yaml",
+      "sha256": "6e956d86bc84662369cc4f15109b948bf4ea1ca59a6c028db443ff1ed6086747"
+    },
+    {
+      "role": "historical_c1_diagnosis",
+      "path": "results/c1_v2_1/candidate_diagnosis.json",
+      "sha256": "6fd0c3488b3e57fa098a8f5b9071e4e99912cc60f8b54774b4b1a857b6014339"
+    },
+    {
+      "role": "upstream_planning_report",
+      "path": "docs/candidate_generation_planning_architecture_audit.md",
+      "sha256": "ac5a81623f5bb7f8109d2cc64f53e98b08930e2493a1f5590a351c8f149f5a59"
+    },
+    {
+      "role": "upstream_planning_calibration",
+      "path": "results/candidate_generation_planning_architecture/calibration_freeze.json",
+      "sha256": "f4d2057cb3f6e2b3628b27a3e7bf8aa5f67d1feadc4b8de714dda8db76a145c8"
+    },
+    {
+      "role": "upstream_planning_diagnosis",
+      "path": "results/candidate_generation_planning_architecture/diagnosis.json",
+      "sha256": "2eac841dc55f32a9e5ba3987cf78daea7cf093720dfb10e033cfef2334eb8eb9"
+    },
+    {
+      "role": "upstream_planning_sidecar",
+      "path": "results/candidate_generation_planning_architecture/evaluation_derived.npz",
+      "sha256": "32c80c1e998b56ecd61b6c0b2cdc0f6670b3f996b305f7edda7d1c51abb90471"
+    }
+  ],
+  "implementation": [
+    {
+      "path": "src/probes/expanded_candidate_interface.py",
+      "sha256": "fc0c7d668268c9a9712683c4d183d19780f425d711f2256ac72a1565df3557f6"
+    },
+    {
+      "path": "scripts/audit_expanded_candidate_interface_design.py",
+      "sha256": "0d2b7c79a9c5894f926430a7c5a3de4420c95981ff22964decf75cd84dd22161"
+    }
+  ],
+  "primary_metric": {
+    "name": "raw expert-action MSE",
+    "horizon": 8,
+    "action_dimensions": 7,
+    "oracle": "minimum-MSE candidate with stable lowest-index tie break",
+    "interpretation": "offline imitation headroom only; unavailable at deployment and not reward, task value, or success"
+  },
+  "candidate_design": {
+    "budgets": [16, 24, 32, 48, 64],
+    "scales": [1.0, 1.5, 2.0, 2.5],
+    "production_noise_std": [0.05, 0.05, 0.05, 0.02, 0.02, 0.02, 0.0],
+    "continuous_dimensions": [0, 1, 2, 3, 4, 5],
+    "gripper_dimension": 6,
+    "temporal_kernel": [0.25, 0.5, 0.25],
+    "action_bounds": [-1.0, 1.0],
+    "antithetic_seed_base": 1901,
+    "independent_seed_base": 91901,
+    "seed_rule": "partition-row order plus direction_index*1000003; antithetic signs interleave + then -; no task-specific seed or rule",
+    "continuous_bank_styles": ["antithetic", "independent"],
+    "gripper_contract": {
+      "expert_values": [-1.0, 1.0],
+      "gaussian_proposals_forbidden": true,
+      "c0_zero_tie": "+1",
+      "standalone_G0": "keep C0 gripper sequence",
+      "standalone_G1": "all -1 and all +1",
+      "standalone_G2": "G1 plus both switch directions after steps 1,2,4,6,7; constant endpoints replace duplicate boundary switches",
+      "standalone_G3": "sign-discretized C0 sequence",
+      "allocation_order": [
+        "all_minus",
+        "all_plus",
+        "minus_to_plus_after_4",
+        "plus_to_minus_after_4",
+        "minus_to_plus_after_2",
+        "plus_to_minus_after_2",
+        "minus_to_plus_after_6",
+        "plus_to_minus_after_6",
+        "minus_to_plus_after_1",
+        "plus_to_minus_after_1",
+        "minus_to_plus_after_7",
+        "plus_to_minus_after_7"
+      ]
+    },
+    "fixed_budget_allocations": [0, 4, 8, 12],
+    "allocation_meaning": "N_total is frozen by the count screen; each allocation contains A0, N_total-1-G continuous proposals, then G structured gripper proposals; no Cartesian product",
+    "candidate_order": ["A0", "continuous proposals", "structured gripper proposals"]
+  },
+  "validity": {
+    "max_component_clip_fraction": 0.01,
+    "max_candidate_clip_fraction": 0.25,
+    "max_boundary_hit_fraction": 0.10,
+    "near_duplicate_action_rms": 0.000001,
+    "invalid_candidate_count": 0,
+    "scale_2p5_stop_rule": "remove 2.5x before selection if any fixed validity limit fails"
+  },
+  "selection_rules": {
+    "meaningful_h8_gain": 0.05,
+    "strong_h8_gain": 0.10,
+    "h1_gain_min": 0.10,
+    "positive_task_min": 7,
+    "scale_tie_pp": 0.01,
+    "bank_style_material_pp": 0.01,
+    "n64_retention": 0.90,
+    "doubling_h8_material_pp": 0.015,
+    "doubling_prefix_or_dimension_material_pp": 0.05,
+    "gripper_h8_increment": 0.05,
+    "gripper_prefix_increment": 0.10,
+    "allocation_tie_pp": 0.01,
+    "scale_label_increment": 0.02,
+    "scale_selection": "among valid N32 antithetic scales with H8 gain >=5%, maximize mean H1/H2 gain; if within 1pp choose lower scale",
+    "bank_style_selection": "if antithetic and independent differ by <1pp on both H8 and mean H1/H2, choose antithetic; otherwise maximize mean H1/H2 then H8",
+    "count_selection": "choose smallest of N16/N24/N32 with H8>=5%, >=90% of N64 H8 gain, all ten tasks positive, and validity; otherwise choose N64 only if N64 materially exceeds N32 by the frozen doubling rule, else choose N32",
+    "gripper_inclusion": "structured allocation must improve H8 over matched continuous-only by >=5pp with paired CI lower >0, or improve mean H1/H2 by >=10pp with each positive",
+    "allocation_selection": "among passing G4/G8/G12 choose highest calibration H8 gain; if within 1pp choose fewer gripper candidates; if none pass choose G0",
+    "authorization": "selected interface must be valid, H8>=5% with CI lower >0, positive on >=7 tasks, H1>=10%, uniquely calibration-selected, and on the evaluation H1/H8/count Pareto frontier"
+  },
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261002,
+    "unit": "task-stratified demo/init block; resample four complete demos per task and retain every legal action window",
+    "confidence_interval": "percentile 95%"
+  },
+  "allowed_labels": [
+    "EXPANDED_CANDIDATE_INTERFACE_VALID",
+    "STRUCTURED_GRIPPER_PROPOSALS_VALID",
+    "GRIPPER_PROPOSALS_REMAIN_DIAGNOSTIC",
+    "PRODUCTION_SCALE_TOO_CONSERVATIVE",
+    "N32_SUFFICIENT",
+    "N64_REQUIRED_FOR_HEADROOM",
+    "CANDIDATE_COMPUTE_TRADEOFF_LIMIT",
+    "MEANINGFUL_EXPANDED_CANDIDATE_HEADROOM",
+    "STRONG_EXPANDED_CANDIDATE_HEADROOM",
+    "EXPANDED_CANDIDATE_INTERFACE_UNRESOLVED",
+    "DATA_OR_IMPLEMENTATION_BLOCK"
+  ],
+  "authorizations": {
+    "pass": "GO_CANDIDATE_VALUE_AUDIT",
+    "fail": "BLOCK_CANDIDATE_VALUE_AUDIT",
+    "spatial_world_model_always": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "controller_always": false
+  },
+  "outputs": {
+    "directory": "results/expanded_candidate_interface_design",
+    "report": "docs/expanded_candidate_interface_design_audit.md"
+  },
+  "forbidden": [
+    "read demo/init 40-49 numerical data",
+    "run simulator or produce real future RGB/state",
+    "read reward, done, success, or final task outcome",
+    "use Gaussian gripper proposals in the selected production interface",
+    "construct a continuous/gripper Cartesian product",
+    "retune or run CEM, MPPI, beam search, or any iterative planner",
+    "train or modify a World Model, encoder, actor, proposal policy, reranker, goal, value, cost, score, or controller",
+    "claim expert-action MSE is a deployable value function",
+    "authorize a spatial World Model or controller"
+  ]
+}
