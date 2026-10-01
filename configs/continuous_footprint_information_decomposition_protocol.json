@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "protocol_version": "continuous-footprint-information-decomposition-v1",
+  "date": "2026-10-01",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION_RESULTS",
+  "scientific_question": "How much of the frozen 50-D soft footprint's object value is carried by visible area, position, extent, covariance, or the full 49-cell continuous field?",
+  "current_authorization": "BLOCK_SPATIAL_WM_PROTOTYPE",
+  "controller_authorization": false,
+  "frozen_upstream": {
+    "tag": "natural-spatial-extraction-block",
+    "commit": "3a22845cf3cd59bdf898a10daa61059e5fab1e93",
+    "verdicts": [
+      "SOFT_FOOTPRINT_INFORMATION_REQUIRED",
+      "VISIBLE_SCALE_SIGNAL_NEEDED",
+      "LOCALIZATION_NOT_SUFFICIENT",
+      "NATURAL_SPATIAL_EXTRACTION_BLOCK",
+      "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ],
+    "files": [
+      {"path": "configs/natural_spatial_extraction_bottleneck_protocol.json", "sha256": "09a9af8f6915729a4f0aec36f6e7ddd26c75182d9f1d7dd2e608a5834b99f03c"},
+      {"path": "configs/natural_spatial_extraction_calibration_freeze.json", "sha256": "f440576af2c55582318f7a2d094bbf95f85ab000da7dd721168c0c9a7ce0e198"},
+      {"path": "configs/natural_spatial_extraction_decision_amendment.json", "sha256": "6957c45fd36b68f01eea867208da7994286a3ab1ba165347fc6466e11551c657"},
+      {"path": "artifacts/stage3/natural_spatial_extraction/calibration_weights.npz", "sha256": "56e2e8a66c1942d7adc7d79fc1c052e31c5c6086c477c2f4e71e8774047063ae"},
+      {"path": "artifacts/stage3/natural_spatial_extraction/calibration_derived.npz", "sha256": "5c90f1b05ff2b187fcd8f8524f8cde825e1bf4d8cc61bf9b7d9928a8d10a81c1"},
+      {"path": "artifacts/stage3/natural_spatial_extraction/evaluation_derived.npz", "sha256": "6a59755f6f1f87bcbe6b5795058ccf1ebef5ef3d77caf70f9a72899c8f116118"},
+      {"path": "results/natural_spatial_extraction/diagnosis.json", "sha256": "9b10854d9f980a90076f7f14e2ef07f7df12e045b4a8b66b883dacbcdccbdaff"},
+      {"path": "docs/natural_spatial_extraction_bottleneck_audit.md", "sha256": "789a7038c663d6b7a23a8e749b96725d7588615a7a6a4b1dfa40180072077611"},
+      {"path": "artifacts/stage3/spatial_visual_target_design/calibration_derived.npz", "sha256": "2baee7dc428a564670046465cfa9851a3443c26c02b8000cd63e81d7cb30222e"},
+      {"path": "artifacts/stage3/spatial_visual_target_design/evaluation_derived.npz", "sha256": "7cab9829b8c5b25bb9116acc4216382206d346b7caf7755e207edb3e14670754"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz", "sha256": "1130aa7fdec1fd0cbe2a8458339bd4187252b729c7ce929388e8f50dd8ae321f"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz", "sha256": "c3871bbce09fdf25eb3b3503fa5a24c098d662b600bb2e4da157757bd7bccd7c"}
+    ],
+    "transitive_ledger": "The annotated upstream tag transitively freezes the camera contract, natural image-space audit, target-design study, C0-v2, C1-v2.1 candidates and scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, all matched branches, and all prior reports/results/checkpoints."
+  },
+  "implementation": {
+    "decomposition_module": {"path": "src/probes/continuous_footprint_decomposition.py", "sha256": "34b7d50de36528dae25ab63e43befe9bbf36695971dc13905d9eadf44886ec12"},
+    "analyzer": {"path": "scripts/analyze_continuous_footprint_decomposition.py", "sha256": "d3924cac8d2b2d02ac26e45867676d7cb88a1eb6a27fb6311ed3f501d9a94354"},
+    "protocol_test": {"path": "tests/test_continuous_footprint_decomposition_protocol.py", "sha256": "40e19075ec513f44a89736ec0d4f0dfdfebc60d80d808c2b2b7ef2e60a3486a1"}
+  },
+  "partitions": {
+    "calibration": {
+      "init_state_indices": [31, 32, 33, 34],
+      "branch_points": 40,
+      "pair_rows": 960,
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz",
+      "target_design_derived": "artifacts/stage3/spatial_visual_target_design/calibration_derived.npz",
+      "use": "all formula checks, missing/stability checks, ridge CV and fitting, and freezing"
+    },
+    "development_evaluation": {
+      "init_state_indices": [36, 37, 38, 39],
+      "branch_points": 40,
+      "pair_rows": 960,
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz",
+      "target_design_derived": "artifacts/stage3/spatial_visual_target_design/evaluation_derived.npz",
+      "use": "one-shot frozen development evaluation, not blind confirmation"
+    },
+    "historical_reference_only": [30, 35],
+    "forbidden_init_state_indices": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "candidate_order": ["F0", "F1", "F2", "F3", "F4", "F5", "F6", "F7"],
+  "candidates": {
+    "F0": {"dimension": 50, "formula": "49 soft 7x7 occupancy fractions plus exact continuous visible-area fraction", "role": "frozen reference"},
+    "F1": {"dimension": 1, "formula": "exact continuous visible-area fraction"},
+    "F2": {"dimension": 49, "formula": "49 soft 7x7 occupancy fractions without exact area"},
+    "F3": {"dimension": 3, "formula": "[area,cx,cy], with occupancy-weighted cell-centre coordinates in [0,1]"},
+    "F4": {"dimension": 5, "formula": "[area,cx,cy,sigma_x,sigma_y], occupancy-weighted standard deviations"},
+    "F5": {"dimension": 6, "formula": "F4 plus occupancy-weighted xy covariance"},
+    "F6": {"dimension": 7, "formula": "[area,cx,cy,xmin,xmax,ymin,ymax] over positive-support cell centres", "support_rule": "occupancy > 0.0"},
+    "F7": {"dimension": 8, "formula": "[area,cx,cy,sigma_x,sigma_y,cov_xy,standardized_skew_x,standardized_skew_y]", "stability_rule": "reject before evaluation if any calibration state is nonfinite or any sigma denominator is not protected by 1e-12"}
+  },
+  "missing_values": {
+    "visibility": "visible area zero is retained as zero",
+    "centroid_and_moments": "never impute zero, image centre, or previous value",
+    "zero_mass_rule": "DATA_OR_IMPLEMENTATION_BLOCK",
+    "secondary_visibility_bit": "allowed diagnostically but not used by the primary F0-F7 selection"
+  },
+  "pair_summary": {
+    "dimensions": 6,
+    "values": ["spatial RMSE", "spatial MAE", "spatial maximum absolute difference", "spatial top-quartile mean", "centroid displacement or zero when absent", "exact-area difference when present, otherwise soft-map mean difference"],
+    "fairness": "all F0-F7 and the frozen B2 diagnostic use the same six slots and the same G baseline",
+    "normalization": "ridge standardization is fitted only on calibration rows"
+  },
+  "probes": {
+    "model": "closed-form ridge with intercept",
+    "ridge_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0],
+    "selection": "leave-one-init-state-out CV within init31-34; exact ties favor larger alpha",
+    "global_baseline": "frozen 10-D global CLIP summary",
+    "targets": ["ObjMask", "Area", "frozen ObjMask residual after calibration EE-only control", "frozen Area residual after calibration EE-only control"]
+  },
+  "shuffle": {
+    "rule": "derange the complete six-dimensional Fk summary across branch points within identical task, horizon, and candidate pair while G and target remain fixed",
+    "seed": 228101
+  },
+  "bootstrap": {
+    "unit": "task-stratified matched branch point retaining all 24 pair/horizon rows",
+    "replicates": 10000,
+    "correlation_replicates": 2000,
+    "seed": 228201,
+    "confidence": 0.95
+  },
+  "gates": {
+    "minimum_primary_increment": 0.10,
+    "minimum_residual_increment": 0.05,
+    "minimum_retention_vs_F0": 0.80,
+    "minimum_conditional_increment": 0.05,
+    "minimum_positive_tasks": 7,
+    "minimum_positive_horizons": 4,
+    "minimum_positive_pairs": 3,
+    "shuffle_rule": "relative degradation positive with branch-bootstrap CI lower above zero",
+    "complete_target_gate": "same raw target clears 10 percent, positive CI, shuffle, 7 tasks, 4 horizons, all 3 pairs; its matched EE-conditioned residual clears 5 percent with positive CI; raw gain retains at least 80 percent of F0",
+    "conditional_label_rule": "a conditional component adds value only at >=5 percent RMSE improvement with CI lower above zero; otherwise binary is redundant given area"
+  },
+  "nested_analysis": ["F1->F3", "F3->F4", "F4->F5", "G+area->G+area+binary", "G+soft-map->G+soft-map+area"],
+  "decision": {
+    "allowed_labels": ["VISIBLE_AREA_DOMINANT_TARGET", "AREA_CENTROID_TARGET_VALID", "CONTINUOUS_SHAPE_EXTENT_REQUIRED", "FULL_SOFT_FOOTPRINT_STRUCTURE_REQUIRED", "BINARY_COMPONENT_REDUNDANT_GIVEN_AREA", "SOFT_OCCUPANCY_ADDS_VALUE_BEYOND_AREA", "VISIBLE_AREA_ADDS_VALUE_BEYOND_SOFT_MAP", "SHAPE_DETAIL_NOT_REQUIRED", "MINIMAL_CONTINUOUS_FOOTPRINT_VALID", "CONTINUOUS_FOOTPRINT_DECOMPOSITION_UNRESOLVED", "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED", "DATA_OR_IMPLEMENTATION_BLOCK"],
+    "minimum_rule": "lowest dimension among candidates with a complete target gate; candidate order breaks exact dimensional ties",
+    "low_dimensional_go": "GO_MINIMAL_SPATIAL_EXTRACTION_AUDIT",
+    "full_map_go": "GO_SOFT_SPATIAL_EXTRACTION_AUDIT",
+    "world_model_block": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "alternative_encoder_authorized": false
+  },
+  "candidate_headroom_reference": {
+    "source": "frozen C1-v2.1 offline validation oracle",
+    "best_of_three_expert_action_mse_gain": 0.01648,
+    "gate_role": "discussion only"
+  },
+  "outputs": {
+    "calibration_weights": "artifacts/stage3/continuous_footprint_decomposition/calibration_weights.npz",
+    "calibration_derived": "artifacts/stage3/continuous_footprint_decomposition/calibration_derived.npz",
+    "calibration_freeze": "configs/continuous_footprint_information_decomposition_calibration_freeze.json",
+    "evaluation_derived": "artifacts/stage3/continuous_footprint_decomposition/evaluation_derived.npz",
+    "diagnosis": "results/continuous_footprint_decomposition/diagnosis.json",
+    "report": "docs/continuous_footprint_information_decomposition_audit.md"
+  },
+  "forbidden": [
+    "Do not train a natural decoder, alternative encoder, segmenter, SAM, DINO, SigLIP, CLIP variant, or fine-tune CLIP.",
+    "Do not train a World Model, GRU, Transformer, CNN, or action-conditioned dynamics model.",
+    "Do not change the actor, candidates, production scale, reranker, scoring rule, or controller.",
+    "Do not run C1/C2, D20-v2, controller rollout, reward, done, success, or final task outcome.",
+    "Do not access init40-49 or run seed23/47.",
+    "Do not add F8 or later candidates, use PCA/autoencoders/learned latents, tune formulas from init36-39, or overwrite upstream artifacts."
+  ]
+}
