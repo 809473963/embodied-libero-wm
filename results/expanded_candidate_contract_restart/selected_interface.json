@@ -1,0 +1,440 @@
+{
+  "schema_version": 1,
+  "name": "Selected Expanded Candidate Interface v1",
+  "status": "CALIBRATION_SELECTED",
+  "protocol_sha256": "e98fcab27ed22cc20acd3141c6915d7d0a6ec477799e656ff6ec878e5332a542",
+  "selected_family": "C48_G15",
+  "H": 8,
+  "N_total": 64,
+  "A0": "frozen clipped C0-v2 action chunk; candidate index 0 exactly once",
+  "continuous_alternatives": 48,
+  "continuous_antithetic_pairs": 24,
+  "continuous_scale": 2.5,
+  "continuous_dimensions": [
+    "translation_0_2",
+    "rotation_3_5"
+  ],
+  "continuous_gripper": "unchanged frozen C0",
+  "temporal_smoothing": [
+    0.25,
+    0.5,
+    0.25
+  ],
+  "structured_gripper_alternatives": 15,
+  "structured_gripper_forms": [
+    "c0_binarized",
+    "all_negative",
+    "all_positive",
+    "plus_to_minus_after_1",
+    "minus_to_plus_after_1",
+    "plus_to_minus_after_4",
+    "minus_to_plus_after_4",
+    "plus_to_minus_after_5",
+    "minus_to_plus_after_5",
+    "plus_to_minus_after_3",
+    "minus_to_plus_after_6",
+    "plus_to_minus_after_6",
+    "minus_to_plus_after_2",
+    "minus_to_plus_after_3",
+    "plus_to_minus_after_7"
+  ],
+  "required_G3": "c0_binarized with zero tie -> positive",
+  "gripper_semantics": "negative state / positive state; repository does not establish reliable open/close names",
+  "bounds": [
+    -1.0,
+    1.0
+  ],
+  "seed_base": 1901,
+  "seed_rule": "seed_base + admitted partition row + direction_index*1000003",
+  "candidate_order": "A0, then +epsilon_i/-epsilon_i pairs by direction index, then gripper forms in frozen selected order",
+  "no_cartesian_product": true,
+  "calibration_selection": {
+    "C52_G11": {
+      "forms": [
+        "c0_binarized",
+        "all_negative",
+        "all_positive",
+        "plus_to_minus_after_1",
+        "minus_to_plus_after_1",
+        "plus_to_minus_after_4",
+        "minus_to_plus_after_4",
+        "plus_to_minus_after_5",
+        "minus_to_plus_after_5",
+        "plus_to_minus_after_3",
+        "minus_to_plus_after_6"
+      ],
+      "forward_selection_trace": [
+        {
+          "step": 4,
+          "selected": "plus_to_minus_after_1",
+          "metrics": {
+            "h8": 0.45680261657005045,
+            "h1": 0.7650591940788511,
+            "h2": 0.7064200160027214,
+            "h4": 0.5861719486829096,
+            "mean_h1_h2": 0.7357396050407863
+          }
+        },
+        {
+          "step": 5,
+          "selected": "minus_to_plus_after_1",
+          "metrics": {
+            "h8": 0.4711316777710345,
+            "h1": 0.7650591940788511,
+            "h2": 0.7383668174434611,
+            "h4": 0.610570217169467,
+            "mean_h1_h2": 0.7517130057611561
+          }
+        },
+        {
+          "step": 6,
+          "selected": "plus_to_minus_after_4",
+          "metrics": {
+            "h8": 0.5132477893426035,
+            "h1": 0.7650591940788511,
+            "h2": 0.7383668174434611,
+            "h4": 0.610570217169467,
+            "mean_h1_h2": 0.7517130057611561
+          }
+        },
+        {
+          "step": 7,
+          "selected": "minus_to_plus_after_4",
+          "metrics": {
+            "h8": 0.5469660152430309,
+            "h1": 0.7650591940788511,
+            "h2": 0.7383668174434611,
+            "h4": 0.610570217169467,
+            "mean_h1_h2": 0.7517130057611561
+          }
+        },
+        {
+          "step": 8,
+          "selected": "plus_to_minus_after_5",
+          "metrics": {
+            "h8": 0.5677770507521794,
+            "h1": 0.7650591940788511,
+            "h2": 0.7383668174434611,
+            "h4": 0.610570217169467,
+            "mean_h1_h2": 0.7517130057611561
+          }
+        },
+        {
+          "step": 9,
+          "selected": "minus_to_plus_after_5",
+          "metrics": {
+            "h8": 0.588299840525141,
+            "h1": 0.7650591940788511,
+            "h2": 0.7383668174434611,
+            "h4": 0.610570217169467,
+            "mean_h1_h2": 0.7517130057611561
+          }
+        },
+        {
+          "step": 10,
+          "selected": "plus_to_minus_after_3",
+          "metrics": {
+            "h8": 0.604301367639706,
+            "h1": 0.7650591940788511,
+            "h2": 0.7383668174434611,
+            "h4": 0.6340107725623184,
+            "mean_h1_h2": 0.7517130057611561
+          }
+        },
+        {
+          "step": 11,
+          "selected": "minus_to_plus_after_6",
+          "metrics": {
+            "h8": 0.6192848694739831,
+            "h1": 0.7650591940788511,
+            "h2": 0.7383668174434611,
+            "h4": 0.6340107725623184,
+            "mean_h1_h2": 0.7517130057611561
+          }
+        }
+      ]
+    },
+    "C50_G13": {
+      "forms": [
+        "c0_binarized",
+        "all_negative",
+        "all_positive",
+        "plus_to_minus_after_1",
+        "minus_to_plus_after_1",
+        "plus_to_minus_after_4",
+        "minus_to_plus_after_4",
+        "plus_to_minus_after_5",
+        "minus_to_plus_after_5",
+        "plus_to_minus_after_3",
+        "minus_to_plus_after_6",
+        "plus_to_minus_after_6",
+        "minus_to_plus_after_2"
+      ],
+      "forward_selection_trace": [
+        {
+          "step": 4,
+          "selected": "plus_to_minus_after_1",
+          "metrics": {
+            "h8": 0.45607240876079813,
+            "h1": 0.7640195329005145,
+            "h2": 0.7052424204486905,
+            "h4": 0.5851548373742521,
+            "mean_h1_h2": 0.7346309766746024
+          }
+        },
+        {
+          "step": 5,
+          "selected": "minus_to_plus_after_1",
+          "metrics": {
+            "h8": 0.47040146996178195,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6095531058608096,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 6,
+          "selected": "plus_to_minus_after_4",
+          "metrics": {
+            "h8": 0.5125480882682132,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6095531058608096,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 7,
+          "selected": "minus_to_plus_after_4",
+          "metrics": {
+            "h8": 0.5462806851615959,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6095531058608096,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 8,
+          "selected": "plus_to_minus_after_5",
+          "metrics": {
+            "h8": 0.5670917206707444,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6095531058608096,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 9,
+          "selected": "minus_to_plus_after_5",
+          "metrics": {
+            "h8": 0.5876176439500702,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6095531058608096,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 10,
+          "selected": "plus_to_minus_after_3",
+          "metrics": {
+            "h8": 0.603619171064635,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6330639813571369,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 11,
+          "selected": "minus_to_plus_after_6",
+          "metrics": {
+            "h8": 0.6186045745083311,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6330639813571369,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 12,
+          "selected": "plus_to_minus_after_6",
+          "metrics": {
+            "h8": 0.6333244923572804,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6330639813571369,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        },
+        {
+          "step": 13,
+          "selected": "minus_to_plus_after_2",
+          "metrics": {
+            "h8": 0.647859430717741,
+            "h1": 0.7640195329005145,
+            "h2": 0.7371943939277706,
+            "h4": 0.6625882286704302,
+            "mean_h1_h2": 0.7506069634141426
+          }
+        }
+      ]
+    },
+    "C48_G15": {
+      "forms": [
+        "c0_binarized",
+        "all_negative",
+        "all_positive",
+        "plus_to_minus_after_1",
+        "minus_to_plus_after_1",
+        "plus_to_minus_after_4",
+        "minus_to_plus_after_4",
+        "plus_to_minus_after_5",
+        "minus_to_plus_after_5",
+        "plus_to_minus_after_3",
+        "minus_to_plus_after_6",
+        "plus_to_minus_after_6",
+        "minus_to_plus_after_2",
+        "minus_to_plus_after_3",
+        "plus_to_minus_after_7"
+      ],
+      "forward_selection_trace": [
+        {
+          "step": 4,
+          "selected": "plus_to_minus_after_1",
+          "metrics": {
+            "h8": 0.4552621925189049,
+            "h1": 0.7622855485485823,
+            "h2": 0.703588628229896,
+            "h4": 0.5837764716170604,
+            "mean_h1_h2": 0.7329370883892392
+          }
+        },
+        {
+          "step": 5,
+          "selected": "minus_to_plus_after_1",
+          "metrics": {
+            "h8": 0.4696357364694794,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.608193733533543,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 6,
+          "selected": "plus_to_minus_after_4",
+          "metrics": {
+            "h8": 0.5117823547759106,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.608193733533543,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 7,
+          "selected": "minus_to_plus_after_4",
+          "metrics": {
+            "h8": 0.5455243842852715,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.608193733533543,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 8,
+          "selected": "plus_to_minus_after_5",
+          "metrics": {
+            "h8": 0.5663532274349075,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.608193733533543,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 9,
+          "selected": "minus_to_plus_after_5",
+          "metrics": {
+            "h8": 0.5868791507142334,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.608193733533543,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 10,
+          "selected": "plus_to_minus_after_3",
+          "metrics": {
+            "h8": 0.6028806778287982,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.6317046090298705,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 11,
+          "selected": "minus_to_plus_after_6",
+          "metrics": {
+            "h8": 0.6178660812724943,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.6317046090298705,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 12,
+          "selected": "plus_to_minus_after_6",
+          "metrics": {
+            "h8": 0.6325956880825023,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.6317046090298705,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 13,
+          "selected": "minus_to_plus_after_2",
+          "metrics": {
+            "h8": 0.6471306264429629,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.6612288563431636,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 14,
+          "selected": "minus_to_plus_after_3",
+          "metrics": {
+            "h8": 0.6614486986473008,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.6865648108283577,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        },
+        {
+          "step": 15,
+          "selected": "plus_to_minus_after_7",
+          "metrics": {
+            "h8": 0.6741992067017156,
+            "h1": 0.7622855485485823,
+            "h2": 0.7355578173354947,
+            "h4": 0.6865648108283577,
+            "mean_h1_h2": 0.7489216829420385
+          }
+        }
+      ]
+    }
+  }
+}
