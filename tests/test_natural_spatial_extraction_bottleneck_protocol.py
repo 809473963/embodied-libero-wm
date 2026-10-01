@@ -82,6 +82,7 @@ def test_gate_and_decision_mapping_are_narrow():
     assert gates["natural_recovery"]["binary_minimum_iou"] == 0.60
     assert protocol["decision"]["go"] == "GO_SPATIAL_WM_PROTOTYPE"
     assert protocol["decision"]["block"] == "BLOCK_SPATIAL_WM_PROTOTYPE"
+    assert "SOFT_FOOTPRINT_INFORMATION_REQUIRED" in protocol["decision"]["allowed_labels"]
     assert protocol["decision"]["go_scope"] == "seed11 single-model offline spatial World Model mechanism prototype only"
 
 

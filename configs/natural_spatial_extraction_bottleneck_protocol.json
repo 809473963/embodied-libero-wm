@@ -35,8 +35,8 @@
   },
   "implementation": {
     "decoder_module": {"path": "src/probes/natural_spatial_extraction.py", "sha256": "3cf5bbae1605174b9c869b5e92658d180fae11263f4bd9dffc4a8781ba29a528"},
-    "analyzer": {"path": "scripts/analyze_natural_spatial_extraction_bottleneck.py", "sha256": "4cf077c426bd38705a2207d8b820871c7e73558a794140dc6d560b30e31b9a45"},
-    "protocol_test": {"path": "tests/test_natural_spatial_extraction_bottleneck_protocol.py", "sha256": "e5d0d02ed329161ebd18c014c33e610382766792f350bf7f3eef5bf2d3aaf74e"}
+    "analyzer": {"path": "scripts/analyze_natural_spatial_extraction_bottleneck.py", "sha256": "eed584bc51be05831c5ac9dfe0eccd537356e28b768deb464e82e3f3fec05ad2"},
+    "protocol_test": {"path": "tests/test_natural_spatial_extraction_bottleneck_protocol.py", "sha256": "87c955c5279ddf6c4acb982f6ec65545dd0ae61bffe36fa84f28512dbde31fe8"}
   },
   "partitions": {
     "calibration": {
@@ -183,6 +183,7 @@
       "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED",
       "EXTRACTION_GENERALIZATION_LIMIT",
       "FROZEN_CLIP_SPATIAL_INFORMATION_LIMIT",
+      "SOFT_FOOTPRINT_INFORMATION_REQUIRED",
       "NATURAL_SPATIAL_EXTRACTION_BLOCK",
       "SPATIAL_TARGET_EXTRACTION_RESOLVED",
       "DATA_OR_IMPLEMENTATION_BLOCK"
@@ -206,6 +207,17 @@
     "best_of_three_expert_action_mse_gain": 0.01648,
     "gate_role": "discussion only; does not alter extraction gates"
   },
+  "preflight_correction_history": [
+    {
+      "phase": "after calibration and before development evaluation",
+      "issue": "The user's explicit Section-44 binary-teacher-failure mapping required SOFT_FOOTPRINT_INFORMATION_REQUIRED, but the initial implementation copied the shorter Section-43 allowed-label list and omitted that label.",
+      "calibration_results_viewed": true,
+      "development_evaluation_accessed": false,
+      "correction": "Add the explicitly required label and map failure of oracle B1 to target-simplification block before considering the frozen-CLIP information-limit case.",
+      "scientific_change": false,
+      "unchanged": "teachers, thresholds, bins, decoder forms, losses, training, ridge probes, bootstrap, shuffles, numeric gates, partitions, and authorization outcomes"
+    }
+  ],
   "outputs": {
     "calibration_weights": "artifacts/stage3/natural_spatial_extraction/calibration_weights.npz",
     "calibration_derived": "artifacts/stage3/natural_spatial_extraction/calibration_derived.npz",

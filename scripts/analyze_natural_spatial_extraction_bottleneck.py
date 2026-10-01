@@ -797,6 +797,7 @@ def evaluate(protocol: dict[str, Any], protocol_commit: str) -> None:
                 break
         if selected is not None:
             break
+    binary_oracle_pass = gates.get(oracle_b1, {}).get("passes", False)
     if selected is not None:
         labels.append("SPATIAL_TARGET_EXTRACTION_RESOLVED")
         authorization = "GO_SPATIAL_WM_PROTOTYPE"
@@ -804,14 +805,14 @@ def evaluate(protocol: dict[str, Any], protocol_commit: str) -> None:
         block_type = None
     else:
         labels.append("NATURAL_SPATIAL_EXTRACTION_BLOCK")
-        oracle_simplified = any(gates.get(representation_name("oracle", design), {}).get("passes") for design in DESIGNS)
-        if oracle_simplified:
+        if not binary_oracle_pass:
+            labels.append("SOFT_FOOTPRINT_INFORMATION_REQUIRED")
+            block_type = "target simplification failure"
+            alternative_encoder_authorization = False
+        else:
             labels.append("FROZEN_CLIP_SPATIAL_INFORMATION_LIMIT")
             block_type = "frozen CLIP information limit"
             alternative_encoder_authorization = True
-        else:
-            block_type = "target simplification failure"
-            alternative_encoder_authorization = False
         authorization = "BLOCK_SPATIAL_WM_PROTOTYPE"
     if any(gates[name]["residual_passing_targets"] for name in gates):
         labels.append("OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED")
