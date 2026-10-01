@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "protocol_version": "natural-spatial-extraction-bottleneck-v1",
+  "date": "2026-10-01",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION_RESULTS",
+  "scientific_question": "Does the natural-image bridge fail because the oracle footprint is overprecise, because the frozen decoder is too small, because extraction does not generalize, or because frozen CLIP ViT-B/32 patches lack the required object information?",
+  "current_authorization": "BLOCK_SPATIAL_WM_PROTOTYPE",
+  "controller_authorization": false,
+  "frozen_upstream": {
+    "tag": "spatial-target-design-unresolved",
+    "commit": "3792ec5bfc58f540a9b25049f968aa45339cc5b9",
+    "verdicts": [
+      "OBJECT_FOOTPRINT_TARGET_VALID",
+      "ORACLE_SPATIAL_TARGET_VALID",
+      "NATURAL_SPATIAL_EXTRACTION_BLOCK",
+      "OBJECT_AUXILIARY_TARGET_VALID",
+      "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED",
+      "SPATIAL_TARGET_DESIGN_UNRESOLVED",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ],
+    "files": [
+      {"path": "configs/spatial_visual_target_design_protocol.json", "sha256": "3f12d72ac8f5ab2fcadd9b6a96ad6fea2f9f6ae2bd65ee6de39b3525072498c1"},
+      {"path": "configs/spatial_visual_target_design_calibration_freeze.json", "sha256": "622fe6dd473fccb16f943ed78e3d6f592183181d111bef9869d5d80dad7ea3d0"},
+      {"path": "artifacts/stage3/spatial_visual_target_design/calibration_weights.npz", "sha256": "791ce70b3f1313a7a5c6c626e20e0f656cde098b039989c8a698e58bb4acc0c3"},
+      {"path": "artifacts/stage3/spatial_visual_target_design/calibration_derived.npz", "sha256": "2baee7dc428a564670046465cfa9851a3443c26c02b8000cd63e81d7cb30222e"},
+      {"path": "artifacts/stage3/spatial_visual_target_design/evaluation_derived.npz", "sha256": "7cab9829b8c5b25bb9116acc4216382206d346b7caf7755e207edb3e14670754"},
+      {"path": "results/spatial_visual_target_design/diagnosis.json", "sha256": "9d788cc7a6d64a29deede070b8b756e48543a6c89b685d25f3151a049cf72e97"},
+      {"path": "docs/spatial_visual_target_design_study.md", "sha256": "2f1ce3540ed03d642fab630fb7559e6ffee07c9e028ca0b81e93a7852cc73ef6"},
+      {"path": "artifacts/stage3/visual_target_suitability/calibration_features.npz", "sha256": "7c9d88ce1c2723e6f88eaffcfc19544c69a1cf4fb16c1dc6d035761f6d608e88"},
+      {"path": "artifacts/stage3/visual_target_suitability/evaluation_features.npz", "sha256": "3b4c05dd4e6428d835c0f61c1cc86bb79a963a08b259a2cbef223565959dfbdb"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz", "sha256": "1130aa7fdec1fd0cbe2a8458339bd4187252b729c7ce929388e8f50dd8ae321f"},
+      {"path": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz", "sha256": "c3871bbce09fdf25eb3b3503fa5a24c098d662b600bb2e4da157757bd7bccd7c"}
+    ],
+    "transitive_ledger": "The upstream tag transitively freezes C0-v2, C1-v2.1 candidate identities and production scale, D13/D14/D15, WM-v2A/B/B.1/C-EJ, camera contract, natural image-space target audit, all prior mechanism results, and their reports/results/checkpoints."
+  },
+  "implementation": {
+    "decoder_module": {"path": "src/probes/natural_spatial_extraction.py", "sha256": "3cf5bbae1605174b9c869b5e92658d180fae11263f4bd9dffc4a8781ba29a528"},
+    "analyzer": {"path": "scripts/analyze_natural_spatial_extraction_bottleneck.py", "sha256": "4cf077c426bd38705a2207d8b820871c7e73558a794140dc6d560b30e31b9a45"},
+    "protocol_test": {"path": "tests/test_natural_spatial_extraction_bottleneck_protocol.py", "sha256": "e5d0d02ed329161ebd18c014c33e610382766792f350bf7f3eef5bf2d3aaf74e"}
+  },
+  "partitions": {
+    "calibration": {
+      "init_state_indices": [31, 32, 33, 34],
+      "branch_points": 40,
+      "pair_rows": 960,
+      "visual_features": "artifacts/stage3/visual_target_suitability/calibration_features.npz",
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/calibration_object_masks.npz",
+      "target_design_derived": "artifacts/stage3/spatial_visual_target_design/calibration_derived.npz",
+      "use": "all teacher bins, oracle screening, decoder fitting, thresholding, early stopping, ridge selection, and freezing"
+    },
+    "development_evaluation": {
+      "init_state_indices": [36, 37, 38, 39],
+      "branch_points": 40,
+      "pair_rows": 960,
+      "visual_features": "artifacts/stage3/visual_target_suitability/evaluation_features.npz",
+      "per_object_masks": "artifacts/stage3/image_space_target_audit_restart/evaluation_object_masks.npz",
+      "target_design_derived": "artifacts/stage3/spatial_visual_target_design/evaluation_derived.npz",
+      "use": "one-shot frozen development evaluation, not blind confirmation"
+    },
+    "historical_reference_only": [30, 35],
+    "forbidden_init_state_indices": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "teachers": {
+    "resolution": 7,
+    "B0-soft-area": {
+      "dimension": 50,
+      "definition": "49 exact relevant-object cell occupancy fractions plus exact continuous visible-area fraction",
+      "role": "frozen oracle-soft reference"
+    },
+    "B1-binary": {
+      "dimension": 49,
+      "occupancy_rule": "soft_cell_occupancy > 0.0",
+      "visible_area": "not stored; diagnostic area is mean binary occupancy",
+      "role": "binary-only simplification"
+    },
+    "B2-binary-area": {
+      "dimension": 50,
+      "occupancy_rule": "soft_cell_occupancy > 0.0",
+      "visible_area": "exact continuous visible-area fraction",
+      "role": "binary localization plus continuous scale"
+    },
+    "B3-ordinal": {
+      "dimension": 49,
+      "levels": [0.0, 0.5, 1.0],
+      "positive_split": "calibration positive-cell median",
+      "visible_area": "not stored; diagnostic area is mean ordinal code",
+      "role": "single coarse-occupancy alternative"
+    },
+    "B4-binary-coarse-area": {
+      "dimension": 50,
+      "occupancy_rule": "soft_cell_occupancy > 0.0",
+      "area_bins": "calibration visible-area tertiles",
+      "area_codes": [0.0, 0.5, 1.0],
+      "role": "binary localization plus one coarse-scale alternative"
+    },
+    "natural_candidates": ["B1-binary", "B2-binary-area", "B3-ordinal", "B4-binary-coarse-area"],
+    "distance": {
+      "B0-soft-area": "mean absolute difference over 49 occupancy values plus area",
+      "B1-binary": "normalized Hamming distance over 49 cells",
+      "B2-binary-area": "mean absolute difference over 49 binary cells plus continuous area",
+      "B3-ordinal": "mean absolute ordinal-code difference over 49 cells",
+      "B4-binary-coarse-area": "mean absolute difference over 49 binary cells plus coarse area code"
+    }
+  },
+  "calibration_screen": {
+    "minimum_primary_increment": 0.10,
+    "minimum_residual_increment": 0.05,
+    "minimum_oracle_retention_vs_B0": 0.80,
+    "rule": "Train natural decoders only when calibration leave-one-init-out oracle features clear one raw target, one EE-conditioned residual target, and retain at least 80 percent of B0 gain on one raw target."
+  },
+  "decoders": {
+    "allowed_inputs": "frozen natural CLIP ViT-B/32 patch features [49,512] only",
+    "capacities": ["C0-linear", "C1-width32", "C2-width128-64", "C3-local-context"],
+    "C0-linear": {"patch_layers": "Linear(512,output)", "area_layers": "Linear(512,output)"},
+    "C1-width32": {"patch_layers": "Linear(512,32)-GELU-Linear(32,output)", "area_layers": "Linear(512,32)-GELU-Linear(32,output)"},
+    "C2-width128-64": {"patch_layers": "Linear(512,128)-GELU-Linear(128,64)-GELU-Linear(64,output)", "area_layers": "Linear(512,64)-GELU-Linear(64,output)"},
+    "C3-local-context": {"patch_layers": "Linear(512,32), reshape 7x7, local mixing, 1x1 output", "spatial_layers": "one 3x3 depthwise convolution plus one 1x1 pointwise convolution", "area_layers": "pooled contextual 32-D feature to width32 head"},
+    "maximum_epochs": 80,
+    "learning_rate": 0.003,
+    "weight_decay": 0.0001,
+    "seed": 227001,
+    "early_stopping": "Within each leave-one-init-out calibration fold retain the epoch with minimum validation training objective; final epoch is round-half-up median of four fold epochs.",
+    "threshold_grid": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9],
+    "threshold_selection": "maximize calibration OOF IoU, then balanced accuracy, then choose lower threshold",
+    "binary_loss": "BCEWithLogits with calibration-derived positive weight clipped to [1,20]",
+    "ordinal_loss": "three-class cross entropy with calibration-derived inverse-frequency weights clipped to [0.25,20]",
+    "continuous_area_loss": "sigmoid MSE weighted by 10 in the joint objective",
+    "coarse_area_loss": "three-class cross entropy with calibration-derived inverse-frequency weights clipped to [0.25,20]"
+  },
+  "pair_summaries": {
+    "dimensions": 6,
+    "values": ["map RMSE", "map MAE", "map maximum", "top-quartile mean", "map-centroid displacement", "area or footprint-derived scale difference"],
+    "role": "fixed low-capacity downstream probe feature, not an additional deployment target"
+  },
+  "probes": {
+    "model": "closed-form ridge with intercept",
+    "ridge_grid": [0.0001, 0.001, 0.01, 0.1, 1.0, 10.0],
+    "selection": "leave-one-init-state-out CV within init31-34; exact tie favors larger alpha",
+    "targets": ["ObjMask", "Area", "EE", "ObjMask residual after calibration EE-only fit", "Area residual after calibration EE-only fit"]
+  },
+  "shuffle": {
+    "rule": "derange the entire six-dimensional new spatial summary across branch points within identical task, horizon, and candidate pair while global features and target remain fixed",
+    "seed": 227101
+  },
+  "bootstrap": {
+    "unit": "task-stratified matched branch point retaining all 24 pair/horizon rows",
+    "replicates": 10000,
+    "correlation_replicates": 2000,
+    "seed": 227201,
+    "confidence": 0.95
+  },
+  "gates": {
+    "minimum_primary_increment": 0.10,
+    "minimum_residual_increment": 0.05,
+    "minimum_oracle_retention_vs_B0": 0.80,
+    "minimum_positive_tasks": 7,
+    "minimum_positive_horizons": 4,
+    "minimum_positive_pairs": 3,
+    "shuffle_rule": "relative degradation positive with branch-bootstrap CI lower above zero",
+    "natural_recovery": {
+      "binary_minimum_iou": 0.60,
+      "binary_minimum_balanced_accuracy": 0.80,
+      "binary_minimum_positive_recall": 0.70,
+      "ordinal_minimum_macro_f1": 0.50,
+      "ordinal_minimum_balanced_accuracy": 0.60,
+      "ordinal_maximum_mae": 0.35,
+      "continuous_area_minimum_mae_improvement": 0.20
+    },
+    "oracle_simplified_pass": "one ObjMask/Area primary target clears 10 percent, positive CI, shuffle, 7 tasks, 4 horizons, all pairs; one EE-conditioned residual clears 5 percent with positive CI; and the primary gain retains at least 80 percent of B0",
+    "deployment_bridge_pass": "the same natural design clears natural recovery, one ObjMask/Area primary target at 10 percent with positive CI and shuffle, 7 tasks, 4 horizons, all pairs, and one EE-conditioned residual at 5 percent with positive CI"
+  },
+  "decision": {
+    "allowed_labels": [
+      "BINARY_FOOTPRINT_TARGET_VALID",
+      "COARSE_FOOTPRINT_TARGET_VALID",
+      "SOFT_TARGET_OVERPRECISION_SUPPORTED",
+      "VISIBLE_AREA_NOT_REQUIRED",
+      "VISIBLE_SCALE_SIGNAL_NEEDED",
+      "DECODER_CAPACITY_LIMIT_SUPPORTED",
+      "LOCAL_SPATIAL_CONTEXT_NEEDED",
+      "LOCALIZATION_NOT_SUFFICIENT",
+      "NATURAL_BINARY_SPATIAL_PROXY_VALID",
+      "OBJECT_SIGNAL_BEYOND_ROBOT_MOTION_CONFIRMED",
+      "EXTRACTION_GENERALIZATION_LIMIT",
+      "FROZEN_CLIP_SPATIAL_INFORMATION_LIMIT",
+      "NATURAL_SPATIAL_EXTRACTION_BLOCK",
+      "SPATIAL_TARGET_EXTRACTION_RESOLVED",
+      "DATA_OR_IMPLEMENTATION_BLOCK"
+    ],
+    "selection_order": ["B1-binary", "B3-ordinal", "B4-binary-coarse-area", "B2-binary-area"],
+    "capacity_order": ["C0-linear", "C1-width32", "C2-width128-64", "C3-local-context"],
+    "go": "GO_SPATIAL_WM_PROTOTYPE",
+    "block": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "alternative_encoder_go": "GO_ALTERNATIVE_SPATIAL_ENCODER_AUDIT",
+    "go_scope": "seed11 single-model offline spatial World Model mechanism prototype only"
+  },
+  "full_patch_reference": {
+    "role": "frozen information reference only; no high-capacity full-patch model may be trained",
+    "object_mask_spearman": 0.697,
+    "visible_area_spearman": 0.504,
+    "oracle_footprint_object_mask_spearman": 0.785,
+    "oracle_footprint_visible_area_spearman": 0.724
+  },
+  "candidate_headroom_reference": {
+    "source": "frozen C1-v2.1 offline validation oracle",
+    "best_of_three_expert_action_mse_gain": 0.01648,
+    "gate_role": "discussion only; does not alter extraction gates"
+  },
+  "outputs": {
+    "calibration_weights": "artifacts/stage3/natural_spatial_extraction/calibration_weights.npz",
+    "calibration_derived": "artifacts/stage3/natural_spatial_extraction/calibration_derived.npz",
+    "calibration_freeze": "configs/natural_spatial_extraction_calibration_freeze.json",
+    "evaluation_derived": "artifacts/stage3/natural_spatial_extraction/evaluation_derived.npz",
+    "diagnosis": "results/natural_spatial_extraction/diagnosis.json",
+    "report": "docs/natural_spatial_extraction_bottleneck_audit.md"
+  },
+  "forbidden": [
+    "Do not train a World Model, GRU, Transformer, action-conditioned dynamics model, encoder, or fine-tune CLIP.",
+    "Do not use SAM, DINO, SigLIP, CLIP ViT-L, CLIP ViT-B/16, a detector, a segmenter, a CNN backbone, or a new encoder.",
+    "Do not change candidates, production scale, reranker, scoring rule, actor, or controller.",
+    "Do not run C1/C2, D20-v2, controller rollout, reward, done, success, or final task outcome.",
+    "Do not access init40-49 or run seed23/47.",
+    "Do not use simulator segmentation, object IDs, poses, future state, reward, success, or task identity as decoder inputs or deployment inputs.",
+    "Do not revisit 4x4 resolution, add B5 or later teacher designs, add a second local-context decoder, or choose thresholds, losses, widths, bins, or gates from init36-39.",
+    "Do not overwrite any upstream config, result, report, checkpoint, or sidecar."
+  ]
+}
