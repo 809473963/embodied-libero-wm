@@ -188,13 +188,18 @@ def summarize_interface(
 
     flat = candidates.reshape(len(candidates), candidates.shape[1], -1).astype(np.float64)
     if candidates.shape[1] > 1:
-        distance = np.sqrt(np.mean(np.square(flat[:, :, None] - flat[:, None, :]), axis=3))
+        nearest_parts = []
+        duplicate_count = 0
         diagonal = np.arange(candidates.shape[1])
-        distance[:, diagonal, diagonal] = np.inf
-        nearest = distance.min(axis=2)
-        duplicate_pairs = np.triu(distance <= 1.0e-8, 1)
+        for start in range(0, len(flat), 32):
+            part = flat[start : start + 32]
+            distance = np.sqrt(np.mean(np.square(part[:, :, None] - part[:, None, :]), axis=3))
+            distance[:, diagonal, diagonal] = np.inf
+            nearest_parts.append(distance.min(axis=2))
+            duplicate_count += int(np.triu(distance <= 1.0e-8, 1).sum())
+        nearest = np.concatenate(nearest_parts, axis=0)
         total_pairs = candidates.shape[1] * (candidates.shape[1] - 1) / 2
-        duplicate_fraction = float(duplicate_pairs.sum() / (len(candidates) * total_pairs))
+        duplicate_fraction = float(duplicate_count / (len(candidates) * total_pairs))
         nearest_mean = float(nearest.mean())
         near_duplicate_fraction = float(np.mean(nearest <= 1.0e-6))
     else:

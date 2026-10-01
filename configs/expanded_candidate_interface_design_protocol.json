@@ -1,6 +1,9 @@
 {
   "protocol_version": "expanded-candidate-interface-design-audit-v1",
   "status": "PREREGISTERED_BEFORE_CALIBRATION_OR_EVALUATION",
+  "implementation_preflight_history": [
+    "the first calibration invocation stopped before artifact output because pairwise coverage expanded a sample-by-candidate-by-candidate-by-action tensor; the exact distance calculation was changed to 32-sample batches without changing candidates, metrics, thresholds, or decisions"
+  ],
   "created_at": "2026-10-02",
   "self_path": "configs/expanded_candidate_interface_design_protocol.json",
   "scope": "offline design and frozen development evaluation of one deterministic one-shot candidate interface using expert-action MSE only; no future model, value, reranker, simulator, or controller",
@@ -76,7 +79,7 @@
   "implementation": [
     {
       "path": "src/probes/expanded_candidate_interface.py",
-      "sha256": "fc0c7d668268c9a9712683c4d183d19780f425d711f2256ac72a1565df3557f6"
+      "sha256": "728c28b583f37d18dd466e327fa79d3933d12575013b4674059af084564b0ec1"
     },
     {
       "path": "scripts/audit_expanded_candidate_interface_design.py",
