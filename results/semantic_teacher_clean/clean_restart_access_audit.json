@@ -1,0 +1,43 @@
+{
+  "audit_version": "semantic-teacher-clean-access-audit-v1",
+  "scope": "union of every real-HDF5 process in the clean restart",
+  "invocations": [
+    {
+      "name": "predicate-case calibration preflight",
+      "allowed_partition": "calibration",
+      "task_ids": [0],
+      "demo_ids": [31],
+      "datasets": ["states"],
+      "result_artifact_written": false,
+      "forbidden_access_count": 0
+    },
+    {
+      "name": "complete calibration collection",
+      "allowed_partition": "calibration",
+      "task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      "demo_ids": [31, 32, 33, 34],
+      "datasets": ["states"],
+      "result_artifact_written": true,
+      "ledger": "results/semantic_teacher_clean/calibration_access_ledger.json",
+      "forbidden_access_count": 0
+    },
+    {
+      "name": "calibration grounding failure diagnosis",
+      "allowed_partition": "calibration",
+      "task_ids": [0, 1, 2, 5, 6, 8],
+      "demo_ids": [31, 32, 33, 34],
+      "datasets": ["states"],
+      "result_artifact_written": false,
+      "forbidden_access_count": 0
+    }
+  ],
+  "union_opened_task_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  "union_opened_demo_ids": [31, 32, 33, 34],
+  "union_numeric_datasets": ["data/demo_31/states", "data/demo_32/states", "data/demo_33/states", "data/demo_34/states"],
+  "evaluation_demo_ids_opened": [],
+  "historical_demo_ids_opened": [],
+  "forbidden_demo_ids_opened": [],
+  "metadata_operations_outside_allowlist": 0,
+  "forbidden_access_count": 0,
+  "note": "Repeated calibration reads do not expand the union scope; all exact paths are represented in the committed complete-calibration ledger."
+}
