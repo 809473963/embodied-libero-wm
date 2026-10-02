@@ -1,0 +1,38 @@
+{
+  "contract_version": "official-goal-margin-audit-v1",
+  "created_at": "2026-10-02",
+  "official_predicate": "On(subject, plate_1) calls plate_1.check_ontop(subject)",
+  "official_boolean": {
+    "z_order": "plate center z <= bowl center z",
+    "contact": "plate.check_contact(bowl)",
+    "horizontal": "Euclidean center distance in xy < 0.03 m"
+  },
+  "source_hashes": {
+    "third_party/LIBERO/libero/libero/envs/predicates/base_predicates.py": "319137e95330dbb22a266a8dceb8110f18413c2bf17461550222228c4bc310a1",
+    "third_party/LIBERO/libero/libero/envs/object_states/base_object_states.py": "ca6f53123336b6487bdb4feb02534ddb3a0627a4b847fe89da4460520ef01366",
+    ".venv/lib/python3.10/site-packages/robosuite/models/base.py": "a5d7bc8c7f317735b76347c0038d3c0888e592da0ee059d0f937eb9f1b272b34"
+  },
+  "families": {
+    "M0": {
+      "equation": "min((0.03-xy)/0.03, (bowl_z-plate_z)/0.03, -abs((bowl_z+bottom_offset_z)-(plate_z+top_offset_z))/0.03)",
+      "orientation": "model offsets used without body rotation",
+      "role": "historical reference"
+    },
+    "M1": {
+      "equation": "min((0.03-xy)/0.03, (bowl_z-plate_z)/0.03, -abs(world_bowl_bottom_z-world_plate_top_z)/0.03)",
+      "orientation": "world offsets use body_xmat @ model offset",
+      "role": "orientation-aware surface surrogate"
+    },
+    "M2": {
+      "equation": "min((0.03-xy)/0.03, (bowl_z-plate_z)/0.03)",
+      "orientation": "not applicable because installed numeric checks use body centers",
+      "role": "signed minimum slack of the installed numeric On acceptance region; contact remains exclusively in the Boolean"
+    }
+  },
+  "selection": {
+    "admissibility": ["all finite", "overall goal AUC >=0.80", "goal-positive median > goal-negative median", "at least 7 tasks with AUC >0.50", "adjacent-jump p99 <=5 normalized units"],
+    "order": ["direct consistency with official numeric geometry", "goal-positive/negative AUC", "task robustness", "local smoothness", "physical interpretability", "simplicity"],
+    "forbidden_selection_inputs": ["temporal order accuracy", "local non-tie density", "language effect", "proprio probe", "future value-model performance"]
+  },
+  "tie_threshold": "After M* selection, max(1e-4, calibration 10th percentile of finite positive adjacent-frame absolute margin changes above 1e-4)."
+}

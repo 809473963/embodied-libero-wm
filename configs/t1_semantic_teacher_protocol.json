@@ -1,0 +1,93 @@
+{
+  "protocol_version": "t1-semantic-teacher-independent-v1",
+  "created_at": "2026-10-02",
+  "status": "PREREGISTERED_BEFORE_NEW_DEMO_ACCESS",
+  "objective": "Make the formal privileged-teacher decision using frozen G2 grounding, an independently selected official-goal margin, task-stratified demo-block uncertainty, language counterfactuals, and robot-phase controls.",
+  "authorization_basis": {
+    "labels": ["ROBUST_SAME_SCENE_GROUNDING_VALID", "ROBUST_REFERENT_MARGIN_VALID", "COUNTERFACTUAL_GROUNDING_SET_VALID"],
+    "authorization": "GO_T1_SEMANTIC_TEACHER_FULL_EVALUATION",
+    "tag": "robust-same-scene-grounding-final",
+    "commit": "d070f2382f7df15698f747c90813306f1db3c47c"
+  },
+  "expected_grounding_hash": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881",
+  "partitions": {
+    "calibration": [31, 32, 33, 34],
+    "frozen_development_evaluation": [36, 37, 38, 39],
+    "historical_disabled": [30, 35],
+    "forbidden_including_metadata": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "inputs": {
+    "access": "configs/allowed_demo_access.json",
+    "task_contract": "configs/task_grounding_contract.json",
+    "resolver": "configs/robust_grounding_frozen_resolver.json",
+    "grounding_calibration_sidecar": "results/robust_grounding/calibration_sidecar.npz",
+    "grounding_evaluation_sidecar": "results/robust_grounding/evaluation_sidecar.npz",
+    "margin_contract": "configs/official_goal_margin.json"
+  },
+  "teacher": {
+    "T0": "official On Boolean only",
+    "T1": "lexicographic [official On Boolean, selected continuous margin]",
+    "T2": "goal first, then exact grasp; controlled states compare goal margin and uncontrolled states compare EE readiness",
+    "T2_activation": "only if calibration T1 local non-tie <0.30 or fewer than 7 tasks reach 0.30",
+    "local_gap": "1--8",
+    "tie": "same Boolean and absolute margin difference <= calibration epsilon"
+  },
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261002,
+    "unit": "demo block stratified within each of ten tasks",
+    "interval": "percentile 2.5/97.5"
+  },
+  "gates": {
+    "grounding_hash_unchanged": true,
+    "margin_geometry_admissible": true,
+    "all_finite": true,
+    "local_non_tie_min": 0.30,
+    "usable_task_min": 7,
+    "language_pair_change_min": 0.20,
+    "language_task_min": 7,
+    "control_minimum_rows": 50,
+    "control_task_min": 7,
+    "severe_proprio_accuracy": 0.90,
+    "forbidden_access_count": 0
+  },
+  "controls": {
+    "robot_match_threshold": "calibration 10th percentile of standardized 12-D proprio pair distance",
+    "robot_difference_threshold": "calibration 75th percentile",
+    "proprio_probe": "ridge-linear [p_a,p_b,p_b-p_a], ridge 0.01, non-tie local pairs",
+    "historical_temporal_proprio_accuracy": 0.96224
+  },
+  "decision": {
+    "pass_labels": ["OFFICIAL_GOAL_MARGIN_VALID", "SEMANTIC_LOCAL_PROGRESS_SIGNAL_VALID", "SEMANTIC_LANGUAGE_COUNTERFACTUAL_VALID", "SEMANTIC_ROBOT_PHASE_INVARIANCE_SUPPORTED", "SEMANTIC_GOAL_PROGRESS_TEACHER_VALID"],
+    "pass_authorization": "GO_VALUE_DISTILLATION",
+    "continuing_blocks": ["BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"],
+    "controller_authorization": false,
+    "maximum_action": "authorize but do not execute value distillation"
+  },
+  "frozen_files": [
+    {"path": "src/probes/t1_semantic_teacher_full.py", "sha256": "5a9ef3a2bfe374423d886d9891d7e0d643000396e11247c1510c67fef07cd780"},
+    {"path": "scripts/run_t1_semantic_teacher_full.py", "sha256": "ab60e7767b8b6a13b981a7d0e566e7f2260a828ca8d051a65c9ef975c175e6e2"},
+    {"path": "configs/official_goal_margin.json", "sha256": "82eef389548472471e4ad00e2d34aad67650d06ec9eb632f46a4df0f891185b7"},
+    {"path": "configs/robust_grounding_frozen_resolver.json", "sha256": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881"},
+    {"path": "configs/robust_grounding_geometry.json", "sha256": "982daa94bb27cae1749a2196d127e7b0d437f719676695cbbf65aad1a9cbc8c8"},
+    {"path": "results/robust_grounding/calibration_sidecar.npz", "sha256": "19252fdd297fa1d791f3a60117a629650a413a39a76fb52c073d79121ebf8fe4"},
+    {"path": "results/robust_grounding/evaluation_sidecar.npz", "sha256": "dbc64847ebcc42c862a682d26a6d29a764f276dcf1c9da6e3e7eb27596e42ce7"},
+    {"path": "src/data/allowed_demo_guard.py", "sha256": "c1d8e9e2f0e93cf75998f6286d0797f427a41d0969792f086c1421a69e038653"},
+    {"path": "configs/allowed_demo_access.json", "sha256": "a2045de035846fa5b9aa092d3b0455323228f108b49d9b45f537ba4ce5c4924c"},
+    {"path": "configs/task_grounding_contract.json", "sha256": "2a5ce1ef29ece3118587d2bb48a1bccf748c2d5dbf4128cb90f6d90bd0bd90bb"},
+    {"path": "third_party/LIBERO/libero/libero/envs/predicates/base_predicates.py", "sha256": "319137e95330dbb22a266a8dceb8110f18413c2bf17461550222228c4bc310a1"},
+    {"path": "third_party/LIBERO/libero/libero/envs/object_states/base_object_states.py", "sha256": "ca6f53123336b6487bdb4feb02534ddb3a0627a4b847fe89da4460520ef01366"}
+  ],
+  "outputs": {
+    "definition": "configs/t1_teacher_frozen_definition.json",
+    "calibration": "results/t1_teacher_calibration.json",
+    "evaluation": "results/t1_teacher_evaluation.json",
+    "language": "results/t1_language_counterfactual.json",
+    "controls": "results/t1_robot_shortcut_controls.json",
+    "calibration_sidecar": "results/t1_semantic_teacher/calibration_sidecar.npz",
+    "evaluation_sidecar": "results/t1_semantic_teacher/evaluation_sidecar.npz",
+    "calibration_ledger": "results/t1_semantic_teacher/calibration_access_ledger.json",
+    "evaluation_ledger": "results/t1_semantic_teacher/evaluation_access_ledger.json"
+  },
+  "forbidden_activity": ["semantic V1/V2 training", "CLIP value model", "candidate evaluator", "candidate reranker", "World Model", "controller", "reward/done/success access"]
+}
