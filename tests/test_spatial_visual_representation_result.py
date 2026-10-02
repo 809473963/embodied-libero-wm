@@ -146,3 +146,13 @@ def test_stage_r_sidecar_is_finite() -> None:
     _, side = load()
     for name, value in side.items():
         assert np.isfinite(value).all(), name
+
+
+def test_stage_r_calibration_freeze_hashes_and_blocks_downstream() -> None:
+    freeze = json.loads((ROOT / "results/spatial_visual_representation_calibration_freeze.json").read_text())
+    for relative, expected in freeze["artifact_sha256"].items():
+        assert sha256(ROOT / relative) == expected
+    assert freeze["decision"]["stage_v_authorized"] is False
+    assert freeze["decision"]["stage_b_authorized"] is False
+    assert freeze["decision"]["world_model_authorized"] is False
+    assert freeze["decision"]["controller_authorized"] is False

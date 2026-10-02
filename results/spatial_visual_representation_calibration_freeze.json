@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-03",
+  "stage": "R",
+  "status": "CALIBRATION_DIAGNOSIS_FROZEN",
+  "source_numerical_commit": "0e6125c",
+  "partition": {
+    "fit": [31, 32, 33],
+    "validation": [34],
+    "evaluation_36_39_opened": false,
+    "forbidden_40_49_numeric_access": 0,
+    "forbidden_40_49_metadata_access": 0
+  },
+  "decision": {
+    "complete_gate": false,
+    "selected_representation": null,
+    "mechanism_labels": [
+      "CLIP_PATCH_REPRESENTATION_INSUFFICIENT",
+      "FROZEN_CLIP_VISUAL_INFORMATION_LIMIT_SUPPORTED"
+    ],
+    "authorization": "BLOCK_SEMANTIC_VALUE_REDISTILLATION",
+    "stage_v_authorized": false,
+    "stage_b_authorized": false,
+    "world_model_authorized": false,
+    "controller_authorized": false
+  },
+  "artifact_sha256": {
+    "configs/goal_conditioned_spatial_visual_representation_protocol.json": "3827bfaa94e478659d44f57be75fb42eea1c1788b2ca320fbed1c6680d0c5eca",
+    "configs/spatial_visual_representation_architectures.json": "beb0a394928e1fdb8b760acc95c5d836a9baa997286e9a29f123f4b4ab9b2db1",
+    "docs/clip_spatial_feature_contract.md": "d250a2d5d44a0292cae7b17e4f27f61fb162950bdb3e3723e8629ca5d45cb9ce",
+    "src/probes/spatial_visual_representation.py": "13f18e877d27e6d2e9b71f3c3da72968cc37f71efc8e3e4d1b2f61e7cb59d091",
+    "scripts/run_spatial_visual_representation.py": "8e15f9bfb9ccd30978447923312be8b8098deb6dd67278e8b671510082d284f1",
+    "results/spatial_visual_representation_patch_integrity.json": "6fdae2bcf0a06c8c3890974cf0bc29cf826d7a1ccba8e0d6d22fc30688884cad",
+    "results/spatial_visual_representation_preflight_incident.json": "13e04e96ee4b0501fbaaff9d30f4393fd673f27be0641f8df8129a344219db39",
+    "results/spatial_visual_representation_calibration.json": "739f8591fb8512919144ae02084c729093f05ee9a2a7cba72d4f31a8550fe8bf",
+    "results/spatial_visual_representation_final_decision.json": "578396bdcff2ad884e7ddcd1171b4e8d881fcb8aeceb71652d32be6d3d6df2eb",
+    "results/spatial_visual_representation/calibration_access_ledger.json": "3b47580ba1f9fe4d71567cae6d9cfe9e765ee9cf6ee9558b11f1cecbd0c7c43d",
+    "results/spatial_visual_representation/calibration_sidecar.npz": "81b74660e92eeaf842f08b2ba4dc01d54af28cea4c60b2c665d32c8db940c871",
+    "results/spatial_visual_representation/calibration_weights.pt": "3d5bce311b933f5f593a6ca7bca9b4ad77216af8901565046d392346383f3da5",
+    "results/spatial_visual_representation/patch_features_calibration.npz": "1667a3204671b0a855ca8f8126267b50cf6f8f606981b71ee89070887f8fe7c8"
+  },
+  "verification": {
+    "focused_tests": 12,
+    "focused_tests_passed": 12,
+    "independent_recomputation": [
+      "ordinary accuracy and AUROC",
+      "language teacher-change agreement",
+      "true reversal both-correct rate",
+      "cross-demo matched deviation",
+      "cross-demo difference accuracy",
+      "material-improvement increments",
+      "attention normalization and R1 language invariance",
+      "authorization mapping and access boundary"
+    ]
+  },
+  "immutability": "Any later work must verify every artifact hash. Stage V and Stage B are not authorized by this freeze."
+}
