@@ -1,0 +1,111 @@
+{
+  "protocol_version": "semantic-goal-progress-teacher-v1",
+  "status": "PREREGISTERED_BEFORE_TASK_INVENTORY_OR_ANY_CALIBRATION_OR_EVALUATION_DATA_ACCESS",
+  "created_at": "2026-10-02",
+  "scope": "Stage B1 source-grounded semantic-goal identifiability gate before any privileged state teacher, calibration data, evaluation data, value distillation, candidate bridge, or World Model work",
+  "frozen_upstream": {
+    "commit": "8e784928a86394d23d7ab05c21f02602d3332728",
+    "annotated_tag": "candidate-value-audit-blocked",
+    "formal_state": [
+      "PAIRWISE_PROGRESS_SIGNAL_VALID",
+      "ABSOLUTE_PROGRESS_BASELINE_VALID",
+      "PAIRWISE_PROGRESS_OUTPERFORMS_ABSOLUTE",
+      "PROGRESS_MODEL_LANGUAGE_INSENSITIVE",
+      "PROGRESS_MODEL_ROBOT_PHASE_DOMINATED",
+      "CANDIDATE_VALUE_AUDIT_BLOCKED",
+      "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ]
+  },
+  "partitions": {
+    "calibration_demo_ids": [31, 32, 33, 34],
+    "evaluation_demo_ids": [36, 37, 38, 39],
+    "historical_reference_demo_ids": [30, 35],
+    "forbidden_demo_ids": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "preflight_access_boundary": {
+    "allowed": ["ten official LIBERO-Spatial BDDL task definitions", "installed BDDL parser source", "installed On predicate source", "installed success-check source"],
+    "withheld_until_identifiability_passes": ["demo31-34 state rows", "demo36-39 state rows", "all visual features", "all proprioception", "all simulator states", "all actions"],
+    "reason": "A same-state language counterfactual is meaningful only if at least two admitted real instructions resolve to different canonical goal predicates."
+  },
+  "frozen_inputs": [
+    {"role": "old_stage_b_report", "path": "docs/goal_conditioned_pairwise_progress_audit.md", "sha256": "ba5c3c30225aeff0ec0c1dc080d60293a0842a1d53a8d87b9da4d38ec2a5615e"},
+    {"role": "old_stage_b_diagnosis", "path": "results/goal_conditioned_pairwise_progress/diagnosis.json", "sha256": "200d4ba14a8668f142f3ac41c56b71e1bbb81e1521af989ecd2b1af4ee69e01b"},
+    {"role": "stage_a_interface", "path": "results/expanded_candidate_contract_restart/selected_interface.json", "sha256": "5cd3311d847c410a75cca6970e7acf4e5ec3af811c739946df7ec18532a9f14a"},
+    {"role": "stage_a_diagnosis", "path": "results/expanded_candidate_contract_restart/diagnosis.json", "sha256": "899c9ae6d0ed9c922a87a7aa162834ca967c07ecd3e6978afa6b5f98448c74a4"},
+    {"role": "bddl_parser_source", "path": "third_party/LIBERO/libero/libero/envs/bddl_utils.py", "sha256": "f8148a5054e7818cee1ceddda300ff9f15272f8e6600389abd38f102e477cd8c"},
+    {"role": "predicate_source", "path": "third_party/LIBERO/libero/libero/envs/predicates/base_predicates.py", "sha256": "319137e95330dbb22a266a8dceb8110f18413c2bf17461550222228c4bc310a1"},
+    {"role": "success_source", "path": "third_party/LIBERO/libero/libero/envs/problems/libero_tabletop_manipulation.py", "sha256": "0defb17c0bbab8f6bd34c021ac15598ea101fe1e48690cb440d4ef92762880fe"},
+    {"role": "task0_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate.bddl", "sha256": "9b59eb1287802868ad9bc78d58e6d36d4ba31134e679cfdbdf4b0feb660c959b"},
+    {"role": "task1_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate.bddl", "sha256": "53a7516571412a2f46a27cbf8482d3b76dbad4221858c8f6b565d506c274e61d"},
+    {"role": "task2_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate.bddl", "sha256": "5e19880ebc844f86b89f63b172aab0b7a89f85b6e6955891f544f0ea7d0795d5"},
+    {"role": "task3_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate.bddl", "sha256": "3d4ccf070c3d9883ae0676f2d888588f98c696ddad71b7694f47c379fc99ef36"},
+    {"role": "task4_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate.bddl", "sha256": "4371189e11d9fd29bb548ab9a8adcd741bb0ce41bb66c612672d0e8cb29a52a9"},
+    {"role": "task5_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate.bddl", "sha256": "10239815a9d18ad53e09365d453a362ee54d29ca276e04eef411cf1db8d72940"},
+    {"role": "task6_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate.bddl", "sha256": "566c65596f3472e752e6522817bff51bbf3ce5159d7bec1d3554e5ead46b1e55"},
+    {"role": "task7_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate.bddl", "sha256": "dd11837141a30d874ebbbfaae20e91ecc67ec85ab3872ceb4cff3abfcbef7cb0"},
+    {"role": "task8_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.bddl", "sha256": "c8fbb9effa27b947d04d26862d75273d93cac1806734e53836cd472a08aec1fe"},
+    {"role": "task9_bddl", "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.bddl", "sha256": "5293e759381b477e126beaf83d738542bbd4d93f522a3eead1066e612bad4a8c"}
+  ],
+  "implementation": [
+    {"path": "src/probes/semantic_goal_contract.py", "sha256": "df6b4f139ee808eb2591e07bdb7fa8a009b190b59657eb8d88381d669fb6603e"},
+    {"path": "scripts/audit_semantic_goal_progress_teacher.py", "sha256": "be4fdaa4cd6ea493f50c91e324bf1a2263e65b9703e64de6b4436699a91e5a82"}
+  ],
+  "task_semantic_sources": [
+    {"task_id": 0, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate.bddl"},
+    {"task_id": 1, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate.bddl"},
+    {"task_id": 2, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate.bddl"},
+    {"task_id": 3, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate.bddl"},
+    {"task_id": 4, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate.bddl"},
+    {"task_id": 5, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate.bddl"},
+    {"task_id": 6, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate.bddl"},
+    {"task_id": 7, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate.bddl"},
+    {"task_id": 8, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate.bddl"},
+    {"task_id": 9, "path": "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.bddl"}
+  ],
+  "semantic_contract": {
+    "canonical_goal": "lower-cased parsed conjunction of exact unary/binary BDDL goal atoms",
+    "relevant_object": "first runtime :obj_of_interest entry, verified against goal arguments",
+    "target": "goal argument other than the relevant object",
+    "success": "conjunction of parsed goal predicates; installed On(subject,target) calls target.check_ontop(subject)",
+    "initial_scene_text_is_not_goal_semantics": true
+  },
+  "counterfactual_language_contract": {
+    "source": "only another real instruction in the admitted ten-task LIBERO-Spatial suite",
+    "must_reparse": ["relevant object", "target object or region", "goal predicate"],
+    "admissible": "canonical goal signature differs from the original task",
+    "forbidden": ["language-embedding swap without semantic reparse", "invented target", "treating initial-location wording as a different final goal"]
+  },
+  "identifiability_gate": {
+    "required_task_count": 10,
+    "minimum_distinct_goal_signatures": 2,
+    "minimum_tasks_with_counterfactual": 7,
+    "failure_labels": ["SEMANTIC_TEACHER_LANGUAGE_INSUFFICIENT", "SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED", "DATA_OR_IMPLEMENTATION_BLOCK"],
+    "failure_authorizations": ["BLOCK_VALUE_DISTILLATION", "BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"],
+    "failure_stop": "Do not construct state predicates, set tie thresholds, open demo31-39 rows, train a proprio probe, run B2, or run B3."
+  },
+  "downstream_b1_gates_if_identifiable": {
+    "local_le8_non_tie_min": 0.30,
+    "usable_task_min": 7,
+    "material_language_dependence_required": true,
+    "not_time_equivalent_required": true,
+    "not_raw_proprio_dominated_required": true,
+    "finite_valid_predicates_required": true
+  },
+  "outputs": {
+    "directory": "results/semantic_goal_progress_teacher",
+    "inventory": "results/semantic_goal_progress_teacher/semantic_inventory.json",
+    "diagnosis": "results/semantic_goal_progress_teacher/diagnosis.json",
+    "report": "docs/semantic_goal_progress_teacher_audit.md",
+    "summary": "docs/semantic_candidate_value_research_summary.md"
+  },
+  "forbidden": [
+    "read any demo/init row before the semantic identifiability gate passes",
+    "read or optimize reward, done, success, or task outcome",
+    "read demo/init40-49",
+    "repair the task vocabulary with an invented or out-of-suite counterfactual after inventory",
+    "train B2 or execute B3 after a failed B1 gate",
+    "train or run a World Model, reranker, controller, CEM, MPPI, or beam search",
+    "modify or fine-tune an encoder"
+  ]
+}
