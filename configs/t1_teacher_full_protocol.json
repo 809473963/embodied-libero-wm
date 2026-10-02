@@ -1,0 +1,47 @@
+{
+  "protocol_version": "t1-semantic-teacher-full-v1",
+  "created_at": "2026-10-02",
+  "status": "PREREGISTERED_AFTER_STAGE_G_PASS",
+  "authorization_basis": "SAME_SCENE_LANGUAGE_GROUNDING_VALID and GO_T1_SEMANTIC_TEACHER_FULL_EVALUATION",
+  "partitions": {"calibration": [31,32,33,34], "frozen_development_evaluation": [36,37,38,39], "historical_disabled": [30,35], "forbidden_including_metadata": [40,41,42,43,44,45,46,47,48,49]},
+  "inputs": {
+    "allowed_demo_access": "configs/allowed_demo_access.json",
+    "task_grounding_contract": "configs/task_grounding_contract.json",
+    "frozen_resolver": "configs/robust_grounding_frozen_resolver.json",
+    "grounding_calibration": "results/robust_grounding_calibration.json",
+    "grounding_evaluation": "results/robust_grounding_eval.json",
+    "grounding_calibration_sidecar": "results/robust_grounding/calibration_sidecar.npz",
+    "grounding_evaluation_sidecar": "results/robust_grounding/evaluation_sidecar.npz"
+  },
+  "teacher_families": {
+    "T0": "official binary On(referent, plate) only; diagnostic baseline",
+    "T1": "lexicographic [official goal Boolean, selected continuous goal margin]",
+    "T2": "only if T1 calibration density fails: goal, then exact grasp/control, then controlled goal margin or uncontrolled EE readiness"
+  },
+  "margin_candidates": {
+    "M0": "min(xy clearance/0.03, z-order clearance/0.03, -abs(surface gap)/0.03)",
+    "M1": "same with surface-gap scale 0.06",
+    "M2": "min(xy clearance/0.03, z-order clearance/0.03), matching the official numerical inequalities; contact remains only in the Boolean"
+  },
+  "margin_selection": "calibration-only: ROC AUC for official goal Boolean descending, then positive-minus-negative median separation descending, then M0/M1/M2 simplicity; no time or pair-density metric",
+  "gates": {"local_non_tie_min": 0.3, "usable_task_min": 7, "language_change_min": 0.2, "severe_proprio_accuracy": 0.9, "correct_instruction_unique_required": 1.0, "forbidden_access_required": 0, "all_values_finite": true},
+  "controls": {"robot_match_quantile": 0.1, "robot_difference_quantile": 0.75, "minimum_rows": 50, "thresholds_fit_on": "calibration standardized 12-D proprio pair distances only", "semantic_match_robot_difference_pass": "at least 50 teacher-tie pairs spanning at least 7 tasks", "robot_match_semantic_difference_pass": "at least 50 teacher-non-tie pairs spanning at least 7 tasks"},
+  "proprio_probe": {"input": "[proprio_a, proprio_b, proprio_b-proprio_a], 36 dimensions", "form": "single ridge-linear least-squares preference classifier", "ridge": 0.01, "fit_partition": "calibration non-tie local pairs", "severe_shortcut": "evaluation accuracy >=0.90"},
+  "decision": {"pass": ["SEMANTIC_LOCAL_PROGRESS_SIGNAL_VALID", "SEMANTIC_LANGUAGE_COUNTERFACTUAL_VALID", "SEMANTIC_GOAL_PROGRESS_TEACHER_VALID", "GO_VALUE_DISTILLATION"], "fail": ["SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED", "BLOCK_VALUE_DISTILLATION", "BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"], "maximum_action": "emit GO_VALUE_DISTILLATION but do not execute distillation"},
+  "frozen_files": [
+    {"path":"scripts/run_t1_teacher_full.py","sha256":"e1fd69a6835223993c58bc38c75cfbbb63011a290cc058ae8079c63921a9e707"},
+    {"path":"scripts/run_semantic_teacher_clean.py","sha256":"8b62b3121edd58e10b7f436cfaec772738b7019e05864d4b22c7377458aeba82"},
+    {"path":"src/probes/semantic_teacher_clean.py","sha256":"057fdab23f6c0cb39755bce65032338b7c44e84aae389833fc82014c2f84a0e3"},
+    {"path":"src/probes/robust_grounding.py","sha256":"4c7a02bc70a1e23baffafa725fa0c18315790bb438023c8a118686d09cb1e2f2"},
+    {"path":"src/data/allowed_demo_guard.py","sha256":"c1d8e9e2f0e93cf75998f6286d0797f427a41d0969792f086c1421a69e038653"},
+    {"path":"configs/allowed_demo_access.json","sha256":"a2045de035846fa5b9aa092d3b0455323228f108b49d9b45f537ba4ce5c4924c"},
+    {"path":"configs/task_grounding_contract.json","sha256":"2a5ce1ef29ece3118587d2bb48a1bccf748c2d5dbf4128cb90f6d90bd0bd90bb"},
+    {"path":"configs/robust_grounding_frozen_resolver.json","sha256":"337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881"},
+    {"path":"results/robust_grounding_calibration.json","sha256":"59f1476fb8f2590c2be9299c6e9a7e8baf9d64aa444a93b9ab54285044322d98"},
+    {"path":"results/robust_grounding_eval.json","sha256":"0738f6756b24af87b1b6c4a51fdbb1a2768ca0820c5419d6d55f27a10c3b7c63"},
+    {"path":"results/robust_grounding/calibration_sidecar.npz","sha256":"19252fdd297fa1d791f3a60117a629650a413a39a76fb52c073d79121ebf8fe4"},
+    {"path":"results/robust_grounding/evaluation_sidecar.npz","sha256":"dbc64847ebcc42c862a682d26a6d29a764f276dcf1c9da6e3e7eb27596e42ce7"}
+  ],
+  "outputs": {"teacher_definition":"configs/t1_teacher_frozen_definition.json", "calibration":"results/t1_teacher_calibration.json", "evaluation":"results/t1_teacher_eval.json", "calibration_sidecar":"results/t1_teacher/calibration_sidecar.npz", "evaluation_sidecar":"results/t1_teacher/evaluation_sidecar.npz", "calibration_ledger":"results/t1_teacher/calibration_access_ledger.json", "evaluation_ledger":"results/t1_teacher/evaluation_access_ledger.json"},
+  "forbidden_activity": ["value distillation execution", "temporal V2 repair", "candidate bridge", "World Model", "reranker", "controller", "reward/success access"]
+}
