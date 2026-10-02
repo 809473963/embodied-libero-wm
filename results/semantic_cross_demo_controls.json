@@ -1,0 +1,98 @@
+{
+  "result_version": "semantic-cross-demo-controls-v1",
+  "selected_family": "S2",
+  "matched_rows": 94,
+  "different_rows": 1280,
+  "families": {
+    "S0": {
+      "semantic_match": {
+        "rows": 94,
+        "mean_abs_from_half": 0.007701942979648328,
+        "median_abs_from_half": 0.005747177043699203,
+        "p90_abs_from_half": 0.015102998471825151
+      },
+      "semantic_difference": {
+        "rows": 1280,
+        "accuracy": 0.5046875,
+        "auroc": 0.51481201171875,
+        "log_loss": 0.6932093906479937,
+        "brier": 0.2500293531210196
+      }
+    },
+    "S1": {
+      "semantic_match": {
+        "rows": 94,
+        "mean_abs_from_half": 0.0629093884698139,
+        "median_abs_from_half": 0.009242524788347306,
+        "p90_abs_from_half": 0.23411080177427732
+      },
+      "semantic_difference": {
+        "rows": 1280,
+        "accuracy": 0.51875,
+        "auroc": 0.5278125,
+        "log_loss": 0.6856808891810785,
+        "brier": 0.24635701043732422
+      }
+    },
+    "S1.5": {
+      "semantic_match": {
+        "rows": 94,
+        "mean_abs_from_half": 0.15391313226508394,
+        "median_abs_from_half": 0.13491704724426817,
+        "p90_abs_from_half": 0.29832080916337617
+      },
+      "semantic_difference": {
+        "rows": 1280,
+        "accuracy": 0.5171875,
+        "auroc": 0.53666259765625,
+        "log_loss": 0.7637188854669908,
+        "brier": 0.2767074646681048
+      }
+    },
+    "S2": {
+      "semantic_match": {
+        "rows": 94,
+        "mean_abs_from_half": 0.1680834028751907,
+        "median_abs_from_half": 0.1380991393702488,
+        "p90_abs_from_half": 0.34237027628521777
+      },
+      "semantic_difference": {
+        "rows": 1280,
+        "accuracy": 0.553125,
+        "auroc": 0.592236328125,
+        "log_loss": 0.7234032033681329,
+        "brier": 0.2591527573835314
+      }
+    },
+    "IMAGE_ONLY": {
+      "semantic_match": {
+        "rows": 94,
+        "mean_abs_from_half": 0.10309531688078889,
+        "median_abs_from_half": 0.09192212853245263,
+        "p90_abs_from_half": 0.24121897674782128
+      },
+      "semantic_difference": {
+        "rows": 1280,
+        "accuracy": 0.5171875,
+        "auroc": 0.54681884765625,
+        "log_loss": 0.7106819650028534,
+        "brier": 0.2573791944564522
+      }
+    },
+    "LANGUAGE_ONLY": {
+      "semantic_match": {
+        "rows": 94,
+        "mean_abs_from_half": 0.00249710077661139,
+        "median_abs_from_half": 0.0030414871577607583,
+        "p90_abs_from_half": 0.004044332223605131
+      },
+      "semantic_difference": {
+        "rows": 1280,
+        "accuracy": 0.5,
+        "auroc": 0.5,
+        "log_loss": 0.6931610280408849,
+        "brier": 0.2500069235691714
+      }
+    }
+  }
+}

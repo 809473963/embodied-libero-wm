@@ -1,0 +1,167 @@
+{
+  "result_version": "semantic-language-counterfactual-eval-v1",
+  "selected_family": "S2",
+  "primary": {
+    "eligible_rows": 252300,
+    "teacher_changed_rows": 74645,
+    "teacher_change_agreement": 0.6399222988813719,
+    "teacher_change_agreement_ci95": [
+      0.6259299271039183,
+      0.653548779835491
+    ],
+    "positive_task_count": 10,
+    "per_task": {
+      "0": {
+        "rows": 3296,
+        "agreement": 0.5640169902912622
+      },
+      "1": {
+        "rows": 12486,
+        "agreement": 0.5886592984142239
+      },
+      "2": {
+        "rows": 8247,
+        "agreement": 0.6665454104522857
+      },
+      "3": {
+        "rows": 4161,
+        "agreement": 0.6940639269406392
+      },
+      "4": {
+        "rows": 5736,
+        "agreement": 0.6441771269177127
+      },
+      "5": {
+        "rows": 9975,
+        "agreement": 0.668671679197995
+      },
+      "6": {
+        "rows": 7988,
+        "agreement": 0.7282173259889835
+      },
+      "7": {
+        "rows": 7902,
+        "agreement": 0.5859276132624652
+      },
+      "8": {
+        "rows": 7297,
+        "agreement": 0.6202548992736742
+      },
+      "9": {
+        "rows": 7557,
+        "agreement": 0.6398041550879979
+      }
+    },
+    "true_reversal": {
+      "rows": 3258,
+      "accuracy": 0.18569674647022713,
+      "accuracy_ci95": [
+        0.14204494904561632,
+        0.2357560528103319
+      ]
+    },
+    "non_tie_to_tie": {
+      "rows": 71083,
+      "mean_distance_reduction": 0.04778816260388289,
+      "median_distance_reduction": 0.037929233785689354,
+      "fraction_improved": 0.6306149149585696
+    },
+    "same_referent": {
+      "rows": 117880,
+      "mean_abs_probability_change": 0.09551871398618131,
+      "median_abs_probability_change": 0.07464540619227994,
+      "p90_abs_probability_change": 0.20619144182434748,
+      "false_preference_flip_rate": 0.2647183576518493
+    },
+    "different_referent": {
+      "rows": 134420,
+      "teacher_changed_rows": 74645,
+      "teacher_change_agreement": 0.6399222988813719
+    }
+  },
+  "image_only": {
+    "eligible_rows": 252300,
+    "teacher_changed_rows": 74645,
+    "teacher_change_agreement": 0.0,
+    "teacher_change_agreement_ci95": [
+      0.0,
+      0.0
+    ],
+    "positive_task_count": 0,
+    "per_task": {
+      "0": {
+        "rows": 3296,
+        "agreement": 0.0
+      },
+      "1": {
+        "rows": 12486,
+        "agreement": 0.0
+      },
+      "2": {
+        "rows": 8247,
+        "agreement": 0.0
+      },
+      "3": {
+        "rows": 4161,
+        "agreement": 0.0
+      },
+      "4": {
+        "rows": 5736,
+        "agreement": 0.0
+      },
+      "5": {
+        "rows": 9975,
+        "agreement": 0.0
+      },
+      "6": {
+        "rows": 7988,
+        "agreement": 0.0
+      },
+      "7": {
+        "rows": 7902,
+        "agreement": 0.0
+      },
+      "8": {
+        "rows": 7297,
+        "agreement": 0.0
+      },
+      "9": {
+        "rows": 7557,
+        "agreement": 0.0
+      }
+    },
+    "true_reversal": {
+      "rows": 3258,
+      "accuracy": 0.0,
+      "accuracy_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "non_tie_to_tie": {
+      "rows": 71083,
+      "mean_distance_reduction": 0.0,
+      "median_distance_reduction": 0.0,
+      "fraction_improved": 0.0
+    },
+    "same_referent": {
+      "rows": 117880,
+      "mean_abs_probability_change": 0.0,
+      "median_abs_probability_change": 0.0,
+      "p90_abs_probability_change": 0.0,
+      "false_preference_flip_rate": 0.0
+    },
+    "different_referent": {
+      "rows": 134420,
+      "teacher_changed_rows": 74645,
+      "teacher_change_agreement": 0.0
+    }
+  },
+  "primary_vs_image_only": {
+    "accuracy_difference": 0.6399222988813719,
+    "ci95": [
+      0.6259299271039183,
+      0.653548779835491
+    ]
+  }
+}
