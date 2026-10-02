@@ -9,60 +9,53 @@ from src.probes.semantic_goal_contract import sha256
 
 
 ROOT = Path(__file__).resolve().parents[1]
-RESULT = ROOT / "results/semantic_goal_progress_teacher/diagnosis.json"
+RESULT = ROOT / "results/semantic_goal_progress_teacher/corrected_diagnosis.json"
 
 
-def load_result() -> tuple[dict, dict]:
+def load_result() -> dict:
     result = json.loads(RESULT.read_text())
-    inventory_path = ROOT / result["inventory"]["path"]
-    assert sha256(inventory_path) == result["inventory"]["sha256"]
-    return result, json.loads(inventory_path.read_text())
+    for field in ("source_protocol", "source_inventory", "source_diagnosis", "decision_amendment", "boundary_incident"):
+        record = result[field]
+        assert sha256(ROOT / record["path"]) == record["sha256"]
+    return result
 
 
-def test_all_tasks_share_one_goal_but_have_distinct_initial_contracts() -> None:
-    result, inventory = load_result()
-    summary = result["semantic_inventory_summary"]
-    assert summary["task_count"] == 10
-    assert summary["distinct_goal_signature_count"] == 1
-    assert summary["distinct_relevant_initial_signature_count"] == 10
-    assert inventory["distinct_goal_signatures"] == [["and", ["on", "akita_black_bowl_1", "plate_1"]]]
-    assert all(row["goal_atoms"] == [["on", "akita_black_bowl_1", "plate_1"]] for row in inventory["contracts"])
+def test_source_facts_are_narrow_and_language_claim_is_withdrawn() -> None:
+    result = load_result()
+    facts = result["admitted_source_findings"]
+    assert facts["task_count"] == 10
+    assert facts["common_local_bddl_goal"] == ["on", "akita_black_bowl_1", "plate_1"]
+    assert facts["distinct_relevant_initial_relations"] == 10
+    assert facts["second_same_type_bowl_present_in_every_task"] is True
+    assert "SEMANTIC_TEACHER_LANGUAGE_INSUFFICIENT" in result["withdrawn_findings"]
+    assert result["unresolved_corrected_route"]["status"] == "NOT_PREREGISTERED_OR_RUN"
 
 
-def test_no_admissible_goal_changing_language_counterfactual_exists() -> None:
-    result, inventory = load_result()
-    summary = result["semantic_inventory_summary"]
-    assert summary["directed_real_language_swap_count"] == 90
-    assert summary["directed_goal_changing_counterfactual_count"] == 0
-    assert summary["task_count_with_goal_changing_counterfactual"] == 0
-    assert inventory["goal_changing_counterfactuals"] == []
-    assert set(inventory["counterfactual_coverage_by_task"].values()) == {0}
+def test_boundary_incident_is_explicit_and_no_values_were_loaded() -> None:
+    result = load_result()
+    incident = json.loads((ROOT / result["boundary_incident"]["path"]).read_text())
+    assert incident["incident"] == "FORBIDDEN_PARTITION_METADATA_ENUMERATION"
+    assert incident["task_ids_affected"] == [0]
+    assert incident["forbidden_demo_ids_whose_metadata_was_enumerated"] == list(range(40, 50))
+    assert incident["numeric_array_values_read_from_forbidden_groups"] == 0
+    assert incident["models_trained_after_incident"] == 0
 
 
-def test_data_boundary_was_preserved() -> None:
-    result, _ = load_result()
-    scope = result["scope"]
-    assert scope["task_definition_files_read"] == 10
-    assert scope["demo_rows_read"] == 0
-    assert scope["calibration_demo_rows_read"] == 0
-    assert scope["evaluation_demo_rows_read"] == 0
-    assert scope["forbidden_demo_rows_read"] == 0
+def test_no_teacher_distillation_candidate_or_controller_work_occurred() -> None:
+    scope = load_result()["scope"]
+    assert scope["calibration_teacher_rows_constructed"] == 0
+    assert scope["evaluation_teacher_rows_constructed"] == 0
     assert scope["simulator_runs"] == 0
     assert scope["teacher_models_trained"] == 0
     assert scope["value_models_trained"] == 0
+    assert scope["candidate_futures_executed"] == 0
 
 
-def test_mechanical_decision_blocks_b2_b3_and_world_model() -> None:
-    result, _ = load_result()
-    decision = result["decision"]
-    assert decision["identifiability_gate_pass"] is False
-    assert decision["gates"] == {
-        "all_tasks_parsed": True,
-        "multiple_goal_signatures": False,
-        "counterfactual_task_coverage": False,
-    }
+def test_mechanical_decision_blocks_all_downstream_stages() -> None:
+    decision = load_result()["decision"]
+    assert decision["pass"] is False
+    assert decision["highest_completed_stage"] == "B1"
     assert decision["final_mechanism_labels"] == [
-        "SEMANTIC_TEACHER_LANGUAGE_INSUFFICIENT",
         "SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED",
         "DATA_OR_IMPLEMENTATION_BLOCK",
     ]
@@ -73,4 +66,15 @@ def test_mechanical_decision_blocks_b2_b3_and_world_model() -> None:
     assert decision["world_model_interface_authorization"] == "BLOCK_WORLD_MODEL_INTERFACE_AUDIT"
     assert decision["spatial_world_model_authorization"] == "BLOCK_SPATIAL_WM_PROTOTYPE"
     assert decision["controller_authorization"] is False
+
+
+def test_required_reports_exist_and_state_no_selection() -> None:
+    report = (ROOT / "docs/semantic_goal_progress_teacher_audit.md").read_text()
+    summary = (ROOT / "docs/semantic_candidate_value_research_summary.md").read_text()
+    assert "Selected semantic teacher: `none`" in report
+    assert "Highest completed stage: `B1`" in summary
+    assert "Semantic teacher selected: `no`" in summary
+    assert "Controller authorized: `NO`" in summary
+    for index in range(1, 16):
+        assert f"## Q{index} " in summary
 

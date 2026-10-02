@@ -1,0 +1,70 @@
+{
+  "audit_version": "semantic-goal-progress-teacher-v1-blocked-amendment",
+  "created_at": "2026-10-02",
+  "source_protocol": {
+    "path": "configs/semantic_goal_progress_teacher_protocol.json",
+    "sha256": "6377a71907243fccb6f9e7425cb4aeda29330d60c9692b4a8dce2db3828ee4ec",
+    "commit": "7c940679d2e58f438ed85d0ded382232f36fff61"
+  },
+  "source_inventory": {
+    "path": "results/semantic_goal_progress_teacher/semantic_inventory.json",
+    "sha256": "68a8b0a06f540ff9f733938c442f48a0955ec03078c18a898fb1a19dd4560083"
+  },
+  "source_diagnosis": {
+    "path": "results/semantic_goal_progress_teacher/diagnosis.json",
+    "sha256": "f490b33900fc6e4c4cd4a44e633f5e3e1246b0c9aa98ade21f6cba1b9df2def3",
+    "status": "PRESERVED_BUT_SUPERSEDED"
+  },
+  "decision_amendment": {
+    "path": "configs/semantic_goal_progress_teacher_decision_amendment.json",
+    "sha256": "da8a8f6d40fb75ec08acf9e659cc0469ce744bb8eb7403fa28edc581e324e41c"
+  },
+  "boundary_incident": {
+    "path": "results/semantic_goal_progress_teacher/boundary_incident.json",
+    "sha256": "a114c1c1d26f25b04c5ef33fb11291a2d8f03eedeb2a2789e85e5ede5f4b1b16"
+  },
+  "admitted_source_findings": {
+    "task_count": 10,
+    "common_local_bddl_goal": ["on", "akita_black_bowl_1", "plate_1"],
+    "distinct_relevant_initial_relations": 10,
+    "second_same_type_bowl_present_in_every_task": true,
+    "official_on_definition": "target.check_ontop(subject)",
+    "success_definition": "conjunction of parsed BDDL goal predicates"
+  },
+  "withdrawn_findings": {
+    "SEMANTIC_TEACHER_LANGUAGE_INSUFFICIENT": "Raw equality of BDDL-local role names is not a valid same-scene object-grounding test.",
+    "zero_valid_counterfactuals": "The count used an invalid cross-file symbol comparison and is not a semantic result."
+  },
+  "unresolved_corrected_route": {
+    "description": "Parse each instruction's source-relation referring expression, bind it against both black bowls in the same physical state, and evaluate On(bound referent, plate).",
+    "status": "NOT_PREREGISTERED_OR_RUN",
+    "reason": "The forbidden-partition metadata incident occurred before a corrected protocol could be frozen."
+  },
+  "scope": {
+    "official_bddl_files_read": 10,
+    "forbidden_demo_ids_with_metadata_enumerated": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
+    "forbidden_numeric_array_values_read": 0,
+    "calibration_teacher_rows_constructed": 0,
+    "evaluation_teacher_rows_constructed": 0,
+    "simulator_runs": 0,
+    "teacher_models_trained": 0,
+    "value_models_trained": 0,
+    "candidate_futures_executed": 0
+  },
+  "decision": {
+    "pass": false,
+    "highest_completed_stage": "B1",
+    "blocking_condition": "FORBIDDEN_PARTITION_METADATA_ENUMERATION_AFTER_SEMANTIC_GROUNDING_DEFECT",
+    "final_mechanism_labels": [
+      "SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED",
+      "DATA_OR_IMPLEMENTATION_BLOCK"
+    ],
+    "semantic_teacher_selected": false,
+    "deployable_value_evaluator_selected": false,
+    "real_candidate_value_bridge_validated": false,
+    "value_distillation_authorization": "BLOCK_VALUE_DISTILLATION",
+    "world_model_interface_authorization": "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+    "spatial_world_model_authorization": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "controller_authorization": false
+  }
+}

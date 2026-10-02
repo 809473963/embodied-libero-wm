@@ -1,0 +1,54 @@
+{
+  "audit_version": "semantic-goal-progress-teacher-v1",
+  "created_at": "2026-10-02",
+  "source_commit": "7c940679d2e58f438ed85d0ded382232f36fff61",
+  "protocol": {
+    "path": "configs/semantic_goal_progress_teacher_protocol.json",
+    "sha256": "6377a71907243fccb6f9e7425cb4aeda29330d60c9692b4a8dce2db3828ee4ec"
+  },
+  "inventory": {
+    "path": "results/semantic_goal_progress_teacher/semantic_inventory.json",
+    "sha256": "68a8b0a06f540ff9f733938c442f48a0955ec03078c18a898fb1a19dd4560083"
+  },
+  "scope": {
+    "task_definition_files_read": 10,
+    "demo_rows_read": 0,
+    "calibration_demo_rows_read": 0,
+    "evaluation_demo_rows_read": 0,
+    "forbidden_demo_rows_read": 0,
+    "simulator_runs": 0,
+    "teacher_models_trained": 0,
+    "value_models_trained": 0
+  },
+  "semantic_inventory_summary": {
+    "task_count": 10,
+    "distinct_goal_signature_count": 1,
+    "distinct_relevant_initial_signature_count": 10,
+    "directed_real_language_swap_count": 90,
+    "directed_goal_changing_counterfactual_count": 0,
+    "task_count_with_goal_changing_counterfactual": 0
+  },
+  "decision": {
+    "identifiability_gate_pass": false,
+    "gates": {
+      "all_tasks_parsed": true,
+      "multiple_goal_signatures": false,
+      "counterfactual_task_coverage": false
+    },
+    "final_mechanism_labels": [
+      "SEMANTIC_TEACHER_LANGUAGE_INSUFFICIENT",
+      "SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED",
+      "DATA_OR_IMPLEMENTATION_BLOCK"
+    ],
+    "highest_completed_stage": "B1",
+    "semantic_teacher_selected": false,
+    "deployable_value_evaluator_selected": false,
+    "real_candidate_value_bridge_validated": false,
+    "value_distillation_authorization": "BLOCK_VALUE_DISTILLATION",
+    "world_model_interface_authorization": "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+    "spatial_world_model_authorization": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "controller_authorization": false,
+    "stopped_before_state_teacher_construction": true,
+    "stopped_before_calibration_or_evaluation_data_access": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-02",
+  "scope": "Decision-only correction after Stage-B1 preflight; no metric, threshold, teacher, or model is repaired",
+  "source_protocol_commit": "7c940679d2e58f438ed85d0ded382232f36fff61",
+  "source_protocol": "configs/semantic_goal_progress_teacher_protocol.json",
+  "source_diagnosis": "results/semantic_goal_progress_teacher/diagnosis.json",
+  "source_inventory": "results/semantic_goal_progress_teacher/semantic_inventory.json",
+  "corrections": [
+    {
+      "issue": "CROSS_FILE_LOCAL_SYMBOL_CANONICALIZATION",
+      "description": "The v1 preflight compared BDDL-local goal symbols directly. Every task calls its instruction-selected bowl akita_black_bowl_1, so identical goal strings do not prove that a same-scene counterfactual instruction selects the same physical bowl.",
+      "evidence": "Each task contains a second akita black bowl. Its initial relation frequently matches another admitted instruction, so a valid source-relation-grounded counterfactual may bind that second bowl and change On(referent, plate).",
+      "effect": "SEMANTIC_TEACHER_LANGUAGE_INSUFFICIENT is withdrawn; semantic language dependence is unresolved, not negative."
+    },
+    {
+      "issue": "FORBIDDEN_PARTITION_METADATA_ENUMERATION",
+      "description": "A schema walk enumerated task0 demo40-49 group metadata after the source preflight. No numeric values were loaded, but the strict no-access boundary was crossed.",
+      "effect": "The audit stops with DATA_OR_IMPLEMENTATION_BLOCK before a corrected grounding protocol, calibration, or evaluation."
+    }
+  ],
+  "final_mechanism_labels": [
+    "SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED",
+    "DATA_OR_IMPLEMENTATION_BLOCK"
+  ],
+  "authorizations": {
+    "value_distillation": "BLOCK_VALUE_DISTILLATION",
+    "world_model_interface": "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+    "spatial_world_model": "BLOCK_SPATIAL_WM_PROTOTYPE",
+    "controller": false
+  },
+  "selected_semantic_teacher": null,
+  "selected_deployable_value_evaluator": null,
+  "real_candidate_value_bridge_validated": false,
+  "highest_completed_stage": "B1",
+  "post_incident_activity_allowed": ["write integrity artifacts", "write reports", "run source-only and artifact-consistency tests"],
+  "post_incident_activity_forbidden": ["read any additional demonstration group", "construct or fit the semantic teacher", "run B2", "run B3", "train or run a World Model", "run a controller"]
+}

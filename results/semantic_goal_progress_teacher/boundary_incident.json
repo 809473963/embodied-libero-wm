@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-02",
+  "stage": "B1 preflight",
+  "incident": "FORBIDDEN_PARTITION_METADATA_ENUMERATION",
+  "trigger": "An exploratory HDF5 schema walk was used while locating an existing semantic-state sidecar.",
+  "path": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5",
+  "task_ids_affected": [0],
+  "forbidden_demo_ids_whose_metadata_was_enumerated": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
+  "metadata_exposed": ["group and dataset names", "trajectory lengths through dataset shapes", "dataset dtypes"],
+  "numeric_array_values_read_from_forbidden_groups": 0,
+  "reward_done_success_values_read": 0,
+  "simulator_runs": 0,
+  "models_trained_after_incident": 0,
+  "evaluation_metrics_computed_after_incident": 0,
+  "integrity_interpretation": "The task forbids any demo40-49 access. Metadata-only enumeration is therefore treated as a boundary violation even though no dataset values were sliced or loaded.",
+  "required_action": "Stop B1, withdraw the preliminary language-insufficiency mechanism claim, block B2/B3, and preserve the incident in the final report."
+}
