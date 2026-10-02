@@ -1,0 +1,23 @@
+{
+  "selection_version": "semantic-student-selection-v1",
+  "created_at": "2026-10-02",
+  "selection_partition": "demo34 held out from demo31--33 fitting",
+  "noninferiority_tolerance_points": 2.0,
+  "tie_mean_abs_max": 0.15,
+  "logic": [
+    "prefer S1 if it passes the tie limit and is within 2 points of the best S1/S1.5/S2 language-counterfactual agreement and ordinary local accuracy",
+    "otherwise prefer S1.5 under the same two noninferiority conditions",
+    "otherwise choose among tie-passing candidates lexicographically by language-counterfactual agreement, ordinary accuracy, tie deviation, task robustness, log loss, and scalar simplicity",
+    "if none passes the tie limit, apply the same lexicographic order diagnostically"
+  ],
+  "ranking_priority": [
+    "language counterfactual correctness",
+    "ordinary local semantic accuracy",
+    "tie calibration",
+    "per-task robustness",
+    "probability calibration",
+    "compute cost",
+    "simplicity"
+  ],
+  "post_evaluation_reselection": false
+}

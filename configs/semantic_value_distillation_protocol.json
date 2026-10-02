@@ -1,0 +1,154 @@
+{
+  "protocol_version": "semantic-value-distillation-v1",
+  "created_at": "2026-10-02",
+  "status": "PREREGISTERED_BEFORE_CALIBRATION_TRAINING",
+  "objective": "Distill the frozen privileged T1-M2 teacher into a deployable frozen-natural-CLIP-plus-language semantic value student on real demonstration observations.",
+  "authorization_basis": {
+    "tag": "t1-semantic-teacher-full-evaluation-valid",
+    "commit": "1655b5866c9f33f70c3f86efb9828b0e85ce38f1",
+    "label": "SEMANTIC_GOAL_PROGRESS_TEACHER_VALID",
+    "authorization": "GO_VALUE_DISTILLATION"
+  },
+  "partitions": {
+    "calibration_demo_ids": [31, 32, 33, 34],
+    "selection_train_demo_ids": [31, 32, 33],
+    "selection_holdout_demo_ids": [34],
+    "evaluation_demo_ids": [36, 37, 38, 39],
+    "historical_disabled": [30, 35],
+    "forbidden_including_metadata": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "teacher": {
+    "name": "T1-M2",
+    "grounding": "frozen G2, ground once in initial scene and persist physical referent",
+    "state": "[official On(persistent referent, plate), M2]",
+    "M2": "min((0.03-||bowl_xy-plate_xy||_2)/0.03, (bowl_z-plate_z)/0.03)",
+    "epsilon_goal": 0.004065508647683736,
+    "comparison": "official Boolean first; when equal compare M2; abs(delta M2)<=epsilon is TIE",
+    "immutable": true
+  },
+  "inputs": {
+    "feature_store": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+    "feature_store_inherited_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "feature_manifest_inherited_sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc",
+    "feature_contract": "D13 natural RGB -> frozen openai/clip-vit-base-patch32 revision 3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268; global image projection [512] and frozen text projection [512]",
+    "t1_definition": "configs/t1_teacher_frozen_definition.json",
+    "t1_calibration_sidecar": "results/t1_semantic_teacher/calibration_sidecar.npz",
+    "t1_evaluation_sidecar": "results/t1_semantic_teacher/evaluation_sidecar.npz",
+    "architectures": "configs/semantic_student_architectures.json",
+    "pair_sampler": "configs/semantic_pair_sampler.json",
+    "student_selection": "configs/semantic_student_selection.json"
+  },
+  "student_input_contract": {
+    "primary": ["frozen natural-RGB CLIP global projection", "frozen task-language CLIP projection"],
+    "image_only_ablation": ["frozen natural-RGB CLIP global projection"],
+    "language_only_ablation": ["frozen task-language CLIP projection"],
+    "forbidden": [
+      "MuJoCo state", "object or plate pose", "selected bowl identity", "G2 score or referent",
+      "M2", "On Boolean", "T1 coordinate", "proprioception", "trajectory index",
+      "normalized progress", "expert action", "reward", "done", "success", "task one-hot", "demo ID"
+    ]
+  },
+  "models": {
+    "S0": {"terminal_tail_states": 8},
+    "S1": {"hidden": 64, "target": "goal Boolean head plus standardized M2 head"},
+    "S1.5": {"hidden": 64, "target": "pairwise T1 soft target through scalar potential difference"},
+    "S2": {"hidden": 64, "target": "direct antisymmetric pairwise T1 soft target"},
+    "parameter_max": 200000
+  },
+  "training": {
+    "seed": 23,
+    "epochs": 30,
+    "batch_size": 1024,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "feature_standardization": "fit mean/std only on the current calibration training rows; language statistics use the fixed ten-language matrix",
+    "selection_fit": "demo31--33",
+    "selection_validation": "demo34",
+    "final_refit": "same fixed architectures/epochs on demo31--34 after family/temperature selection"
+  },
+  "calibration": {
+    "temperature_grid": [0.25, 0.5, 1.0, 2.0, 4.0, 8.0],
+    "temperature_objective": "mean BCE over demo34 ordinary local T1 pairs plus both original and alternate realizations of demo34 local language counterfactuals",
+    "temperature_changes_ranking": false,
+    "tie_target_probability": 0.5
+  },
+  "controls": {
+    "cross_demo_points": 16,
+    "cross_demo_match": "same task, cyclic different demo, same goal Boolean and abs(M2 difference)<=epsilon; closest eligible margin",
+    "cross_demo_clear_margin_min": 0.05,
+    "cross_demo_difference": "same task, cyclic different demo, T1 non-tie and either Boolean change or abs(M2 difference)>=0.05; least-extreme eligible margin; exact reverse retained",
+    "triplet_points": 8,
+    "s2_aggregation_diagnostic": "Borda mean pairwise probability only; no candidate futures"
+  },
+  "language_counterfactual_metrics": {
+    "teacher_change_agreement": "strictly positive product of student probability change and ordinal T1 label change",
+    "true_reversal_accuracy": "both original and alternate probabilities lie on the correct side of 0.5",
+    "non_tie_to_tie": "abs(original P-0.5)-abs(alternate P-0.5)",
+    "same_referent_false_flip": "sign(P-0.5) changes under an alternate instruction selecting the same persistent referent"
+  },
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261003,
+    "unit": "task-stratified complete demo block; four draws with replacement inside each task",
+    "confidence_interval": "percentile 95%"
+  },
+  "decision_rules": {
+    "local_accuracy_min": 0.70,
+    "local_ci_lower_min": 0.65,
+    "tasks_above_60_min": 8,
+    "language_change_agreement_min": 0.70,
+    "language_positive_task_min": 8,
+    "image_only_paired_ci_lower_strictly_positive": true,
+    "same_referent_mean_change_max": 0.10,
+    "tie_mean_abs_max": 0.15,
+    "cross_demo_mean_abs_max": 0.15,
+    "s2_cycle_rate_max": 0.10,
+    "all_values_finite": true,
+    "forbidden_access_count": 0,
+    "pass_labels": ["SEMANTIC_VALUE_DISTILLATION_VALID", "GOAL_CONDITIONED_VALUE_STUDENT_VALID"],
+    "pass_authorization": "GO_REAL_CANDIDATE_VALUE_BRIDGE",
+    "fail_label": "SEMANTIC_VALUE_DISTILLATION_BLOCKED",
+    "fail_authorization": "BLOCK_REAL_CANDIDATE_VALUE_BRIDGE",
+    "continuing_blocks": ["BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"],
+    "controller_authorization": false
+  },
+  "compute": {"latency_warmup": 10, "latency_repeats": 50, "device": "single CPU process"},
+  "frozen_files": [
+    {"path": "configs/t1_teacher_frozen_definition.json", "sha256": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f"},
+    {"path": "configs/robust_grounding_frozen_resolver.json", "sha256": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881"},
+    {"path": "third_party/LIBERO/libero/libero/envs/predicates/base_predicates.py", "sha256": "319137e95330dbb22a266a8dceb8110f18413c2bf17461550222228c4bc310a1"},
+    {"path": "third_party/LIBERO/libero/libero/envs/object_states/base_object_states.py", "sha256": "ca6f53123336b6487bdb4feb02534ddb3a0627a4b847fe89da4460520ef01366"},
+    {"path": "results/t1_semantic_teacher/calibration_sidecar.npz", "sha256": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604"},
+    {"path": "results/t1_semantic_teacher/evaluation_sidecar.npz", "sha256": "cd6ce906f83753561f7464f4fb58fadf02576e891dd70ad2aee403197a39b06a"},
+    {"path": "src/data/allowed_demo_guard.py", "sha256": "c1d8e9e2f0e93cf75998f6286d0797f427a41d0969792f086c1421a69e038653"},
+    {"path": "configs/semantic_student_architectures.json", "sha256": "dd11f6526964692ab762e2dac5b7a5785afb59bd0a32a79f9991aabac9711990"},
+    {"path": "configs/semantic_pair_sampler.json", "sha256": "aa88e8c2f657eaee79611bd22e77ee56f1a50b5ec7392a1bb5b8a998210db595"},
+    {"path": "configs/semantic_student_selection.json", "sha256": "dd77c76a37130cd05c64dd480e68459b8ca09e2035a4be050d6916e4f9242fe7"}
+  ],
+  "implementation": [
+    {"path": "src/data/semantic_feature_guard.py", "sha256": "76ce1e179b0ed293f63e79b919659be94f6d5468a63477d6d16410a29624f2bb"},
+    {"path": "src/probes/semantic_value_distillation.py", "sha256": "79f10de02ad920edf7ff797c0790ac5725f58ba7c272c7976e66f1aa7a6d041b"},
+    {"path": "scripts/run_semantic_value_distillation.py", "sha256": "a387d5fe9fcc0d4b3ad83f317117793e80a037c909b017882f54fcb391d20773"}
+  ],
+  "outputs": {
+    "calibration": "results/semantic_value_calibration.json",
+    "calibration_freeze": "results/semantic_value_calibration_freeze.json",
+    "evaluation": "results/semantic_value_evaluation.json",
+    "language_evaluation": "results/semantic_language_counterfactual_eval.json",
+    "tie_evaluation": "results/semantic_tie_eval.json",
+    "cross_demo_evaluation": "results/semantic_cross_demo_controls.json",
+    "weights": "results/semantic_value_distillation/calibration_weights.pt",
+    "calibration_sidecar": "results/semantic_value_distillation/calibration_sidecar.npz",
+    "evaluation_sidecar": "results/semantic_value_distillation/evaluation_sidecar.npz",
+    "calibration_ledger": "results/semantic_value_distillation/calibration_access_ledger.json",
+    "evaluation_ledger": "results/semantic_value_distillation/evaluation_access_ledger.json",
+    "final_decision": "results/semantic_value_final_decision.json",
+    "report": "docs/goal_conditioned_semantic_value_distillation_audit.md"
+  },
+  "forbidden_activity": [
+    "read demo30/35", "read or enumerate demo40--49", "read D13 actions or proprioception as student input",
+    "read reward/done/success/task outcome", "run simulator or candidate future", "run N64 candidate bridge",
+    "train World Model", "construct reranker", "run controller", "fine-tune or replace frozen encoder"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "sampler_version": "semantic-pair-sampler-v1",
+  "created_at": "2026-10-02",
+  "gap_bins": ["1-2", "3-4", "5-8", "9-16", ">16"],
+  "primary_gap_max": 8,
+  "ordinary_per_stratum": 48,
+  "counterfactual_per_stratum": 8,
+  "robot_control_per_stratum": 24,
+  "self_pair_frames_per_demo": 8,
+  "strata": {
+    "ordinary": ["task", "demo", "gap", "T1 label"],
+    "counterfactual": ["source task", "demo", "gap", "same/different referent", "original label", "alternate label"],
+    "robot_controls": ["task", "demo", "semantic-tie/robot-different or robot-match/semantic-different"]
+  },
+  "counterfactual_pairing": "every sampled alternate-language row retains the same visual pair under its correct language",
+  "reverse_rule": "add the exact reverse of every non-self pair and negate the T1 label",
+  "tie_rule": "retain label 0 with soft target P(B>A)=0.5",
+  "long_gap_rule": "deterministic 64-position maximum per trajectory over gaps 17--32",
+  "selection": "stable evenly spaced indices inside each sorted finite stratum",
+  "no_evaluation_resampling": true
+}

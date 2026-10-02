@@ -1,0 +1,50 @@
+{
+  "architecture_version": "semantic-student-architectures-v1",
+  "created_at": "2026-10-02",
+  "feature_dimensions": {"visual": 512, "language": 512},
+  "parameter_ceiling": 200000,
+  "S0": {
+    "name": "task-conditioned terminal visual prototype",
+    "trainable_parameters": 0,
+    "terminal_tail_states_per_demo": 8,
+    "score": "cosine similarity to the calibration-only terminal prototype selected by language"
+  },
+  "S1": {
+    "name": "absolute two-head lexicographic semantic state",
+    "architecture": "Linear(1024,64)-GELU with separate Linear(64,1) goal and margin heads",
+    "loss": "positive-weighted goal BCE plus standardized M2 MSE",
+    "pair_score": "[2*I(goal_logit>=0)+sigmoid(margin_z)]_b minus the same value for a",
+    "priority_contract": "the exact two-unit Boolean class offset is larger than the bounded margin coordinate"
+  },
+  "S1.5": {
+    "name": "scalar pairwise semantic potential",
+    "architecture": "Linear(1024,64)-GELU-Linear(64,1)",
+    "loss": "Bradley-Terry BCE with T1 soft target 0/0.5/1",
+    "pair_score": "V(b,l)-V(a,l)",
+    "deployment_complexity": "64 state evaluations for N64"
+  },
+  "S2": {
+    "name": "direct antisymmetric semantic comparator",
+    "architecture": "raw Linear(2048,64)-GELU-Linear(64,1); logit=raw(a,b,l)-raw(b,a,l)",
+    "loss": "BCE with T1 soft target 0/0.5/1",
+    "deployment_complexity": "2016 pair evaluations for a full N64 tournament"
+  },
+  "IMAGE_ONLY": {
+    "name": "direct antisymmetric image-pair ablation",
+    "architecture": "raw Linear(1536,64)-GELU-Linear(64,1); no language"
+  },
+  "LANGUAGE_ONLY": {
+    "name": "low-capacity language-prior diagnostic",
+    "architecture": "Linear(512,1)",
+    "note": "exact reverse balancing makes pair direction unavailable"
+  },
+  "forbidden": [
+    "encoder fine-tuning",
+    "new visual encoder",
+    "Transformer",
+    "task one-hot",
+    "demo ID",
+    "trajectory index",
+    "privileged teacher coordinate as student input"
+  ]
+}
