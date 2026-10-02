@@ -1,0 +1,40 @@
+{
+  "geometry_version": "robust-grounding-geometry-v1",
+  "created_at": "2026-10-02",
+  "candidate_referents": ["akita_black_bowl_1", "akita_black_bowl_2"],
+  "lower_score_is_better": true,
+  "identity_inputs_forbidden": ["task id", "BDDL-local bowl suffix", "known construction bowl", "demonstration id"],
+  "families": {
+    "G0": "installed exact source predicate; diagnostic baseline only",
+    "G1": "Euclidean distance outside the exact source volume/band, or hypot(horizontal surface gap, vertical surface gap) for object supports",
+    "G2": "dimensionless semantic compatibility using region half-sizes or object radii/heights",
+    "G3": "G2 bounded to [0,1), plus an exact-predicate stratum offset of one for non-matches"
+  },
+  "site_on": {
+    "frame": "site local frame from site_xmat",
+    "horizontal": "bowl center relative to site half-widths",
+    "vertical_band_m": [-0.005, 0.100]
+  },
+  "site_in": {
+    "frame": "site local frame from site_xmat",
+    "volume": "site half-sizes with 0.01 m lower-z allowance"
+  },
+  "object_support": {
+    "horizontal": "center distance and sum of horizontal radii",
+    "vertical": "absolute gap between orientation-aware bowl bottom and support top",
+    "rotation_source": "sim.data.body_xmat"
+  },
+  "confidence": {
+    "definition": "second-best score minus best score",
+    "unique": "finite best score within family maximum and gap strictly above threshold",
+    "ambiguous": "gap at or below threshold",
+    "not_found": "nonfinite or best score above maximum"
+  },
+  "threshold_grids": {
+    "G1": [0.0, 0.001, 0.002, 0.005, 0.01, 0.02, 0.05],
+    "G2": [0.0, 0.05, 0.1, 0.2, 0.3, 0.5, 1.0],
+    "G3": [0.0, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75]
+  },
+  "maximum_scores": {"G1": 0.5, "G2": 20.0, "G3": 2.0},
+  "perturbations": "±x, ±y, ±z source-anchor shifts at 1, 2, and 5 mm"
+}

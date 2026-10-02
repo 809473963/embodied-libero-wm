@@ -1,0 +1,63 @@
+{
+  "protocol_version": "robust-grounding-audit-v1",
+  "created_at": "2026-10-02",
+  "status": "PREREGISTERED",
+  "objective": "Select and cleanly evaluate one explicit same-scene source-geometry resolver before any semantic-teacher evaluation.",
+  "upstream_state": {
+    "label": "SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED",
+    "authorizations": ["BLOCK_VALUE_DISTILLATION", "BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"],
+    "selected_teacher": null
+  },
+  "partitions": {
+    "calibration": [31, 32, 33, 34],
+    "frozen_development_evaluation": [36, 37, 38, 39],
+    "historical_disabled": [30, 35],
+    "forbidden_including_metadata": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "inputs": {
+    "allowed_demo_access": "configs/allowed_demo_access.json",
+    "task_grounding_contract": "configs/task_grounding_contract.json",
+    "geometry_contract": "configs/robust_grounding_geometry.json"
+  },
+  "candidate_families": ["G0 exact diagnostic", "G1 raw geometric distance", "G2 normalized semantic compatibility", "G3 exact-first hybrid"],
+  "identity_policy": "The known construction identity bowl1 is used only to score correct-instruction resolver precision; it is never an input to G1/G2/G3.",
+  "calibration_selection": {
+    "thresholds": "family-specific grids frozen in geometry contract",
+    "lexicographic_order": ["unique precision descending", "coverage descending", "tasks with coverage >=0.75 descending", "exact-success agreement descending", "mean confidence gap descending", "family simplicity G1 before G2 before G3", "threshold ascending"],
+    "precision_screen": 0.95,
+    "independent_of_t1": true
+  },
+  "gates": {
+    "precision_min": 0.95,
+    "coverage_min": 0.90,
+    "task_coverage_count_min": 9,
+    "exact_agreement_min": 0.95,
+    "counterfactual_task_min": 7,
+    "finite_required": true,
+    "forbidden_access_count": 0
+  },
+  "perturbation_diagnostic": "For the selected resolver, shift each source anchor by ±1, ±2, and ±5 mm on each axis. Report decision stability; this is diagnostic and does not select the resolver.",
+  "stage_decision": {
+    "pass": ["SAME_SCENE_LANGUAGE_GROUNDING_VALID", "GO_T1_SEMANTIC_TEACHER_FULL_EVALUATION"],
+    "fail": ["ROBUST_GROUNDING_UNRESOLVED", "BLOCK_VALUE_DISTILLATION", "BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"]
+  },
+  "frozen_files": [
+    {"path": "src/data/allowed_demo_guard.py", "sha256": "c1d8e9e2f0e93cf75998f6286d0797f427a41d0969792f086c1421a69e038653"},
+    {"path": "src/probes/robust_grounding.py", "sha256": "4c7a02bc70a1e23baffafa725fa0c18315790bb438023c8a118686d09cb1e2f2"},
+    {"path": "scripts/run_robust_grounding.py", "sha256": "2c6d37e12c602322309e6d6ef30fa274ceebb1706915ed18f30fd3df7f2ed90c"},
+    {"path": "configs/allowed_demo_access.json", "sha256": "a2045de035846fa5b9aa092d3b0455323228f108b49d9b45f537ba4ce5c4924c"},
+    {"path": "configs/task_grounding_contract.json", "sha256": "2a5ce1ef29ece3118587d2bb48a1bccf748c2d5dbf4128cb90f6d90bd0bd90bb"},
+    {"path": "configs/robust_grounding_geometry.json", "sha256": "982daa94bb27cae1749a2196d127e7b0d437f719676695cbbf65aad1a9cbc8c8"},
+    {"path": "docs/semantic_goal_progress_teacher_clean_restart.md", "sha256": "470988dd5057cc267d78edb0047962dc6ca159760819d4c0b190eb87fd5d298e"}
+  ],
+  "outputs": {
+    "calibration": "results/robust_grounding_calibration.json",
+    "evaluation": "results/robust_grounding_eval.json",
+    "frozen_resolver": "configs/robust_grounding_frozen_resolver.json",
+    "calibration_sidecar": "results/robust_grounding/calibration_sidecar.npz",
+    "evaluation_sidecar": "results/robust_grounding/evaluation_sidecar.npz",
+    "calibration_ledger": "results/robust_grounding/calibration_access_ledger.json",
+    "evaluation_ledger": "results/robust_grounding/evaluation_access_ledger.json"
+  },
+  "forbidden_activity": ["value distillation", "temporal V2 repair", "candidate future bridge", "World Model", "reranker", "controller", "reward/success access"]
+}
