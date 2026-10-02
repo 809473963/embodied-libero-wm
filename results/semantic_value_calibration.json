@@ -1,0 +1,1638 @@
+{
+  "result_version": "semantic-value-calibration-v1",
+  "created_at": "2026-10-02",
+  "source_commit": "4b19a046157607e0cd9e7c78dbd3d90275e91a10",
+  "protocol_sha256": "78324f900bf9911e9d691bdabe082a25d6d8f26babc5f5a2f942bb5a092b30fd",
+  "partition": {
+    "demo_ids": [
+      31,
+      32,
+      33,
+      34
+    ],
+    "frames": 5044,
+    "trajectories": 40
+  },
+  "selection": {
+    "train_demos": [
+      31,
+      32,
+      33
+    ],
+    "holdout_demos": [
+      34
+    ],
+    "selected_family": "S2",
+    "trace": {
+      "metrics": {
+        "S1": {
+          "language": 0.5798529725122523,
+          "ordinary": 0.6256455921638469,
+          "tie": 0.007571937228269753,
+          "tasks": 8,
+          "log_loss": 0.683650643278437
+        },
+        "S1.5": {
+          "language": 0.6023865331344556,
+          "ordinary": 0.6520035618878005,
+          "tie": 0.10248540237203166,
+          "tasks": 8,
+          "log_loss": 0.6069494545110247
+        },
+        "S2": {
+          "language": 0.6191668442360964,
+          "ordinary": 0.6804986642920748,
+          "tie": 0.10492710632161659,
+          "tasks": 8,
+          "log_loss": 0.5797841480124485
+        }
+      },
+      "reason": "frozen lexicographic fallback",
+      "tolerance": 0.02
+    },
+    "metrics": {
+      "S0": {
+        "ordinary": {
+          "local_non_tie": {
+            "rows": 5615,
+            "accuracy": 0.5369545859305432,
+            "auroc": 0.5231924951605432,
+            "log_loss": 0.6913425808300363,
+            "brier": 0.2490977978581193
+          },
+          "local_accuracy_ci95": [
+            0.5369545859305432,
+            0.5369545859305432
+          ],
+          "tasks_above_60pct": 2,
+          "per_task": {
+            "0": {
+              "rows": 634,
+              "accuracy": 0.5141955835962145,
+              "auroc": 0.5085672881649981,
+              "log_loss": 0.6922893824165363,
+              "brier": 0.24957214496125235
+            },
+            "1": {
+              "rows": 547,
+              "accuracy": 0.5246800731261426,
+              "auroc": 0.5644815083393764,
+              "log_loss": 0.6899429748260456,
+              "brier": 0.24839909008156202
+            },
+            "2": {
+              "rows": 460,
+              "accuracy": 0.5347826086956522,
+              "auroc": 0.5156377799415774,
+              "log_loss": 0.6907518546008083,
+              "brier": 0.24880293558885236
+            },
+            "3": {
+              "rows": 309,
+              "accuracy": 0.6181229773462783,
+              "auroc": 0.43851559068950374,
+              "log_loss": 0.6884306674692809,
+              "brier": 0.24764222867278313
+            },
+            "4": {
+              "rows": 599,
+              "accuracy": 0.5392320534223706,
+              "auroc": 0.5174536888317807,
+              "log_loss": 0.6917223260941365,
+              "brier": 0.2492869552232805
+            },
+            "5": {
+              "rows": 535,
+              "accuracy": 0.514018691588785,
+              "auroc": 0.48625641025641025,
+              "log_loss": 0.6929940161987557,
+              "brier": 0.24992260796465987
+            },
+            "6": {
+              "rows": 484,
+              "accuracy": 0.6590909090909091,
+              "auroc": 0.694721908567127,
+              "log_loss": 0.6865459373768387,
+              "brier": 0.24669954888326717
+            },
+            "7": {
+              "rows": 897,
+              "accuracy": 0.48494983277591974,
+              "auroc": 0.44948876923913633,
+              "log_loss": 0.6941897113200552,
+              "brier": 0.2505202785103014
+            },
+            "8": {
+              "rows": 479,
+              "accuracy": 0.4906054279749478,
+              "auroc": 0.5192040968739998,
+              "log_loss": 0.6918670472117568,
+              "brier": 0.24936035028054396
+            },
+            "9": {
+              "rows": 671,
+              "accuracy": 0.563338301043219,
+              "auroc": 0.5554404315505559,
+              "log_loss": 0.6909585602961399,
+              "brier": 0.24890601051426137
+            }
+          },
+          "per_gap": {
+            "1-2": {
+              "rows": 1333,
+              "accuracy": 0.5161290322580645,
+              "auroc": 0.5106002531403735,
+              "log_loss": 0.6926381652471212,
+              "brier": 0.24974548515771183
+            },
+            "3-4": {
+              "rows": 1401,
+              "accuracy": 0.5353319057815846,
+              "auroc": 0.5182448580242623,
+              "log_loss": 0.6919406313042558,
+              "brier": 0.24939612922626705
+            },
+            "5-8": {
+              "rows": 2881,
+              "accuracy": 0.5473793821589725,
+              "auroc": 0.5318507903787969,
+              "log_loss": 0.6904523056678163,
+              "brier": 0.24865304623815002
+            },
+            "9-16": {
+              "rows": 5947,
+              "accuracy": 0.5922313771649571,
+              "auroc": 0.5722782081192965,
+              "log_loss": 0.6864654330735565,
+              "brier": 0.24666326464688423
+            },
+            ">16": {
+              "rows": 0,
+              "accuracy": null,
+              "auroc": null,
+              "log_loss": null,
+              "brier": null
+            }
+          }
+        },
+        "tie": {
+          "rows": 4329,
+          "mean_abs_from_half": 0.00975700079297946,
+          "mean_ci95": [
+            0.00975700079297946,
+            0.00975700079297946
+          ],
+          "median_abs_from_half": 0.006426791323018322,
+          "p90_abs_from_half": 0.02194686049658433
+        },
+        "language_counterfactual": {
+          "eligible_rows": 67112,
+          "teacher_changed_rows": 18772,
+          "teacher_change_agreement": 0.48961218836565096,
+          "teacher_change_agreement_ci95": [
+            0.48961218836565096,
+            0.48961218836565096
+          ],
+          "positive_task_count": 5,
+          "per_task": {
+            "0": {
+              "rows": 1054,
+              "agreement": 0.5037950664136622
+            },
+            "1": {
+              "rows": 3168,
+              "agreement": 0.47316919191919193
+            },
+            "2": {
+              "rows": 1278,
+              "agreement": 0.5062597809076682
+            },
+            "3": {
+              "rows": 927,
+              "agreement": 0.5005393743257821
+            },
+            "4": {
+              "rows": 1198,
+              "agreement": 0.48080133555926546
+            },
+            "5": {
+              "rows": 2595,
+              "agreement": 0.4816955684007707
+            },
+            "6": {
+              "rows": 1904,
+              "agreement": 0.5488445378151261
+            },
+            "7": {
+              "rows": 2475,
+              "agreement": 0.4808080808080808
+            },
+            "8": {
+              "rows": 2160,
+              "agreement": 0.524074074074074
+            },
+            "9": {
+              "rows": 2013,
+              "agreement": 0.425732737208147
+            }
+          },
+          "true_reversal": {
+            "rows": 920,
+            "accuracy": 0.16304347826086957,
+            "accuracy_ci95": [
+              0.16304347826086957,
+              0.16304347826086957
+            ]
+          },
+          "non_tie_to_tie": {
+            "rows": 17826,
+            "mean_distance_reduction": -0.00189213518533839,
+            "median_distance_reduction": -0.0011628618686712056,
+            "fraction_improved": 0.4179849657803209
+          },
+          "same_referent": {
+            "rows": 32352,
+            "mean_abs_probability_change": 0.008312702602183147,
+            "median_abs_probability_change": 0.005649078680822234,
+            "p90_abs_probability_change": 0.019168727858614978,
+            "false_preference_flip_rate": 0.2555947082096934
+          },
+          "different_referent": {
+            "rows": 34760,
+            "teacher_changed_rows": 18772,
+            "teacher_change_agreement": 0.48961218836565096
+          }
+        },
+        "cross_demo": {
+          "semantic_match": {
+            "rows": 146,
+            "mean_abs_from_half": 0.011720473609125344,
+            "median_abs_from_half": 0.00870618032311754,
+            "p90_abs_from_half": 0.024798945067035838
+          },
+          "semantic_difference": {
+            "rows": 1280,
+            "accuracy": 0.521875,
+            "auroc": 0.549208984375,
+            "log_loss": 0.6905005241918889,
+            "brier": 0.24867804440413105
+          }
+        },
+        "transitivity": {
+          "triplets": 240,
+          "cycle_rate": 0.0
+        }
+      },
+      "S1": {
+        "ordinary": {
+          "local_non_tie": {
+            "rows": 5615,
+            "accuracy": 0.6256455921638469,
+            "auroc": 0.6149093845042789,
+            "log_loss": 0.683650643278437,
+            "brier": 0.2452693498040365
+          },
+          "local_accuracy_ci95": [
+            0.6256455921638469,
+            0.6256455921638469
+          ],
+          "tasks_above_60pct": 8,
+          "per_task": {
+            "0": {
+              "rows": 634,
+              "accuracy": 0.6151419558359621,
+              "auroc": 0.6461031340252478,
+              "log_loss": 0.6895460792298066,
+              "brier": 0.2481996941290366
+            },
+            "1": {
+              "rows": 547,
+              "accuracy": 0.6416819012797075,
+              "auroc": 0.679042784626541,
+              "log_loss": 0.6656531291545329,
+              "brier": 0.23705775725620942
+            },
+            "2": {
+              "rows": 460,
+              "accuracy": 0.7086956521739131,
+              "auroc": 0.6944888023369036,
+              "log_loss": 0.6823617142846813,
+              "brier": 0.2446077215373033
+            },
+            "3": {
+              "rows": 309,
+              "accuracy": 0.6375404530744336,
+              "auroc": 0.5057092665788318,
+              "log_loss": 0.6905677898653702,
+              "brier": 0.2483140171036819
+            },
+            "4": {
+              "rows": 599,
+              "accuracy": 0.6243739565943238,
+              "auroc": 0.6877074633258379,
+              "log_loss": 0.6672812533404552,
+              "brier": 0.23763440749044187
+            },
+            "5": {
+              "rows": 535,
+              "accuracy": 0.6299065420560748,
+              "auroc": 0.6852454212454212,
+              "log_loss": 0.6657103015848089,
+              "brier": 0.23693900368091333
+            },
+            "6": {
+              "rows": 484,
+              "accuracy": 0.6756198347107438,
+              "auroc": 0.6140305162280321,
+              "log_loss": 0.6840670486506558,
+              "brier": 0.24534173459698552
+            },
+            "7": {
+              "rows": 897,
+              "accuracy": 0.5529542920847269,
+              "auroc": 0.4909038994942079,
+              "log_loss": 0.6784107130103452,
+              "brier": 0.24304827801406784
+            },
+            "8": {
+              "rows": 479,
+              "accuracy": 0.6910229645093946,
+              "auroc": 0.724474554571642,
+              "log_loss": 0.6905508201592228,
+              "brier": 0.24823338436886538
+            },
+            "9": {
+              "rows": 671,
+              "accuracy": 0.5722801788375559,
+              "auroc": 0.397046246957437,
+              "log_loss": 0.7211458486103941,
+              "brier": 0.26250483393174745
+            }
+          },
+          "per_gap": {
+            "1-2": {
+              "rows": 1333,
+              "accuracy": 0.5656414103525882,
+              "auroc": 0.54786382958399,
+              "log_loss": 0.699622791261442,
+              "brier": 0.2528110722621874
+            },
+            "3-4": {
+              "rows": 1401,
+              "accuracy": 0.6102783725910065,
+              "auroc": 0.5891391634899673,
+              "log_loss": 0.6875493955733991,
+              "brier": 0.2471247519817828
+            },
+            "5-8": {
+              "rows": 2881,
+              "accuracy": 0.6608816383200278,
+              "auroc": 0.6550284234953939,
+              "log_loss": 0.6743646227207879,
+              "brier": 0.24087763356393324
+            },
+            "9-16": {
+              "rows": 5947,
+              "accuracy": 0.7479401378846477,
+              "auroc": 0.7287641081854837,
+              "log_loss": 0.653263560873706,
+              "brier": 0.23088908917728526
+            },
+            ">16": {
+              "rows": 0,
+              "accuracy": null,
+              "auroc": null,
+              "log_loss": null,
+              "brier": null
+            }
+          }
+        },
+        "tie": {
+          "rows": 4329,
+          "mean_abs_from_half": 0.007571937228269753,
+          "mean_ci95": [
+            0.007571937228269751,
+            0.007571937228269751
+          ],
+          "median_abs_from_half": 0.0036307158676358586,
+          "p90_abs_from_half": 0.009932777181931068
+        },
+        "language_counterfactual": {
+          "eligible_rows": 67112,
+          "teacher_changed_rows": 18772,
+          "teacher_change_agreement": 0.5798529725122523,
+          "teacher_change_agreement_ci95": [
+            0.5798529725122523,
+            0.5798529725122523
+          ],
+          "positive_task_count": 9,
+          "per_task": {
+            "0": {
+              "rows": 1054,
+              "agreement": 0.5825426944971537
+            },
+            "1": {
+              "rows": 3168,
+              "agreement": 0.5918560606060606
+            },
+            "2": {
+              "rows": 1278,
+              "agreement": 0.6338028169014085
+            },
+            "3": {
+              "rows": 927,
+              "agreement": 0.5674217907227616
+            },
+            "4": {
+              "rows": 1198,
+              "agreement": 0.6093489148580968
+            },
+            "5": {
+              "rows": 2595,
+              "agreement": 0.594990366088632
+            },
+            "6": {
+              "rows": 1904,
+              "agreement": 0.5824579831932774
+            },
+            "7": {
+              "rows": 2475,
+              "agreement": 0.602020202020202
+            },
+            "8": {
+              "rows": 2160,
+              "agreement": 0.5518518518518518
+            },
+            "9": {
+              "rows": 2013,
+              "agreement": 0.4942871336313959
+            }
+          },
+          "true_reversal": {
+            "rows": 920,
+            "accuracy": 0.2684782608695652,
+            "accuracy_ci95": [
+              0.2684782608695652,
+              0.2684782608695652
+            ]
+          },
+          "non_tie_to_tie": {
+            "rows": 17826,
+            "mean_distance_reduction": 0.00894789900166243,
+            "median_distance_reduction": 0.00034306841813033784,
+            "fraction_improved": 0.5248513407382475
+          },
+          "same_referent": {
+            "rows": 32352,
+            "mean_abs_probability_change": 0.013637640305461635,
+            "median_abs_probability_change": 0.004154520961408059,
+            "p90_abs_probability_change": 0.014070264555485401,
+            "false_preference_flip_rate": 0.32443125618199803
+          },
+          "different_referent": {
+            "rows": 34760,
+            "teacher_changed_rows": 18772,
+            "teacher_change_agreement": 0.5798529725122523
+          }
+        },
+        "cross_demo": {
+          "semantic_match": {
+            "rows": 146,
+            "mean_abs_from_half": 0.024901994341762237,
+            "median_abs_from_half": 0.005974455428382208,
+            "p90_abs_from_half": 0.02042545000803203
+          },
+          "semantic_difference": {
+            "rows": 1280,
+            "accuracy": 0.559375,
+            "auroc": 0.6085009765625,
+            "log_loss": 0.6522611692231937,
+            "brier": 0.23078097483930343
+          }
+        },
+        "transitivity": {
+          "triplets": 240,
+          "cycle_rate": 0.0
+        }
+      },
+      "S1.5": {
+        "ordinary": {
+          "local_non_tie": {
+            "rows": 5615,
+            "accuracy": 0.6520035618878005,
+            "auroc": 0.6725253360785154,
+            "log_loss": 0.6069494545110247,
+            "brier": 0.21071721623656217
+          },
+          "local_accuracy_ci95": [
+            0.6520035618878005,
+            0.6520035618878005
+          ],
+          "tasks_above_60pct": 8,
+          "per_task": {
+            "0": {
+              "rows": 634,
+              "accuracy": 0.7003154574132492,
+              "auroc": 0.7790058067742298,
+              "log_loss": 0.5634736146395348,
+              "brier": 0.19150168167729714
+            },
+            "1": {
+              "rows": 547,
+              "accuracy": 0.5484460694698354,
+              "auroc": 0.5313560551124002,
+              "log_loss": 0.6933690016581944,
+              "brier": 0.24975443022075128
+            },
+            "2": {
+              "rows": 460,
+              "accuracy": 0.7565217391304347,
+              "auroc": 0.7836027263875365,
+              "log_loss": 0.5055185986024693,
+              "brier": 0.16686453953671807
+            },
+            "3": {
+              "rows": 309,
+              "accuracy": 0.686084142394822,
+              "auroc": 0.7577953447518665,
+              "log_loss": 0.5519572471376989,
+              "brier": 0.18755190124784943
+            },
+            "4": {
+              "rows": 599,
+              "accuracy": 0.6193656093489148,
+              "auroc": 0.5587857372309669,
+              "log_loss": 0.6205340865723676,
+              "brier": 0.21779078552625786
+            },
+            "5": {
+              "rows": 535,
+              "accuracy": 0.6616822429906543,
+              "auroc": 0.6941245421245421,
+              "log_loss": 0.6321088409432656,
+              "brier": 0.21843516265503526
+            },
+            "6": {
+              "rows": 484,
+              "accuracy": 0.7004132231404959,
+              "auroc": 0.6712701583716958,
+              "log_loss": 0.5430543008309262,
+              "brier": 0.18494759796804236
+            },
+            "7": {
+              "rows": 897,
+              "accuracy": 0.6387959866220736,
+              "auroc": 0.6707660303475281,
+              "log_loss": 0.628636547234541,
+              "brier": 0.21937714407312728
+            },
+            "8": {
+              "rows": 479,
+              "accuracy": 0.5991649269311065,
+              "auroc": 0.6645150965539315,
+              "log_loss": 0.6421597694874849,
+              "brier": 0.22665596758701934
+            },
+            "9": {
+              "rows": 671,
+              "accuracy": 0.6453055141579732,
+              "auroc": 0.5853233339911847,
+              "log_loss": 0.632212794263292,
+              "brier": 0.22094570388477103
+            }
+          },
+          "per_gap": {
+            "1-2": {
+              "rows": 1333,
+              "accuracy": 0.5648912228057015,
+              "auroc": 0.5768167598032192,
+              "log_loss": 0.6712466232702897,
+              "brier": 0.23916323760240582
+            },
+            "3-4": {
+              "rows": 1401,
+              "accuracy": 0.6488222698072805,
+              "auroc": 0.6499713963398008,
+              "log_loss": 0.6279443995947305,
+              "brier": 0.21915292353743368
+            },
+            "5-8": {
+              "rows": 2881,
+              "accuracy": 0.6938562998958695,
+              "auroc": 0.7216381282256612,
+              "log_loss": 0.5669903972328669,
+              "brier": 0.19345342852077238
+            },
+            "9-16": {
+              "rows": 5947,
+              "accuracy": 0.7691272910711283,
+              "auroc": 0.7840970326991997,
+              "log_loss": 0.4844724533813669,
+              "brier": 0.15904960958105177
+            },
+            ">16": {
+              "rows": 0,
+              "accuracy": null,
+              "auroc": null,
+              "log_loss": null,
+              "brier": null
+            }
+          }
+        },
+        "tie": {
+          "rows": 4329,
+          "mean_abs_from_half": 0.10248540237203166,
+          "mean_ci95": [
+            0.10248540237203163,
+            0.10248540237203163
+          ],
+          "median_abs_from_half": 0.08174549360538286,
+          "p90_abs_from_half": 0.21844435111655805
+        },
+        "language_counterfactual": {
+          "eligible_rows": 67112,
+          "teacher_changed_rows": 18772,
+          "teacher_change_agreement": 0.6023865331344556,
+          "teacher_change_agreement_ci95": [
+            0.6023865331344556,
+            0.6023865331344556
+          ],
+          "positive_task_count": 9,
+          "per_task": {
+            "0": {
+              "rows": 1054,
+              "agreement": 0.7115749525616698
+            },
+            "1": {
+              "rows": 3168,
+              "agreement": 0.5303030303030303
+            },
+            "2": {
+              "rows": 1278,
+              "agreement": 0.7370892018779343
+            },
+            "3": {
+              "rows": 927,
+              "agreement": 0.6839266450916937
+            },
+            "4": {
+              "rows": 1198,
+              "agreement": 0.5734557595993323
+            },
+            "5": {
+              "rows": 2595,
+              "agreement": 0.5518304431599229
+            },
+            "6": {
+              "rows": 1904,
+              "agreement": 0.7074579831932774
+            },
+            "7": {
+              "rows": 2475,
+              "agreement": 0.5951515151515151
+            },
+            "8": {
+              "rows": 2160,
+              "agreement": 0.6486111111111111
+            },
+            "9": {
+              "rows": 2013,
+              "agreement": 0.4778936910084451
+            }
+          },
+          "true_reversal": {
+            "rows": 920,
+            "accuracy": 0.1967391304347826,
+            "accuracy_ci95": [
+              0.1967391304347826,
+              0.1967391304347826
+            ]
+          },
+          "non_tie_to_tie": {
+            "rows": 17826,
+            "mean_distance_reduction": 0.037234580705195246,
+            "median_distance_reduction": 0.02919339103687038,
+            "fraction_improved": 0.602771233030405
+          },
+          "same_referent": {
+            "rows": 32352,
+            "mean_abs_probability_change": 0.10801631729064402,
+            "median_abs_probability_change": 0.0848758146874784,
+            "p90_abs_probability_change": 0.23290478536484316,
+            "false_preference_flip_rate": 0.292717606330366
+          },
+          "different_referent": {
+            "rows": 34760,
+            "teacher_changed_rows": 18772,
+            "teacher_change_agreement": 0.6023865331344556
+          }
+        },
+        "cross_demo": {
+          "semantic_match": {
+            "rows": 146,
+            "mean_abs_from_half": 0.20463431136658916,
+            "median_abs_from_half": 0.19946596467583846,
+            "p90_abs_from_half": 0.36247553710229796
+          },
+          "semantic_difference": {
+            "rows": 1280,
+            "accuracy": 0.5703125,
+            "auroc": 0.57531494140625,
+            "log_loss": 0.8190870120810129,
+            "brier": 0.28233360499390053
+          }
+        },
+        "transitivity": {
+          "triplets": 240,
+          "cycle_rate": 0.0
+        }
+      },
+      "S2": {
+        "ordinary": {
+          "local_non_tie": {
+            "rows": 5615,
+            "accuracy": 0.6804986642920748,
+            "auroc": 0.7040202963683025,
+            "log_loss": 0.5797841480124485,
+            "brier": 0.19839731351859957
+          },
+          "local_accuracy_ci95": [
+            0.6804986642920748,
+            0.6804986642920748
+          ],
+          "tasks_above_60pct": 8,
+          "per_task": {
+            "0": {
+              "rows": 634,
+              "accuracy": 0.6908517350157729,
+              "auroc": 0.7394707569216953,
+              "log_loss": 0.5903844754555482,
+              "brier": 0.2033696378558684
+            },
+            "1": {
+              "rows": 547,
+              "accuracy": 0.5338208409506399,
+              "auroc": 0.5624655547498187,
+              "log_loss": 0.664231206233185,
+              "brier": 0.2379158501901977
+            },
+            "2": {
+              "rows": 460,
+              "accuracy": 0.7913043478260869,
+              "auroc": 0.7934566699123661,
+              "log_loss": 0.46107239314842885,
+              "brier": 0.14871689160355928
+            },
+            "3": {
+              "rows": 309,
+              "accuracy": 0.7831715210355987,
+              "auroc": 0.908102766798419,
+              "log_loss": 0.5591682650365214,
+              "brier": 0.17081107649378946
+            },
+            "4": {
+              "rows": 599,
+              "accuracy": 0.7328881469115192,
+              "auroc": 0.7188671163936181,
+              "log_loss": 0.5031716907407717,
+              "brier": 0.16689032847599028
+            },
+            "5": {
+              "rows": 535,
+              "accuracy": 0.6747663551401869,
+              "auroc": 0.7080879120879121,
+              "log_loss": 0.608412822571092,
+              "brier": 0.2101825390801282
+            },
+            "6": {
+              "rows": 484,
+              "accuracy": 0.7024793388429752,
+              "auroc": 0.7452155534323518,
+              "log_loss": 0.5454975695585084,
+              "brier": 0.18579769959032555
+            },
+            "7": {
+              "rows": 897,
+              "accuracy": 0.6231884057971014,
+              "auroc": 0.5892410398651221,
+              "log_loss": 0.646636361451039,
+              "brier": 0.22768208763094724
+            },
+            "8": {
+              "rows": 479,
+              "accuracy": 0.5970772442588727,
+              "auroc": 0.6662754721007148,
+              "log_loss": 0.6620704270718593,
+              "brier": 0.23638585590071035
+            },
+            "9": {
+              "rows": 671,
+              "accuracy": 0.7451564828614009,
+              "auroc": 0.7566114071442668,
+              "log_loss": 0.5139901517323234,
+              "brier": 0.16979656159456843
+            }
+          },
+          "per_gap": {
+            "1-2": {
+              "rows": 1333,
+              "accuracy": 0.6211552888222055,
+              "auroc": 0.6188804508764388,
+              "log_loss": 0.6509021529303872,
+              "brier": 0.22930144515455667
+            },
+            "3-4": {
+              "rows": 1401,
+              "accuracy": 0.660956459671663,
+              "auroc": 0.6774335833703131,
+              "log_loss": 0.6000710742646207,
+              "brier": 0.2066508338858934
+            },
+            "5-8": {
+              "rows": 2881,
+              "accuracy": 0.7174592155501562,
+              "auroc": 0.7555285646230614,
+              "log_loss": 0.5370134835782571,
+              "brier": 0.1800847867899257
+            },
+            "9-16": {
+              "rows": 5947,
+              "accuracy": 0.7624012106944678,
+              "auroc": 0.7891586943945966,
+              "log_loss": 0.47628626853136635,
+              "brier": 0.1569124596341788
+            },
+            ">16": {
+              "rows": 0,
+              "accuracy": null,
+              "auroc": null,
+              "log_loss": null,
+              "brier": null
+            }
+          }
+        },
+        "tie": {
+          "rows": 4329,
+          "mean_abs_from_half": 0.10492710632161659,
+          "mean_ci95": [
+            0.1049271063216166,
+            0.1049271063216166
+          ],
+          "median_abs_from_half": 0.08177056884518225,
+          "p90_abs_from_half": 0.2336450343110782
+        },
+        "language_counterfactual": {
+          "eligible_rows": 67112,
+          "teacher_changed_rows": 18772,
+          "teacher_change_agreement": 0.6191668442360964,
+          "teacher_change_agreement_ci95": [
+            0.6191668442360964,
+            0.6191668442360964
+          ],
+          "positive_task_count": 9,
+          "per_task": {
+            "0": {
+              "rows": 1054,
+              "agreement": 0.6916508538899431
+            },
+            "1": {
+              "rows": 3168,
+              "agreement": 0.4671717171717172
+            },
+            "2": {
+              "rows": 1278,
+              "agreement": 0.7636932707355243
+            },
+            "3": {
+              "rows": 927,
+              "agreement": 0.7076591154261057
+            },
+            "4": {
+              "rows": 1198,
+              "agreement": 0.6786310517529215
+            },
+            "5": {
+              "rows": 2595,
+              "agreement": 0.5895953757225434
+            },
+            "6": {
+              "rows": 1904,
+              "agreement": 0.7163865546218487
+            },
+            "7": {
+              "rows": 2475,
+              "agreement": 0.5333333333333333
+            },
+            "8": {
+              "rows": 2160,
+              "agreement": 0.6541666666666667
+            },
+            "9": {
+              "rows": 2013,
+              "agreement": 0.6666666666666666
+            }
+          },
+          "true_reversal": {
+            "rows": 920,
+            "accuracy": 0.21739130434782608,
+            "accuracy_ci95": [
+              0.21739130434782608,
+              0.21739130434782608
+            ]
+          },
+          "non_tie_to_tie": {
+            "rows": 17826,
+            "mean_distance_reduction": 0.036901023591552,
+            "median_distance_reduction": 0.02975504076569621,
+            "fraction_improved": 0.6047346572422304
+          },
+          "same_referent": {
+            "rows": 32352,
+            "mean_abs_probability_change": 0.10293226466587484,
+            "median_abs_probability_change": 0.0797343843785292,
+            "p90_abs_probability_change": 0.22159646753704526,
+            "false_preference_flip_rate": 0.2708333333333333
+          },
+          "different_referent": {
+            "rows": 34760,
+            "teacher_changed_rows": 18772,
+            "teacher_change_agreement": 0.6191668442360964
+          }
+        },
+        "cross_demo": {
+          "semantic_match": {
+            "rows": 146,
+            "mean_abs_from_half": 0.21844423924994205,
+            "median_abs_from_half": 0.20930493380216128,
+            "p90_abs_from_half": 0.37529422397306456
+          },
+          "semantic_difference": {
+            "rows": 1280,
+            "accuracy": 0.5875,
+            "auroc": 0.5983544921875,
+            "log_loss": 0.7799870761227791,
+            "brier": 0.27074289235021354
+          }
+        },
+        "transitivity": {
+          "triplets": 240,
+          "cycle_rate": 0.020833333333333332
+        }
+      },
+      "IMAGE_ONLY": {
+        "ordinary": {
+          "local_non_tie": {
+            "rows": 5615,
+            "accuracy": 0.6664292074799644,
+            "auroc": 0.6732225331684346,
+            "log_loss": 0.6111292081873577,
+            "brier": 0.2113558394732914
+          },
+          "local_accuracy_ci95": [
+            0.6664292074799644,
+            0.6664292074799644
+          ],
+          "tasks_above_60pct": 7,
+          "per_task": {
+            "0": {
+              "rows": 634,
+              "accuracy": 0.6246056782334385,
+              "auroc": 0.68278072028493,
+              "log_loss": 0.6289983447683755,
+              "brier": 0.22008469804957287
+            },
+            "1": {
+              "rows": 547,
+              "accuracy": 0.5703839122486288,
+              "auroc": 0.5757650471356055,
+              "log_loss": 0.6574985179211574,
+              "brier": 0.2335041838066644
+            },
+            "2": {
+              "rows": 460,
+              "accuracy": 0.758695652173913,
+              "auroc": 0.7587147030185005,
+              "log_loss": 0.5528893123305388,
+              "brier": 0.18404773276736747
+            },
+            "3": {
+              "rows": 309,
+              "accuracy": 0.6957928802588996,
+              "auroc": 0.8075318401405358,
+              "log_loss": 0.5939180942090404,
+              "brier": 0.2035710035270947
+            },
+            "4": {
+              "rows": 599,
+              "accuracy": 0.7913188647746243,
+              "auroc": 0.8655102259342542,
+              "log_loss": 0.5267606407753235,
+              "brier": 0.1727723614794812
+            },
+            "5": {
+              "rows": 535,
+              "accuracy": 0.5962616822429907,
+              "auroc": 0.6286153846153846,
+              "log_loss": 0.6565763532136406,
+              "brier": 0.23231015054378631
+            },
+            "6": {
+              "rows": 484,
+              "accuracy": 0.7066115702479339,
+              "auroc": 0.7377746894814557,
+              "log_loss": 0.5935635644429487,
+              "brier": 0.20280188802067392
+            },
+            "7": {
+              "rows": 897,
+              "accuracy": 0.6399108138238573,
+              "auroc": 0.5502189046609017,
+              "log_loss": 0.6634667763230635,
+              "brier": 0.23380688853149822
+            },
+            "8": {
+              "rows": 479,
+              "accuracy": 0.5803757828810021,
+              "auroc": 0.6453821259646503,
+              "log_loss": 0.6445781780601768,
+              "brier": 0.22853450478973023
+            },
+            "9": {
+              "rows": 671,
+              "accuracy": 0.7198211624441133,
+              "auroc": 0.730807183737912,
+              "log_loss": 0.56220373422747,
+              "brier": 0.1889890591621754
+            }
+          },
+          "per_gap": {
+            "1-2": {
+              "rows": 1333,
+              "accuracy": 0.6076519129782446,
+              "auroc": 0.6047159335148302,
+              "log_loss": 0.6598923775215716,
+              "brier": 0.2338657450691888
+            },
+            "3-4": {
+              "rows": 1401,
+              "accuracy": 0.6516773733047823,
+              "auroc": 0.6555504466982822,
+              "log_loss": 0.623029591748238,
+              "brier": 0.21660496691762016
+            },
+            "5-8": {
+              "rows": 2881,
+              "accuracy": 0.7007983339118362,
+              "auroc": 0.7117208762942556,
+              "log_loss": 0.5827801133969027,
+              "brier": 0.1983882130557851
+            },
+            "9-16": {
+              "rows": 5947,
+              "accuracy": 0.7366739532537414,
+              "auroc": 0.7191013148820184,
+              "log_loss": 0.5494425231127283,
+              "brier": 0.18391329613947635
+            },
+            ">16": {
+              "rows": 0,
+              "accuracy": null,
+              "auroc": null,
+              "log_loss": null,
+              "brier": null
+            }
+          }
+        },
+        "tie": {
+          "rows": 4329,
+          "mean_abs_from_half": 0.0653061627173255,
+          "mean_ci95": [
+            0.0653061627173255,
+            0.0653061627173255
+          ],
+          "median_abs_from_half": 0.05159858001248907,
+          "p90_abs_from_half": 0.14367643638866154
+        },
+        "language_counterfactual": {
+          "eligible_rows": 67112,
+          "teacher_changed_rows": 18772,
+          "teacher_change_agreement": 0.0,
+          "teacher_change_agreement_ci95": [
+            0.0,
+            0.0
+          ],
+          "positive_task_count": 0,
+          "per_task": {
+            "0": {
+              "rows": 1054,
+              "agreement": 0.0
+            },
+            "1": {
+              "rows": 3168,
+              "agreement": 0.0
+            },
+            "2": {
+              "rows": 1278,
+              "agreement": 0.0
+            },
+            "3": {
+              "rows": 927,
+              "agreement": 0.0
+            },
+            "4": {
+              "rows": 1198,
+              "agreement": 0.0
+            },
+            "5": {
+              "rows": 2595,
+              "agreement": 0.0
+            },
+            "6": {
+              "rows": 1904,
+              "agreement": 0.0
+            },
+            "7": {
+              "rows": 2475,
+              "agreement": 0.0
+            },
+            "8": {
+              "rows": 2160,
+              "agreement": 0.0
+            },
+            "9": {
+              "rows": 2013,
+              "agreement": 0.0
+            }
+          },
+          "true_reversal": {
+            "rows": 920,
+            "accuracy": 0.0,
+            "accuracy_ci95": [
+              0.0,
+              0.0
+            ]
+          },
+          "non_tie_to_tie": {
+            "rows": 17826,
+            "mean_distance_reduction": 0.0,
+            "median_distance_reduction": 0.0,
+            "fraction_improved": 0.0
+          },
+          "same_referent": {
+            "rows": 32352,
+            "mean_abs_probability_change": 0.0,
+            "median_abs_probability_change": 0.0,
+            "p90_abs_probability_change": 0.0,
+            "false_preference_flip_rate": 0.0
+          },
+          "different_referent": {
+            "rows": 34760,
+            "teacher_changed_rows": 18772,
+            "teacher_change_agreement": 0.0
+          }
+        },
+        "cross_demo": {
+          "semantic_match": {
+            "rows": 146,
+            "mean_abs_from_half": 0.12803881961862398,
+            "median_abs_from_half": 0.1183648395230239,
+            "p90_abs_from_half": 0.22799173721055233
+          },
+          "semantic_difference": {
+            "rows": 1280,
+            "accuracy": 0.54375,
+            "auroc": 0.57916015625,
+            "log_loss": 0.697415278071899,
+            "brier": 0.25133148961046625
+          }
+        },
+        "transitivity": {
+          "triplets": 240,
+          "cycle_rate": 0.05
+        }
+      },
+      "LANGUAGE_ONLY": {
+        "ordinary": {
+          "local_non_tie": {
+            "rows": 5615,
+            "accuracy": 0.5057880676758683,
+            "auroc": 0.540209588480969,
+            "log_loss": 0.6937909997749475,
+            "brier": 0.2503218741262621
+          },
+          "local_accuracy_ci95": [
+            0.5057880676758683,
+            0.5057880676758683
+          ],
+          "tasks_above_60pct": 3,
+          "per_task": {
+            "0": {
+              "rows": 634,
+              "accuracy": 0.5788643533123028,
+              "auroc": 0.5,
+              "log_loss": 0.692410737325251,
+              "brier": 0.24963178111960216
+            },
+            "1": {
+              "rows": 547,
+              "accuracy": 0.360146252285192,
+              "auroc": 0.5,
+              "log_loss": 0.6944854647987408,
+              "brier": 0.25066913707779465
+            },
+            "2": {
+              "rows": 460,
+              "accuracy": 0.8586956521739131,
+              "auroc": 0.5,
+              "log_loss": 0.6914903179028468,
+              "brier": 0.2491715701479928
+            },
+            "3": {
+              "rows": 309,
+              "accuracy": 0.10679611650485436,
+              "auroc": 0.5,
+              "log_loss": 0.6943552765922524,
+              "brier": 0.2506040475416695
+            },
+            "4": {
+              "rows": 599,
+              "accuracy": 0.9449081803005008,
+              "auroc": 0.5,
+              "log_loss": 0.6887071489281548,
+              "brier": 0.2477800026867915
+            },
+            "5": {
+              "rows": 535,
+              "accuracy": 0.3925233644859813,
+              "auroc": 0.5,
+              "log_loss": 0.6932870251820451,
+              "brier": 0.25006992230120745
+            },
+            "6": {
+              "rows": 484,
+              "accuracy": 0.1797520661157025,
+              "auroc": 0.5,
+              "log_loss": 0.6984417606407008,
+              "brier": 0.252647230319165
+            },
+            "7": {
+              "rows": 897,
+              "accuracy": 0.2408026755852843,
+              "auroc": 0.5,
+              "log_loss": 0.7002592703067667,
+              "brier": 0.2535558260940153
+            },
+            "8": {
+              "rows": 479,
+              "accuracy": 0.430062630480167,
+              "auroc": 0.5,
+              "log_loss": 0.693244280768661,
+              "brier": 0.250048550096588
+            },
+            "9": {
+              "rows": 671,
+              "accuracy": 0.8390461997019374,
+              "auroc": 0.5,
+              "log_loss": 0.6891753376171061,
+              "brier": 0.24801410138825686
+            }
+          },
+          "per_gap": {
+            "1-2": {
+              "rows": 1333,
+              "accuracy": 0.5026256564141035,
+              "auroc": 0.5259558437216411,
+              "log_loss": 0.693907101024706,
+              "brier": 0.2503799216845058
+            },
+            "3-4": {
+              "rows": 1401,
+              "accuracy": 0.5074946466809421,
+              "auroc": 0.5481330096931656,
+              "log_loss": 0.6937316111171214,
+              "brier": 0.2502921817247835
+            },
+            "5-8": {
+              "rows": 2881,
+              "accuracy": 0.5064213814647692,
+              "auroc": 0.542895147890301,
+              "log_loss": 0.6937661613659529,
+              "brier": 0.2503094554033648
+            },
+            "9-16": {
+              "rows": 5947,
+              "accuracy": 0.49218093156213216,
+              "auroc": 0.5499058440938015,
+              "log_loss": 0.693805741379067,
+              "brier": 0.2503292424447219
+            },
+            ">16": {
+              "rows": 0,
+              "accuracy": null,
+              "auroc": null,
+              "log_loss": null,
+              "brier": null
+            }
+          }
+        },
+        "tie": {
+          "rows": 4329,
+          "mean_abs_from_half": 0.0022755660192122114,
+          "mean_ci95": [
+            0.0022755660192122114,
+            0.0022755660192122114
+          ],
+          "median_abs_from_half": 0.0023701225300407636,
+          "p90_abs_from_half": 0.004106763131679847
+        },
+        "language_counterfactual": {
+          "eligible_rows": 67112,
+          "teacher_changed_rows": 18772,
+          "teacher_change_agreement": 0.4813552098870658,
+          "teacher_change_agreement_ci95": [
+            0.4813552098870658,
+            0.4813552098870658
+          ],
+          "positive_task_count": 3,
+          "per_task": {
+            "0": {
+              "rows": 1054,
+              "agreement": 0.573055028462998
+            },
+            "1": {
+              "rows": 3168,
+              "agreement": 0.4577020202020202
+            },
+            "2": {
+              "rows": 1278,
+              "agreement": 0.6173708920187794
+            },
+            "3": {
+              "rows": 927,
+              "agreement": 0.36893203883495146
+            },
+            "4": {
+              "rows": 1198,
+              "agreement": 0.5
+            },
+            "5": {
+              "rows": 2595,
+              "agreement": 0.4747591522157996
+            },
+            "6": {
+              "rows": 1904,
+              "agreement": 0.3329831932773109
+            },
+            "7": {
+              "rows": 2475,
+              "agreement": 0.26181818181818184
+            },
+            "8": {
+              "rows": 2160,
+              "agreement": 0.48564814814814816
+            },
+            "9": {
+              "rows": 2013,
+              "agreement": 0.8390461997019374
+            }
+          },
+          "true_reversal": {
+            "rows": 920,
+            "accuracy": 0.2608695652173913,
+            "accuracy_ci95": [
+              0.2608695652173913,
+              0.2608695652173913
+            ]
+          },
+          "non_tie_to_tie": {
+            "rows": 17826,
+            "mean_distance_reduction": -0.0001707451192298833,
+            "median_distance_reduction": -0.00043948552290873355,
+            "fraction_improved": 0.4202849769998878
+          },
+          "same_referent": {
+            "rows": 32352,
+            "mean_abs_probability_change": 0.0032571958816128873,
+            "median_abs_probability_change": 0.0027163624219450067,
+            "p90_abs_probability_change": 0.00792751329794722,
+            "false_preference_flip_rate": 0.533753709198813
+          },
+          "different_referent": {
+            "rows": 34760,
+            "teacher_changed_rows": 18772,
+            "teacher_change_agreement": 0.4813552098870658
+          }
+        },
+        "cross_demo": {
+          "semantic_match": {
+            "rows": 146,
+            "mean_abs_from_half": 0.002733928366783635,
+            "median_abs_from_half": 0.0023701225300407636,
+            "p90_abs_from_half": 0.00677086743867622
+          },
+          "semantic_difference": {
+            "rows": 1280,
+            "accuracy": 0.5,
+            "auroc": 0.5,
+            "log_loss": 0.6931653852601887,
+            "brier": 0.25000910183694736
+          }
+        },
+        "transitivity": {
+          "triplets": 240,
+          "cycle_rate": 1.0
+        }
+      }
+    }
+  },
+  "temperatures": {
+    "S0": 4.0,
+    "S1": 0.5,
+    "S1.5": 0.25,
+    "S2": 0.25,
+    "IMAGE_ONLY": 0.25,
+    "LANGUAGE_ONLY": 0.25
+  },
+  "selection_training": {
+    "s1_target": {
+      "margin_mean": -7.302387237548828,
+      "margin_std": 5.203986644744873,
+      "goal_positive_weight": 10.0
+    },
+    "parameters": {
+      "S1": 65730,
+      "S1.5": 65665,
+      "S2": 131201,
+      "IMAGE_ONLY": 98433,
+      "LANGUAGE_ONLY": 513
+    },
+    "training_pair_count": 62868,
+    "training_pair_type_counts": {
+      "counterfactual": 9233,
+      "counterfactual_anchor": 5911,
+      "ordinary": 13944,
+      "reverse_counterfactual": 9233,
+      "reverse_counterfactual_anchor": 5911,
+      "reverse_ordinary": 13944,
+      "reverse_robot_match_semantic_dif": 712,
+      "reverse_semantic_tie_robot_diff": 706,
+      "robot_match_semantic_diff": 712,
+      "same_state_tie": 1856,
+      "semantic_tie_robot_diff": 706
+    },
+    "state_language_target_count": 28826
+  },
+  "final_training": {
+    "s1_target": {
+      "margin_mean": -7.310859680175781,
+      "margin_std": 5.21626091003418,
+      "goal_positive_weight": 10.0
+    },
+    "parameters": {
+      "S1": 65730,
+      "S1.5": 65665,
+      "S2": 131201,
+      "IMAGE_ONLY": 98433,
+      "LANGUAGE_ONLY": 513
+    },
+    "training_pair_count": 83474,
+    "training_pair_type_counts": {
+      "counterfactual": 12214,
+      "counterfactual_anchor": 7800,
+      "ordinary": 18594,
+      "reverse_counterfactual": 12214,
+      "reverse_counterfactual_anchor": 7800,
+      "reverse_ordinary": 18594,
+      "reverse_robot_match_semantic_dif": 943,
+      "reverse_semantic_tie_robot_diff": 946,
+      "robot_match_semantic_diff": 943,
+      "same_state_tie": 2480,
+      "semantic_tie_robot_diff": 946
+    },
+    "state_language_target_count": 38809
+  },
+  "feature_partition_sha256": "af6c327df0f8ee8b24d1e7b3428e84fd4420f5405e332786a9414d2be1bac13b",
+  "parameter_counts": {
+    "S1": 65730,
+    "S1.5": 65665,
+    "S2": 131201,
+    "IMAGE_ONLY": 98433,
+    "LANGUAGE_ONLY": 513
+  },
+  "access_ledger": {
+    "partition": "calibration",
+    "allowed_demo_ids": [
+      31,
+      32,
+      33,
+      34
+    ],
+    "opened_task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "opened_demo_ids": [
+      31,
+      32,
+      33,
+      34
+    ],
+    "opened_exact_hdf5_groups": [
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_34",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_31",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_32",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_33",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_34"
+    ],
+    "numeric_datasets_accessed": [
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:task_metadata/language_features",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_0/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_1/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_2/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_3/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_4/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_5/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_6/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_7/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_8/demos/demo_34/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_31/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_32/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_33/vision",
+      "/home/luo/embodied-libero-wm/artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5:tasks/task_9/demos/demo_34/vision"
+    ],
+    "metadata_operations": [],
+    "forbidden_attempts": [],
+    "forbidden_access_count": 0
+  },
+  "all_finite": true
+}
