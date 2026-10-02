@@ -29,7 +29,7 @@
   "proprio_probe": {"input": "[proprio_a, proprio_b, proprio_b-proprio_a], 36 dimensions", "form": "single ridge-linear least-squares preference classifier", "ridge": 0.01, "fit_partition": "calibration non-tie local pairs", "severe_shortcut": "evaluation accuracy >=0.90"},
   "decision": {"pass": ["SEMANTIC_LOCAL_PROGRESS_SIGNAL_VALID", "SEMANTIC_LANGUAGE_COUNTERFACTUAL_VALID", "SEMANTIC_GOAL_PROGRESS_TEACHER_VALID", "GO_VALUE_DISTILLATION"], "fail": ["SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED", "BLOCK_VALUE_DISTILLATION", "BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"], "maximum_action": "emit GO_VALUE_DISTILLATION but do not execute distillation"},
   "frozen_files": [
-    {"path":"scripts/run_t1_teacher_full.py","sha256":"e1fd69a6835223993c58bc38c75cfbbb63011a290cc058ae8079c63921a9e707"},
+    {"path":"scripts/run_t1_teacher_full.py","sha256":"0aca307b35dbb9df7d6ee97fa9c759a487fe6221dad8f3795ac0cb60d6d0730b"},
     {"path":"scripts/run_semantic_teacher_clean.py","sha256":"8b62b3121edd58e10b7f436cfaec772738b7019e05864d4b22c7377458aeba82"},
     {"path":"src/probes/semantic_teacher_clean.py","sha256":"057fdab23f6c0cb39755bce65032338b7c44e84aae389833fc82014c2f84a0e3"},
     {"path":"src/probes/robust_grounding.py","sha256":"4c7a02bc70a1e23baffafa725fa0c18315790bb438023c8a118686d09cb1e2f2"},

@@ -17,10 +17,22 @@ sys.path.insert(0, str(ROOT))
 
 from scripts.run_semantic_teacher_clean import analyze, build_pairs, collect_partition  # noqa: E402
 from src.probes.robust_grounding import BOWLS, FAMILIES, maximum_score, resolve_scores  # noqa: E402
-from src.probes.semantic_teacher_clean import atomic_json, atomic_npz, grounding_arrays, sha256, summarize_labels  # noqa: E402
+from src.probes.semantic_teacher_clean import atomic_json, atomic_npz, sha256, summarize_labels  # noqa: E402
 
 
 VERSION = "t1-semantic-teacher-full-v1"
+
+
+def grounding_arrays(grounding: list[dict[str, Any]]) -> tuple[np.ndarray, np.ndarray]:
+    status = np.full((len(grounding), 10), -1, dtype=np.int8)
+    referent = np.full((len(grounding), 10), -1, dtype=np.int8)
+    for episode in grounding:
+        eid = int(episode["episode_id"])
+        for item in episode["instructions"]:
+            instruction = int(item["instruction_task_id"])
+            status[eid, instruction] = {"NOT_FOUND": 0, "UNIQUE": 1, "AMBIGUOUS": 2}[item["status"]]
+            if item["referent"] in BOWLS: referent[eid, instruction] = BOWLS.index(item["referent"])
+    return status, referent
 
 
 def last_commit(path: Path) -> str:
