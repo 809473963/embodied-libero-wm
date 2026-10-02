@@ -1,0 +1,75 @@
+{
+  "architecture_version": "spatial-visual-representation-families-v1",
+  "created_at": "2026-10-03",
+  "status": "PREREGISTERED_BEFORE_STAGE_R_FEATURE_EXTRACTION_OR_TRAINING",
+  "shared_inputs": {
+    "patch_tokens": "49 frozen CLIP ViT-B/32 projected and L2-normalized patch tokens, each dimension 512",
+    "patch_coordinates": "fixed row-major 7x7 cell-center coordinates in [-1,1], dimension 2",
+    "language": "frozen CLIP text projection, dimension 512",
+    "standardization": "patch-token and language mean/std fit on demo31--33 only; fixed coordinates are not standardized"
+  },
+  "parameter_ceiling": 150000,
+  "probe": {
+    "form": "antisymmetric raw(a,b,l)-raw(b,a,l)",
+    "hidden": 64,
+    "activation": "GELU",
+    "loss": "binary cross entropy with frozen T1 soft target 0/0.5/1"
+  },
+  "R0": {
+    "name": "frozen global CLIP baseline",
+    "state_representation": "frozen global visual projection [512]",
+    "raw_probe_input": "[state_a,state_b,state_b-state_a,language] [2048]",
+    "architecture": "Linear(2048,64)-GELU-Linear(64,1)",
+    "trainable_parameters": 131201,
+    "pooling_uses_language": false
+  },
+  "R1": {
+    "name": "task-independent spatial patch content pooling",
+    "patch_projection": "shared Linear(514,32) key and shared Linear(514,32) value over [patch,coordinate]",
+    "selector": "one learned 32-D query independent of task language",
+    "state_representation": "[attention-weighted value, unweighted mean value, attention center, normalized attention entropy] [67]",
+    "raw_probe_input": "[state_a,state_b,state_b-state_a,language] [713]",
+    "trainable_parameters": 78753,
+    "pooling_uses_language": false
+  },
+  "R2": {
+    "name": "language-conditioned single-slot patch pooling",
+    "patch_projection": "shared Linear(514,32) key and shared Linear(514,32) value over [patch,coordinate]",
+    "selector": "Linear(512,32) task-language query",
+    "state_representation": "[attention-weighted value, unweighted mean value, attention center, normalized attention entropy] [67]",
+    "raw_probe_input": "[state_a,state_b,state_b-state_a,language] [713]",
+    "trainable_parameters": 95137,
+    "pooling_uses_language": true
+  },
+  "R3": {
+    "name": "language-conditioned relational dual-slot patch pooling",
+    "patch_projection": "shared Linear(514,32) key and shared Linear(514,32) value over [patch,coordinate]",
+    "selector": "Linear(512,64) split into two independent 32-D task-language queries",
+    "state_representation": "[slotA,slotB,slotA-slotB,slotA*slotB,centerA,centerB,centerA-centerB,entropyA,entropyB] [136]",
+    "raw_probe_input": "[state_a,state_b,state_b-state_a,language] [920]",
+    "trainable_parameters": 124801,
+    "pooling_uses_language": true,
+    "interpretation_boundary": "the two slots are task-conditioned visual relation slots; neither is called an object, bowl, plate, or localization result"
+  },
+  "attention": {
+    "equation": "softmax(q dot k / sqrt(32)) over exactly 49 patches",
+    "entropy": "-sum(alpha log alpha)/log(49)",
+    "center": "sum(alpha_i * fixed_coordinate_i)",
+    "diagnostics_only": [
+      "entropy distribution",
+      "attention center distribution",
+      "same-image language-swap attention total variation",
+      "same-image language-swap center displacement"
+    ]
+  },
+  "forbidden": [
+    "segmentation or object mask input",
+    "bounding box input",
+    "G2 identity or score input",
+    "plate or object location input",
+    "simulator projection or geometry input",
+    "privileged supervision for attention slots",
+    "CLIP parameter training",
+    "architecture search beyond R0--R3"
+  ]
+}

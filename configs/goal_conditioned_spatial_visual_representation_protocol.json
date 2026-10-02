@@ -1,0 +1,186 @@
+{
+  "protocol_version": "goal-conditioned-spatial-visual-representation-v1",
+  "created_at": "2026-10-03",
+  "status": "PREREGISTERED_BEFORE_STAGE_R_FEATURE_EXTRACTION_OR_TRAINING",
+  "objective": "Determine on calibration data whether the exact frozen CLIP ViT-B/32 patch grid materially improves language-conditioned T1-M2 representation sufficiency over the frozen global projection.",
+  "authorization_basis": {
+    "start_tag": "spatial-value-long-run-start",
+    "start_commit": "87a62fb",
+    "upstream_tag": "semantic-value-distillation-blocked",
+    "upstream_result": "SEMANTIC_VALUE_DISTILLATION_BLOCKED",
+    "permitted_stage": "STAGE_R_ONLY_UNTIL_MATERIAL_GATE_PASSES"
+  },
+  "partitions": {
+    "calibration_demo_ids": [31, 32, 33, 34],
+    "selection_train_demo_ids": [31, 32, 33],
+    "selection_validation_demo_ids": [34],
+    "stage_r_not_opened_demo_ids": [36, 37, 38, 39],
+    "historical_disabled": [30, 35],
+    "forbidden_including_metadata": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "frozen_teacher": {
+    "name": "T1-M2",
+    "grounding": "frozen G2 persistent physical referent",
+    "state": "[official On(persistent referent, plate), M2]",
+    "M2": "min((0.03-||bowl_xy-plate_xy||_2)/0.03, (bowl_z-plate_z)/0.03)",
+    "epsilon_goal": 0.004065508647683736,
+    "comparison": "official Boolean first; otherwise M2; abs(delta M2)<=epsilon is TIE",
+    "immutable": true
+  },
+  "frozen_visual_source": {
+    "model_id": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "checkpoint_sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f",
+    "config_sha256": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770",
+    "preprocessor_sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd",
+    "global_feature_store": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5",
+    "global_feature_store_sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e",
+    "feature_manifest": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json",
+    "feature_manifest_sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc",
+    "source_rgb_dataset": "data/demo_{demo_id}/obs/agentview_rgb",
+    "source_rgb_contract": "128x128 uint8 RGB, upright, vertical_flip=false",
+    "preprocessing": "pinned CLIPProcessor; resize shortest edge to 224, center crop 224, bicubic, pinned CLIP mean/std, no augmentation",
+    "feature_contract": "docs/clip_spatial_feature_contract.md"
+  },
+  "patch_extraction": {
+    "output": "post-encoder patch hidden states excluding CLS, vision post-layernorm, shared visual_projection, per-token L2 normalization",
+    "shape": [49, 512],
+    "grid": [7, 7],
+    "coordinates": "row-major cell centers x_j=2*(j+0.5)/7-1 and y_i=2*(i+0.5)/7-1",
+    "batch_size": 64,
+    "precision": "CUDA float16 autocast when CUDA is available; persist float16; train heads in float32",
+    "order": "task0--9, within task demo31--34, within demo native timestep order",
+    "integrity": {
+      "all_finite": true,
+      "shape_exact": true,
+      "repeated_sample_float16_exact": true,
+      "global_parity_min_cosine": 0.9999,
+      "global_parity_max_abs": 0.002,
+      "clip_requires_grad_count": 0,
+      "gradient_into_clip": false,
+      "forbidden_access_count": 0
+    }
+  },
+  "representations": {
+    "architectures": "configs/spatial_visual_representation_architectures.json",
+    "families": ["R0", "R1", "R2", "R3"],
+    "parameter_max": 150000,
+    "probe_role": "representation sufficiency only; not a selected deployable value student"
+  },
+  "training": {
+    "seed": 23,
+    "epochs": 30,
+    "batch_size": 1024,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "selection_fit": "demo31--33 only",
+    "selection_validation": "demo34 only",
+    "stage_r_final_refit": false,
+    "pair_sampler": "configs/semantic_pair_sampler.json",
+    "pair_contract": "same frozen ordinary, counterfactual-anchor, robot-control, and tie construction used by the prior semantic distillation audit",
+    "temperature_grid": [0.25, 0.5, 1.0, 2.0, 4.0, 8.0],
+    "temperature_objective": "mean BCE over demo34 ordinary local T1 pairs plus original and alternate realizations of demo34 local language counterfactuals",
+    "temperature_changes_ranking": false
+  },
+  "validation_controls": {
+    "ordinary": "all frozen demo34 T1 pairs with gap<=8; non-ties for accuracy and AUROC; ties retained separately",
+    "counterfactual": "all demo34 local correct/alternate instruction applications from the frozen G2 eligibility rule",
+    "cross_demo": "frozen cross-demo constructor on demo31--34, restricted to source-anchor demo34; its deterministic cyclic reference is demo31",
+    "cross_demo_points": 16,
+    "cross_demo_clear_margin_min": 0.05,
+    "same_referent": "alternate real instructions selecting the same persistent physical referent",
+    "different_referent": "alternate real instructions selecting a different persistent physical referent"
+  },
+  "metrics": [
+    "ordinary local non-tie accuracy",
+    "ordinary local non-tie AUROC",
+    "ordinal teacher-change agreement",
+    "true better/worse reversal both-correct rate",
+    "semantic tie mean abs(P-0.5)",
+    "same-referent language mean abs(delta P)",
+    "same-referent false preference-flip rate",
+    "cross-demo semantic-match mean abs(P-0.5)",
+    "cross-demo semantic-difference accuracy",
+    "attention entropy/center/language-swap diagnostics for R1--R3"
+  ],
+  "selection": {
+    "eligible_families": ["R1", "R2", "R3"],
+    "lexicographic_priority": [
+      "maximize ordinal teacher-change agreement",
+      "minimize cross-demo semantic-match mean abs(P-0.5)",
+      "maximize cross-demo semantic-difference accuracy",
+      "maximize ordinary local non-tie accuracy",
+      "minimize semantic tie mean abs(P-0.5)",
+      "minimize trainable parameters",
+      "minimize measured scoring latency"
+    ],
+    "post_validation_reselection": false
+  },
+  "material_improvement_gate_relative_to_R0": {
+    "teacher_change_agreement_increment_min_points": 4.0,
+    "and_at_least_one": {
+      "cross_demo_match_mean_abs_improvement_min": 0.02,
+      "cross_demo_difference_accuracy_increment_min_points": 5.0
+    },
+    "ordinary_accuracy_max_regression_points": 2.0,
+    "all_required": true
+  },
+  "decision_mapping": {
+    "pass_labels": [
+      "CLIP_PATCH_SPATIAL_REPRESENTATION_VALID",
+      "GOAL_CONDITIONED_PATCH_POOLING_SUPPORTED"
+    ],
+    "pass_authorization": "GO_SEMANTIC_VALUE_REDISTILLATION",
+    "fail_labels": [
+      "CLIP_PATCH_REPRESENTATION_INSUFFICIENT",
+      "FROZEN_CLIP_VISUAL_INFORMATION_LIMIT_SUPPORTED"
+    ],
+    "fail_authorization": "BLOCK_SEMANTIC_VALUE_REDISTILLATION",
+    "continuing_blocks": [
+      "BLOCK_REAL_CANDIDATE_VALUE_BRIDGE",
+      "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ],
+    "controller_authorization": false,
+    "stage_r_pass_action": "freeze exact selected representation, then begin separately frozen Stage V automatically",
+    "stage_r_fail_action": "stop the conditional chain; do not open demo36--39 and do not switch encoders"
+  },
+  "statistics": {
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20261003,
+    "unit": "task-stratified complete demo block when a metric has multiple demos; demo34 Stage-R selection metrics are reported without a pseudo-independent bootstrap"
+  },
+  "frozen_files": [
+    {"path": "configs/t1_teacher_frozen_definition.json", "sha256": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f"},
+    {"path": "configs/robust_grounding_frozen_resolver.json", "sha256": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881"},
+    {"path": "results/t1_semantic_teacher/calibration_sidecar.npz", "sha256": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604"},
+    {"path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5", "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"},
+    {"path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json", "sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc"},
+    {"path": "configs/semantic_pair_sampler.json", "sha256": "aa88e8c2f657eaee79611bd22e77ee56f1a50b5ec7392a1bb5b8a998210db595"},
+    {"path": "src/data/allowed_demo_guard.py", "sha256": "c1d8e9e2f0e93cf75998f6286d0797f427a41d0969792f086c1421a69e038653"},
+    {"path": "src/data/semantic_feature_guard.py", "sha256": "76ce1e179b0ed293f63e79b919659be94f6d5468a63477d6d16410a29624f2bb"},
+    {"path": "src/probes/semantic_value_distillation.py", "sha256": "4683c16f69b2eaef6a9a7bade61dddb7595be76de7f417c9cd4913135662302f"}
+  ],
+  "outputs": {
+    "patch_features": "results/spatial_visual_representation/patch_features_calibration.npz",
+    "weights": "results/spatial_visual_representation/calibration_weights.pt",
+    "calibration_sidecar": "results/spatial_visual_representation/calibration_sidecar.npz",
+    "calibration_access_ledger": "results/spatial_visual_representation/calibration_access_ledger.json",
+    "calibration": "results/spatial_visual_representation_calibration.json",
+    "calibration_freeze": "results/spatial_visual_representation_calibration_freeze.json",
+    "final_decision": "results/spatial_visual_representation_final_decision.json",
+    "report": "docs/goal_conditioned_spatial_visual_representation_audit.md",
+    "long_run_summary": "docs/spatial_value_long_run_summary.md"
+  },
+  "forbidden_activity": [
+    "open demo36--39 during Stage R",
+    "read or enumerate demo40--49",
+    "change or fine-tune CLIP",
+    "use segmentation, boxes, G2 identity, masks, simulator geometry, object or plate pose as representation input",
+    "run candidate futures or N64 bridge",
+    "train a World Model",
+    "construct a controller or run task success",
+    "switch to DINO, DINOv2, SigLIP, SAM, or a custom CNN"
+  ]
+}
