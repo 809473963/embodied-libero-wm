@@ -87,6 +87,10 @@ grounding diagnosis. Their union is still exactly all task0--9 demo31--34
 `states` datasets. No HDF5 metadata operation was used outside those exact
 paths.
 
+After result freeze, 21 focused access/protocol/result tests pass. The complete
+repository suite passes `244` tests; the remaining 21 messages are dependency
+deprecation warnings, not failures.
+
 ## Exact task semantics
 
 | Task | Instruction source | Frozen source atom | Final goal |
