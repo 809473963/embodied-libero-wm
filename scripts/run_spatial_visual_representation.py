@@ -15,6 +15,11 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+
+# Required by torch deterministic algorithms for CUDA >=10.2.  This must be
+# set before torch initializes cuBLAS; it changes no model or numerical gate.
+os.environ.setdefault("CUBLAS_WORKSPACE_CONFIG", ":4096:8")
+
 import torch
 import torch.nn.functional as F
 from transformers import CLIPModel, CLIPProcessor

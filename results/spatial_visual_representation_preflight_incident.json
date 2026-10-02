@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-03",
+  "stage": "R",
+  "phase": "calibration preflight",
+  "status": "STOPPED_BEFORE_FIRST_OPTIMIZER_STEP",
+  "cause": "torch deterministic algorithms required CUBLAS_WORKSPACE_CONFIG before the first CUDA Linear operation",
+  "access": {
+    "partition": "calibration demo31--34 only",
+    "evaluation_demo36_39_opened": false,
+    "forbidden_demo40_49_numeric_access": 0,
+    "forbidden_demo40_49_metadata_access": 0
+  },
+  "result_artifacts_written": false,
+  "repair": "set CUBLAS_WORKSPACE_CONFIG=:4096:8 before importing torch",
+  "unchanged": [
+    "patch features",
+    "R0--R3 architectures",
+    "training pairs",
+    "optimizer",
+    "epochs",
+    "temperatures",
+    "selection priority",
+    "material gates",
+    "partitions",
+    "authorization mapping"
+  ]
+}
