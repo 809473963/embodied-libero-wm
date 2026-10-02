@@ -1,0 +1,46 @@
+{
+  "manifest_version": "grounding-to-semantic-teacher-final-v1",
+  "created_at": "2026-10-02",
+  "stage_g_freeze": {
+    "commit": "d070f2382f7df15698f747c90813306f1db3c47c",
+    "annotated_tag": "robust-same-scene-grounding-final",
+    "artifacts": {
+      "configs/robust_grounding_protocol.json": "cf5a07f23401640515e0d0226d416b5efedc91bc2c66fbddbbf3442919ea80c6",
+      "configs/robust_grounding_geometry.json": "982daa94bb27cae1749a2196d127e7b0d437f719676695cbbf65aad1a9cbc8c8",
+      "configs/robust_grounding_frozen_resolver.json": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881",
+      "configs/robust_grounding_decision_amendment.json": "fd3460298658a5bc83ba80d8f6d93fa075b8792c3edaac7dfd5fdceb179cf7fc",
+      "results/robust_grounding_calibration.json": "59f1476fb8f2590c2be9299c6e9a7e8baf9d64aa444a93b9ab54285044322d98",
+      "results/robust_grounding_eval.json": "0738f6756b24af87b1b6c4a51fdbb1a2768ca0820c5419d6d55f27a10c3b7c63",
+      "results/robust_grounding_baseline_supplement.json": "94dd134be80c06ad51095e89a9b3ab2b9e38671757abf473735b2b70edf49352",
+      "docs/robust_same_scene_referent_grounding_audit.md": "b39d7271944d4ece9442d099cb1cc9888f572c1e003d8f5270ea3f47ac6ddcda"
+    }
+  },
+  "stage_t_freeze": {
+    "commit": "d070f2382f7df15698f747c90813306f1db3c47c",
+    "annotated_tag": "semantic-goal-progress-teacher-valid",
+    "artifacts": {
+      "configs/t1_teacher_full_protocol.json": "69238119e8302f7c1063a8c5588a5f9ad09755a80ed7c7622fd74c1168d1dbb0",
+      "configs/t1_teacher_frozen_definition.json": "249f423f5e7be05ea16bac6498dd01a486493cc036dd097ad4f3d5919a99ef09",
+      "results/t1_teacher_calibration.json": "4dafeec3be6a09f28c1e150192803a163c98da9b13fd91d0334f0e7ae609bba3",
+      "results/t1_teacher_eval.json": "a22a4b3a1f6be65bb94b814aabfd65cb9aaf72c6cbcc87c976bf75bfe22af3ab",
+      "docs/t1_semantic_goal_progress_teacher_full_evaluation.md": "5982d163c459922604db5396512713b129fd5f1ee1bb08d170dc2c317c699544",
+      "docs/grounding_to_semantic_teacher_summary.md": "00b647a5c792b6d2caaf77e20150a4f1acde1aa2db7301f1aa7ba92afb4c0a8c"
+    }
+  },
+  "final_labels": [
+    "ROBUST_SAME_SCENE_GROUNDING_VALID",
+    "ROBUST_REFERENT_MARGIN_VALID",
+    "COUNTERFACTUAL_GROUNDING_SET_VALID",
+    "PERSISTENT_REFERENT_CONTRACT_VALID",
+    "OFFICIAL_GOAL_MARGIN_VALID",
+    "SEMANTIC_LOCAL_PROGRESS_SIGNAL_VALID",
+    "SEMANTIC_LANGUAGE_COUNTERFACTUAL_VALID",
+    "SEMANTIC_ROBOT_PHASE_INVARIANCE_SUPPORTED",
+    "SEMANTIC_GOAL_PROGRESS_TEACHER_VALID"
+  ],
+  "authorization": "GO_VALUE_DISTILLATION",
+  "continuing_blocks": ["BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"],
+  "controller_authorization": false,
+  "value_distillation_executed": false,
+  "test_result": {"passed": 262, "warnings": 21, "failed": 0}
+}
