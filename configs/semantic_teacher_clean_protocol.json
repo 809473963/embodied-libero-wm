@@ -1,0 +1,124 @@
+{
+  "protocol_version": "semantic-teacher-clean-v1",
+  "status": "PREREGISTERED_BEFORE_ANY_REAL_DEMO_ARRAY_ACCESS",
+  "created_at": "2026-10-02",
+  "scope": "Independent Stage B1 clean restart: same-scene grounding and privileged semantic teacher validation only",
+  "upstream": {
+    "blocked_commit": "121ec18",
+    "blocked_tag": "semantic-goal-progress-teacher-blocked",
+    "clean_restart_tag": "semantic-goal-progress-teacher-clean-restart",
+    "inherited_state": [
+      "SEMANTIC_GOAL_PROGRESS_TEACHER_UNRESOLVED",
+      "DATA_OR_IMPLEMENTATION_BLOCK",
+      "BLOCK_VALUE_DISTILLATION",
+      "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ]
+  },
+  "partitions": {
+    "calibration": [31, 32, 33, 34],
+    "frozen_development_evaluation": [36, 37, 38, 39],
+    "historical_disabled": [30, 35],
+    "forbidden_including_metadata": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
+    "evaluation_is_blind_confirmation": false
+  },
+  "inputs": {
+    "allowed_demo_access": "configs/allowed_demo_access.json",
+    "task_grounding_contract": "configs/task_grounding_contract.json"
+  },
+  "frozen_files": [
+    {"path": "docs/semantic_goal_progress_teacher_audit.md", "sha256": "0147cb42277dcaa8de446a841a79118016bbea42274bd0995ebf75801f00a3de"},
+    {"path": "results/semantic_goal_progress_teacher/boundary_incident.json", "sha256": "a114c1c1d26f25b04c5ef33fb11291a2d8f03eedeb2a2789e85e5ede5f4b1b16"},
+    {"path": "results/semantic_goal_progress_teacher/corrected_diagnosis.json", "sha256": "9ebf0fdd5bf9f2458587f933d2e55322ab5f4cbbf97e0d6f6d88fa18ed9599fa"},
+    {"path": "src/data/allowed_demo_guard.py", "sha256": "c1d8e9e2f0e93cf75998f6286d0797f427a41d0969792f086c1421a69e038653"},
+    {"path": "configs/allowed_demo_access.json", "sha256": "a2045de035846fa5b9aa092d3b0455323228f108b49d9b45f537ba4ce5c4924c"},
+    {"path": "configs/task_grounding_contract.json", "sha256": "2a5ce1ef29ece3118587d2bb48a1bccf748c2d5dbf4128cb90f6d90bd0bd90bb"},
+    {"path": "src/probes/semantic_teacher_clean.py", "sha256": "50d703ab1e9862325f343d8faac3e441029181be14a0ee528e5571141ecaa54b"},
+    {"path": "scripts/run_semantic_teacher_clean.py", "sha256": "8b62b3121edd58e10b7f436cfaec772738b7019e05864d4b22c7377458aeba82"},
+    {"path": "third_party/LIBERO/libero/libero/envs/object_states/base_object_states.py", "sha256": "ca6f53123336b6487bdb4feb02534ddb3a0627a4b847fe89da4460520ef01366"},
+    {"path": "third_party/LIBERO/libero/libero/envs/predicates/base_predicates.py", "sha256": "319137e95330dbb22a266a8dceb8110f18413c2bf17461550222228c4bc310a1"},
+    {"path": "third_party/LIBERO/libero/libero/envs/env_wrapper.py", "sha256": "a782fb76c9792268d28979474fe72849e1e98ada49c8e997a65359a8d6b6acd0"},
+    {"path": ".venv/lib/python3.10/site-packages/robosuite/environments/manipulation/manipulation_env.py", "sha256": "13375356b4ab98bea62dce25b002b137c58669bfba77f0db84cf04c04a4cc457"}
+  ],
+  "grounding": {
+    "candidate_physical_referents": ["akita_black_bowl_1", "akita_black_bowl_2"],
+    "allowed_status": "UNIQUE",
+    "evaluation_state": "episode initial restored simulator state",
+    "persistence": "ground once, retain physical MuJoCo object identity",
+    "counterfactuals": "only the nine other real source atoms in the ten-task suite",
+    "forbid_task_local_symbol_equivalence": true
+  },
+  "teacher_families": {
+    "T0": "official On(persistent referent, plate_1) Boolean only",
+    "T1": "lexicographic [official goal Boolean, continuous official-geometry margin]",
+    "T1_margin": "min((0.03-xy_distance)/0.03, (bowl_z-plate_z)/0.03, -abs(bowl_bottom-plate_top)/0.03)",
+    "T1_margin_rationale": "The first two terms are the exact numeric inequalities in installed check_ontop. The surface term is obtained from the two MuJoCo object offsets and prevents a non-contact object high above the plate from receiving a favorable continuous score. Exact contact remains in the official Boolean.",
+    "epsilon_goal": "max(1e-4, calibration 10th percentile of strictly positive adjacent-frame absolute margin changes above 1e-4)",
+    "T2_activation": "only if calibration T1 aggregate local non-tie <0.30 or fewer than 7 tasks individually reach 0.30",
+    "T2": "lexicographic goal > exact two-fingerpad grasp; if controlled compare goal margin, otherwise compare negative task-relative EE-to-referent distance divided by 0.03",
+    "epsilon_reach": "same calibration-only rule as epsilon_goal",
+    "weighted_sum_forbidden": true
+  },
+  "pairs": {
+    "forward_gaps": [[1, 2], [3, 4], [5, 8], [9, 16]],
+    "results": ["progress", "regression", "tie"],
+    "local": "gap <= 8"
+  },
+  "gates": {
+    "local_non_tie_min": 0.30,
+    "usable_task_min": 7,
+    "language_change_min": 0.20,
+    "severe_proprio_accuracy": 0.90,
+    "correct_instruction_unique_required": 1.0,
+    "forbidden_access_required": 0,
+    "all_values_finite": true
+  },
+  "controls": {
+    "robot_match_quantile": 0.10,
+    "robot_difference_quantile": 0.75,
+    "minimum_rows": 50,
+    "thresholds_fit_on": "calibration standardized 12-D proprio pair distances only",
+    "semantic_match_robot_difference_pass": "at least 50 teacher-tie pairs spanning at least 7 tasks above the frozen strong robot-difference threshold",
+    "robot_match_semantic_difference_pass": "at least 50 teacher-non-tie pairs spanning at least 7 tasks below the frozen robot-match threshold"
+  },
+  "proprio_probe": {
+    "input": "[proprio_a, proprio_b, proprio_b-proprio_a], 36 dimensions",
+    "form": "single ridge-linear least-squares preference classifier",
+    "ridge": 0.01,
+    "fit_partition": "calibration non-tie local pairs",
+    "severe_shortcut": "evaluation accuracy >=0.90"
+  },
+  "bootstrap": {
+    "draws": 10000,
+    "seed": 20261002,
+    "unit": "task-stratified complete demo block",
+    "note": "Frozen for optional uncertainty summaries; mechanical gates use exact frozen-development point estimates."
+  },
+  "outputs": {
+    "teacher_definition": "configs/teacher_definition.json",
+    "calibration": "results/semantic_teacher_calibration.json",
+    "evaluation": "results/semantic_teacher_eval.json",
+    "calibration_sidecar": "results/semantic_teacher_clean/calibration_sidecar.npz",
+    "evaluation_sidecar": "results/semantic_teacher_clean/evaluation_sidecar.npz",
+    "calibration_access_ledger": "results/semantic_teacher_clean/calibration_access_ledger.json",
+    "evaluation_access_ledger": "results/semantic_teacher_clean/evaluation_access_ledger.json",
+    "report": "docs/semantic_goal_progress_teacher_clean_restart.md"
+  },
+  "pass_requires": [
+    "exact access guard pass",
+    "forbidden access count zero",
+    "same-scene grounding valid",
+    "persistent referent source-validated",
+    "valid real-instruction counterfactual set",
+    "material language dependence",
+    "local gap<=8 signal density",
+    "at least 7 usable tasks",
+    "semantic-match robot-difference control",
+    "robot-match semantic-difference control",
+    "no severe raw-proprio shortcut",
+    "all values finite"
+  ],
+  "positive_authorization": "GO_VALUE_DISTILLATION",
+  "failure_authorizations": ["BLOCK_VALUE_DISTILLATION", "BLOCK_WORLD_MODEL_INTERFACE_AUDIT", "BLOCK_SPATIAL_WM_PROTOTYPE"],
+  "hard_stop": "Even on pass, stop after Stage B1. Do not run value distillation, retrain pairwise V2, execute candidates, train a World Model, rerank, or control."
+}
