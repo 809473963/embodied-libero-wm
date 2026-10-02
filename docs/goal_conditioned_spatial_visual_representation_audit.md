@@ -285,6 +285,7 @@ The frozen decision tree stops at Stage R.
 | Weights | `3d5bce311b933f5f593a6ca7bca9b4ad77216af8901565046d392346383f3da5` |
 | Calibration sidecar | `81b74660e92eeaf842f08b2ba4dc01d54af28cea4c60b2c665d32c8db940c871` |
 | Access ledger | `3b47580ba1f9fe4d71567cae6d9cfe9e765ee9cf6ee9558b11f1cecbd0c7c43d` |
+| Test output | `b8c4ffcbc8ee24ef09c64483be827c1f043fb6f5f6410e7741a9e8f99dd088e3` |
 
 Twelve focused tests independently verify source hashes, partitions, token
 coordinates and shapes, family parameter ceilings, antisymmetry, R1 language
