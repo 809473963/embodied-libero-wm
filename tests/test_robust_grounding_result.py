@@ -34,3 +34,14 @@ def test_calibration_ledger_opens_only_allowed_states():
     assert ledger["metadata_operations"] == []
     assert ledger["forbidden_access_count"] == 0
     assert all(path.endswith("/states") for path in ledger["numeric_datasets_accessed"])
+
+
+def test_evaluation_is_frozen_and_passes_without_forbidden_access():
+    result = json.loads((ROOT / "results/robust_grounding_eval.json").read_text())
+    assert result["complete_gate"] is True
+    assert result["selected"]["unique_precision"] == 1.0
+    assert result["selected"]["coverage"] == 1.0
+    assert result["counterfactual"]["tasks_with_eligible_alternate"] == 10
+    assert result["access_ledger"]["opened_demo_ids"] == [36, 37, 38, 39]
+    assert result["access_ledger"]["metadata_operations"] == []
+    assert result["access_ledger"]["forbidden_access_count"] == 0
