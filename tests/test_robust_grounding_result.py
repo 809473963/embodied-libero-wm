@@ -45,3 +45,19 @@ def test_evaluation_is_frozen_and_passes_without_forbidden_access():
     assert result["access_ledger"]["opened_demo_ids"] == [36, 37, 38, 39]
     assert result["access_ledger"]["metadata_operations"] == []
     assert result["access_ledger"]["forbidden_access_count"] == 0
+
+
+def test_exact_baseline_reproduces_old_failure_and_label_mapping():
+    baseline = json.loads((ROOT / "results/robust_grounding_baseline_supplement.json").read_text())
+    assert baseline["calibration"]["unique_correct"] == 23
+    assert baseline["calibration"]["not_found"] == 17
+    assert baseline["calibration"]["per_task_unique_correct"][1] == 0
+    assert baseline["calibration"]["per_task_unique_correct"][5] == 0
+    assert baseline["calibration"]["per_task_unique_correct"][8] == 0
+    amendment = json.loads((ROOT / "configs/robust_grounding_decision_amendment.json").read_text())
+    assert amendment["numeric_changes"] is False
+    assert amendment["required_positive_labels"] == [
+        "ROBUST_SAME_SCENE_GROUNDING_VALID",
+        "ROBUST_REFERENT_MARGIN_VALID",
+        "COUNTERFACTUAL_GROUNDING_SET_VALID",
+    ]

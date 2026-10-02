@@ -2,7 +2,13 @@
 
 Date: 2026-10-02
 
-Final mechanism label: `SAME_SCENE_LANGUAGE_GROUNDING_VALID`
+Final mechanism labels:
+
+```text
+ROBUST_SAME_SCENE_GROUNDING_VALID
+ROBUST_REFERENT_MARGIN_VALID
+COUNTERFACTUAL_GROUNDING_SET_VALID
+```
 
 Next-stage authorization: `GO_T1_SEMANTIC_TEACHER_FULL_EVALUATION`
 
@@ -83,40 +89,79 @@ or demo40--49 identifier.
 | Eligible counterfactuals in >=7 tasks | pass: 10 | pass: 10 |
 | Finite and forbidden access zero | pass | pass |
 
-Final result: `SAME_SCENE_LANGUAGE_GROUNDING_VALID`.
+The historical G0 baseline is reproduced mechanically: exact correct-instruction
+grounding is `23/40` on calibration and `21/40` on evaluation; all failures are
+`NOT_FOUND`, never wrong UNIQUE or ambiguous. On calibration, task1/task5/task8
+remain `0/4`, exactly reproducing the motivating defect.
+
+| Task | G0 calibration | G2 calibration | G2 evaluation | Calibration G2 gaps |
+|---:|---:|---:|---:|---|
+| 0 | 2/4 | 4/4 | 4/4 | 16.45--18.03 |
+| 1 | 0/4 | 4/4 | 4/4 | 46.42--49.66 |
+| 2 | 3/4 | 4/4 | 4/4 | 29.91--32.05 |
+| 3 | 4/4 | 4/4 | 4/4 | 5.04--6.09 |
+| 4 | 4/4 | 4/4 | 4/4 | 1.16--1.48 |
+| 5 | 0/4 | 4/4 | 4/4 | 5.70--6.10 |
+| 6 | 2/4 | 4/4 | 4/4 | 36.68--39.32 |
+| 7 | 4/4 | 4/4 | 4/4 | 3.79--4.30 |
+| 8 | 0/4 | 4/4 | 4/4 | 16.22--17.84 |
+| 9 | 4/4 | 4/4 | 4/4 | 2.83--3.00 |
+
+The 17 calibration G0 failures divide into strict-region/restoration drift for
+tasks0/1/2/6/8 and support-contact loss for task5. G2 has no remaining failure
+to classify. The smallest correct-instruction G2 confidence gap is `1.164`, so
+the calibration-selected zero tie threshold is not a forced near-tie decision;
+it preserves explicit ambiguity for exact score ties while retaining a wide
+empirical separation.
+
+Final results:
+
+```text
+ROBUST_SAME_SCENE_GROUNDING_VALID
+ROBUST_REFERENT_MARGIN_VALID
+COUNTERFACTUAL_GROUNDING_SET_VALID
+```
 
 Authorization: `GO_T1_SEMANTIC_TEACHER_FULL_EVALUATION` only.
 
 ## Required answers
 
-**GQ1 — What failed in exact grounding?** Strict sites and contact predicates
+**GQ1 — Why does the exact source predicate fail?** Strict sites and contact predicates
 reject millimeter-scale restored-state offsets; they are brittle Boolean
 initialization checks rather than robust referent rankings.
 
-**GQ2 — What resolver was selected?** G2 normalized semantic compatibility.
+**GQ2 — How does robust grounding retain source semantics?** It uses rotated
+region coordinates for sites/containment and horizontal-overlap plus surface-gap
+geometry for supports; it is not generic nearest-anchor matching.
 
-**GQ3 — Does it use object identity?** No. Bowl identity is used only after
-prediction to score the correct real instruction.
+**GQ3 — How is compatibility defined?** Region `On` normalizes horizontal
+coordinates by site half-width and penalizes vertical band mismatch; `In` uses
+distance in the containment volume; object support normalizes horizontal center
+distance by summed radii and orientation-aware vertical gap by object height.
 
-**GQ4 — How are region relations handled?** In the rotated source-site frame,
-using explicit region half-sizes or containment volume.
+**GQ4 — What recovery is achieved?** Correct-instruction precision and coverage
+are `100%` on both 40-episode partitions.
 
-**GQ5 — How are support relations handled?** With horizontal support geometry
-and an orientation-aware surface-height gap; simple anchor proximity is not used.
+**GQ5 — Are old zero-coverage tasks repaired?** Yes. Tasks1, 5, and 8 move from
+`0/4` under G0 to `4/4` under G2 in both partitions.
 
-**GQ6 — What are the held-out precision and coverage?** Both are `100%` over
-40 episodes and ten tasks.
+**GQ6 — Does G2 agree where exact grounding succeeds?** Yes, `100%` in both
+partitions.
 
-**GQ7 — Is the result stable to small geometry shifts?** Yes. Every frozen
-correct-instruction decision survives all ±1/2/5 mm source-anchor shifts.
+**GQ7 — How many alternate instructions ground confidently?** `270/360`
+calibration and `271/360` held-out applications are UNIQUE, covering all ten
+source tasks.
 
-**GQ8 — Do real alternate instructions remain usable?** Yes. Every source task
-has eligible held-out alternates; 271 cases are admitted.
+**GQ8 — How many choose another physical bowl?** `52.59%` in calibration and
+`53.51%` held out; the complementary cases retain the same bowl.
 
-**GQ9 — Was the forbidden partition untouched?** Yes, including metadata.
+**GQ9 — How was confidence calibrated?** The family-specific threshold grid was
+searched on demo31--34 with UNIQUE precision first, then coverage, per-task
+robustness, exact agreement, gap, and simplicity. G2 with strict gap `>0` won.
 
-**GQ10 — What is authorized?** Only the preregistered full T1 semantic-teacher
-evaluation. Value distillation and all downstream modeling remain blocked.
+**GQ10 — Are there systematic ambiguous scenes?** No in the admitted 80 correct
+episodes: minimum gaps are wide and no correct case is ambiguous. Exact score
+ties would still return AMBIGUOUS rather than invoke an identity fallback.
 
 ## Artifacts
 

@@ -1,0 +1,565 @@
+{
+  "result_version": "semantic-teacher-clean-result-v1",
+  "partition": "evaluation",
+  "selected_family": "T1",
+  "epsilon_goal": 0.004065508647683736,
+  "epsilon_reach": 0.00019128024875438856,
+  "frame_count": 4883,
+  "episode_count": 40,
+  "pair_count": 72688,
+  "grounding": {
+    "initial_attempts": 400,
+    "unique_rate": 0.7775,
+    "ambiguous_rate": 0.0,
+    "not_found_rate": 0.2225,
+    "correct_instruction_unique_rate": 1.0,
+    "persistent_identity_availability": 0.7775,
+    "per_task_correct_unique_rate": {
+      "0": 1.0,
+      "1": 1.0,
+      "2": 1.0,
+      "3": 1.0,
+      "4": 1.0,
+      "5": 1.0,
+      "6": 1.0,
+      "7": 1.0,
+      "8": 1.0,
+      "9": 1.0
+    }
+  },
+  "margin_validation": {
+    "finite": true,
+    "minimum": -16.284936743208938,
+    "maximum": 0.9663073309836621,
+    "goal_positive_count": 583,
+    "goal_negative_count": 9183,
+    "goal_positive_median": 0.16089462237387128,
+    "goal_negative_median": -8.340647228554184
+  },
+  "local_signal": {
+    "n": 37624,
+    "non_tie_fraction": 0.5791250265787795,
+    "progress_fraction": 0.44947374016585157,
+    "regression_fraction": 0.12965128641292792,
+    "tie_fraction": 0.4208749734212205,
+    "time_agreement_among_non_ties": 0.7761255679471293
+  },
+  "usable_task_count": 10,
+  "per_task": {
+    "0": {
+      "n": 3592,
+      "non_tie_fraction": 0.5375835189309577,
+      "progress_fraction": 0.40033407572383073,
+      "regression_fraction": 0.13724944320712695,
+      "tie_fraction": 0.4624164810690423,
+      "time_agreement_among_non_ties": 0.7446918694976696
+    },
+    "1": {
+      "n": 3984,
+      "non_tie_fraction": 0.5446787148594378,
+      "progress_fraction": 0.3845381526104418,
+      "regression_fraction": 0.16014056224899598,
+      "tie_fraction": 0.45532128514056225,
+      "time_agreement_among_non_ties": 0.7059907834101382
+    },
+    "2": {
+      "n": 3688,
+      "non_tie_fraction": 0.5962581344902386,
+      "progress_fraction": 0.4379067245119306,
+      "regression_fraction": 0.15835140997830802,
+      "tie_fraction": 0.4037418655097614,
+      "time_agreement_among_non_ties": 0.734424738517508
+    },
+    "3": {
+      "n": 2880,
+      "non_tie_fraction": 0.4934027777777778,
+      "progress_fraction": 0.4170138888888889,
+      "regression_fraction": 0.0763888888888889,
+      "tie_fraction": 0.5065972222222223,
+      "time_agreement_among_non_ties": 0.8451794510907812
+    },
+    "4": {
+      "n": 4736,
+      "non_tie_fraction": 0.6277449324324325,
+      "progress_fraction": 0.48817567567567566,
+      "regression_fraction": 0.13956925675675674,
+      "tie_fraction": 0.37225506756756754,
+      "time_agreement_among_non_ties": 0.777665657584931
+    },
+    "5": {
+      "n": 3024,
+      "non_tie_fraction": 0.6775793650793651,
+      "progress_fraction": 0.5271164021164021,
+      "regression_fraction": 0.15046296296296297,
+      "tie_fraction": 0.32242063492063494,
+      "time_agreement_among_non_ties": 0.7779404587603709
+    },
+    "6": {
+      "n": 3880,
+      "non_tie_fraction": 0.534020618556701,
+      "progress_fraction": 0.411340206185567,
+      "regression_fraction": 0.12268041237113401,
+      "tie_fraction": 0.465979381443299,
+      "time_agreement_among_non_ties": 0.7702702702702703
+    },
+    "7": {
+      "n": 4152,
+      "non_tie_fraction": 0.6505298651252408,
+      "progress_fraction": 0.5351637764932563,
+      "regression_fraction": 0.11536608863198458,
+      "tie_fraction": 0.34947013487475914,
+      "time_agreement_among_non_ties": 0.8226582747130692
+    },
+    "8": {
+      "n": 3528,
+      "non_tie_fraction": 0.4909297052154195,
+      "progress_fraction": 0.33616780045351474,
+      "regression_fraction": 0.15476190476190477,
+      "tie_fraction": 0.5090702947845805,
+      "time_agreement_among_non_ties": 0.684757505773672
+    },
+    "9": {
+      "n": 4160,
+      "non_tie_fraction": 0.6108173076923077,
+      "progress_fraction": 0.5324519230769231,
+      "regression_fraction": 0.07836538461538461,
+      "tie_fraction": 0.3891826923076923,
+      "time_agreement_among_non_ties": 0.8717040535222353
+    }
+  },
+  "per_gap": {
+    "1-2": {
+      "n": 9646,
+      "non_tie_fraction": 0.5346257516068836,
+      "progress_fraction": 0.41156956251295873,
+      "regression_fraction": 0.12305618909392495,
+      "tie_fraction": 0.4653742483931163,
+      "time_agreement_among_non_ties": 0.7698274190420787
+    },
+    "3-4": {
+      "n": 9486,
+      "non_tie_fraction": 0.570314147164242,
+      "progress_fraction": 0.4370651486401012,
+      "regression_fraction": 0.13324899852414085,
+      "tie_fraction": 0.42968585283575794,
+      "time_agreement_among_non_ties": 0.766358595194085
+    },
+    "5-8": {
+      "n": 18492,
+      "non_tie_fraction": 0.6068570192515682,
+      "progress_fraction": 0.4756110750594852,
+      "regression_fraction": 0.13124594419208307,
+      "tie_fraction": 0.39314298074843174,
+      "time_agreement_among_non_ties": 0.7837283906612013
+    },
+    "9-16": {
+      "n": 35064,
+      "non_tie_fraction": 0.6562571298197581,
+      "progress_fraction": 0.5491957563312799,
+      "regression_fraction": 0.10706137348847822,
+      "tie_fraction": 0.34374287018024186,
+      "time_agreement_among_non_ties": 0.8368606318717136
+    }
+  },
+  "language": {
+    "eligible_same_state_cases": 32757,
+    "referent_switch_rate": 0.5328632048111854,
+    "semantic_state_change_rate": 0.5328632048111854,
+    "preference_flip_rate": 0.2958581054300436,
+    "eligible_pair_counterfactuals": 252300,
+    "tasks_with_material_change": 10,
+    "per_task": {
+      "0": {
+        "eligible_state_cases": 3634,
+        "semantic_change_rate": 0.2570170610897083
+      },
+      "1": {
+        "eligible_state_cases": 4400,
+        "semantic_change_rate": 0.7036363636363636
+      },
+      "2": {
+        "eligible_state_cases": 3832,
+        "semantic_change_rate": 0.46998956158663885
+      },
+      "3": {
+        "eligible_state_cases": 2457,
+        "semantic_change_rate": 0.46153846153846156
+      },
+      "4": {
+        "eligible_state_cases": 3660,
+        "semantic_change_rate": 0.3333333333333333
+      },
+      "5": {
+        "eligible_state_cases": 3168,
+        "semantic_change_rate": 0.625
+      },
+      "6": {
+        "eligible_state_cases": 3018,
+        "semantic_change_rate": 0.6666666666666666
+      },
+      "7": {
+        "eligible_state_cases": 2685,
+        "semantic_change_rate": 0.6
+      },
+      "8": {
+        "eligible_state_cases": 3213,
+        "semantic_change_rate": 0.6389666977902272
+      },
+      "9": {
+        "eligible_state_cases": 2690,
+        "semantic_change_rate": 0.6
+      }
+    },
+    "examples": [
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 0,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 1,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 2,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 3,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 4,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 5,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 6,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 7,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 8,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 9,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 10,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      },
+      {
+        "task_id": 0,
+        "demo_id": 36,
+        "timestep": 11,
+        "correct_instruction": 0,
+        "alternate_instruction": 1,
+        "correct_referent": "akita_black_bowl_1",
+        "alternate_referent": "akita_black_bowl_2"
+      }
+    ]
+  },
+  "controls": {
+    "semantic_match_robot_difference": {
+      "rows": 3691,
+      "task_count": 10,
+      "teacher_tie_rate": 1.0,
+      "pass": true
+    },
+    "robot_match_semantic_difference": {
+      "rows": 2063,
+      "task_count": 10,
+      "teacher_non_tie_rate": 1.0,
+      "pass": true
+    }
+  },
+  "proprio_probe": {
+    "rows": 21789,
+    "accuracy": 0.8001285052090504
+  },
+  "teacher_time_agreement": 0.7761255679471293,
+  "gates": {
+    "same_scene_grounding": true,
+    "persistent_referent_source_validated": true,
+    "valid_counterfactual_set": true,
+    "language_dependence": true,
+    "local_density": true,
+    "usable_tasks": true,
+    "semantic_match_robot_difference": true,
+    "robot_match_semantic_difference": true,
+    "no_severe_proprio_shortcut": true,
+    "finite": true
+  },
+  "complete_gate": true,
+  "selected_margin_family": "M2",
+  "margin_screen": [],
+  "t0_local_signal": {
+    "n": 37624,
+    "non_tie_fraction": 0.05140335955772911,
+    "progress_fraction": 0.04459919200510313,
+    "regression_fraction": 0.006804167552625983,
+    "tie_fraction": 0.9485966404422709,
+    "time_agreement_among_non_ties": 0.8676318510858325,
+    "usable_task_count": 0,
+    "per_task": {
+      "0": {
+        "n": 3592,
+        "non_tie_fraction": 0.0779510022271715,
+        "progress_fraction": 0.05902004454342984,
+        "regression_fraction": 0.01893095768374165,
+        "tie_fraction": 0.9220489977728286,
+        "time_agreement_among_non_ties": 0.7571428571428571
+      },
+      "1": {
+        "n": 3984,
+        "non_tie_fraction": 0.06275100401606426,
+        "progress_fraction": 0.04919678714859438,
+        "regression_fraction": 0.01355421686746988,
+        "tie_fraction": 0.9372489959839357,
+        "time_agreement_among_non_ties": 0.784
+      },
+      "2": {
+        "n": 3688,
+        "non_tie_fraction": 0.05422993492407809,
+        "progress_fraction": 0.046637744034707156,
+        "regression_fraction": 0.007592190889370932,
+        "tie_fraction": 0.9457700650759219,
+        "time_agreement_among_non_ties": 0.86
+      },
+      "3": {
+        "n": 2880,
+        "non_tie_fraction": 0.053125,
+        "progress_fraction": 0.050347222222222224,
+        "regression_fraction": 0.002777777777777778,
+        "tie_fraction": 0.946875,
+        "time_agreement_among_non_ties": 0.9477124183006536
+      },
+      "4": {
+        "n": 4736,
+        "non_tie_fraction": 0.04603040540540541,
+        "progress_fraction": 0.03821790540540541,
+        "regression_fraction": 0.0078125,
+        "tie_fraction": 0.9539695945945946,
+        "time_agreement_among_non_ties": 0.8302752293577982
+      },
+      "5": {
+        "n": 3024,
+        "non_tie_fraction": 0.047619047619047616,
+        "progress_fraction": 0.047619047619047616,
+        "regression_fraction": 0.0,
+        "tie_fraction": 0.9523809523809523,
+        "time_agreement_among_non_ties": 1.0
+      },
+      "6": {
+        "n": 3880,
+        "non_tie_fraction": 0.05618556701030928,
+        "progress_fraction": 0.046649484536082475,
+        "regression_fraction": 0.009536082474226805,
+        "tie_fraction": 0.9438144329896907,
+        "time_agreement_among_non_ties": 0.8302752293577982
+      },
+      "7": {
+        "n": 4152,
+        "non_tie_fraction": 0.038053949903660886,
+        "progress_fraction": 0.03636801541425819,
+        "regression_fraction": 0.0016859344894026974,
+        "tie_fraction": 0.9619460500963392,
+        "time_agreement_among_non_ties": 0.9556962025316456
+      },
+      "8": {
+        "n": 3528,
+        "non_tie_fraction": 0.04790249433106576,
+        "progress_fraction": 0.04308390022675737,
+        "regression_fraction": 0.00481859410430839,
+        "tie_fraction": 0.9520975056689343,
+        "time_agreement_among_non_ties": 0.8994082840236687
+      },
+      "9": {
+        "n": 4160,
+        "non_tie_fraction": 0.03461538461538462,
+        "progress_fraction": 0.03461538461538462,
+        "regression_fraction": 0.0,
+        "tie_fraction": 0.9653846153846154,
+        "time_agreement_among_non_ties": 1.0
+      }
+    }
+  },
+  "access_ledger": {
+    "partition": "evaluation",
+    "allowed_demo_ids": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "opened_task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "opened_demo_ids": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "opened_exact_hdf5_groups": [
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39"
+    ],
+    "numeric_datasets_accessed": [
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states"
+    ],
+    "metadata_operations": [],
+    "forbidden_attempts": [],
+    "forbidden_access_count": 0
+  },
+  "stage_t_complete_gate": true,
+  "sidecar_sha256": "d7a7068fe9d114eba28359c750217723efb85ed179a6f04b86b57b6c5ff4f833"
+}
