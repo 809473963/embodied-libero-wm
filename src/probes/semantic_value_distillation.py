@@ -687,15 +687,18 @@ def correctness(probability: np.ndarray, label: np.ndarray) -> np.ndarray:
     return result
 
 
-def non_tie_metrics(probability: np.ndarray, label: np.ndarray) -> dict[str, float]:
+def non_tie_metrics(probability: np.ndarray, label: np.ndarray) -> dict[str, Any]:
     keep = np.asarray(label) != 0
     probability = np.clip(np.asarray(probability, dtype=np.float64)[keep], 1e-7, 1 - 1e-7)
     signed = np.asarray(label)[keep]
+    if not len(signed):
+        return {"rows": 0, "accuracy": None, "auroc": None, "log_loss": None, "brier": None}
     target = (signed > 0).astype(np.float64)
+    auc = rank_auc(probability, target > 0)
     return {
         "rows": int(len(target)),
         "accuracy": float(correctness(probability, signed).mean()),
-        "auroc": rank_auc(probability, target > 0),
+        "auroc": float(auc) if np.isfinite(auc) else None,
         "log_loss": float(-np.mean(target * np.log(probability) + (1 - target) * np.log(1 - probability))),
         "brier": float(np.mean(np.square(probability - target))),
     }

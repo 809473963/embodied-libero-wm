@@ -2,6 +2,14 @@
   "protocol_version": "semantic-value-distillation-v1",
   "created_at": "2026-10-02",
   "status": "PREREGISTERED_BEFORE_CALIBRATION_TRAINING",
+  "preflight_amendments": [
+    {
+      "date": "2026-10-03",
+      "scope": "report serialization only",
+      "change": "An optional >16 ordinary evaluation bin has no rows because the frozen T1 pair sidecar ends at gap16. Empty-bin accuracy/AUROC/log-loss/Brier are serialized as null instead of NaN.",
+      "unchanged": ["student architectures", "training pairs", "weights rule", "selection rule", "temperature grid", "thresholds", "partitions", "bootstrap", "authorization mapping"]
+    }
+  ],
   "objective": "Distill the frozen privileged T1-M2 teacher into a deployable frozen-natural-CLIP-plus-language semantic value student on real demonstration observations.",
   "authorization_basis": {
     "tag": "t1-semantic-teacher-full-evaluation-valid",
@@ -128,7 +136,7 @@
   ],
   "implementation": [
     {"path": "src/data/semantic_feature_guard.py", "sha256": "76ce1e179b0ed293f63e79b919659be94f6d5468a63477d6d16410a29624f2bb"},
-    {"path": "src/probes/semantic_value_distillation.py", "sha256": "79f10de02ad920edf7ff797c0790ac5725f58ba7c272c7976e66f1aa7a6d041b"},
+    {"path": "src/probes/semantic_value_distillation.py", "sha256": "4683c16f69b2eaef6a9a7bade61dddb7595be76de7f417c9cd4913135662302f"},
     {"path": "scripts/run_semantic_value_distillation.py", "sha256": "a387d5fe9fcc0d4b3ad83f317117793e80a037c909b017882f54fcb391d20773"}
   ],
   "outputs": {
