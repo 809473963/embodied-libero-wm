@@ -94,7 +94,7 @@ def ground_instruction(inner: Any, contract: dict[str, Any]) -> dict[str, Any]:
     matches: list[str] = []
     values: dict[str, bool] = {}
     for bowl in BOWLS:
-        query = [atom[0], bowl, *atom[2:]]
+        query = [str(atom[0]).lower(), bowl, *atom[2:]]
         value = bool(inner._eval_predicate(query))
         values[bowl] = value
         if value:
@@ -140,7 +140,7 @@ def official_goal_and_margin(inner: Any, bowl: str) -> tuple[bool, float, dict[s
     surface_gap = bowl_bottom - plate_top
     scale = OFFICIAL_XY_LIMIT_METERS
     margin = min(xy_clearance / scale, z_order_clearance / scale, -abs(surface_gap) / scale)
-    goal = bool(inner._eval_predicate(["On", bowl, PLATE]))
+    goal = bool(inner._eval_predicate(["on", bowl, PLATE]))
     values = {
         "xy_distance_m": xy_distance,
         "xy_clearance_m": xy_clearance,
@@ -287,4 +287,3 @@ def apply_linear_pair_probe(features: np.ndarray, labels: np.ndarray, model: dic
     design = np.column_stack(((x - mean) / std, np.ones(len(x))))
     prediction = np.where(design @ weights >= 0.0, 1, -1)
     return {"rows": int(len(y)), "accuracy": float(np.mean(prediction == y))}
-
