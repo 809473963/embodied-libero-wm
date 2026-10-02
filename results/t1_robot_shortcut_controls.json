@@ -1,0 +1,211 @@
+{
+  "result_version": "t1-robot-shortcut-controls-v1",
+  "historical_temporal_proprio_accuracy": 0.96224,
+  "calibration": {
+    "semantic_match_robot_difference": {
+      "rows": 3849,
+      "task_count": 10,
+      "proprio_distance": {
+        "n": 3849,
+        "mean": 1.3632385904397666,
+        "median": 1.2647859282112603,
+        "p10": 1.0707024116443482,
+        "p90": 1.821467604649322,
+        "minimum": 1.022068258530791,
+        "maximum": 3.0122194663938195
+      },
+      "semantic_margin_abs_difference": {
+        "n": 3849,
+        "mean": 0.0001713463309664215,
+        "median": 8.064660050877137e-13,
+        "p10": 0.0,
+        "p90": 0.0002679918806466079,
+        "minimum": 0.0,
+        "maximum": 0.00402569789444307
+      },
+      "teacher_condition_rate": 1.0,
+      "pass": true,
+      "condition": "TIE"
+    },
+    "robot_match_semantic_difference": {
+      "rows": 2146,
+      "task_count": 10,
+      "proprio_distance": {
+        "n": 2146,
+        "mean": 0.1294430593634917,
+        "median": 0.1360831321402181,
+        "p10": 0.07983361350201594,
+        "p90": 0.167567693320473,
+        "minimum": 0.024436433164885994,
+        "maximum": 0.17596378956013412
+      },
+      "semantic_margin_abs_difference": {
+        "n": 2146,
+        "mean": 0.13391216776892914,
+        "median": 0.0859340235656314,
+        "p10": 0.01118883351965047,
+        "p90": 0.33632253683393987,
+        "minimum": 0.00036048449526165927,
+        "maximum": 0.4534970161975591
+      },
+      "teacher_condition_rate": 1.0,
+      "pass": true,
+      "condition": "NON_TIE"
+    },
+    "proprio_probe": {
+      "rows": 22688,
+      "accuracy": 0.7853931593794076,
+      "accuracy_ci95": [
+        0.769878922792516,
+        0.8017407578572628
+      ],
+      "auroc": 0.8440454221942542,
+      "per_task": {
+        "0": {
+          "rows": 2130,
+          "accuracy": 0.711737089201878
+        },
+        "1": {
+          "rows": 2154,
+          "accuracy": 0.7627669452181987
+        },
+        "2": {
+          "rows": 2159,
+          "accuracy": 0.8272348309402501
+        },
+        "3": {
+          "rows": 1497,
+          "accuracy": 0.7555110220440882
+        },
+        "4": {
+          "rows": 3097,
+          "accuracy": 0.8308040038747174
+        },
+        "5": {
+          "rows": 2163,
+          "accuracy": 0.723994452149792
+        },
+        "6": {
+          "rows": 2107,
+          "accuracy": 0.8585666824869482
+        },
+        "7": {
+          "rows": 3152,
+          "accuracy": 0.7829949238578681
+        },
+        "8": {
+          "rows": 1658,
+          "accuracy": 0.6773220747889023
+        },
+        "9": {
+          "rows": 2571,
+          "accuracy": 0.8572539867755737
+        }
+      }
+    }
+  },
+  "evaluation": {
+    "semantic_match_robot_difference": {
+      "rows": 3691,
+      "task_count": 10,
+      "proprio_distance": {
+        "n": 3691,
+        "mean": 1.3239916525523838,
+        "median": 1.2358110655506813,
+        "p10": 1.057279249337542,
+        "p90": 1.687508192048292,
+        "minimum": 1.0219719608389193,
+        "maximum": 2.823932686238209
+      },
+      "semantic_margin_abs_difference": {
+        "n": 3691,
+        "mean": 0.0002370701132414019,
+        "median": 1.1031175972675555e-12,
+        "p10": 0.0,
+        "p90": 0.0006164429367516711,
+        "minimum": 0.0,
+        "maximum": 0.004052277437136098
+      },
+      "teacher_condition_rate": 1.0,
+      "pass": true,
+      "condition": "TIE"
+    },
+    "robot_match_semantic_difference": {
+      "rows": 2063,
+      "task_count": 10,
+      "proprio_distance": {
+        "n": 2063,
+        "mean": 0.1308230311548281,
+        "median": 0.13796725331093088,
+        "p10": 0.08432482722837047,
+        "p90": 0.16683916461416856,
+        "minimum": 0.023834385948924803,
+        "maximum": 0.17593396014534005
+      },
+      "semantic_margin_abs_difference": {
+        "n": 2063,
+        "mean": 0.14450913724454717,
+        "median": 0.10411033337172082,
+        "p10": 0.011971416335007468,
+        "p90": 0.34664123879193026,
+        "minimum": 0.0003749606713602527,
+        "maximum": 0.4703407866067842
+      },
+      "teacher_condition_rate": 1.0,
+      "pass": true,
+      "condition": "NON_TIE"
+    },
+    "proprio_probe": {
+      "rows": 21789,
+      "accuracy": 0.8001285052090504,
+      "accuracy_ci95": [
+        0.7888563370347347,
+        0.8118550090463051
+      ],
+      "auroc": 0.831659580270334,
+      "per_task": {
+        "0": {
+          "rows": 1931,
+          "accuracy": 0.7477990678404971
+        },
+        "1": {
+          "rows": 2170,
+          "accuracy": 0.6981566820276498
+        },
+        "2": {
+          "rows": 2199,
+          "accuracy": 0.781718963165075
+        },
+        "3": {
+          "rows": 1421,
+          "accuracy": 0.8064743138634765
+        },
+        "4": {
+          "rows": 2973,
+          "accuracy": 0.8553649512277162
+        },
+        "5": {
+          "rows": 2049,
+          "accuracy": 0.8291849682772084
+        },
+        "6": {
+          "rows": 2072,
+          "accuracy": 0.8388030888030888
+        },
+        "7": {
+          "rows": 2701,
+          "accuracy": 0.8652350981118104
+        },
+        "8": {
+          "rows": 1732,
+          "accuracy": 0.6616628175519631
+        },
+        "9": {
+          "rows": 2541,
+          "accuracy": 0.8449429358520267
+        }
+      }
+    }
+  },
+  "evaluation_reduction_points": -16.211149479094956
+}

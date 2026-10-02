@@ -1,15 +1,26 @@
 import json
+import subprocess
 from pathlib import Path
 
 import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[1]
+HISTORICAL_FREEZE = "semantic-goal-progress-teacher-valid"
+
+
+def load_frozen_json(path: str):
+    content = subprocess.check_output(
+        ["git", "show", f"{HISTORICAL_FREEZE}:{path}"], cwd=ROOT, text=True
+    )
+    return json.loads(content)
 
 
 def test_calibration_mechanically_selects_m2_and_t1():
-    r = json.loads((ROOT / "results/t1_teacher_calibration.json").read_text())
-    d = json.loads((ROOT / "configs/t1_teacher_frozen_definition.json").read_text())
+    # These paths are intentionally reused by the later independent T1
+    # evaluation.  Validate this historical study at its annotated freeze.
+    r = load_frozen_json("results/t1_teacher_calibration.json")
+    d = load_frozen_json("configs/t1_teacher_frozen_definition.json")
     assert r["selected_margin_family"] == d["selected_margin_family"] == "M2"
     assert r["selected_family"] == d["selected_family"] == "T1"
     assert r["stage_t_complete_gate"] is True
@@ -18,7 +29,7 @@ def test_calibration_mechanically_selects_m2_and_t1():
 
 
 def test_calibration_signal_controls_and_access_pass():
-    r = json.loads((ROOT / "results/t1_teacher_calibration.json").read_text())
+    r = load_frozen_json("results/t1_teacher_calibration.json")
     assert r["local_signal"]["non_tie_fraction"] >= 0.30
     assert r["language"]["tasks_with_material_change"] >= 7
     assert r["controls"]["semantic_match_robot_difference"]["pass"]

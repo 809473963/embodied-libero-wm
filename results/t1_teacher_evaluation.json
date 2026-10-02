@@ -1,0 +1,738 @@
+{
+  "result_version": "t1-semantic-teacher-independent-result-v1",
+  "partition": "evaluation",
+  "selected_margin": "M2",
+  "selected_teacher": "T1",
+  "epsilon_goal": 0.004065508647683736,
+  "epsilon_reach": 0.00019128024875438856,
+  "frames": 4883,
+  "episodes": 40,
+  "pair_rows": 72688,
+  "margin_audit": [
+    {
+      "family": "M0",
+      "finite": true,
+      "goal_auc": 0.8924593864156098,
+      "goal_positive": {
+        "n": 583,
+        "mean": -3.1355547239737365,
+        "median": -3.1636360761010174,
+        "p10": -3.207477943900954,
+        "p90": -3.007706938253931,
+        "minimum": -3.313785605708397,
+        "maximum": -2.801600837277629
+      },
+      "goal_negative": {
+        "n": 9183,
+        "mean": -8.943512032406291,
+        "median": -8.340647228554184,
+        "p10": -15.041947145753,
+        "p90": -2.99030670382187,
+        "minimum": -16.284936743208938,
+        "maximum": -0.0047853764983544584
+      },
+      "median_separation": 5.177011152453167,
+      "overlap_coefficient": 0.02559132590630498,
+      "per_task_auc": {
+        "0": 0.8540265704444809,
+        "1": 0.8895747599451304,
+        "2": 0.8608110824789371,
+        "3": 0.8923581809657759,
+        "4": 0.9253729513722895,
+        "5": 0.8937582050364006,
+        "6": 0.9042169344968448,
+        "7": 0.9007931869416381,
+        "8": 0.8550766283524904,
+        "9": 0.9283916766826923
+      },
+      "tasks_auc_above_half": 10,
+      "adjacent_absolute_jump": {
+        "n": 9686,
+        "mean": 0.0491278223334682,
+        "median": 1.5407231046538072e-11,
+        "p10": 0.0,
+        "p90": 0.24699345200851375,
+        "minimum": 0.0,
+        "maximum": 0.8843070859923339,
+        "p99": 0.4000174986412652
+      },
+      "admissible": true
+    },
+    {
+      "family": "M1",
+      "finite": true,
+      "goal_auc": 0.8928654615537063,
+      "goal_positive": {
+        "n": 583,
+        "mean": -3.1151306385592554,
+        "median": -3.1586776846447138,
+        "p10": -3.2060276845096864,
+        "p90": -2.9524398876791524,
+        "minimum": -3.2334403163140144,
+        "maximum": -2.5992220058873547
+      },
+      "goal_negative": {
+        "n": 9183,
+        "mean": -8.943385131100118,
+        "median": -8.340647228554184,
+        "p10": -15.041947145753,
+        "p90": -2.9718133990094624,
+        "minimum": -16.284936743208938,
+        "maximum": -0.009344895929778534
+      },
+      "median_separation": 5.181969543909471,
+      "overlap_coefficient": 0.028340831901143306,
+      "per_task_auc": {
+        "0": 0.8534616295810326,
+        "1": 0.8898491083676269,
+        "2": 0.8609755651808396,
+        "3": 0.8931082981715893,
+        "4": 0.9261942411650057,
+        "5": 0.894235588972431,
+        "6": 0.904614308648451,
+        "7": 0.9019286966686149,
+        "8": 0.8551963601532567,
+        "9": 0.9299128605769231
+      },
+      "tasks_auc_above_half": 10,
+      "adjacent_absolute_jump": {
+        "n": 9686,
+        "mean": 0.04922333358886416,
+        "median": 1.5407231046538072e-11,
+        "p10": 0.0,
+        "p90": 0.246314891101994,
+        "minimum": 0.0,
+        "maximum": 0.824829494515877,
+        "p99": 0.39945240342629695
+      },
+      "admissible": true
+    },
+    {
+      "family": "M2",
+      "finite": true,
+      "goal_auc": 0.9620698923676739,
+      "goal_positive": {
+        "n": 583,
+        "mean": 0.18800456916865974,
+        "median": 0.16089462237387128,
+        "p10": 0.12475011426101709,
+        "p90": 0.3079485103652266,
+        "minimum": 0.015585198948425926,
+        "maximum": 0.47877441290958833
+      },
+      "goal_negative": {
+        "n": 9183,
+        "mean": -8.74635491702222,
+        "median": -8.340647228554184,
+        "p10": -15.041947145753,
+        "p90": -1.9078817992935644,
+        "minimum": -16.284936743208938,
+        "maximum": 0.9663073309836621
+      },
+      "median_separation": 8.501541850928055,
+      "overlap_coefficient": 0.04113593449301967,
+      "per_task_auc": {
+        "0": 0.9339201428753667,
+        "1": 0.9547153635116598,
+        "2": 0.9468720872854871,
+        "3": 0.9669010782934834,
+        "4": 0.9792471101631547,
+        "5": 0.9526673827425707,
+        "6": 0.9748859536184891,
+        "7": 0.96009017283126,
+        "8": 0.9716714559386973,
+        "9": 0.9724308894230769
+      },
+      "tasks_auc_above_half": 10,
+      "adjacent_absolute_jump": {
+        "n": 9686,
+        "mean": 0.04311028874433626,
+        "median": 1.538857929972437e-11,
+        "p10": 0.0,
+        "p90": 0.20493564857193314,
+        "minimum": 0.0,
+        "maximum": 0.42908044017274216,
+        "p99": 0.3897450343101987
+      },
+      "admissible": true
+    }
+  ],
+  "orientation_audit": {
+    "raw_vs_world_surface_gap_abs_difference": {
+      "n": 9766,
+      "mean": 0.0005023188402983351,
+      "median": 1.2665163362513e-10,
+      "p10": 5.553912885147838e-11,
+      "p90": 0.0018572111828857873,
+      "minimum": 2.613131933060231e-11,
+      "maximum": 0.011590791995114147
+    }
+  },
+  "t0_local": {
+    "n": 37624,
+    "non_tie_fraction": 0.05140335955772911,
+    "progress_fraction": 0.04459919200510313,
+    "regression_fraction": 0.006804167552625983,
+    "tie_fraction": 0.9485966404422709,
+    "time_agreement_among_non_ties": 0.8676318510858325,
+    "non_tie_ci95": [
+      0.046905251818964,
+      0.056059610506728426
+    ],
+    "progress_ci95": [
+      0.04219947636838166,
+      0.046977385672069445
+    ],
+    "regression_ci95": [
+      0.004466118666201895,
+      0.0092039018250472
+    ],
+    "tie_ci95": [
+      0.9440051477876396,
+      0.9530851422095349
+    ]
+  },
+  "t1_local": {
+    "n": 37624,
+    "non_tie_fraction": 0.5791250265787795,
+    "progress_fraction": 0.44947374016585157,
+    "regression_fraction": 0.12965128641292792,
+    "tie_fraction": 0.4208749734212205,
+    "time_agreement_among_non_ties": 0.7761255679471293,
+    "non_tie_ci95": [
+      0.5679571497149231,
+      0.5904347243513807
+    ],
+    "progress_ci95": [
+      0.4379976552784933,
+      0.46128533016851037
+    ],
+    "regression_ci95": [
+      0.11697710162662582,
+      0.14170187301377948
+    ],
+    "tie_ci95": [
+      0.4096430066541977,
+      0.432026693555638
+    ]
+  },
+  "usable_task_count": 10,
+  "per_task": {
+    "0": {
+      "n": 3592,
+      "non_tie_fraction": 0.5375835189309577,
+      "progress_fraction": 0.40033407572383073,
+      "regression_fraction": 0.13724944320712695,
+      "tie_fraction": 0.4624164810690423,
+      "time_agreement_among_non_ties": 0.7446918694976696
+    },
+    "1": {
+      "n": 3984,
+      "non_tie_fraction": 0.5446787148594378,
+      "progress_fraction": 0.3845381526104418,
+      "regression_fraction": 0.16014056224899598,
+      "tie_fraction": 0.45532128514056225,
+      "time_agreement_among_non_ties": 0.7059907834101382
+    },
+    "2": {
+      "n": 3688,
+      "non_tie_fraction": 0.5962581344902386,
+      "progress_fraction": 0.4379067245119306,
+      "regression_fraction": 0.15835140997830802,
+      "tie_fraction": 0.4037418655097614,
+      "time_agreement_among_non_ties": 0.734424738517508
+    },
+    "3": {
+      "n": 2880,
+      "non_tie_fraction": 0.4934027777777778,
+      "progress_fraction": 0.4170138888888889,
+      "regression_fraction": 0.0763888888888889,
+      "tie_fraction": 0.5065972222222223,
+      "time_agreement_among_non_ties": 0.8451794510907812
+    },
+    "4": {
+      "n": 4736,
+      "non_tie_fraction": 0.6277449324324325,
+      "progress_fraction": 0.48817567567567566,
+      "regression_fraction": 0.13956925675675674,
+      "tie_fraction": 0.37225506756756754,
+      "time_agreement_among_non_ties": 0.777665657584931
+    },
+    "5": {
+      "n": 3024,
+      "non_tie_fraction": 0.6775793650793651,
+      "progress_fraction": 0.5271164021164021,
+      "regression_fraction": 0.15046296296296297,
+      "tie_fraction": 0.32242063492063494,
+      "time_agreement_among_non_ties": 0.7779404587603709
+    },
+    "6": {
+      "n": 3880,
+      "non_tie_fraction": 0.534020618556701,
+      "progress_fraction": 0.411340206185567,
+      "regression_fraction": 0.12268041237113401,
+      "tie_fraction": 0.465979381443299,
+      "time_agreement_among_non_ties": 0.7702702702702703
+    },
+    "7": {
+      "n": 4152,
+      "non_tie_fraction": 0.6505298651252408,
+      "progress_fraction": 0.5351637764932563,
+      "regression_fraction": 0.11536608863198458,
+      "tie_fraction": 0.34947013487475914,
+      "time_agreement_among_non_ties": 0.8226582747130692
+    },
+    "8": {
+      "n": 3528,
+      "non_tie_fraction": 0.4909297052154195,
+      "progress_fraction": 0.33616780045351474,
+      "regression_fraction": 0.15476190476190477,
+      "tie_fraction": 0.5090702947845805,
+      "time_agreement_among_non_ties": 0.684757505773672
+    },
+    "9": {
+      "n": 4160,
+      "non_tie_fraction": 0.6108173076923077,
+      "progress_fraction": 0.5324519230769231,
+      "regression_fraction": 0.07836538461538461,
+      "tie_fraction": 0.3891826923076923,
+      "time_agreement_among_non_ties": 0.8717040535222353
+    }
+  },
+  "per_gap": {
+    "1-2": {
+      "n": 9646,
+      "non_tie_fraction": 0.5346257516068836,
+      "progress_fraction": 0.41156956251295873,
+      "regression_fraction": 0.12305618909392495,
+      "tie_fraction": 0.4653742483931163,
+      "time_agreement_among_non_ties": 0.7698274190420787,
+      "non_tie_ci95": [
+        0.5238467661847684,
+        0.5455126342010523
+      ],
+      "progress_ci95": [
+        0.4009622614081719,
+        0.4222532647555065
+      ],
+      "regression_ci95": [
+        0.11325364524358894,
+        0.13276460261462716
+      ],
+      "tie_ci95": [
+        0.4543537054493824,
+        0.4761333541779079
+      ]
+    },
+    "3-4": {
+      "n": 9486,
+      "non_tie_fraction": 0.570314147164242,
+      "progress_fraction": 0.4370651486401012,
+      "regression_fraction": 0.13324899852414085,
+      "tie_fraction": 0.42968585283575794,
+      "time_agreement_among_non_ties": 0.766358595194085,
+      "non_tie_ci95": [
+        0.5589879225154802,
+        0.581687525226568
+      ],
+      "progress_ci95": [
+        0.42609052456166396,
+        0.44869290416896684
+      ],
+      "regression_ci95": [
+        0.12127871279731584,
+        0.1447834615958583
+      ],
+      "tie_ci95": [
+        0.418395386473218,
+        0.44089991109653903
+      ]
+    },
+    "5-8": {
+      "n": 18492,
+      "non_tie_fraction": 0.6068570192515682,
+      "progress_fraction": 0.4756110750594852,
+      "regression_fraction": 0.13124594419208307,
+      "tie_fraction": 0.39314298074843174,
+      "time_agreement_among_non_ties": 0.7837283906612013,
+      "non_tie_ci95": [
+        0.5951355759901972,
+        0.6186788930115699
+      ],
+      "progress_ci95": [
+        0.46295078454822086,
+        0.48852542899515655
+      ],
+      "regression_ci95": [
+        0.11632892976709343,
+        0.1454731913247901
+      ],
+      "tie_ci95": [
+        0.3810030234716331,
+        0.40449043986580135
+      ]
+    },
+    "9-16": {
+      "n": 35064,
+      "non_tie_fraction": 0.6562571298197581,
+      "progress_fraction": 0.5491957563312799,
+      "regression_fraction": 0.10706137348847822,
+      "tie_fraction": 0.34374287018024186,
+      "time_agreement_among_non_ties": 0.8368606318717136,
+      "non_tie_ci95": [
+        0.6433801645290159,
+        0.6691413404253965
+      ],
+      "progress_ci95": [
+        0.5364125016218168,
+        0.5627860456745458
+      ],
+      "regression_ci95": [
+        0.08995455813660916,
+        0.12425496213859567
+      ],
+      "tie_ci95": [
+        0.3311405625760469,
+        0.35649078312818583
+      ]
+    }
+  },
+  "teacher_time_agreement": 0.7761255679471293,
+  "language": {
+    "eligible_state_cases": 32757,
+    "referent_switch_rate": 0.5328632048111854,
+    "goal_state_change_rate": 0.06386421222944715,
+    "semantic_state_change_rate": 0.5328632048111854,
+    "same_state_margin_abs_change": {
+      "n": 32757,
+      "mean": 3.1620321073238324,
+      "median": 0.5247305358175076,
+      "p10": 0.0,
+      "p90": 10.036000016016862,
+      "minimum": 0.0,
+      "maximum": 16.719091177299685
+    },
+    "referent_switch_stratification": {
+      "same": {
+        "n": 15302,
+        "changed": 0,
+        "change_rate": 0.0
+      },
+      "different": {
+        "n": 17455,
+        "changed": 17455,
+        "change_rate": 1.0
+      }
+    },
+    "eligible_local_pair_counterfactuals": 252300,
+    "material_pair_preference_change_rate": 0.2958581054300436,
+    "material_change_ci95": [
+      0.2846525382834251,
+      0.3062013157456505
+    ],
+    "preference_reversal_rate": 0.012913198573127229,
+    "reversal_ci95": [
+      0.00972991035389437,
+      0.01625886389553121
+    ],
+    "taxonomy": {
+      "BETTER_TO_WORSE": {
+        "count": 2176,
+        "rate": 0.008624653190646056
+      },
+      "WORSE_TO_BETTER": {
+        "count": 1082,
+        "rate": 0.004288545382481173
+      },
+      "NON_TIE_TO_TIE": {
+        "count": 71083,
+        "rate": 0.28173999207292905
+      },
+      "TIE_TO_NON_TIE": {
+        "count": 304,
+        "rate": 0.0012049147839873168
+      },
+      "UNCHANGED": {
+        "count": 177655,
+        "rate": 0.7041418945699564
+      }
+    },
+    "per_task": {
+      "0": {
+        "eligible_pairs": 27956,
+        "material_change_rate": 0.11789955644584346
+      },
+      "1": {
+        "eligible_pairs": 33976,
+        "material_change_rate": 0.367494702142689
+      },
+      "2": {
+        "eligible_pairs": 29504,
+        "material_change_rate": 0.279521420824295
+      },
+      "3": {
+        "eligible_pairs": 18720,
+        "material_change_rate": 0.222275641025641
+      },
+      "4": {
+        "eligible_pairs": 28416,
+        "material_change_rate": 0.20185810810810811
+      },
+      "5": {
+        "eligible_pairs": 24192,
+        "material_change_rate": 0.4123263888888889
+      },
+      "6": {
+        "eligible_pairs": 23280,
+        "material_change_rate": 0.343127147766323
+      },
+      "7": {
+        "eligible_pairs": 20760,
+        "material_change_rate": 0.380635838150289
+      },
+      "8": {
+        "eligible_pairs": 24696,
+        "material_change_rate": 0.295472951085196
+      },
+      "9": {
+        "eligible_pairs": 20800,
+        "material_change_rate": 0.3633173076923077
+      }
+    },
+    "tasks_material_at_least_20pct": 9
+  },
+  "controls": {
+    "semantic_match_robot_difference": {
+      "rows": 3691,
+      "task_count": 10,
+      "proprio_distance": {
+        "n": 3691,
+        "mean": 1.3239916525523838,
+        "median": 1.2358110655506813,
+        "p10": 1.057279249337542,
+        "p90": 1.687508192048292,
+        "minimum": 1.0219719608389193,
+        "maximum": 2.823932686238209
+      },
+      "semantic_margin_abs_difference": {
+        "n": 3691,
+        "mean": 0.0002370701132414019,
+        "median": 1.1031175972675555e-12,
+        "p10": 0.0,
+        "p90": 0.0006164429367516711,
+        "minimum": 0.0,
+        "maximum": 0.004052277437136098
+      },
+      "teacher_condition_rate": 1.0,
+      "pass": true,
+      "condition": "TIE"
+    },
+    "robot_match_semantic_difference": {
+      "rows": 2063,
+      "task_count": 10,
+      "proprio_distance": {
+        "n": 2063,
+        "mean": 0.1308230311548281,
+        "median": 0.13796725331093088,
+        "p10": 0.08432482722837047,
+        "p90": 0.16683916461416856,
+        "minimum": 0.023834385948924803,
+        "maximum": 0.17593396014534005
+      },
+      "semantic_margin_abs_difference": {
+        "n": 2063,
+        "mean": 0.14450913724454717,
+        "median": 0.10411033337172082,
+        "p10": 0.011971416335007468,
+        "p90": 0.34664123879193026,
+        "minimum": 0.0003749606713602527,
+        "maximum": 0.4703407866067842
+      },
+      "teacher_condition_rate": 1.0,
+      "pass": true,
+      "condition": "NON_TIE"
+    },
+    "proprio_probe": {
+      "rows": 21789,
+      "accuracy": 0.8001285052090504,
+      "accuracy_ci95": [
+        0.7888563370347347,
+        0.8118550090463051
+      ],
+      "auroc": 0.831659580270334,
+      "per_task": {
+        "0": {
+          "rows": 1931,
+          "accuracy": 0.7477990678404971
+        },
+        "1": {
+          "rows": 2170,
+          "accuracy": 0.6981566820276498
+        },
+        "2": {
+          "rows": 2199,
+          "accuracy": 0.781718963165075
+        },
+        "3": {
+          "rows": 1421,
+          "accuracy": 0.8064743138634765
+        },
+        "4": {
+          "rows": 2973,
+          "accuracy": 0.8553649512277162
+        },
+        "5": {
+          "rows": 2049,
+          "accuracy": 0.8291849682772084
+        },
+        "6": {
+          "rows": 2072,
+          "accuracy": 0.8388030888030888
+        },
+        "7": {
+          "rows": 2701,
+          "accuracy": 0.8652350981118104
+        },
+        "8": {
+          "rows": 1732,
+          "accuracy": 0.6616628175519631
+        },
+        "9": {
+          "rows": 2541,
+          "accuracy": 0.8449429358520267
+        }
+      }
+    }
+  },
+  "historical_temporal_proprio_accuracy": 0.96224,
+  "semantic_minus_historical_proprio_points": -16.211149479094956,
+  "gates": {
+    "grounding_hash_unchanged": true,
+    "goal_margin_geometry": true,
+    "finite": true,
+    "local_density": true,
+    "usable_tasks": true,
+    "language_pair_change": true,
+    "language_tasks": true,
+    "semantic_match_robot_difference": true,
+    "robot_match_semantic_difference": true,
+    "no_severe_proprio_shortcut": true,
+    "forbidden_access_zero": true
+  },
+  "complete_gate": true,
+  "access_ledger": {
+    "partition": "evaluation",
+    "allowed_demo_ids": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "opened_task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "opened_demo_ids": [
+      36,
+      37,
+      38,
+      39
+    ],
+    "opened_exact_hdf5_groups": [
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_39",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39"
+    ],
+    "numeric_datasets_accessed": [
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_36/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_37/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_38/states",
+      "/home/luo/embodied-libero-wm/data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5:data/demo_39/states"
+    ],
+    "metadata_operations": [],
+    "forbidden_attempts": [],
+    "forbidden_access_count": 0
+  },
+  "sidecar_sha256": "cd6ce906f83753561f7464f4fb58fadf02576e891dd70ad2aee403197a39b06a"
+}
