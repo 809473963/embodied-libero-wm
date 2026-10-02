@@ -1,0 +1,37 @@
+{
+  "contract_version": "allowed-demo-access-v1",
+  "created_at": "2026-10-02",
+  "calibration_demo_ids": [31, 32, 33, 34],
+  "evaluation_demo_ids": [36, 37, 38, 39],
+  "historical_demo_ids_disabled": [30, 35],
+  "forbidden_demo_ids": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49],
+  "group_template": "data/demo_{demo_id}",
+  "allowed_datasets": [
+    "states",
+    "obs/ee_pos",
+    "obs/gripper_states",
+    "obs/joint_states"
+  ],
+  "task_files": {
+    "0": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate_demo.hdf5",
+    "1": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_ramekin_and_place_it_on_the_plate_demo.hdf5",
+    "2": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate_demo.hdf5",
+    "3": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_cookie_box_and_place_it_on_the_plate_demo.hdf5",
+    "4": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5",
+    "5": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate_demo.hdf5",
+    "6": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_cookie_box_and_place_it_on_the_plate_demo.hdf5",
+    "7": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate_demo.hdf5",
+    "8": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_next_to_the_plate_and_place_it_on_the_plate_demo.hdf5",
+    "9": "data/LIBERO/datasets/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate_demo.hdf5"
+  },
+  "forbidden_operations": [
+    "root keys enumeration",
+    "group keys enumeration",
+    "visit",
+    "visititems",
+    "recursive schema walk",
+    "non-allowlisted existence probe",
+    "non-allowlisted shape/dtype/length/attributes",
+    "non-allowlisted numeric read"
+  ]
+}
