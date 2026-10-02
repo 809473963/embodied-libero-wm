@@ -1,0 +1,82 @@
+{
+  "decision_version": "semantic-value-distillation-final-v1",
+  "created_at": "2026-10-03",
+  "start_tag": "semantic-value-distillation-start",
+  "preregistration_commit": "416f629",
+  "preflight_amendment_commit": "4b19a04",
+  "calibration_freeze_commit": "faeb366",
+  "numerical_evaluation_freeze_commit": "571d60f",
+  "frozen_privileged_teacher": "T1-M2",
+  "frozen_calibration_representative": "S2",
+  "selected_semantic_value_student": "none",
+  "complete_gate": false,
+  "final_labels": [
+    "SEMANTIC_VALUE_DISTILLATION_BLOCKED",
+    "VALUE_STUDENT_LANGUAGE_INSENSITIVE",
+    "VALUE_STUDENT_VISUAL_INFORMATION_INSUFFICIENT",
+    "FROZEN_VISUAL_VALUE_INFORMATION_INSUFFICIENT",
+    "VALUE_STUDENT_SCENE_SHORTCUT"
+  ],
+  "authorization": "BLOCK_REAL_CANDIDATE_VALUE_BRIDGE",
+  "continuing_blocks": [
+    "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+    "BLOCK_SPATIAL_WM_PROTOTYPE"
+  ],
+  "controller_authorization": false,
+  "real_candidate_bridge_executed": false,
+  "held_out_primary": {
+    "ordinary_local_non_tie_accuracy": 0.698104548166506,
+    "ordinary_local_accuracy_ci95": [0.6813816426681111, 0.7146086243859688],
+    "ordinary_tasks_above_60pct": 9,
+    "teacher_change_agreement": 0.6399222988813719,
+    "teacher_change_agreement_ci95": [0.6259299271039183, 0.653548779835491],
+    "language_positive_tasks": 10,
+    "true_reversal_accuracy": 0.18569674647022713,
+    "true_reversal_accuracy_ci95": [0.14204494904561632, 0.2357560528103319],
+    "tie_mean_abs_from_half": 0.09225185489514905,
+    "same_referent_mean_abs_change": 0.09551871398618131,
+    "semantic_match_cross_demo_mean_abs_from_half": 0.1680834028751907,
+    "semantic_difference_cross_demo_accuracy": 0.553125,
+    "cycle_rate": 0.0375,
+    "primary_minus_image_counterfactual_agreement": 0.6399222988813719,
+    "primary_minus_image_ci95": [0.6259299271039183, 0.653548779835491]
+  },
+  "failed_gates": [
+    "local_non_tie_accuracy: 0.6981 < 0.70",
+    "language_change_agreement: 0.6399 < 0.70",
+    "semantic_match_cross_demo: 0.1681 > 0.15"
+  ],
+  "passed_boundary_checks": {
+    "t1_hash_unchanged": true,
+    "all_student_inputs_deployable": true,
+    "all_reported_numeric_arrays_finite": true,
+    "forbidden_numeric_access_count": 0,
+    "forbidden_metadata_access_count": 0
+  },
+  "artifact_sha256": {
+    "configs/semantic_value_distillation_protocol.json": "78324f900bf9911e9d691bdabe082a25d6d8f26babc5f5a2f942bb5a092b30fd",
+    "configs/semantic_student_architectures.json": "dd11f6526964692ab762e2dac5b7a5785afb59bd0a32a79f9991aabac9711990",
+    "configs/semantic_pair_sampler.json": "aa88e8c2f657eaee79611bd22e77ee56f1a50b5ec7392a1bb5b8a998210db595",
+    "configs/semantic_student_selection.json": "dd77c76a37130cd05c64dd480e68459b8ca09e2035a4be050d6916e4f9242fe7",
+    "results/semantic_value_calibration.json": "527c8e2639104240a7a7af19c5689fd9306e9b9e40ab855d8f46b9b20a1028fa",
+    "results/semantic_value_calibration_freeze.json": "b8b1dc819c536f2d8ed58e19d58f270c25e0cdf54a4eef1d796fbbc6e117ce11",
+    "results/semantic_value_evaluation.json": "3eb4796d15892cfd77a941aa8a2e92dcfa2ac9752c454fd8d6940344aed100f8",
+    "results/semantic_language_counterfactual_eval.json": "20fa4b9710530a060fcb78e185f6f3416a82cdc79d873e1d827bc44d90677e59",
+    "results/semantic_tie_eval.json": "f43274bbde43ed8e4d20f654c5965320248599a1bfb95f950f92f17eb89ac006",
+    "results/semantic_cross_demo_controls.json": "57fa0e9956b2c918b7f1d98d1669876719f572787df3a3593c092ae23accc8c8",
+    "results/semantic_value_distillation/calibration_weights.pt": "cfe76ba01d71ae46ed2ca25eeeba392f92f914145c2f39ad4d1d71dd937cec13",
+    "results/semantic_value_distillation/calibration_sidecar.npz": "40d1f23179d723e541e5e8c5c2a7ee996734193bdb15a1eeaf23670a724f5bbe",
+    "results/semantic_value_distillation/evaluation_sidecar.npz": "a7ad95443dac1209c33ab3abf465c43162030930e826370e7718af02aa88e7d1",
+    "results/semantic_value_distillation/calibration_access_ledger.json": "f5428019bff3f2f2e54718ccc896a2a20bea07c86d033e16e28c67621c67b6c0",
+    "results/semantic_value_distillation/evaluation_access_ledger.json": "46100ec153baa52b7020c26b4e99f8d202651214aa882187b54a6ebfbfc87465",
+    "src/data/semantic_feature_guard.py": "76ce1e179b0ed293f63e79b919659be94f6d5468a63477d6d16410a29624f2bb",
+    "src/probes/semantic_value_distillation.py": "4683c16f69b2eaef6a9a7bade61dddb7595be76de7f417c9cd4913135662302f",
+    "scripts/run_semantic_value_distillation.py": "a387d5fe9fcc0d4b3ad83f317117793e80a037c909b017882f54fcb391d20773"
+  },
+  "verification": {
+    "focused_tests_passed": 19,
+    "repository_tests_passed": 297,
+    "repository_warnings": 21,
+    "repository_tests_failed": 0
+  }
+}
