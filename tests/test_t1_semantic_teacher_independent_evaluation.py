@@ -109,3 +109,24 @@ def test_all_mechanical_gates_pass_without_forbidden_access():
     assert ledger["forbidden_access_count"] == 0
     assert all(path.endswith("/states") for path in ledger["numeric_datasets_accessed"])
     assert not any(f"demo_{demo}" in path for demo in range(40, 50) for path in ledger["numeric_datasets_accessed"])
+
+
+def test_final_decision_mapping_and_artifact_hashes_are_exact():
+    decision = _load("results/t1_semantic_teacher_final_decision.json")
+    assert decision["complete_gate"] is True
+    assert decision["authorization"] == "GO_VALUE_DISTILLATION"
+    assert "SEMANTIC_GOAL_PROGRESS_TEACHER_VALID" in decision["final_labels"]
+    assert decision["value_distillation_executed"] is False
+    assert decision["controller_authorization"] is False
+    for path, expected in decision["artifact_sha256"].items():
+        assert _sha256(ROOT / path) == expected
+
+
+def test_report_contains_the_required_structure_and_answers():
+    report = (ROOT / "docs/t1_semantic_goal_progress_teacher_full_evaluation.md").read_text()
+    for section in range(1, 31):
+        assert f"## {section}." in report
+    for question in range(1, 21):
+        assert f"**Q{question} " in report
+    assert "GO_VALUE_DISTILLATION" in report
+    assert "Value distillation executed: `false`" in report

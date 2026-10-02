@@ -1,0 +1,61 @@
+{
+  "decision_version": "t1-semantic-teacher-independent-final-v1",
+  "created_at": "2026-10-02",
+  "preregistration_commit": "c8beb45",
+  "calibration_freeze_commit": "33a0f73",
+  "numerical_evaluation_freeze_commit": "0fe78e0",
+  "selected_margin": "M2",
+  "selected_teacher": "T1",
+  "conditional_t2_activated": false,
+  "complete_gate": true,
+  "final_labels": [
+    "ROBUST_SAME_SCENE_GROUNDING_VALID",
+    "ROBUST_REFERENT_MARGIN_VALID",
+    "COUNTERFACTUAL_GROUNDING_SET_VALID",
+    "OFFICIAL_GOAL_MARGIN_VALID",
+    "SEMANTIC_LOCAL_PROGRESS_SIGNAL_VALID",
+    "SEMANTIC_LANGUAGE_COUNTERFACTUAL_VALID",
+    "SEMANTIC_ROBOT_PHASE_INVARIANCE_SUPPORTED",
+    "SEMANTIC_GOAL_PROGRESS_TEACHER_VALID"
+  ],
+  "authorization": "GO_VALUE_DISTILLATION",
+  "continuing_blocks": [
+    "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+    "BLOCK_SPATIAL_WM_PROTOTYPE"
+  ],
+  "value_distillation_executed": false,
+  "controller_authorization": false,
+  "held_out_summary": {
+    "t0_local_non_tie": 0.05140335955772911,
+    "t1_local_non_tie": 0.5791250265787795,
+    "t1_local_non_tie_ci95": [0.5679571497149231, 0.5904347243513807],
+    "usable_tasks": 10,
+    "material_language_pair_change": 0.2958581054300436,
+    "material_language_pair_change_ci95": [0.2846525382834251, 0.3062013157456505],
+    "material_language_tasks": 9,
+    "preference_reversal": 0.012913198573127229,
+    "proprio_probe_accuracy": 0.8001285052090504,
+    "proprio_probe_accuracy_ci95": [0.7888563370347347, 0.8118550090463051],
+    "proprio_probe_auroc": 0.831659580270334,
+    "forbidden_access_count": 0
+  },
+  "artifact_sha256": {
+    "configs/t1_semantic_teacher_protocol.json": "c47748302715abdad675341ba08da3d2345d0c2ef9e08029466c4b9daf505261",
+    "configs/official_goal_margin.json": "82eef389548472471e4ad00e2d34aad67650d06ec9eb632f46a4df0f891185b7",
+    "configs/t1_teacher_frozen_definition.json": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f",
+    "results/t1_teacher_calibration.json": "432d414f831632c8f5aefaaab5860a8f4a53d62f4da7b6eaac03b3e890e22f24",
+    "results/t1_teacher_evaluation.json": "063037d1dc8361485ff394997f31a545cddffb438cd871f6a0a608a7ae351ffa",
+    "results/t1_language_counterfactual.json": "a64d430b731f0c56f34250c69f05bd66462ba5feb91fb2014b98a45124aa1473",
+    "results/t1_robot_shortcut_controls.json": "73e7cba2d25fd6e511a457f78b547710be577e1bf69f623cb5f48ffdec44b61c",
+    "results/t1_semantic_teacher/calibration_sidecar.npz": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604",
+    "results/t1_semantic_teacher/evaluation_sidecar.npz": "cd6ce906f83753561f7464f4fb58fadf02576e891dd70ad2aee403197a39b06a",
+    "results/t1_semantic_teacher/calibration_access_ledger.json": "39b0f612af4f35e8bd5de4526953d9a7800e41c05f0e46ad878481e93cd1768e",
+    "results/t1_semantic_teacher/evaluation_access_ledger.json": "07caed1db60b0d015817ec72ae305bd12819779c85a33a77caeb8ea41589442d"
+  },
+  "verification": {
+    "focused_tests_passed": 16,
+    "repository_tests_passed": 278,
+    "repository_warnings": 21,
+    "repository_tests_failed": 0
+  }
+}
