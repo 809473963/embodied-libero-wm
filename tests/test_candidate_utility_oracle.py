@@ -111,3 +111,46 @@ def test_registered_roots_and_protocol_are_balanced_and_frozen():
     assert not protocol['scope']['learned_controller']
     for name,digest in protocol['frozen_files'].items():
         assert sha256(root/name) == digest
+
+
+def test_branch_budget_and_policy_input_boundary(monkeypatch):
+    import sys
+    import types
+    from scripts.collect_candidate_utility_oracle import run_batch
+    natural = ('agentview_image','robot0_eef_pos','robot0_gripper_qpos','robot0_joint_pos')
+    monkeypatch.setitem(sys.modules,'scripts.evaluate_c0_all',types.SimpleNamespace(
+        policy_observation=lambda obs:{k:obs[k] for k in natural}))
+    reference={k:np.zeros(3) for k in (*natural,'sim_state')}
+    reference['diagnostic']={'on':False,'m2':0.0}
+    class Pool:
+        steps={}
+        actions={}
+        def call(self, requests):
+            result={}
+            for slot,request in requests.items():
+                if request['operation']=='initialize':
+                    self.steps[slot]=len(request['prefix'])
+                    self.actions[slot]=[]
+                    result[slot]=reference
+                elif request['operation']=='step':
+                    self.steps[slot]+=len(request['actions'])
+                    self.actions[slot].append(request['actions'].copy())
+                    result[slot]=reference
+                else:
+                    result[slot]={'final_step':self.steps[slot],'success':False}
+            return result
+    class Policy:
+        def plan_batch(self, observations, languages):
+            assert len(observations)==len(languages)==8
+            assert all(set(obs)==set(natural) for obs in observations)
+            return np.full((8,8,7),.1,np.float32)
+    pool=Pool()
+    candidates=np.full((64,8,7),.2,np.float32)
+    rows,_=run_batch(pool,Policy(),{'bddl_path':'unused','instruction':'goal'},
+                    {'seed':1,'prefix_steps':96},np.zeros(3),np.zeros((96,7)),reference,candidates,[3,5],300)
+    assert [r['candidate_id'] for r in rows]==[3,5]
+    assert [r['final_step'] for r in rows]==[300,300]
+    for actions in pool.actions.values():
+        assert np.array_equal(actions[0],candidates[3])
+        assert sum(len(a) for a in actions)==204
+        assert len(actions[-1])==4

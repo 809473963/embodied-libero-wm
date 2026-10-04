@@ -1,0 +1,89 @@
+{
+  "protocol_sha256": "de6e77d0405a370f397e362c8fe3d6d52c9ef6fa5cd6077c93fc81a64cfbcb7e",
+  "pass": true,
+  "roots": [
+    {
+      "root_id": "task00_init31",
+      "prefix_steps": 0,
+      "identities": [
+        {
+          "observable_exact": {
+            "agentview_image": true,
+            "robot0_eef_pos": true,
+            "robot0_gripper_qpos": true,
+            "robot0_joint_pos": true
+          },
+          "state_max_abs": 0.0,
+          "pass": true
+        },
+        {
+          "observable_exact": {
+            "agentview_image": true,
+            "robot0_eef_pos": true,
+            "robot0_gripper_qpos": true,
+            "robot0_joint_pos": true
+          },
+          "state_max_abs": 0.0,
+          "pass": true
+        },
+        {
+          "observable_exact": {
+            "agentview_image": true,
+            "robot0_eef_pos": true,
+            "robot0_gripper_qpos": true,
+            "robot0_joint_pos": true
+          },
+          "state_max_abs": 0.0,
+          "pass": true
+        }
+      ],
+      "a0_action_hash_equal": true,
+      "a0_outcome_equal": true,
+      "steps_per_branch": 300,
+      "observed_done_contract": "returned done equals check_success; underlying horizon is 1000; continue to300"
+    },
+    {
+      "root_id": "task07_init31",
+      "prefix_steps": 96,
+      "identities": [
+        {
+          "observable_exact": {
+            "agentview_image": true,
+            "robot0_eef_pos": true,
+            "robot0_gripper_qpos": true,
+            "robot0_joint_pos": true
+          },
+          "state_max_abs": 0.0,
+          "pass": true
+        },
+        {
+          "observable_exact": {
+            "agentview_image": true,
+            "robot0_eef_pos": true,
+            "robot0_gripper_qpos": true,
+            "robot0_joint_pos": true
+          },
+          "state_max_abs": 0.0,
+          "pass": true
+        },
+        {
+          "observable_exact": {
+            "agentview_image": true,
+            "robot0_eef_pos": true,
+            "robot0_gripper_qpos": true,
+            "robot0_joint_pos": true
+          },
+          "state_max_abs": 0.0,
+          "pass": true
+        }
+      ],
+      "a0_action_hash_equal": true,
+      "a0_outcome_equal": true,
+      "steps_per_branch": 300,
+      "observed_done_contract": "returned done equals check_success; underlying horizon is 1000; continue to300"
+    }
+  ],
+  "inference_batch_size": 8,
+  "wall_seconds": 106.3673054289975,
+  "scientific_selection_performed": false
+}

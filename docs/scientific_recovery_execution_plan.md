@@ -4,7 +4,7 @@
 
 依据：[Full Project Scientific & Strategic Audit](full_project_scientific_strategic_audit.md)。
 
-状态：**方案设计完成，尚未执行。本文不是已冻结的实验 protocol，不改变任何既有运行授权。**
+状态：**用户于2026-10-04明确要求“开始执行”；阶段1协议已冻结，技术preflight通过，正式收集已启动。** 本文保留原设计内容；当前执行定义以[独立protocol](../configs/candidate_utility_oracle_protocol.json)为准，历史运行授权不变。实时进度见[运行状态](../results/candidate_utility_oracle/runtime.json)。
 
 ## 1. 解决方案总览
 
