@@ -1,0 +1,248 @@
+{
+  "date": "2026-10-04",
+  "scope": "post-hoc audit of archived calibration outputs, not a new confirmatory experiment",
+  "access": {
+    "hdf5_opened": false,
+    "simulator_executed": false,
+    "model_trained": false,
+    "development_sidecar_opened": false,
+    "raw_demo_ids": [
+      31,
+      32,
+      33,
+      34
+    ],
+    "I": {
+      "opened_demo_ids": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "forbidden_numeric_access": 0,
+      "forbidden_metadata_access": 0
+    },
+    "E": {
+      "opened_demo_ids": [
+        31,
+        32,
+        33,
+        34
+      ],
+      "forbidden_numeric_access": 0,
+      "forbidden_metadata_access": 0
+    }
+  },
+  "sample_counts": {
+    "fit": {
+      "frames": 3756,
+      "episodes": 30,
+      "tasks": 10,
+      "note": "episode count is not a verified count of unique independent scene layouts"
+    },
+    "selection": {
+      "frames": 1288,
+      "episodes": 10,
+      "tasks": 10,
+      "note": "episode count is not a verified count of unique independent scene layouts"
+    },
+    "calibration": {
+      "frames": 5044,
+      "episodes": 40,
+      "tasks": 10,
+      "note": "episode count is not a verified count of unique independent scene layouts"
+    }
+  },
+  "cross_controls": {
+    "matched": {
+      "rows": 32,
+      "unique_unordered_pairs": 16,
+      "task_row_counts": {
+        "0": 0,
+        "1": 2,
+        "2": 18,
+        "3": 2,
+        "4": 0,
+        "5": 8,
+        "6": 0,
+        "7": 0,
+        "8": 2,
+        "9": 0
+      },
+      "endpoint_demo_ids": [
+        31,
+        34
+      ],
+      "two_unseen_endpoints_rows": 0,
+      "separate_endpoint_referent_label_mismatches": 0,
+      "absolute_margin_difference_quantiles": [
+        0.0003957114055843647,
+        0.0004556713893926201,
+        0.0004556714105721227,
+        0.0025891717223529426,
+        0.003794294399165704
+      ],
+      "same_goal_rows": 32
+    },
+    "different": {
+      "rows": 320,
+      "unique_unordered_pairs": 160,
+      "task_row_counts": {
+        "0": 32,
+        "1": 32,
+        "2": 32,
+        "3": 32,
+        "4": 32,
+        "5": 32,
+        "6": 32,
+        "7": 32,
+        "8": 32,
+        "9": 32
+      },
+      "endpoint_demo_ids": [
+        31,
+        34
+      ],
+      "two_unseen_endpoints_rows": 0,
+      "separate_endpoint_referent_label_mismatches": 0,
+      "absolute_margin_difference_quantiles": [
+        3.1728706029549025e-05,
+        0.06224566269465627,
+        0.14718426985098265,
+        0.25361467701187257,
+        1.1121710094092538
+      ],
+      "same_goal_rows": 266
+    }
+  },
+  "metric_recomputation": {
+    "I": {
+      "L0": {
+        "ordinary": 0.602493321460374,
+        "teacher_change": 0.5391007884082676,
+        "M2_cross": 0.3609022556390977
+      },
+      "L3": {
+        "ordinary": 0.616206589492431,
+        "teacher_change": 0.5784146601321116,
+        "M2_cross": 0.3458646616541353
+      },
+      "L6": {
+        "ordinary": 0.6746215494211932,
+        "teacher_change": 0.6407948007670999,
+        "M2_cross": 0.5263157894736842
+      },
+      "L9": {
+        "ordinary": 0.6885129118432769,
+        "teacher_change": 0.669774131685489,
+        "M2_cross": 0.3533834586466165
+      },
+      "L12-pre": {
+        "ordinary": 0.6245770258236866,
+        "teacher_change": 0.5972725335606222,
+        "M2_cross": 0.3458646616541353
+      },
+      "L12-postLN": {
+        "ordinary": 0.6657168299198575,
+        "teacher_change": 0.6236415938632005,
+        "M2_cross": 0.3684210526315789
+      },
+      "L12-proj": {
+        "ordinary": 0.6560997328584149,
+        "teacher_change": 0.6201789899850841,
+        "M2_cross": 0.41353383458646614
+      }
+    },
+    "E": {
+      "DINOv2-S14": {
+        "ordinary": 0.6172751558325913,
+        "teacher_change": 0.57969316002557,
+        "M2_cross": 0.3233082706766917
+      },
+      "SigLIP-B16-224": {
+        "ordinary": 0.6404274265360641,
+        "teacher_change": 0.6030257830811847,
+        "M2_cross": 0.3007518796992481
+      }
+    }
+  },
+  "metric_tolerances": {
+    "epsilon_M2": 0.004065508647683736,
+    "epsilon_equivalent_single_active_slack_m": 0.00012196525943051208,
+    "cross_clear_margin_M2": 0.05,
+    "cross_clear_equivalent_single_active_slack_m": 0.0015
+  },
+  "referent_language_pair_contingency": {
+    "inputs": "unordered instruction identities only; no pixels, task ID, or state input",
+    "rule": "demo31--33 majority label per language pair; tied vote -> false; unseen -> global majority",
+    "selection_rows": 2176,
+    "unique_selection_episode_language_pairs": 272,
+    "selection_accuracy": 0.6948529411764706,
+    "unseen_language_pair_rows": 0,
+    "interpretation": "post-hoc negative control only; does not prove the visual probes ignore images"
+  },
+  "candidate_archived_summary": {
+    "sample_count": 4563,
+    "relative_mse_gain": 0.6809569508718271,
+    "relative_mse_gain_ci95": [
+      0.6621310328492337,
+      0.6982144324231148
+    ],
+    "dimension_oracle_relative_gain": {
+      "translation": 0.3195192131186892,
+      "rotation": 0.27844954792811755,
+      "gripper": 0.9506874158490286
+    },
+    "winner_category_fraction": {
+      "a0": 0.023668639053254437,
+      "continuous": 0.5798816568047337,
+      "structured_gripper": 0.39644970414201186
+    },
+    "diversity": {
+      "pairwise_rms_action": 0.3284659864839829,
+      "by_dimension": {
+        "translation": 0.10122568107104568,
+        "rotation": 0.04077168099715913,
+        "gripper": 0.8482348875750034
+      },
+      "per_step_rms": [
+        0.3364549272550643,
+        0.33188822676398655,
+        0.32668212420836257,
+        0.32613665603659464,
+        0.32518930088167136,
+        0.32467088437361086,
+        0.32367916586844586,
+        0.3327968230065427
+      ],
+      "effective_rank": 3.8861660991530678,
+      "covariance_spectrum_top10_fraction": [
+        0.5963825650067343,
+        0.24344170962097267,
+        0.046415528974622824,
+        0.0269705122588772,
+        0.01683909953047379,
+        0.011599563774246981,
+        0.008021329638251171,
+        0.007288663350299296,
+        0.0035604464994582375,
+        0.0035494730820394846
+      ]
+    },
+    "default_raw_action_mse": 0.028484905697455005,
+    "oracle_raw_action_mse": 0.00908791116784451
+  },
+  "inputs_sha256": {
+    "src/probes/semantic_value_distillation.py": "4683c16f69b2eaef6a9a7bade61dddb7595be76de7f417c9cd4913135662302f",
+    "results/t1_semantic_teacher/calibration_sidecar.npz": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604",
+    "configs/t1_teacher_frozen_definition.json": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f",
+    "results/clip_internal_layer_calibration.json": "b75cd7776d71d108b5baa516457a1e080e7b94134f4f5560b9c4ed14a8b19d85",
+    "results/clip_internal_layer/calibration_sidecar.npz": "8720b48d3ff7cc466180044bd484edb956802b4e3de4f72fcda73f0aef9c4faa",
+    "results/alternate_encoder_calibration.json": "78212ea0d833074560585d8855cbd6b75d9d36586802f74bf2a4d75f08ef828d",
+    "results/alternate_frozen_encoder/calibration_sidecar.npz": "c8c46eeb05eaa6ddad491df7fb60958292878765bae400825ec6404c79ae83cb",
+    "results/expanded_candidate_contract_restart/diagnosis.json": "899c9ae6d0ed9c922a87a7aa162834ca967c07ecd3e6978afa6b5f98448c74a4",
+    "results/clip_internal_layer/access_ledger.json": "358db41b17396221d7b12ecd820c5ca53834125e0387e89a13637ac31de75764",
+    "results/alternate_frozen_encoder/access_ledger.json": "2176c08d139e89407b531cca9d17fcfb828c2a312bee6e15b91d147b3e4465ef"
+  },
+  "script_sha256": "a3043909721a0f4ad06227e1e0d8fbb042bfcc6b6d8f434d15bd73ecab65f59d"
+}
