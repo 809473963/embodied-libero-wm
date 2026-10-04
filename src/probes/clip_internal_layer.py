@@ -21,10 +21,18 @@ LAYERS = ("L0", "L3", "L6", "L9", "L12-pre", "L12-postLN", "L12-proj")
 READERS = ("P0", "P1")
 
 
-def fixed_patch_coordinates() -> np.ndarray:
-    axis = 2.0 * (np.arange(7, dtype=np.float32) + 0.5) / 7.0 - 1.0
+def fixed_patch_coordinates(grid_size: int = 7) -> np.ndarray:
+    grid_size = int(grid_size)
+    axis = 2.0 * (np.arange(grid_size, dtype=np.float32) + 0.5) / grid_size - 1.0
     yy, xx = np.meshgrid(axis, axis, indexing="ij")
-    return np.stack((xx, yy), axis=-1).reshape(49, 2).astype(np.float32)
+    return np.stack((xx, yy), axis=-1).reshape(grid_size * grid_size, 2).astype(np.float32)
+
+
+def coordinates_for_token_count(token_count: int) -> np.ndarray:
+    grid_size = int(round(np.sqrt(int(token_count))))
+    if grid_size * grid_size != int(token_count):
+        raise ValueError("spatial token count is not a square grid")
+    return fixed_patch_coordinates(grid_size)
 
 
 def set_deterministic(seed: int) -> None:
@@ -101,8 +109,10 @@ class P1StateEncoder(nn.Module):
         coordinates: torch.Tensor,
         return_attention: bool = False,
     ) -> tuple[torch.Tensor, torch.Tensor | None]:
-        if tokens.ndim != 3 or tokens.shape[1] != 49 or tokens.shape[2] != self.token_dim:
+        if tokens.ndim != 3 or tokens.shape[2] != self.token_dim:
             raise ValueError("unexpected spatial-token tensor")
+        if coordinates.shape != (tokens.shape[1], 2):
+            raise ValueError("coordinate grid does not match spatial tokens")
         coordinate_batch = coordinates.unsqueeze(0).expand(len(tokens), -1, -1)
         patch = torch.cat((tokens, coordinate_batch), dim=-1)
         key, value = self.key(patch), self.value(patch)
@@ -117,7 +127,7 @@ class P1StateEncoder(nn.Module):
         mean_value = value.mean(dim=1)
         center = torch.einsum("bp,pd->bd", attention, coordinates)
         entropy = -(attention * torch.log(attention.clamp_min(1.0e-12))).sum(dim=-1, keepdim=True)
-        entropy = entropy / float(np.log(49.0))
+        entropy = entropy / float(np.log(tokens.shape[1]))
         state = torch.cat((slot, mean_value, center, entropy), dim=-1)
         return state, attention if return_attention else None
 
@@ -238,7 +248,7 @@ def train_pair_reader(
     loader = _loader(pairs.a, pairs.b, pairs.language_id, target,
                      batch_size=batch_size, seed=seed)
     language_tensor = torch.from_numpy(standardized_language(language, statistics))
-    coordinates = torch.from_numpy(fixed_patch_coordinates()).to(device)
+    coordinates = torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device)
     model.train()
     for _ in range(epochs):
         for a, b, language_id, y in loader:
@@ -261,7 +271,7 @@ def predict_pair_logits(
 ) -> np.ndarray:
     model = model.to(device).eval()
     language_tensor = torch.from_numpy(standardized_language(language, statistics))
-    coordinates = torch.from_numpy(fixed_patch_coordinates()).to(device)
+    coordinates = torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device)
     output: list[np.ndarray] = []
     for start in range(0, len(pairs.a), batch_size):
         stop = min(start + batch_size, len(pairs.a))
@@ -284,7 +294,7 @@ def attention_for(
 ) -> np.ndarray:
     model = model.to(device).eval()
     language_tensor = torch.from_numpy(standardized_language(language, statistics))
-    coordinates = torch.from_numpy(fixed_patch_coordinates()).to(device)
+    coordinates = torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device)
     output: list[np.ndarray] = []
     for start in range(0, len(frame), batch_size):
         stop = min(start + batch_size, len(frame))
@@ -300,7 +310,7 @@ def attention_for(
 
 
 def attention_diagnostics(original: np.ndarray, alternate: np.ndarray) -> dict[str, float]:
-    coordinates = fixed_patch_coordinates()
+    coordinates = coordinates_for_token_count(original.shape[1])
     original_center = np.einsum("bp,pd->bd", original, coordinates)
     alternate_center = np.einsum("bp,pd->bd", alternate, coordinates)
     total_variation = 0.5 * np.abs(original - alternate).sum(axis=-1)
@@ -325,7 +335,7 @@ def train_referent_probe(
     loader = _loader(frame, language_a, language_b, label.astype(np.float32),
                      batch_size=batch_size, seed=seed)
     language_tensor = torch.from_numpy(standardized_language(language, statistics))
-    coordinates = torch.from_numpy(fixed_patch_coordinates()).to(device)
+    coordinates = torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device)
     for _ in range(epochs):
         model.train()
         for index, la, lb, y in loader:
@@ -346,7 +356,7 @@ def predict_referent_logits(
 ) -> np.ndarray:
     model = model.to(device).eval()
     language_tensor = torch.from_numpy(standardized_language(language, statistics))
-    coordinates = torch.from_numpy(fixed_patch_coordinates()).to(device)
+    coordinates = torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device)
     output=[]
     for start in range(0, len(frame), batch_size):
         stop=min(start+batch_size,len(frame)); index=torch.from_numpy(frame[start:stop])
@@ -365,7 +375,7 @@ def train_m2_probe(
     optimizer=torch.optim.AdamW(model.parameters(),lr=1.0e-3,weight_decay=1.0e-4)
     target=((pairs.label.astype(np.float32)+1.0)/2.0).astype(np.float32)
     loader=_loader(pairs.a,pairs.b,pairs.language_id,target,batch_size=batch_size,seed=seed)
-    language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(fixed_patch_coordinates()).to(device)
+    language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device)
     for _ in range(epochs):
         model.train()
         for a,b,l,y in loader:
@@ -381,7 +391,7 @@ def predict_m2_logits(
     pairs: PairSet, statistics: LayerStatistics, device: torch.device,
     batch_size: int = 1024,
 ) -> np.ndarray:
-    model=model.to(device).eval(); language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(fixed_patch_coordinates()).to(device); output=[]
+    model=model.to(device).eval(); language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device); output=[]
     for start in range(0,len(pairs.a),batch_size):
         stop=min(start+batch_size,len(pairs.a)); a=torch.from_numpy(pairs.a[start:stop]); b=torch.from_numpy(pairs.b[start:stop]); l=torch.from_numpy(pairs.language_id[start:stop])
         output.append(model(_token_batch(tokens,a,statistics,device),_token_batch(tokens,b,statistics,device),language_tensor[l].to(device),coordinates).cpu().numpy())
@@ -398,7 +408,7 @@ def train_goal_probe(
     positives=max(float(label.sum()),1.0); negative=max(float(len(label)-label.sum()),1.0)
     pos_weight=torch.tensor(negative/positives,device=device)
     loader=_loader(frame,language_id,label.astype(np.float32),batch_size=batch_size,seed=seed)
-    language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(fixed_patch_coordinates()).to(device)
+    language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device)
     for _ in range(epochs):
         model.train()
         for index,l,y in loader:
@@ -414,7 +424,7 @@ def predict_goal_logits(
     frame: np.ndarray, language_id: np.ndarray, statistics: LayerStatistics,
     device: torch.device, batch_size: int = 1024,
 ) -> np.ndarray:
-    model=model.to(device).eval(); language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(fixed_patch_coordinates()).to(device); output=[]
+    model=model.to(device).eval(); language_tensor=torch.from_numpy(standardized_language(language,statistics)); coordinates=torch.from_numpy(coordinates_for_token_count(tokens.shape[1])).to(device); output=[]
     for start in range(0,len(frame),batch_size):
         stop=min(start+batch_size,len(frame)); index=torch.from_numpy(frame[start:stop]); l=torch.from_numpy(language_id[start:stop])
         output.append(model(_token_batch(tokens,index,statistics,device),language_tensor[l].to(device),coordinates).cpu().numpy())

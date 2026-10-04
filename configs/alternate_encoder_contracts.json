@@ -1,0 +1,60 @@
+{
+  "contract_version": "alternate-frozen-encoder-contracts-v1",
+  "created_at": "2026-10-04",
+  "status": "PREREGISTERED_BEFORE_STAGE_E_WEIGHT_DOWNLOAD_FEATURE_EXTRACTION_OR_TRAINING",
+  "resource_preflight": {
+    "existing_alternate_checkpoints": [],
+    "existing_huggingface_cache_before_preflight": ["openai/clip-vit-base-patch32"],
+    "installed_transformers": "4.21.1 (does not implement the selected DINOv2/SigLIP classes)",
+    "installed_timm": false,
+    "installed_open_clip": false,
+    "installed_safetensors": false,
+    "gpu": "NVIDIA GeForce RTX 4070 Laptop GPU, 8188 MiB",
+    "disk_free_before_download": "193 GiB",
+    "environment_policy": "install transformers==4.57.1, tokenizers==0.22.1, and safetensors==0.6.2 under ignored .cache/stage_e_python only; do not modify the project .venv",
+    "third_family": "disabled because no third checkpoint or loader is locally available and adding another stack is not justified"
+  },
+  "common_input": {
+    "source": "same upright unmodified 128x128 uint8 natural RGB",
+    "privileged_crop": false,
+    "mask_or_object_crop": false,
+    "augmentation": false,
+    "language": "unchanged frozen 512-D CLIP text projection"
+  },
+  "families": {
+    "DINOv2-S14": {
+      "repository": "facebook/dinov2-small",
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "license": "Apache-2.0",
+      "architecture": "Dinov2Model, ViT-S/14, 12 blocks, hidden 384",
+      "config_sha256": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "preprocessor_sha256": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "preprocessing": "convert RGB; bicubic resize shortest edge 256; center crop 224x224; rescale 1/255; ImageNet mean/std",
+      "token_source": "final Dinov2Model.last_hidden_state[:,1:,:] after model final layer norm; exclude CLS",
+      "spatial_shape": [16, 16],
+      "token_count": 256,
+      "dimension": 384
+    },
+    "SigLIP-B16-224": {
+      "repository": "google/siglip-base-patch16-224",
+      "revision": "7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed",
+      "license": "Apache-2.0",
+      "architecture": "SiglipVisionModel from the frozen SiglipModel checkpoint, ViT-B/16, hidden 768",
+      "config_sha256": "cd85b3d28829722820bcb89a2cfbb4160e55fd359249a3044da724166a8d9688",
+      "preprocessor_sha256": "d11ccb80f15d358a11bdb070e92e2d889005874b7db15823d5f10d9b2533b14a",
+      "preprocessing": "convert RGB; bicubic resize directly to 224x224; rescale 1/255; mean/std 0.5; no crop",
+      "token_source": "final SiglipVisionModel.last_hidden_state containing patch tokens only; no CLS token",
+      "spatial_shape": [14, 14],
+      "token_count": 196,
+      "dimension": 768
+    }
+  },
+  "freeze": {
+    "weights_trainable": false,
+    "encoder_adapter": false,
+    "LoRA": false,
+    "fine_tuning": false,
+    "persist": "float16 offline spatial token caches; reader arithmetic float32",
+    "coordinates": "native square-grid cell centers in [-1,1]^2"
+  }
+}

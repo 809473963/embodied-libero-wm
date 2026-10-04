@@ -1,0 +1,162 @@
+{
+  "protocol_version": "alternate-frozen-visual-encoder-audit-v1",
+  "created_at": "2026-10-04",
+  "status": "PREREGISTERED_BEFORE_STAGE_E_WEIGHT_DOWNLOAD_FEATURE_EXTRACTION_OR_TRAINING",
+  "objective": "Test a small fixed set of alternate frozen spatial visual backbones for language-conditioned T1-M2 value information after Stage I established a bounded frozen CLIP backbone limit.",
+  "authorization_basis": {
+    "stage_i_commit": "7efb7bb",
+    "stage_i_labels": [
+      "CLIP_INTERNAL_SPATIAL_REPRESENTATION_INSUFFICIENT",
+      "FROZEN_CLIP_BACKBONE_LIMIT_SUPPORTED"
+    ],
+    "stage_i_authorization": "GO_ALTERNATE_FROZEN_VISUAL_ENCODER_AUDIT",
+    "permitted_stage": "STAGE_E_ONLY_UNTIL_MATERIAL_GATE_IS_MECHANICALLY_RESOLVED"
+  },
+  "partitions": {
+    "fit_demo_ids": [31, 32, 33],
+    "selection_demo_ids": [34],
+    "stage_e_not_opened_demo_ids": [36, 37, 38, 39],
+    "historical_disabled": [30, 35],
+    "forbidden_including_metadata": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "frozen_teacher": {
+    "name": "T1-M2",
+    "definition_sha256": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f",
+    "resolver_sha256": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881",
+    "calibration_sidecar_sha256": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604",
+    "epsilon_goal": 0.004065508647683736,
+    "immutable": true
+  },
+  "visual": {
+    "contracts": "configs/alternate_encoder_contracts.json",
+    "families": ["DINOv2-S14", "SigLIP-B16-224"],
+    "third_family_disabled": true,
+    "same_original_rgb": true,
+    "trainable_encoder_parameters": 0
+  },
+  "reader": {
+    "family": "P1 language-conditioned single-slot pooling",
+    "architecture": "same 24-D key/value/query, 51-D state, and 64-unit antisymmetric pair head as Stage I",
+    "native_grid_coordinates": true,
+    "parameter_max": 150000,
+    "frozen_language": "same CLIP text [512]",
+    "global_encoder_baseline_disabled": "the immutable CLIP global R0 is the formal material baseline"
+  },
+  "training": {
+    "seed": 41,
+    "epochs": 30,
+    "batch_size": 512,
+    "effective_protocol_note": "smaller physical batch is fixed for both alternate encoders because native grids have 196/256 tokens; no gradient accumulation or data reduction",
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "pair_sampler": "configs/semantic_pair_sampler.json",
+    "temperature_grid": [0.25, 0.5, 1.0, 2.0, 4.0, 8.0],
+    "feature_standardization": "encoder-token mean/std fit on demo31--33 only; language standardization unchanged"
+  },
+  "validation": {
+    "ordinary": "all frozen demo34 T1 pairs with gap<=8",
+    "counterfactual": "all frozen demo34 correct/alternate language applications",
+    "cross_demo": "source demo34 against deterministic cyclic demo31 reference",
+    "cross_demo_points": 16,
+    "cross_demo_clear_margin_min": 0.05,
+    "metrics": [
+      "ordinary non-tie accuracy",
+      "teacher-changing language agreement",
+      "true reversal both-correct",
+      "tie deviation",
+      "same-referent mean change and false flips",
+      "cross-demo semantic-match deviation",
+      "cross-demo semantic-difference accuracy",
+      "referent-change, M2-ordering, and official-goal probes"
+    ]
+  },
+  "diagnostic_probes": {
+    "definition": "exact same independently trained referent-change, scalar M2, and official-goal P1 probes as Stage I",
+    "epochs": 20,
+    "batch_size": 512,
+    "seed": 73,
+    "selection_authority": false
+  },
+  "baseline": {
+    "name": "immutable frozen global CLIP R0",
+    "ordinary": 0.6737310774710596,
+    "teacher_change": 0.6162902194758151,
+    "true_reversal": 0.225,
+    "same_referent_mean_change": 0.10149623467898156,
+    "same_referent_false_flip": 0.25822205736894166,
+    "tie_mean": 0.10515338590319513,
+    "cross_match": 0.28293959162002474,
+    "cross_difference": 0.41875
+  },
+  "material_gate": {
+    "teacher_change_increment_min_points": 5.0,
+    "and_at_least_one": {
+      "cross_demo_difference_increment_min_points": 7.0,
+      "cross_demo_match_mean_abs_improvement_min": 0.03
+    },
+    "ordinary_accuracy_max_regression_points": 2.0,
+    "all_required": true
+  },
+  "selection": {
+    "lexicographic": [
+      "maximize teacher-changing language agreement",
+      "maximize cross-demo semantic-difference accuracy",
+      "minimize cross-demo semantic-match deviation",
+      "maximize ordinary accuracy",
+      "minimize same-referent mean change",
+      "minimize memory and scoring cost",
+      "prefer simpler frozen family"
+    ],
+    "raw_probe_cannot_select": true
+  },
+  "decision_mapping": {
+    "pass_labels": ["ALTERNATE_FROZEN_VISUAL_ENCODER_VALID"],
+    "pass_authorization": "GO_SEMANTIC_VALUE_REDISTILLATION",
+    "fail_labels": [
+      "FROZEN_VISUAL_BACKBONE_AUDIT_BLOCKED",
+      "NATURAL_VISUAL_SEMANTIC_INFORMATION_UNRESOLVED"
+    ],
+    "fail_authorizations": [
+      "BLOCK_SEMANTIC_VALUE_REDISTILLATION",
+      "BLOCK_REAL_CANDIDATE_VALUE_BRIDGE"
+    ],
+    "continuing_blocks": [
+      "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ],
+    "controller_authorization": false
+  },
+  "frozen_files": [
+    {"path": "configs/t1_teacher_frozen_definition.json", "sha256": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f"},
+    {"path": "configs/robust_grounding_frozen_resolver.json", "sha256": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881"},
+    {"path": "results/t1_semantic_teacher/calibration_sidecar.npz", "sha256": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604"},
+    {"path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5", "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"},
+    {"path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json", "sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc"},
+    {"path": "configs/semantic_pair_sampler.json", "sha256": "aa88e8c2f657eaee79611bd22e77ee56f1a50b5ec7392a1bb5b8a998210db595"},
+    {"path": "results/clip_internal_layer_calibration.json", "sha256": "b75cd7776d71d108b5baa516457a1e080e7b94134f4f5560b9c4ed14a8b19d85"},
+    {"path": "results/clip_internal_information_probes.json", "sha256": "9e86960a8dc490b05bb8165e4b2928f3cdecdd1c4c0a25e73d322fe4144f1b78"},
+    {"path": "results/clip_internal_layer_final_decision.json", "sha256": "46194f520488fe1416cf8e0d5c11361364c82eec8efbecd7e483f6856312eede"}
+  ],
+  "outputs": {
+    "feature_directory": "results/alternate_frozen_encoder/features",
+    "feature_manifest": "results/alternate_encoder_feature_manifest.json",
+    "access_ledger": "results/alternate_frozen_encoder/access_ledger.json",
+    "weights": "results/alternate_frozen_encoder/calibration_weights.pt",
+    "sidecar": "results/alternate_frozen_encoder/calibration_sidecar.npz",
+    "calibration": "results/alternate_encoder_calibration.json",
+    "information_probes": "results/alternate_encoder_information_probes.json",
+    "decision": "results/alternate_encoder_final_decision.json",
+    "report": "docs/alternate_frozen_visual_encoder_audit.md"
+  },
+  "forbidden": [
+    "open demo36--39 in Stage E",
+    "read or enumerate demo40--49",
+    "change T1-M2, G2, epsilon, pair labels, split, or counterfactuals",
+    "fine-tune any encoder, LoRA, or insert an encoder adapter",
+    "change the CLIP text representation",
+    "select by raw privileged probe alone",
+    "run Stage V before an alternate representation pass",
+    "run real candidates, World Model, reranker, controller, or task success"
+  ]
+}
