@@ -263,7 +263,9 @@ def load_encoder(family: str, contract: dict[str,Any], device: torch.device) -> 
     if not snapshot.is_dir(): raise FileNotFoundError(snapshot)
     if sha256(snapshot/"config.json") != row["config_sha256"]: raise RuntimeError(f"{family} config hash mismatch")
     if sha256(snapshot/"preprocessor_config.json") != row["preprocessor_sha256"]: raise RuntimeError(f"{family} preprocessor hash mismatch")
-    processor=AutoImageProcessor.from_pretrained(snapshot,local_files_only=True)
+    processor=AutoImageProcessor.from_pretrained(
+        snapshot, local_files_only=True, use_fast=False
+    )
     if family=="DINOv2-S14": model=AutoModel.from_pretrained(snapshot,local_files_only=True)
     else: model=SiglipVisionModel.from_pretrained(snapshot,local_files_only=True)
     model=model.to(device).eval()

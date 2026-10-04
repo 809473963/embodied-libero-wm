@@ -46,6 +46,7 @@ def test_stage_e_protocol_is_bounded_frozen_and_calibration_only() -> None:
     assert protocol["visual"]["third_family_disabled"] is True
     assert set(contracts["families"]) == {"DINOv2-S14", "SigLIP-B16-224"}
     assert contracts["freeze"]["weights_trainable"] is False
+    assert "use_fast=false" in contracts["processor_implementation"]
     assert protocol["frozen_teacher"]["immutable"] is True
     assert protocol["reader"]["parameter_max"] == 150_000
     assert protocol["material_gate"] == {
