@@ -1,0 +1,359 @@
+{
+  "schema_version": 1,
+  "stage": "I",
+  "partition": {
+    "fit": [
+      31,
+      32,
+      33
+    ],
+    "cross_demo_validation": [
+      34
+    ]
+  },
+  "probes": {
+    "L0": {
+      "referent_change": {
+        "rows": 2176,
+        "positive_fraction": 0.5147058823529411,
+        "accuracy": 0.5942095588235294,
+        "balanced_accuracy": 0.5951704545454546,
+        "auroc": 0.6577727610930736,
+        "construction": "same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"
+      },
+      "M2_ordering": {
+        "ordinary": {
+          "rows": 10296,
+          "positive_fraction": 0.5,
+          "accuracy": 0.6456876456876457,
+          "balanced_accuracy": 0.6456876456876457,
+          "auroc": 0.6923469725043152
+        },
+        "cross_demo": {
+          "rows": 266,
+          "positive_fraction": 0.5,
+          "accuracy": 0.3609022556390977,
+          "balanced_accuracy": 0.3609022556390977,
+          "auroc": 0.3203120583413421
+        }
+      },
+      "official_goal": {
+        "state": {
+          "rows": 9983,
+          "positive_fraction": 0.05599519182610438,
+          "accuracy": 0.9165581488530502,
+          "balanced_accuracy": 0.6529009213335722,
+          "auroc": 0.8406880313195708
+        },
+        "cross_demo": {
+          "rows": 54,
+          "positive_fraction": 0.5,
+          "accuracy": 0.5555555555555556,
+          "balanced_accuracy": 0.5555555555555556,
+          "auroc": 0.5829903978052127
+        }
+      },
+      "parameter_counts": {
+        "referent": 49423,
+        "M2": 49372,
+        "goal": 49372
+      }
+    },
+    "L3": {
+      "referent_change": {
+        "rows": 2176,
+        "positive_fraction": 0.5147058823529411,
+        "accuracy": 0.75,
+        "balanced_accuracy": 0.7489989177489178,
+        "auroc": 0.7979775432900433,
+        "construction": "same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"
+      },
+      "M2_ordering": {
+        "ordinary": {
+          "rows": 10296,
+          "positive_fraction": 0.5,
+          "accuracy": 0.7404817404817405,
+          "balanced_accuracy": 0.7404817404817405,
+          "auroc": 0.7936520711870362
+        },
+        "cross_demo": {
+          "rows": 266,
+          "positive_fraction": 0.5,
+          "accuracy": 0.3458646616541353,
+          "balanced_accuracy": 0.3458646616541353,
+          "auroc": 0.3123975351913619
+        }
+      },
+      "official_goal": {
+        "state": {
+          "rows": 9983,
+          "positive_fraction": 0.05599519182610438,
+          "accuracy": 0.9396974857257337,
+          "balanced_accuracy": 0.7434069106851612,
+          "auroc": 0.9530736049396965
+        },
+        "cross_demo": {
+          "rows": 54,
+          "positive_fraction": 0.5,
+          "accuracy": 0.6666666666666666,
+          "balanced_accuracy": 0.6666666666666666,
+          "auroc": 0.7215363511659808
+        }
+      },
+      "parameter_counts": {
+        "referent": 49423,
+        "M2": 49372,
+        "goal": 49372
+      }
+    },
+    "L6": {
+      "referent_change": {
+        "rows": 2176,
+        "positive_fraction": 0.5147058823529411,
+        "accuracy": 0.8147977941176471,
+        "balanced_accuracy": 0.815327380952381,
+        "auroc": 0.8838059726731602,
+        "construction": "same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"
+      },
+      "M2_ordering": {
+        "ordinary": {
+          "rows": 10296,
+          "positive_fraction": 0.5,
+          "accuracy": 0.743978243978244,
+          "balanced_accuracy": 0.743978243978244,
+          "auroc": 0.8194852339665859
+        },
+        "cross_demo": {
+          "rows": 266,
+          "positive_fraction": 0.5,
+          "accuracy": 0.5263157894736842,
+          "balanced_accuracy": 0.5263157894736842,
+          "auroc": 0.514104810899429
+        }
+      },
+      "official_goal": {
+        "state": {
+          "rows": 9983,
+          "positive_fraction": 0.05599519182610438,
+          "accuracy": 0.9553240508865071,
+          "balanced_accuracy": 0.7903879752832945,
+          "auroc": 0.9616126830290569
+        },
+        "cross_demo": {
+          "rows": 54,
+          "positive_fraction": 0.5,
+          "accuracy": 0.7037037037037037,
+          "balanced_accuracy": 0.7037037037037037,
+          "auroc": 0.766803840877915
+        }
+      },
+      "parameter_counts": {
+        "referent": 49423,
+        "M2": 49372,
+        "goal": 49372
+      }
+    },
+    "L9": {
+      "referent_change": {
+        "rows": 2176,
+        "positive_fraction": 0.5147058823529411,
+        "accuracy": 0.6691176470588235,
+        "balanced_accuracy": 0.669534632034632,
+        "auroc": 0.7487494926948052,
+        "construction": "same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"
+      },
+      "M2_ordering": {
+        "ordinary": {
+          "rows": 10296,
+          "positive_fraction": 0.5,
+          "accuracy": 0.7115384615384616,
+          "balanced_accuracy": 0.7115384615384616,
+          "auroc": 0.7888018536328559
+        },
+        "cross_demo": {
+          "rows": 266,
+          "positive_fraction": 0.5,
+          "accuracy": 0.3533834586466165,
+          "balanced_accuracy": 0.3533834586466165,
+          "auroc": 0.35609700944089545
+        }
+      },
+      "official_goal": {
+        "state": {
+          "rows": 9983,
+          "positive_fraction": 0.05599519182610438,
+          "accuracy": 0.9522187719122508,
+          "balanced_accuracy": 0.8249233677346463,
+          "auroc": 0.9668094212318262
+        },
+        "cross_demo": {
+          "rows": 54,
+          "positive_fraction": 0.5,
+          "accuracy": 0.7037037037037037,
+          "balanced_accuracy": 0.7037037037037037,
+          "auroc": 0.8244170096021948
+        }
+      },
+      "parameter_counts": {
+        "referent": 49423,
+        "M2": 49372,
+        "goal": 49372
+      }
+    },
+    "L12-pre": {
+      "referent_change": {
+        "rows": 2176,
+        "positive_fraction": 0.5147058823529411,
+        "accuracy": 0.7412683823529411,
+        "balanced_accuracy": 0.7408143939393939,
+        "auroc": 0.8176009537337663,
+        "construction": "same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"
+      },
+      "M2_ordering": {
+        "ordinary": {
+          "rows": 10296,
+          "positive_fraction": 0.5,
+          "accuracy": 0.6919191919191919,
+          "balanced_accuracy": 0.6919191919191919,
+          "auroc": 0.7570666620783171
+        },
+        "cross_demo": {
+          "rows": 266,
+          "positive_fraction": 0.5,
+          "accuracy": 0.3458646616541353,
+          "balanced_accuracy": 0.3458646616541353,
+          "auroc": 0.2446718299508169
+        }
+      },
+      "official_goal": {
+        "state": {
+          "rows": 9983,
+          "positive_fraction": 0.05599519182610438,
+          "accuracy": 0.9486126414905339,
+          "balanced_accuracy": 0.7548600839481125,
+          "auroc": 0.9316252076683138
+        },
+        "cross_demo": {
+          "rows": 54,
+          "positive_fraction": 0.5,
+          "accuracy": 0.5925925925925926,
+          "balanced_accuracy": 0.5925925925925926,
+          "auroc": 0.710562414266118
+        }
+      },
+      "parameter_counts": {
+        "referent": 49423,
+        "M2": 49372,
+        "goal": 49372
+      }
+    },
+    "L12-postLN": {
+      "referent_change": {
+        "rows": 2176,
+        "positive_fraction": 0.5147058823529411,
+        "accuracy": 0.7247242647058824,
+        "balanced_accuracy": 0.7249864718614718,
+        "auroc": 0.7944720643939394,
+        "construction": "same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"
+      },
+      "M2_ordering": {
+        "ordinary": {
+          "rows": 10296,
+          "positive_fraction": 0.5,
+          "accuracy": 0.6975524475524476,
+          "balanced_accuracy": 0.6975524475524476,
+          "auroc": 0.7562949816737695
+        },
+        "cross_demo": {
+          "rows": 266,
+          "positive_fraction": 0.5,
+          "accuracy": 0.3684210526315789,
+          "balanced_accuracy": 0.3684210526315789,
+          "auroc": 0.2780824241053762
+        }
+      },
+      "official_goal": {
+        "state": {
+          "rows": 9983,
+          "positive_fraction": 0.05599519182610438,
+          "accuracy": 0.9492136632274867,
+          "balanced_accuracy": 0.793882744471543,
+          "auroc": 0.9337006569456129
+        },
+        "cross_demo": {
+          "rows": 54,
+          "positive_fraction": 0.5,
+          "accuracy": 0.7037037037037037,
+          "balanced_accuracy": 0.7037037037037037,
+          "auroc": 0.8600823045267489
+        }
+      },
+      "parameter_counts": {
+        "referent": 49423,
+        "M2": 49372,
+        "goal": 49372
+      }
+    },
+    "L12-proj": {
+      "referent_change": {
+        "rows": 2176,
+        "positive_fraction": 0.5147058823529411,
+        "accuracy": 0.7688419117647058,
+        "balanced_accuracy": 0.7683306277056277,
+        "auroc": 0.8427396171536796,
+        "construction": "same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"
+      },
+      "M2_ordering": {
+        "ordinary": {
+          "rows": 10296,
+          "positive_fraction": 0.5,
+          "accuracy": 0.6973581973581974,
+          "balanced_accuracy": 0.6973581973581974,
+          "auroc": 0.7598826106984615
+        },
+        "cross_demo": {
+          "rows": 266,
+          "positive_fraction": 0.5,
+          "accuracy": 0.41353383458646614,
+          "balanced_accuracy": 0.41353383458646614,
+          "auroc": 0.33619763694951665
+        }
+      },
+      "official_goal": {
+        "state": {
+          "rows": 9983,
+          "positive_fraction": 0.05599519182610438,
+          "accuracy": 0.9452068516478013,
+          "balanced_accuracy": 0.7311798217773067,
+          "auroc": 0.9243018624089221
+        },
+        "cross_demo": {
+          "rows": 54,
+          "positive_fraction": 0.5,
+          "accuracy": 0.6296296296296297,
+          "balanced_accuracy": 0.6296296296296297,
+          "auroc": 0.7969821673525377
+        }
+      },
+      "parameter_counts": {
+        "referent": 37135,
+        "M2": 37084,
+        "goal": 37084
+      }
+    }
+  },
+  "best_layers": {
+    "referent": "L6",
+    "M2": "L6",
+    "official_goal": "L6"
+  },
+  "representative_layer": "L9",
+  "representative_good": {
+    "referent": true,
+    "M2": false,
+    "official_goal": true
+  },
+  "interpretation_case": "B",
+  "deployment_input": false,
+  "finite": true
+}
