@@ -441,7 +441,10 @@ def calibrate(protocol: dict[str, Any], device: torch.device) -> dict[str, Any]:
     statistics_store={}
     feature_dir=ROOT/protocol["outputs"]["feature_directory"]
     for layer_index,layer in enumerate(LAYERS):
-        tokens=np.load(feature_dir/f"{layer}.npy",mmap_mode="r")
+        # Each layer is at most 363 MiB.  Copying the current float16 cache to
+        # RAM preserves every value while avoiding deterministic shuffled
+        # training becoming a random-disk-I/O benchmark.
+        tokens=np.array(np.load(feature_dir/f"{layer}.npy",mmap_mode="r"),dtype=np.float16,copy=True)
         statistics=fit_layer_statistics(tokens,data.language,train_mask)
         statistics_store[layer]={name:np.asarray(getattr(statistics,name)) for name in statistics.__dataclass_fields__}
         summaries[layer]={}
