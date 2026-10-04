@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "stage": "E",
+  "mode": "alternate_frozen_encoder_feature_extraction",
+  "frames": 5044,
+  "families": {
+    "DINOv2-S14": {
+      "family": "DINOv2-S14",
+      "repository": "facebook/dinov2-small",
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "transformers_version": "4.57.1",
+      "weights_sha256": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1",
+      "config_sha256": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d",
+      "preprocessor_sha256": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828",
+      "feature_sha256": "988bacd0d90811f3cd676ad25d2574cc22f9a2794ac7184ea1679aa7d15517e0",
+      "shape": [
+        5044,
+        256,
+        384
+      ],
+      "dtype": "float16",
+      "repeated_sample_float16_exact": true,
+      "trainable_encoder_parameters": 0,
+      "all_finite": true,
+      "complete_gate": true
+    },
+    "SigLIP-B16-224": {
+      "family": "SigLIP-B16-224",
+      "repository": "google/siglip-base-patch16-224",
+      "revision": "7fd15f0689c79d79e38b1c2e2e2370a7bf2761ed",
+      "transformers_version": "4.57.1",
+      "weights_sha256": "2c63cb7d1f2e95ba501893cbb8faeb4ea9a3af295498d35097126228659c2af8",
+      "config_sha256": "cd85b3d28829722820bcb89a2cfbb4160e55fd359249a3044da724166a8d9688",
+      "preprocessor_sha256": "d11ccb80f15d358a11bdb070e92e2d889005874b7db15823d5f10d9b2533b14a",
+      "feature_sha256": "ad579fa46b958a131b21dbfd3c1cc07a144ce58ddc3f4ba219217a28547f049d",
+      "shape": [
+        5044,
+        196,
+        768
+      ],
+      "dtype": "float16",
+      "repeated_sample_float16_exact": true,
+      "trainable_encoder_parameters": 0,
+      "all_finite": true,
+      "complete_gate": true
+    }
+  },
+  "access_ledger_sha256": "2176c08d139e89407b531cca9d17fcfb828c2a312bee6e15b91d147b3e4465ef",
+  "complete_gate": true
+}
