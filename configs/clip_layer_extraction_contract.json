@@ -1,0 +1,85 @@
+{
+  "contract_version": "clip-internal-layer-extraction-v1",
+  "created_at": "2026-10-04",
+  "status": "PREREGISTERED_BEFORE_STAGE_I_FEATURE_EXTRACTION_OR_TRAINING",
+  "implementation": {
+    "transformers_version": "4.21.1",
+    "source_file": ".venv/lib/python3.10/site-packages/transformers/models/clip/modeling_clip.py",
+    "source_sha256": "d0c8e6ce940205273debcdb7737c8654dae183ef4a328bc76455dc2b8e9b3762",
+    "vision_forward": "embeddings(pixel_values) -> pre_layrnorm -> encoder.layers[0:12] -> CLS-only post_layernorm in the stock pooled path",
+    "embedding_forward": "Conv2d(kernel=32,stride=32) -> flatten row-major -> prepend CLS -> add learned position embedding",
+    "hidden_state_indexing": "encoder hidden_states[0] is the tensor after pre_layrnorm and before block 1; hidden_states[k] is after exactly k transformer blocks"
+  },
+  "checkpoint": {
+    "model_id": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "checkpoint_sha256": "a63082132ba4f97a80bea76823f544493bffa8082296d62d71581a4feff1576f",
+    "config_sha256": "b575ef3c36f2a057fa19e221650105052d61cc9c1a972ec15019c6261ec98770",
+    "preprocessor_sha256": "910e70b3956ac9879ebc90b22fb3bc8a75b6a0677814500101a4c072bd7857bd"
+  },
+  "input": {
+    "source": "upright unmodified 128x128 uint8 natural RGB",
+    "processor": "same pinned CLIPProcessor",
+    "resize": "shortest edge 224, bicubic",
+    "crop": "center crop 224x224",
+    "normalization": "pinned CLIP mean/std",
+    "augmentation": "none",
+    "resulting_patch_grid": [7, 7]
+  },
+  "fixed_extraction_points": {
+    "L0": {
+      "source": "vision encoder hidden_states[0][:,1:,:]",
+      "meaning": "patch embedding plus learned positional embedding, after vision pre_layrnorm, immediately before transformer block 1",
+      "dimension": 768
+    },
+    "L3": {
+      "source": "vision encoder hidden_states[3][:,1:,:]",
+      "meaning": "after transformer block 3 (zero-based layer index 2)",
+      "dimension": 768
+    },
+    "L6": {
+      "source": "vision encoder hidden_states[6][:,1:,:]",
+      "meaning": "after transformer block 6 (zero-based layer index 5)",
+      "dimension": 768
+    },
+    "L9": {
+      "source": "vision encoder hidden_states[9][:,1:,:]",
+      "meaning": "after transformer block 9 (zero-based layer index 8)",
+      "dimension": 768
+    },
+    "L12-pre": {
+      "source": "vision encoder hidden_states[12][:,1:,:]",
+      "meaning": "after transformer block 12 and before vision post_layernorm/projection",
+      "dimension": 768
+    },
+    "L12-postLN": {
+      "source": "vision_model.post_layernorm(hidden_states[12][:,1:,:])",
+      "meaning": "patch-wise application of the checkpoint's frozen vision post layer norm",
+      "dimension": 768
+    },
+    "L12-proj": {
+      "source": "L2_normalize(visual_projection(L12-postLN))",
+      "meaning": "exact prior projected normalized patch baseline",
+      "dimension": 512
+    }
+  },
+  "excluded_tensor": {
+    "raw_embedding_before_pre_layrnorm": "audited and documented but not admitted as an eighth extraction candidate",
+    "reason": "the fixed L0 candidate is the actual input to transformer block 1 and matches output_hidden_states[0]; adding both would violate the finite layer set"
+  },
+  "tokens": {
+    "exclude_cls": true,
+    "shape": "[frames,49,dimension]",
+    "order": "row-major 7x7 patch order inherited from Conv2d flatten(2).transpose(1,2)",
+    "coordinates": "x_j=2*(j+0.5)/7-1, y_i=2*(i+0.5)/7-1",
+    "persistence": "float16 offline caches; probe arithmetic float32"
+  },
+  "forbidden": [
+    "all unregistered transformer layers",
+    "CLS as a spatial token",
+    "object masks or boxes",
+    "G2 identity as representation input",
+    "simulator/object/plate coordinates",
+    "encoder gradient, LoRA, adapter, or fine-tuning"
+  ]
+}

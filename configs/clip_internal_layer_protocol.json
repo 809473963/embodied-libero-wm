@@ -1,0 +1,193 @@
+{
+  "protocol_version": "clip-internal-spatial-layer-audit-v1",
+  "created_at": "2026-10-04",
+  "status": "PREREGISTERED_BEFORE_STAGE_I_FEATURE_EXTRACTION_OR_TRAINING",
+  "objective": "Determine whether frozen T1-M2 semantic information is materially more accessible in fixed internal spatial states of the exact frozen CLIP ViT-B/32 than in its final projected normalized patch tokens.",
+  "authorization_basis": {
+    "start_tag": "frozen-visual-backbone-research-start",
+    "start_commit": "2aadd40845c71ee5417bde77b62931d14a2b5d83",
+    "upstream_result": [
+      "CLIP_PATCH_REPRESENTATION_INSUFFICIENT",
+      "FROZEN_CLIP_VISUAL_INFORMATION_LIMIT_SUPPORTED",
+      "BLOCK_SEMANTIC_VALUE_REDISTILLATION"
+    ],
+    "permitted_stage": "STAGE_I_ONLY_UNTIL_MATERIAL_GATE_IS_MECHANICALLY_RESOLVED"
+  },
+  "partitions": {
+    "fit_demo_ids": [31, 32, 33],
+    "selection_demo_ids": [34],
+    "stage_i_not_opened_demo_ids": [36, 37, 38, 39],
+    "historical_disabled": [30, 35],
+    "forbidden_including_metadata": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+  },
+  "frozen_teacher": {
+    "name": "T1-M2",
+    "definition_sha256": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f",
+    "resolver_sha256": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881",
+    "calibration_sidecar_sha256": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604",
+    "epsilon_goal": 0.004065508647683736,
+    "immutable": true
+  },
+  "visual": {
+    "model_id": "openai/clip-vit-base-patch32",
+    "revision": "3d74acf9a28c67741b2f4f2ea7635f0aaf6f0268",
+    "extraction_contract": "configs/clip_layer_extraction_contract.json",
+    "extraction_contract_status": "fixed seven-point set only",
+    "features": ["L0", "L3", "L6", "L9", "L12-pre", "L12-postLN", "L12-proj"],
+    "coordinates": "fixed row-major 7x7 cell centers",
+    "trainable_encoder_parameters": 0
+  },
+  "readers": {
+    "families": ["P0", "P1"],
+    "primary": "P1",
+    "P0": "task-independent learned 24-D query over shared 24-D key/value patch projections",
+    "P1": "one frozen-language-conditioned 24-D query over shared 24-D key/value patch projections",
+    "state": "[24-D attended value,24-D mean value,2-D attention center,1-D normalized entropy] = 51-D",
+    "pair_head": "antisymmetric raw(a,b,l)-raw(b,a,l), Linear(665,64)-GELU-Linear(64,1)",
+    "parameter_max": 150000,
+    "P2_disabled": true
+  },
+  "training": {
+    "seed": 41,
+    "epochs": 30,
+    "batch_size": 1024,
+    "optimizer": "AdamW",
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "pair_sampler": "configs/semantic_pair_sampler.json",
+    "temperature_grid": [0.25, 0.5, 1.0, 2.0, 4.0, 8.0],
+    "temperature_objective": "demo34 ordinary local pairs plus both correct- and alternate-language counterfactual applications",
+    "feature_standardization": "per-layer token mean/std from demo31--33 only; language mean/std over the fixed ten-language matrix",
+    "same_seed_within_reader_across_layers": true
+  },
+  "validation": {
+    "ordinary": "all frozen demo34 T1 pairs with gap<=8",
+    "counterfactual": "all frozen demo34 correct/alternate language applications",
+    "cross_demo": "source demo34 against deterministic cyclic demo31 reference",
+    "cross_demo_points": 16,
+    "cross_demo_clear_margin_min": 0.05
+  },
+  "selection": {
+    "eligible": "P1 at each fixed extraction point",
+    "lexicographic": [
+      "maximize teacher-changing language agreement",
+      "minimize cross-demo semantic-match mean abs(P-0.5)",
+      "maximize cross-demo semantic-difference accuracy",
+      "maximize ordinary local non-tie accuracy",
+      "minimize same-referent mean abs probability change",
+      "minimize same-referent false preference flips",
+      "minimize tie mean abs(P-0.5)",
+      "prefer later/simpler frozen extraction when all preceding values are exactly tied"
+    ],
+    "fair_material_baseline": "P1/L12-proj from this protocol",
+    "historical_references": {
+      "R0_global": {
+        "ordinary": 0.6737310774710596,
+        "teacher_change": 0.6162902194758151,
+        "true_reversal": 0.225,
+        "same_referent_mean_change": 0.10149623467898156,
+        "same_referent_false_flip": 0.25822205736894166,
+        "tie_mean": 0.10515338590319513,
+        "cross_match": 0.28293959162002474,
+        "cross_difference": 0.41875
+      },
+      "R3_projected_patch": {
+        "ordinary": 0.6619768477292965,
+        "teacher_change": 0.6306733432772214,
+        "true_reversal": 0.3076086956521739,
+        "same_referent_mean_change": 0.18442707841517872,
+        "same_referent_false_flip": 0.41172106824925814,
+        "tie_mean": 0.09652186702954237,
+        "cross_match": 0.4164554410932598,
+        "cross_difference": 0.3375
+      }
+    }
+  },
+  "material_gate": {
+    "teacher_change_increment_min_points": 4.0,
+    "and_at_least_one": {
+      "cross_demo_match_mean_abs_improvement_min": 0.03,
+      "cross_demo_difference_accuracy_increment_min_points": 7.0
+    },
+    "ordinary_accuracy_max_regression_points": 2.0,
+    "all_required": true
+  },
+  "diagnostic_probes": {
+    "common": "independently trained P1 single-slot encoder with a linear or scalar head; fit demo31--33 and test demo34; diagnostic only",
+    "referent": {
+      "task": "same-scene language-pair classification of whether persistent referent identity changes",
+      "input": "same frozen visual state under two real language embeddings; symmetric [abs(r1-r2),r1*r2] features",
+      "label": "G2 same versus different physical referent; never bowl1/bowl2 direction",
+      "cross_demo_good": "accuracy>=0.65 and AUROC>=0.65"
+    },
+    "M2": {
+      "task": "pairwise M2 ordering when official goal Booleans match and abs(delta M2)>epsilon",
+      "head": "scalar linear state score and Bradley-Terry difference",
+      "good": "demo34 ordinary accuracy>=0.65 and explicit cross-demo accuracy>=0.65"
+    },
+    "goal_boolean": {
+      "task": "balanced official On classification and cross-demo goal-change ordering",
+      "head": "linear state classifier",
+      "loss": "positive-class-weighted BCE with weight fixed from demo31--33 state rows",
+      "good": "demo34 AUROC>=0.80 and cross-demo goal-change accuracy>=0.60"
+    },
+    "interpretation": {
+      "A": "referent good, M2 good, primary value poor -> fusion/readout bottleneck",
+      "B": "referent good, M2 poor -> relational geometry not retained",
+      "C": "referent poor, at least one other probe good -> object-specific language grounding not retained",
+      "D": "referent, M2, and official-goal probes all poor -> representation insufficient"
+    },
+    "epochs": 20,
+    "batch_size": 1024,
+    "seed": 73
+  },
+  "decision_mapping": {
+    "pass_labels": ["CLIP_INTERNAL_LAYER_SEMANTIC_INFORMATION_VALID"],
+    "pass_authorization": "GO_SEMANTIC_VALUE_REDISTILLATION",
+    "fail_labels": [
+      "CLIP_INTERNAL_SPATIAL_REPRESENTATION_INSUFFICIENT",
+      "FROZEN_CLIP_BACKBONE_LIMIT_SUPPORTED"
+    ],
+    "fail_authorization": "GO_ALTERNATE_FROZEN_VISUAL_ENCODER_AUDIT",
+    "continuing_blocks": [
+      "BLOCK_REAL_CANDIDATE_VALUE_BRIDGE",
+      "BLOCK_WORLD_MODEL_INTERFACE_AUDIT",
+      "BLOCK_SPATIAL_WM_PROTOTYPE"
+    ],
+    "controller_authorization": false
+  },
+  "frozen_files": [
+    {"path": "configs/t1_teacher_frozen_definition.json", "sha256": "9be0804395af0aae0f5bea3305f95b5121642311f18e9f58277493775512e31f"},
+    {"path": "configs/robust_grounding_frozen_resolver.json", "sha256": "337ebe063792402369e779bcec4800cb0ce542ea10fd8992eb8f66796dd56881"},
+    {"path": "results/t1_semantic_teacher/calibration_sidecar.npz", "sha256": "fbfd700d8972f6be8ed1f43455784b9098a7aebd07b0cba49bc108651f963604"},
+    {"path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/observations.hdf5", "sha256": "e5599153cf44282242d955be62249bbafc752b782f5ae76a0ec0d58f9146f98e"},
+    {"path": "artifacts/stage2/world_model_clip_vit_b32_h8_obs_aligned/feature_manifest.json", "sha256": "7c374d187e06c6ef99851c159134e722fa96acca9d69461bd1541e1a2895b0dc"},
+    {"path": "configs/semantic_pair_sampler.json", "sha256": "aa88e8c2f657eaee79611bd22e77ee56f1a50b5ec7392a1bb5b8a998210db595"},
+    {"path": "src/data/allowed_demo_guard.py", "sha256": "c1d8e9e2f0e93cf75998f6286d0797f427a41d0969792f086c1421a69e038653"},
+    {"path": "src/data/semantic_feature_guard.py", "sha256": "76ce1e179b0ed293f63e79b919659be94f6d5468a63477d6d16410a29624f2bb"},
+    {"path": "src/probes/semantic_value_distillation.py", "sha256": "4683c16f69b2eaef6a9a7bade61dddb7595be76de7f417c9cd4913135662302f"},
+    {"path": "results/spatial_visual_representation_calibration.json", "sha256": "739f8591fb8512919144ae02084c729093f05ee9a2a7cba72d4f31a8550fe8bf"}
+  ],
+  "outputs": {
+    "feature_directory": "results/clip_internal_layer/features",
+    "feature_manifest": "results/clip_internal_layer_feature_manifest.json",
+    "access_ledger": "results/clip_internal_layer/access_ledger.json",
+    "weights": "results/clip_internal_layer/calibration_weights.pt",
+    "sidecar": "results/clip_internal_layer/calibration_sidecar.npz",
+    "calibration": "results/clip_internal_layer_calibration.json",
+    "information_probes": "results/clip_internal_information_probes.json",
+    "decision": "results/clip_internal_layer_final_decision.json",
+    "report": "docs/clip_internal_spatial_layer_audit.md"
+  },
+  "forbidden": [
+    "open demo36--39 in Stage I",
+    "read or enumerate demo40--49",
+    "change T1-M2, G2, epsilon, pair labels, split, or counterfactuals",
+    "test any CLIP transformer layer outside the seven fixed extraction points",
+    "fine-tune CLIP, LoRA, or add an encoder adapter",
+    "use masks, boxes, G2 identity, M2, On, pose, proprio, task ID, time, or demo ID as a primary reader input",
+    "run alternate encoder before a mechanical Stage-I failure",
+    "run Stage V before a representation pass",
+    "run real candidates, World Model, reranker, controller, or task success"
+  ]
+}
