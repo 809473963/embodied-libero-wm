@@ -154,3 +154,48 @@ def test_branch_budget_and_policy_input_boundary(monkeypatch):
         assert np.array_equal(actions[0],candidates[3])
         assert sum(len(a) for a in actions)==204
         assert len(actions[-1])==4
+
+
+def test_complete_analysis_excludes_ceiling_and_maps_pilot_to_decision(tmp_path,monkeypatch):
+    import json
+    from scripts import analyze_candidate_utility_oracle as analyze
+    from scripts import run_candidate_utility_oracle as supervise
+    from src.probes.candidate_utility_oracle import atomic_json, array_hash, sha256
+    real=Path(__file__).resolve().parents[1]
+    for name in ('configs','docs','results/candidate_utility_oracle/roots','results/candidate_utility_oracle/arrays'):
+        (tmp_path/name).mkdir(parents=True)
+    for name in ('candidate_utility_oracle_protocol.json','candidate_utility_oracle_roots.json'):
+        (tmp_path/'configs'/name).write_bytes((real/'configs'/name).read_bytes())
+    directory=tmp_path/'results/candidate_utility_oracle'
+    atomic_json(directory/'access_ledger.json',{'synthetic':True})
+    protocol_hash=sha256(tmp_path/'configs/candidate_utility_oracle_protocol.json')
+    roots=json.loads((tmp_path/'configs/candidate_utility_oracle_roots.json').read_text())['roots']
+    for i,root in enumerate(roots):
+        selected=2 if i in (0,4) else 1 if i in (8,9,12) else 0
+        winners={2} if i in (0,4) else {3} if i in (8,9) else {0} if i==12 else set()
+        arrays=directory/'arrays'/f"{root['root_id']}.npz"
+        candidates=np.zeros((64,8,7),np.float32)
+        prefix=np.zeros((root['prefix_steps'],7),np.float32)
+        np.savez(arrays,candidates=candidates,prefix=prefix)
+        rows=[{'candidate_id':j,'success':j in winners,'identity':{'pass':True},'final_step':300,
+               'h8':{'on':False,'m2':1.0 if selected!=0 and j==selected else 0.0}} for j in range(64)]
+        record={'complete':True,'protocol_sha256':protocol_hash,'root':root,
+                'reference':{'first_success_step':1 if i==16 else None,'diagnostic':{'grasp':False}},
+                'rows':rows,'arrays_sha256':sha256(arrays),'candidates_sha256':array_hash(candidates),
+                'prefix_sha256':array_hash(prefix),'a0_repeat_pass':True,'intervention_repeat_pass':True,
+                't1_selected_id':selected}
+        atomic_json(directory/'roots'/f"{root['root_id']}.json",record)
+    monkeypatch.setattr(analyze,'ROOT',tmp_path)
+    analyze.main()
+    result=json.loads((directory/'metrics.json').read_text())
+    assert result['root_accounting']['eligible_unfinished']==39
+    assert result['primary']['rescue_roots']==4
+    assert result['primary']['captured_rescue_roots']==2
+    assert result['primary']['harm_roots']==1
+    assert result['primary']['net_success_gain_roots']==1
+    assert result['rescue_task_count']==3
+    assert result['verdict']=='A_CANDIDATE_OPPORTUNITY_WITH_USEFUL_T1'
+    assert result['learned_controller_authorized'] is False
+    monkeypatch.setattr(supervise,'ROOT',tmp_path)
+    supervise.report(directory,{'elapsed_seconds':1.0})
+    assert 'A：候选有机会' in (tmp_path/'docs/candidate_utility_oracle_audit.md').read_text()
