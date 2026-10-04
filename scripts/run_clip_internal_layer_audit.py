@@ -446,25 +446,30 @@ def calibrate(protocol: dict[str, Any], device: torch.device) -> dict[str, Any]:
         # training becoming a random-disk-I/O benchmark.
         tokens=np.array(np.load(feature_dir/f"{layer}.npy",mmap_mode="r"),dtype=np.float16,copy=True)
         statistics=fit_layer_statistics(tokens,data.language,train_mask)
+        # A 768-D layer occupies about 760 MiB in float32 and fits comfortably
+        # on the admitted GPU.  Keeping one layer resident makes minibatches
+        # transfer indices rather than hundreds of gigabytes of repeated
+        # patch payload over a full deterministic run.
+        token_source=torch.from_numpy(tokens).to(device=device,dtype=torch.float32)
         statistics_store[layer]={name:np.asarray(getattr(statistics,name)) for name in statistics.__dataclass_fields__}
         summaries[layer]={}
         for family in READERS:
             started=time.perf_counter(); seed=int(training["seed"])+(0 if family=="P0" else 1)
-            model=train_pair_reader(tokens.shape[-1],family,tokens,data.language,training_pairs,statistics,int(training["epochs"]),int(training["batch_size"]),seed,device)
+            model=train_pair_reader(tokens.shape[-1],family,token_source,data.language,training_pairs,statistics,int(training["epochs"]),int(training["batch_size"]),seed,device)
             if parameter_count(model)>int(protocol["readers"]["parameter_max"]): raise RuntimeError("parameter ceiling exceeded")
-            ordinary_logits=predict_pair_logits(model,tokens,data.language,ordinary,statistics,device)
-            original_logits=predict_pair_logits(model,tokens,data.language,original_pairs,statistics,device)
-            alternate_logits=predict_pair_logits(model,tokens,data.language,alternate_pairs,statistics,device)
+            ordinary_logits=predict_pair_logits(model,token_source,data.language,ordinary,statistics,device)
+            original_logits=predict_pair_logits(model,token_source,data.language,original_pairs,statistics,device)
+            alternate_logits=predict_pair_logits(model,token_source,data.language,alternate_pairs,statistics,device)
             local=ordinary.gap<=8
             temperature=fit_temperature(np.concatenate((ordinary_logits[local],original_logits,alternate_logits)),np.concatenate((ordinary.label[local],counterfactual.original_label,counterfactual.alternate_label)),training["temperature_grid"])
             ordinary_probability=sigmoid(ordinary_logits*temperature); original_probability=sigmoid(original_logits*temperature); alternate_probability=sigmoid(alternate_logits*temperature)
-            matched_probability=sigmoid(predict_pair_logits(model,tokens,data.language,matched,statistics,device)*temperature)
-            different_probability=sigmoid(predict_pair_logits(model,tokens,data.language,different,statistics,device)*temperature)
+            matched_probability=sigmoid(predict_pair_logits(model,token_source,data.language,matched,statistics,device)*temperature)
+            different_probability=sigmoid(predict_pair_logits(model,token_source,data.language,different,statistics,device)*temperature)
             summary=main_metrics(ordinary_probability,ordinary,original_probability,alternate_probability,counterfactual,matched_probability,matched,different_probability,different)
             summary.update({"family":family,"layer":layer,"temperature":float(temperature),"trainable_parameters":parameter_count(model),"training_seconds":float(time.perf_counter()-started)})
             if family=="P1":
-                original_attention=attention_for(model,tokens,data.language,counterfactual.a,counterfactual.original_language,statistics,device)
-                alternate_attention=attention_for(model,tokens,data.language,counterfactual.a,counterfactual.alternate_language,statistics,device)
+                original_attention=attention_for(model,token_source,data.language,counterfactual.a,counterfactual.original_language,statistics,device)
+                alternate_attention=attention_for(model,token_source,data.language,counterfactual.a,counterfactual.alternate_language,statistics,device)
                 summary["attention_diagnostics"]=attention_diagnostics(original_attention,alternate_attention)
                 sidecar[f"{layer}_P1_original_attention"]=original_attention.astype(np.float16)
                 sidecar[f"{layer}_P1_alternate_attention"]=alternate_attention.astype(np.float16)
@@ -473,13 +478,13 @@ def calibrate(protocol: dict[str, Any], device: torch.device) -> dict[str, Any]:
                 sidecar[f"{layer}_{family}_{name}_probability"]=value.astype(np.float32)
             print(json.dumps({"stage_i_reader_complete":f"{layer}/{family}","summary":summary}),flush=True)
         diag_seed=int(diagnostics["seed"])
-        referent_model=train_referent_probe(tokens.shape[-1],tokens,data.language,ref_train["frame"],ref_train["language_a"],ref_train["language_b"],ref_train["label"],statistics,int(diagnostics["epochs"]),int(diagnostics["batch_size"]),diag_seed,device)
-        ref_logits=predict_referent_logits(referent_model,tokens,data.language,ref_val["frame"],ref_val["language_a"],ref_val["language_b"],statistics,device)
-        m2_model=train_m2_probe(tokens.shape[-1],tokens,data.language,m2_train,statistics,int(diagnostics["epochs"]),int(diagnostics["batch_size"]),diag_seed+1,device)
-        m2_logits=predict_m2_logits(m2_model,tokens,data.language,m2_val,statistics,device); m2_cross_logits=predict_m2_logits(m2_model,tokens,data.language,m2_cross,statistics,device)
-        goal_model=train_goal_probe(tokens.shape[-1],tokens,data.language,goal_train["frame"],goal_train["language"],goal_train["label"],statistics,int(diagnostics["epochs"]),int(diagnostics["batch_size"]),diag_seed+2,device)
-        goal_logits=predict_goal_logits(goal_model,tokens,data.language,goal_val["frame"],goal_val["language"],statistics,device)
-        goal_a=predict_goal_logits(goal_model,tokens,data.language,goal_cross.a,goal_cross.language_id,statistics,device); goal_b=predict_goal_logits(goal_model,tokens,data.language,goal_cross.b,goal_cross.language_id,statistics,device)
+        referent_model=train_referent_probe(tokens.shape[-1],token_source,data.language,ref_train["frame"],ref_train["language_a"],ref_train["language_b"],ref_train["label"],statistics,int(diagnostics["epochs"]),int(diagnostics["batch_size"]),diag_seed,device)
+        ref_logits=predict_referent_logits(referent_model,token_source,data.language,ref_val["frame"],ref_val["language_a"],ref_val["language_b"],statistics,device)
+        m2_model=train_m2_probe(tokens.shape[-1],token_source,data.language,m2_train,statistics,int(diagnostics["epochs"]),int(diagnostics["batch_size"]),diag_seed+1,device)
+        m2_logits=predict_m2_logits(m2_model,token_source,data.language,m2_val,statistics,device); m2_cross_logits=predict_m2_logits(m2_model,token_source,data.language,m2_cross,statistics,device)
+        goal_model=train_goal_probe(tokens.shape[-1],token_source,data.language,goal_train["frame"],goal_train["language"],goal_train["label"],statistics,int(diagnostics["epochs"]),int(diagnostics["batch_size"]),diag_seed+2,device)
+        goal_logits=predict_goal_logits(goal_model,token_source,data.language,goal_val["frame"],goal_val["language"],statistics,device)
+        goal_a=predict_goal_logits(goal_model,token_source,data.language,goal_cross.a,goal_cross.language_id,statistics,device); goal_b=predict_goal_logits(goal_model,token_source,data.language,goal_cross.b,goal_cross.language_id,statistics,device)
         probe_results[layer]={
             "referent_change": {**diagnostic_metrics(ref_logits,ref_val["label"]),"construction":"same-scene language pair; same-versus-different persistent physical referent; demo34 cross-demo validation"},
             "M2_ordering": {"ordinary":diagnostic_metrics(m2_logits,m2_val.label==1),"cross_demo":diagnostic_metrics(m2_cross_logits,m2_cross.label==1)},
@@ -489,6 +494,9 @@ def calibrate(protocol: dict[str, Any], device: torch.device) -> dict[str, Any]:
         saved_weights[f"{layer}/referent"]=referent_model.state_dict(); saved_weights[f"{layer}/M2"]=m2_model.state_dict(); saved_weights[f"{layer}/goal"]=goal_model.state_dict()
         sidecar[f"{layer}_referent_logits"]=ref_logits.astype(np.float32); sidecar[f"{layer}_M2_logits"]=m2_logits.astype(np.float32); sidecar[f"{layer}_M2_cross_logits"]=m2_cross_logits.astype(np.float32); sidecar[f"{layer}_goal_logits"]=goal_logits.astype(np.float32); sidecar[f"{layer}_goal_cross_logits"]=(goal_b-goal_a).astype(np.float32)
         print(json.dumps({"stage_i_probes_complete":layer,"summary":probe_results[layer]}),flush=True)
+        del token_source, tokens
+        if device.type == "cuda":
+            torch.cuda.empty_cache()
     priority=sorted(LAYERS,key=lambda layer:(-summaries[layer]["P1"]["language_counterfactual"]["teacher_change_agreement"],summaries[layer]["P1"]["cross_demo_semantic_match"]["mean_abs_from_half"],-summaries[layer]["P1"]["cross_demo_semantic_difference"]["accuracy"],-summaries[layer]["P1"]["ordinary_local_non_tie"]["accuracy"],summaries[layer]["P1"]["language_counterfactual"]["same_referent"]["mean_abs_probability_change"],summaries[layer]["P1"]["language_counterfactual"]["same_referent"]["false_preference_flip_rate"],summaries[layer]["P1"]["ordinary_local_tie"]["mean_abs_from_half"],-LAYERS.index(layer)))
     baseline=summaries["L12-proj"]["P1"]; gates={}
     for layer in LAYERS:

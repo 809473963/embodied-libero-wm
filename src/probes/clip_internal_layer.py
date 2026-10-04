@@ -212,12 +212,15 @@ def _loader(*arrays: np.ndarray, batch_size: int, seed: int) -> DataLoader:
 
 
 def _token_batch(
-    tokens: np.ndarray, index: torch.Tensor, statistics: LayerStatistics,
+    tokens: np.ndarray | torch.Tensor, index: torch.Tensor, statistics: LayerStatistics,
     device: torch.device,
 ) -> torch.Tensor:
-    value = torch.from_numpy(np.asarray(tokens[index.numpy()], dtype=np.float32)).to(
-        device, non_blocking=True
-    )
+    if isinstance(tokens, torch.Tensor):
+        value = tokens[index.to(tokens.device, non_blocking=True)]
+    else:
+        value = torch.from_numpy(np.asarray(tokens[index.numpy()], dtype=np.float32)).to(
+            device, non_blocking=True
+        )
     mean = torch.from_numpy(statistics.token_mean).to(device).view(1, 1, -1)
     std = torch.from_numpy(statistics.token_std).to(device).view(1, 1, -1)
     return (value - mean) / std
