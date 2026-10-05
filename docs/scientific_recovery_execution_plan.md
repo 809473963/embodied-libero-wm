@@ -8,6 +8,8 @@
 
 下一步按B分支推进：固定后续C0的continuation outcome为主效用，相对A0的gain/regret为选择指标，T1只保留诊断用途。先注册阶段2的输入上限与scene split，再比较完整task-state/contact/action和自然history/proprio输入。当前40个pilot root均为开发证据，不能再作为独立确认集。N32在本pilot保留全部7个oracle rescue，可作为后续预算对照；这不是N32已在新scene验证的结论。
 
+下一项具体实施见[阶段2A：续行效用与输入上限诊断](continuation_utility_observability_plan.md)：先补录原N32分支的H8机器人状态及历史，比较真实H8 privileged与自然输入对固定C0续行效用的读出；通过后再做动作执行前的direct consequence预测。真实未来H8输入仅供离线诊断。
+
 ## 1. 解决方案总览
 
 **把主线改为：先验证真实干预收益，再确定效用与必要观测，最后学习后果并验证闭环。**
