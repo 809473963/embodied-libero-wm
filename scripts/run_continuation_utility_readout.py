@@ -119,9 +119,17 @@ def cache(protocol, digest):
         print(json.dumps({'feature_root_complete': key, 'completed': len(label_rows), 'total': 40}), flush=True)
     write_json(DIRECTORY / 'labels.json', {'protocol_sha256': digest, 'rows': label_rows,
                                          'feature_usage': 'labels/strata only; excluded from model forward'})
-    write_json(DIRECTORY / 'feature_manifest.json', {'protocol_sha256': digest, 'complete': True,
-               'roots': inputs_manifest, 'image_frames': image_count, 'wall_seconds_current_run': time.monotonic() - started,
-               'encoder': model_spec})
+    manifest_path = DIRECTORY / 'feature_manifest.json'
+    manifest = {'protocol_sha256': digest, 'complete': True, 'roots': inputs_manifest,
+                'image_frames': image_count, 'wall_seconds_current_run': time.monotonic() - started,
+                'encoder': model_spec}
+    if manifest_path.exists():
+        previous = json.loads(manifest_path.read_text())
+        if any(previous[k] != manifest[k] for k in ('protocol_sha256', 'complete', 'roots', 'image_frames', 'encoder')):
+            raise ValueError('completed feature manifest identity changed')
+        # Keep its digest stable so completed/partial fits can safely resume.
+    else:
+        write_json(manifest_path, manifest)
 
 
 def train(protocol, digest):

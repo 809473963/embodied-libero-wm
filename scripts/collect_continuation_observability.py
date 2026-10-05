@@ -33,6 +33,22 @@ def init_worker():
     sys.stderr = log
 
 
+def entity_bindings(inner):
+    bodies, geoms = [], []
+    for name in ENTITIES:
+        model = inner.get_object(name)
+        if model is None and name == 'main_table':
+            # LIBERO creates its workspace in the arena, outside fixtures_dict.
+            bodies.append('table')
+            geoms.append(['table_collision'])
+        elif model is not None:
+            bodies.append(model.root_body)
+            geoms.append(model.contact_geoms)
+        else:
+            raise ValueError(f'frozen scene entity missing: {name}')
+    return bodies, geoms
+
+
 def replay(request):
     from scripts.evaluate_c0_all import make_env, refresh_policy_observation
     from src.probes.robust_grounding import BOWLS, compatibility, resolve_scores
@@ -54,10 +70,10 @@ def replay(request):
             raise ValueError('initial persistent referent differs from frozen contract')
         robot = inner.robots[0]
         site = robot.gripper.important_sites['grip_site']
-        body_names = [inner.get_object(name).root_body for name in ENTITIES]
+        body_names, contact_geoms = entity_bindings(inner)
         owners = {}
-        for index, name in enumerate(ENTITIES):
-            for geom in inner.get_object(name).contact_geoms:
+        for index, geoms in enumerate(contact_geoms):
+            for geom in geoms:
                 owners.setdefault(env.sim.model.geom_name2id(geom), set()).add(index)
         gripper_ids = {env.sim.model.geom_name2id(g) for g in robot.gripper.contact_geoms}
         velocity_indices = list(robot._ref_joint_vel_indexes) + list(robot._ref_gripper_joint_vel_indexes)
@@ -79,7 +95,7 @@ def replay(request):
                                       ('robot0_eef_pos', 'robot0_gripper_qpos', 'robot0_joint_pos')])
             poses = []
             for name, body in zip(ENTITIES, body_names):
-                body_id = inner.obj_body_id[name]
+                body_id = env.sim.model.body_name2id(body)
                 poses.extend((env.sim.data.body_xpos[body_id], env.sim.data.body_xquat[body_id],
                               env.sim.data.get_body_xvelp(body), env.sim.data.get_body_xvelr(body)))
             contacts, grip_contacts = np.zeros((8, 8)), np.zeros(8)

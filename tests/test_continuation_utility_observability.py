@@ -112,3 +112,16 @@ def test_old_labels_require_exact_h8_and_root_identity():
     result['h8']['m2'] = 1e-5
     with pytest.raises(ValueError, match='label reuse'):
         verify(result, old, saved, 0)
+
+
+def test_arena_workspace_has_explicit_body_and_contact_binding():
+    from types import SimpleNamespace
+    from scripts.collect_continuation_observability import entity_bindings
+    class Inner:
+        def get_object(self, name):
+            if name == 'main_table':
+                return None
+            return SimpleNamespace(root_body=name + '_body', contact_geoms=[name + '_collision'])
+    bodies, geoms = entity_bindings(Inner())
+    assert len(bodies) == len(geoms) == 8
+    assert bodies[5] == 'table' and geoms[5] == ['table_collision']

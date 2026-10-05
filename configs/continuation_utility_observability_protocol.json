@@ -1,5 +1,5 @@
 {
-  "version": "continuation-utility-observability-v1",
+  "version": "continuation-utility-observability-v1.1",
   "created_at": "2026-10-05",
   "status": "FROZEN_BEFORE_STAGE2A_REPLAY_AND_FITS",
   "basis_commit": "4021c7d",
@@ -116,7 +116,15 @@
       "coordinates": "MuJoCo world frame; metres, seconds, radian angular velocities; quaternion wxyz; contact boolean",
       "dimension": 476,
       "qpos_qvel_order": "frozen simulator joint order; reject lengths>64; no truncation",
-      "limitations": "not claimed complete Markov state; no controller hidden state or full scene image in G"
+      "limitations": "not claimed complete Markov state; no controller hidden state or full scene image in G",
+      "arena_workspace_binding": {
+        "main_table": {
+          "body": "table",
+          "contact_geoms": [
+            "table_collision"
+          ]
+        }
+      }
     },
     "action_summary": "zero at initial; mean last8 executed actions at prefix samples, mean last2 at candidate samples",
     "max_frames": 17,
@@ -290,10 +298,10 @@
     "scripts/analyze_candidate_utility_oracle.py": "3ba76cd2fa7d615317286996571bfbbbd3053cbbb6c997e6ee99ac1062fd6c0a",
     "scripts/analyze_continuation_utility_readout.py": "f8db6ab67265c2a45f18aa09d4a2b9da27bd6e61c9bfe3e81f304d847a8e57a2",
     "scripts/collect_candidate_utility_oracle.py": "a7dea9eb69787ea0839b6b9b1be14eae9f4b9bdf5cb91c71f35280a79ba8ae85",
-    "scripts/collect_continuation_observability.py": "10dba8699d208d1ed7896001ddd7bd268618e17f1984233feffcb398492abf3e",
+    "scripts/collect_continuation_observability.py": "0b19d0c77c2352af216ac0ebdb6529e9de4aba8a8deec10805ce3aec6e33f0b9",
     "scripts/evaluate_c0_all.py": "cd043c1681666f25c471ab3f651cd80eabb8cc86cad6087bb1c0150be52f3b86",
     "scripts/run_continuation_observability_pipeline.py": "b37396f4326a80fe312752add440931d344ff807274765d8cff4b8d4edb08c9a",
-    "scripts/run_continuation_utility_readout.py": "b98e510df271bdf40a4b9eded4d7e8cbe0fe4f5ce289168504ec117fe5258a6f",
+    "scripts/run_continuation_utility_readout.py": "43bf38c11dac5de069643c7d53f5536d7b2a66d84a11c2716ee033e9fec9acaa",
     "src/policies/c0_actor_policy.py": "4a0e20350f64beb07424e6be2d80901d89d19dc2e823577c6a1b4f2c737b62b6",
     "src/probes/candidate_utility_oracle.py": "e02534f97b1100ed179e518c479c613c8358b9cdfbc07797f9f2f5d75543b010",
     "src/probes/continuation_utility_observability.py": "878259e003e6f64f7a3794de950797a54ac5feab6f2b8f3a54b01212bdda574f",
@@ -301,7 +309,7 @@
     "src/probes/planning_architecture.py": "fb1726598987b26d045f62f5109864117dd5aec03ebdf33cd5c499e7fae181f7",
     "src/probes/robust_grounding.py": "4c7a02bc70a1e23baffafa725fa0c18315790bb438023c8a118686d09cb1e2f2",
     "src/probes/semantic_teacher_clean.py": "057fdab23f6c0cb39755bce65032338b7c44e84aae389833fc82014c2f84a0e3",
-    "tests/test_continuation_utility_observability.py": "a1712b3005e7e52c33fd5910dab493bf4ebe47fa114b61829868b05d4b7de99b",
+    "tests/test_continuation_utility_observability.py": "e8cced4a528b091d250e6ea12dd2ab9b5e2f1b70d41b181b0a41de85214d1f70",
     "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_between_the_plate_and_the_ramekin_and_place_it_on_the_plate.bddl": "9b59eb1287802868ad9bc78d58e6d36d4ba31134e679cfdbdf4b0feb660c959b",
     "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_from_table_center_and_place_it_on_the_plate.bddl": "5e19880ebc844f86b89f63b172aab0b7a89f85b6e6955891f544f0ea7d0795d5",
     "third_party/LIBERO/libero/libero/bddl_files/libero_spatial/pick_up_the_black_bowl_in_the_top_drawer_of_the_wooden_cabinet_and_place_it_on_the_plate.bddl": "4371189e11d9fd29bb548ab9a8adcd741bb0ce41bb66c612672d0e8cb29a52a9",
@@ -324,5 +332,12 @@
     "third_party/LIBERO/libero/libero/init_files/libero_spatial/pick_up_the_black_bowl_on_the_ramekin_and_place_it_on_the_plate.pruned_init": "2d2c50b7dcbf861fffa94d576f217ed34153e57487010d7a109a220d4d97189b",
     "third_party/LIBERO/libero/libero/init_files/libero_spatial/pick_up_the_black_bowl_on_the_stove_and_place_it_on_the_plate.pruned_init": "ea9cba2814bc166f3682f3f5a97329467839bcf584069cd419191b6c17adae25",
     "third_party/LIBERO/libero/libero/init_files/libero_spatial/pick_up_the_black_bowl_on_the_wooden_cabinet_and_place_it_on_the_plate.pruned_init": "08b0ac928dcc524a66d963851a6a4eece9aeb782b38466006e403a70e3287867"
+  },
+  "technical_amendment": {
+    "before_any_stage2A_label_reuse_or_fit": true,
+    "reason": "main_table is arena table body, not fixtures_dict model",
+    "previous_protocol_sha256": "217e0f457ec0651a4b0f1b78a263657fc4d2c67c7fb8471d7d74d08add503f62",
+    "state_dimensions_labels_splits_hyperparameters_unchanged": true,
+    "cache_bookkeeping": "preserve complete feature manifest digest during resume"
   }
 }
