@@ -2,6 +2,8 @@
 
 阶段1已启动。正式候选收集仍在运行，**尚无完整科学结论**。
 
+2026-10-05状态检查发现系统重启后原进程已退出，旧runtime仍显示RUNNING。30个完整root和其数组hash全部通过校验；第31个root的最后一批8条分支文件为空，已隔离保存并按原协议复算。续跑前有效进度为1,960/2,560条主分支（76.6%）。见[恢复记录](../results/candidate_utility_oracle/recovery/20261005_interrupted_batch/event.json)。已恢复后台运行，并增加30秒心跳及断点落盘同步；实验协议、候选与门槛未改变。
+
 协议和实现于首次仿真前冻结到提交 `4f5cf66`。10项针对性测试通过，包括数值访问边界、候选子集、T1选择规则、300步预算、policy输入白名单，以及使用独立合成数据核验完整analysis→decision→report流程。合成测试不计入科学实验结果。
 
 技术preflight已通过：两个预定root各运行三次A0，起点RGB/proprio一致、sim-state满足容差，完整continuation的动作hash和success记录一致。仿真检查耗时106.37秒，见[preflight](../results/candidate_utility_oracle/preflight.json)。
