@@ -2,7 +2,7 @@
 
 日期：2026-10-05。依据：[阶段1正式报告](candidate_utility_oracle_audit.md)，结果快照 `ea289a3`。
 
-状态：**下一实验的实施方案；尚未补录或训练。** 执行前应将本方案明确为独立protocol，冻结特征白名单、split、读出器、seed、指标和停止规则。阶段1protocol、标签及门槛保持原样。
+状态：**用户已授权执行阶段2A；实施已冻结，先做重放preflight。** [独立protocol](../configs/continuation_utility_observability_protocol.json)与[split](../configs/continuation_utility_observability_split.json)固定特征白名单、读出器、3个seed、指标和停止规则。阶段1protocol、标签及门槛保持原样。实时进度见[runtime.json](../results/continuation_utility_observability/runtime.json)。
 
 **先问：在真实H8后果已经给定时，哪些观测能预测固定C0的后续成功？再学习动作执行前的候选后果。** 本轮先解决效用读出，不启动完整WM或learned controller。
 
@@ -115,4 +115,4 @@ results/continuation_utility_observability/
 docs/continuation_utility_observability_audit.md
 ```
 
-以上为待实施文件，当前不存在运行结果。本方案不将原40root重新变盲，不自动启动controller，不以T1准确率替代实际候选效用。
+上述代码与配置已实施；运行链为preflight→补录→固定CLIP缓存→G/N各3次fit→分析报告。preflight或分支身份检查失败时停止标签复用。最终报告尚待运行完成，本方案不将原40root重新变盲，不自动启动controller，不以T1准确率替代实际候选效用。
