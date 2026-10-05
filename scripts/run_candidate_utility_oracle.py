@@ -10,6 +10,7 @@ import datetime
 import fcntl
 import json
 import os
+import selectors
 import subprocess
 import sys
 import time
@@ -22,6 +23,33 @@ from src.probes.candidate_utility_oracle import atomic_json, sha256
 
 def now():
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+
+def sync_path(path):
+    if path.exists():
+        descriptor=os.open(path,os.O_RDONLY)
+        try:
+            os.fsync(descriptor)
+        finally:
+            os.close(descriptor)
+
+
+def durable_checkpoint(directory, progress):
+    """Flush a published checkpoint before advancing the runtime record."""
+    root=progress.get('root_complete',progress.get('root'))
+    if root is None:
+        return
+    paths=[directory/'arrays'/f'{root}.npz',directory/'access_ledger.json']
+    if 'root_complete' in progress:
+        paths += [directory/'roots'/f'{root}.json',directory/'manifest.json']
+    else:
+        start=progress['candidate_branches_complete']-8
+        paths += [directory/'groups'/f'{root}_{start:02d}.json',
+                  directory/'groups'/f'{root}_{start:02d}.npz']
+    for path in paths:
+        sync_path(path)
+    for path in {p.parent for p in paths}:
+        sync_path(path)
 
 
 def report(directory, runtime):
@@ -55,7 +83,7 @@ def report(directory, runtime):
     rows += ['',f"下一动作：`{m['next_step']}`。本次收集结束；没有自动启动下一阶段训练或learned controller。",'',
              '所有候选从fresh env及同seed/init/prefix起步，H8后使用同一冻结C0至总300步。官方success首次命中为primary；最终On与H8几何为诊断。G2身份从初始scene确定并保持。A0和预声明T1/rescue分支通过重复动作及结果检查。', '',
              '未打开HDF5；官方init容器只将31–34行构造为数值数组。旧协议和运行授权保持原样；没有训练encoder、value或WM。', '',
-             f"监督进程总耗时：{runtime['elapsed_seconds']:.1f}秒；技术preflight另见结果。",'',
+             f"各次运行已记录耗时合计：{runtime.get('prior_observed_elapsed_seconds',0)+runtime['elapsed_seconds']:.1f}秒；中断期间不计入。技术preflight另见结果。",'',
              '[完整指标](../results/candidate_utility_oracle/metrics.json)、[决策](../results/candidate_utility_oracle/decision.json)、[preflight](../results/candidate_utility_oracle/preflight.json)、[访问记录](../results/candidate_utility_oracle/access_ledger.json)、[运行状态](../results/candidate_utility_oracle/runtime.json)。','']
     path=ROOT/'docs/candidate_utility_oracle_audit.md'
     temp=path.with_suffix('.md.part')
@@ -69,13 +97,28 @@ def main():
     lock=open(directory/'run.lock','a')
     fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     started=time.monotonic()
+    prior={}
+    history=None
+    if (directory/'runtime.json').exists():
+        prior=json.loads((directory/'runtime.json').read_text())
+        history=directory/'run_history'/f"{prior['pid']}_{int(time.time())}.json"
+        atomic_json(history,prior)
+        sync_path(history)
+        sync_path(history.parent)
     status={'pid':os.getpid(),'started_at':now(),'status':'RUNNING','phase':'collection',
             'protocol_sha256':sha256(ROOT/'configs/candidate_utility_oracle_protocol.json'),
-            'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()}
+            'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+            'boot_id':Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+            'prior_run_snapshot':str(history) if history else None,
+            'prior_observed_elapsed_seconds':prior.get('prior_observed_elapsed_seconds',0)+prior.get('elapsed_seconds',0)}
+    if prior.get('progress'):
+        status['last_prior_progress']=prior['progress']
     def save():
         status['updated_at']=now()
         status['elapsed_seconds']=time.monotonic()-started
         atomic_json(directory/'runtime.json',status)
+        sync_path(directory/'runtime.json')
+        sync_path(directory)
     save()
     try:
         commands=[[sys.executable,'scripts/collect_candidate_utility_oracle.py','--mode','collect'],
@@ -83,18 +126,35 @@ def main():
         for command in commands:
             status['phase']='collection' if '--mode' in command else 'analysis'
             save()
-            with subprocess.Popen(command,cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,text=True,bufsize=1) as process:
+            with subprocess.Popen(command,cwd=ROOT,stdout=subprocess.PIPE,stderr=subprocess.STDOUT,bufsize=0) as process:
                 status['child_pid']=process.pid
                 save()
-                for line in process.stdout:
-                    print(line,end='',flush=True)
-                    try:
-                        progress=json.loads(line)
-                    except json.JSONDecodeError:
-                        continue
-                    if isinstance(progress,dict) and ('root' in progress or 'root_complete' in progress):
-                        status['progress']=progress
+                selector=selectors.DefaultSelector()
+                selector.register(process.stdout,selectors.EVENT_READ)
+                pending=b''
+                while True:
+                    if not selector.select(timeout=30):
                         save()
+                        continue
+                    block=os.read(process.stdout.fileno(),65536)
+                    if not block:
+                        if pending:
+                            print(pending.decode(errors='replace'),end='',flush=True)
+                        break
+                    lines=(pending+block).split(b'\n')
+                    pending=lines.pop()
+                    for raw in lines:
+                        line=raw.decode(errors='replace')
+                        print(line,flush=True)
+                        try:
+                            progress=json.loads(line)
+                        except json.JSONDecodeError:
+                            continue
+                        if isinstance(progress,dict) and ('root' in progress or 'root_complete' in progress):
+                            durable_checkpoint(directory,progress)
+                            status['progress']=progress
+                            save()
+                selector.close()
                 if process.wait()!=0:
                     raise RuntimeError(f'{status["phase"]} failed with exit {process.returncode}; see collection_blocker.json/driver.log')
         status['phase']='report'
@@ -103,6 +163,9 @@ def main():
         status['status']='COMPLETE'
         status['phase']='finished'
         status['report']='docs/candidate_utility_oracle_audit.md'
+        for path in (directory/'metrics.json',directory/'decision.json',ROOT/status['report']):
+            sync_path(path)
+            sync_path(path.parent)
         save()
     except Exception as error:
         status['status']='TECHNICAL_BLOCKED'
