@@ -1,5 +1,7 @@
 # 阶段2A：真实H8后果的continuation utility读出审计
 
+交互式说明：[瓶颈到底在哪里](project_bottleneck_explainer.html)。用浏览器离线打开，可查看真实候选图像、救回/误伤、泛化差距及概念解释；只展示已有结果。
+
 结果：**`NO_USEFUL_DEVELOPMENT_READOUT`**。这是已暴露pilot的工程筛查，不是独立确认或可部署候选排名。
 
 协议SHA-256：`23f2eebee36a75ed032d685f1bdafa1af37ebb71d0a51944acd0792c18eeb0a6`。40个root、固定N32已补录；有效fit=29、development=9；排除2个此前成功root。
