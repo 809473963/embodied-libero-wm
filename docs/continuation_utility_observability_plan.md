@@ -2,7 +2,9 @@
 
 日期：2026-10-05。依据：[阶段1正式报告](candidate_utility_oracle_audit.md)，结果快照 `ea289a3`。
 
-状态：**用户已授权执行阶段2A；实施已冻结，先做重放preflight。** [独立protocol](../configs/continuation_utility_observability_protocol.json)与[split](../configs/continuation_utility_observability_split.json)固定特征白名单、读出器、3个seed、指标和停止规则。阶段1protocol、标签及门槛保持原样。实时进度见[runtime.json](../results/continuation_utility_observability/runtime.json)。
+状态：**阶段2A已于2026-10-05完成，判决 `NO_USEFUL_DEVELOPMENT_READOUT`。** 40个root、1,280条N32补录分支和G/N各3次fit全部完成；29个有效fit root、9个有效development root。两组threshold0 ensemble均救回1个、harm1个，净gain为0；开发选择阈值均为1.0，全部保留A0。见[正式报告](continuation_utility_observability_audit.md)及[最终核验](../results/continuation_utility_observability/final_verification.json)。[独立protocol](../configs/continuation_utility_observability_protocol.json)与[split](../configs/continuation_utility_observability_split.json)保持冻结；阶段1protocol、标签及门槛保持原样。[runtime.json](../results/continuation_utility_observability/runtime.json)为COMPLETE。
+
+当前不进入2B或WM。先检查fit-development差距、scene覆盖、状态表示和分支差分目标；少量开发root及部分单seed正收益不足以挑选新模型或归因为信息不存在。本文后续保留原实施方案，不将未执行的新scene计划表述为已运行。
 
 **先问：在真实H8后果已经给定时，哪些观测能预测固定C0的后续成功？再学习动作执行前的候选后果。** 本轮先解决效用读出，不启动完整WM或learned controller。
 
@@ -115,4 +117,4 @@ results/continuation_utility_observability/
 docs/continuation_utility_observability_audit.md
 ```
 
-上述代码与配置已实施；运行链为preflight→补录→固定CLIP缓存→G/N各3次fit→分析报告。preflight或分支身份检查失败时停止标签复用。最终报告尚待运行完成，本方案不将原40root重新变盲，不自动启动controller，不以T1准确率替代实际候选效用。
+上述代码与配置已实施，preflight→补录→固定CLIP缓存→G/N各3次fit→分析报告已全部完成。最终报告与只读核验均通过完整性检查；核验额外复算checkpoint预测，没有训练或simulator执行。本方案不将原40root重新变盲，不自动启动controller，不以T1准确率替代实际候选效用。

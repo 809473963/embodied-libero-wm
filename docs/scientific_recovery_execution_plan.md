@@ -4,11 +4,11 @@
 
 依据：[Full Project Scientific & Strategic Audit](full_project_scientific_strategic_audit.md)。
 
-状态：**阶段1于2026-10-05完成，判决B：候选有真实机会，H8 T1效用失败。** 40个root与2,560条主分支完成；38个有效未完成root中，oracle救回7个、覆盖6任务，T1仅救回1个。G1a/b/c通过，G1d失败；阶段2A已获用户授权并开始实施，后续阶段未启动。见[正式审计报告](candidate_utility_oracle_audit.md)。本文保留原设计内容，历史运行授权不变。
+状态：**阶段1与阶段2A均于2026-10-05完成。** 阶段1判决B：40个root与2,560条主分支完成；38个有效未完成root中，oracle救回7个、覆盖6任务，T1仅救回1个；G1a/b/c通过，G1d失败。见[阶段1报告](candidate_utility_oracle_audit.md)。阶段2A完成1,280条N32输入补录及6次fit，判决 `NO_USEFUL_DEVELOPMENT_READOUT`：两组threshold0 ensemble在9个有效开发root均救回1个、harm1个；开发选定阈值全部保留A0。见[阶段2A报告](continuation_utility_observability_audit.md)。2B、WM、新scene与learned controller均未启动。本文保留原设计内容，历史运行授权不变。
 
 下一步按B分支推进：固定后续C0的continuation outcome为主效用，相对A0的gain/regret为选择指标，T1只保留诊断用途。先注册阶段2的输入上限与scene split，再比较完整task-state/contact/action和自然history/proprio输入。当前40个pilot root均为开发证据，不能再作为独立确认集。N32在本pilot保留全部7个oracle rescue，可作为后续预算对照；这不是N32已在新scene验证的结论。
 
-下一项具体实施见[阶段2A：续行效用与输入上限诊断](continuation_utility_observability_plan.md)：先补录原N32分支的H8机器人状态及历史，比较真实H8 privileged与自然输入对固定C0续行效用的读出；通过后再做动作执行前的direct consequence预测。真实未来H8输入仅供离线诊断。
+已完成的具体实施见[阶段2A：续行效用与输入上限诊断](continuation_utility_observability_plan.md)。当前先诊断fit-development差距及scene覆盖、状态和分支目标，不进入动作执行前的direct consequence训练。真实未来H8输入仅供离线诊断；本次负结果只约束当前输入、有限读出与数据，不能升级为backbone信息不存在。
 
 ## 1. 解决方案总览
 
