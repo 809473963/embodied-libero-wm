@@ -4,7 +4,9 @@
 
 依据：[Full Project Scientific & Strategic Audit](full_project_scientific_strategic_audit.md)。
 
-状态：**用户于2026-10-04明确要求“开始执行”；阶段1协议已冻结，技术preflight通过，正式收集已启动。** 本文保留原设计内容；当前执行定义以[独立protocol](../configs/candidate_utility_oracle_protocol.json)为准，历史运行授权不变。实时进度见[运行状态](../results/candidate_utility_oracle/runtime.json)。
+状态：**阶段1于2026-10-05完成，判决B：候选有真实机会，H8 T1效用失败。** 40个root与2,560条主分支完成；38个有效未完成root中，oracle救回7个、覆盖6任务，T1仅救回1个。G1a/b/c通过，G1d失败；阶段2尚未执行。见[正式审计报告](candidate_utility_oracle_audit.md)。本文保留原设计内容，历史运行授权不变。
+
+下一步按B分支推进：固定后续C0的continuation outcome为主效用，相对A0的gain/regret为选择指标，T1只保留诊断用途。先注册阶段2的输入上限与scene split，再比较完整task-state/contact/action和自然history/proprio输入。当前40个pilot root均为开发证据，不能再作为独立确认集。N32在本pilot保留全部7个oracle rescue，可作为后续预算对照；这不是N32已在新scene验证的结论。
 
 ## 1. 解决方案总览
 

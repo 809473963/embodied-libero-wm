@@ -1,0 +1,5481 @@
+{
+  "schema_version": 1,
+  "protocol_sha256": "de6e77d0405a370f397e362c8fe3d6d52c9ef6fa5cd6077c93fc81a64cfbcb7e",
+  "root": {
+    "root_id": "task07_init33",
+    "root_ordinal": 30,
+    "task_id": 7,
+    "init_index": 33,
+    "prefix_steps": 32,
+    "seed": 30703
+  },
+  "reference": {
+    "diagnostic": {
+      "on": false,
+      "m2": -14.866084313583336,
+      "bowl_positions": [
+        [
+          -0.24252963419440712,
+          -0.15033353021114226,
+          0.9254668784631535
+        ],
+        [
+          0.01741160485279898,
+          -0.29880440342642683,
+          1.1263999683946322
+        ]
+      ],
+      "plate_position": [
+        0.0629279074789038,
+        0.2147076435433524,
+        0.9024998346667837
+      ],
+      "both_on": [
+        false,
+        false
+      ],
+      "both_m2": [
+        -14.866084313583336,
+        -16.184177353595565
+      ],
+      "grasp": false,
+      "reach": -16.97533408990167,
+      "target": "akita_black_bowl_1"
+    },
+    "grounding": {
+      "status": "UNIQUE",
+      "ref": 0,
+      "gap": 4.489494794010894,
+      "scores": [
+        0.3393678858545152,
+        4.828862679865409
+      ]
+    },
+    "first_success_step": null,
+    "rgb_sha256": "5a82542991039061bfeb120d88049b338ba319593e1b6b8615ab59df960c64f6"
+  },
+  "prefix_sha256": "297ae5086b23346eefd2df033ccf749e04d38f0dd6f9e935209cad57c6a231b8",
+  "candidates_sha256": "0f27a0254da225bdedd8da6cb8b95ce62f99c7a8de28b92deacc7ed034caadf8",
+  "candidate_forms": [
+    "a0",
+    "plus_epsilon_00",
+    "minus_epsilon_00",
+    "plus_epsilon_01",
+    "minus_epsilon_01",
+    "plus_epsilon_02",
+    "minus_epsilon_02",
+    "plus_epsilon_03",
+    "minus_epsilon_03",
+    "plus_epsilon_04",
+    "minus_epsilon_04",
+    "plus_epsilon_05",
+    "minus_epsilon_05",
+    "plus_epsilon_06",
+    "minus_epsilon_06",
+    "plus_epsilon_07",
+    "minus_epsilon_07",
+    "plus_epsilon_08",
+    "minus_epsilon_08",
+    "plus_epsilon_09",
+    "minus_epsilon_09",
+    "plus_epsilon_10",
+    "minus_epsilon_10",
+    "plus_epsilon_11",
+    "minus_epsilon_11",
+    "plus_epsilon_12",
+    "minus_epsilon_12",
+    "plus_epsilon_13",
+    "minus_epsilon_13",
+    "plus_epsilon_14",
+    "minus_epsilon_14",
+    "plus_epsilon_15",
+    "minus_epsilon_15",
+    "plus_epsilon_16",
+    "minus_epsilon_16",
+    "plus_epsilon_17",
+    "minus_epsilon_17",
+    "plus_epsilon_18",
+    "minus_epsilon_18",
+    "plus_epsilon_19",
+    "minus_epsilon_19",
+    "plus_epsilon_20",
+    "minus_epsilon_20",
+    "plus_epsilon_21",
+    "minus_epsilon_21",
+    "plus_epsilon_22",
+    "minus_epsilon_22",
+    "plus_epsilon_23",
+    "minus_epsilon_23",
+    "c0_binarized",
+    "all_negative",
+    "all_positive",
+    "plus_to_minus_after_1",
+    "minus_to_plus_after_1",
+    "plus_to_minus_after_4",
+    "minus_to_plus_after_4",
+    "plus_to_minus_after_5",
+    "minus_to_plus_after_5",
+    "plus_to_minus_after_3",
+    "minus_to_plus_after_6",
+    "plus_to_minus_after_6",
+    "minus_to_plus_after_2",
+    "minus_to_plus_after_3",
+    "plus_to_minus_after_7"
+  ],
+  "arrays_sha256": "d1d8978352b8102b4ac45719400694fcb9a429dbb32a5abc9dca38d394b31fd4",
+  "rows": [
+    {
+      "candidate_id": 0,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65909352700544,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.573627343811202,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05863312771528681,
+          0.20685699684471143,
+          0.9025461561124418
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.573627343811202,
+          -15.91129358582177
+        ],
+        "grasp": false,
+        "reach": -15.681582841858374,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "fca9f19bb63eabb22731eb147782f19ca43865fae38d5303a788db0b6d314ae6"
+    },
+    {
+      "candidate_id": 1,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.71771030845852,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.692565518790413,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631538
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.059091315779628055,
+          0.2111298204098265,
+          0.902541393151451
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.692565518790413,
+          -16.054491456062767
+        ],
+        "grasp": false,
+        "reach": -15.78508201810565,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "af110573c7e9327a814d5c702aad5ea04edfb178ebd3f5c3085a7b80022bea92"
+    },
+    {
+      "candidate_id": 2,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.607692596105277,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.728543925734465,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631538
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05828834349884471,
+          0.21320041444592133,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.728543925734465,
+          -16.121131883884622
+        ],
+        "grasp": false,
+        "reach": -15.387317858521008,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "370148e8f058622b3e6c09680132c84a32e675df48dd79125a7b4ec1256e3cfd"
+    },
+    {
+      "candidate_id": 3,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.70293386433657,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.810580850392471,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05861780317670574,
+          0.21611870556990606,
+          0.9056467358270912
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.810580850392471,
+          -16.21897399701073
+        ],
+        "grasp": false,
+        "reach": -15.420434254243617,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "4a074c9d793b7a7a04cbc05c7603a30f5025cb4edce5db4bad4f5e2fa0b99058"
+    },
+    {
+      "candidate_id": 4,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.61627116298681,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.257866319489002,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.045874491539696874,
+          0.20511730523674968,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.257866319489002,
+          -15.82416332344532
+        ],
+        "grasp": false,
+        "reach": -15.750832597277416,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "662b19d1627c0239e61f57865493569d4f6c6e875433983838210dcd9e74e19c"
+    },
+    {
+      "candidate_id": 5,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.765177957757643,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.891267742672676,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06789437561466548,
+          0.21148974924505176,
+          0.9024998347063423
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.891267742672676,
+          -16.09283905923756
+        ],
+        "grasp": false,
+        "reach": -15.60263642098967,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "18730d095ce3d48af59b73f1972237597a79c810ae4cff12a6fb79adc55f5af1"
+    },
+    {
+      "candidate_id": 6,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.558661757828784,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.347984710188918,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0448661664772157,
+          0.20940001695132396,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.347984710188918,
+          -15.964848817005729
+        ],
+        "grasp": false,
+        "reach": -15.95113373762427,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "90ae2291e18c88f6084326b0c7160fe54a14b4ea33b8ef0c5476759eddf6c5c9"
+    },
+    {
+      "candidate_id": 7,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.712182123373182,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.666779473081634,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05907241058075342,
+          0.21013753345388597,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.666779473081634,
+          -16.021473948756828
+        ],
+        "grasp": false,
+        "reach": -15.701552319912087,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "3e6738f9c77317a5358dd5d4c92c68c40b68544c60b324c23ff89e39d0256a66"
+    },
+    {
+      "candidate_id": 8,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.607183105981914,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.595482052186734,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0553593703781271,
+          0.2104424326118476,
+          0.9024997870315926
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.595482052186734,
+          -16.02195878933896
+        ],
+        "grasp": false,
+        "reach": -15.443693489466666,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "b6ed89aa2f647662d21fb5858a33cdcb1342b7b1cdf1d3563cb282de8722e32e"
+    },
+    {
+      "candidate_id": 9,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.832755496777516,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.519457299464834,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05673751426346513,
+          0.20632789640633603,
+          0.9028634613867168
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.519457299464834,
+          -15.888693373750648
+        ],
+        "grasp": false,
+        "reach": -15.562547475013416,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "798bacf64f810b8302c840f8507090a000d7d41c0f9b77c97d4d3f26454b3722"
+    },
+    {
+      "candidate_id": 10,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.492817778496363,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.717354798638501,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05660260578317666,
+          0.21415463240274768,
+          0.9025077355955314
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.717354798638501,
+          -16.148466306307952
+        ],
+        "grasp": false,
+        "reach": -15.905668338431077,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "efd02f25879408025d618fbdfb7676a93f787a83da2886f27887de1786409677"
+    },
+    {
+      "candidate_id": 11,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.8247122747932,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.472204771901394,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.054353144630539835,
+          0.20647289362461363,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.472204771901394,
+          -15.887530714713602
+        ],
+        "grasp": false,
+        "reach": -15.901295872509634,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "12e099505dd891b04a67c2d61643592d905daa431ed4bd3989e61995477679f5"
+    },
+    {
+      "candidate_id": 12,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.49687813174693,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.728389033586254,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05966267223659565,
+          0.21205274072991268,
+          0.9024998346667857
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.728389033586254,
+          -16.086712655375788
+        ],
+        "grasp": false,
+        "reach": -15.91703843606251,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "6e1b6214aef85236c5e71439ee5956743dc6163476077421afc2d17425cbfa39"
+    },
+    {
+      "candidate_id": 13,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.791823697471727,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.580980294105398,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05809421781797665,
+          0.20759879835671288,
+          0.9025051531013235
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.580980294105398,
+          -15.93449070106101
+        ],
+        "grasp": false,
+        "reach": -15.466121785318547,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "ca61626a99ab131a14749ab65766211708b701365f57863927195909dbd8db11"
+    },
+    {
+      "candidate_id": 14,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.528038933667098,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.246687108589159,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631539
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.04391894977416053,
+          0.20626502524148346,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.246687108589159,
+          -15.858817907344822
+        ],
+        "grasp": false,
+        "reach": -15.599105553034617,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "18bb1926979456b88b935fd48492da4ab6c4ffb9d8bd2c2ffac8abef52164edc"
+    },
+    {
+      "candidate_id": 15,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.594188865274454,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.685388911890044,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05642596757793438,
+          0.21305858714207715,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.685388911890044,
+          -16.111589367462194
+        ],
+        "grasp": false,
+        "reach": -15.544284903738125,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "fdb0a4b526f9f1aebe1d75d73361be04cfda8eeda28c5a2b01c8864345de98d6"
+    },
+    {
+      "candidate_id": 16,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.73207137548908,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.874158398065711,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06540618133375282,
+          0.2129370960128881,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.874158398065711,
+          -16.132906662001975
+        ],
+        "grasp": false,
+        "reach": -15.63904866593804,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "1b8aa918ebb1e44cc10f66639899eb7ac1ce4c5a15e2945cce978edd7b6b3ea0"
+    },
+    {
+      "candidate_id": 17,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.63016981975121,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.717905285706435,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.059093512508295226,
+          0.21211752756984215,
+          0.9064031161939264
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.717905285706435,
+          -16.08731176434587
+        ],
+        "grasp": false,
+        "reach": -15.187223158028695,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "e36de6d43cf3056e51c26d7f2a3a72587bc953f43a1a8dfaa6eeba24ea3e5735"
+    },
+    {
+      "candidate_id": 18,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.691647516650697,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.699384011898571,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.055733007683079185,
+          0.2141702269409798,
+          0.9024998346668404
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.699384011898571,
+          -16.146800845621257
+        ],
+        "grasp": false,
+        "reach": -15.628058060776219,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "dd4d62c7f332b1c2a0cbd3cfb1e56bca747346deb7612c0f632ceadc062848ee"
+    },
+    {
+      "candidate_id": 19,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.673049929414322,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.81048255332396,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.060468792248253404,
+          0.2145858804610455,
+          0.9024998115797699
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.81048255332396,
+          -16.173089574372092
+        ],
+        "grasp": false,
+        "reach": -15.295609818418779,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "1bcbf856b45d0105c56beb38542b4aab5d6415937bdbdb0f824affb1cc95d5eb"
+    },
+    {
+      "candidate_id": 20,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.64827481220698,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.867921929529574,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06052947056102397,
+          0.21677276332019682,
+          0.9024998346667857
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.867921929529574,
+          -16.245900163797653
+        ],
+        "grasp": false,
+        "reach": -15.654622582357478,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "70cf78ee5342fe3094dbe3f5db9122bf9c243073e5b5ff9ff5f3cf0b752bbc04"
+    },
+    {
+      "candidate_id": 21,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.766102229682847,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.551740759587936,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05647582212479661,
+          0.20780989591787472,
+          0.9024998346667839
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.551740759587936,
+          -15.937271896658086
+        ],
+        "grasp": false,
+        "reach": -15.879891190917768,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "ea596b7ddd73cc07b2853bb9fe2bc357a14c34fd574e0623bb5977c54a8777d4"
+    },
+    {
+      "candidate_id": 22,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.551097540046765,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -15.025946045185353,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06500839489728588,
+          0.2192178365043251,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -15.025946045185353,
+          -16.340142748528546
+        ],
+        "grasp": false,
+        "reach": -15.341376027655603,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "d78e9086f30767dcf033fd01a5f70e830b310743eb06519a80b1af0bd677aee6"
+    },
+    {
+      "candidate_id": 23,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.83042287162909,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.683464965763834,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.058851035971058466,
+          0.21097472827421562,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.683464965763834,
+          -16.048688107523958
+        ],
+        "grasp": false,
+        "reach": -15.790766981816283,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "f13e3cc2d447f48fe8b8b4d96e34c61c690e543df6e9f316d0de50353af3d255"
+    },
+    {
+      "candidate_id": 24,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.486803511890077,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.660125146044626,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05190021452918514,
+          0.21576294861841974,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.660125146044626,
+          -16.190728249969037
+        ],
+        "grasp": false,
+        "reach": -15.505773141807312,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "00006877c6fac17662c221b2b9c5735730f21489c915c14dd0c47602e05b78aa"
+    },
+    {
+      "candidate_id": 25,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.732199629059746,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.83929250345782,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631538
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05961623399805185,
+          0.21641262538331088,
+          0.902499834666717
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.83929250345782,
+          -16.231425345597902
+        ],
+        "grasp": false,
+        "reach": -15.312285476046682,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "1cf43c1e81f75d79a02be63b8d5adaa90995221ec0d89753a47cb1fafcb35f4e"
+    },
+    {
+      "candidate_id": 26,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.590865073112763,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.720653565188243,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05911768970047699,
+          0.21220466867561522,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.720653565188243,
+          -16.090272388568224
+        ],
+        "grasp": false,
+        "reach": -15.367219462225547,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "112d23791cf6355614cda30a0ceb7e4e602e5ffc91e73bc8f4314e688d1970a6"
+    },
+    {
+      "candidate_id": 27,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.666506879419657,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.55227142342095,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.057266843580033526,
+          0.2071687826471378,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.55227142342095,
+          -15.91801489141215
+        ],
+        "grasp": false,
+        "reach": -15.888040725471717,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "91172b7d01e7ee7339fc88015325ded2eb2b3e6d5d83a404af4f9b21c87c33d3"
+    },
+    {
+      "candidate_id": 28,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65102006862303,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.641502808811698,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05357909871973073,
+          0.21368647940129865,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.641502808811698,
+          -16.125516783578178
+        ],
+        "grasp": false,
+        "reach": -15.771511703586539,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "1c5fb9cfcd29761878ea470cdbbcc510a1aaf8ed4c6b9ac00a35194096528e65"
+    },
+    {
+      "candidate_id": 29,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.681014638209138,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.738353607827815,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631538
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05915765081598167,
+          0.2128619803882932,
+          0.9046364536981756
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.738353607827815,
+          -16.112218528797634
+        ],
+        "grasp": false,
+        "reach": -15.409781277480509,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "5efb3007ec88313b61b3e298432977f10b1c04d9ff0a208dee95f07a6d332780"
+    },
+    {
+      "candidate_id": 30,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.640598754090433,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.898354179508212,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06185619796124709,
+          0.21686010295572988,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.898354179508212,
+          -16.25254264671117
+        ],
+        "grasp": false,
+        "reach": -15.469726884987871,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "e1a40013515e8477529707a79d447e0998f14c2372c96c0fcbf474eb028e5bae"
+    },
+    {
+      "candidate_id": 31,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -18.004566206344112,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.554152724379174,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.057496442258605555,
+          0.20704981260745056,
+          0.9024920242564518
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.554152724379174,
+          -15.914664317262257
+        ],
+        "grasp": false,
+        "reach": -15.521029841955071,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "da93a21f210140e43436a25c0a1ce2ba8e537d530f7e4238fc94770906ce31bc"
+    },
+    {
+      "candidate_id": 32,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.315376666369627,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.871622949219743,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0623112874505349,
+          0.21543905764727175,
+          0.9024998319539128
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.871622949219743,
+          -16.206662751983085
+        ],
+        "grasp": false,
+        "reach": -15.457948859654552,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "a5ecdd5ee29f7e09cc8e3d9911dab4de03ba6f5867030ffd0fd76198f1dcfe12"
+    },
+    {
+      "candidate_id": 33,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.657640439306782,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.590544334982344,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631538
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05783131758779207,
+          0.20819382444877274,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.590544334982344,
+          -15.953562596633457
+        ],
+        "grasp": false,
+        "reach": -15.857955845375626,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "af6093bac67be2190034bbb5d80e2a1813de2a2a0f62efe9184813c19326b911"
+    },
+    {
+      "candidate_id": 34,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.66272021780135,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.21215318290543,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.042472099579804135,
+          0.20609690586279272,
+          0.9024998346667795
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.21215318290543,
+          -15.85076195171174
+        ],
+        "grasp": false,
+        "reach": -15.84107510332009,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "bf802f487fe5c596f8e56d82f4bf015acd44e3a46859e9ff8519bd7bd99e82cf"
+    },
+    {
+      "candidate_id": 35,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.530596038373233,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.439387047108939,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05577499306614169,
+          0.203999017695957,
+          0.9024998356205195
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.439387047108939,
+          -15.808828032633489
+        ],
+        "grasp": false,
+        "reach": -15.83087487240735,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "f47153acb70c85a06123092c7e8928467130f6134ab84a5ba99603974a540738"
+    },
+    {
+      "candidate_id": 36,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.79131734450995,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.934684574908575,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06098337863609492,
+          0.2189937044929854,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.934684574908575,
+          -16.320937235212252
+        ],
+        "grasp": false,
+        "reach": -15.470148492445338,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "5313c3e5350a417d42461ad320265cdd41c20b5094cf253faab3b4e547183af9"
+    },
+    {
+      "candidate_id": 37,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.58930686834667,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.806763338547317,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05764012805791447,
+          0.2167720463552507,
+          0.9024998346666702
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.806763338547317,
+          -16.23811699077055
+        ],
+        "grasp": false,
+        "reach": -15.658089855967697,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "6ae69761c8ff86ae169607a7d0b8686ae15d7188068b362e103ba15ca6439e8b"
+    },
+    {
+      "candidate_id": 38,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.733758443853652,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.666888336534267,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05711840256612747,
+          0.2117677059094314,
+          0.9024997127146829
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.666888336534267,
+          -16.07045884354719
+        ],
+        "grasp": false,
+        "reach": -15.066392432340539,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "91029faaba50cb5dc3fed4a652dd00a2f6b7444ec9f977223768e5cad089277b"
+    },
+    {
+      "candidate_id": 39,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.64597218209901,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.88824812467644,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06191072794932189,
+          0.21642095377228654,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.88824812467644,
+          -16.238114767279228
+        ],
+        "grasp": false,
+        "reach": -15.469095870305898,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "1644479a982df2d76d8f7a015092a6af75cf9c936c0c03c59525480edfe76582"
+    },
+    {
+      "candidate_id": 40,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.673790664383738,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.760088731155463,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05737289720522755,
+          0.2151809411748689,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.760088731155463,
+          -16.184548594316706
+        ],
+        "grasp": false,
+        "reach": -15.384233087045196,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "14ffdbd39acb9e07485005227d89fc78d193f15dbe6c03bfc34cbc4e24f4e76b"
+    },
+    {
+      "candidate_id": 41,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.5840128018655,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.78600869998622,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631538
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06136376787420923,
+          0.2128841232524509,
+          0.9024998346667839
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.78600869998622,
+          -16.11909073938804
+        ],
+        "grasp": false,
+        "reach": -15.75013083739487,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "347a59603d19f5d221d27d1002a4462dd63e72e898a813a257659e82a188358c"
+    },
+    {
+      "candidate_id": 42,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.736409991168596,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.622591759886738,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.056022405935742654,
+          0.21094962093294084,
+          0.9025035932304366
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.622591759886738,
+          -16.04047336688735
+        ],
+        "grasp": false,
+        "reach": -15.730655958422256,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "2ec39cc2190a777a95fa16c2744677cd94f0e942641507631e5b30deb4c6df41"
+    },
+    {
+      "candidate_id": 43,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.866774210757594,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.662956836468148,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05768914982267152,
+          0.2111413332278865,
+          0.902504442208242
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.662956836468148,
+          -16.051130133959855
+        ],
+        "grasp": false,
+        "reach": -15.73139965151719,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "868dcc0d77a18ccbb90687da2a101b0ad9826593c2342946a95c4a0a68801ea5"
+    },
+    {
+      "candidate_id": 44,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.45234708616927,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.558380959366039,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.055591880412566734,
+          0.2088049650765827,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.558380959366039,
+          -15.968107484135054
+        ],
+        "grasp": false,
+        "reach": -15.510291018959837,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "882cfda2df09f67ca3a68c6a3f5e57e1279a962f57dfb76073232aaa4d2c8b47"
+    },
+    {
+      "candidate_id": 45,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.843225209887247,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.392696205771212,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631539
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.04564136963996975,
+          0.21049753744231614,
+          0.9024998346666046
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.392696205771212,
+          -16.00279018254904
+        ],
+        "grasp": false,
+        "reach": -15.791056411950844,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "fc9ff1672eb27f20c3d037963692bb8e8bf86c6d039085f6f2eef0697d99563b"
+    },
+    {
+      "candidate_id": 46,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.47829612752337,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.985938747537283,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06272383862732687,
+          0.21955230515739874,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.985938747537283,
+          -16.34444758620318
+        ],
+        "grasp": false,
+        "reach": -15.275114727423057,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "9381250510487664fd700179b4d5f8042d908f6808f0684a9fda20c8cb3dbb23"
+    },
+    {
+      "candidate_id": 47,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.586893968694383,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.199285650170468,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05123083573721409,
+          0.19840884196849876,
+          0.9024998346667839
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.199285650170468,
+          -15.612068965188731
+        ],
+        "grasp": false,
+        "reach": -15.922942554338308,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "c1f74542ffe2b7870347fdb9460bbae0d8efa5e128c0ce658dabc87423834392"
+    },
+    {
+      "candidate_id": 48,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.73711395275916,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.661813952956345,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05894167970777735,
+          0.2100526814582373,
+          0.903458190967372
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.661813952956345,
+          -16.018299952788677
+        ],
+        "grasp": false,
+        "reach": -15.597900867080496,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "ee119f5983c5bc76252f3460cc5b06891502f67a8ad99cc59d8cb6826179589a"
+    },
+    {
+      "candidate_id": 49,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65909352700544,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.573627343811202,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05863312771528681,
+          0.20685699684471143,
+          0.9025461561124418
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.573627343811202,
+          -15.91129358582177
+        ],
+        "grasp": false,
+        "reach": -15.681582841858374,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "301aeb9e1073cdeee27403ac5d53acf7409172c62f910161faabbb6a8c5e255d"
+    },
+    {
+      "candidate_id": 50,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.657874965790697,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -15.422740661067262,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.038479717976112666,
+          0.25435093172347356,
+          0.9130165178106407
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -15.422740661067262,
+          -17.451880066672377
+        ],
+        "grasp": false,
+        "reach": -17.419545324233468,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "82955f601df36bced9b06f75fa39fa20aed73e5aeaab1c17a1976d15393a346c"
+    },
+    {
+      "candidate_id": 51,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65909352700544,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.573627343811202,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05863312771528681,
+          0.20685699684471143,
+          0.9025461561124418
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.573627343811202,
+          -15.91129358582177
+        ],
+        "grasp": false,
+        "reach": -15.681582841858374,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "301aeb9e1073cdeee27403ac5d53acf7409172c62f910161faabbb6a8c5e255d"
+    },
+    {
+      "candidate_id": 52,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658163853065695,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -15.299225115426408,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0403643356376463,
+          0.24850135700369694,
+          0.9128984044764084
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -15.299225115426408,
+          -17.25956136903129
+        ],
+        "grasp": false,
+        "reach": -17.387802073796074,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "2525cf7a9088fd74a22514c41c6b1cd04f09952a225471e3e2cd1abe95a252e0"
+    },
+    {
+      "candidate_id": 53,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65907397613232,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.578696496820239,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631538
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05638452231049035,
+          0.20893869683542612,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.578696496820239,
+          -15.974554294874629
+        ],
+        "grasp": false,
+        "reach": -15.741468319317432,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "39b845c8e2137d25f1a1a93a7318a47a26d12ae032e568e4682128e292fd86ff"
+    },
+    {
+      "candidate_id": 54,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658837779487634,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.668801684591974,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05606036282931849,
+          0.21271498622342,
+          0.9025077109540399
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.668801684591974,
+          -16.099246652699822
+        ],
+        "grasp": false,
+        "reach": -15.774739854023238,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "f4d2b37b62a296aaf54e242039e0efe6efed7e4d951adb66e6c36bc6ffd513c1"
+    },
+    {
+      "candidate_id": 55,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658418050003466,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.930437003264771,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06071861117897486,
+          0.21904627768508514,
+          0.9033619446269158
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.930437003264771,
+          -16.32194576973231
+        ],
+        "grasp": false,
+        "reach": -15.490476198544583,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "06a320fe407c499f5bb0b4b50431565dc8e42294c1898bf346595053a33beee7"
+    },
+    {
+      "candidate_id": 56,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658978261914367,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.655018266275544,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05673970200736812,
+          0.2116188169770306,
+          0.9024998346666403
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.655018266275544,
+          -16.064536428017924
+        ],
+        "grasp": false,
+        "reach": -15.872805243427875,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "3c5a1165c8f6465244b866ccc08f0b7ec14cb119701e2625098b9d66153d3969"
+    },
+    {
+      "candidate_id": 57,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658244255617248,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.691496329541232,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06271552851949984,
+          0.2080324028709043,
+          0.902484268643417
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.691496329541232,
+          -15.961917924747276
+        ],
+        "grasp": false,
+        "reach": -15.858339802497554,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "1c79900752a68659d28854ac3b7fb114c729824af3ecc4561b39c88b82572e22"
+    },
+    {
+      "candidate_id": 58,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658652631248266,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.636279821975164,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.056649924788974966,
+          0.21096345772330735,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.636279821975164,
+          -16.042525830423546
+        ],
+        "grasp": false,
+        "reach": -15.693267678458854,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "561a8a53f5b52f36b54aee76ec91ede6fdb035af7bcdd1d97c822aebe8717a35"
+    },
+    {
+      "candidate_id": 59,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658052515204943,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.46451878946078,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05299493634771507,
+          0.20729957152375192,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.46451878946078,
+          -15.911777846638527
+        ],
+        "grasp": false,
+        "reach": -15.99057730467404,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "97f750e958910f92cb953820bdc9dabc150cf6efa1adea37f60d5ba76f2df184"
+    },
+    {
+      "candidate_id": 60,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.6590628287798,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.64927251013701,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05767142348970552,
+          0.2106222593978028,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.64927251013701,
+          -16.03383488475243
+        ],
+        "grasp": false,
+        "reach": -15.720076229112042,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "8d68ef1953147b25d0ac37f691414efbd74957c607f7bae0d70a46641721e2cd"
+    },
+    {
+      "candidate_id": 61,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65891971654111,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.822035598284494,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06224920030410239,
+          0.21355242921539794,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.822035598284494,
+          -16.143833809553072
+        ],
+        "grasp": false,
+        "reach": -15.658098985679056,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "233e37bf1ee5df582039664b0624b4ee7ff27a516dd58c91879a9f3f280beacd"
+    },
+    {
+      "candidate_id": 62,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.658621726419852,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.855798572307947,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.06054760913587258,
+          0.21628602478335185,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.855798572307947,
+          -16.229782487143286
+        ],
+        "grasp": false,
+        "reach": -15.503470011935512,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "df9c2d2543d3fb68f24dde3c1bd675d860c37e5b25df40d7a955df7c79e352a4"
+    },
+    {
+      "candidate_id": 63,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65908806461006,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.66072131036137,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631537
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05604039267058506,
+          0.21241750262345063,
+          0.9024998346667877
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.66072131036137,
+          -16.089308563918664
+        ],
+        "grasp": false,
+        "reach": -15.706832681588835,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "f9f4811b59b1a345e532327d73819ae7244c625f5ba1d77ecd2a90a458e91523"
+    }
+  ],
+  "a0_repeat_pass": true,
+  "a0_repeats": [
+    {
+      "candidate_id": 0,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65909352700544,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.573627343811202,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05863312771528681,
+          0.20685699684471143,
+          0.9025461561124418
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.573627343811202,
+          -15.91129358582177
+        ],
+        "grasp": false,
+        "reach": -15.681582841858374,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "fca9f19bb63eabb22731eb147782f19ca43865fae38d5303a788db0b6d314ae6"
+    },
+    {
+      "candidate_id": 0,
+      "identity": {
+        "observable_exact": {
+          "agentview_image": true,
+          "robot0_eef_pos": true,
+          "robot0_gripper_qpos": true,
+          "robot0_joint_pos": true
+        },
+        "state_max_abs": 0.0,
+        "pass": true
+      },
+      "h8": {
+        "on": false,
+        "m2": -14.866084313583336,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631535
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.0629279074789038,
+          0.2147076435433524,
+          0.9024998346667837
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.866084313583336,
+          -16.184177353595565
+        ],
+        "grasp": false,
+        "reach": -17.65909352700544,
+        "target": "akita_black_bowl_1"
+      },
+      "first_success_step": null,
+      "success": false,
+      "final_step": 300,
+      "final": {
+        "on": false,
+        "m2": -14.573627343811202,
+        "bowl_positions": [
+          [
+            -0.24252963419440712,
+            -0.15033353021114226,
+            0.9254668784631536
+          ],
+          [
+            0.01741160485279898,
+            -0.29880440342642683,
+            1.1263999683946322
+          ]
+        ],
+        "plate_position": [
+          0.05863312771528681,
+          0.20685699684471143,
+          0.9025461561124418
+        ],
+        "both_on": [
+          false,
+          false
+        ],
+        "both_m2": [
+          -14.573627343811202,
+          -15.91129358582177
+        ],
+        "grasp": false,
+        "reach": -15.681582841858374,
+        "target": "akita_black_bowl_1"
+      },
+      "applied_actions_sha256": "fca9f19bb63eabb22731eb147782f19ca43865fae38d5303a788db0b6d314ae6"
+    }
+  ],
+  "t1_selected_id": 0,
+  "intervention_repeat_pass": true,
+  "intervention_repeats": [],
+  "complete": true
+}
