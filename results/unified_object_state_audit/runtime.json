@@ -1,0 +1,9 @@
+{
+  "status": "BLOCKED",
+  "phase": "supervision_inventory",
+  "frames": 0,
+  "started_epoch": 1791531150.3135452,
+  "training": false,
+  "confirmation_opened": false,
+  "error": "Traceback (most recent call last):\n  File \"/home/luo/embodied-libero-wm/scripts/audit_unified_object_state.py\", line 34, in main\n    j=int(np.flatnonzero(a['natural_step']==t)[0]);np.testing.assert_allclose(obs[i,:12],a['proprio'][j],atol=1e-7,rtol=0)\n  File \"/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/numpy/testing/_private/utils.py\", line 1530, in assert_allclose\n    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),\n  File \"/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/numpy/testing/_private/utils.py\", line 844, in assert_array_compare\n    raise AssertionError(msg)\nAssertionError: \nNot equal to tolerance rtol=0, atol=1e-07\n\nMismatched elements: 1 / 12 (8.33%)\nMax absolute difference: 1.09096037e-07\nMax relative difference: 5.02854409e-08\n x: array([-3.042035e-02,  1.658879e-01,  9.661140e-01,  4.609325e-03,\n       -2.221959e-03,  1.356118e-01,  7.092857e-01,  1.213565e-01,\n       -1.818437e+00, -6.796584e-02,  2.551444e+00,  1.070691e+00],\n      dtype=float32)\n y: array([-3.042035e-02,  1.658879e-01,  9.661140e-01,  4.609324e-03,\n       -2.221959e-03,  1.356118e-01,  7.092857e-01,  1.213565e-01,\n       -1.818437e+00, -6.796584e-02,  2.551444e+00,  1.070691e+00])\n"
+}

@@ -1,0 +1,62 @@
+{
+  "version": "operational_relational_event_v1",
+  "date": "2026-10-07",
+  "status": "FROZEN_BEFORE_V1_EXTRACTION_NOT_BEFORE_EXPLORATION",
+  "manifest": "results/dense_relation_preflight/manifest.json",
+  "control_hz": 20,
+  "parameters": {
+    "window_intervals": 10,
+    "local_drift_m": 0.005,
+    "rise_m": 0.005,
+    "linear_speed_m_s": 0.02,
+    "angular_speed_rad_s": 0.5,
+    "placement_drift_m": 0.005
+  },
+  "threshold_rationale": "10 intervals=.5s; 5mm translation/rise and .02m/s inherited engineering conventions; .5rad/s and 5mm world drift add explicit low-motion requirements. No success-based tuning. Not established universal tolerances.",
+  "horizons": [
+    1,
+    8,
+    20
+  ],
+  "source_fields": [
+    "pose",
+    "step",
+    "grip_pos",
+    "grip_rot",
+    "pad_contact",
+    "gripper_contact",
+    "non_gripper_contact",
+    "on",
+    "contacts",
+    "actions"
+  ],
+  "events": [
+    "bilateral_attachment",
+    "detached_attachment",
+    "lift_hold_evidence",
+    "released_on_quiet",
+    "release_after_attachment"
+  ],
+  "labels": {
+    "unknown": -1,
+    "predicate_false": 0,
+    "predicate_true": 1
+  },
+  "time_contract": "State at t uses only samples <=t. Window [t-10,t] has 11 samples. actions[t] moves state[t] to state[t+1]. Future targets are separate, right-censored to unknown.",
+  "history_contract": "Missing pre-recording attachment/support evidence stays unknown. A first valid true window after unknown is not a measured 0->1 onset.",
+  "identity_contract": "Both bowls labeled independently, array entity index 0/1 maps manifest geometry, goal referent fixed from original initial scene.",
+  "exclusions": [
+    "universal stable grasp",
+    "load-bearing support",
+    "mesh clearance",
+    "new-scene validation",
+    "learned controller authorization"
+  ],
+  "frozen_files": {
+    "src/probes/relational_event_labels.py": "c71a3e6c940909bd3b643311781eaf525e9c49c27d05c44f59e4fc044f17e30f",
+    "scripts/audit_relational_event_labels.py": "739ce7148c59e0bd47b463c24d615f4c4c1bfd2b3b8aa1ef0676f39b56163afa",
+    "tests/test_relational_event_labels.py": "11ee19668e07840ec4ae847033abc6a1ccb869e4ac0bc43f6c5c6282806ffdd8",
+    "results/dense_relation_preflight/manifest.json": "9dc194532aa38ecf5fc4fbaafbf6d5e523498398d265fe2c48f476cd12264b66",
+    "configs/dense_relation_preflight_protocol.json": "8f8299940797543f49d22c97a470b0d0b46b523555334c3479a44d3f22ddee1a"
+  }
+}

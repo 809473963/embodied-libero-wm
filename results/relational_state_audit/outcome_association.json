@@ -1,0 +1,1567 @@
+{
+  "interpretation": "descriptive post-action pilot; no fitted chooser, no causal attribution",
+  "by_event": {
+    "sampled_target_contact_onset": {
+      "False": {
+        "branches": 1207,
+        "successes": 454,
+        "roots": 38,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 9,
+        "successes": 2,
+        "roots": 2,
+        "tasks": [
+          1,
+          5
+        ],
+        "not_independent_samples": true
+      }
+    },
+    "first_sampled_contact_from_uncontacted_root": {
+      "False": {
+        "branches": 1216,
+        "successes": 456,
+        "roots": 38,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 0,
+        "successes": 0,
+        "roots": 0,
+        "tasks": [],
+        "not_independent_samples": true
+      }
+    },
+    "sampled_target_contact_loss": {
+      "False": {
+        "branches": 1096,
+        "successes": 434,
+        "roots": 37,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 120,
+        "successes": 22,
+        "roots": 11,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          8
+        ],
+        "not_independent_samples": true
+      }
+    },
+    "all_samples_target_contact": {
+      "False": {
+        "branches": 952,
+        "successes": 271,
+        "roots": 37,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 264,
+        "successes": 185,
+        "roots": 11,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          8
+        ],
+        "not_independent_samples": true
+      }
+    },
+    "sampled_plate_contact": {
+      "False": {
+        "branches": 1121,
+        "successes": 391,
+        "roots": 36,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 95,
+        "successes": 65,
+        "roots": 8,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          8
+        ],
+        "not_independent_samples": true
+      }
+    },
+    "h8_robot_contact_no_entity_contact": {
+      "False": {
+        "branches": 953,
+        "successes": 271,
+        "roots": 37,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 263,
+        "successes": 185,
+        "roots": 11,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          8
+        ],
+        "not_independent_samples": true
+      }
+    },
+    "sampled_detach_and_rise_5mm": {
+      "False": {
+        "branches": 1164,
+        "successes": 452,
+        "roots": 37,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 52,
+        "successes": 4,
+        "roots": 2,
+        "tasks": [
+          1,
+          6
+        ],
+        "not_independent_samples": true
+      }
+    },
+    "h8_bilateral_contact": {
+      "False": {
+        "branches": 1034,
+        "successes": 297,
+        "roots": 38,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "not_independent_samples": true
+      },
+      "True": {
+        "branches": 182,
+        "successes": 159,
+        "roots": 7,
+        "tasks": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          8
+        ],
+        "not_independent_samples": true
+      }
+    }
+  },
+  "roots": [
+    {
+      "root_id": "task00_init31",
+      "task_id": 0,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 28,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 32,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 51,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 1.1097788954916865e-05,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task00_init32",
+      "task_id": 0,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 29,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 22,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 0.009457794106505088,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task00_init33",
+      "task_id": 0,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 26,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 4,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 26
+      },
+      "discrete_signature_count": 4,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.04477248340845108,
+        0.014048025012016296,
+        0.11549890041351318
+      ]
+    },
+    {
+      "root_id": "task00_init34",
+      "task_id": 0,
+      "eligible": false,
+      "split": "development",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 32,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 1,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 30,
+        "all_samples_target_contact": 2,
+        "sampled_plate_contact": 32,
+        "h8_robot_contact_no_entity_contact": 2,
+        "sampled_detach_and_rise_5mm": 2,
+        "h8_bilateral_contact": 2
+      },
+      "discrete_signature_count": 7,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.010803598910570145,
+        0.0029119253158569336,
+        0.02077317237854004
+      ]
+    },
+    {
+      "root_id": "task01_init31",
+      "task_id": 1,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 26,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 3,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 0.007378379220249087,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task01_init32",
+      "task_id": 1,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": true,
+      "success_candidates": 4,
+      "rescue_opportunity": true,
+      "events_positive": {
+        "sampled_target_contact_onset": 7,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 10,
+        "all_samples_target_contact": 22,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 21,
+        "sampled_detach_and_rise_5mm": 20,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 16,
+      "mixed_Y_signature_count": 3,
+      "counterexamples": [
+        {
+          "failed_candidate": 0,
+          "successful_candidate": 16,
+          "max_gripper_relative_position_difference_m": 0.0014854470022775956,
+          "max_target_plate_position_difference_m": 0.005139768123626709,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        },
+        {
+          "failed_candidate": 2,
+          "successful_candidate": 4,
+          "max_gripper_relative_position_difference_m": 0.0056577780969038205,
+          "max_target_plate_position_difference_m": 0.0047286152839660645,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        },
+        {
+          "failed_candidate": 22,
+          "successful_candidate": 13,
+          "max_gripper_relative_position_difference_m": 0.0013067942086624623,
+          "max_target_plate_position_difference_m": 0.0018230676651000977,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.021800220012664795,
+        0.029436171054840088,
+        0.030608534812927246
+      ]
+    },
+    {
+      "root_id": "task01_init33",
+      "task_id": 1,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 32,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 5,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 26
+      },
+      "discrete_signature_count": 5,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.020834848284721375,
+        0.015754908323287964,
+        0.08176088333129883
+      ]
+    },
+    {
+      "root_id": "task01_init34",
+      "task_id": 1,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 24,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 10,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 0.01159917274129102,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task02_init31",
+      "task_id": 2,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 27,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 26
+      },
+      "discrete_signature_count": 5,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 55,
+          "successful_candidate": 50,
+          "max_gripper_relative_position_difference_m": 1.9573150833562813e-05,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0181894414126873,
+        0.015065651386976242,
+        0.060859084129333496
+      ]
+    },
+    {
+      "root_id": "task02_init32",
+      "task_id": 2,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 22,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 6,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 5,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 14,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 1.9937342058906626e-05,
+          "max_target_plate_position_difference_m": 0.008646398782730103,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.016160227358341217,
+        0.02287726104259491,
+        0.03987228870391846
+      ]
+    },
+    {
+      "root_id": "task02_init33",
+      "task_id": 2,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 22,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 2,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 0.006644090370583708,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task02_init34",
+      "task_id": 2,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": false,
+      "any_Y": true,
+      "success_candidates": 1,
+      "rescue_opportunity": true,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 0,
+          "successful_candidate": 19,
+          "max_gripper_relative_position_difference_m": 0.00993380328160634,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task03_init31",
+      "task_id": 3,
+      "eligible": false,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 32,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 32,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task03_init32",
+      "task_id": 3,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 16,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 4,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 0.004409127252388401,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task03_init33",
+      "task_id": 3,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 30,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 51,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 2.3029080555528325e-05,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task03_init34",
+      "task_id": 3,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 28,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 4,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 26
+      },
+      "discrete_signature_count": 4,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.019359007477760315,
+        0.0413057804107666,
+        0.11497241258621216
+      ]
+    },
+    {
+      "root_id": "task04_init31",
+      "task_id": 4,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task04_init32",
+      "task_id": 4,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task04_init33",
+      "task_id": 4,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task04_init34",
+      "task_id": 4,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.007148917764425278,
+        0.01453922688961029,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task05_init31",
+      "task_id": 5,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task05_init32",
+      "task_id": 5,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": true,
+      "success_candidates": 5,
+      "rescue_opportunity": true,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 26
+      },
+      "discrete_signature_count": 4,
+      "mixed_Y_signature_count": 2,
+      "counterexamples": [
+        {
+          "failed_candidate": 0,
+          "successful_candidate": 8,
+          "max_gripper_relative_position_difference_m": 2.1663023741069765e-05,
+          "max_target_plate_position_difference_m": 0.0046346187591552734,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        },
+        {
+          "failed_candidate": 55,
+          "successful_candidate": 50,
+          "max_gripper_relative_position_difference_m": 2.500958015505539e-05,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.050855882465839386,
+        0.01911163330078125,
+        0.1922832727432251
+      ]
+    },
+    {
+      "root_id": "task05_init33",
+      "task_id": 5,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 32,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 2,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 6,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 26
+      },
+      "discrete_signature_count": 6,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0339696891605854,
+        0.016474485397338867,
+        0.025023818016052246
+      ]
+    },
+    {
+      "root_id": "task05_init34",
+      "task_id": 5,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": false,
+      "any_Y": true,
+      "success_candidates": 16,
+      "rescue_opportunity": true,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 0,
+          "successful_candidate": 1,
+          "max_gripper_relative_position_difference_m": 0.010794061169388386,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task06_init31",
+      "task_id": 6,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 32,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 32,
+        "sampled_detach_and_rise_5mm": 32,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 3,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.010733246803283691,
+        0.023553308099508286,
+        0.016794204711914062
+      ]
+    },
+    {
+      "root_id": "task06_init32",
+      "task_id": 6,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 30,
+        "all_samples_target_contact": 2,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 2,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 3,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.010567106306552887,
+        0.030197471380233765,
+        0.08103561401367188
+      ]
+    },
+    {
+      "root_id": "task06_init33",
+      "task_id": 6,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": true,
+      "success_candidates": 2,
+      "rescue_opportunity": true,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 0,
+          "successful_candidate": 12,
+          "max_gripper_relative_position_difference_m": 0.008177559104292242,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task06_init34",
+      "task_id": 6,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 29,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 7,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 0.004578369785591632,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task07_init31",
+      "task_id": 7,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0011384151875972748,
+        0.0006412416696548462,
+        1.5497207641601562e-06
+      ]
+    },
+    {
+      "root_id": "task07_init32",
+      "task_id": 7,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task07_init33",
+      "task_id": 7,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task07_init34",
+      "task_id": 7,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0021585822105407715,
+        0.001287609338760376,
+        0.00883936882019043
+      ]
+    },
+    {
+      "root_id": "task08_init31",
+      "task_id": 8,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 21,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 32,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 4,
+          "successful_candidate": 0,
+          "max_gripper_relative_position_difference_m": 0.012101024746352773,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task08_init32",
+      "task_id": 8,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": true,
+      "success_candidates": 2,
+      "rescue_opportunity": true,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 0,
+          "successful_candidate": 55,
+          "max_gripper_relative_position_difference_m": 1.3761108888038498e-05,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task08_init33",
+      "task_id": 8,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 32,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 3,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.008791547268629074,
+        0.008191674947738647,
+        0.0016126632690429688
+      ]
+    },
+    {
+      "root_id": "task08_init34",
+      "task_id": 8,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": true,
+      "any_Y": true,
+      "success_candidates": 31,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 6,
+        "all_samples_target_contact": 26,
+        "sampled_plate_contact": 6,
+        "h8_robot_contact_no_entity_contact": 26,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 26
+      },
+      "discrete_signature_count": 5,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 50,
+          "successful_candidate": 55,
+          "max_gripper_relative_position_difference_m": 2.8915262874740222e-05,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.021843593567609787,
+        0.017383158206939697,
+        0.032932937145233154
+      ]
+    },
+    {
+      "root_id": "task09_init31",
+      "task_id": 9,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "root_id": "task09_init32",
+      "task_id": 9,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.004038993269205093,
+        0.0032142698764801025,
+        0.01496511697769165
+      ]
+    },
+    {
+      "root_id": "task09_init33",
+      "task_id": 9,
+      "eligible": true,
+      "split": "fit",
+      "A0_Y": false,
+      "any_Y": false,
+      "success_candidates": 0,
+      "rescue_opportunity": false,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 0,
+      "counterexamples": [],
+      "target_plate_H8_span_m": [
+        0.004763700067996979,
+        0.0033626407384872437,
+        0.014744043350219727
+      ]
+    },
+    {
+      "root_id": "task09_init34",
+      "task_id": 9,
+      "eligible": true,
+      "split": "development",
+      "A0_Y": false,
+      "any_Y": true,
+      "success_candidates": 3,
+      "rescue_opportunity": true,
+      "events_positive": {
+        "sampled_target_contact_onset": 0,
+        "first_sampled_contact_from_uncontacted_root": 0,
+        "sampled_target_contact_loss": 0,
+        "all_samples_target_contact": 0,
+        "sampled_plate_contact": 0,
+        "h8_robot_contact_no_entity_contact": 0,
+        "sampled_detach_and_rise_5mm": 0,
+        "h8_bilateral_contact": 0
+      },
+      "discrete_signature_count": 1,
+      "mixed_Y_signature_count": 1,
+      "counterexamples": [
+        {
+          "failed_candidate": 0,
+          "successful_candidate": 50,
+          "max_gripper_relative_position_difference_m": 3.039968601348253e-06,
+          "max_target_plate_position_difference_m": 0.0,
+          "warning": "only discrete sampled signature equal; continuous geometry/actions may differ"
+        }
+      ],
+      "target_plate_H8_span_m": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "final_diagnostic": {
+    "eligible_success_branches": 456,
+    "ever_success_but_final_on_false": 107,
+    "ever_success_and_final_on_and_grasp": 6,
+    "success_by_h8": 13,
+    "warning": "final bilateral contact != all gripper contact; no proof of released stability, even when final_grasp is false"
+  }
+}

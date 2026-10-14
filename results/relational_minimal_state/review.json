@@ -1,0 +1,280 @@
+{
+  "verdict": "MINIMAL_STATE_RETENTION_SUPPORTED",
+  "representations": {
+    "geometry_history": {
+      "shape": [
+        360,
+        11,
+        26
+      ],
+      "seed_checks": [
+        {
+          "seed": 11,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 23,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 47,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        }
+      ],
+      "compression_supported": true,
+      "errors_mm": [
+        9.27269532945421,
+        10.793728987375895,
+        9.362208131804234
+      ],
+      "static_error_mm": 4.30835485458374,
+      "held_release": {
+        "tp": 4,
+        "fp": 2,
+        "fn": 2,
+        "positives": 6,
+        "predicted": 6,
+        "precision": 0.6666666666666666,
+        "recall": 0.6666666666666666,
+        "f1": 0.6666666666666666,
+        "n": 42,
+        "roots": 5
+      },
+      "on_onset": {
+        "n": 102,
+        "tp": 4,
+        "fp": 6,
+        "fn": 3,
+        "positives": 7,
+        "predicted": 10,
+        "precision": 0.4,
+        "recall": 0.5714285714285714,
+        "f1": 0.47058823529411764
+      },
+      "release_onset": {
+        "n": 127,
+        "tp": 21,
+        "fp": 8,
+        "fn": 4,
+        "positives": 25,
+        "predicted": 29,
+        "precision": 0.7241379310344828,
+        "recall": 0.84,
+        "f1": 0.7777777777777778
+      }
+    },
+    "contact_history": {
+      "shape": [
+        360,
+        11,
+        34
+      ],
+      "seed_checks": [
+        {
+          "seed": 11,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 23,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 47,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        }
+      ],
+      "compression_supported": true,
+      "errors_mm": [
+        8.788024849361843,
+        10.332052336798775,
+        9.328331493910541
+      ],
+      "static_error_mm": 4.105182647705078,
+      "held_release": {
+        "tp": 4,
+        "fp": 3,
+        "fn": 2,
+        "positives": 6,
+        "predicted": 7,
+        "precision": 0.5714285714285714,
+        "recall": 0.6666666666666666,
+        "f1": 0.6153846153846154,
+        "n": 42,
+        "roots": 5
+      },
+      "on_onset": {
+        "n": 102,
+        "tp": 4,
+        "fp": 15,
+        "fn": 3,
+        "positives": 7,
+        "predicted": 19,
+        "precision": 0.21052631578947367,
+        "recall": 0.5714285714285714,
+        "f1": 0.3076923076923077
+      },
+      "release_onset": {
+        "n": 127,
+        "tp": 21,
+        "fp": 11,
+        "fn": 4,
+        "positives": 25,
+        "predicted": 32,
+        "precision": 0.65625,
+        "recall": 0.84,
+        "f1": 0.7368421052631579
+      }
+    },
+    "memory_history": {
+      "shape": [
+        360,
+        11,
+        40
+      ],
+      "seed_checks": [
+        {
+          "seed": 11,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 23,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 47,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        }
+      ],
+      "compression_supported": true,
+      "errors_mm": [
+        9.416170173221165,
+        10.353244728512234,
+        9.513248908505947
+      ],
+      "static_error_mm": 5.373885631561279,
+      "held_release": {
+        "tp": 5,
+        "fp": 3,
+        "fn": 1,
+        "positives": 6,
+        "predicted": 8,
+        "precision": 0.625,
+        "recall": 0.8333333333333334,
+        "f1": 0.7142857142857143,
+        "n": 42,
+        "roots": 5
+      },
+      "on_onset": {
+        "n": 102,
+        "tp": 5,
+        "fp": 7,
+        "fn": 2,
+        "positives": 7,
+        "predicted": 12,
+        "precision": 0.4166666666666667,
+        "recall": 0.7142857142857143,
+        "f1": 0.5263157894736842
+      },
+      "release_onset": {
+        "n": 127,
+        "tp": 21,
+        "fp": 8,
+        "fn": 4,
+        "positives": 25,
+        "predicted": 29,
+        "precision": 0.7241379310344828,
+        "recall": 0.84,
+        "f1": 0.7777777777777778
+      }
+    },
+    "memory_current": {
+      "shape": [
+        360,
+        1,
+        40
+      ],
+      "seed_checks": [
+        {
+          "seed": 11,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 23,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        },
+        {
+          "seed": 47,
+          "action_signal": true,
+          "within_10_percent_full": true,
+          "joint_pass": true
+        }
+      ],
+      "compression_supported": true,
+      "errors_mm": [
+        9.343289322323269,
+        10.795633210076225,
+        9.99566844224723
+      ],
+      "static_error_mm": 5.8077616691589355,
+      "held_release": {
+        "tp": 5,
+        "fp": 4,
+        "fn": 1,
+        "positives": 6,
+        "predicted": 9,
+        "precision": 0.5555555555555556,
+        "recall": 0.8333333333333334,
+        "f1": 0.6666666666666666,
+        "n": 42,
+        "roots": 5
+      },
+      "on_onset": {
+        "n": 102,
+        "tp": 5,
+        "fp": 7,
+        "fn": 2,
+        "positives": 7,
+        "predicted": 12,
+        "precision": 0.4166666666666667,
+        "recall": 0.7142857142857143,
+        "f1": 0.5263157894736842
+      },
+      "release_onset": {
+        "n": 127,
+        "tp": 20,
+        "fp": 8,
+        "fn": 5,
+        "positives": 25,
+        "predicted": 28,
+        "precision": 0.7142857142857143,
+        "recall": 0.8,
+        "f1": 0.7547169811320755
+      }
+    }
+  },
+  "metric_groups_recomputed": 108,
+  "confirmation_executed": false,
+  "new_data_used_for_fitting": false
+}

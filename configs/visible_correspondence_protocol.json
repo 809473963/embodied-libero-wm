@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-09",
+  "scope": "old13 scenes only, all4843 original OOF rows",
+  "training": false,
+  "confirmation_opened": false,
+  "new_development_opened": false,
+  "collection": "exact native128 RGB replay; five visible masks; no control steps",
+  "geometry_cases": "8 uniformly indexed rows per scene,104 frames; no selection on performance",
+  "geometry": "fit-only orientation prior and known mesh-size silhouette bounding-box fit; no heldout GT depth or pose inputs",
+  "variants": [
+    "native128",
+    "erode1px",
+    "dilate1px",
+    "downsample64"
+  ],
+  "statistics": "scene macro; missing masks reported; all-row fallback and complete-case geometry kept distinct",
+  "frozen_files": {
+    "scripts/collect_visible_correspondence.py": "606c1325e363208b45483bd77d03e256c94f95f513976c5cbd0263d3dbd47576",
+    "scripts/inventory_visual_target_masks.py": "7fa1e779d5cd2049d6473b848f966a5e4542b2b8244da6c553d2947f1af93087",
+    "scripts/collect_relational_localization.py": "e5b55114e7d6d41d2f16b78cd9c03d32b4b91ca71b2615de60895bd2787f980d",
+    "results/relational_localization_cv/dataset.npz": "dd8e1ff3fa875b88a4e673d02b9766cd9720f00acfd6498b49d12b990be011fe",
+    "results/relational_localization_cv/metadata.json": "4af139230cb3f82391297b6df3d54a15453dee8b6b6fd0de953bb4779bd0c7d6",
+    "results/relational_event_h24/manifest.json": "d0ae9603db3ea38b6bdf6416d9c0c2acfa3653425316deb7126ff602afc2b3a8",
+    "results/camera_projection_contract/camera_inventory.json": "10838796b774dbab59c8a2be2e22c367e360fd10350035ba689b453a28535653",
+    "configs/task_grounding_contract.json": "2a5ce1ef29ece3118587d2bb48a1bccf748c2d5dbf4128cb90f6d90bd0bd90bb"
+  }
+}

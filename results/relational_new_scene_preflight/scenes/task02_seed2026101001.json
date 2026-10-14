@@ -1,0 +1,38 @@
+{
+  "task_id": 2,
+  "seed": 2026101001,
+  "split": "development",
+  "status": "REPLAY_VALID",
+  "grounding": {
+    "status": "UNIQUE",
+    "ref": 0,
+    "gap": 30.28142535193695,
+    "scores": [
+      0.9286157393261907,
+      31.21004109126314
+    ]
+  },
+  "initial": "results/relational_new_scene_preflight/initials/task02_seed2026101001.npz",
+  "initial_sha256": "f05f7f8922779f26e366440a43636a96fc6b0ae1c588d6faca7bfc6a01a801ec",
+  "layout_fingerprint": "1ab0843629a54aa3d2739e988d16d80a7208c80ab044be4748188b2e86c621ac",
+  "runs": [
+    {
+      "mode": "generate",
+      "path": "results/relational_new_scene_preflight/arrays/task02_seed2026101001_generate.npz",
+      "sha256": "1b0774ad56a95c616525620f2c04ce61003073a8d52361b46e1610f397adf546",
+      "exact_replay": true
+    },
+    {
+      "mode": "same_seed",
+      "path": "results/relational_new_scene_preflight/arrays/task02_seed2026101001_same_seed.npz",
+      "sha256": "1b0774ad56a95c616525620f2c04ce61003073a8d52361b46e1610f397adf546",
+      "exact_replay": true
+    },
+    {
+      "mode": "restore_saved_state",
+      "path": "results/relational_new_scene_preflight/arrays/task02_seed2026101001_restore_saved_state.npz",
+      "sha256": "1b0774ad56a95c616525620f2c04ce61003073a8d52361b46e1610f397adf546",
+      "exact_replay": true
+    }
+  ]
+}

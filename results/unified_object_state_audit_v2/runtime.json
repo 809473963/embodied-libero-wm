@@ -1,0 +1,9 @@
+{
+  "status": "BLOCKED",
+  "phase": "legal_proprio_fk",
+  "frames": 4800,
+  "started_epoch": 1791531172.2564373,
+  "training": false,
+  "confirmation_opened": false,
+  "error": "Traceback (most recent call last):\n  File \"/home/luo/embodied-libero-wm/scripts/audit_unified_object_state_v2.py\", line 72, in main\n    atomic_json(OUT/'evaluation.json',result)\n  File \"/home/luo/embodied-libero-wm/src/probes/candidate_utility_oracle.py\", line 38, in atomic_json\n    tmp.write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + '\\n')\n  File \"/usr/lib/python3.10/json/__init__.py\", line 238, in dumps\n    **kw).encode(obj)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 201, in encode\n    chunks = list(chunks)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 431, in _iterencode\n    yield from _iterencode_dict(o, _current_indent_level)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 325, in _iterencode_list\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 405, in _iterencode_dict\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 325, in _iterencode_list\n    yield from chunks\n  File \"/usr/lib/python3.10/json/encoder.py\", line 438, in _iterencode\n    o = _default(o)\n  File \"/usr/lib/python3.10/json/encoder.py\", line 179, in default\n    raise TypeError(f'Object of type {o.__class__.__name__} '\nTypeError: Object of type int32 is not JSON serializable\n"
+}

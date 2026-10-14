@@ -35,3 +35,13 @@ results/continuation_utility_observability/**/*.pt
 results/continuation_utility_observability/*.log
 results/continuation_utility_observability/run.lock
 results/continuation_utility_observability/groups/
+
+# Reproducibility reports are versioned; generated arrays, checkpoints, and
+# transient runtime files stay local or belong in a dedicated artifact store.
+results/**/*.npz
+results/**/*.npy
+results/**/*.pt
+results/**/*.log
+results/**/run.lock
+results/**/locks/
+results/visible_correspondence_clean_component_audit_blocked_indexing/

@@ -1,0 +1,11 @@
+{
+ "seed":20261009,
+ "scope":"8 uniformly indexed old observations per old scene, both bowls; numerical geometry oracle only",
+ "observations":"8 identity-labelled projections of fixed farthest-sampled mesh vertices; generated using GT pose for oracle annotation only",
+ "solver_inputs":"known scaled mesh vertex coordinates, pixel correspondences, calibrated camera; no GT depth/translation/rotation initial guess",
+ "noise_pixels_128":[0,0.5,1,2,4],
+ "repetitions":5,
+ "method":"EPNP then ITERATIVE refinement with EPNP estimate",
+ "limitations":"Does not establish visibility or natural identifiability of these vertices on near-axisymmetric bowls; cannot count as deployable accuracy",
+ "training":false
+}

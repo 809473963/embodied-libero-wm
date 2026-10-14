@@ -1,0 +1,163 @@
+{
+  "status": "CONTINUOUS_ACTION_SIGNAL_BROADER_SUPPORT_EVENT_COVERAGE_STILL_LIMITED",
+  "metric_groups_recomputed": 6,
+  "source_sha256": "7095bd53cbd15f45b5ad1190936354b70b8f4ac8015c4724c729bc92921fdafe",
+  "script_sha256": "b109c2a74c4e44c36e9143252a8fca2a43a3aeed47c9dcaf8c275f3fad43cd2d",
+  "gains_over_no_action_pct": {
+    "root_macro_target_plate_mm": 25.14110838064745,
+    "root_macro_target_gripper_mm": 30.78586808091046,
+    "pair_error_all_mm": 21.645692793263283,
+    "material_error_mm": 33.15911740250092
+  },
+  "root_wins": {
+    "target_plate_mm": 8,
+    "target_gripper_mm": 8
+  },
+  "leave_one_root_out_pair_errors": {
+    "task00_init34": {
+      "action": 5.861537441129864,
+      "unchanged": 7.203009470749663
+    },
+    "task01_init34": {
+      "action": 6.034246703544947,
+      "unchanged": 7.709506183308617
+    },
+    "task02_init34": {
+      "action": 5.851820057766115,
+      "unchanged": 7.568662090875898
+    },
+    "task03_init34": {
+      "action": 5.548498227906546,
+      "unchanged": 6.746852328901104
+    },
+    "task04_init34": {
+      "action": 6.174242332715746,
+      "unchanged": 8.374035454633283
+    },
+    "task05_init34": {
+      "action": 5.962606531839912,
+      "unchanged": 6.87842430212076
+    },
+    "task06_init34": {
+      "action": 5.702046397800586,
+      "unchanged": 7.355402540939916
+    },
+    "task07_init34": {
+      "action": 6.071958110472527,
+      "unchanged": 7.979504128305775
+    },
+    "task08_init34": {
+      "action": 5.77041319820637,
+      "unchanged": 7.612960193670527
+    },
+    "task09_init34": {
+      "action": 6.3818708172220795,
+      "unchanged": 8.329112084804482
+    }
+  },
+  "leave_one_root_out_action_better_count": 10,
+  "per_variant": {
+    "close": {
+      "pairs": 20,
+      "material_pairs": 6,
+      "action_mm": 4.592413134923845,
+      "unchanged_mm": 1.314616878516972
+    },
+    "open": {
+      "pairs": 20,
+      "material_pairs": 9,
+      "action_mm": 9.879773548709636,
+      "unchanged_mm": 19.08607634763939
+    },
+    "x_minus": {
+      "pairs": 20,
+      "material_pairs": 11,
+      "action_mm": 6.275393170653842,
+      "unchanged_mm": 6.961242026068248
+    },
+    "x_plus": {
+      "pairs": 20,
+      "material_pairs": 12,
+      "action_mm": 5.489464840502478,
+      "unchanged_mm": 6.424982525095402
+    },
+    "y_minus": {
+      "pairs": 20,
+      "material_pairs": 12,
+      "action_mm": 4.9086301878560334,
+      "unchanged_mm": 6.2819698179737316
+    },
+    "y_plus": {
+      "pairs": 20,
+      "material_pairs": 11,
+      "action_mm": 5.016335533582605,
+      "unchanged_mm": 6.793567927161348
+    },
+    "z_minus": {
+      "pairs": 20,
+      "material_pairs": 13,
+      "action_mm": 5.831961226067506,
+      "unchanged_mm": 6.989168770280685
+    },
+    "z_plus": {
+      "pairs": 20,
+      "material_pairs": 11,
+      "action_mm": 5.493420212587807,
+      "unchanged_mm": 6.75435072991224
+    }
+  },
+  "event_transition_support": {
+    "attachment": {
+      "onset": {
+        "branches": 8,
+        "roots": [
+          "task03_init34"
+        ],
+        "anchors": [
+          [
+            "task03_init34",
+            64
+          ]
+        ]
+      },
+      "offset": {
+        "branches": 1,
+        "roots": [
+          "task05_init34"
+        ],
+        "anchors": [
+          [
+            "task05_init34",
+            64
+          ]
+        ]
+      }
+    },
+    "release": {
+      "onset": {
+        "branches": 0,
+        "roots": [],
+        "anchors": []
+      },
+      "offset": {
+        "branches": 8,
+        "roots": [
+          "task00_init34",
+          "task06_init34"
+        ],
+        "anchors": [
+          [
+            "task00_init34",
+            160
+          ],
+          [
+            "task06_init34",
+            160
+          ]
+        ]
+      }
+    }
+  },
+  "training": false,
+  "new_scenes": false
+}

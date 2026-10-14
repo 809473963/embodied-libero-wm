@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-09",
+  "scope": "old 13 scenes only; no new-development or confirmation arrays",
+  "seed": 20261009,
+  "training": false,
+  "statistical_unit": "scene; per-frame quantiles reported descriptively and never as independent samples",
+  "primary_objects": [0,1,2,3,4],
+  "time_bins": [0,1,32,64,96,100000],
+  "visible_pixel_bins": [0,1,64,256,16385],
+  "geometry": {
+    "method": "calibrated ray intersection with per-object fit-scene median body-height prior",
+    "oracle_observation": "GT projected body origin UV; no heldout depth or height fed to solver",
+    "noise_pixels_at_128": [0,1,2,4],
+    "noise_repetitions": 5,
+    "natural_auxiliary": "existing old-scene OOF localized UV head, three-seed ensemble; learned depth excluded from plane solver",
+    "stop": "Do not claim universal 3D recovery from a single center; no new training unless mechanism isolated and nontrivial legal geometry supports all required states"
+  },
+  "sensitivity": ["original","zero_current","zero_initial","shuffle_current_within_scene","mask_bowl1","mask_bowl2","mean_proprio_action"],
+  "max_new_training_fits": 0,
+  "p4": "requires separate frozen protocol after evidence-based GO; no automatic search"
+}

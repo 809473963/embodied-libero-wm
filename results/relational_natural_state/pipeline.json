@@ -1,0 +1,27 @@
+{
+  "status": "COMPLETE",
+  "phase": "finite_chain_complete_with_diagnosis",
+  "completed_stages": [
+    "minimal_state_ablation",
+    "natural_data_alignment",
+    "natural_perception_training",
+    "frozen_dynamics_substitution",
+    "metric_verification",
+    "oracle_repair_and_noise_diagnosis",
+    "root_level_error_localization",
+    "handoff"
+  ],
+  "training_attempts": 6,
+  "extra_training_after_failed_gate": 0,
+  "confirmation_executed": false,
+  "controller_executed": false,
+  "report": "docs/relational_natural_state_handoff.md",
+  "diagnosis_validation": "results/relational_natural_state/diagnosisv2_v2/validation.json",
+  "technical_correction": "diagnosis_v2 restores CUDA settings; failed v1 retained",
+  "artifacts_sha256": {
+    "docs/relational_natural_state_handoff.md": "f9c840d4cbb69441a22153a5635249a4697a5b9fa987f65a1e762b0db63a74da",
+    "docs/relational_natural_state_audit.md": "66776c806b2f41a39a4a0f16598b81df31dee4c1cd270e99f70a482462bf32ad",
+    "docs/relational_natural_state_diagnosis.md": "3f1cc14f6e188fab93d720c5d38fa62f25a950cabb9f8350700e801c1702dc9c",
+    "results/relational_natural_state/perception_error_localization.json": "d06d7932cc5e148a9ef63a237d143adbe212c39c93baf2d7ff22710243f212ea"
+  }
+}

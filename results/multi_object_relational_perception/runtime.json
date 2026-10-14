@@ -1,0 +1,8 @@
+{
+  "status": "BLOCKED",
+  "started_epoch": 1791530624.030328,
+  "phase": "multi_object_audit",
+  "training": false,
+  "confirmation_opened": false,
+  "error": "Traceback (most recent call last):\n  File \"/home/luo/embodied-libero-wm/scripts/audit_multi_object_relational_perception.py\", line 33, in main\n    np.testing.assert_allclose(closure(truth),0,atol=1e-7);np.testing.assert_allclose(closure(fixed),0,atol=1e-10)\n  File \"/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/numpy/testing/_private/utils.py\", line 1530, in assert_allclose\n    assert_array_compare(compare, actual, desired, err_msg=str(err_msg),\n  File \"/home/luo/embodied-libero-wm/.venv/lib/python3.10/site-packages/numpy/testing/_private/utils.py\", line 844, in assert_array_compare\n    raise AssertionError(msg)\nAssertionError: \nNot equal to tolerance rtol=1e-07, atol=1e-10\n\nMismatched elements: 40 / 66 (60.6%)\nMax absolute difference: 5.9604645e-08\nMax relative difference: inf\n x: array([[ 0.000000e+00, -7.450581e-09,  0.000000e+00],\n       [ 2.980232e-08,  0.000000e+00,  0.000000e+00],\n       [-1.490116e-08,  0.000000e+00,  0.000000e+00],...\n y: array(0)\n"
+}

@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "independent_numeric_checks": 600,
+  "old_sources_unchanged": true,
+  "fit_only_height_priors": true,
+  "figures_and_cases": 39,
+  "statistical_unit": "13 old scenes; no new independent confirmation",
+  "source_hashes": {
+    "scripts/diagnose_multi_object_perception.py": "15ed7038423b654f4bcb14bab64dfaf3b27134409c32805daaa292459c22b144",
+    "scripts/probe_multi_object_inputs_geometry.py": "1129e70df5bbe5dc0d8460afe15c251574a599bf8b1c2fad43bfa55297aa2873",
+    "scripts/probe_multi_object_pnp_oracle.py": "cb449399bc64378a2356d7e86d47110c4767fc9975ee0aa00d5ecdce98235c99",
+    "scripts/supplement_multi_object_strata.py": "4ea51ac47f037533099479c94f206723680e5d5b617048594c6e1a0ba4c8e2bf",
+    "scripts/visualize_multi_object_diagnosis.py": "1a3527ed8fb9d31cf22f91f5f6b8e9cad8dd0346db145ffbb7e0f3919f0b5d97",
+    "scripts/verify_multi_object_perception_diagnosis.py": "674184d7c2f99d678b9d1b70dc951e35e87b5b741024726131e3a2b6a1c6df4f",
+    "tests/test_multi_object_perception_diagnosis.py": "5c5e4d8f973bd1e937e3e4f758cc62490831e06ba512502c599d4586ee7a46a4",
+    "configs/multi_object_perception_diagnosis_protocol.json": "a571d960b928dc630e1b8dbeb70a3d911b2b5eecebfcc7f4fda8214efc09af75",
+    "configs/multi_object_pnp_oracle_protocol.json": "31da827bf57a1966beb1dd17c8f60024d6efbc90d18fad1f775359bd43681c1f"
+  },
+  "result_hashes": {
+    "sensitivity_runtime.json": "22b8c553633d2324eea710b2e25a3ebe0509084f86d07479a853bd02c5d04815",
+    "baseline_manifest.json": "7b8e90c1accddfca4a507638315ff754e418733b261bb16a94bf84e1a5c73d63",
+    "geometry_feasibility.json": "a608dbff445e9638617b19c12e4697659e1fbf9372c88285e40863cdd889113e",
+    "input_sensitivity.json": "3bd64098de6c0552439458a1e08e29649981f19cc3b2c98b7279bd2482650ee1",
+    "source_supplement.json": "ffdd9ad1bb8cbcc7552b83f998adaa9fcc22960d9784516345b3b1285c0baeec",
+    "object_error_analysis.json": "b665f2c708efdb131f6a2f7319a78098963c4477b89294f779d6a4cbf3d3f463",
+    "spatial_phase_analysis.json": "5ab23af483cb3c53c02f63a3da5e7bf13882dcab833bce4d482d17cdc834cbf3",
+    "pnp_oracle.json": "7c5f0ab97b8de43d8f614358689a29a2c093a56bb62c0db8c8eacc2143e23b0d",
+    "identity_diagnosis.json": "368af9a4cbb2f2682d2f15102d35e0b09068c6ad7a451c08e3b5091a9199b3b5",
+    "visibility_diagnosis.json": "b838bac4f9e177cbf3a89a52305f8fcd3dda156b071e38ee93f9ba2e64454401",
+    "visual_case_manifest.json": "ae197a8b02e77d9908c1ee14280393e4944196769a9f63e481e6eada2466f800"
+  },
+  "training_executed": false,
+  "new_development_opened": false,
+  "confirmation_opened": false,
+  "limitations": "Hash records describe current reproducible implementation, not retroactive proof of immutable preregistration; no claim that all process file access was OS-audited."
+}

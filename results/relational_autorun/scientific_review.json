@@ -1,0 +1,91 @@
+{
+  "date": "2026-10-08",
+  "type": "post_hoc_descriptive_review",
+  "metric_groups_recomputed": 27,
+  "frozen_files_verified": 456,
+  "source_sha256": {
+    "results/relational_autorun/evaluation.json": "f161b733aa0a39237a5bb0b3a593110966070aeda5323c32c3516a774b40d5d4",
+    "results/relational_autorun/coverage.json": "408ca09f0c16e37656f910bcc98074d4b310bae62ee8df5876181345f7bdab19",
+    "results/relational_autorun/models/dataset.npz": "8b69aa79b1c86eaee146cea8521edee2452b737888de9aa0544615ba47db508b",
+    "results/relational_autorun/models/samples.json": "a64a91ad4c54a93317cee675b1f44a2e525485c3b9cf473b7d4365a954d3ff51"
+  },
+  "per_scene_pair_error_mm": {
+    "task00_seed2026100800": {
+      "unchanged": 57.48541168868542,
+      "action": 8.093762071803212
+    },
+    "task00_seed2026100801": {
+      "unchanged": 28.377506680167624,
+      "action": 8.96217911504209
+    },
+    "task02_seed2026101000": {
+      "unchanged": 7.305734418332577,
+      "action": 6.426068302243948
+    },
+    "task02_seed2026101001": {
+      "unchanged": 65.28361303498968,
+      "action": 9.97922876267694
+    },
+    "task03_seed2026101100": {
+      "unchanged": 61.2867604320248,
+      "action": 10.04405302616457
+    },
+    "task03_seed2026101101": {
+      "unchanged": 2.4388744132011198,
+      "action": 5.97872119396925
+    },
+    "task05_seed2026101301": {
+      "unchanged": 54.26277788574225,
+      "action": 21.695931744761765
+    },
+    "task06_seed2026101400": {
+      "unchanged": 4.262311774073169,
+      "action": 6.51029022410512
+    },
+    "task08_seed2026101600": {
+      "unchanged": 16.229696664959192,
+      "action": 16.099184984341264
+    }
+  },
+  "leave_one_scene_out_pair_improvement_mm": {
+    "task00_seed2026100800": 19.218952243773185,
+    "task00_seed2026100801": 22.96599250024277,
+    "task02_seed2026101000": 25.28295018137238,
+    "task02_seed2026101001": 18.479860411844367,
+    "task03_seed2026101100": 18.987570020150933,
+    "task03_seed2026101101": 25.835389293479476,
+    "task05_seed2026101301": 21.3220526782609,
+    "task06_seed2026101400": 25.673905752137454,
+    "task08_seed2026101600": 25.37659448580622
+  },
+  "by_variant_pair_error_mm": {
+    "1": {
+      "unchanged": 29.739045551482466,
+      "action_ensemble": 6.42520297077243
+    },
+    "2": {
+      "unchanged": 33.17809451847898,
+      "action_ensemble": 12.835771507255872
+    },
+    "3": {
+      "unchanged": 34.30762890019213,
+      "action_ensemble": 9.39394993690291
+    },
+    "4": {
+      "unchanged": 35.2234871407512,
+      "action_ensemble": 11.198967880638385
+    },
+    "5": {
+      "unchanged": 32.51434777363735,
+      "action_ensemble": 12.251340718379383
+    }
+  },
+  "held_at_root_release_prediction": {
+    "n": 78,
+    "positives": 6,
+    "tp": 6,
+    "fp": 2,
+    "fn": 0
+  },
+  "confirmation_executed": false
+}

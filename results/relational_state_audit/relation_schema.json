@@ -1,0 +1,70 @@
+{
+  "version": "sampled-relations-v1",
+  "date": "2026-10-06",
+  "status": "descriptive pilot; not stable-event supervision",
+  "units": {
+    "position": "metres",
+    "velocity": "metres/second",
+    "time": "control steps",
+    "rotation": "radians"
+  },
+  "nominal_control_hz": 20,
+  "hz_source": "make_env default OffScreenRenderEnv control_freq=20; source verified, no runtime replay",
+  "candidate_samples": [
+    0,
+    2,
+    4,
+    6,
+    8
+  ],
+  "entities": [
+    "target",
+    "other_bowl",
+    "plate",
+    "cookies",
+    "ramekin",
+    "table",
+    "cabinet",
+    "stove"
+  ],
+  "input_precision": "float32 state; no 1e-10 geometry claims",
+  "numerical_geometry_tolerance_m": 1e-06,
+  "relative_geometry": "world-frame body position and velocity differences; target relative to grip_site also computed",
+  "relative_rotation": "wxyz converted to matrices; geodesic rotation, no symmetry quotient; not semantic bowl orientation accuracy",
+  "gripper_reference": "eef_pos is grip_site position in installed robosuite single_arm.py",
+  "events": {
+    "sampled_target_contact_onset": "any 0->1 transition at adjacent saved samples; onset interval censored",
+    "first_sampled_contact_from_uncontacted_root": "root has no any-gripper target contact, then a saved contact occurs; not verified grasp",
+    "sampled_target_contact_loss": "any 1->0 transition at adjacent saved samples; not necessarily failure",
+    "all_samples_target_contact": "any-gripper contact true at all five samples; NOT continuous or bilateral grasp",
+    "sampled_plate_contact": "target-plate contact at any saved sample; NOT support or stable placement",
+    "h8_robot_contact_no_entity_contact": "any-gripper target contact at H8 and no target contact with other seven tracked entities; untracked contacts not ruled out",
+    "sampled_detach_and_rise_5mm": "target initially contacts a tracked nonrobot entity; H8 no tracked nonrobot contact, gripper contact, z increase>0.005m; weak evidence only",
+    "h8_bilateral_contact": "existing Stage1 exact H8 _check_grasp; instant only"
+  },
+  "sensitivity": {
+    "rise_m": [
+      0.001,
+      0.005,
+      0.01
+    ],
+    "gripper_relative_translation_excursion_m": [
+      0.001,
+      0.005,
+      0.01
+    ]
+  },
+  "strong_events": {
+    "stable_grasp": "unavailable: missing dense bilateral/support/holding verification; do not infer negative",
+    "lift_and_hold": "unavailable: missing dense bilateral/support/holding verification; do not infer negative",
+    "released_stable_placement": "unavailable: missing dense bilateral/support/holding verification; do not infer negative"
+  },
+  "review_rule": "up to10 positive and10 negative per listed relation; root-diverse round-robin then candidate order; no Y in selection",
+  "label_policy": "missing evidence=unknown; sampled point equality does not certify intersample continuity",
+  "feature_forbidden": [
+    "Y",
+    "first_success_step",
+    "final300",
+    "oracle_winner"
+  ]
+}

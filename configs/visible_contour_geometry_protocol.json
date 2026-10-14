@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-10",
+  "scope": "104 fixed old frames, all five objects",
+  "training": false,
+  "variants": [
+    "bbox_native",
+    "contour_native",
+    "contour_erode1",
+    "contour_dilate1",
+    "contour_res64"
+  ],
+  "inputs": "GT visible mask and instance identity, known CAD, calibrated camera, fit-only mean orientation. No GT heldout depth/position/rotation fed to solver.",
+  "solver": {
+    "depth_initializations": [
+      0.4,
+      0.8,
+      1.2
+    ],
+    "max_nfev": 60,
+    "loss": "soft_l1",
+    "bounds_camera_translation": [
+      [
+        -2,
+        -2,
+        0.15
+      ],
+      [
+        2,
+        2,
+        2.5
+      ]
+    ]
+  },
+  "metrics": "scene macro; missing<4px masks explicit, retain nonconvergence; primary all rows with old-shared fallback labelled oracle hybrid",
+  "frozen_files": {
+    "scripts/audit_visible_contour_geometry.py": "cbbf654edb67c557e96e8abf0d98761981aaffdb125d7f7fbf9ccd8adb0517ba",
+    "tests/test_visible_contour_geometry.py": "dfa45d13e68b4f59df543e02f715bf834e994fcc109a09582f4301f708754094",
+    "results/visible_correspondence_audit/visible_masks.npz": "a4360afcc13038dc11d69aad121dc5dea92b6d641dab6774f3d0968082a7492d",
+    "results/visible_correspondence_audit/geometry_cases.npz": "3ddea535589c9f8dd6709ddcbcad0ac86e833f09c5b43cbe81ad5a0e08175831",
+    "results/visible_correspondence_audit/known_mesh_hulls.npz": "4861320a3ea54b2b23a61474aff606cf58531e896885d36911eaad57a03cc2ee",
+    "results/visible_correspondence_audit/collection_manifest.json": "dd57825c2aee143958893d66331d1bef3947f091ec52d639557611b4f182133f",
+    "results/unified_object_state_audit_v3/node_supervision.npz": "4ee1c3f739f066bb7bac2f4ca78308da48f33fb91034d974ce33828d557e2d59",
+    "results/unified_object_state_cv/oof_shared_ensemble.npz": "a20c00f71140a0f90339bc43012866c4c7e1d090a02f55d827b44c7a997f0b5c",
+    "results/unified_object_state_cv/oof_independent_ensemble.npz": "c7439bf575e9a463e2feedbc2eef4e0c701a443154daad72b6a52312f6b03651",
+    "results/unified_object_state_cv/oof_mean_position.npz": "f341c0abadf14a073f1a3c5f774a3b6d522ac2d5c1d4e24041b0cef6e48aa574"
+  }
+}
